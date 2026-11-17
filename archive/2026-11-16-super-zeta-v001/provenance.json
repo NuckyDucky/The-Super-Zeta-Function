@@ -1,0 +1,345 @@
+{
+  "snapshot": "2026-11-16-super-zeta-v001",
+  "source_package": "Greater-Works-Super-Zeta",
+  "source_zip_sha256": "de87fbb8592c0777bb691d177efeca2b421ca4b1025349e70120148cc8909c87",
+  "source_records": [
+    {
+      "path": "Greater-Work.md",
+      "source_sha256": "7be86ffb35184608ad040deabe8fccd1059f88d17b57c59c20973fd0a9652b01",
+      "source_bytes": 24361,
+      "archive_edits": [
+        "Use the GitHub account handle for project attribution."
+      ]
+    },
+    {
+      "path": "computations/balanced-charge-results.json",
+      "source_sha256": "e2da5e14b2cf01c308b9655c5cb25c1eb76d1bd5ce7df327015a6cbf5a30e27a",
+      "source_bytes": 16920,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/binomial-normalization-results.json",
+      "source_sha256": "c779c580524874db8c37dcb06e10703d46b970be1d87f7e5d3d30ded4c6990be",
+      "source_bytes": 8087,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/laplace-barnes-results.json",
+      "source_sha256": "559cf6e5d21f070109676e8c089b4fa14da691589f0d6e3943948a01dbaf06a1",
+      "source_bytes": 67140,
+      "archive_edits": [
+        "Replace machine-local provenance or replay paths with relative paths."
+      ]
+    },
+    {
+      "path": "computations/make_figures.py",
+      "source_sha256": "cbc7200a6ee86b7416c7297ad2b9c5ac09bc9a8528aa7972cb178425578d8b06",
+      "source_bytes": 4451,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/numerical-scope-review-results.json",
+      "source_sha256": "86dea29b5c0883c5a103a295fee0d795e885cfb7e2a36a5c3e2e88dbf32fe641",
+      "source_bytes": 6780,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/replay-results.json",
+      "source_sha256": "45bf25029f09e6617082e63a4018f6676db8bd63ff1bc7a0d94bb65dcf0b9e58",
+      "source_bytes": 5990,
+      "archive_edits": [
+        "Replace machine-local provenance or replay paths with relative paths."
+      ]
+    },
+    {
+      "path": "computations/residue-period-results.json",
+      "source_sha256": "c9de2bb8509ff97b4ab29e7fed0396070d9de393e97bacfe8a1e5706d05e31cb",
+      "source_bytes": 42617,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/review_numerical_scopes.py",
+      "source_sha256": "b335001f3f6afbfe8a1a6680116eb4522839598ce028d0843c024effdc63075c",
+      "source_bytes": 4979,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/review_root_coefficients.py",
+      "source_sha256": "69628acdb72f9d49ee6de427e6aaae33d1fecc8671cb597d2f2af757b4175111",
+      "source_bytes": 3229,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/root-coefficient-review-results.json",
+      "source_sha256": "719f91ac44c2f0d06824fb7acf2bb7d4ca9e00fd2ae7a1f5ef8724cf28b86dda",
+      "source_bytes": 6861,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/signed-histories-results.json",
+      "source_sha256": "fe7fef793efff2721a095e12c05139cf02fe6721beeb9ee0d7d8508b19950305",
+      "source_bytes": 8441,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/superzeta-residue-results.json",
+      "source_sha256": "bf93a008be8d319559345bcdf0e0ddef48b098edc7d9a53f4896d79467906a97",
+      "source_bytes": 19466,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/verify_balanced_charge.py",
+      "source_sha256": "096e1a566aec67ba2d398dc0a1f39b91abdb437d22fc6c49146336615cf6c7d5",
+      "source_bytes": 9880,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/verify_binomial_normalization.py",
+      "source_sha256": "023eadca10fec51ff9d515e57db15d9d4efe7327a0960c52a22391374d7eac2e",
+      "source_bytes": 7529,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/verify_laplace_barnes.py",
+      "source_sha256": "c35c85294cea84830e31c2d53cf36fe42887dc0e9e8df4c7e217dc896c6ff870",
+      "source_bytes": 9152,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/verify_residue_period.py",
+      "source_sha256": "44815ccf695c12d7372f400072af03f018b1ad7559cf2077db94d5d5eb169904",
+      "source_bytes": 9657,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/verify_signed_histories.py",
+      "source_sha256": "b877212132a41ab679d901724b623ceabec4493c3e201a7ffe5f421e8fd71ddf",
+      "source_bytes": 9491,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/verify_superzeta_residues.py",
+      "source_sha256": "ee11fb42bc401036d81cbbb80c559b64a4c32ab0288037859f2f3c1e03ffa298",
+      "source_bytes": 5272,
+      "archive_edits": []
+    },
+    {
+      "path": "figures/barnes-dottie-normalization.png",
+      "source_sha256": "c9d0233cd3cb29d0fd5abe11eb34a7ebd310e6256dd487a69fb85b22cd5601ce",
+      "source_bytes": 112032,
+      "archive_edits": []
+    },
+    {
+      "path": "figures/barnes-dottie-normalization.svg",
+      "source_sha256": "4ea4faef068817dd0d259eb63f631b74c257df0a4120c1416189ca79c4be0cae",
+      "source_bytes": 66346,
+      "archive_edits": []
+    },
+    {
+      "path": "figures/ordered-four-stage-fold.png",
+      "source_sha256": "77f277d8b99fdec95f489dbe7d74c76ef1a2ff85328ad31e6fe9953641b67d7e",
+      "source_bytes": 174530,
+      "archive_edits": []
+    },
+    {
+      "path": "figures/ordered-four-stage-fold.svg",
+      "source_sha256": "cafcfb514bc02fa085d9c6f185a9fe0c703b5e5c41961f6769a8b52951aa90f9",
+      "source_bytes": 84965,
+      "archive_edits": []
+    },
+    {
+      "path": "research/balanced-charge-operators.md",
+      "source_sha256": "c6bbec4a4c8e34c8ad010a0ca565bd4d73ff351eb7919b16fd59c196bcd9d568",
+      "source_bytes": 17787,
+      "archive_edits": []
+    },
+    {
+      "path": "research/binomial-deformed-zeta.md",
+      "source_sha256": "03803be7daaf144f0e90e7ffd07d8aa19502b68ab6d4d8a3fb6bf20621221423",
+      "source_bytes": 7714,
+      "archive_edits": []
+    },
+    {
+      "path": "research/binomial-normalization.md",
+      "source_sha256": "304838a150e85a7e4574b6f66d10ab0177222775b8ab05e7e6dbcfc699a3f4bb",
+      "source_bytes": 9227,
+      "archive_edits": [
+        "Use the GitHub account handle for project attribution."
+      ]
+    },
+    {
+      "path": "research/laplace-barnes-expansion.md",
+      "source_sha256": "fe1ac22b5c529bf7e8ca7559d9c7397373bca58977578bb19d0aefc55917b750",
+      "source_bytes": 7460,
+      "archive_edits": []
+    },
+    {
+      "path": "research/ordered-signed-histories.md",
+      "source_sha256": "c0bd4aa5c0242febd691684a81ecccd352495e0b116f05a3db96f5a07d231192",
+      "source_bytes": 16863,
+      "archive_edits": [
+        "Use the GitHub account handle for project attribution."
+      ]
+    },
+    {
+      "path": "research/residue-period-and-chords.md",
+      "source_sha256": "0df3bf8ac072ce0ff3bba8d42afd35292b023f766bbefad3688fdbe764ad5cce",
+      "source_bytes": 5422,
+      "archive_edits": []
+    },
+    {
+      "path": "research/shifted-superzeta.md",
+      "source_sha256": "4881ae930da4e18dc6003b6992dad4d82232ae0b885bac71eaffcae989fb07a6",
+      "source_bytes": 9609,
+      "archive_edits": [
+        "Use the GitHub account handle for project attribution."
+      ]
+    },
+    {
+      "path": "review/binomial-normalization-review.md",
+      "source_sha256": "8ca69c66cbe6449b1189516c3bb51a054460d83099a63f6ba0928d3295a38294",
+      "source_bytes": 4380,
+      "archive_edits": []
+    },
+    {
+      "path": "review/computation-scope-review.md",
+      "source_sha256": "894aae8bb77f8151418e84a024b07f3712b5bd64777d955d6ff1b82d1009d937",
+      "source_bytes": 9490,
+      "archive_edits": []
+    },
+    {
+      "path": "review/main-mathematical-review.md",
+      "source_sha256": "88c86a1241c304a09326b3ad9dfba1b315f4901f684c0b0cd1429686edbadd3e",
+      "source_bytes": 9291,
+      "archive_edits": []
+    },
+    {
+      "path": "review/root-superzeta-review.md",
+      "source_sha256": "69952c4281075d10f1c8bb909a3e295ce447c2b8e3e8185d2797dcbb9c9726ee",
+      "source_bytes": 8311,
+      "archive_edits": []
+    },
+    {
+      "path": "review/shifted-superzeta-review.md",
+      "source_sha256": "b2a42c37ff0bc843b849dd12cd5a1aa5427ac30c5a836a61856631268ee65676",
+      "source_bytes": 4133,
+      "archive_edits": []
+    },
+    {
+      "path": "review/signed-histories-review.md",
+      "source_sha256": "76eb1c502d7acdcb59018a72a616f358b2fe27dd05392f81cacd42060ec4e76e",
+      "source_bytes": 4835,
+      "archive_edits": []
+    },
+    {
+      "path": "source-map.md",
+      "source_sha256": "d596295e209bd97203bc40569f48a9042835572374b6fe657783a66c1c4f406a",
+      "source_bytes": 10253,
+      "archive_edits": [
+        "Keep public citations and mark the source proof retained with the separate 2024-frontier delivery."
+      ]
+    },
+    {
+      "path": "sources/balance/inputs/clocked-transfer-spectrum.md",
+      "source_sha256": "27764ed7b93c5618c87bfbd7e5065116942f8b9499d7041751ed70a7797d3107",
+      "source_bytes": 21131,
+      "archive_edits": []
+    },
+    {
+      "path": "sources/balance/inputs/parabolic-locus.md",
+      "source_sha256": "501d12dd8a364d36662462af5de8ae80cc5ea69e4ace78b0fca54f06652c9529",
+      "source_bytes": 12449,
+      "archive_edits": [
+        "Use the GitHub account handle for project attribution."
+      ]
+    },
+    {
+      "path": "sources/balance/source-records.json",
+      "source_sha256": "7a6c52e547ffc2757f628379177beea6430e6db438c6ef3c7a87adf5ae94eb44",
+      "source_bytes": 807,
+      "archive_edits": []
+    },
+    {
+      "path": "sources/binomial-primary-references.json",
+      "source_sha256": "4365a6e5ae49d115a91ac9c118b50ffea847ddc9d5c2cd3dbec8e18d3c1d178f",
+      "source_bytes": 1051,
+      "archive_edits": []
+    },
+    {
+      "path": "sources/foundation/clocked-transfer-spectrum.md",
+      "source_sha256": "27764ed7b93c5618c87bfbd7e5065116942f8b9499d7041751ed70a7797d3107",
+      "source_bytes": 21131,
+      "archive_edits": []
+    },
+    {
+      "path": "sources/foundation/cosine-reference-provenance.json",
+      "source_sha256": "d049de9f1d90406a593726b8d0742caed93701a4fb44289cd8d9146668c20d4e",
+      "source_bytes": 438,
+      "archive_edits": [
+        "Replace machine-local provenance or replay paths with relative paths."
+      ]
+    },
+    {
+      "path": "sources/foundation/cosine-spectrum-results.json",
+      "source_sha256": "fccc596bdfe19369fc794a42ed49552661062c0334ad8da0310d1fc361c71b76",
+      "source_bytes": 37422,
+      "archive_edits": []
+    },
+    {
+      "path": "sources/foundation/cosine-spectrum.md",
+      "source_sha256": "c937868d081507ee69a97f1629c2d3c29c6db4dbe332e17d4705270b8c4d48d2",
+      "source_bytes": 14658,
+      "archive_edits": []
+    },
+    {
+      "path": "sources/foundation/padic-dynamics.md",
+      "source_sha256": "0e4a5c9ab92cdd8ef190d567ac838e6f7e167bef04ae6269a82fa48ff5fe5299",
+      "source_bytes": 20236,
+      "archive_edits": [
+        "Use the GitHub account handle for project attribution."
+      ]
+    },
+    {
+      "path": "sources/foundation/radial-product-trace-theorem.md",
+      "source_sha256": "38b600085440d389d3c31b095ff74628bf038cabb6fd212229bec790c4201072",
+      "source_bytes": 6792,
+      "archive_edits": []
+    },
+    {
+      "path": "sources/foundation/radial-zeta.md",
+      "source_sha256": "c051c75f6a269b226a482d082f7df7145b48e087e46335acc2d70bd92b716b20",
+      "source_bytes": 17468,
+      "archive_edits": [
+        "Use the GitHub account handle for project attribution."
+      ]
+    },
+    {
+      "path": "sources/foundation/solenoidal-clock.md",
+      "source_sha256": "5b70637b6be06f81527f59b691f8e07f02f7c97f0bbf49afbcaa16f423435032",
+      "source_bytes": 8880,
+      "archive_edits": [
+        "Use the GitHub account handle for project attribution."
+      ]
+    },
+    {
+      "path": "sources/radial-coefficient-input.json",
+      "source_sha256": "083aad2bb45828c0ef0f001e29d551cebe2fe358e7e90aebd639cd0d70274924",
+      "source_bytes": 539,
+      "archive_edits": []
+    },
+    {
+      "path": "sources/root/source-records.json",
+      "source_sha256": "de51bdbab05962a8d85c4efc79b40dff9d6833449a2d4323eb1990ae4de36f9a",
+      "source_bytes": 1621,
+      "archive_edits": []
+    },
+    {
+      "path": "verification-record.md",
+      "source_sha256": "105737245718c68660f90f3aff451eac15ac9e9a83ef7776ae902f29e8217230",
+      "source_bytes": 7820,
+      "archive_edits": [
+        "Mark the archive-only audit as part of the original delivery."
+      ]
+    }
+  ]
+}

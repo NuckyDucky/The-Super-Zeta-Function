@@ -1,0 +1,226 @@
+{
+  "files": {
+    "Greater-Work.md": {
+      "bytes": 24373,
+      "sha256": "33fad3406fb4be3f3504a4fa5b50d3573b79b9d6258a7b9ad0a7316dc98c7fac"
+    },
+    "README.md": {
+      "bytes": 1745,
+      "sha256": "c9c8d68f8595b5b1f341e2916fba35a524a63eac4da4334c4dd386df0810b70c"
+    },
+    "computations/balanced-charge-results.json": {
+      "bytes": 16920,
+      "sha256": "e2da5e14b2cf01c308b9655c5cb25c1eb76d1bd5ce7df327015a6cbf5a30e27a"
+    },
+    "computations/binomial-normalization-results.json": {
+      "bytes": 8087,
+      "sha256": "c779c580524874db8c37dcb06e10703d46b970be1d87f7e5d3d30ded4c6990be"
+    },
+    "computations/laplace-barnes-results.json": {
+      "bytes": 67037,
+      "sha256": "06b454cde4f29416f7d2826e53ccc093df8d43adc9c60d7f003c5837b8696a9e"
+    },
+    "computations/make_figures.py": {
+      "bytes": 4451,
+      "sha256": "cbc7200a6ee86b7416c7297ad2b9c5ac09bc9a8528aa7972cb178425578d8b06"
+    },
+    "computations/numerical-scope-review-results.json": {
+      "bytes": 6780,
+      "sha256": "86dea29b5c0883c5a103a295fee0d795e885cfb7e2a36a5c3e2e88dbf32fe641"
+    },
+    "computations/replay-results.json": {
+      "bytes": 5606,
+      "sha256": "cb4f7a8e22acb3d314ec30d645a71803813a4a694c3c26483d49909dc55b99dd"
+    },
+    "computations/residue-period-results.json": {
+      "bytes": 42617,
+      "sha256": "c9de2bb8509ff97b4ab29e7fed0396070d9de393e97bacfe8a1e5706d05e31cb"
+    },
+    "computations/review_numerical_scopes.py": {
+      "bytes": 4979,
+      "sha256": "b335001f3f6afbfe8a1a6680116eb4522839598ce028d0843c024effdc63075c"
+    },
+    "computations/review_root_coefficients.py": {
+      "bytes": 3229,
+      "sha256": "69628acdb72f9d49ee6de427e6aaae33d1fecc8671cb597d2f2af757b4175111"
+    },
+    "computations/root-coefficient-review-results.json": {
+      "bytes": 6861,
+      "sha256": "719f91ac44c2f0d06824fb7acf2bb7d4ca9e00fd2ae7a1f5ef8724cf28b86dda"
+    },
+    "computations/signed-histories-results.json": {
+      "bytes": 8441,
+      "sha256": "fe7fef793efff2721a095e12c05139cf02fe6721beeb9ee0d7d8508b19950305"
+    },
+    "computations/superzeta-residue-results.json": {
+      "bytes": 19466,
+      "sha256": "bf93a008be8d319559345bcdf0e0ddef48b098edc7d9a53f4896d79467906a97"
+    },
+    "computations/verify_balanced_charge.py": {
+      "bytes": 9880,
+      "sha256": "096e1a566aec67ba2d398dc0a1f39b91abdb437d22fc6c49146336615cf6c7d5"
+    },
+    "computations/verify_binomial_normalization.py": {
+      "bytes": 7529,
+      "sha256": "023eadca10fec51ff9d515e57db15d9d4efe7327a0960c52a22391374d7eac2e"
+    },
+    "computations/verify_laplace_barnes.py": {
+      "bytes": 9152,
+      "sha256": "c35c85294cea84830e31c2d53cf36fe42887dc0e9e8df4c7e217dc896c6ff870"
+    },
+    "computations/verify_residue_period.py": {
+      "bytes": 9657,
+      "sha256": "44815ccf695c12d7372f400072af03f018b1ad7559cf2077db94d5d5eb169904"
+    },
+    "computations/verify_signed_histories.py": {
+      "bytes": 9491,
+      "sha256": "b877212132a41ab679d901724b623ceabec4493c3e201a7ffe5f421e8fd71ddf"
+    },
+    "computations/verify_superzeta_residues.py": {
+      "bytes": 5272,
+      "sha256": "ee11fb42bc401036d81cbbb80c559b64a4c32ab0288037859f2f3c1e03ffa298"
+    },
+    "figures/barnes-dottie-normalization.png": {
+      "bytes": 112032,
+      "sha256": "c9d0233cd3cb29d0fd5abe11eb34a7ebd310e6256dd487a69fb85b22cd5601ce"
+    },
+    "figures/barnes-dottie-normalization.svg": {
+      "bytes": 66346,
+      "sha256": "4ea4faef068817dd0d259eb63f631b74c257df0a4120c1416189ca79c4be0cae"
+    },
+    "figures/ordered-four-stage-fold.png": {
+      "bytes": 174530,
+      "sha256": "77f277d8b99fdec95f489dbe7d74c76ef1a2ff85328ad31e6fe9953641b67d7e"
+    },
+    "figures/ordered-four-stage-fold.svg": {
+      "bytes": 84965,
+      "sha256": "cafcfb514bc02fa085d9c6f185a9fe0c703b5e5c41961f6769a8b52951aa90f9"
+    },
+    "provenance.json": {
+      "bytes": 12362,
+      "sha256": "872b1afa7778d569e53c29bb2f237c7211e5d60bf082a7c61a192e6569f3b8d8"
+    },
+    "requirements.txt": {
+      "bytes": 80,
+      "sha256": "724d298b78d745d8ba26cee5794c595bcbdac0caaffd0e3c632eecf784b31a15"
+    },
+    "research/balanced-charge-operators.md": {
+      "bytes": 17787,
+      "sha256": "c6bbec4a4c8e34c8ad010a0ca565bd4d73ff351eb7919b16fd59c196bcd9d568"
+    },
+    "research/binomial-deformed-zeta.md": {
+      "bytes": 7714,
+      "sha256": "03803be7daaf144f0e90e7ffd07d8aa19502b68ab6d4d8a3fb6bf20621221423"
+    },
+    "research/binomial-normalization.md": {
+      "bytes": 9233,
+      "sha256": "36fef6cec65cae84695b4d13d4af0fe0b15655a52d9b76bdb7cbbdf1f06b56a7"
+    },
+    "research/laplace-barnes-expansion.md": {
+      "bytes": 7460,
+      "sha256": "fe1ac22b5c529bf7e8ca7559d9c7397373bca58977578bb19d0aefc55917b750"
+    },
+    "research/ordered-signed-histories.md": {
+      "bytes": 16869,
+      "sha256": "c8b73ddb6bcd9f6e9fe57ccc95dceee30edd5f7a2e8e8f42b3bab9980bbba996"
+    },
+    "research/residue-period-and-chords.md": {
+      "bytes": 5422,
+      "sha256": "0df3bf8ac072ce0ff3bba8d42afd35292b023f766bbefad3688fdbe764ad5cce"
+    },
+    "research/shifted-superzeta.md": {
+      "bytes": 9621,
+      "sha256": "251234c6112670b85e5937ca779db274a67336a1efafe09b9d07aa39db091b9b"
+    },
+    "review/binomial-normalization-review.md": {
+      "bytes": 4380,
+      "sha256": "8ca69c66cbe6449b1189516c3bb51a054460d83099a63f6ba0928d3295a38294"
+    },
+    "review/computation-scope-review.md": {
+      "bytes": 9490,
+      "sha256": "894aae8bb77f8151418e84a024b07f3712b5bd64777d955d6ff1b82d1009d937"
+    },
+    "review/main-mathematical-review.md": {
+      "bytes": 9291,
+      "sha256": "88c86a1241c304a09326b3ad9dfba1b315f4901f684c0b0cd1429686edbadd3e"
+    },
+    "review/root-superzeta-review.md": {
+      "bytes": 8311,
+      "sha256": "69952c4281075d10f1c8bb909a3e295ce447c2b8e3e8185d2797dcbb9c9726ee"
+    },
+    "review/shifted-superzeta-review.md": {
+      "bytes": 4133,
+      "sha256": "b2a42c37ff0bc843b849dd12cd5a1aa5427ac30c5a836a61856631268ee65676"
+    },
+    "review/signed-histories-review.md": {
+      "bytes": 4835,
+      "sha256": "76eb1c502d7acdcb59018a72a616f358b2fe27dd05392f81cacd42060ec4e76e"
+    },
+    "source-map.md": {
+      "bytes": 9622,
+      "sha256": "dcad785c7fcd3f5e96a90fb88c11e6e00b7d7430837a011ac8f406af10215457"
+    },
+    "sources/balance/inputs/clocked-transfer-spectrum.md": {
+      "bytes": 21131,
+      "sha256": "27764ed7b93c5618c87bfbd7e5065116942f8b9499d7041751ed70a7797d3107"
+    },
+    "sources/balance/inputs/parabolic-locus.md": {
+      "bytes": 12455,
+      "sha256": "cf671b0d7e624343e481d1d74fa899b4cde9ce23ab1632cad9abfcd4b7fb44e5"
+    },
+    "sources/balance/source-records.json": {
+      "bytes": 807,
+      "sha256": "7a6c52e547ffc2757f628379177beea6430e6db438c6ef3c7a87adf5ae94eb44"
+    },
+    "sources/binomial-primary-references.json": {
+      "bytes": 1051,
+      "sha256": "4365a6e5ae49d115a91ac9c118b50ffea847ddc9d5c2cd3dbec8e18d3c1d178f"
+    },
+    "sources/foundation/clocked-transfer-spectrum.md": {
+      "bytes": 21131,
+      "sha256": "27764ed7b93c5618c87bfbd7e5065116942f8b9499d7041751ed70a7797d3107"
+    },
+    "sources/foundation/cosine-reference-provenance.json": {
+      "bytes": 335,
+      "sha256": "39622b8bbd3cae77efa9b63be14d22f998fd92343eec83d3fa66016fb307cd09"
+    },
+    "sources/foundation/cosine-spectrum-results.json": {
+      "bytes": 37422,
+      "sha256": "fccc596bdfe19369fc794a42ed49552661062c0334ad8da0310d1fc361c71b76"
+    },
+    "sources/foundation/cosine-spectrum.md": {
+      "bytes": 14658,
+      "sha256": "c937868d081507ee69a97f1629c2d3c29c6db4dbe332e17d4705270b8c4d48d2"
+    },
+    "sources/foundation/padic-dynamics.md": {
+      "bytes": 20248,
+      "sha256": "0d953ef138c6b1af9d92b15eba613cfb85a44b21e9fc48e050daaf1a044e3d09"
+    },
+    "sources/foundation/radial-product-trace-theorem.md": {
+      "bytes": 6792,
+      "sha256": "38b600085440d389d3c31b095ff74628bf038cabb6fd212229bec790c4201072"
+    },
+    "sources/foundation/radial-zeta.md": {
+      "bytes": 17480,
+      "sha256": "cbe0ec4e67cb7a4712eae56d6a8aa8fe6d1c7875e49d288d8da3401ae549b521"
+    },
+    "sources/foundation/solenoidal-clock.md": {
+      "bytes": 8898,
+      "sha256": "ce7948ceda8bd57219e86d70ed416e685e191cf4b7bbe03a2d34a59788690008"
+    },
+    "sources/radial-coefficient-input.json": {
+      "bytes": 539,
+      "sha256": "083aad2bb45828c0ef0f001e29d551cebe2fe358e7e90aebd639cd0d70274924"
+    },
+    "sources/root/source-records.json": {
+      "bytes": 1621,
+      "sha256": "de51bdbab05962a8d85c4efc79b40dff9d6833449a2d4323eb1990ae4de36f9a"
+    },
+    "verification-record.md": {
+      "bytes": 7804,
+      "sha256": "7945dd4c67671ba20c1e39f2cb12344f72b35f7934d1dc409af20fdb86b14e23"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-16-super-zeta-v001"
+}

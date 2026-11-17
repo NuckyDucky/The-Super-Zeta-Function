@@ -1,0 +1,162 @@
+{
+  "exact_and_alternative_kernel_checks": {
+    "exact_symbolic_kernel_residual": "0",
+    "alternative_variable_checks": [
+      {
+        "s": "-1/4",
+        "w": 1,
+        "epsilon": 1,
+        "independent_90dps_point": "-0.7782038058635068512412259012382935793374580423831685786455068382643996173420996841854",
+        "directed_reference": "[-0.7782038058635068512412259012382935793374580423831685786455068382643996173420996841853808 +/- 3.65e-89]",
+        "point_consistency_tolerance": "1e-75",
+        "lower_substitution": "original t=q^4",
+        "kernel": "d_v log E_epsilon(-v)-1/sqrt(v)",
+        "scope": "point consistency with independently certified reference"
+      },
+      {
+        "s": "1/4",
+        "w": 4,
+        "epsilon": 2,
+        "independent_90dps_point": "-0.09420749734890276660357936229331818916846502021800554283810240753392432735457143259106",
+        "directed_reference": "[-0.0942074973489027666035793622933181891684650202180055428381024075339243273545714325910625 +/- 3.27e-89]",
+        "point_consistency_tolerance": "1e-75",
+        "lower_substitution": "original t=q^4",
+        "kernel": "d_v log E_epsilon(-v)-1/sqrt(v)",
+        "scope": "point consistency with independently certified reference"
+      },
+      {
+        "s": "3/4",
+        "w": 1,
+        "epsilon": 2,
+        "independent_90dps_point": "-0.8329430209580945421291053085739407760548785593117861673571033749037017809671274086694",
+        "directed_reference": "[-0.8329430209580945421291053085739407760548785593117861673571033749037017809671274086694275 +/- 1.08e-89]",
+        "point_consistency_tolerance": "1e-75",
+        "lower_substitution": "original t=q^4",
+        "kernel": "d_v log E_epsilon(-v)-1/sqrt(v)",
+        "scope": "point consistency with independently certified reference"
+      }
+    ]
+  },
+  "independent_96term_series_AGM_checks": [
+    {
+      "parameter_label": "1/4",
+      "exact_parameter": "1/4",
+      "independent_exact_series_terms": "0 through96",
+      "manual_AGM_interval_contained_in_exact_series_interval": true,
+      "independent_tail": "[1.7381156105449180431931992146000576383208871877963612746098402108336657143512869751452000150751305487211504359820200807108589631932547254930462245888285617338615637966850154825882492771502119950340875471177251846239252755627496203e-61 +/- 3.00e-292]"
+    },
+    {
+      "parameter_label": "1/2",
+      "exact_parameter": "1/2",
+      "independent_exact_series_terms": "0 through96",
+      "manual_AGM_interval_contained_in_exact_series_interval": true,
+      "independent_tail": "[4.1312311818249764436214282949457972512909567134458658182442573302783118088796438336522874080690866581048944159426744179469135752934141084034777337546442670813903262846683467448161104895998215144211341930473425042910420456157449356e-32 +/- 3.98e-262]"
+    },
+    {
+      "parameter_label": "99/100",
+      "exact_parameter": "99/100",
+      "independent_exact_series_terms": "0 through96",
+      "manual_AGM_interval_contained_in_exact_series_interval": true,
+      "independent_tail": "[0.12347327237785158853970691905591656390283957298242238971379932925252728513027247509200695351930269034586118243764308917553602485510664120284605238445532530314682900742598303876213792807334313966621612630771136434298660249700305613 +/- 1.81e-231]"
+    },
+    {
+      "parameter_label": "1-10^-40",
+      "exact_parameter": "9999999999999999999999999999999999999999/10000000000000000000000000000000000000000",
+      "independent_exact_series_terms": "0 through96",
+      "manual_AGM_interval_contained_in_exact_series_interval": true,
+      "independent_tail": "[32730985545762555648843762385459951103.180753628219735924828282420337224248486089344821226536656298195211789116595438800633645830282705139462126659923104071615294859335841760196287747578918664072069140594478603318749824448128221620 +/- 2.15e-193]"
+    }
+  ],
+  "serialized_Laplace_containment_checks": {
+    "source_hash_matches": true,
+    "sha256": "fccc596bdfe19369fc794a42ed49552661062c0334ad8da0310d1fc361c71b76",
+    "independently_reparsed_containments": [
+      {
+        "s": "-1/4",
+        "epsilon": "1",
+        "M": 12,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "-1/4",
+        "epsilon": "1",
+        "M": 36,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "-1/4",
+        "epsilon": "2",
+        "M": 12,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "-1/4",
+        "epsilon": "2",
+        "M": 36,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "1/4",
+        "epsilon": "1",
+        "M": 12,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "1/4",
+        "epsilon": "1",
+        "M": 36,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "1/4",
+        "epsilon": "2",
+        "M": 12,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "1/4",
+        "epsilon": "2",
+        "M": 36,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "3/4",
+        "epsilon": "1",
+        "M": 12,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "3/4",
+        "epsilon": "1",
+        "M": 36,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "3/4",
+        "epsilon": "2",
+        "M": 12,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      },
+      {
+        "s": "3/4",
+        "epsilon": "2",
+        "M": 36,
+        "reconstructed_enclosure_contains_frozen_reference": true,
+        "stored_enclosure_contains_frozen_reference": true
+      }
+    ]
+  },
+  "review_ball_precision_bits": 768,
+  "passed": true
+}

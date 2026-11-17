@@ -1,0 +1,7 @@
+{
+  "file": "cosine-spectrum-results.json",
+  "origin_relative": "Greater-Works-Quartet-Spectrum/computations/cosine-spectrum-results.json",
+  "sha256": "fccc596bdfe19369fc794a42ed49552661062c0334ad8da0310d1fc361c71b76",
+  "bytes": 37422,
+  "role": "independent frozen512bit unshifted Mellin correction reference at epsilon1,2"
+}

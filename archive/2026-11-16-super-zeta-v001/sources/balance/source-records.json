@@ -1,0 +1,26 @@
+[
+  {
+    "bytes": 311469,
+    "sha256": "64563939c4b47f4ac638db5e6fa3ba16db03ae523b844c33c6ce6da987e5f0e6",
+    "file": "guttmann-2010-lgf.pdf",
+    "url": "https://arxiv.org/pdf/1004.1435"
+  },
+  {
+    "bytes": 262127,
+    "sha256": "ec17b43d820a7179421cbaafaf951f96414ec9451313ff2d694ed75bdf911e5d",
+    "file": "guido-isola-lapidus-2006.pdf",
+    "url": "https://preprints.ihes.fr/storage/LapidusM39.pdf"
+  },
+  {
+    "bytes": 225659,
+    "sha256": "28e9f6e715e589bc4a77561cc65a7bcee241dd8dc452ce741f8c0118c582142d",
+    "file": "DLMF-10.32.html",
+    "url": "https://dlmf.nist.gov/10.32"
+  },
+  {
+    "bytes": 277691,
+    "sha256": "46b773f73ba3814ed9f735ebe519c1a6f87f4128bb0d3b9cba53491dc38acca7",
+    "file": "DLMF-19.2.html",
+    "url": "https://dlmf.nist.gov/19.2"
+  }
+]

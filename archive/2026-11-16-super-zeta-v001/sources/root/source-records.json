@@ -1,0 +1,50 @@
+[
+  {
+    "file": "voros-2014-superzeta.pdf",
+    "url": "https://arxiv.org/pdf/1403.4558",
+    "bytes": 232897,
+    "sha256": "56d223e02b275b410a8a2a2ace5d5bc73013d686209f9ffe5f3244ebe5d8e21e"
+  },
+  {
+    "file": "hu-kim-2018-barnes-euler.pdf",
+    "url": "https://arxiv.org/pdf/1703.05434",
+    "bytes": 316442,
+    "sha256": "4b1c6a4008498ccafe2a852d1af0101f1d682241b7386b712b8bd5f1d121058e"
+  },
+  {
+    "file": "DLMF-15.9.html",
+    "url": "https://dlmf.nist.gov/15.9",
+    "bytes": 293215,
+    "sha256": "252c3e5e8855ba115ff446d98b0bc8fa3d8cb37b47d2d6d20026d8842e7eb18b"
+  },
+  {
+    "file": "DLMF-19.8.html",
+    "url": "https://dlmf.nist.gov/19.8",
+    "bytes": 220514,
+    "sha256": "04953157bb05f3e1b1c0e685c3c3d9ce1dbd340159efe4a3558b8b7b815f57e9"
+  },
+  {
+    "file": "DLMF-20.9.html",
+    "url": "https://dlmf.nist.gov/20.9",
+    "bytes": 71615,
+    "sha256": "ecf0d3bbca93f3e8a0f3aac17a661256d4d98011827b2eacc3e59de917dee5b7"
+  },
+  {
+    "file": "DLMF-5.17.html",
+    "url": "https://dlmf.nist.gov/5.17",
+    "bytes": 71369,
+    "sha256": "ad28fd886a83f98c95aeb0f874946d88756fb317813f3d6c6bd59f16e423777c"
+  },
+  {
+    "file": "lenart-1996-necklaces-witt.pdf",
+    "url": "https://fpsac-archive.github.io/FPSAC96/ARTICLES/32Lenart.pdf",
+    "bytes": 8678273,
+    "sha256": "371d45185d78869c63af328f985235dc65b84b31f74725bf61d070be7959aecd"
+  },
+  {
+    "file": "viswanathan-2020-square-lattice.pdf",
+    "url": "https://arxiv.org/pdf/1706.00799",
+    "bytes": 120973,
+    "sha256": "cb0f81b58a616c7be524b13de11516234bd13a7036fd6fabc262d501d9e93b83"
+  }
+]

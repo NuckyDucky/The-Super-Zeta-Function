@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "python": "3.12.11",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "dependencies": {
+    "mpmath": "1.3.0",
+    "python-flint": "0.9.0",
+    "sympy": "1.14.0",
+    "numpy": "2.5.5",
+    "matplotlib": "3.11.2"
+  },
+  "headless": true,
+  "subprocess_timeout_seconds": 60,
+  "elapsed_seconds": 16.61123840000073,
+  "runs": [
+    {
+      "program": "verify_superzeta_residues.py",
+      "sha256": "ee11fb42bc401036d81cbbb80c559b64a4c32ab0288037859f2f3c1e03ffa298",
+      "exit_code": 0,
+      "elapsed_seconds": 3.564729300000181,
+      "stdout": "PASS: 25 exact residues, 16 directed shifted integrals, four determinant enclosures and 12 actual-spectrum traces.\nElapsed seconds: 3.0545824999935576",
+      "stderr": ""
+    },
+    {
+      "program": "verify_residue_period.py",
+      "sha256": "44815ccf695c12d7372f400072af03f018b1ad7559cf2077db94d5d5eb169904",
+      "exit_code": 0,
+      "elapsed_seconds": 0.5429659000001266,
+      "stdout": "all exact, directed AGM and analytic-tail checks passed; point checks passed separately\nseconds 0.3926763999988907\n1/4 AGM width [3.2816699217280909670480247388036908884456474752242e-153 +/- 2.10e-203]\n1/2 AGM width [4.0275039948481116413771212703499842721832946286842e-153 +/- 1.98e-203]\n99/100 AGM width [8.0550079896962232827542425406999685443665892573684e-153 +/- 3.95e-203]\n1-10^-40 AGM width [1.4081347300505990331333342515594019084966778257326e-151 +/- 4.32e-201]\nmoment 0 point error 2.143840705958336629613026280767958386444e-68 directed tail [2.298008159374922950877297998488970788171927822624836618220915590595156504199413028112e-35 +/- 3.14e-121]\nmoment 1 point error 0.0 directed tail [4.876939330821531469391187894315094106448723482232240863095195088901050228083482304705e-175 +/- 1.79e-260]\nmoment 4 point error 0.0 directed tail [1.713822376266844145406793599115000389846664062023107772186614048638803353404309046428e-592 +/- 3.35e-677]",
+      "stderr": ""
+    },
+    {
+      "program": "verify_binomial_normalization.py",
+      "sha256": "023eadca10fec51ff9d515e57db15d9d4efe7327a0960c52a22391374d7eac2e",
+      "exit_code": 0,
+      "elapsed_seconds": 2.533681600005366,
+      "stdout": "all exact formal, directed Barnes-product and controlled-cutoff checks passed\nK: [1.22500170731420168529991088115942674601298793731380510396147109231417807414651873 +/- 2.41e-81]\ndet: [3.07062391602502723888663830328346853031946645186091318761173320942195122222374696 +/- 4.45e-81]\nseconds: 1.992509700001392",
+      "stderr": ""
+    },
+    {
+      "program": "verify_signed_histories.py",
+      "sha256": "b877212132a41ab679d901724b623ceabec4493c3e201a7ffe5f421e8fd71ddf",
+      "exit_code": 0,
+      "elapsed_seconds": 0.3120697999984259,
+      "stdout": "primitive counts, Euler products, critical constant and certified signed fold all passed\nseconds 0.16927289999875939\ny 0.75019697231646184963089152468402761224048355950409529934286200276861775682020645833434818166035399388441369058913406872119913224230582863164925215774445182271330053779857157469634\nrho [-0.01987482392764093278654835457977383761597300152020764294785533978776200387116154623839703659110254417 +/- 1.93e-102] + [+/- 2.92e-140]j",
+      "stderr": ""
+    },
+    {
+      "program": "verify_balanced_charge.py",
+      "sha256": "096e1a566aec67ba2d398dc0a1f39b91abdb437d22fc6c49146336615cf6c7d5",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4860149000014644,
+      "stdout": "PASS: four-branch certificate, lattice/clock traces, elliptic/Bessel kernels, actual IFS supertraces and controlled joint product.\nSeconds: 1.346\ncomputations/balanced-charge-results.json",
+      "stderr": ""
+    },
+    {
+      "program": "verify_laplace_barnes.py",
+      "sha256": "c35c85294cea84830e31c2d53cf36fe42887dc0e9e8df4c7e217dc896c6ff870",
+      "exit_code": 0,
+      "elapsed_seconds": 1.9725956000038423,
+      "stdout": "PASS: all directed Laplace, exact degeneracy/sign, coefficient integral, coupling-tail and point asymptotic checks passed\nSeconds: 1.821\ncomputations/laplace-barnes-results.json",
+      "stderr": ""
+    },
+    {
+      "program": "review_root_coefficients.py",
+      "sha256": "69628acdb72f9d49ee6de427e6aaae33d1fecc8671cb597d2f2af757b4175111",
+      "exit_code": 0,
+      "elapsed_seconds": 2.9542265000054613,
+      "stdout": "PASS:13 shifted Gamma residues,16 Barnes integral reductions,2 Bessel tails.\ncomputations/root-coefficient-review-results.json",
+      "stderr": ""
+    },
+    {
+      "program": "review_numerical_scopes.py",
+      "sha256": "b335001f3f6afbfe8a1a6680116eb4522839598ce028d0843c024effdc63075c",
+      "exit_code": 0,
+      "elapsed_seconds": 1.1904372000062722,
+      "stdout": "PASS: exact kernel identity,3 alternative-variable integrals,4 exact-series AGM containments,12 Laplace containments and source hash.",
+      "stderr": ""
+    },
+    {
+      "program": "make_figures.py",
+      "sha256": "cbc7200a6ee86b7416c7297ad2b9c5ac09bc9a8528aa7972cb178425578d8b06",
+      "exit_code": 0,
+      "elapsed_seconds": 1.3771715999973821,
+      "stdout": "Saved two PNG/SVG scientific figures from verified JSON records.",
+      "stderr": ""
+    },
+    {
+      "program": "../review/audit_package_evidence.py",
+      "sha256": "be77c3acfb11c6bb9c177740de231fd269094739c2002e5734db9e08b497a3e3",
+      "exit_code": 0,
+      "elapsed_seconds": 0.09303119999822229,
+      "stdout": "verification records passed: True\nsource hashes match: True\nlocal links and controls passed: True",
+      "stderr": ""
+    }
+  ]
+}

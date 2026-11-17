@@ -1,0 +1,13 @@
+{
+  "consulted_date": "2026-11-16",
+  "sources": [
+    {"url": "https://dlmf.nist.gov/5.17", "used_for": "Barnes G recurrence, normalization and positive-axis asymptotic expansion"},
+    {"url": "https://dlmf.nist.gov/5.11", "used_for": "Gamma/Stirling expansion and the central-binomial gamma ratio"},
+    {"url": "https://dlmf.nist.gov/5.9.E16", "used_for": "Digamma integral; the tanh-kernel and strict remainder are derived directly"},
+    {"url": "https://dlmf.nist.gov/4.36.E2", "used_for": "Hyperbolic cosine product; its logarithmic derivative gives positive tanh partial fractions"},
+    {"url": "https://dlmf.nist.gov/25.2", "used_for": "Riemann-zeta pole and Laurent normalization in the deformed Dirichlet continuation"},
+    {"url": "https://dlmf.nist.gov/25.6", "used_for": "zeta(0) and zeta-prime(0) for the effective spectral determinant"}
+  ],
+  "prior_input": "The proved exact radial product and controlled radial-polynomial tail from Greater-Works-Quartet-Spectrum",
+  "frozen_coefficient_input": "radial-coefficient-input.json"
+}

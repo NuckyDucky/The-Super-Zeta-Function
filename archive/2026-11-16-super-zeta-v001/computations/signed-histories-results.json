@@ -1,0 +1,173 @@
+{
+  "status": "primitive counts, Euler products, critical constant and certified signed fold all passed",
+  "precision": {
+    "arb_bits": 1024,
+    "independent_decimal_digits": 220
+  },
+  "counts": [
+    {
+      "n": 1,
+      "balanced_single_count": 2,
+      "balanced_pair_count": 4,
+      "primitive_necklaces_1_streams": 1,
+      "primitive_necklaces_2_streams": 2,
+      "primitive_complementary_half_necklaces": 1
+    },
+    {
+      "n": 2,
+      "balanced_single_count": 6,
+      "balanced_pair_count": 36,
+      "primitive_necklaces_1_streams": 1,
+      "primitive_necklaces_2_streams": 8,
+      "primitive_complementary_half_necklaces": 1
+    },
+    {
+      "n": 3,
+      "balanced_single_count": 20,
+      "balanced_pair_count": 400,
+      "primitive_necklaces_1_streams": 3,
+      "primitive_necklaces_2_streams": 66,
+      "primitive_complementary_half_necklaces": 1
+    },
+    {
+      "n": 4,
+      "balanced_single_count": 70,
+      "balanced_pair_count": 4900,
+      "primitive_necklaces_1_streams": 8,
+      "primitive_necklaces_2_streams": 608,
+      "primitive_complementary_half_necklaces": 2
+    },
+    {
+      "n": 5,
+      "balanced_single_count": 252,
+      "balanced_pair_count": 63504,
+      "primitive_necklaces_1_streams": 25,
+      "primitive_necklaces_2_streams": 6350,
+      "primitive_complementary_half_necklaces": 3
+    },
+    {
+      "n": 6,
+      "balanced_single_count": 924,
+      "balanced_pair_count": 853776,
+      "primitive_necklaces_1_streams": 75,
+      "primitive_necklaces_2_streams": 71112,
+      "primitive_complementary_half_necklaces": 5
+    },
+    {
+      "n": 7,
+      "balanced_single_count": 3432,
+      "balanced_pair_count": 11778624,
+      "primitive_necklaces_1_streams": 245,
+      "primitive_necklaces_2_streams": 841330,
+      "primitive_complementary_half_necklaces": 9
+    },
+    {
+      "n": 8,
+      "balanced_single_count": 12870,
+      "balanced_pair_count": 165636900,
+      "primitive_necklaces_1_streams": 800,
+      "primitive_necklaces_2_streams": 10352000,
+      "primitive_complementary_half_necklaces": 16
+    },
+    {
+      "n": 9,
+      "balanced_single_count": 48620,
+      "balanced_pair_count": 2363904400,
+      "primitive_necklaces_1_streams": 2700,
+      "primitive_necklaces_2_streams": 131328000,
+      "primitive_complementary_half_necklaces": 28
+    },
+    {
+      "n": 10,
+      "balanced_single_count": 184756,
+      "balanced_pair_count": 34134779536,
+      "primitive_necklaces_1_streams": 9225,
+      "primitive_necklaces_2_streams": 1706735800,
+      "primitive_complementary_half_necklaces": 51
+    },
+    {
+      "n": 11,
+      "balanced_single_count": 705432,
+      "balanced_pair_count": 497634306624,
+      "primitive_necklaces_1_streams": 32065,
+      "primitive_necklaces_2_streams": 22619741210,
+      "primitive_complementary_half_necklaces": 93
+    },
+    {
+      "n": 12,
+      "balanced_single_count": 2704156,
+      "balanced_pair_count": 7312459672336,
+      "primitive_necklaces_1_streams": 112632,
+      "primitive_necklaces_2_streams": 304685783904,
+      "primitive_complementary_half_necklaces": 170
+    }
+  ],
+  "four_stage_fold": {
+    "word_forward": [
+      1,
+      1,
+      -1,
+      -1
+    ],
+    "parameter_L": "i*y",
+    "root_decimal_centers_180_digits": [
+      "0.090815189445886250897261587478374913319818045817357739092922663362646562188792284707964512280521496749539982742145016404957623952155434074466638472628938864937949363937519998450416",
+      "-0.899976732173257012992105180679234626304475924778159827328517641523597600129275636278644158458214273939532715501965405473147761195441766233864466753057108902303698872216916656519475",
+      "0.75019697231646184963089152468402761224048355950409529934286200276861775682020645833434818166035399388441369058913406872119913224230582863164925215774445182271330053779857157469634"
+    ],
+    "root_box_radius": "1e-140",
+    "contraction_infinity_norm": "[+/- 2.79e-138]",
+    "center_Newton_correction": "[4.1494186071511851541486316662856810881517447170620e-181 +/- 2.32e-231]",
+    "independent_220dps_jacobian_error": "1.7705294921017809058679942095979146e-220",
+    "strict_inclusion_lhs": "[4.1494186071511851541486316662856810881517447170620e-181 +/- 2.32e-231]",
+    "stage_phases": [
+      "[0.09081518944588625089726158747837491331981804581735773909292266336264656218879228470796451228052149675 +/- 4.63e-103] + [-0.8999767321732570129921051806792346263044759247781598273285176415235976001292756362786441584582142739 +/- 3.96e-101]j",
+      "[1.959789800069068227875836511312537249068822136306729932337041881085351024390948848474079900995327450 +/- 7.54e-101] + [0.1337260332663810431655639100473141444381090318666748371655737197095408701936531916475315264306677519 +/- 6.96e-102]j",
+      "[0.09081518944588625089726158747837491331981804581735773909292266336264656218879228470796451228052149675 +/- 4.63e-103] + [0.8999767321732570129921051806792346263044759247781598273285176415235976001292756362786441584582142739 +/- 3.96e-101]j",
+      "[1.959789800069068227875836511312537249068822136306729932337041881085351024390948848474079900995327450 +/- 7.54e-101] + [-0.1337260332663810431655639100473141444381090318666748371655737197095408701936531916475315264306677519 +/- 6.96e-102]j"
+    ],
+    "multiplier": "[1.0000000000000000000000000000000000000000000000000000000000000000000000000000000 +/- 3e-85] + [+/- 1.84e-139]j",
+    "nonzero_quadratic_factor_S1": "[2.39831331875076361398632092090802202301417132322195446662898009426694567762 +/- 4.15e-75] + [2.32175030644875424213411253482371944237254809413202843964588781713275444018 +/- 1.09e-76]j",
+    "iterative_residue": "[-0.01987482392764093278654835457977383761597300152020764294785533978776200387116154623839703659110254417 +/- 1.93e-102] + [+/- 2.92e-140]j",
+    "independent_220dps_jet_residue": "(-0.0198748239276409327865483545797738376159730015202076429478553397877620038711615462383970365911025441680785206095801606212058215936987976217770222112957 - 1.5952594113445422471251936480718659469943160023879574765423406872155581731785574259123409263843120996468360267884647978339145848688321775890167397113e-221j)",
+    "lifted_action": "[1.149677908710622352000935892819270964907266038519547790281461687016140556822071513771831880982835876 +/- 1.95e-100] + [+/- 1.42e-139]j",
+    "cyclic_rotation_checks": [
+      {
+        "cyclic_shift": 0,
+        "residue": "[-0.01987482392764093278654835457977383761597300152020764294785533978776200 +/- 3.88e-72] + [+/- 2.92e-140]j"
+      },
+      {
+        "cyclic_shift": 1,
+        "residue": "[-0.01987482392764093278654835457977383761597300152020764294785533978776200 +/- 3.88e-72] + [+/- 3.72e-140]j"
+      },
+      {
+        "cyclic_shift": 2,
+        "residue": "[-0.01987482392764093278654835457977383761597300152020764294785533978776200 +/- 3.88e-72] + [+/- 4.76e-140]j"
+      },
+      {
+        "cyclic_shift": 3,
+        "residue": "[-0.01987482392764093278654835457977383761597300152020764294785533978776200 +/- 3.88e-72] + [+/- 6.08e-140]j"
+      }
+    ],
+    "alternating_equal_count_history": {
+      "word_forward": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "parameter": "Dottie L*=i exp(-sin d)",
+      "iterative_residue": "(0.067081659054116089160016072840548741505277671171406532007147605392576908835292333647726025826158666678373821698 - 2.1551401054398751240765408060629351981182425076803207799755648446006817139848123221472299957119300201245173558e-221j)",
+      "exact_residue": "sin(d)/(6(1+sin(d)))"
+    }
+  },
+  "critical_balanced_pair_zeta": {
+    "exact_critical_zeta": "4 exp(-4 Catalan/pi)",
+    "directed_critical_value": "[1.246139964351242124686783735897351731738483743511785362194198614470099881958374568568515048444005993 +/- 1.54e-101]",
+    "partial_log_series_terms": 4096,
+    "partial_log_series": "[0.22001189473762127332869034873117007328307208840767781306273911108153469196509422 +/- 4.23e-82]",
+    "directed_log_tail_bound": "[4.0690104166666666666666666666666666666666666666667e-5 +/- 3.34e-55]",
+    "independent_220dps_log_sine_integral": "-0.220050744996615498280926417042773460694735652777161427197353742539796696417633984305219356780301139448111750926024441805"
+  },
+  "elapsed_seconds": 0.16927289999875939
+}

@@ -1,0 +1,10 @@
+{
+  "source": "outputs\\Greater-Works-Quartet-Spectrum\\computations\\radial-formal-coefficients.json",
+  "source_sha256": "cf444093f2862289808fa408af171bd8e207e021786e0cac3c36bb81c1df4f36",
+  "log_radius_chi": [
+    "2*ell**2 - 2*ell - 1",
+    "-4*ell**4 + 64*ell**3/3 - 16*ell**2 - 6*ell + 1/2",
+    "32*ell**6/3 - 1712*ell**5/15 + 944*ell**4/3 - 592*ell**3/3 - 64*ell**2 + 22*ell + 11/3",
+    "-32*ell**8 + 18752*ell**7/35 - 125728*ell**6/45 + 16160*ell**5/3 - 2928*ell**4 - 936*ell**3 + 520*ell**2 + 266*ell/3 - 61/12"
+  ]
+}
