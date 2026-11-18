@@ -316,5 +316,56 @@ theorem log_C_eq_radial_sub_laplace {R : ℕ → ℝ} {n : ℕ}
     log (C R n) = log (R n/(2*π*n)) - laplace n := by
   rw [log_C_factorial hn hr, factorialRemainder_eq_neg_laplace hn, sub_eq_add_neg]
 
+
+/-- Dyadic telescoping recovers the log remainder of one factorial from the
+same Laplace kernel that evaluates the central-binomial combination. -/
+theorem factorialRemainder_hasSum {n : ℕ} (hn : 0<n) :
+    HasSum (fun k : ℕ => (1/2 : ℝ)^k * laplace (↑((2:ℕ)^k*n) : ℝ)/4)
+      (factorialRemainder n) := by
+  have index_pos (k : ℕ) : 0 < (2:ℕ)^k*n := by positivity
+  refine (hasSum_iff_tendsto_nat_of_nonneg
+    (fun k => div_nonneg (mul_nonneg (by positivity)
+      (laplace_bounds (by exact_mod_cast index_pos k)).1) (by norm_num)) _).2 ?_
+  let tail (k : ℕ) := (1/2 : ℝ)^k * factorialRemainder ((2:ℕ)^k*n)
+  have step (k : ℕ) :
+      (1/2 : ℝ)^k * laplace (↑((2:ℕ)^k*n) : ℝ)/4 = tail k - tail (k+1) := by
+    have h := factorialRemainder_eq_neg_laplace (index_pos k)
+    have h' : laplace (↑((2:ℕ)^k*n) : ℝ)/4 =
+        factorialRemainder ((2:ℕ)^k*n) -
+          factorialRemainder (2*((2:ℕ)^k*n))/2 := by linarith
+    rw [div_eq_mul_inv, mul_assoc, ← div_eq_mul_inv, h']
+    simp only [tail, pow_succ]
+    rw [show (2:ℕ)^k*2*n = 2*((2:ℕ)^k*n) by ac_rfl]
+    ring
+  simp_rw [step, Finset.sum_range_sub']
+  have hindex : Tendsto (fun k : ℕ => (2:ℕ)^k*n) atTop atTop :=
+    tendsto_atTop_mono (fun k => Nat.le_mul_of_pos_right _ hn)
+      (Nat.tendsto_pow_atTop_atTop_of_one_lt (by norm_num))
+  have hrem : Tendsto factorialRemainder atTop (𝓝 0) := by
+    have h := (Stirling.tendsto_stirlingSeq_sqrt_pi.log
+      (Real.sqrt_pos.2 Real.pi_pos).ne').sub_const (log π / 2)
+    simpa only [factorialRemainder, Real.log_sqrt Real.pi_pos.le, sub_self] using h
+  have hpow := tendsto_pow_atTop_nhds_zero_of_abs_lt_one (r := (1/2 : ℝ))
+    (by norm_num [abs_of_pos (by norm_num : 0 < (1/2 : ℝ))])
+  have htail : Tendsto tail atTop (𝓝 0) := by
+    simpa only [tail, Function.comp_def, zero_mul] using hpow.mul (hrem.comp hindex)
+  simpa only [tail, pow_zero, one_mul, sub_zero] using htail.const_sub (factorialRemainder n)
+
+/-- Stirling's leading expression times the exponential of its exact remainder is n!. -/
+theorem factorial_eq_stirling_mul_exp_dyadic {n : ℕ} (hn : 0<n) :
+    (n.factorial : ℝ) = sqrt (2*π*n) * (n/exp 1)^n *
+      exp (∑' k : ℕ, (1/2 : ℝ)^k * laplace (↑((2:ℕ)^k*n) : ℝ)/4) := by
+  have hs : 0 < Stirling.stirlingSeq n := by
+    have hn' : 0 < (n : ℝ) := by exact_mod_cast hn
+    unfold Stirling.stirlingSeq
+    positivity
+  rw [(factorialRemainder_hasSum hn).tsum_eq, factorialRemainder,
+    ← Real.log_sqrt Real.pi_pos.le, ← Real.log_div hs.ne' (Real.sqrt_pos.2 Real.pi_pos).ne',
+    Real.exp_log (div_pos hs (Real.sqrt_pos.2 Real.pi_pos)), Stirling.stirlingSeq,
+    show 2*π*(n:ℝ) = (2*n)*π by ring, Real.sqrt_mul (by positivity)]
+  have hn' : 0 < (n : ℝ) := by exact_mod_cast hn
+  field_simp
+  ring
+
 end
 end SuperZeta.StirlingCorrection
