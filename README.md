@@ -4,7 +4,7 @@ How much can a pair of exponentials tell us about the location of a zeta zero? T
 
 **[Read the original papers and replay the experiments](archive/2026-11-18-lean-foundations-v001/README.md)** · **[Browse and run the Lean proofs](lean/README.md)**
 
-The Lean library starts with the ordered exponential lift, proves the Dottie fold has negative curvature, reconstructs the fixed pair from its cosine phase, and proves the exact power of two in every positive-index determinant trace. Lean also derives the Riemann term from the doubled half-integer cosine spectrum. [Binary digit laws, the Mellin correction and replay instructions](archive/2026-11-18-binary-law-v001/README.md).
+The Lean library starts with the ordered exponential lift, proves the Dottie fold has negative curvature, reconstructs the fixed pair from its cosine phase, and proves the exact power of two in every positive-index determinant trace. Lean also derives the Riemann term from the doubled half-integer cosine spectrum. It also proves that four rational inputs suffice to give the original meme quartic a point over every $\mathbb Q_p$. [Binary digit laws, the Mellin correction and replay instructions](archive/2026-11-18-binary-law-v001/README.md).
 
 ## From the Dottie number to the critical line
 

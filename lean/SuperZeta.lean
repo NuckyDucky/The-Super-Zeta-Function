@@ -14,3 +14,8 @@ import SuperZeta.HasseLocal
 import SuperZeta.QuartetRadius
 import SuperZeta.SpecialValues
 import SuperZeta.MellinContinuation
+import SuperZeta.HasseCover
+import SuperZeta.SpireDisk
+import SuperZeta.Stieltjes
+import SuperZeta.Touchard
+import SuperZeta.MemePrecision
