@@ -1,0 +1,242 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6139,
+      "sha256": "64c923e4382c41f234252c7fbc9d58c7195468a7553a314d8cc66084d8935dac"
+    },
+    "arithmetic/computation/E-local-descent.json": {
+      "bytes": 31809,
+      "sha256": "43d5cbc426fd69b42808d3e397dcb17c632a81adcdca7b58a97e47e77b4659dc"
+    },
+    "arithmetic/computation/arithmetic-results.json": {
+      "bytes": 3275,
+      "sha256": "cb8c782ca93d1c12d67e5a145bb9e014ef4ac0059103bedc59275ca9d5efc097"
+    },
+    "arithmetic/computation/arithmetic.gp": {
+      "bytes": 557,
+      "sha256": "79aba84c15295b005b52faded6c1b8d48e84e2caeb7b2fe84f61152761054d41"
+    },
+    "arithmetic/computation/dual-local-descent.json": {
+      "bytes": 4085,
+      "sha256": "fd65f4e42b47aab72d00a0624b75ce0dee27864fd446f7cdcbc4100e9d98caf3"
+    },
+    "arithmetic/computation/original-quartic-local.json": {
+      "bytes": 578,
+      "sha256": "0343fa334907ff7360c95e6b41dc2366724b94461be1f4be8e6a5f8cd12583c0"
+    },
+    "arithmetic/computation/original-quartic-point-search.txt": {
+      "bytes": 57,
+      "sha256": "511beadc5b47608ae800d263315ff8b4494b4b01d98a54137466bf65f88d1727"
+    },
+    "arithmetic/computation/pari-replay.txt": {
+      "bytes": 302,
+      "sha256": "ce2c5fc62469df34db28727068321142865cbde7c124c09d9da1b06f8182e60e"
+    },
+    "arithmetic/computation/verify_arithmetic.py": {
+      "bytes": 8301,
+      "sha256": "6fb0c3e4a1c671eb508a9bf685fcd95cf27a615f4f05845da82d242ff117b178"
+    },
+    "arithmetic/computations/elliptic-results.json": {
+      "bytes": 3363,
+      "sha256": "398cf1dd827b843f08ec105b36e3ac2dd0efe5e3450d66acf76a250c9568673d"
+    },
+    "arithmetic/computations/verify_elliptic.py": {
+      "bytes": 6261,
+      "sha256": "6189c90e6e777dc035455c1765e211fbaa2bcf76e1aaa23a94875e1f086b844c"
+    },
+    "arithmetic/research/arithmetic.md": {
+      "bytes": 14347,
+      "sha256": "93f9c908a0f69de8da8f614b86f36b998dab9e4512540be908378e91597880aa"
+    },
+    "arithmetic/research/elliptic-bridge.md": {
+      "bytes": 10572,
+      "sha256": "22f56cdb708f753d6b0fb38213a75459ac1eb48c84a48efe9674f4536a3e9982"
+    },
+    "arithmetic/research/geometry.md": {
+      "bytes": 6827,
+      "sha256": "eb3c1a97c511ace572fceabeba1dff29d305a5b86a2c12c0b36ef69f93ad1f14"
+    },
+    "arithmetic/research/hasse-obstruction.md": {
+      "bytes": 6090,
+      "sha256": "95de8378e1bfa242726a8211167e37c0e74a8b02eaef23acf05a899bd9383ba0"
+    },
+    "arithmetic/review/arithmetic-review.md": {
+      "bytes": 5074,
+      "sha256": "50d59e8d67f98c64a44d45a60349b7782766e62ea26e3f14309f0a2752b946b3"
+    },
+    "arithmetic/review/hasse-obstruction-review.md": {
+      "bytes": 6357,
+      "sha256": "bb1c810cc45d47a834df2b0dea07530a589175dba272442c7537324f1b93ddbb"
+    },
+    "checks/binary_traces.py": {
+      "bytes": 5212,
+      "sha256": "045771f4cf89d4511b4b7344e5d0bcbfe849a31d71bdae4fcf2d6140b4957f11"
+    },
+    "checks/bounded_meme.py": {
+      "bytes": 8055,
+      "sha256": "efc84f10a7c0e525396ec36b00a7b9c94b0b410a471c183208ce5b9e23a4ba5c"
+    },
+    "checks/complex_values.py": {
+      "bytes": 3713,
+      "sha256": "13fbd719f6d121cdcc9ec3d94d484bf2ed28f820b0da15da284a59fdba0f7046"
+    },
+    "checks/dottie_slice.py": {
+      "bytes": 3197,
+      "sha256": "4b801849c9d531683368b5499de097b1325556dc4c3f7bef114c989863e2a2b2"
+    },
+    "checks/finite-optimum.json": {
+      "bytes": 5525,
+      "sha256": "6170af0a13e9109ea89af0436cb6d2bcf56417bdb8c8032c1712bbd6206c2f9a"
+    },
+    "continuation/borghi/certify_pade.py": {
+      "bytes": 5237,
+      "sha256": "d52eef0c51f4fb4a1693c56ffeb69f086e8b5b22923310286301ef2050645c71"
+    },
+    "continuation/borghi/pade-enclosures.json": {
+      "bytes": 93026,
+      "sha256": "742fb963d05a03abf450a3b4809e81bcc2bb6d840194d21f8037b76fc34c0eee"
+    },
+    "continuation/monodromy/marked-cap-results.json": {
+      "bytes": 33714,
+      "sha256": "452d501453cb686a90bdc4ffcd1a87fe891ac8ac0dce427530a21c7740201f84"
+    },
+    "continuation/monodromy/monodromy-results.json": {
+      "bytes": 307909,
+      "sha256": "099765294f1247eb77c3e0988883ef2d3ded1b6455538ab7b6af796128aabff9"
+    },
+    "continuation/monodromy/verify_marked_cap.py": {
+      "bytes": 8684,
+      "sha256": "a35a5ab3572511c58dce179310f329704374e340969a28caa7874bda1b628fb1"
+    },
+    "continuation/monodromy/verify_monodromy.py": {
+      "bytes": 10760,
+      "sha256": "c7199246c71eb3a0befa0b883e5b1365a3e58db2936ea4eb8bfc179c85aeb1b2"
+    },
+    "continuation/ode/response-flow-results.json": {
+      "bytes": 17674,
+      "sha256": "149d2a0ccf7b0dc4a20951abab7a1a7c233b30370d14e17584f226243a2ec532"
+    },
+    "continuation/ode/verify_response_flow.py": {
+      "bytes": 8223,
+      "sha256": "acb697af2ee48f5877e296ebe75399596a10eae6bd698041ae74b73954a864e0"
+    },
+    "lean-source-sha256.json": {
+      "bytes": 1770,
+      "sha256": "95b1bfd44b9e0d1a303d42d7a441102579197151fe299c589314726250cdcb8d"
+    },
+    "notes/bounded-optimality.md": {
+      "bytes": 5326,
+      "sha256": "37b2e9821f790d70f9ece98acc0689c060c6a17f7e56d8e283e588e05cb0685e"
+    },
+    "notes/coefficient-fields.md": {
+      "bytes": 29519,
+      "sha256": "5b721609f861a0ab2251c2107bcfa0edea2b20eb5455544a2034c754dc8d9123"
+    },
+    "notes/fatou-clock.md": {
+      "bytes": 16068,
+      "sha256": "90dd487971868c079cf4da10c8dc72ce01ea492f547f2d10566efbff66526dab"
+    },
+    "notes/hurwitz-order.md": {
+      "bytes": 8388,
+      "sha256": "7e11be83f76cad09b37eaa0ce5804557c1f6332e05af7d0800bf6c1b82f598af"
+    },
+    "notes/monodromy.md": {
+      "bytes": 14457,
+      "sha256": "296e7423a4c486c657d6a74ad6b56f7631becd09d59905058afcb14b6d73c7de"
+    },
+    "notes/pade-transfer.md": {
+      "bytes": 10466,
+      "sha256": "7b219d7157176addf34fec136558e9a97d6b584e1dc78ae6e0081ec1a2601db7"
+    },
+    "notes/quarter-shift.md": {
+      "bytes": 9150,
+      "sha256": "5c16b8c4df54830dd1d06ac0b9e2a823e25c991855a7477c6031ac9b9a7029eb"
+    },
+    "notes/response-flow.md": {
+      "bytes": 11727,
+      "sha256": "bfe9de37e1856ad3e15d0d2539d720a2c515b2dc86965b2b5ffad0ff55e206ac"
+    },
+    "notes/review/independent-checks.json": {
+      "bytes": 3690,
+      "sha256": "4adc205d10467014ab0cfc96856a8c5757581c7faeb97d7b90209e2d0d34c871"
+    },
+    "notes/review/independent_checks.py": {
+      "bytes": 5484,
+      "sha256": "e2d68043e0cf6801aff731e422179d623ed9bdb74c9218e0f985a3f912bd9276"
+    },
+    "notes/review/mathematical-review.md": {
+      "bytes": 11244,
+      "sha256": "1613ff15c27b1dd19b11658fabc59eeacfec1d4742ae832fe87f1fd3b6000a36"
+    },
+    "notes/sources/Dottie_Parabolic_Quantization_Preprint_v0.4.pdf": {
+      "bytes": 640968,
+      "sha256": "29cd2bf28a06ea85b2699e0148f20b1bb5a83927d45d856f8a369ee1d448a75b"
+    },
+    "notes/sources/Reciprocal_Tetration_Logarithmic_Lift_Preprint_v0.10.pdf": {
+      "bytes": 1322346,
+      "sha256": "16143e35a66c0928b945e1e0b187c957f1a867feb2b1cc80409fb97ee82216ca"
+    },
+    "notes/sources/ax-functional-report.md": {
+      "bytes": 25613,
+      "sha256": "2fac0c2021bc4aacd70a9458a823a6f4de55c9f33ebfdd491b8d5cbe8e63bd9f"
+    },
+    "notes/sources/coefficient-fields-report.md": {
+      "bytes": 13080,
+      "sha256": "98af33c1f6062c7a3e237bc3fa3682d50d6f2a64eaa00378f9006f9156ac7f95"
+    },
+    "notes/sources/dynamics-products-report.md": {
+      "bytes": 18978,
+      "sha256": "6177a324ac82688a274632d0b3c5d86650cd3be3d29276cf2143c766c2815939"
+    },
+    "papers/dottie-spire/figures/exact_dottie_fold.pdf": {
+      "bytes": 20727,
+      "sha256": "4123c94f427138e745f84e2a41e407b63202623526ed383370867357b810c59a"
+    },
+    "papers/dottie-spire/figures/secondary_rail_convergence.pdf": {
+      "bytes": 22669,
+      "sha256": "ff0d7658ca3d9cad9f9076208e6d4be9d5368335309fb609124841889984e879"
+    },
+    "papers/dottie-spire/main.pdf": {
+      "bytes": 513136,
+      "sha256": "9d206a4a612a2f03e97fac5da065121fa755152a6991962874ca9fa0665d0f27"
+    },
+    "papers/dottie-spire/main.tex": {
+      "bytes": 44291,
+      "sha256": "5f618ff33a157c30da64e540748716fe2ea209fdaf86dd3ed1c61bcd24b126ed"
+    },
+    "papers/dottie-spire/references.bib": {
+      "bytes": 8270,
+      "sha256": "c61808e128c15882890f23117536b7573fee01826371cc3ecd4e58d897bdd3ac"
+    },
+    "papers/foundations/figures/complex_lift_atlas.png": {
+      "bytes": 455292,
+      "sha256": "b7148e96076806942e7da8b721e316339d420427c94c2a1187b2a574b9f0a93a"
+    },
+    "papers/foundations/figures/real_fixed_pair_chart.pdf": {
+      "bytes": 20985,
+      "sha256": "1b5d48d867fec9c7bcabb7ecbb13bfd425e097e474240ca86fffe3a68f1af606"
+    },
+    "papers/foundations/figures/reversal_order_effect.png": {
+      "bytes": 126264,
+      "sha256": "958f99aa33cd657cdc1aced38513addcca4087511413e0003130962867fc0120"
+    },
+    "papers/foundations/main.pdf": {
+      "bytes": 797664,
+      "sha256": "94a7720e040e42dfd3e14eb3966d84c611e727b90e27c2a7f1d43f34cd23f7ae"
+    },
+    "papers/foundations/main.tex": {
+      "bytes": 31497,
+      "sha256": "3abf4cc319a4def8c4bba49be3f2b0328a094a9c09dc2f1212b9d89300931932"
+    },
+    "papers/foundations/references.bib": {
+      "bytes": 5463,
+      "sha256": "a9b4274c444690724e43915e87e3cd4dc87290d245ade38d728323a72d3a7ff8"
+    },
+    "requirements.txt": {
+      "bytes": 48,
+      "sha256": "7517bf2f0ffd9bdeac2c7681673f71bfd4620d55253ac55151a56e27ae1fe8af"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-lean-foundations-v001"
+}

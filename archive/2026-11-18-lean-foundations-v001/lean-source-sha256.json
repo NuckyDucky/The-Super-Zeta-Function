@@ -1,0 +1,20 @@
+{
+  ".github/workflows/lean.yml": "1ddf25844a9624b8f5841ea0373c5d52c9d0777b46692e71482871f548405f24",
+  "lean/Audit.lean": "926e14334cc412a5a10a2696c2447acbb3676373157c699e78ef0ef317c25eca",
+  "lean/README.md": "c26eb594fb643a83d77c138da534db090de2c1e1785f1e18586670eae73b153b",
+  "lean/SuperZeta.lean": "6df8303c214d8f973b561503c1eb97e58b0b96c7feb1580bcca94429670cc13f",
+  "lean/SuperZeta/Binary.lean": "431783ea1029ca8bf266d3f382109b65ccd6599b37b8f0f3837e9f4dae4558d6",
+  "lean/SuperZeta/Dottie.lean": "6ddc203edaacb9cb17d64911f62fee9b8a295f488509fc52d0d70a918ed59cd0",
+  "lean/SuperZeta/Flow.lean": "73f3ca46f3a223e4e3b991bb3481e4c7405f6570ae29131c480f9b3b9037863a",
+  "lean/SuperZeta/Germ.lean": "737413352af843a3f9a505ca9bb922f368572f12bfb3229ad40b5cebba3a8756",
+  "lean/SuperZeta/Meme.lean": "d1e11e33e815c109d992da364c6ecf21e794011fffdeeb3cbf40485a65a2af22",
+  "lean/SuperZeta/Order.lean": "836385f584802b49653beebb6944c8615e20695ebfa1c4fee396f3b01a82b3bf",
+  "lean/SuperZeta/Quartet.lean": "8d58dea4c363476eb92be4ef481db3798e65a86af3bd233456e71e800f1c876c",
+  "lean/SuperZeta/Reciprocal.lean": "7011460c6e26337d4aca728688e44a6c783185cebafe97c17324d68985d69383",
+  "lean/SuperZeta/Recovery.lean": "ebc10bf2b31b451933b445c8002f83b9f0edd1aea3a2eca4c7cb6fdcb40858bc",
+  "lean/SuperZeta/Spectrum.lean": "9aa0446ff3c4e5d38104efae71d11b546fc5b0c9eeb9b5929fcbeda788ca497d",
+  "lean/lake-manifest.json": "e618837d5c3ea9c8dc873378651da80ed1c52840c30dbe4b66a7eaac530b0793",
+  "lean/lakefile.toml": "d8ffa2808673fb66da7d12f1320a765525c5fa9debf89c2ac970ea68da18cb9e",
+  "lean/lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+  "tools/check_lean.py": "d2b959710ab01662bf2e4241b76a009e16db444ee0e6a334e463af5f1821c8cb"
+}
