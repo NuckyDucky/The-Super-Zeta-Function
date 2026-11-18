@@ -1,0 +1,70 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 7314,
+      "sha256": "adb1bdafe5ed799379320790f2e6de8ccb1854f1c2ea1ad81acd55f0b5cc17c9"
+    },
+    "contour-results.txt": {
+      "bytes": 89,
+      "sha256": "892f07ca22075a4131ed3dfa92ee98fbe88d6975631b720dd606466a598843f7"
+    },
+    "dottie-second-harmonic-count.json": {
+      "bytes": 2216,
+      "sha256": "19378956b971df74367acbc16766aa6e29e6e7478845c85777f5a0594e16f215"
+    },
+    "dottie-second-harmonic-plan.json": {
+      "bytes": 1173,
+      "sha256": "77ea38844fa5891c762b322e4761966f1ba48b7acc45af92f73ff89b0b485deb"
+    },
+    "dottie_factorial_phase.py": {
+      "bytes": 1353,
+      "sha256": "226843c29f556af3f83ef87e2b9cc06ba4faec23387fe72b61efdc7f37ae75db"
+    },
+    "dottie_local_angle.py": {
+      "bytes": 2633,
+      "sha256": "42e575a0a1853f16d5b2c813f7d73f1db5b5be908778282b5545b7c114b542aa"
+    },
+    "dottie_second_harmonic_overlap.py": {
+      "bytes": 2254,
+      "sha256": "5f079e16ae8176ea5730e3a5e3f38078d7ad870286a6c38aea3eb8245608bf7a"
+    },
+    "factorial-results.txt": {
+      "bytes": 530,
+      "sha256": "ce99e4b0f1cd513adda52ef470eeeb19c4004171891dc3ad672b80134a096873"
+    },
+    "high-angle-results.txt": {
+      "bytes": 858,
+      "sha256": "090429b051b926140eb233706afea961f48b8184033cabfce971c3ea1c6bd7a1"
+    },
+    "layers-results.txt": {
+      "bytes": 11001,
+      "sha256": "93eb35371422b952afa03bda294affeb1759e96dfd02b6cec005c19c63a17342"
+    },
+    "native-angle-results.txt": {
+      "bytes": 1851,
+      "sha256": "19d3b4c4c497b4c8d80746a131a803e63d7629b81bebc3916a4d79d4660786d9"
+    },
+    "native_zero_angle_step.py": {
+      "bytes": 3533,
+      "sha256": "a2687afcf6a66043efd3456bdaa3628a90cf0d6559b47c8d1fb9bb925bee72b3"
+    },
+    "provenance.json": {
+      "bytes": 5177,
+      "sha256": "b18d5e56eeec9ccd886151e025e4c97cc554c9bb341410c7528b949d31996428"
+    },
+    "replay.py": {
+      "bytes": 3211,
+      "sha256": "a5f770b0725617f8fc6c27ab333c9787f0183070b644d533dc3e44be5a1998a9"
+    },
+    "requirements.txt": {
+      "bytes": 61,
+      "sha256": "700bbc63573ae3379d0258bfb61aeddb0b127b71716db8837f4a46cf4a756cc4"
+    },
+    "track_native_superzeta_layers.py": {
+      "bytes": 4018,
+      "sha256": "fad5f1d437f5860f98cd209ac4d708f07fd3bb7bbe9c6d3bc5f7caed6c471cf6"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-17-quartet-angle-v001"
+}

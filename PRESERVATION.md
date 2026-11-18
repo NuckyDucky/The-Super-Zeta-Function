@@ -7,7 +7,7 @@ Use one new branch and one new snapshot directory per deposit. Name each snapsho
 1. Save the editable sources first. Include main notes, proofs, original data and computation source, generated evidence, and a README that identifies each entry point. Keep the original bytes whenever possible. Include any necessary exports alongside editable originals. Compare the selected files against the source inventory before staging.
 2. Record the author or source, source date or revision, original relative filename, and any transformation. Where feasible, record the original SHA-256. For a rerunnable result, retain the exact command, interpreter and dependency versions, input and output references, parameters, units and branch conventions, precision, randomness settings where applicable, and sample or truncation limits.
 3. Label evidence at the point of use. Identify **analytic proofs**, **exact symbolic or integer checks** with their finite scope, **directed numerical enclosures** with their rounding precision, **analytic bounds** on omitted terms, **point evaluations**, and **conjectures or open cases**. Give the enclosure, numerical value or explicit unresolved case when it matters.
-4. Read the staged paths and diff. Keep this repository private. Include material you have permission to archive. Cite external material by canonical link and record relevant equations or page numbers. Keep credentials, private communications, unrelated files, generated environments, and identifying machine paths outside the deposit.
+4. Read the staged paths and diff with a public reader in mind. Include original research and material you have permission to publish. Cite external papers by canonical link with the relevant equation or page number. Keep credentials, private communications, unrelated files, generated environments, and identifying machine paths outside the deposit.
 5. Generate the new snapshot's manifest after completing the content review. The manifest lists every file in the snapshot except itself. Run the integrity check and inspect the staged paths.
 
 ```text
@@ -21,7 +21,7 @@ Snapshot files preserve their original bytes, including line endings. The reposi
 
 ## Confirm the deposit
 
-Open a pull request with the included checklist. Once merged, confirm the repository visibility is private, fetch the remote, and verify that the expected commit is on the remote default branch. Mark important milestones with an annotated tag. Keep the commit ID and tag in a separate recovery note. Avoid force pushes and moving preservation tags.
+Open a pull request with the included checklist. Once merged, fetch the remote and verify that the expected commit is on the default branch. Mark important milestones with an annotated tag. Open the tagged research README and its primary result while signed out to confirm readers can reach both. Keep the commit ID and tag in a separate recovery note. Avoid force pushes and moving preservation tags.
 
 From a fresh clone, run `python tools/verify_archive.py` and open the research README. For computational work, replay in an empty scratch location and record outcomes, dependency versions, and any differences in evidence. A successful upload establishes one remote copy. Retain at least one verified offline copy on storage independent of your computer and GitHub account.
 
