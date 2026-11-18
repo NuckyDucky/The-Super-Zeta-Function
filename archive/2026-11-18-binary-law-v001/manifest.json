@@ -1,0 +1,14 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6896,
+      "sha256": "d60d8026819aec671eb02bf307c93763dfec8a8d23cd205e6a9bf4b1e4a0a377"
+    },
+    "lean-source-sha256.json": {
+      "bytes": 4366,
+      "sha256": "6f2c9ab1ab743f822339f7e94a8d7c72ffa5d7731d66267c4de0f6823b768af2"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-binary-law-v001"
+}

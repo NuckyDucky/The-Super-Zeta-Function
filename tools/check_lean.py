@@ -21,10 +21,27 @@ def main():
     lake = shutil.which("lake", path=env.get("PATH"))
     if lake is None:
         parser.exit(1, "Install elan from https://lean-lang.org/install/ and reopen the terminal.\n")
+    sources = list((PROJECT / "SuperZeta").rglob("*.lean"))
+    project_modules = {".".join(path.relative_to(PROJECT).with_suffix("").parts): path
+                       for path in [PROJECT / "SuperZeta.lean", *sources]}
     modules = set()
-    for source in (PROJECT / "SuperZeta").glob("*.lean"):
-        modules.update(line.split()[1] for line in source.read_text(encoding="utf-8").splitlines()
-                       if line.startswith("import Mathlib."))
+    visited = set()
+    pending = ["SuperZeta"]
+    while pending:
+        name = pending.pop()
+        if name in visited:
+            continue
+        visited.add(name)
+        for line in project_modules[name].read_text(encoding="utf-8").splitlines():
+            if line.startswith("import "):
+                for dependency in line.split()[1:]:
+                    if dependency in project_modules:
+                        pending.append(dependency)
+                    elif dependency.startswith("Mathlib."):
+                        modules.add(dependency)
+    missing = sorted(set(project_modules) - visited)
+    if missing:
+        parser.exit(1, "Modules missing from the proof audit: " + ", ".join(missing) + "\n")
     if args.fetch_cache:
         subprocess.run([lake, "exe", "cache", "get", *sorted(modules)], cwd=PROJECT, env=env, check=True)
     subprocess.run([lake, "build"], cwd=PROJECT, env=env, check=True)
