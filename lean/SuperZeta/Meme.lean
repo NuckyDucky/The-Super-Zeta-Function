@@ -100,6 +100,61 @@ theorem coefficient_quartic (x : ℝ) :
   unfold discriminant numerator denominator
   ring
 
+theorem coefficient_difference_pos (x : ℝ) : 0 < numerator x - denominator x := by
+  have h : numerator x - denominator x = 310 * (x - 579 / 620)^2 + 8239 / 1240 := by
+    unfold numerator denominator
+    ring
+  rw [h]
+  positivity
+
+/-- Vertical separation of the two roots in the original y-coordinate. -/
+def rootGap (x : ℝ) : ℝ :=
+  Real.sqrt (discriminant (numerator x) (denominator x)) / (numerator x - denominator x)
+
+theorem rootGap_sq (x : ℝ) :
+    rootGap x ^ 2 = 1 + (2 * numerator x / (numerator x - denominator x))^2 := by
+  unfold rootGap
+  have h : 0 ≤ discriminant (numerator x) (denominator x) := by
+    unfold discriminant
+    positivity
+  rw [div_pow, Real.sq_sqrt h, discriminant, div_pow]
+  field_simp [(coefficient_difference_pos x).ne']
+  ring
+
+theorem rootGap_min (x : ℝ) : 1 ≤ rootGap x ∧ (rootGap x = 1 ↔ numerator x = 0) := by
+  let q := 2 * numerator x / (numerator x - denominator x)
+  have hq : rootGap x ^ 2 = 1 + q ^ 2 := rootGap_sq x
+  have hpos : 0 ≤ rootGap x :=
+    div_nonneg (Real.sqrt_nonneg _) (coefficient_difference_pos x).le
+  have hlo : 1 ≤ rootGap x := by
+    apply (sq_le_sq₀ (by norm_num) hpos).mp
+    rw [hq]
+    linarith [sq_nonneg q]
+  refine ⟨hlo, ?_⟩
+  constructor
+  · intro he
+    rw [he] at hq
+    have hz : q ^ 2 = 0 := by linarith
+    have hzero : q = 0 := pow_eq_zero hz
+    have hn := (div_eq_zero_iff.mp hzero).resolve_right (coefficient_difference_pos x).ne'
+    exact (mul_eq_zero.mp hn).resolve_left (by norm_num)
+  · intro h
+    have hzero : q = 0 := by simp [q, h]
+    rw [hzero] at hq
+    apply (sq_eq_sq₀ hpos (by norm_num)).mp
+    simpa using hq
+
+theorem roots_at_zero_numerator {x y : ℝ} (hx : numerator x = 0) :
+    quadratic (numerator x) (denominator x) y = 0 ↔ y = -1 ∨ y = -2 := by
+  have h : denominator x ≠ 0 := by
+    have hp := coefficient_difference_pos x
+    rw [hx, zero_sub] at hp
+    linarith
+  rw [hx, show quadratic 0 (denominator x) y = -denominator x * ((y+1)*(y+2)) by
+    unfold quadratic
+    ring]
+  simp [mul_eq_zero, h, add_eq_zero_iff_eq_neg]
+
 private theorem denominator_pos {x : ℝ} (hx : 5 / 2 ≤ x) : 0 < denominator x := by
   unfold denominator
   nlinarith [sq_nonneg (x - 5 / 2)]
