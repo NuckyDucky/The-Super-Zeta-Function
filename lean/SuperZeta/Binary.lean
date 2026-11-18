@@ -136,7 +136,7 @@ def sincCoeff : ℕ → ℚ
   | 0 => 1
   | n+1 => -sincCoeff n / (2*n+3)
 
-private theorem sinc_unit (n : ℕ) : padicNorm 2 (sincCoeff n) = 1 := by
+theorem sinc_unit (n : ℕ) : padicNorm 2 (sincCoeff n) = 1 := by
   induction n with
   | zero => simp [sincCoeff]
   | succ n ih =>
@@ -152,7 +152,7 @@ def fourPowerQuot (n : ℕ) : ℚ := (2:ℚ) ^ (2*(n+1)) / (n+1)
 /-- Exponential coefficients of (sinc²−1)/y. -/
 def correctionCoeff (n : ℕ) : ℚ := sincCoeff (n+1) * (fourPowerQuot n / (n+2))
 
-private theorem quot_val (n : ℕ) :
+theorem quot_val (n : ℕ) :
     padicValRat 2 (fourPowerQuot n) = 2*(n+1 : ℤ) - padicValNat 2 (n+1) := by
   unfold fourPowerQuot
   rw [padicValRat.div (by positivity) (by positivity), padicValRat.pow (by norm_num), val_two]
@@ -164,7 +164,7 @@ private theorem quot_val (n : ℕ) :
 private theorem vlt (n : ℕ) (h : n ≠ 0) : padicValNat 2 n < n :=
   (padicValNat_le_nat_log n).trans_lt (Nat.log_lt_self 2 h)
 
-private theorem correction_small (n : ℕ) : padicNorm 2 (correctionCoeff n) ≤ 1/2 := by
+theorem correction_small (n : ℕ) : padicNorm 2 (correctionCoeff n) ≤ 1/2 := by
   unfold correctionCoeff
   rw [padicNorm.mul, sinc_unit, one_mul]
   apply norm_le_half_of_val
