@@ -84,7 +84,7 @@ with the exact decimal inputs $x=4.749479070945369\times10^{-8}$ and $y=0.509892
 
 ## The spectral zeta and the critical line
 
-For $\Re s>1/2$ the spectral series converges absolutely. The paper continues it meromorphically as the sum of a reference series and an entire Mellin integral correction $J$. Subtracting the correction gives
+For $\Re s>1/2$ the spectral series converges absolutely. The reference determinant $\cos^2u$ has squared roots $\pi^2(n+1/2)^2$, each of multiplicity two. Its spectral series is therefore twice the sum over the positive odd integers, with the scale factor $(2/\pi)^{2s}$. This explains both the factor $2^{2s}-1$ and the argument $2s$ in the Riemann zeta term. The paper expresses the difference of the two spectral series as a Mellin integral $J$ that extends to an entire function. Subtracting it gives
 
 $$
 F(s)=\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s).
