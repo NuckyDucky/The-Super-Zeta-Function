@@ -1,0 +1,12 @@
+{
+  "forecast_sha256": "a47969323d5b32dc40ab00adf0d7776a1cca73bc555257bb51c08400ac6b8c2b",
+  "pairs": [
+    {
+      "level": 954985468717,
+      "height_offset": 0.012910535096930478,
+      "signed_square": -0.0012657969184217206,
+      "model_even_residual": -6.980527267330672e-15,
+      "model_divided_odd_residual": 5.773159728050814e-15
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "positive_height_half_width": "1/8",
+  "broad_real": [
+    "1/16",
+    "15/16"
+  ],
+  "off_center_real": [
+    "5/8",
+    "7/8"
+  ],
+  "quartet_displacement": "1/4",
+  "levels": [
+    {
+      "level": 954985468717,
+      "height": "[3000175332806.3325084803645036468654 +/- 2.91e-23]",
+      "modes": 691008,
+      "degree": 48,
+      "predicted_roots": [
+        {
+          "height_offset": -0.022667504736957514,
+          "beta": 0.5
+        },
+        {
+          "height_offset": 0.04848857493081847,
+          "beta": 0.5
+        }
+      ]
+    },
+    {
+      "level": 954985468718,
+      "height": "[3000175332809.4741011339542968853281 +/- 2.73e-23]",
+      "modes": 691008,
+      "degree": 48,
+      "predicted_roots": []
+    },
+    {
+      "level": 954985468719,
+      "height": "[3000175332812.6156937875440901237907 +/- 1.66e-23]",
+      "modes": 691008,
+      "degree": 48,
+      "predicted_roots": [
+        {
+          "height_offset": 0.0339515644012967,
+          "beta": 0.5
+        }
+      ]
+    }
+  ]
+}
