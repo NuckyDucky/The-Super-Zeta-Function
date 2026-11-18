@@ -1,0 +1,74 @@
+{
+  "harmonic": 2,
+  "precision_bits": 192,
+  "cell_count": 5,
+  "distance_coefficient_w": "925/512",
+  "distance_coefficient_s": "925/256",
+  "cells": [
+    {
+      "index": 1,
+      "height_offset_cell": [
+        "-1/2",
+        "-70451731/536870912"
+      ],
+      "root_height_offset_bracket": [
+        "-127868849/536870912",
+        "-255737697/1073741824"
+      ],
+      "factor_lower_bound_w_units": "1961/1024",
+      "certified_boundary_segments": 502
+    },
+    {
+      "index": 2,
+      "height_offset_cell": [
+        "-70451731/536870912",
+        "30035209/1073741824"
+      ],
+      "root_height_offset_bracket": [
+        "-26069227/1073741824",
+        "-13034613/536870912"
+      ],
+      "factor_lower_bound_w_units": "485/256",
+      "certified_boundary_segments": 642
+    },
+    {
+      "index": 3,
+      "height_offset_cell": [
+        "30035209/1073741824",
+        "58548439/268435456"
+      ],
+      "root_height_offset_bracket": [
+        "21534911/268435456",
+        "86139645/1073741824"
+      ],
+      "factor_lower_bound_w_units": "925/512",
+      "certified_boundary_segments": 715
+    },
+    {
+      "index": 4,
+      "height_offset_cell": [
+        "58548439/268435456",
+        "456034273/1073741824"
+      ],
+      "root_height_offset_bracket": [
+        "382247867/1073741824",
+        "95561967/268435456"
+      ],
+      "factor_lower_bound_w_units": "925/512",
+      "certified_boundary_segments": 808
+    },
+    {
+      "index": 5,
+      "height_offset_cell": [
+        "456034273/1073741824",
+        "1/2"
+      ],
+      "root_height_offset_bracket": [
+        "264910339/536870912",
+        "529820679/1073741824"
+      ],
+      "factor_lower_bound_w_units": "995/512",
+      "certified_boundary_segments": 756
+    }
+  ]
+}

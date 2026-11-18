@@ -1,0 +1,9 @@
+# Independent agent review
+
+Two computational research agents checked different parts of this contribution before publication. The review is internal to the Super Zeta collaboration. Both used FLINT interval arithmetic.
+
+**Coverage.** The coverage computation counted all zeros by full-width rectangular winding at 192 bits. A separate argument used FLINT's 96-bit global zero counts across guarded endpoints. Explicit evaluations of the real Hardy function at 128 bits resolved all 18 signs for the nine disjoint brackets. Both arguments gave five and four simple critical-line zeros.
+
+**Distance.** The reviewing agent derived the cellwise minimum-modulus argument and independently evaluated the proposed rational constants. Its verifier builds a single 145-node chart for each whole window, uses the functional equation for samples on the left exterior arc, and checks the full winding, the sign brackets and 400 interval segments per side of each cell. All nine claimed bounds passed. A separate replay of the original chart method reproduced both distance records. The reviewer checked the factor of two in the $s$ coordinate, nonvanishing of the elementary factor on the closed left edge, and the disk radius and uniform tolerance in the stability corollary. [Independent verifier](independent_distance.py)
+
+**Finite recursion.** One agent derived the uniform bound with the initial contour and a second agent kept the same coupling while changing the contour angle. Both checked the Mellin normalization, the clockwise rotation and convergence at both ends of the closed strip. An independent 288-bit calculation verified the seven- and 21-block upper bounds with the published distance coefficients. The archived 192-bit verifier checks every outward-rounded threshold in the proof. [Derivation](NATIVE.md) · [Threshold verifier](native_complete.py)
