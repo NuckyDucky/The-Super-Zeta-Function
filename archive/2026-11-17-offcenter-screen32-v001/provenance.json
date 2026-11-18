@@ -1,0 +1,52 @@
+{
+  "snapshot": "2026-11-17-offcenter-screen32-v001",
+  "predecessor": "2026-11-17-offcenter-superzeta-v001",
+  "predecessor_git_tag": "offcenter-superzeta-v001",
+  "predecessor_scripts": [
+    {
+      "path": "offcenter_superzeta.py",
+      "sha256": "d384256dc08fa3c561ed60b4fd0b23ed346e776e56f0939204181756a0726053"
+    },
+    {
+      "path": "signed_superzeta_split.py",
+      "sha256": "5f819abea87705c6f43b81be51c4ac618e08292bbf322054e22bdeb336fa10a7"
+    }
+  ],
+  "source_records": [
+    {
+      "path": "offcenter-superzeta-batch32.json",
+      "source_path": "work/offcenter-superzeta-batch32.json",
+      "source_sha256": "c8ee17c98b36cb4377e5075fc324deecff8a46e84ca473923a5452a477cfc164",
+      "source_bytes": 9171,
+      "archive_edits": []
+    },
+    {
+      "path": "offcenter-superzeta-checked32.json",
+      "source_path": "work/offcenter-superzeta-checked32.json",
+      "source_sha256": "ad3af2081eff96b5772633dfb6487fcfb0d6ceb7a9602112927c4459b57b0a8e",
+      "source_bytes": 746,
+      "archive_edits": []
+    },
+    {
+      "path": "offcenter-superzeta-selected32.json",
+      "source_path": "work/offcenter-superzeta-selected32.json",
+      "source_sha256": "f8d54f59080cd35c983f91bb59b1aa72cb8cc631459190bd89b1be526d7588c0",
+      "source_bytes": 995,
+      "archive_edits": []
+    },
+    {
+      "path": "offcenter-superzeta-signed32.json",
+      "source_path": "work/offcenter-superzeta-signed32.json",
+      "source_sha256": "e3e4e20ed5382f08ddc0641d3fd9d0bcebfab76c6aa3f0e28ee3a9b79f850ae6",
+      "source_bytes": 355,
+      "archive_edits": []
+    },
+    {
+      "path": "rank_offcenter_screen.py",
+      "source_path": "work/rank_offcenter_screen.py",
+      "source_sha256": "0350d83544f7ed1743ba245647202eb829c248bba521b317bc563e8c86ed64b6",
+      "source_bytes": 1991,
+      "archive_edits": []
+    }
+  ]
+}

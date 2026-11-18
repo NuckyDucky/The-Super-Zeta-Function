@@ -1,0 +1,33 @@
+{
+  "bits": 192,
+  "prediction_sha256": "f8d54f59080cd35c983f91bb59b1aa72cb8cc631459190bd89b1be526d7588c0",
+  "results": [
+    {
+      "level": 954985468722,
+      "cosine_right": {
+        "count": 1,
+        "certified_segments": 4
+      },
+      "superzeta_right": {
+        "count": 0,
+        "certified_segments": 4
+      },
+      "superzeta_broad": {
+        "count": 2,
+        "certified_segments": 121
+      },
+      "line_brackets_offsets": [
+        [
+          "-4045647/67108864",
+          "-8091293/134217728"
+        ],
+        [
+          "674885/16777216",
+          "5399081/134217728"
+        ]
+      ],
+      "off_line_upper_bound": 0,
+      "interpolation_uniform_error": "[4.428304837169914e-16 +/- 8.33e-33]"
+    }
+  ]
+}
