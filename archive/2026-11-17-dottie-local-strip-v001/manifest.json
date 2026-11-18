@@ -1,0 +1,30 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 5744,
+      "sha256": "f66834ddb60b84b02ae40bf6790bbe79ab64d7dd1bbfadd7ab2f7996be0a5162"
+    },
+    "provenance.json": {
+      "bytes": 2678,
+      "sha256": "2a41202657e5d894e8ebf7a0d3a3927b3f2144615fd28a1f6ec337ef172840c7"
+    },
+    "replay-results.txt": {
+      "bytes": 1238,
+      "sha256": "3fe9af39452ee90468b4855421f65833e795879a76dd78040ccc036fbc06d94e"
+    },
+    "replay.py": {
+      "bytes": 2509,
+      "sha256": "0422665ce8c785ce4720fd086a51776f66e7cc9c28c42b001af7b7c8c5304a50"
+    },
+    "verify_dottie_half_gap.py": {
+      "bytes": 4731,
+      "sha256": "af633ac967063da264f38bc79a67acceda6ee77ed923274892872fffa6c34f45"
+    },
+    "verify_quartet_two_thirds_translation.py": {
+      "bytes": 1620,
+      "sha256": "7be35b43ef734f2b4563017f7e3db7f7f9edce5b891186da4422b2dc813032b4"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-17-dottie-local-strip-v001"
+}

@@ -1,0 +1,16 @@
+Dottie arm agrees with the full archived numerical record.
+Broad count 2; two disjoint line brackets; off-line upper bound 0.
+Full allowed real interval [1/8,7/8] lies strictly inside the counted rectangle.
+center-normalized zeta crosses 2/3 at beta [0.542962564822 +/- 6.45e-13]
+zeta magnitude at crossing [0.6562005663466831546 +/- 2.58e-20]
+center-normalized |xi| exceeds 2/3 on [1/2,1], boxes 6
+boxes 332 lower bound [0.5005000000 +/- 3e-15]
+crossing [0.375767395239989 +/- 5.83e-16] magnitude [0.503069580959958 +/- 5.80e-16]
+selected magnitude [0.5028851172666819137897358 +/- 4.58e-26]
+local dip sample [0.5005025702364989691889226 +/- 3.49e-26]
+Continuous index at the common crossing: [1997.71526 +/- 4.36e-6]
+1 right address [0.724092943103231338 +/- 1.24e-19] tag ratio at crossing [0.92520975602 +/- 3.43e-12]
+2 right address [0.659325464971400344 +/- 3.30e-19] tag ratio at crossing [0.89643022473 +/- 9.56e-12]
+3 right address [0.637437839066242231 +/- 2.46e-19] tag ratio at crossing [0.88095660844 +/- 5.92e-12]
+1997 right address [0.542964195067221898 +/- 8.89e-20] tag ratio at crossing [0.6666769235 +/- 4.74e-11]
+1998 right address [0.542961916040696516 +/- 5.99e-20] tag ratio at crossing [0.6666625846 +/- 5.50e-11]

@@ -1,0 +1,64 @@
+{
+  "snapshot": "2026-11-17-dottie-local-strip-v001",
+  "predecessor": "2026-11-17-dottie-grid-match-v001",
+  "predecessor_commit": "6b32c7ecef14bb5bcad634a1bc38038db2b405bf",
+  "research_date": "2026-11-17",
+  "source": "Nick's reciprocal-tetration research and the Greater Works Super Zeta collaboration",
+  "source_records": [
+    {
+      "source_path": "work/verify_dottie_half_gap.py",
+      "archived_path": "verify_dottie_half_gap.py",
+      "sha256": "af633ac967063da264f38bc79a67acceda6ee77ed923274892872fffa6c34f45",
+      "transformation": "byte-identical"
+    },
+    {
+      "source_path": "work/verify_quartet_two_thirds_translation.py",
+      "archived_path": "verify_quartet_two_thirds_translation.py",
+      "sha256": "7be35b43ef734f2b4563017f7e3db7f7f9edce5b891186da4422b2dc813032b4",
+      "transformation": "byte-identical"
+    },
+    {
+      "source_path": "outputs/Greater-Works-Radius-Selection/research/four-tag-affix-geometry.md",
+      "source_date": "2026-11-16",
+      "sha256": "d9ca99c706b9e3222ea39ae6f0ec4e9e13022b5348f9283940a57788a642665a",
+      "transformation": "Equations (1)–(3) restated in README.md for the two-thirds comparison."
+    }
+  ],
+  "inputs": [
+    {
+      "archive_path": "2026-11-17-dottie-grid-match-v001/dottie-grid-nomination.json",
+      "sha256": "3a6aeb6ed8fe0dec9bc03be419f00b4f2be49dc3eb9eddd59ae825baf2dd9f9f"
+    },
+    {
+      "archive_path": "2026-11-17-dottie-grid-match-v001/dottie-grid-forecast.json",
+      "sha256": "a6a3751b455a59c6edca9dc0042a506881524b6656af68b6928b53ed3631b441"
+    },
+    {
+      "archive_path": "2026-11-17-dottie-grid-match-v001/dottie-grid-certificate.json",
+      "sha256": "4642650426061b2053d153eeb32ba5f338972da30b3f5c82059f150b819cb077"
+    },
+    {
+      "archive_path": "2026-11-16-super-zeta-v001/sources/balance/inputs/parabolic-locus.md",
+      "sha256": "cf671b0d7e624343e481d1d74fa899b4cde9ce23ab1632cad9abfcd4b7fb44e5"
+    }
+  ],
+  "external_input": {
+    "author": "OpenAI",
+    "title": "The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re s > 7/8",
+    "date": "2026-09-30",
+    "location": "Theorem 1.1, page 4",
+    "url": "https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+  },
+  "deposit_materials": {
+    "README.md": "New proof of the local corollary and candidate-address calculation.",
+    "replay.py": "New read-only replay driver and checks for scope and input hashes.",
+    "replay-results.txt": "Standard output from replay.py (UTF-8, LF)."
+  },
+  "runtime": {
+    "python": "3.12.11",
+    "python-flint": "0.9.0",
+    "flint": "3.6.0",
+    "numpy": "2.5.5",
+    "randomness": "none"
+  }
+}
