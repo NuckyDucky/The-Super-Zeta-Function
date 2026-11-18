@@ -1,0 +1,18 @@
+{
+  "precision_bits": 96,
+  "guard_radius": "1/262144",
+  "windows": [
+    {
+      "k": 2,
+      "lower_N": 38893592331757,
+      "upper_N": 38893592331762,
+      "difference": 5
+    },
+    {
+      "k": 3,
+      "lower_N": 59216624055244,
+      "upper_N": 59216624055248,
+      "difference": 4
+    }
+  ]
+}

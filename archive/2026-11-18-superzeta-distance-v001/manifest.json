@@ -1,0 +1,86 @@
+{
+  "files": {
+    "NATIVE.md": {
+      "bytes": 4132,
+      "sha256": "5dba3ab8116a152ec782d0ca6a9227d252904c8b88093d8a186ce0872c47c6b4"
+    },
+    "README.md": {
+      "bytes": 8781,
+      "sha256": "8c8bbce19f54ea01c0c827105191864048fb1cc03f3772b1d0e0363f7eb73211"
+    },
+    "REVIEW.md": {
+      "bytes": 1860,
+      "sha256": "180146c587ab512b7ff3bb1b90888750397e59d842a6e9996f324db29b2ddccb"
+    },
+    "check_stability.py": {
+      "bytes": 1019,
+      "sha256": "7243b7bb937b5ca217c625f8a0c9feae5e62243d062965588f7a8f7e4277aa28"
+    },
+    "coverage-global-counts.json": {
+      "bytes": 306,
+      "sha256": "0d88dc5b72e8dbef6cf7fddb8ec562d0f5d5ffa013548d820efbd542d716bd68"
+    },
+    "coverage-h2.json": {
+      "bytes": 2290,
+      "sha256": "9d7ca0bbb33e5a30e0a8f5aa396249369ddec76d7c5715da1908713363117bdd"
+    },
+    "coverage-h3.json": {
+      "bytes": 2087,
+      "sha256": "f44e4d9d5a3d9ee7e4fc617f2600f2f03c60581113e98f01dd5355831d3671f3"
+    },
+    "coverage-indexed.json": {
+      "bytes": 1982,
+      "sha256": "5ef62e551f36cce374e9cb1a271aa8fdcd2463b3c6585c7c0d223086c158e5ff"
+    },
+    "coverage.py": {
+      "bytes": 3071,
+      "sha256": "b3ad70700bb5ecb30b150f45068839b5ee8dfb8e5a905bf6b9a7359b58aeba1b"
+    },
+    "coverage_chart.py": {
+      "bytes": 3247,
+      "sha256": "79f3f69ccf991893a03a813eeb56dd2d84a5355a056c5cc8788da4bd9a1c54c3"
+    },
+    "coverage_check_counts.py": {
+      "bytes": 1312,
+      "sha256": "c76c33efec4e55953cd75421248a0dd6798cf43b5e8bad6a8c2a95fcc9ae5c0c"
+    },
+    "coverage_check_signs.py": {
+      "bytes": 1786,
+      "sha256": "63fc7437b2e591b6ddd6da5616995b72b414d75a0c91517b8602f8bb8970af33"
+    },
+    "coverage_indexed.py": {
+      "bytes": 2150,
+      "sha256": "39f915b9451c29b4af4c4f2355418cd687c3074ce3c6bd8f06232e8cb004f1ba"
+    },
+    "coverage_plan.json": {
+      "bytes": 807,
+      "sha256": "923979f4ec8a9c7976d0808a56c64b7d39210c09199620ed7ebb94df2785d32a"
+    },
+    "distance-h2.json": {
+      "bytes": 1769,
+      "sha256": "7b37a7c75d3d4bab4a6588f4b54e26c246daebfbc5f1067a75053f54cb36e1b7"
+    },
+    "distance-h3.json": {
+      "bytes": 1453,
+      "sha256": "5f44aa7259bb4805c7cd88fedead6e5e11db484f674dae0c5eda320866ad0be9"
+    },
+    "distance.py": {
+      "bytes": 4060,
+      "sha256": "ba4eea3012d1827c9fd32a956dbe4d640c96ea6f58e4801330de856c7d7fb34a"
+    },
+    "independent_distance.py": {
+      "bytes": 5304,
+      "sha256": "d3edc40e2d0c80c77fc7503628c9e1690d4075e84a4b0a3702a2a31ff32ccc86"
+    },
+    "native_complete.py": {
+      "bytes": 1559,
+      "sha256": "908fd2061770e88b3710e050478d346676063ae446f5c1f87ce0c77a64272b0b"
+    },
+    "provenance.json": {
+      "bytes": 1349,
+      "sha256": "1da3e74736edbc76d01598778e39f9fee2a03c2b8587679f195bffe18160887a"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-superzeta-distance-v001"
+}

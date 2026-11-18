@@ -1,0 +1,25 @@
+{
+  "snapshot": "2026-11-18-superzeta-distance-v001",
+  "base_commit": "5f29b3fdebe2cd76eb72dba5c717e469cc9dcd38",
+  "research_date": "2026-11-18",
+  "source": "NuckyDucky's reciprocal-tetration Super Zeta project and its computational research collaboration",
+  "inputs": [
+    {
+      "snapshot": "2026-11-16-super-zeta-v001",
+      "file": "sources/foundation/cosine-spectrum.md",
+      "use": "Equations (21) and (22) identify the corrected spectral zeta."
+    },
+    {
+      "snapshot": "2026-11-17-dottie-grid-match-v001",
+      "file": "dottie-grid-nomination.json",
+      "use": "Exact decimal witnesses and the one-winding, 160-log height rule."
+    },
+    {
+      "snapshot": "2026-11-17-quartet-angle-v001",
+      "file": "README.md",
+      "use": "Earlier high-height localization experiment."
+    }
+  ],
+  "derivation": "New cellwise lower-bound proof and error localization. New widened-window counts. The chart and winding implementation adapts the project's existing spectral contour method to standalone full-width cells. Each JSON result is newly computed except the plan, which was set before the enlarged-window counts.",
+  "replay": "See README.md. Original environment Python 3.12.11, python-flint 0.9.0, FLINT 3.6.0. Witness decimals and vertical offsets relative to the exact harmonic heights are rational. No randomness."
+}

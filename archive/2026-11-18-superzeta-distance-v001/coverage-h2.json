@@ -1,0 +1,115 @@
+{
+  "harmonic": 2,
+  "Riemann_real_range": [
+    "0",
+    "1"
+  ],
+  "Riemann_height_offsets": [
+    "-1/2",
+    "1/2"
+  ],
+  "H": "[9052238644955.89078663841465771390046049032531489 +/- 4.99e-36]",
+  "precision_bits": 192,
+  "chart_nodes": 192,
+  "full_count": 5,
+  "off_line_count": 0,
+  "cells": [
+    {
+      "center_offset": "-3/8",
+      "offsets": [
+        "-1/2",
+        "-1/4"
+      ],
+      "uniform_chart_error": "[7.9394327484339858223e-20 +/- 3.28e-40]",
+      "count": 0,
+      "certified_segments": 63,
+      "brackets": []
+    },
+    {
+      "center_offset": "-1/8",
+      "offsets": [
+        "-1/4",
+        "0"
+      ],
+      "uniform_chart_error": "[7.9394327484344243565e-20 +/- 4.85e-40]",
+      "count": 2,
+      "certified_segments": 71,
+      "brackets": [
+        {
+          "offset": [
+            "-127868849/536870912",
+            "-255737697/1073741824"
+          ],
+          "endpoint_signs": [
+            1,
+            -1
+          ]
+        },
+        {
+          "offset": [
+            "-26069227/1073741824",
+            "-13034613/536870912"
+          ],
+          "endpoint_signs": [
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "center_offset": "1/8",
+      "offsets": [
+        "0",
+        "1/4"
+      ],
+      "uniform_chart_error": "[7.9394327484348628908e-20 +/- 3.60e-40]",
+      "count": 1,
+      "certified_segments": 67,
+      "brackets": [
+        {
+          "offset": [
+            "21534911/268435456",
+            "86139645/1073741824"
+          ],
+          "endpoint_signs": [
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "center_offset": "3/8",
+      "offsets": [
+        "1/4",
+        "1/2"
+      ],
+      "uniform_chart_error": "[7.9394327484353014250e-20 +/- 2.03e-40]",
+      "count": 2,
+      "certified_segments": 63,
+      "brackets": [
+        {
+          "offset": [
+            "382247867/1073741824",
+            "95561967/268435456"
+          ],
+          "endpoint_signs": [
+            -1,
+            1
+          ]
+        },
+        {
+          "offset": [
+            "264910339/536870912",
+            "529820679/1073741824"
+          ],
+          "endpoint_signs": [
+            1,
+            -1
+          ]
+        }
+      ]
+    }
+  ]
+}

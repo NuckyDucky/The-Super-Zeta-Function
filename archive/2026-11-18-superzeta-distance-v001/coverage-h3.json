@@ -1,0 +1,104 @@
+{
+  "harmonic": 3,
+  "Riemann_real_range": [
+    "0",
+    "1"
+  ],
+  "Riemann_height_offsets": [
+    "-1/2",
+    "1/2"
+  ],
+  "H": "[13578357967433.8361799576219865708506907354879723 +/- 4.25e-35]",
+  "precision_bits": 192,
+  "chart_nodes": 192,
+  "full_count": 4,
+  "off_line_count": 0,
+  "cells": [
+    {
+      "center_offset": "-3/8",
+      "offsets": [
+        "-1/2",
+        "-1/4"
+      ],
+      "uniform_chart_error": "[1.7863723683973014643e-19 +/- 3.01e-39]",
+      "count": 2,
+      "certified_segments": 60,
+      "brackets": [
+        {
+          "offset": [
+            "-258588561/536870912",
+            "-517177121/1073741824"
+          ],
+          "endpoint_signs": [
+            -1,
+            1
+          ]
+        },
+        {
+          "offset": [
+            "-359783195/1073741824",
+            "-179891597/536870912"
+          ],
+          "endpoint_signs": [
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "center_offset": "-1/8",
+      "offsets": [
+        "-1/4",
+        "0"
+      ],
+      "uniform_chart_error": "[1.7863723683973672445e-19 +/- 3.77e-39]",
+      "count": 0,
+      "certified_segments": 60,
+      "brackets": []
+    },
+    {
+      "center_offset": "1/8",
+      "offsets": [
+        "0",
+        "1/4"
+      ],
+      "uniform_chart_error": "[1.7863723683974330246e-19 +/- 5.27e-40]",
+      "count": 2,
+      "certified_segments": 63,
+      "brackets": [
+        {
+          "offset": [
+            "8639935/536870912",
+            "17279871/1073741824"
+          ],
+          "endpoint_signs": [
+            -1,
+            1
+          ]
+        },
+        {
+          "offset": [
+            "49148625/268435456",
+            "196594501/1073741824"
+          ],
+          "endpoint_signs": [
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "center_offset": "3/8",
+      "offsets": [
+        "1/4",
+        "1/2"
+      ],
+      "uniform_chart_error": "[1.7863723683974988047e-19 +/- 2.71e-39]",
+      "count": 0,
+      "certified_segments": 60,
+      "brackets": []
+    }
+  ]
+}

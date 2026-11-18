@@ -1,0 +1,7 @@
+{
+  "test": "Double the total Riemann-height width of both previously tested Dottie windows, from 1/2 to 1, independently of the previous outcomes.",
+  "height": "H=k*2*pi/(160*log1p((x/y)^2)), x=4.749479070945369e-8, y=0.509892982511772, k=2,3",
+  "offsets": ["-1/2", "-1/4", "0", "1/4", "1/2"],
+  "count": "Use directed total nontrivial Riemann zero counts on both sides of each horizontal edge; require agreement across each edge. Use critical-line Hardy signs to account for the total with distinct brackets. Preserve a failed count or unresolved portion explicitly.",
+  "fallback": "If total zero counting is computationally costly, use the directed full-strip rectangular winding chart at each quarter-height and compare with critical-line signs. Upper and lower neighborhoods use the same budget."
+}
