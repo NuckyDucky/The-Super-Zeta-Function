@@ -1,0 +1,14 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 4040,
+      "sha256": "1daf9fe173e622314eba42d067c77056d66e92e5317b0fdf3393c531dbe1f88e"
+    },
+    "lean-source-sha256.json": {
+      "bytes": 4693,
+      "sha256": "fca3fb7c02849ef462b6ba89f0ba0137e2f9d9b138acba7ed832630b1ddbddb0"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-quartet-levels-v001"
+}

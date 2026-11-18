@@ -209,18 +209,11 @@ private lemma join {α β : Type*} (f : α ⊕ β → ℝ)
     (h : Summable (f ∘ Sum.inl)) (k : Summable (f ∘ Sum.inr)) : Summable f :=
   (HasSum.sum (f:=f) h.hasSum k.hasSum).summable
 
-/-- At the original q=1 coupling the verified quartet estimates discharge
-both the angular and convergence hypotheses. The remaining spectral input
-identifies the logarithmic derivative of the coupled determinant. -/
-theorem indexed_reconstruction {d : ℝ} (hd : 0<d) {t : ℕ → ℝ}
+/-- The indexed unit-coupling roots satisfy the sector and summability
+estimates throughout the half-plane of absolute convergence. -/
+theorem indexed_data {d : ℝ} (hd : 0<d) {t : ℕ → ℝ}
     (roots : ∀ n, 0<t n ∧ QuartetRadius.level (t n)=2*Real.pi*(n+1))
-    {s : ℂ} (hs : 1/2<s.re) (hu : s.re<1)
-    (coupled : ∀ r ∈ Ioi 0, HasDerivAt
-      (fun y : ℝ => (Real.log ((Real.cosh (Real.sqrt y))^2+y):ℂ))
-      (resolvent (RootBounds.family d t) r) r) :
-    (∑' j, (RootBounds.family d t j)^(-s)) - Reference.entireCorrection 1 s =
-      Spectrum.riemannFactor s * riemannZeta (2*s) := by
-  apply reconstruction (by norm_num : (0:ℝ)≤1) hs hu _ (by simpa only [one_mul] using coupled)
+    {s : ℂ} (hs : 1/2<s.re) : SpectralData (RootBounds.family d t) s := by
   have pos (n : ℕ) := RootBounds.squared_off_cut (Nat.succ_pos n)
     (roots n).1 (by simpa using (roots n).2)
   have mar (n : ℕ) := RootBounds.resolvent_margin (Nat.succ_pos n)
@@ -249,5 +242,19 @@ theorem indexed_reconstruction {d : ℝ} (hd : 0<d) {t : ℕ → ℝ}
     · change 1/2*(r+‖conj (RootBounds.u (t n)^2)‖) ≤ ‖(r:ℂ)+conj (RootBounds.u (t n)^2)‖
       rw [← Complex.conj_ofReal r, ←map_add, Complex.norm_conj, Complex.norm_conj]
       exact mar n r hr
+
+/-- At the original q=1 coupling the verified quartet estimates discharge
+both the angular and convergence hypotheses. The remaining spectral input
+identifies the logarithmic derivative of the coupled determinant. -/
+theorem indexed_reconstruction {d : ℝ} (hd : 0<d) {t : ℕ → ℝ}
+    (roots : ∀ n, 0<t n ∧ QuartetRadius.level (t n)=2*Real.pi*(n+1))
+    {s : ℂ} (hs : 1/2<s.re) (hu : s.re<1)
+    (coupled : ∀ r ∈ Ioi 0, HasDerivAt
+      (fun y : ℝ => (Real.log ((Real.cosh (Real.sqrt y))^2+y):ℂ))
+      (resolvent (RootBounds.family d t) r) r) :
+    (∑' j, (RootBounds.family d t j)^(-s)) - Reference.entireCorrection 1 s =
+      Spectrum.riemannFactor s * riemannZeta (2*s) := by
+  exact reconstruction (by norm_num : (0:ℝ)≤1) hs hu (indexed_data hd roots hs)
+    (by simpa only [one_mul] using coupled)
 
 end SuperZeta.Ray

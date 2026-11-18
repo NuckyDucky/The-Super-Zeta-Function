@@ -23,3 +23,4 @@ import SuperZeta.ReferenceResolvent
 import SuperZeta.RootBounds
 import SuperZeta.Ray
 import SuperZeta.Multiplicity
+import SuperZeta.CoupledProduct
