@@ -1,10 +1,60 @@
 # The Super Zeta Function
 
-NuckyDucky’s reciprocal iteration
-$$(P,Q)\longmapsto(e^{LQ},e^{-LP})$$
-leads to a spectral zeta function built from the roots of a cosine determinant. A finite orbit of the iteration also gives an explicit height at which to count zeros of the Riemann zeta function. At that height and at twice and three times that height, **every nontrivial zero in the certified intervals is simple and lies on the critical line**.
+NuckyDucky’s work began with six integers in his original math meme. Solving its quadratic gave a value for $\pi$ accurate to about $8.7\times10^{-20}$ and exposed a reciprocal expression that appears again in his exponential iteration. Studying the spire formed by periodic orbits led to the exact Dottie fold. The same equation that governs the fold gives the roots of the cosine determinant used to define the super zeta function.
 
-[Original papers and computations](archive/2026-11-18-lean-foundations-v001/README.md) · [Lean proofs and build instructions](lean/README.md) · [Tagged quartet release](https://github.com/NuckyDucky/The-Super-Zeta-Function/releases/tag/lean-quartets-v1)
+[The original meme and the Dottie spire](#from-the-original-meme-to-the-dottie-spire) · [The local strengthening of the seven-eighths theorem](#a-local-strengthening-of-the-seven-eighths-theorem) · [Original papers and computations](archive/2026-11-18-lean-foundations-v001/README.md) · [Lean proofs and build instructions](lean/README.md)
+
+At three height intervals selected from the spire, the zero counts give a local strengthening of OpenAI’s seven-eighths theorem for Riemann zeta. All eleven zeros in those intervals are simple and lie on the critical line.
+
+## From the original meme to the Dottie spire
+
+### NuckyDucky’s meme and the quadratic for π
+
+NuckyDucky’s original meme and choice of coefficients give the approximation $T(\pi)\approx R(e)$, where
+
+$$
+T(x)=\frac{(1+x)(2+x)}{x^2+x-1},\qquad
+R(e)=\frac{N}{D}=\frac{465e^2-183e-659}{155e^2+396e-936}.
+$$
+
+Solving $T(x)=R(e)$ by the quadratic formula gives $\widehat\pi=3.14159265358979323837582331055\ldots$. The plot measures both axes in units of $10^{-20}$. The horizontal gap is $\pi-\widehat\pi\approx8.682007272725\times10^{-20}$. [Lean proof of the error bound](lean/SuperZeta/MemePrecision.lean)
+
+![Plot of NuckyDucky’s original approximation showing where the transformed target and the rational function of e intersect, about 8.682 times 10 to the minus 20 below pi](archive/2026-11-18-research-figures-v001/pi-hat.png)
+
+The substitution $p=2\widehat\pi+3$ puts the quadratic in the form
+
+$$
+p-p^{-1}=\frac{4N}{N-D}.
+$$
+
+The other root corresponds to $p\mapsto-p^{-1}$. This reciprocal expression reappears in the complex coordinate of the two exponential stages. [Quadratic and reciprocal substitution](lean/SuperZeta/Meme.lean)
+
+### The spire and the Dottie number
+
+Iterate $(P,Q)\mapsto(e^{LQ},e^{-LP})$ from $(1,1)$ for each complex parameter $L$. The figure shows the periods detected near the narrow region NuckyDucky calls the *Dottie spire*. The two-step return in the first coordinate is $g_L(z)=e^{L e^{-Lz}}$. Along the imaginary axis, Baker and Rippon’s fixed-point parametrization gives
+
+$$
+L=iY(u),\qquad Y(u)=u\sec u\,e^{-u\tan u},\qquad
+\frac{Y'(u)}{Y(u)}=\frac{\cos^2u-u^2}{u\cos^2u}.
+$$
+
+The tip is the quadratic fold of this fixed-point curve. Its stationary point on $0<u<\pi/2$ is the Dottie number $d=\cos d$, giving $L_*=i e^{-\sin d}\approx0.509863605523013\,i$. The spire gives the Dottie value a geometric role: it locates where the two centerline fixed branches meet. [Baker and Rippon, eqs. (12)–(13)](https://doi.org/10.1080/17476938908814364) · [The Dottie Parabolic Fold and the Marked Spire, §2](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.pdf)
+
+![The Dottie spire in the complex parameter plane with a high-resolution view and the parabolic fold marked](archive/2026-11-18-research-figures-v001/dottie-spire.png)
+
+The 2540 × 1590 figure uses Layer 4 of the Reciprocal Tetration Lab for both the overview and the separately computed close-up. Each pixel uses four orbit samples. Colors record detected periods, while gray marks samples whose period remains unresolved at the iteration limit. [Full-resolution image](archive/2026-11-18-research-figures-v001/dottie-spire.png) · [Render settings and source](archive/2026-11-18-research-figures-v001/README.md) · [Certified period calculation](archive/2026-11-18-lean-foundations-v001/checks/dottie_slice.py)
+
+### From the fold to the spectrum
+
+For a fixed pair with multiplier one, the logarithmic phase $\alpha$ satisfies $\alpha^2e^{\alpha-\alpha^{-1}}=-1$. Use the reciprocal expression from the quadratic as the coordinate $2iu=\alpha-\alpha^{-1}$. Then $\alpha e^{iu}=\pm i$, which gives $u=\pm\cos u$. The cosine determinant in the derivative of $Y$ now describes the full set of such phases. Inversion and conjugation give four related phases, a *quartet*. The corresponding determinant roots are $u_n,-u_n,\bar u_n,-\bar u_n$, together with the real roots $\pm d$. [Cosine spectrum, equations (1)–(5)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md)
+
+In the squared variable $v=u^2$ the determinant is the entire power series
+
+$$
+E(v)=1-2v+\frac{v^2}{3}-\frac{2v^3}{45}+\cdots,\qquad E(u^2)=\cos^2u-u^2.
+$$
+
+Let $\lambda_j$ range over its zeros, with multiplicity. They define the Dirichlet series $\mathcal Z(s;1)=\sum_j\lambda_j^{-s}$. The bridge from the Taylor series to the spectral sum is the determinant’s product over its zeros. This is the step that connects the exponential iteration to the super zeta function. [Determinant, product and spectral sum](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md)
 
 ## A local strengthening of the seven-eighths theorem
 
@@ -34,7 +84,7 @@ with the exact decimal inputs $x=4.749479070945369\times10^{-8}$ and $y=0.509892
 
 ## The spectral zeta and the critical line
 
-Inversion and conjugation of a characteristic phase give four related phases, a *quartet*. In the variable $u$ they give roots $u_n,-u_n,\bar u_n,-\bar u_n$ of $D(u)=\cos^2u-u^2$. The real roots are $\pm d$, where the Dottie number $d>0$ satisfies $d=\cos d$. Squaring the roots gives the spectral values $\lambda_j$, one for each pair related by sign. At coupling $\varepsilon=1$, the spectral zeta is initially $\mathcal Z(s;1)=\sum_j\lambda_j^{-s}$ for $\Re s>1/2$. The paper continues the series meromorphically as the sum of a reference series and an entire Mellin integral correction $J$. Subtracting the correction gives
+For $\Re s>1/2$ the spectral series converges absolutely. The paper continues it meromorphically as the sum of a reference series and an entire Mellin integral correction $J$. Subtracting the correction gives
 
 $$
 F(s)=\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s).

@@ -1,0 +1,46 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 3603,
+      "sha256": "77d2f9666c2a4d9506c331bf6e1b2ee99d7df4205a631d160ee24d2d13cb0645"
+    },
+    "dottie-spire-render.json": {
+      "bytes": 17238,
+      "sha256": "8ca5bd1868762094619b61e06a9ce327378edd9e555d6c1bf5caf5f8564f30f7"
+    },
+    "dottie-spire.png": {
+      "bytes": 882362,
+      "sha256": "d5081ba371e3588ae73fa62abf1c085c2298293f2b16ec5bbba633bc9163572f"
+    },
+    "lab_source/engine.py": {
+      "bytes": 18458,
+      "sha256": "145978a1c4d7fcb148a93dd6532858afdfdc785580731959934685911453991c"
+    },
+    "lab_source/gpu_engine.py": {
+      "bytes": 12365,
+      "sha256": "e4a45d426e28fc1260ef0af47be139d895133d3ca5f43acc4af1ffe7596fce67"
+    },
+    "lab_source/mapping.py": {
+      "bytes": 14382,
+      "sha256": "bfb44bbd7fffdf3c4b84b5442482f1ec108eccb3367946b7885f1941c01a63c2"
+    },
+    "lab_source/requirements.txt": {
+      "bytes": 87,
+      "sha256": "0dbe337ac2d481155ff2cb4d52230cb7717b0b12ed50e158b4aaca1dcb0cd0fe"
+    },
+    "pi-hat.png": {
+      "bytes": 166246,
+      "sha256": "57097910bd8eb97f756829b222eaa08b1e7c58547066b5323ae985163d565f0b"
+    },
+    "plot_pi_hat.py": {
+      "bytes": 3465,
+      "sha256": "4774e1ec8de4218c1dbfff8631e47eca26e5a4e2742cab378a42f592e803584c"
+    },
+    "render_dottie_spire.py": {
+      "bytes": 10562,
+      "sha256": "c9c8034738406d124f8139bc50108d149dd43bfca61a675fe9a63d62ddac9ed7"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-research-figures-v001"
+}

@@ -1,5 +1,7 @@
 # Lean proofs for The Super Zeta Function
 
+The [original meme and the Dottie spire](../README.md#from-the-original-meme-to-the-dottie-spire) introduce the reciprocal substitution, the fold and the cosine determinant with figures. The table below points to the corresponding proofs.
+
 The ordered iteration and its two-step return on the first coordinate are
 
 $$
