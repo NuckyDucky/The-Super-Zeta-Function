@@ -1,0 +1,64 @@
+{
+  "snapshot": "2026-11-17-dottie-grid-match-v001",
+  "predecessor": "2026-11-17-offcenter-screen32-v001",
+  "predecessor_git_tag": "offcenter-screen32-v001",
+  "dependencies": [
+    {
+      "tag": "quartet-return-recursion-v001",
+      "path": "archive/2026-11-17-quartet-return-recursion-v001/computations/dottie_multiplier_winding.py",
+      "sha256": "aaa9fe379c183a2b56c23b2a0e1c1ecf7af185713c305e4e4c12e76f6f7d8d01"
+    },
+    {
+      "tag": "quartet-return-recursion-v001",
+      "path": "archive/2026-11-17-quartet-return-recursion-v001/computations/verify_dottie_horn_slice.py",
+      "sha256": "4b801849c9d531683368b5499de097b1325556dc4c3f7bef114c989863e2a2b2"
+    },
+    {
+      "tag": "offcenter-superzeta-v001",
+      "path": "archive/2026-11-17-offcenter-superzeta-v001/offcenter_superzeta.py",
+      "sha256": "d384256dc08fa3c561ed60b4fd0b23ed346e776e56f0939204181756a0726053"
+    },
+    {
+      "tag": "offcenter-superzeta-v001",
+      "path": "archive/2026-11-17-offcenter-superzeta-v001/signed_superzeta_split.py",
+      "sha256": "5f819abea87705c6f43b81be51c4ac618e08292bbf322054e22bdeb336fa10a7"
+    }
+  ],
+  "source_records": [
+    {
+      "path": "dottie-grid-certificate.json",
+      "source_path": "work/dottie-grid-certificate.json",
+      "source_sha256": "4642650426061b2053d153eeb32ba5f338972da30b3f5c82059f150b819cb077",
+      "source_bytes": 3553,
+      "archive_edits": []
+    },
+    {
+      "path": "dottie-grid-forecast.json",
+      "source_path": "work/dottie-grid-forecast.json",
+      "source_sha256": "a6a3751b455a59c6edca9dc0042a506881524b6656af68b6928b53ed3631b441",
+      "source_bytes": 2479,
+      "archive_edits": []
+    },
+    {
+      "path": "dottie-grid-nomination.json",
+      "source_path": "work/dottie-grid-nomination.json",
+      "source_sha256": "3a6aeb6ed8fe0dec9bc03be419f00b4f2be49dc3eb9eddd59ae825baf2dd9f9f",
+      "source_bytes": 4577,
+      "archive_edits": []
+    },
+    {
+      "path": "dottie_grid_nomination.py",
+      "source_path": "work/dottie_grid_nomination.py",
+      "source_sha256": "50c1c837dcfd6a518c3a179548f470aab017a97e80ae914f0bc8914c7948edf6",
+      "source_bytes": 3983,
+      "archive_edits": []
+    },
+    {
+      "path": "dottie_grid_trial.py",
+      "source_path": "work/dottie_grid_trial.py",
+      "source_sha256": "2cee4cee8854064bed8076b6e7fa970e5d792738f611b1ec46de1456d5a3cf85",
+      "source_bytes": 7015,
+      "archive_edits": []
+    }
+  ]
+}
