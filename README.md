@@ -8,4 +8,6 @@ Private research archive for reciprocal-exponential dynamics, the associated spe
 
 [Ordered quartet returns, 17 November 2026](archive/2026-11-17-quartet-return-recursion-v001/README.md) adds the signed return-jet derivation, the original-coupling computation and its independent sign check, the Laplace asymptotic, and the high-height reference calculations.
 
+[An off-center superzeta zero count, 17 November 2026](archive/2026-11-17-offcenter-superzeta-v001/README.md) records finite complex forecasts and a signed pair test, directed counts in three high windows, and a cosine-determinant control.
+
 [How to deposit, verify, and recover work](PRESERVATION.md) is the procedure for future snapshots. Other projects, source manuscripts, and working files need their own preservation copies.

@@ -1,0 +1,38 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 4905,
+      "sha256": "d634a01470c0cbbb71cca5725392cf51c1f8d7e98a1387a03045c3951d6a3262"
+    },
+    "offcenter-superzeta-prediction.json": {
+      "bytes": 1027,
+      "sha256": "a47969323d5b32dc40ab00adf0d7776a1cca73bc555257bb51c08400ac6b8c2b"
+    },
+    "offcenter-superzeta-recentered-certificate.json": {
+      "bytes": 1729,
+      "sha256": "051047d8ca2726f2c066db0844a7669f846c5cb132e8afcca7d54927641cace0"
+    },
+    "offcenter-superzeta-signed-prediction.json": {
+      "bytes": 354,
+      "sha256": "6db600a7702b87ab4b5b8e6db210fc2612a9d08b010beb2778705cbe303302fe"
+    },
+    "offcenter_superzeta.py": {
+      "bytes": 10238,
+      "sha256": "d384256dc08fa3c561ed60b4fd0b23ed346e776e56f0939204181756a0726053"
+    },
+    "provenance.json": {
+      "bytes": 1515,
+      "sha256": "eed8ae3d93cbb64eb8a89f1c3d8fe37498382a115f8d98c2d938958f9e7e6a2b"
+    },
+    "requirements.txt": {
+      "bytes": 33,
+      "sha256": "23848681fe80072b30b606f14a841ab789194d229d0fb31912684a5b54aaf685"
+    },
+    "signed_superzeta_split.py": {
+      "bytes": 4560,
+      "sha256": "5f819abea87705c6f43b81be51c4ac618e08292bbf322054e22bdeb336fa10a7"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-17-offcenter-superzeta-v001"
+}

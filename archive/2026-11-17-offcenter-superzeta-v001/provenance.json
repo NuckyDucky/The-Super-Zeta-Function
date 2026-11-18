@@ -1,0 +1,41 @@
+{
+  "snapshot": "2026-11-17-offcenter-superzeta-v001",
+  "predecessor": "2026-11-17-quartet-return-recursion-v001",
+  "source_records": [
+    {
+      "path": "offcenter-superzeta-prediction.json",
+      "source_path": "work/offcenter-superzeta-prediction.json",
+      "source_sha256": "a47969323d5b32dc40ab00adf0d7776a1cca73bc555257bb51c08400ac6b8c2b",
+      "source_bytes": 1027,
+      "archive_edits": []
+    },
+    {
+      "path": "offcenter-superzeta-recentered-certificate.json",
+      "source_path": "work/offcenter-superzeta-recentered-certificate.json",
+      "source_sha256": "051047d8ca2726f2c066db0844a7669f846c5cb132e8afcca7d54927641cace0",
+      "source_bytes": 1729,
+      "archive_edits": []
+    },
+    {
+      "path": "offcenter-superzeta-signed-prediction.json",
+      "source_path": "work/offcenter-superzeta-signed-prediction.json",
+      "source_sha256": "6db600a7702b87ab4b5b8e6db210fc2612a9d08b010beb2778705cbe303302fe",
+      "source_bytes": 354,
+      "archive_edits": []
+    },
+    {
+      "path": "offcenter_superzeta.py",
+      "source_path": "work/offcenter_superzeta.py",
+      "source_sha256": "d384256dc08fa3c561ed60b4fd0b23ed346e776e56f0939204181756a0726053",
+      "source_bytes": 10238,
+      "archive_edits": []
+    },
+    {
+      "path": "signed_superzeta_split.py",
+      "source_path": "work/signed_superzeta_split.py",
+      "source_sha256": "5f819abea87705c6f43b81be51c4ac618e08292bbf322054e22bdeb336fa10a7",
+      "source_bytes": 4560,
+      "archive_edits": []
+    }
+  ]
+}
