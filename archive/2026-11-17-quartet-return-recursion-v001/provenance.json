@@ -1,0 +1,68 @@
+{
+  "snapshot": "2026-11-17-quartet-return-recursion-v001",
+  "source_records": [
+    {
+      "path": "computations/dottie_multiplier_winding.py",
+      "source_path": "work/dottie_multiplier_winding.py",
+      "source_sha256": "aaa9fe379c183a2b56c23b2a0e1c1ecf7af185713c305e4e4c12e76f6f7d8d01",
+      "source_bytes": 1936,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/laplace_return_phase.py",
+      "source_path": "work/laplace_return_phase.py",
+      "source_sha256": "3cc765499644dce763cf7c4ba8061a77531e9670fccb9144a17df6be06ecc9d6",
+      "source_bytes": 1247,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/quartet-return-signed-prediction.json",
+      "source_path": "work/quartet-return-signed-prediction.json",
+      "source_sha256": "1100c11a9c941973b995dd6ec55cd9755226861f312d8a8695233e36d0cfab96",
+      "source_bytes": 545,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/quartet_return_recursion.py",
+      "source_path": "work/quartet_return_recursion.py",
+      "source_sha256": "42064d8eb18976dacf92a8c801cc4af14c15a9934c4f7e419522dec1de53e96e",
+      "source_bytes": 6176,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/superzeta-offset-prediction.json",
+      "source_path": "work/superzeta-offset-prediction.json",
+      "source_sha256": "2e406e04ac46bdce24adea0cd70b73990e97d3f0d25226b9803c2fca32f6e096",
+      "source_bytes": 434,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/superzeta_phase_offset.py",
+      "source_path": "work/superzeta_phase_offset.py",
+      "source_sha256": "3ced14982180ccca7fddeb393a20c99eecdc6a18533908fff648569f5444b20e",
+      "source_bytes": 4475,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/verify_dottie_horn_slice.py",
+      "source_path": "work/verify_dottie_horn_slice.py",
+      "source_sha256": "4b801849c9d531683368b5499de097b1325556dc4c3f7bef114c989863e2a2b2",
+      "source_bytes": 3197,
+      "archive_edits": []
+    },
+    {
+      "path": "computations/verify_quartet_response_zero.py",
+      "source_path": "work/verify_quartet_response_zero.py",
+      "source_sha256": "bbe52f62e9ffc38c53341ba132eb67e58f9c36ddae07fa975a34f8e1cb752087",
+      "source_bytes": 8470,
+      "archive_edits": []
+    },
+    {
+      "path": "quartet-return-phase.tex",
+      "source_path": "work/quartet-return-phase.tex",
+      "source_sha256": "368248c07b8c98a2b009810fc1eb5338c98bc447058d578a6696f7d6e3ae2e01",
+      "source_bytes": 6870,
+      "archive_edits": []
+    }
+  ]
+}

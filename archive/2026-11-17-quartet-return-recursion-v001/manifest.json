@@ -1,0 +1,54 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 3886,
+      "sha256": "36f835da655c8c07a78c915ba9197f263a1cff86a31d27a85575903da2d60897"
+    },
+    "computations/dottie_multiplier_winding.py": {
+      "bytes": 1936,
+      "sha256": "aaa9fe379c183a2b56c23b2a0e1c1ecf7af185713c305e4e4c12e76f6f7d8d01"
+    },
+    "computations/laplace_return_phase.py": {
+      "bytes": 1247,
+      "sha256": "3cc765499644dce763cf7c4ba8061a77531e9670fccb9144a17df6be06ecc9d6"
+    },
+    "computations/quartet-return-signed-prediction.json": {
+      "bytes": 545,
+      "sha256": "1100c11a9c941973b995dd6ec55cd9755226861f312d8a8695233e36d0cfab96"
+    },
+    "computations/quartet_return_recursion.py": {
+      "bytes": 6176,
+      "sha256": "42064d8eb18976dacf92a8c801cc4af14c15a9934c4f7e419522dec1de53e96e"
+    },
+    "computations/superzeta-offset-prediction.json": {
+      "bytes": 434,
+      "sha256": "2e406e04ac46bdce24adea0cd70b73990e97d3f0d25226b9803c2fca32f6e096"
+    },
+    "computations/superzeta_phase_offset.py": {
+      "bytes": 4475,
+      "sha256": "3ced14982180ccca7fddeb393a20c99eecdc6a18533908fff648569f5444b20e"
+    },
+    "computations/verify_dottie_horn_slice.py": {
+      "bytes": 3197,
+      "sha256": "4b801849c9d531683368b5499de097b1325556dc4c3f7bef114c989863e2a2b2"
+    },
+    "computations/verify_quartet_response_zero.py": {
+      "bytes": 8470,
+      "sha256": "bbe52f62e9ffc38c53341ba132eb67e58f9c36ddae07fa975a34f8e1cb752087"
+    },
+    "provenance.json": {
+      "bytes": 2551,
+      "sha256": "5fdef9ac63f62f5dec6d2d83e52fb868e3ca427aed8b2cb1ae6982538fc59c34"
+    },
+    "quartet-return-phase.tex": {
+      "bytes": 6870,
+      "sha256": "368248c07b8c98a2b009810fc1eb5338c98bc447058d578a6696f7d6e3ae2e01"
+    },
+    "requirements.txt": {
+      "bytes": 47,
+      "sha256": "1572720d9a5918e5bfbef1c7bf653f1ca256c245d3bb694d625cb3c8c7bc9813"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-17-quartet-return-recursion-v001"
+}

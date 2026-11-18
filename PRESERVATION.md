@@ -17,7 +17,7 @@ git diff --name-status --cached
 git diff --check --cached
 ```
 
-Snapshot files preserve their original bytes, including line endings. The repository's Git attributes enforce that behavior on checkout. The verifier checks both file inventory and hashes. Its `--base` option also checks for changes to earlier snapshot directories. The [GitHub Actions template](tools/github-actions/archive-integrity.yml) runs both checks against the base of pull requests and the preceding commit on ordinary pushes to `main` when installed at `.github/workflows/archive-integrity.yml`. Computational replay and math review remain separate evidence.
+Snapshot files preserve their original bytes, including line endings. The repository's Git attributes enforce that behavior on checkout. The verifier checks both file inventory and hashes. Its `--base` option also checks for changes to earlier snapshot directories. The [GitHub Actions workflow](.github/workflows/archive-integrity.yml) runs both checks against the base of pull requests and the preceding commit on ordinary pushes to `main`. Computational replay and math review remain separate evidence.
 
 ## Confirm the deposit
 

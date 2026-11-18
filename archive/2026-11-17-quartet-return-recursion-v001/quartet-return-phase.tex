@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{Ordered quartet returns, coupling recursion, and the Laplace phase}
+\date{17 November 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Starting data.}
+Use the project's characteristic equation $\alpha^2e^{\alpha-\alpha^{-1}}=-1$,
+$u=(\alpha-\alpha^{-1})/(2i)$, and $q=\alpha/(1+\alpha)$.
+Reciprocal exchange takes $(u,q)$ to $(-u,1-q)$.
+The two ordered germs are $f_k=E_k\circ E_{2-k}$ and $f_{2-k}$,
+where $k=2q$ and $E_a(z)=(e^{az}-1)/a$ has its continuous value at zero.
+Write $c_3=[z^3]f_k$ and $D=[z^4](f_k-f_{2-k})$.
+The project's Touchard expansion gives
+\[
+ B=q(1-q)=(3c_3-2)/2,\qquad D=B(1-2q)/3,\qquad
+ \boxed{u=3iD/(2B^2).}
+\]
+Indeed $(2q-1)/B=\alpha-\alpha^{-1}$. At every characteristic phase these
+denominators are nonzero. This version of the previous jet recovery uses
+the difference between the two fourth-order measurements to recover the
+sign of the frequency coordinate.
+
+\paragraph{Coupling response.}
+Write $g=\varepsilon^{-2}$, $E_g(\lambda)=\cos^2\sqrt{\lambda}-g\lambda$,
+and $\mathcal Z_g(s)$ for its spectral zeta with the principal cut. Here
+$\mathcal Z_0$ denotes the reference limit $g=0$.
+Put $C(s)=s\sin(\pi s)/\pi$, $h(v)=v\,\mathrm{sech}^2\sqrt v$ and
+$r(v)=h(v)/(1+h(v))$. For $0<\Re s<1$ the project's relative determinant gives
+\[
+ \mathcal Z_g(s)-\mathcal Z_0(s)
+ =C(s)\int_0^\infty v^{-s-1}\log(1+g h(v))\,dv .
+\]
+This follows by taking the log ratio $E_g(-v)/E_0(-v)=1+g h(v)$
+on the negative axis and integrating by parts in the spectral contour formula,
+first in $1/2<\Re s<1$ and then by continuation.
+Set $M_j(s)=\int_0^\infty v^{-s-1}r(v)^j\,dv$. Differentiation gives
+\[
+ C(s)M_j(s)=
+ \frac{(-1)^{j-1}}{(j-1)!}\left.\partial_g^j\mathcal Z_g(s)\right|_{g=1}.
+\]
+Thus multiplying the integrand of $M_j$ by $r(v)$ gives the next response
+coefficient at the original quartet coupling.
+For $w=2s$ one has
+\[
+ C(s)M_1(s)=w\sum_{\Re u>0} B(u)e^{-w\operatorname{Log}u}.
+\]
+Here every conjugate is included separately and the real Dottie root counts once.
+To check the weight, differentiate $\cos u=\pm\sqrt g\,u$ at $g=1$.
+It gives $-\partial_g\log u=1/[2(1+u\tan u)]=B(u)$.
+The differentiated root sum first holds in the absolutely convergent
+original half-plane. The bound $B(u_n)=O(1/n)$ gives normal convergence
+of the derivative series for $\Re w>0$. The logarithm is principal
+on the positive-real-part representatives. Changing height by $d$ multiplies
+each mode by $e^{-id\operatorname{Log}u}$. The factors for a conjugate pair
+have common phase $e^{-id\log|u|}$ and reciprocal amplitudes
+$e^{\pm d\arg u}$.
+
+\paragraph{Summing from the original coupling.}
+With $a$ the unique positive solution of $a\tanh a=1$, set
+$r_* = 1-a^{-2}$. Differentiating $x^2\mathrm{sech}^2x$ shows that its
+unique maximum is $a^2-1$. Thus $\sup r=r_*$ and
+$h=\sum_{j=1}^{K}r^j+h r^K$. Consequently,
+with $\sigma=\Re s\in(0,1)$,
+\begin{align*}
+ \left.\partial_g\mathcal Z_g(s)\right|_{g=0}
+  &=C(s)\sum_{j=1}^{K}M_j(s)+\mathcal E_K(s),\\
+ |\mathcal E_K(s)|&\le |C(s)|r_*^K\bigl((1-\sigma)^{-1}+\sigma^{-1}\bigr).
+\end{align*}
+For the bound use $h(v)\le\min(v,1)$, splitting the integral at $v=1$.
+The previous quartet-response identity reads
+\[
+ \left.\partial_g\mathcal Z_g(w/2)\right|_{g=0}
+ =w(w-1)\pi^{-w}(2^w-1)\zeta(w).
+\]
+It follows by substituting $v=x^2$ in the integral of $h$, taking the
+Mellin transform of $\mathrm{sech}^2x$, and using the functional equation.
+In detail,
+$\int_0^\infty x^{z-1}\mathrm{sech}^2x\,dx
+ =2^{2-z}\Gamma(z)(1-2^{2-z})\zeta(z-1)$,
+initially by exponential expansion for $\Re z>2$, then by continuation,
+with $z=2-w$. This identifies zeros in the open critical strip.
+
+\paragraph{The Laplace phase and the frequency window.}
+For fixed $0<\Re w<2$ the large-order asymptotic is
+\[
+ M_j(w/2)\sim 2\sqrt{\pi/j}\,a^{-w}r_*^j .
+\]
+More precisely, fix $0<\beta<2$ and let $w_j=\beta+iT_j$ with
+$T_j/\sqrt j\longrightarrow\tau\in\mathbb R$. Then
+\[
+ \boxed{\displaystyle
+ \frac{\sqrt j\,a^{w_j}}{2\sqrt\pi\,r_*^j}M_j(w_j/2)
+ \longrightarrow e^{-\tau^2/4}.}
+\]
+For a proof set $x=\sqrt v=a e^y$ and $\psi(y)=\log(r(x^2)/r_*)$.
+As a function of $x$, $\log h(x^2)$ has derivative $2/x-2\tanh x$ and
+second derivative $-2$ at $a$. At that point the second derivative of
+$\log r(x^2)$ is $-2/(1+h(a^2))=-2/a^2$. It follows that
+$\psi(0)=\psi'(0)=0$, $\psi''(0)=-2$. After the substitution
+$z=\sqrt j\,y$ the normalized integral is
+\[
+ \frac{1}{\sqrt\pi}\int_{\mathbb R}
+ \exp\{j\psi(z/\sqrt j)\}\exp\{-w_j z/\sqrt j\}\,dz.
+\]
+Near zero, $\psi(y)\le-cy^2$ for a $c>0$, giving an integrable Gaussian
+majorant after rescaling. Outside any fixed small neighborhood
+$r/r_*\le\eta<1$ since $r$ tends to zero at both ends.
+The absolute tail is $O(\sqrt j\,\eta^{j-1})$ using integrability of
+$e^{-\beta y}(r/r_*)$. Dominated convergence and the Fourier transform of
+$e^{-z^2}$ give the formula. For fixed $w$ this also proves that the
+consecutive moment ratio tends to $r_*$ and fixes the phase as
+$e^{-iT\log a}$. The absolute error bound at finite order depends on
+$|\sin(\pi w/2)|$ and can grow exponentially in height.
+
+\paragraph{What the high-height implementation measures.}
+The reference roots at $g=0$ are $\pi m/2$ for positive odd $m$, each
+of multiplicity two. Removing their common scale gives odd integers, and
+every positive integer is uniquely $2^k m$ for odd $m$. For
+$\Re w>1$ this is the decomposition
+$\sum_{m\ {\rm odd}}m^{-w}=(1-2^{-w})\zeta(w)$.
+At a chosen base height the dyadic phase step is $e^{-iT\log2}$.
+The accompanying high-height script uses that recurrence to form the
+standard Riemann--Siegel main sum and its leading correction.
+Its counts and accuracy belong to the continued reference spectrum and the
+classical formula. Root order enters the original-coupling reconstruction
+above. An individual attracting Dottie cycle of paired period $p$ would
+require a further relation identifying its return with a Mellin scale.
+
+\paragraph{Reproduction.}
+The script \texttt{quartet\_return\_recursion.py} and its dependency
+\texttt{verify\_quartet\_response\_zero.py} give the native calculation.
+The commands \texttt{predict} and \texttt{check} take a JSON filename.
+The prediction uses isolated roots, the jet weights and the finite series.
+The independent check uses signs of the Hardy function at the saved endpoints.
+\texttt{laplace\_return\_phase.py} tests the scaled asymptotic by
+quadrature. \texttt{superzeta\_phase\_offset.py} has separate
+\texttt{predict} and \texttt{check} commands for the two high levels.
+The native and high computations establish existence in their brackets.
+High-frequency reference summation follows
+\href{https://dlmf.nist.gov/25.10}{DLMF 25.10} and
+\href{https://arxiv.org/abs/1811.01130}{O'Sullivan, Theorem 1.4}.
+\end{document}
