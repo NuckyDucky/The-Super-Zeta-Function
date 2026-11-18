@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 3397,
+      "sha256": "72b2f7bab9e04de0f9731e89563cf28727b15dcc999dbb4b1995e64fb01cf611"
+    },
+    "check_extrema.py": {
+      "bytes": 3119,
+      "sha256": "09ef346c0ccc846ca07d067565cb5930725c623c20d77de7b6f19f7e09e6b409"
+    },
+    "extrema-results.txt": {
+      "bytes": 1251,
+      "sha256": "ff7e777715024239ec2c99b52676015282be9d2331eff7d281e85fba9e15b50c"
+    },
+    "plot_quartic_ovals.py": {
+      "bytes": 4735,
+      "sha256": "7b6a8e96c7b5d1f0091a9db72ae2e33fea1c0d0ab3f94bacfa940d16191b947f"
+    },
+    "quartic-ovals.png": {
+      "bytes": 190662,
+      "sha256": "5721a4ea98809e2a12f63dd995a400841ef9b8cdab1cff1644e84020e1f3a74b"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-quartic-ovals-v001"
+}
