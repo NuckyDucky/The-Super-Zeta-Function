@@ -1,0 +1,45 @@
+{
+  "positive_height_half_width": "1/8",
+  "broad_real": [
+    "1/16",
+    "15/16"
+  ],
+  "off_center_real": [
+    "5/8",
+    "7/8"
+  ],
+  "quartet_displacement": "1/4",
+  "levels": [
+    {
+      "level": 954985468722,
+      "height": "[3000175332822.0404717483134698391786 +/- 4.78e-23]",
+      "modes": 691008,
+      "degree": 48,
+      "predicted_roots": [
+        {
+          "height_offset": -0.060284834911776074,
+          "beta": 0.5
+        },
+        {
+          "height_offset": 0.04022628327521444,
+          "beta": 0.5
+        }
+      ]
+    }
+  ],
+  "selection": {
+    "batch_sha256": "c8ee17c98b36cb4377e5075fc324deecff8a46e84ca473923a5452a477cfc164",
+    "screened": 32,
+    "forecast_root_count": 32,
+    "positive_split_levels": [],
+    "smallest_gap": {
+      "level": 954985468722,
+      "predicted_line_offsets": [
+        -0.060284834911776074,
+        0.04022628327521444
+      ],
+      "gap": 0.10051111818699052,
+      "signed_square": -0.002525621219799794
+    }
+  }
+}

@@ -10,4 +10,6 @@ Private research archive for reciprocal-exponential dynamics, the associated spe
 
 [An off-center superzeta zero count, 17 November 2026](archive/2026-11-17-offcenter-superzeta-v001/README.md) records finite complex forecasts and a signed pair test, directed counts in three high windows, and a cosine-determinant control.
 
+[32-level Super Zeta screen, 17 November 2026](archive/2026-11-17-offcenter-screen32-v001/README.md) adds a frozen complex forecast, its ranking rule, and the directed count in the selected window.
+
 [How to deposit, verify, and recover work](PRESERVATION.md) is the procedure for future snapshots. Other projects, source manuscripts, and working files need their own preservation copies.
