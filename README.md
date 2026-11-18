@@ -1,5 +1,14 @@
 # The Super Zeta Function
 
+**In this work we**
+
+1. Strengthen OpenAI’s 7/8ths bound to the critical line in three certified height intervals.
+2. Derive the exact Stirling correction for every positive integer from the quartet normalization, with a Lean proof.
+3. Build the super zeta from the quartet spectrum and recover Riemann zeta.
+4. Find the Dottie spire in complex reciprocal tetration and certify finite orbit periods.
+5. Preserve the order of exponential stages in a ring of signed words.
+6. Approximate π using a genus-one quartic that fails the Hasse principle.
+
 I wanted to see how closely I could approximate $\pi$ using $e$ and six integers. When I solved the quadratic, I found a curve with two real ovals and a simple rule that swaps its two roots. The same reciprocal expression showed up in the tower I was studying. It let me find complex fixed pairs with the same first-order return as the Dottie fold. Summing inverse powers of the resulting spectrum led me to my super zeta function.
 
 [Quadratic and real ovals](#the-quadratic-and-the-genus-one-curve) · [Reciprocal tetration and the Dottie spire](#reciprocal-tetration) · [The super zeta](#building-the-super-zeta) · [The 7/8ths strengthening](#local-zeta-result) · [Factorial correction](#the-factorial-correction) · [Preprints and proofs](#preprints-and-reproduction) · [Credits](#credits) · [Research impact](#research-impact)
