@@ -1,0 +1,156 @@
+{
+  "nomination_sha256": "3a6aeb6ed8fe0dec9bc03be419f00b4f2be49dc3eb9eddd59ae825baf2dd9f9f",
+  "forecast_sha256": "a6a3751b455a59c6edca9dc0042a506881524b6656af68b6928b53ed3631b441",
+  "arms": {
+    "dottie": {
+      "broad": {
+        "status": "certified",
+        "count": 2,
+        "pieces": [
+          {
+            "count": 1,
+            "certified_segments": 105
+          },
+          {
+            "count": 1,
+            "certified_segments": 123
+          }
+        ],
+        "off_line_upper_bound": 0,
+        "line_brackets": [
+          [
+            "-13364023/67108864",
+            "-26728045/134217728"
+          ],
+          [
+            "1377231/16777216",
+            "11017849/134217728"
+          ]
+        ]
+      },
+      "signed_half": {
+        "status": "certified",
+        "count": 0,
+        "pieces": [
+          {
+            "count": 0,
+            "certified_segments": 4
+          },
+          {
+            "count": 0,
+            "certified_segments": 4
+          }
+        ]
+      },
+      "positives": [],
+      "negative_sample": {
+        "status": "certified",
+        "count": 2,
+        "pieces": [
+          {
+            "count": 1,
+            "certified_segments": 113
+          },
+          {
+            "count": 1,
+            "certified_segments": 84
+          }
+        ],
+        "off_line_upper_bound": 0,
+        "line_brackets": [
+          [
+            "-13364023/67108864",
+            "-26728045/134217728"
+          ],
+          [
+            "1377231/16777216",
+            "11017849/134217728"
+          ]
+        ],
+        "signed_square_interval": [
+          "-1424752589351025/72057594037927936",
+          "-1424752438367449/72057594037927936"
+        ]
+      },
+      "interpolation_errors": [
+        "[1.0078507783990e-15 +/- 4.02e-29]",
+        "[1.0078507783991e-15 +/- 2.88e-29]"
+      ]
+    },
+    "grid": {
+      "broad": {
+        "status": "certified",
+        "count": 3,
+        "pieces": [
+          {
+            "count": 1,
+            "certified_segments": 107
+          },
+          {
+            "count": 2,
+            "certified_segments": 127
+          }
+        ],
+        "off_line_upper_bound": 0,
+        "line_brackets": [
+          [
+            "-33049/262144",
+            "-16921087/134217728"
+          ],
+          [
+            "8902251/134217728",
+            "2225563/33554432"
+          ],
+          [
+            "31893907/134217728",
+            "7973477/33554432"
+          ]
+        ]
+      },
+      "signed_half": {
+        "status": "certified",
+        "count": 0,
+        "pieces": [
+          {
+            "count": 0,
+            "certified_segments": 5
+          },
+          {
+            "count": 0,
+            "certified_segments": 4
+          }
+        ]
+      },
+      "positives": [],
+      "negative_sample": {
+        "status": "certified",
+        "count": 2,
+        "pieces": [
+          {
+            "count": 2,
+            "certified_segments": 146
+          }
+        ],
+        "off_line_upper_bound": 0,
+        "line_brackets": [
+          [
+            "8902251/134217728",
+            "2225563/33554432"
+          ],
+          [
+            "31893907/134217728",
+            "7973477/33554432"
+          ]
+        ],
+        "signed_square_interval": [
+          "-528616291605649/72057594037927936",
+          "-528616199639025/72057594037927936"
+        ]
+      },
+      "interpolation_errors": [
+        "[1.0078507783987e-15 +/- 3.47e-29]",
+        "[1.0078507783988e-15 +/- 2.34e-29]"
+      ]
+    }
+  }
+}
