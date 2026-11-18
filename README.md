@@ -14,4 +14,6 @@ Private research archive for reciprocal-exponential dynamics, the associated spe
 
 [Matched Dottie and grid height test, 17 November 2026](archive/2026-11-17-dottie-grid-match-v001/README.md) preserves the frozen finite-orbit nomination, matched forecasts, and directed counts in both windows.
 
+[Full critical strip at the Dottie height, 17 November 2026](archive/2026-11-17-dottie-local-strip-v001/README.md) combines the archived contour and OpenAI's seven-eighths theorem to account for every zero in the frozen height window. The addendum also checks the two-thirds quartet prediction against the measured magnitude crossing.
+
 [How to deposit, verify, and recover work](PRESERVATION.md) is the procedure for future snapshots. Other projects, source manuscripts, and working files need their own preservation copies.
