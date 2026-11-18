@@ -1,0 +1,106 @@
+{
+  "plan_sha256": "77ea38844fa5891c762b322e4761966f1ba48b7acc45af92f73ff89b0b485deb",
+  "height": "[9052238644955.89078663841465771390046049032531 +/- 4.90e-33]",
+  "count": {
+    "broad": {
+      "status": "certified",
+      "count": 3,
+      "pieces": [
+        {
+          "count": 2,
+          "certified_segments": 139
+        },
+        {
+          "count": 1,
+          "certified_segments": 127
+        }
+      ],
+      "off_line_upper_bound": 0,
+      "line_brackets": [
+        [
+          "-31967213/134217728",
+          "-7991803/33554432"
+        ],
+        [
+          "-1629327/67108864",
+          "-3258653/134217728"
+        ],
+        [
+          "10767455/134217728",
+          "336483/4194304"
+        ]
+      ]
+    },
+    "signed_half": {
+      "status": "certified",
+      "count": 0,
+      "pieces": [
+        {
+          "count": 0,
+          "certified_segments": 4
+        },
+        {
+          "count": 0,
+          "certified_segments": 4
+        }
+      ]
+    },
+    "positives": [
+      {
+        "forecast": {
+          "parent_index": 1,
+          "box": {
+            "beta": [
+              "1/16",
+              "15/16"
+            ],
+            "height_offset": [
+              "-13364023/67108864",
+              "-26728045/134217728"
+            ]
+          }
+        },
+        "result": {
+          "status": "certified",
+          "count": 0,
+          "pieces": [
+            {
+              "count": 0,
+              "certified_segments": 82
+            }
+          ]
+        }
+      },
+      {
+        "forecast": {
+          "parent_index": 2,
+          "box": {
+            "beta": [
+              "1/16",
+              "15/16"
+            ],
+            "height_offset": [
+              "1377231/16777216",
+              "11017849/134217728"
+            ]
+          }
+        },
+        "result": {
+          "status": "certified",
+          "count": 0,
+          "pieces": [
+            {
+              "count": 0,
+              "certified_segments": 96
+            }
+          ]
+        }
+      }
+    ],
+    "negative_sample": null,
+    "interpolation_errors": [
+      "[4.0314031135933e-15 +/- 2.13e-29]",
+      "[4.0314031135935e-15 +/- 1.45e-30]"
+    ]
+  }
+}

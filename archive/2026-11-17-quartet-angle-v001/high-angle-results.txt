@@ -1,0 +1,10 @@
+First predicted bearing, degrees [-135.63028647347346532630 +/- 5.15e-21]
+First predicted step (dx, dy) [-0.0019067688209690590868353 +/- 5.52e-26] + [-0.0018652725263965724405632 +/- 1.17e-26]j
+After step 1 local coordinates [4.6356179030940913164656340e-5 +/- 2.25e-31] + [-0.0018652725263965724405632001 +/- 1.79e-29]j
+After step 2 local coordinates [2.0401285898806697131249791e-10 +/- 1.71e-38] + [-0.0018655870665125306745038292 +/- 1.32e-29]j
+After step 3 local coordinates [-3.9162701054129257588711533e-17 +/- 3.15e-43] + [-0.0018655727054857312677670759 +/- 3.75e-29]j
+Bracketed target minus probe -0.0019531250000000000000 + [-0.00186557 +/- 6.96e-9]j
+Bracketed bearing, degrees [-136.3134 +/- 6.06e-5]
+First angular error, degrees [0.6831 +/- 6.89e-5]
+Miss after one step [4.63572e-5 +/- 7.02e-11]
+Last height belongs to independent bracket True

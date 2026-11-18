@@ -1,0 +1,111 @@
+{
+  "snapshot": "2026-11-17-quartet-angle-v001",
+  "research_date": "2026-11-17",
+  "project": "Reciprocal tetration and the Super Zeta Function, NuckyDucky and the Greater Works collaboration",
+  "predecessor": "2026-11-17-dottie-local-strip-v001",
+  "predecessor_commit": "29c996e9827093b08f1a688a6192b6eddaacd917",
+  "sources": [
+    {
+      "source": "work/dottie_second_harmonic_overlap.py",
+      "archived": "dottie_second_harmonic_overlap.py",
+      "source_sha256": "5f079e16ae8176ea5730e3a5e3f38078d7ad870286a6c38aea3eb8245608bf7a",
+      "transformation": "Byte-identical"
+    },
+    {
+      "source": "work/dottie-second-harmonic-plan.json",
+      "archived": "dottie-second-harmonic-plan.json",
+      "source_sha256": "77ea38844fa5891c762b322e4761966f1ba48b7acc45af92f73ff89b0b485deb",
+      "transformation": "Byte-identical"
+    },
+    {
+      "source": "work/dottie-second-harmonic-count.json",
+      "archived": "dottie-second-harmonic-count.json",
+      "source_sha256": "19378956b971df74367acbc16766aa6e29e6e7478845c85777f5a0594e16f215",
+      "transformation": "Byte-identical"
+    },
+    {
+      "source": "work/dottie_local_angle.py",
+      "archived": "dottie_local_angle.py",
+      "source_sha256": "42e575a0a1853f16d5b2c813f7d73f1db5b5be908778282b5545b7c114b542aa",
+      "transformation": "Byte-identical"
+    },
+    {
+      "source": "work/dottie_factorial_phase.py",
+      "archived": "dottie_factorial_phase.py",
+      "source_sha256": "9ba40295da31ccb2d1af0926888aae717f1cb0ed22cd8e638b5304dcf5f176ff",
+      "transformation": "Removed the development-directory import path. The archive replay supplies the original verifier from the foundation snapshot."
+    },
+    {
+      "source": "work/native_zero_angle_step.py",
+      "archived": "native_zero_angle_step.py",
+      "source_sha256": "a2687afcf6a66043efd3456bdaa3628a90cf0d6559b47c8d1fb9bb925bee72b3",
+      "transformation": "Byte-identical"
+    },
+    {
+      "source": "work/track_native_superzeta_layers.py",
+      "archived": "track_native_superzeta_layers.py",
+      "source_sha256": "fad5f1d437f5860f98cd209ac4d708f07fd3bb7bbe9c6d3bc5f7caed6c471cf6",
+      "transformation": "Byte-identical"
+    }
+  ],
+  "additional_mathematical_source": {
+    "source": "outputs/Greater-Works-Radius-Selection/research/four-tag-affix-geometry.md",
+    "source_sha256": "d9ca99c706b9e3222ea39ae6f0ec4e9e13022b5348f9283940a57788a642665a",
+    "use": "The relative phase formulas and projective reconstruction are restated directly in the README."
+  },
+  "archive_inputs": [
+    {
+      "path": "2026-11-17-dottie-grid-match-v001/dottie-grid-certificate.json",
+      "sha256": "4642650426061b2053d153eeb32ba5f338972da30b3f5c82059f150b819cb077"
+    },
+    {
+      "path": "2026-11-17-dottie-grid-match-v001/dottie_grid_trial.py",
+      "sha256": "2cee4cee8854064bed8076b6e7fa970e5d792738f611b1ec46de1456d5a3cf85"
+    },
+    {
+      "path": "2026-11-17-dottie-grid-match-v001/dottie_grid_nomination.py",
+      "sha256": "50c1c837dcfd6a518c3a179548f470aab017a97e80ae914f0bc8914c7948edf6"
+    },
+    {
+      "path": "2026-11-17-offcenter-superzeta-v001/offcenter_superzeta.py",
+      "sha256": "d384256dc08fa3c561ed60b4fd0b23ed346e776e56f0939204181756a0726053"
+    },
+    {
+      "path": "2026-11-17-offcenter-superzeta-v001/signed_superzeta_split.py",
+      "sha256": "5f819abea87705c6f43b81be51c4ac618e08292bbf322054e22bdeb336fa10a7"
+    },
+    {
+      "path": "2026-11-17-quartet-return-recursion-v001/computations/dottie_multiplier_winding.py",
+      "sha256": "aaa9fe379c183a2b56c23b2a0e1c1ecf7af185713c305e4e4c12e76f6f7d8d01"
+    },
+    {
+      "path": "2026-11-17-quartet-return-recursion-v001/computations/verify_dottie_horn_slice.py",
+      "sha256": "4b801849c9d531683368b5499de097b1325556dc4c3f7bef114c989863e2a2b2"
+    },
+    {
+      "path": "2026-11-16-super-zeta-v001/computations/verify_binomial_normalization.py",
+      "sha256": "023eadca10fec51ff9d515e57db15d9d4efe7327a0960c52a22391374d7eac2e"
+    },
+    {
+      "path": "2026-11-16-super-zeta-v001/sources/radial-coefficient-input.json",
+      "sha256": "083aad2bb45828c0ef0f001e29d551cebe2fe358e7e90aebd639cd0d70274924"
+    }
+  ],
+  "environment": {
+    "python": "3.12.11",
+    "python-flint": "0.9.0",
+    "FLINT": "3.6.0",
+    "numpy": "2.5.5",
+    "mpmath": "1.3.0",
+    "sympy": "1.14.0",
+    "randomness": "None"
+  },
+  "replay_records": {
+    "contour-results.txt": "Standard output of python -B replay.py contour using the pinned environment, saved as UTF-8 with LF.",
+    "factorial-results.txt": "Standard output of python -B replay.py factorial using the pinned environment, saved as UTF-8 with LF.",
+    "layers-results.txt": "Standard output of python -B replay.py layers using the pinned environment, saved as UTF-8 with LF.",
+    "native-angle-results.txt": "Standard output of python -B replay.py native-angle using the pinned environment, saved as UTF-8 with LF.",
+    "high-angle-results.txt": "Standard output of python -B replay.py high-angle using the pinned environment, saved as UTF-8 with LF."
+  },
+  "code_changes": "replay.py, README.md, requirements.txt and provenance.json were assembled for publication."
+}

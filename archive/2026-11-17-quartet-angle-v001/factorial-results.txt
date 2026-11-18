@@ -1,0 +1,6 @@
+First factorial opposition, continuous level [424367.931671291164827906139 +/- 4.12e-22]
+Differences from pi, in radians, at first Dottie height:
+424329 factorial [0.0005765004002503286 +/- 2.21e-20] full [8.283479830010085e-6 +/- 1.71e-22]
+424330 factorial [0.0005616904092103722 +/- 1.29e-20] full [-6.522689097579570e-6 +/- 4.20e-22]
+424367 factorial [1.379434050359748e-5 +/- 2.02e-21] full [-0.0005542773640256304 +/- 4.19e-20]
+424368 factorial [-1.011672414066703e-6 +/- 1.25e-22] full [-0.0005690795561486054 +/- 4.85e-20]

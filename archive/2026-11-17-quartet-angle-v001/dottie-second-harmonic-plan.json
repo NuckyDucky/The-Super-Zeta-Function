@@ -1,0 +1,57 @@
+{
+  "prediction": "Each certified first-harmonic zero repeats at its previous height plus T_D. Test each entire inherited offset interval at 2*T_D across the admissible real strip.",
+  "parent_sha256": "4642650426061b2053d153eeb32ba5f338972da30b3f5c82059f150b819cb077",
+  "precision_bits": 192,
+  "harmonic": 2,
+  "boxes": {
+    "broad": {
+      "beta": [
+        "1/16",
+        "15/16"
+      ],
+      "height_offset": [
+        "-1/4",
+        "1/4"
+      ]
+    },
+    "signed_half": {
+      "beta": [
+        "5/8",
+        "7/8"
+      ],
+      "height_offset": [
+        "-1/4",
+        "1/4"
+      ]
+    },
+    "negative_sample": null,
+    "positive": [
+      {
+        "parent_index": 1,
+        "box": {
+          "beta": [
+            "1/16",
+            "15/16"
+          ],
+          "height_offset": [
+            "-13364023/67108864",
+            "-26728045/134217728"
+          ]
+        }
+      },
+      {
+        "parent_index": 2,
+        "box": {
+          "beta": [
+            "1/16",
+            "15/16"
+          ],
+          "height_offset": [
+            "1377231/16777216",
+            "11017849/134217728"
+          ]
+        }
+      }
+    ]
+  }
+}
