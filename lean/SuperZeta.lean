@@ -19,3 +19,7 @@ import SuperZeta.SpireDisk
 import SuperZeta.Stieltjes
 import SuperZeta.Touchard
 import SuperZeta.MemePrecision
+import SuperZeta.ReferenceResolvent
+import SuperZeta.RootBounds
+import SuperZeta.Ray
+import SuperZeta.Multiplicity

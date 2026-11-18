@@ -1,12 +1,12 @@
 {
   "files": {
     "README.md": {
-      "bytes": 5858,
-      "sha256": "9ad5fed53c12f8de4b81326d46295a8e855c521dbdc44470405b23c4f42a8990"
+      "bytes": 6896,
+      "sha256": "d60d8026819aec671eb02bf307c93763dfec8a8d23cd205e6a9bf4b1e4a0a377"
     },
     "lean-source-sha256.json": {
-      "bytes": 3837,
-      "sha256": "69805f29e98090ff0658fe1d17b7ca8a8363c659492dd6adacb221b30667e01b"
+      "bytes": 4366,
+      "sha256": "6f2c9ab1ab743f822339f7e94a8d7c72ffa5d7731d66267c4de0f6823b768af2"
     }
   },
   "format_version": 1,

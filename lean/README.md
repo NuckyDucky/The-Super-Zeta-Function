@@ -16,6 +16,16 @@ python tools/check_lean.py --fetch-cache
 
 The toolchain file pins Lean 4.19.0. The Lake manifest pins mathlib and its dependencies. The first run downloads the precompiled imports. For subsequent local runs, use `python tools/check_lean.py`. Alternatively, from this directory, run `lake build` and `lake env lean Audit.lean`. The proof build uses the Lean kernel. The audit visits every theorem in the imported project modules and checks its axiom dependencies against `propext`, `Classical.choice`, and `Quot.sound`. It rejects proof placeholders and project axioms. The same check runs on GitHub.
 
+To inspect a theorem and every hypothesis Lean requires, these three commands work in a Lean file inside this project.
+
+```lean
+import SuperZeta
+
+#check SuperZeta.Reciprocal.step_twice
+#check SuperZeta.QuartetRadius.exists_characteristic_quarter
+#check SuperZeta.Hasse.every_prime_affine_point
+```
+
 ## Follow the mathematics
 
 | Result | Exact scope and Lean entry point |
@@ -32,6 +42,8 @@ The toolchain file pins Lean 4.19.0. The Lake manifest pins mathlib and its depe
 | [Spectral traces and Riemann coordinates](SuperZeta/Spectrum.lean) | `determinant_hasSum` gives the actual cosine series at all complex arguments. `newton_convolution` and `first_four_unit_coupling_traces` derive $2,10/3,92/15,3538/315$ from its logarithmic derivative. `quartet_mode_norm` gives the exact magnitude of one complex mode. `equality_iff_riemann_zero` proves the consequence of the stated reconstruction identity using mathlib’s Riemann zeta. |
 | [Binary valuation](SuperZeta/Binary.lean) | `determinant_valuation` gives the determinant coefficient valuation at every degree from two onward. [BinaryLaw](SuperZeta/BinaryLaw.lean) proves `trace_digit_law` directly for every trace of the coupled determinant. [BinaryReference](SuperZeta/BinaryReference.lean) proves the reference and difference each have one fewer factor of two. [BinaryInteger](SuperZeta/BinaryInteger.lean) gives the odd integral normalization. |
 | [Riemann reference and correction](SuperZeta/Reference.lean) | `reference_double_root` gives the exact leading coefficient at a reference root. `reference_hasSum` identifies the doubled half-integer spectrum with the scaled Riemann zeta for $\Re s>1/2$. `correction_differentiable` proves holomorphy for $\Re s<1$ at nonnegative inverse squared coupling. `residue_half` computes the residue of the reference plus this correction at $s=1/2$. |
+| [Reference product](SuperZeta/ReferenceProduct.lean) and [reference resolvent](SuperZeta/ReferenceResolvent.lean) | Euler’s sine product gives $\cosh x=\prod_{n\ge0}(1+x^2/\lambda_n)$. `reference_resolvent` differentiates its actual logarithm on the positive ray, retaining the doubled multiplicities. |
+| [Multiplicity under doubling](SuperZeta/Multiplicity.lean) | `reconstruction_order` proves that multiplying by the Riemann prefactor and evaluating at $2s$ preserves the full order of each zero for $0<\Re s<1/2$. The Riemann address $1/2+iT$ corresponds to $1/4+iT/2$. |
 | [Stieltjes integral for each root](SuperZeta/Stieltjes.lean) | `slit_integral` evaluates the resolvent integral on the principal cut for $0<\Re s<1$. `countable_slit` proves the interchange with an infinite spectral sum given absolute summability and a uniform angular margin. |
 | [Entire correction](SuperZeta/MellinContinuation.lean) and [special values](SuperZeta/SpecialValues.lean) | `entireCorrection_differentiable` extends the actual relative Mellin integral to all complex $s$. `entireCorrection_succ` gives its positive integer values from the actual log kernel’s even Taylor coefficients. `regularized_determinant` computes $4$ from the derivative at zero of the reference plus correction. |
 | [Factorial quarter correction](SuperZeta/Barnes.lean) | With $D_n=\pi n[4^{-n}\binom{2n}{n}]^2$, `quarter_bounds` gives finite bounds and `quarter_limit` proves $n(1-D_n)\to1/4$ from Wallis’ product. `quartet_barnes_product` gives the finite identity under the displayed Gamma recurrence. [QuartetRadius](SuperZeta/QuartetRadius.lean) proves existence at every positive level, $R_n-2\pi n\to0$ and the quarter limit for $R_nB_n^2/2$. |
@@ -40,6 +52,6 @@ The toolchain file pins Lean 4.19.0. The Lake manifest pins mathlib and its depe
 
 ## Where the formal boundary lies
 
-The complex cosine roots, the analytic determinant, and its formal Taylor coefficients now have machine proofs. Passing from those coefficients to the infinite spectral root sums still requires the canonical product. Lean now evaluates the reference Dirichlet series and constructs the relative Mellin integral. Identifying their sum with the coupled spectral root series still needs a proof in Lean. `equality_iff_riemann_zero` takes this final reconstruction as a hypothesis. The same distinction applies to the [large-height mode estimate](../archive/2026-11-18-lean-foundations-v001/checks/complex_values.py), whose summed tail bound is currently a written proof.
+Lean links each selected positive quartet level back to the original characteristic equation and proves the determinant’s formal coefficients. Passing from those coefficients to the infinite spectral root sums still requires the canonical product. Lean now evaluates the reference Dirichlet series and constructs the relative Mellin integral. [Root bounds](SuperZeta/RootBounds.lean) supply absolute convergence of the level-indexed unit-coupling series for $\Re s>1/2$ and a uniform resolvent estimate. [Ray](SuperZeta/Ray.lean) reduces the reconstruction in the overlap strip $1/2<\Re s<1$ to the coupled determinant’s logarithmic derivative on the positive integration ray. The identification of that derivative with the complete coupled resolvent sum is the remaining input. `equality_iff_riemann_zero` takes this final reconstruction as a hypothesis. The same distinction applies to the [large-height mode estimate](../archive/2026-11-18-lean-foundations-v001/checks/complex_values.py), whose summed tail bound is currently a written proof.
 
 The [source collection](../archive/2026-11-18-lean-foundations-v001/README.md) records which remaining results have manuscript proofs, arithmetic computations or directed numerical certificates.
