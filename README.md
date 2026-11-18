@@ -2,6 +2,10 @@
 
 How much can a pair of exponentials tell us about the location of a zeta zero? This repository follows NuckyDucky's reciprocal iteration $(P,Q)\mapsto(e^{LQ},e^{-LP})$ from its four related phase solutions to a spectral zeta function. It contains the derivations, predictions frozen before evaluation, and code for counting the zeros in each tested region.
 
+**[Read the original papers and replay the experiments](archive/2026-11-18-lean-foundations-v001/README.md)** · **[Browse and run the Lean proofs](lean/README.md)**
+
+The Lean library starts with the ordered exponential lift, proves the Dottie fold has negative curvature, reconstructs the fixed pair from its cosine phase, and derives the first four rational determinant traces. Its theorem index gives the hypotheses and evidence for each result.
+
 ## From the Dottie number to the critical line
 
 The Dottie number $d$ solves $d=\cos d$. The same cosine equation appears in the spectral construction. At coupling one, subtracting the correction $J$ from the spectral zeta gives the exact identity

@@ -1,0 +1,4 @@
+height bound 1000000; stop at first point
+[]
+
+STDERR
