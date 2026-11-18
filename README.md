@@ -60,11 +60,11 @@ Let $\lambda_j$ range over its zeros, with multiplicity. They define the Dirichl
 
 Write $w=\beta+it$ for the Riemann variable. OpenAI’s *Quasi-Riemann Hypothesis*, Theorem 1.1, proves that the half-plane $\beta>7/8$ is zero-free. The Riemann zeta function has a pole at $w=1$. The functional equation and conjugation give the reflected bound, so every nontrivial zero satisfies $1/8\le\beta\le7/8$. **In the three intervals below, the certified counts reduce that entire range to $\beta=1/2$.** In particular they exclude zeros in $1/2<\beta\le7/8$ and in the reflected interval $1/8\le\beta<1/2$, including the endpoints $7/8$ and $1/8$. The strengthening concerns Riemann zeta at the listed heights. [OpenAI, Theorem 1.1](https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf) · [Functional equation](https://dlmf.nist.gov/25.4)
 
-| Interval in Riemann height $t$ | Simple zeros on $\beta=1/2$ | Off-critical-line zeros |
-| --- | ---: | ---: |
-| [$\lvert t-T_D\rvert<1/4$](archive/2026-11-17-dottie-local-strip-v001/README.md) | 2 | 0 |
-| [$\lvert t-2T_D\rvert\le1/2$](archive/2026-11-18-superzeta-distance-v001/README.md) | 5 | 0 |
-| [$\lvert t-3T_D\rvert\le1/2$](archive/2026-11-18-superzeta-distance-v001/README.md) | 4 | 0 |
+| Interval in Riemann height $t$ | Simple zeros on $\beta=\tfrac{1}{2}$ | Off-critical-line zeros | Certificate |
+| --- | ---: | ---: | --- |
+| $\lvert t-T_D\rvert\lt\tfrac{1}{4}$ | 2 | 0 | [First height](archive/2026-11-17-dottie-local-strip-v001/README.md) |
+| $\lvert t-2T_D\rvert\le\tfrac{1}{2}$ | 5 | 0 | [Second height](archive/2026-11-18-superzeta-distance-v001/README.md) |
+| $\lvert t-3T_D\rvert\le\tfrac{1}{2}$ | 4 | 0 | [Third height](archive/2026-11-18-superzeta-distance-v001/README.md) |
 
 The argument principle counts zeros with multiplicity from the change in argument around a rectangle. Interval arithmetic certifies the count and rules out zeros on the contour. Each disjoint interval where Hardy’s $Z$-function changes sign gives a distinct zero on the critical line. In each rectangle these sign changes account for the entire count, which proves that every zero is on the line and has multiplicity one.
 
@@ -102,7 +102,15 @@ Lean proves the complete root list for the cosine determinant, including simplic
 
 ## The factorial correction
 
-Let $R_n$ be the common modulus of the four parameters $L$ obtained from the $n$th quartet of characteristic phases, and set $B_n=4^{-n}\binom{2n}{n}$. The first Stirling correction gives the quarter power in
+Let $R_n$ be the common modulus of the four parameters $L$ obtained from the $n$th quartet of characteristic phases, and set $B_n=4^{-n}\binom{2n}{n}$ and $C_n=R_nB_n^2/2$. NuckyDucky’s factorial cancellation gives an exact formula for the error left by the leading Stirling approximation.
+
+$$
+\log C_n=\log\!\frac{R_n}{2\pi n}-\int_0^\infty e^{-nt}\frac{\tanh(t/4)}{t}\,dt.
+$$
+
+The integral contributes $-1/(4n)$ to $\log C_n$ with a factorial remainder between $0$ and $1/(96n^3)$. Lean checks the integral, the signed error bound at every truncation, and the resulting term $-(\nu/4)\zeta(s+1)$ in the continuation of $\sum_{n\ge1}n^{-s}C_n^\nu$. The zeta function of the levels $nC_n$ then has regularized value $-1/4$ at zero. [Exact correction, proofs and numerical replay](archive/2026-11-18-stirling-correction-v001/README.md)
+
+The same first Stirling correction gives the quarter power in
 
 $$
 \lim_{N\to\infty}N^{1/4}\prod_{n=1}^N\frac{R_n B_n^2}{2}

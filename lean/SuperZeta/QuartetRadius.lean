@@ -49,7 +49,7 @@ theorem characteristic_of_level {n : ℕ} {t : ℝ} (ht : 0<t)
     2*z + Complex.exp z - Complex.exp (-z) by push_cast; ring, he, Complex.exp_add,
     Complex.exp_pi_mul_I, Complex.exp_nat_mul_two_pi_mul_I, mul_one]
 
-private theorem a_rescaled {t : ℝ} (h : 0<t) :
+theorem a_rescaled {t : ℝ} (h : 0<t) :
     a t = (2*(t*exp (-t))) / (1-exp (-t)^2) := by
   have p : exp (-t)<1 := exp_lt_one_iff.mpr (by linarith)
   have d : 1-exp (-t)^2 ≠ 0 := by nlinarith [exp_pos (-t)]
@@ -115,7 +115,7 @@ theorem level_error : Tendsto (fun t => level t-exp t) atTop (𝓝 0) := by
     ring
   · ring_nf
 
-private theorem exponent_identity {t : ℝ} (ht : 0<t) :
+theorem exponent_identity {t : ℝ} (ht : 0<t) :
     t*(cosh t / sinh t) = t + a t*exp (-t) := by
   unfold a
   field_simp [(sinh_pos_iff.mpr ht).ne']

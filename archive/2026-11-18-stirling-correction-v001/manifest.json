@@ -1,0 +1,18 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6007,
+      "sha256": "1dd3b1dc6ef05dbcb22b00f6dc2f2f6b4aaed920fc92998fc1e06033ac97f449"
+    },
+    "phase-bounds.json": {
+      "bytes": 1778,
+      "sha256": "949908b27329c6c220ed31ccc4558df7917fa61b1c21c4de4bcee5c902279873"
+    },
+    "verify_phase_bounds.py": {
+      "bytes": 2299,
+      "sha256": "6a2da829b99f4cf83e2ddffbbd9cbddca3c2ee7b39c8a17179caacb4f5753893"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-stirling-correction-v001"
+}

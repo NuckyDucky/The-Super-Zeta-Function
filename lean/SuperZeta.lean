@@ -24,3 +24,5 @@ import SuperZeta.RootBounds
 import SuperZeta.Ray
 import SuperZeta.Multiplicity
 import SuperZeta.CoupledProduct
+import SuperZeta.DeformedZeta
+import SuperZeta.FactorialPhase
