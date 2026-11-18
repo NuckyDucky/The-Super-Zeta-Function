@@ -12,7 +12,7 @@ My six integers are the coefficients of these two polynomials.
 
 ```math
 \begin{aligned}
-N(x)&=465x^2-183x-659,\\
+N(x)&=465x^2-183x-659,\\[0pt]
 D(x)&=155x^2+396x-936.
 \end{aligned}
 ```
@@ -21,9 +21,9 @@ I set $T(y)=(1+y)(2+y)/(y^2+y-1)$ and equated it to $N(x)/D(x)$. Clearing the de
 
 ```math
 \begin{aligned}
-0&=(N-D)y^2+(N-3D)y-N-2D,\\
-Y&=2(N-D)y+N-3D,\\
-Y^2&=(N-D)^2+4N^2\\
+0&=(N-D)y^2+(N-3D)y-N-2D,\\[0pt]
+Y&=2(N-D)y+N-3D,\\[0pt]
+Y^2&=(N-D)^2+4N^2\\[0pt]
    &=961000x^4-1039740x^3-1810543x^2+644010x+1813853.
 \end{aligned}
 ```
@@ -203,8 +203,8 @@ The leading Stirling factors in $(2n)!/(n!)^2$ give the cancellation. The next t
 
 ```math
 \begin{aligned}
-I(x)&=\int_0^\infty e^{-xt}\frac{\tanh(t/4)}{t}\,dt,\qquad x>0,\\
-\log D_n&=2\rho_{2n}-4\rho_n=-I(n),\\
+I(x)&=\int_0^\infty e^{-xt}\frac{\tanh(t/4)}{t}\,dt,\qquad x>0,\\[0pt]
+\log D_n&=2\rho_{2n}-4\rho_n=-I(n),\\[0pt]
 \log C_n&=\log\frac{R_n}{2\pi n}-I(n).
 \end{aligned}
 ```
