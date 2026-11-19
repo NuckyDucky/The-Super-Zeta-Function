@@ -3,6 +3,7 @@ import argparse
 from fractions import Fraction
 import json
 from pathlib import Path
+import re
 import sys
 import tempfile
 
@@ -36,6 +37,15 @@ def check_ball(fresh, saved, field):
             raise ValueError(f"Replay enclosure exceeds the archived radius budget at {field}")
 
 
+def components(text):
+    """FLINT's older answer key prints a complex box as two signed real balls."""
+    pair = re.fullmatch(r"(\[[^\]]+\]) ([+-]) (\[[^\]]+\])j", text)
+    if pair is None:
+        return (arb(text),)
+    real, sign, imag = pair.groups()
+    return arb(real), arb(imag) if sign == "+" else -arb(imag)
+
+
 def check_physical_interval(fresh, saved, field):
     bounds = []
     for entry in (fresh, saved):
@@ -57,8 +67,11 @@ def compare(fresh, saved, field):
         return sum(compare(a, b, f"{field}/{i}")
                    for i, (a, b) in enumerate(zip(fresh, saved, strict=True)))
     if isinstance(saved, str) and saved.startswith("[") and "+/-" in saved:
-        check_ball(fresh, saved, field)
-        return 1
+        with ctx.workprec(COMPARISON_PRECISION):
+            values = list(zip(components(fresh), components(saved), strict=True))
+            for current, recorded in values:
+                check_ball(current, recorded, field)
+        return len(values)
     return 0
 
 
