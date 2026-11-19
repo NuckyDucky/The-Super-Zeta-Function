@@ -1,0 +1,29 @@
+{
+  "bits": 320,
+  "sealed_sha256": "a4b7b7c08f919b6f0c8c540b7d2d2687970de674ba7d05c707c0d24d0912ed35",
+  "previous_sha256": "6a4fe6ab50adf27f48bd2688cf16025ab3c4b551bc27d9416328d3064c53fab5",
+  "start_winding": 1,
+  "sample_disks": 257,
+  "maximum_sample_Rouche_ratio": "[9.11695470762197147e-6 +/- 4.59e-24]",
+  "audit_radius": "2^-28",
+  "endpoint_kind": "Riemann",
+  "terminal_Hurwitz_winding": 1,
+  "total_counts": [
+    3,
+    4
+  ],
+  "bracket": [
+    "[30.4248760960571908123046875000 +/- 3e-33]",
+    "[30.4248761556618355876953125000 +/- 3e-33]"
+  ],
+  "ordinal": 4,
+  "Hardy_values": [
+    "[3.8860468855391710774e-8 +/- 7.77e-29]",
+    "[-3.8860468301498743559e-8 +/- 2.99e-28]"
+  ],
+  "terminal_Riemann_count": 1,
+  "unscaled_rouche_tubes": 536,
+  "extra_bisections": 280,
+  "all_isolated_nodes": 537,
+  "largest_uniform_ratio": "[0.99932325072587 +/- 4.64e-15]"
+}

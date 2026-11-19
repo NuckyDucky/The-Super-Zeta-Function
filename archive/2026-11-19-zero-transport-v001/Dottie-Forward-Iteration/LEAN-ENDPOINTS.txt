@@ -1,0 +1,40 @@
+Endpoint factorization, classification and the reset
+
+The checked reference is exactly the function used in the continuation:
+  R(b,w) = pi^(-w) [HurwitzZeta(w,b) + HurwitzZeta(w,1-b)].
+It is DottieOriented.LiuConnection.reference in the published project.
+
+ForwardCertificate.endpoint_partition proves that for every complex w other
+than 1, R(1/4,w)=0 if and only if w=2*pi*i*k/log(2) for some integer k or
+ordinary Riemann zeta is zero there. dyadic_both_anchors_nonriemann proves
+that the lattice addresses are indeed zeros at BOTH anchors and that ordinary
+Riemann zeta is nonzero there. This proves disjointness. In particular k=4
+gives 8*pi*i/log(2). The lattice need not be sampled to obtain the result.
+
+The argument combines the residue-class factorization with exp(u)=1 iff
+u=2*pi*i*k. If Re(w)=0 and w is nonzero, a hypothetical zeta zero transfers
+under the functional equation to 1-w, on the established zero-free line
+Re=1. At the origin zeta(0)=-1/2. The archived ReferenceReset.endpoint_reenters
+proves an endpoint can be reused at exactly the same w after the reset.
+FlankReferences.flank_zero_order preserves Riemann zero multiplicities in
+Re(w)>0 away from the pole at both endpoints.
+
+These are universal exact theorems. Which root reaches which endpoint in the
+recorded sweeps, and which ordinal that endpoint has, are separate numerical
+certificates. No succession, target ordinate, or enclosure was supplied to
+the endpoint theorems.
+
+Reproduction (Lean 4.19.0; project commit d083b95873d9c76fbc21ae9c2cac3971b45f906c):
+  In The-Super-Zeta-Function/lean:
+  lake build Mathlib.NumberTheory.LSeries.Nonvanishing SuperZeta.Oriented.LiuConnection SuperZeta.Multiplicity
+  lake env python /absolute/path/to/Dottie-Forward-Iteration/check_forward.py
+  Extract Dottie-Second-Zero beside Dottie-Forward-Iteration.
+
+The build succeeded. The two foundation modules and ForwardCertificate.lean were
+compiled from source with warnings treated as errors. VerifyForward.lean then
+audited transitive kernel dependencies, rejecting any new axiom declarations
+in these modules and every foundation outside propext, Classical.choice, and
+Quot.sound. It reported 20 theorem declarations in FlankReferences, nine in
+ReferenceReset, and ten in ForwardCertificate (including generated or private
+declarations). All three named endpoint theorems printed exactly those three
+standard foundational dependencies.

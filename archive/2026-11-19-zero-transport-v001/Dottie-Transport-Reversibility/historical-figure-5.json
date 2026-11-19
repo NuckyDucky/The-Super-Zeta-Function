@@ -1,0 +1,32 @@
+{
+  "precision_bits": 192,
+  "historical_figure": "4",
+  "initial_zeta_ordinal": 5,
+  "shift_convention": "b=1-a in the 2007 paper",
+  "root_radius": "1e-17",
+  "identification_disk_radius": "1e-8",
+  "checkpoints": [
+    {
+      "accepted_tubes": 816,
+      "max_contraction": "[0.66572570567950606346 +/- 1.31e-21]",
+      "paper_a": "3/4",
+      "b": "1/4",
+      "label": "rho3",
+      "root": {
+        "real": "[0.5000000000000000 +/- 1.01e-17]",
+        "imag": "[25.0108575801456888 +/- 4.68e-17]"
+      }
+    },
+    {
+      "accepted_tubes": 324,
+      "max_contraction": "[0.66545659722760319710 +/- 2.23e-21]",
+      "paper_a": "5/6",
+      "b": "1/6",
+      "label": "rho2",
+      "root": {
+        "real": "[0.5000000000000000 +/- 1.01e-17]",
+        "imag": "[21.0220396387715550 +/- 1.74e-17]"
+      }
+    }
+  ]
+}

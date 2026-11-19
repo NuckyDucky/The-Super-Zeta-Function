@@ -1,0 +1,11 @@
+{
+  "ordinal": 5,
+  "input_sha256": "a0b977112ffa3cad7f05e4e317ab015f0ecd94e4aacd0a8207e773f980a800e2",
+  "return_sha256": "9c8c54d27a0ea3a0d7bd2a7c1b59b95455dccc9fc9c8b171349d7ba7315dc88f",
+  "end_box": {
+    "real": "[0.5000000000000000 +/- 1.01e-17]",
+    "imag": "[32.9350615877391897 +/- 1.94e-17]"
+  },
+  "common_isolation_radius": "1e-10",
+  "accepted_forward_tubes": 461
+}

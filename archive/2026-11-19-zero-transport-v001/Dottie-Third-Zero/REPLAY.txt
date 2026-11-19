@@ -1,0 +1,28 @@
+Reseeding from the second zero, 19 November 2026
+
+The input is the previous terminal disk at the second positive Riemann zero.
+The new prediction was its successor as the first previously unvisited Riemann
+endpoint within six sweeps. A direct outcome was scored separately. The first
+sweep reached the third zero, and the stopping rule took effect.
+
+Install python-flint 0.9.0 (also matplotlib to redraw the figure).
+Extract all three directories side by side. Run from Dottie-Third-Zero with
+Python assertions enabled. The follow step uses the bilateral Hurwitz function
+and the already certified input; the remaining steps can run after it seals.
+
+python -B follow.py 1
+python -B ../Dottie-Second-Zero/classify.py sweep_1.json --out identification_1.json
+python -B audit_endpoint.py ../Dottie-Second-Zero/dyadic_continuation.json sweep_1.json --out audit_1.json
+python -B geometry.py
+python -B plot_reseeding.py
+
+The path consists of 418 certified contraction tubes. Independently, 257
+coarse checkpoint disks pass a separate isolation test. A square enclosing
+the terminal point has directed winding count one for Riemann zeta and one
+for the unscaled bilateral Hurwitz reference. Cumulative counts bracket the
+landing by 2 and 3. The higher-resolution geometry check bounds the derivative
+and the whole arc on 627 subintervals. Height increases strictly. The one
+interior crossing of the critical line has nonzero ordinary Riemann zeta.
+
+The new sweep, its contour counts and its geometry are ball-arithmetic checks.
+The endpoint-reset identity and its Lean proof are in Dottie-Second-Zero.

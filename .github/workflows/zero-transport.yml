@@ -1,0 +1,41 @@
+name: Zero transport
+
+on:
+  pull_request:
+    paths: ['archive/2026-11-19-zero-transport-v001/**', '.github/workflows/zero-transport.yml']
+  push:
+    branches: [main]
+    paths: ['archive/2026-11-19-zero-transport-v001/**', '.github/workflows/zero-transport.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: archive/2026-11-19-zero-transport-v001
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
+      - name: Install directed arithmetic
+        run: |
+          python3 -m venv "$RUNNER_TEMP/transport-venv"
+          "$RUNNER_TEMP/transport-venv/bin/python" -m pip install --only-binary=:all: python-flint==0.9.0
+          echo "$RUNNER_TEMP/transport-venv/bin" >> "$GITHUB_PATH"
+      - name: Verify the forward branches and endpoint counts
+        working-directory: archive/2026-11-19-zero-transport-v001/Dottie-Forward-Iteration
+        run: |
+          python -B audit_forward.py ../Dottie-Third-Zero/sweep_1.json sweep_1.json "$RUNNER_TEMP/audit1.json"
+          python -B audit_forward.py sweep_1.json sweep_2.json "$RUNNER_TEMP/audit2.json"
+          python -B audit_forward.py sweep_2.json sweep_3.json "$RUNNER_TEMP/audit3.json"
+          for i in 1 2 3; do python -B interior.py "$i"; done
+      - name: Count intersections of the fourth-zero branch with the critical line
+        run: python -B Dottie-Transport-Reversibility/blue_crossings.py
+      - name: Recover the predecessors of the fifth and sixth zeros and replay from the exact seeds
+        working-directory: archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility
+        run: |
+          python -B missing.py 5
+          python -B missing.py 6

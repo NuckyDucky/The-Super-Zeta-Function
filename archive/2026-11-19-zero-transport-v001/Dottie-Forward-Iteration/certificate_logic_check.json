@@ -1,0 +1,43 @@
+{
+  "toolchain": "Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)",
+  "repository_revision": "d083b95873d9c76fbc21ae9c2cac3971b45f906c",
+  "source_sha256": "671f27ae937af2805077252306a82fec45b6946b21c9d9ff058bed4ac26131cc",
+  "axioms": {
+    "newton_lipschitz": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "reference_derivative_ne_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unique_reference_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "glue_at_endpoint": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "root_motion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "branch_lipschitz": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "exists_lipschitz_branch": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "numerical_assumptions": "Bounds on reference derivatives, parameter variation and center residuals are supplied by external interval arithmetic."
+}

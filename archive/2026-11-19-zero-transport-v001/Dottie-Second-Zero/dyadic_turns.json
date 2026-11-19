@@ -1,0 +1,28 @@
+{
+  "precision_bits": 224,
+  "unique_horizontal_extrema": [
+    {
+      "kind": "maximum",
+      "theta_degrees": [
+        "55.78964710235596",
+        "55.7896614074707"
+      ],
+      "zero": {
+        "real": "[0.44008 +/- 9.12e-6]",
+        "imag": "[19.25999 +/- 7.89e-6]"
+      }
+    },
+    {
+      "kind": "minimum",
+      "theta_degrees": [
+        "49.36612129211426",
+        "49.366135597229004"
+      ],
+      "zero": {
+        "real": "[0.02764 +/- 3.78e-6]",
+        "imag": "[20.47186 +/- 2.14e-6]"
+      }
+    }
+  ],
+  "certified_subintervals": 7412
+}

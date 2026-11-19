@@ -1,0 +1,17 @@
+{
+  "bits": 320,
+  "checks": [
+    {
+      "path": "dyadic_continuation.json",
+      "disks": 257,
+      "radius": "[1.00000000000e-10 +/- 1e-26]",
+      "max_Rouche_ratio": "[1.787681139786557e-7 +/- 3.73e-23]"
+    },
+    {
+      "path": "triadic_endpoint.json",
+      "disks": 257,
+      "radius": "[1.00000000000e-10 +/- 1e-26]",
+      "max_Rouche_ratio": "[0.0006960075379538466 +/- 2.23e-20]"
+    }
+  ]
+}

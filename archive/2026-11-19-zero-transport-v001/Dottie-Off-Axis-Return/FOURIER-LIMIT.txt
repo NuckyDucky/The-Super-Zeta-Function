@@ -1,0 +1,49 @@
+ASYMPTOTIC FORM OF THE LEFTWARD ZERO PATHS AT 45 DEGREES
+
+Set b<1/4, a=cos(2πb), h=1−2a², and let b increase to 1/4.
+For Re w<0 the Hurwitz Fourier formula factors the bilateral Hurwitz
+function into a gamma/trigonometric factor times
+
+    S(w,b) = sum over m≥1 of cos(2πmb) m^(w−1).
+
+The prefactor is nonzero in a neighborhood of each of the nonreal
+paths below, including their tails. See https://dlmf.nist.gov/25.11.E9 .
+For comparison, Nakamura examines the real branch at the same boundary,
+Propositions 4.6–4.7 of https://arxiv.org/pdf/1910.10430 .
+
+For each nonzero integer k, write
+
+    w*(a,k) = 1 + log₂(a/h) + 2πik/log 2.
+
+There is a simple zero w_k(b) with
+
+    w_k(b) = w*(a,k) + a/log 2 + O(a^(log₂ 3)).
+
+The first displacement from the two-term solution is therefore real
+and independent of k. This is a statement about limiting branches.
+Attaching any particular initial condition on the spire to such a
+branch requires a separate continuation calculation.
+
+Proof. Put u=w−w*(a,k), fix the circle |u|=1/4, and divide S by a.
+The first two summands give 1−2^u exactly. The fourth gives
+c₄ (a/h²) 4^u, where c₄=1−8a²+8a⁴. The third and fifth coefficients
+are O(a) because their cosine polynomials are odd. After division by a,
+their contributions are O(a^(log₂ 3)) and O(a^(log₂ 5)), respectively.
+For m≥6 use |cos|≤1 and sum the decreasing powers with the integral
+bound starting at m=6. The uniformly bounded factor 6^Re(u) and h→1
+give, after division by a, a tail O(a^(log₂ 6−1))=O(a^(log₂ 3)).
+These estimates hold on and inside the circle, uniformly in k since the
+imaginary powers have unit magnitude.
+
+On the circle, |1−2^u| has a positive minimum. Rouché's theorem now
+gives exactly one zero, with multiplicity, in the disk. At this zero,
+|1−2^u|=O(a); the quotient (1−2^u)/u stays bounded away from zero on
+the closed disk, so u=O(a). Expanding both exponentials in the equation,
+
+    (log 2) u = c₄ a/h² + O(a²) + O(a^(log₂ 3))
+              = a + O(a^(log₂ 3)).
+
+The zero is simple and unique in the disk, so the local branches glue
+as b varies. In particular Re w tends to −infinity while Im w tends to
+2πk/log 2. For k=2 this limiting imaginary coordinate equals the height
+of the finite endpoint 4πi/log 2 on a different branch.

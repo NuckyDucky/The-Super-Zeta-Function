@@ -1,0 +1,17 @@
+{
+  "type": "Riemann zero",
+  "ordinal": 4,
+  "real_part": "1/2 exactly",
+  "received_imaginary_ball": "[30.4248761258595132 +/- 2.04e-17]",
+  "symmetric_disk_radius": "1e-8",
+  "rouche_ratio_upper": "[2.99768050560089705e-6 +/- 4.11e-25]",
+  "lower_height": "243399/8000",
+  "upper_height": "15212439/500000",
+  "counts": [
+    3,
+    4
+  ],
+  "Hardy_Z_at_lower": "[1.468054699729476318935432e-6 +/- 2.89e-32]",
+  "Hardy_Z_at_upper": "[-2.443767485491195643131052e-6 +/- 3.37e-31]",
+  "endpoint_file_sha256": "a4b7b7c08f919b6f0c8c540b7d2d2687970de674ba7d05c707c0d24d0912ed35"
+}

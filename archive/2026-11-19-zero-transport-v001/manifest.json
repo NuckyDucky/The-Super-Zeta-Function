@@ -1,0 +1,566 @@
+{
+  "files": {
+    "Dottie-Forward-Iteration/CertificateLogic.lean": {
+      "bytes": 7848,
+      "sha256": "671f27ae937af2805077252306a82fec45b6946b21c9d9ff058bed4ac26131cc"
+    },
+    "Dottie-Forward-Iteration/ForwardCertificate.lean": {
+      "bytes": 3523,
+      "sha256": "a236624112b042be3a9e9b657d5156dfc99d9e3aaf053c6a33d06ee7d8167a0e"
+    },
+    "Dottie-Forward-Iteration/ForwardMesh.lean": {
+      "bytes": 30971,
+      "sha256": "01aba928210e049d4a5d7481ead46dab343112b552b6e796e268272f0a3947f4"
+    },
+    "Dottie-Forward-Iteration/LEAN-ENDPOINTS.txt": {
+      "bytes": 2410,
+      "sha256": "1b5720372eec915845a0c7c725e3f572a0af836e022dfe4a22c6415acffdca7d"
+    },
+    "Dottie-Forward-Iteration/REPLAY.txt": {
+      "bytes": 2781,
+      "sha256": "95a60bbcddb578785d821576ba010d7fa7a4309018a6e3143aa0f573440ad597"
+    },
+    "Dottie-Forward-Iteration/VerifyForward.lean": {
+      "bytes": 1338,
+      "sha256": "93295b6a3c3eee143727d18cf64e84b7807b269794c5666d2756a7ab9c61e08c"
+    },
+    "Dottie-Forward-Iteration/audit_1.json": {
+      "bytes": 907,
+      "sha256": "be3871eca0c0e1032a2f44bf7fcf83480edfd060eaaa5fbb8ee9ffc9ecf499f3"
+    },
+    "Dottie-Forward-Iteration/audit_2.json": {
+      "bytes": 518,
+      "sha256": "04ecff67594ddf0b15f26a028bc8e5448eec203d97ec9d3466722c4d2c7410ec"
+    },
+    "Dottie-Forward-Iteration/audit_3.json": {
+      "bytes": 907,
+      "sha256": "4c9e22996cd1ca2bceebf464a9e7862cc8b099d65bc651c7b0ff0943d76d677d"
+    },
+    "Dottie-Forward-Iteration/audit_forward.py": {
+      "bytes": 5313,
+      "sha256": "8cc2d0581368d44c8f3139fcb8f1aa6c7671d9a8bb24b80a21028414ed8c2b46"
+    },
+    "Dottie-Forward-Iteration/certificate_logic_check.json": {
+      "bytes": 1148,
+      "sha256": "ba7087d4d995a229459b2053917899742bb1d25939e27296994c62fe0b9b2e89"
+    },
+    "Dottie-Forward-Iteration/check_certificate_logic.py": {
+      "bytes": 3183,
+      "sha256": "7958e69179fcad0e89ecb46036afb188bc849940e989d5aaaac262634a427756"
+    },
+    "Dottie-Forward-Iteration/check_forward.py": {
+      "bytes": 1490,
+      "sha256": "5bb2c180e0aaf906f6c6f1036ae58ba43da34188a8b68066d18f35f0642acab0"
+    },
+    "Dottie-Forward-Iteration/export_partition.py": {
+      "bytes": 2066,
+      "sha256": "6217f415a45cfd6a14642ef0df635102a1599c08cad615e0266b65effe018677"
+    },
+    "Dottie-Forward-Iteration/follow.py": {
+      "bytes": 3778,
+      "sha256": "61eadb8027217aa9c31438f18b0a6b391e1aa18e2c5326218719fc56d7f50d8c"
+    },
+    "Dottie-Forward-Iteration/height_counts.json": {
+      "bytes": 214,
+      "sha256": "35c7fd7fa3010edf718516e6947951ee1cb31034698dc52092bb466d60a808a1"
+    },
+    "Dottie-Forward-Iteration/height_counts.py": {
+      "bytes": 718,
+      "sha256": "d154d89f7372cbefc53d9bc46f8fda8853c38dfec5254bab380114cf209cc561"
+    },
+    "Dottie-Forward-Iteration/identification_1.json": {
+      "bytes": 596,
+      "sha256": "b96eac56a110ad5dd97a2bce06f707ed868dd6ade04c11b947f7851ecf830a82"
+    },
+    "Dottie-Forward-Iteration/identification_2.json": {
+      "bytes": 345,
+      "sha256": "2bf31439f4e65398933e0594d55cad4b3f271102d4baea8cec04ed52afcc9a5b"
+    },
+    "Dottie-Forward-Iteration/identification_3.json": {
+      "bytes": 601,
+      "sha256": "838fe5ab4669e5f8a8340c1bdd616640192ed1b2438bb7512ce772798f0da0da"
+    },
+    "Dottie-Forward-Iteration/interior.py": {
+      "bytes": 3134,
+      "sha256": "73c5abc96b54591d60c406881553f8953b64ce51ef55a18e6473e54b00c0137d"
+    },
+    "Dottie-Forward-Iteration/interior_1.json": {
+      "bytes": 387,
+      "sha256": "e18567c0f5ac31421c6b35bb49fab936dbfd18882f2207e505ce0d866c7684cb"
+    },
+    "Dottie-Forward-Iteration/interior_2.json": {
+      "bytes": 336,
+      "sha256": "eea5317a93e973038a0f92c28e8b77489600b4331f3e195ccd986e11e07cac17"
+    },
+    "Dottie-Forward-Iteration/interior_3.json": {
+      "bytes": 334,
+      "sha256": "6c887b4dc8b7b25e2efb4b9af3258f31bd4c1aa35e25f929c77c71574c09138e"
+    },
+    "Dottie-Forward-Iteration/iterate.py": {
+      "bytes": 2351,
+      "sha256": "9b4958bc05a738c8c9d566e44048d250d14dec50bb42ca6a12eb94d3069bce34"
+    },
+    "Dottie-Forward-Iteration/plot.py": {
+      "bytes": 2379,
+      "sha256": "cb3106adea023b2f68de5ac2a7b6059990c7b0e723a5c6ab06f1dbbbe0ed9486"
+    },
+    "Dottie-Forward-Iteration/protocol.txt": {
+      "bytes": 1384,
+      "sha256": "e81a4ec86c3d90be750082a935f62707035971bb47928e55a125ef69fdcd087c"
+    },
+    "Dottie-Forward-Iteration/results.json": {
+      "bytes": 1297,
+      "sha256": "fe230af0f7717c46b4751529ab5015b300048897457922c6e51b2394acc92318"
+    },
+    "Dottie-Forward-Iteration/successor-paths.png": {
+      "bytes": 224222,
+      "sha256": "a4eef738f0486351d62812c9dbb94606f7942b5bafe15fe87af71aa609d55ee3"
+    },
+    "Dottie-Forward-Iteration/sweep_1.json": {
+      "bytes": 46280,
+      "sha256": "a4b7b7c08f919b6f0c8c540b7d2d2687970de674ba7d05c707c0d24d0912ed35"
+    },
+    "Dottie-Forward-Iteration/sweep_2.json": {
+      "bytes": 46178,
+      "sha256": "b090b79bc7aa3984a2132ac3b5d51dbf02305d353583b4f21158cbe8ee3717bf"
+    },
+    "Dottie-Forward-Iteration/sweep_3.json": {
+      "bytes": 46250,
+      "sha256": "9c34674c183810413a9141ae0232065c4fc706446fb4c91a5488c159dd540681"
+    },
+    "Dottie-Off-Axis-Return/FOURIER-LIMIT.txt": {
+      "bytes": 2323,
+      "sha256": "512f4d8ff14d2519e329f6db223cfa9adee9cabc8a262c1a648b2dcc9652e93c"
+    },
+    "Dottie-Off-Axis-Return/FifthReference.lean": {
+      "bytes": 3738,
+      "sha256": "164965c633a4cc3da9f6535e3c79a696e63ed5fe9bc96a0e350f87a2b1e91b92"
+    },
+    "Dottie-Off-Axis-Return/FlankReferences.lean": {
+      "bytes": 8002,
+      "sha256": "43f95583283e83fc4430193fea1bcf97efc7d0ef5573492604b793df8554da9a"
+    },
+    "Dottie-Off-Axis-Return/NOTES.txt": {
+      "bytes": 9101,
+      "sha256": "f2d457fea8b8162b8ab365d8e194a0ea513a78ec2568c8a4cb9e4bd52b03baa6"
+    },
+    "Dottie-Off-Axis-Return/REPLAY.txt": {
+      "bytes": 3021,
+      "sha256": "e3e30b6966f3de2d7fe6be764f5d05f760c18f5be0dd02a153cf5578c3b3c833"
+    },
+    "Dottie-Off-Axis-Return/ResidueAnchors.lean": {
+      "bytes": 5057,
+      "sha256": "e2b02be488f19023d4826adcd86a8de1f98df6907b93144b90fa28a0124fccb3"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_braid.py": {
+      "bytes": 6838,
+      "sha256": "77e8eb1de9b3fdd3f50d2ebadee12eb821cefcd4492b7de06e30e9b010748833"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_braid_lattice.json": {
+      "bytes": 52166,
+      "sha256": "c7ab23a39af7dd05f871cbe52093ad424dcb16e2646f09723f547efc737a27b3"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_braid_riemann.json": {
+      "bytes": 52220,
+      "sha256": "6454cc4ecc9fd30a5cefec3118b147ed65f5532c1d234aa682ca054504530383"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_budget_checkpoint.json": {
+      "bytes": 635,
+      "sha256": "0828a96dd81cc766e9693a1241f7179abd14d910368622659b34e38dcb8e5ef3"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_budget_checkpoint.py": {
+      "bytes": 1842,
+      "sha256": "820e61f3c1475baedc36250d88e40925913ba9c3b51724de161792f57f5a8ec9"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_escape_match.json": {
+      "bytes": 47361,
+      "sha256": "57ef6d03b12c57bbb6e95dd24991249c7eb210e1a85eb7166aa3ec6c5122cdd2"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_escape_match.py": {
+      "bytes": 4407,
+      "sha256": "aec2f9434bceae44df3ee694551d341d0bcc1058b2cf6cad4cf7ace4eafa5243"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_holdout_replay.py": {
+      "bytes": 2206,
+      "sha256": "5c6ce226a98c60a2ebd9b952e6a50475b8ef14c20533ee95cf712a52bee430af"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_method.txt": {
+      "bytes": 4903,
+      "sha256": "69584cf8a3d17e79d0f041ce9fa91be2c6df53a06c867ccd6ddad45248a0ca55"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_reference.json": {
+      "bytes": 7539,
+      "sha256": "1a7e44e3be16c8d945aeb697aee846434a10143a94897fe4ba1f51de2caffd2d"
+    },
+    "Dottie-Off-Axis-Return/arithmetic_reference.py": {
+      "bytes": 4604,
+      "sha256": "1bbdb64d532df600b6aa4f5c56b34a95d015bee8a82b14b703ff6efc8c6585ff"
+    },
+    "Dottie-Off-Axis-Return/fifth_residue.json": {
+      "bytes": 1661,
+      "sha256": "b9833080538e9000d0b097d8bcd134a13b0efc0370876b7b6b2d395d6fa503be"
+    },
+    "Dottie-Off-Axis-Return/fifth_residue.py": {
+      "bytes": 2651,
+      "sha256": "1810566927295d2da2a2e13c518e6ac1523208af9e78d94946ea3d7f5a80c1ed"
+    },
+    "Dottie-Off-Axis-Return/flank_path.json": {
+      "bytes": 9846,
+      "sha256": "7495e6311a0481290253e0ceb858e5d6a9123c39c8e739757ca7a2596dd9c6fd"
+    },
+    "Dottie-Off-Axis-Return/flank_path.py": {
+      "bytes": 10862,
+      "sha256": "01018c28a11e8fdcb163a892bf2eae5cf5b30b126f8160e246c5dca49f6b2268"
+    },
+    "Dottie-Off-Axis-Return/flank_reference.json": {
+      "bytes": 2198,
+      "sha256": "e20c877cfc9372b06c2a4831d863f9f96e6035a9d4fcedb15a598ba81b38a25f"
+    },
+    "Dottie-Off-Axis-Return/flank_reference.py": {
+      "bytes": 2768,
+      "sha256": "d7fbad135d583122096763f1f0f89ea6b1e7da68dbb979ee0da4c6202e1dac30"
+    },
+    "Dottie-Off-Axis-Return/flank_signature.json": {
+      "bytes": 6690,
+      "sha256": "555301d98aca92fc41adbec2aefb7c4f247396969c93edcb04fc55f20f7968a0"
+    },
+    "Dottie-Off-Axis-Return/flank_signature.py": {
+      "bytes": 6696,
+      "sha256": "7e7c14a4e82151bfa93dfed9d3dbc9d50213f02401ee17e602679cfcbd68c627"
+    },
+    "Dottie-Off-Axis-Return/foundation/archive/2026-11-17-quartet-return-recursion-v001/computations/verify_dottie_horn_slice.py": {
+      "bytes": 3197,
+      "sha256": "4b801849c9d531683368b5499de097b1325556dc4c3f7bef114c989863e2a2b2"
+    },
+    "Dottie-Off-Axis-Return/foundation/archive/2026-11-19-oriented-return-v001/computations/orbit_crossing.py": {
+      "bytes": 6577,
+      "sha256": "b0eca5854e58e968c46d58d19ed346a8292f114e67e42dbdaf8a2e375fc3ab62"
+    },
+    "Dottie-Off-Axis-Return/foundation/archive/2026-11-19-oriented-return-v001/computations/quarter_probe.py": {
+      "bytes": 6190,
+      "sha256": "c75b9521da26f967dd15ca03dd8010c16370b7dbd8c780a3cfe43c2b3a06d744"
+    },
+    "Dottie-Off-Axis-Return/fourier_limit.json": {
+      "bytes": 1905,
+      "sha256": "332226b86b260ba3a5d0c28f240eef6f7cf239de05067dab82c822e95dbbd5a3"
+    },
+    "Dottie-Off-Axis-Return/fourier_limit.py": {
+      "bytes": 1136,
+      "sha256": "b7307f4e7e9def8dbbdbf5fd60979a47dd526ef3ef243d549d3438613e51ec05"
+    },
+    "Dottie-Off-Axis-Return/plot_zero_paths.py": {
+      "bytes": 2823,
+      "sha256": "f90be387d63cfa43f51ee8f7cf5d94bb4bf922c64e5ac9cb896776397b361c5e"
+    },
+    "Dottie-Off-Axis-Return/signature_fourier_escape.json": {
+      "bytes": 1550,
+      "sha256": "77776d280ef99f4a399010ff58fdc4ad75d5714649643ab817501f3ea11b9b2d"
+    },
+    "Dottie-Off-Axis-Return/signature_fourier_escape.py": {
+      "bytes": 4108,
+      "sha256": "3d8067deb8f8f51f883614cca32d9ca4c1bd6d1f95fc51c0d4ee9e7aff71fe0b"
+    },
+    "Dottie-Off-Axis-Return/signature_turned_capture.json": {
+      "bytes": 8724,
+      "sha256": "33401ffbd722a315b0ffd16d88a3a51077524bf6a02205790a5032a9fc532169"
+    },
+    "Dottie-Off-Axis-Return/signature_turned_capture.py": {
+      "bytes": 5973,
+      "sha256": "2ada51f36ec56c4e90634e4df730afce9fdff84750c5d24e3cda075c5635d110"
+    },
+    "Dottie-Off-Axis-Return/signature_zero_audit.json": {
+      "bytes": 651,
+      "sha256": "c26ba04616b08096a4df1d1db4fef57eff57983d058efb7983d9425e2d2ad553"
+    },
+    "Dottie-Off-Axis-Return/signature_zero_audit.py": {
+      "bytes": 2689,
+      "sha256": "3683354e801d72ae423457d8df2835b5fb450e8174597f610b12de05ed3f8641"
+    },
+    "Dottie-Off-Axis-Return/zero-paths.png": {
+      "bytes": 123104,
+      "sha256": "d2344f8ee4d40f12d31c2cd45baf29572ed17c285f72d90cb21096cd4e215070"
+    },
+    "Dottie-Second-Zero/FlankReferences.lean": {
+      "bytes": 8002,
+      "sha256": "43f95583283e83fc4430193fea1bcf97efc7d0ef5573492604b793df8554da9a"
+    },
+    "Dottie-Second-Zero/REPLAY.txt": {
+      "bytes": 4078,
+      "sha256": "08acd539c8fc58d4649a8e8703278a39b6b0599f6d6d6acb6098693e0ce639b3"
+    },
+    "Dottie-Second-Zero/ReferenceReset.lean": {
+      "bytes": 1530,
+      "sha256": "be458ee77cf5b8fe2b110101e005468ed7279eb5a8b0b655623c0ab9376db0a0"
+    },
+    "Dottie-Second-Zero/audit_checkpoints.py": {
+      "bytes": 1289,
+      "sha256": "60f837bb1890f4e8d55685d50b3c4ef521701401331b94e6649c42272d3cd9f1"
+    },
+    "Dottie-Second-Zero/check_reset.py": {
+      "bytes": 1384,
+      "sha256": "02b033deea7a6362c27969f8a89da64f3ca16c2f77d7ed47215513eacb6094a4"
+    },
+    "Dottie-Second-Zero/checkpoint_audit.json": {
+      "bytes": 427,
+      "sha256": "00e7b39f55a46866b22525f471d5c9bb940cd7e1b05451fa37b15739c0699fc2"
+    },
+    "Dottie-Second-Zero/classify.py": {
+      "bytes": 3257,
+      "sha256": "18e94d3420e8381fe611781f7448ae1228060eb2a1a9be6353e80e94cdf795c0"
+    },
+    "Dottie-Second-Zero/dyadic_after_landing.json": {
+      "bytes": 366,
+      "sha256": "f529613c807df6de5195feaa149b2cb8ef63c16143060ff710bb644881a74ee4"
+    },
+    "Dottie-Second-Zero/dyadic_after_landing.py": {
+      "bytes": 1614,
+      "sha256": "611da9e709384889ca313db3b7fe28dc7bafaa808cab74f8711d361fc40cf335"
+    },
+    "Dottie-Second-Zero/dyadic_continuation.json": {
+      "bytes": 46346,
+      "sha256": "58449403656bbbbef7199b1daac1f7751683cd66179c80dd293d817c56fc98c1"
+    },
+    "Dottie-Second-Zero/dyadic_continuation.py": {
+      "bytes": 2603,
+      "sha256": "af4bc42416ea664cd2ed265635ba383124c550ff95573fd5545c7a26b070ee18"
+    },
+    "Dottie-Second-Zero/dyadic_geometry.json": {
+      "bytes": 496,
+      "sha256": "2861861e2c78e7b465901f4580ab628d9f5e106f63931c9f8425419299cccc88"
+    },
+    "Dottie-Second-Zero/dyadic_geometry.py": {
+      "bytes": 4305,
+      "sha256": "6fc61d19b5868ae049aa3bec83006ee2b59baf1e553907a1f6139d5850fe48d1"
+    },
+    "Dottie-Second-Zero/dyadic_identification.json": {
+      "bytes": 602,
+      "sha256": "903714382125714b60894ead52b8cd084caafd2027b93d65bac2d994328d68c4"
+    },
+    "Dottie-Second-Zero/dyadic_turns.json": {
+      "bytes": 597,
+      "sha256": "e9d5bc7c8ed5825e43d486e825c58a6e3de27a7bcd5f6febc8fe92636cc0eb02"
+    },
+    "Dottie-Second-Zero/dyadic_turns.py": {
+      "bytes": 3395,
+      "sha256": "06b82e084cbdec7ba143e63623c4ec17fea928f7b6bda0be9e4e3e37ec5b69da"
+    },
+    "Dottie-Second-Zero/launch_velocities.json": {
+      "bytes": 3860,
+      "sha256": "2b2c2023d517f892ca8f1d3aea34c8028d721655c109975462e7e7c0a17c8caa"
+    },
+    "Dottie-Second-Zero/launch_velocities.py": {
+      "bytes": 2951,
+      "sha256": "8c839adf7c19315548bcb60c4959c395a031897ad650ccee132c2ac91a73b978"
+    },
+    "Dottie-Second-Zero/plot_paths.py": {
+      "bytes": 3327,
+      "sha256": "d610bfedf3c7e4d33c323d363439050b234ea964793dc01c0e6bc79d7e1fca89"
+    },
+    "Dottie-Second-Zero/protocol.txt": {
+      "bytes": 1574,
+      "sha256": "83921af8da4923079643ceb6e9d4fc0579f757991c3f128617772fa22361748b"
+    },
+    "Dottie-Second-Zero/seed-paths.png": {
+      "bytes": 212163,
+      "sha256": "5431818a742e5e3cd389588b09031149857a723adbfd83671605533d43e8f892"
+    },
+    "Dottie-Second-Zero/triadic_classification.json": {
+      "bytes": 616,
+      "sha256": "f26b4fa2f51863f9b051bc22d31cfe75415e9bcea95e9d00bdaeb91ee591276d"
+    },
+    "Dottie-Second-Zero/triadic_classify.py": {
+      "bytes": 2217,
+      "sha256": "56c0f4d4fcba492238baaea9c5cb89cce11dd6048891419a805cd9c26f03af01"
+    },
+    "Dottie-Second-Zero/triadic_continue.py": {
+      "bytes": 3762,
+      "sha256": "6eaa18050ca9ba241c7066fa7750524f581093f6800553c06d7857f429b5f708"
+    },
+    "Dottie-Second-Zero/triadic_endpoint.json": {
+      "bytes": 43455,
+      "sha256": "561da42cdf39ffc1e13eed9069e135d06578bbbef66a7e62a340fa4d0387cda5"
+    },
+    "Dottie-Second-Zero/triadic_identification.json": {
+      "bytes": 342,
+      "sha256": "b691490cbe6a70fbb9d60088572eab57879728286597cdd454df44c3da15d4c8"
+    },
+    "Dottie-Third-Zero/REPLAY.txt": {
+      "bytes": 1595,
+      "sha256": "00ba321dd1251900c662ffecc98fc0b778de1306da600b6e40c2ba7a78002b69"
+    },
+    "Dottie-Third-Zero/audit_1.json": {
+      "bytes": 753,
+      "sha256": "425494115e0bc4fd39a8c90104687d80878ee36cfe08712c2205dcbd55243d6d"
+    },
+    "Dottie-Third-Zero/audit_endpoint.py": {
+      "bytes": 5578,
+      "sha256": "4e63f6ed578e307861009acbac65e64260f3cd766c4c21c0f42e2e0de7161871"
+    },
+    "Dottie-Third-Zero/follow.py": {
+      "bytes": 3700,
+      "sha256": "302cbe2cabc5f6005cfb042f7bd0fd37e27d01699b5f6fe435c725248960ecd0"
+    },
+    "Dottie-Third-Zero/geometry.json": {
+      "bytes": 457,
+      "sha256": "29bc99509d2e9cbf64a2a5ed7aa1442a67d1b90b98b22a240d797bc1e4bf5b0f"
+    },
+    "Dottie-Third-Zero/geometry.py": {
+      "bytes": 3126,
+      "sha256": "502573c68c1d92824fb67ed15ef169c23e8f0ad8954a3f2ea05cff4c7e577587"
+    },
+    "Dottie-Third-Zero/identification_1.json": {
+      "bytes": 600,
+      "sha256": "f9ed8ac70be80e92afd9c92b66629f5ef2d336df4bf740442fae8420951326d0"
+    },
+    "Dottie-Third-Zero/plot_reseeding.py": {
+      "bytes": 5401,
+      "sha256": "6a086ad098db62f4906a551f029579a4922489f713f6a7cfb12a618a573500bd"
+    },
+    "Dottie-Third-Zero/protocol.txt": {
+      "bytes": 1218,
+      "sha256": "c49caed09c41ca1ad795f428c64ab544e9d1a54020873e7cb9b85f2e23d168bd"
+    },
+    "Dottie-Third-Zero/reseeding-paths.png": {
+      "bytes": 238229,
+      "sha256": "bcf53af6b7e1a2dcea586c8c937c3b8ffcbfa83908debc3ad98b22f0037adf44"
+    },
+    "Dottie-Third-Zero/sweep_1.json": {
+      "bytes": 46205,
+      "sha256": "6a4fe6ab50adf27f48bd2688cf16025ab3c4b551bc27d9416328d3064c53fab5"
+    },
+    "Dottie-Third-Zero/tail_certificate.py": {
+      "bytes": 1957,
+      "sha256": "99ccb85f23709a7eba4879dfb8b84bc6b844a2effda6df80149a7c086608b329"
+    },
+    "Dottie-Transport-Reversibility/PRIOR-WORK.md": {
+      "bytes": 6194,
+      "sha256": "7c0e091864ef3a91b77a5505a2004259d15c312d32b6a6e7741290f52ce6edb7"
+    },
+    "Dottie-Transport-Reversibility/README.md": {
+      "bytes": 5510,
+      "sha256": "e9341d4765a0dec3f2e8fd5b1d409651b4d72fd007cc23f1cf8bb075a5ca96a7"
+    },
+    "Dottie-Transport-Reversibility/TriadicStart.lean": {
+      "bytes": 3238,
+      "sha256": "d61cded7a1fbd2050627c9897efed291b4dceccf60fc06758c12754bf381599a"
+    },
+    "Dottie-Transport-Reversibility/blue-crossings.json": {
+      "bytes": 1129,
+      "sha256": "c87c5b03c6a40e0447911023df2974f30321f15bbb7a178a44098e3e3fe20045"
+    },
+    "Dottie-Transport-Reversibility/blue_crossings.py": {
+      "bytes": 3709,
+      "sha256": "640504e705c0a00a18c4b8613ee76b8d78a7260d94ad54da2e861dedc5f341b3"
+    },
+    "Dottie-Transport-Reversibility/check_triadic.py": {
+      "bytes": 1019,
+      "sha256": "149cfb30494141fe5e790e0b75bf69d17a19caff83e1460bff45b624f8bd0dbb"
+    },
+    "Dottie-Transport-Reversibility/compare_figures.py": {
+      "bytes": 2732,
+      "sha256": "061ca16ea69c657e73521dd942db0570d29f957d762810795881430231e9c22f"
+    },
+    "Dottie-Transport-Reversibility/historical-figure-1.json": {
+      "bytes": 845,
+      "sha256": "58643a53ca0832155c817274e52a8a787e52ee5d3c1f42298b638a95acef377b"
+    },
+    "Dottie-Transport-Reversibility/historical-figure-2.json": {
+      "bytes": 854,
+      "sha256": "e13ec54709fc735c6b1fb865b5b7268dc3d03e7bde67f62503d1b61b62bc7650"
+    },
+    "Dottie-Transport-Reversibility/historical-figure-3.json": {
+      "bytes": 854,
+      "sha256": "04ea9e5ce9d1dc049b9868ce88b1ce3838ad5bc3027553df8f9f22262e13a59f"
+    },
+    "Dottie-Transport-Reversibility/historical-figure-4.json": {
+      "bytes": 854,
+      "sha256": "e59d5bcf9f326d3b60301b66381837fbcdaa2dd02068b5159a4e5d51202a4154"
+    },
+    "Dottie-Transport-Reversibility/historical-figure-5.json": {
+      "bytes": 861,
+      "sha256": "e0e44c58284ea7d704de14de0b37e6b33c8e1e532ae882550e2037330c995169"
+    },
+    "Dottie-Transport-Reversibility/missing.py": {
+      "bytes": 3910,
+      "sha256": "38b03e73ce18cb93ebaac50d179bb9b1e8b95c23da458eec0c350326a803b405"
+    },
+    "Dottie-Transport-Reversibility/plot-data/replay.py": {
+      "bytes": 4109,
+      "sha256": "a9250b85e5aff54d9278c8ecd454e334fcf097dd487ed57b0915ac34b0c4968d"
+    },
+    "Dottie-Transport-Reversibility/reverse-identification.json": {
+      "bytes": 363,
+      "sha256": "766754d4db2ff20ae823962d230b9dcc6d049845eba9700a4ac82adef9f05c91"
+    },
+    "Dottie-Transport-Reversibility/reverse-path.json": {
+      "bytes": 34578,
+      "sha256": "f78980d1e44910725089517fba9c65339bcb29173f310a56dc6b1ca513affc72"
+    },
+    "Dottie-Transport-Reversibility/reverse.py": {
+      "bytes": 4559,
+      "sha256": "1c2f62e3ec6f5b392036b719478c9a444333537da9c90763ae7d79f116fcf68a"
+    },
+    "Dottie-Transport-Reversibility/rho5-identification.json": {
+      "bytes": 364,
+      "sha256": "ac244af10158cbfb42e3e00e2caf044dd9811aa496f1137a0295dc6a0fcc2f1e"
+    },
+    "Dottie-Transport-Reversibility/rho5-input.json": {
+      "bytes": 678,
+      "sha256": "a0b977112ffa3cad7f05e4e317ab015f0ecd94e4aacd0a8207e773f980a800e2"
+    },
+    "Dottie-Transport-Reversibility/rho5-replay.json": {
+      "bytes": 34559,
+      "sha256": "9c8c54d27a0ea3a0d7bd2a7c1b59b95455dccc9fc9c8b171349d7ba7315dc88f"
+    },
+    "Dottie-Transport-Reversibility/rho5-reverse.json": {
+      "bytes": 34567,
+      "sha256": "05c055be07e5792c5b55bf004838b908d5dfb3f34549821ed7bd98e34baa155c"
+    },
+    "Dottie-Transport-Reversibility/rho5-roundtrip.json": {
+      "bytes": 392,
+      "sha256": "1b922c9883a03314213c75b925c3d706553e7b68d1129fad8266a97ffd01fc2c"
+    },
+    "Dottie-Transport-Reversibility/rho6-identification.json": {
+      "bytes": 364,
+      "sha256": "bba3922ec4b6b4245d7a91b86d4fe353e4c8a18efeaa0cd4f9c1663198088a38"
+    },
+    "Dottie-Transport-Reversibility/rho6-input.json": {
+      "bytes": 676,
+      "sha256": "fb1df2b3b2c503cded90ecd1118b6372a9c80c33a30a7f09fbf7a20eb9aba07f"
+    },
+    "Dottie-Transport-Reversibility/rho6-replay.json": {
+      "bytes": 34643,
+      "sha256": "375340cd151b0f4fc8bf3b1c8f1543198a01089a04d79ada4631ba44b381417b"
+    },
+    "Dottie-Transport-Reversibility/rho6-reverse.json": {
+      "bytes": 34651,
+      "sha256": "494ddc8e80eb2002b34888b890d89aa9c0e49866544db42f100206ec747ae5d6"
+    },
+    "Dottie-Transport-Reversibility/rho6-roundtrip.json": {
+      "bytes": 393,
+      "sha256": "64d57ae5c0eabd20445536ec1847a1dccd8ebeb15d3d615b26852326e6541413"
+    },
+    "Dottie-Transport-Reversibility/rotations.md": {
+      "bytes": 3008,
+      "sha256": "ea108883997b410b2532fc447a0cdc89825e5a9a8e786b8211c803fb71e53ea0"
+    },
+    "Dottie-Transport-Reversibility/triadic_lean_check.json": {
+      "bytes": 877,
+      "sha256": "2b884b8c23b5c4d811859b083fb7a895e197c698cfd8a2014635bd2bcd537d0b"
+    },
+    "README.md": {
+      "bytes": 11475,
+      "sha256": "9d14eee217f78d551ede6e94c39a01c84e41d022c0d69870e8c8ae0de5bd415f"
+    },
+    "order-of-the-turns.html": {
+      "bytes": 214103,
+      "sha256": "93c57ea879958f0884e8b4c38e549c497e165ac737bea21bac8a6edd7b5e0ac2"
+    },
+    "provenance.json": {
+      "bytes": 14273,
+      "sha256": "9973e93c48f4dc61ae3ec629d28c062f7a24f4041f5a3c909b9e703090f8ced4"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-19-zero-transport-v001"
+}

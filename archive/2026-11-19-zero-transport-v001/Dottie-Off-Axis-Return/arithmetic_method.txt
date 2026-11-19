@@ -1,0 +1,77 @@
+Arithmetic reference continuation on the right-hand witness sweep
+
+Write b = 1/2 - theta/pi and
+R(w,b) = pi^(-w) (zeta(w,b) + zeta(w,1-b)).
+The clockwise subarc from +60 to +45 degrees increases b from 1/6 to 1/4.
+All zeros tracked here are zeros of this varying corrected arithmetic reference.
+
+At q=3,4,6, the two reduced residue classes are +1 and -1. At b=1/q,
+the sum in R gives (q/pi)^w zeta(w) times the product of 1-p^(-w)
+over the distinct prime divisors p of q. Its theta derivative is
+w(q/pi)^(w+1)L(w+1,chi_q), with chi_q(+1)=1, chi_q(-1)=-1 and chi_q
+vanishing on nonunits. At b=1-1/q the derivative is its negative.
+These follow by grouping the Dirichlet series for Re(w)>1, by analytic
+continuation, and by the Hurwitz parameter derivative (DLMF 25.11.17).
+The derivative has nonzero value at every nontrivial Riemann zero since
+the Dirichlet Euler product converges absolutely at w+1 (DLMF 25.15.2).
+
+arithmetic_reference.py runs the local checks at the first Riemann zero,
+including a single uniform contraction disk for each angular perturbation
+and an independently refined disk at its far endpoint. The precision is
+384 bits. The JSON includes the signs of the corresponding angular speeds.
+
+arithmetic_braid.py tracks a zero throughout the full subarc at 224 bits.
+For a parameter segment I centered at b0, a provisional center c and a
+complex constant D are computed using local Newton steps. Bounds on the
+complex derivative on a square containing |w-c| <= r give a bound k on
+|1-R_w/D| valid throughout the disk and for every b in I. The segment
+passes if k<1 and |R(c,b)/D| + k r < r uniformly in b. The residual bound
+uses the center residual and an interval bound on R_b along I. These two
+tests make w -> w - R(w,b)/D a self-map and contraction of the closed disk.
+Hence there is a unique simple root in that disk for each b in I. At each
+boundary a new radius 1e-14 disk is included in the preceding and following
+tubes. A residual and derivative check again gives existence and uniqueness
+inside this common disk. This joins the roots on consecutive segments.
+
+Use Python with python-flint 0.9.0 and run these commands from this folder.
+python arithmetic_reference.py --output arithmetic_reference.json
+python arithmetic_braid.py --seed lattice --output arithmetic_braid_lattice.json
+python arithmetic_braid.py --seed riemann --output arithmetic_braid_riemann.json
+python arithmetic_braid.py --seed holdout --output arithmetic_braid_holdout.json
+python arithmetic_escape_match.py --output arithmetic_escape_match.json
+python signature_fourier_escape.py
+
+Each finite full-sweep file includes 257 certified sample enclosures. Every run
+proceeds from +60 degrees. The k=2 lattice seed (4 pi i / log 3) had first
+been identified by an exploratory reverse trace from the first Riemann zero.
+The seed labelled 'holdout' uses k=3 (6 pi i / log 3), the next index from
+the same elementary sequence. This index, the direction, and the 30,000
+certified-segment budget were selected before its endpoint was computed.
+For the holdout, only after obtaining the terminal disk does the verifier
+test the terminal local Euler factor, and, when that factor excludes zero,
+identify the Riemann zero by comparison with certified FLINT enclosures.
+The starting parameter angle comes from the measured orbit sweep. The seed
+index specifies an additional choice within its arithmetic reference spectrum.
+
+Earlier work on exactly this bilateral Hurwitz function includes Takashi
+Nakamura, On zeros of bilateral Hurwitz and periodic zeta and zeta star
+functions, https://arxiv.org/pdf/1910.10430. Proposition 1.7 treats Riemann
+and prefactor zeros at the special rational shifts. Proposition 4.7(3),
+equation (4.22), gives the real escaping branch at b increasing to 1/4.
+The complex branch followed below escapes at positive limiting height.
+
+Outcome of the prospectively specified trial: it exhausted its segment budget
+at precisely b=302213/1572864, or 55.41446685791015625 degrees. The enclosed
+zero had coordinates about -0.81955400894+17.60643848218i. The verifier exits
+with a budget exception and writes the last disk. arithmetic_budget_checkpoint
+independently reconstructs this last disk starting from the run's cell 64.
+
+Follow-up: a centered derivative bound for the first 160 cells and Fourier
+bounds for the subsequent 72 prove the same branch reaches b=31/128 in
+1,460 certified steps. The two analytic formulas represent the same function
+up to the nonvanishing Hurwitz Fourier gamma factor. Beyond this point, the
+Rouche estimate in signature_fourier_escape proves that the branch escapes
+to negative real infinity while its imaginary part tends to 4*pi/log(2).
+The escape occurs as the n=1 Fourier coefficient cos(2*pi*b) goes to zero
+and the n=2 coefficient cos(4*pi*b) tends to -1. The final finite disk
+overlaps strictly inside the uniform Rouche tube, certifying attachment.

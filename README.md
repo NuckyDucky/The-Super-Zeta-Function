@@ -259,6 +259,47 @@ Lean proves the determinant product, the inverse formula and the return theorem 
 
 **Arithmetic consequence.** At the *absolute* native angles $-30^\circ$ and $+30^\circ$, the reference spectra give the same function $\pi^{-w}(3^w-1)\zeta(w)$ with $w=2s$. The first dynamical correction is zero at $-30^\circ$ and $8/3$ at $+30^\circ$. Liu’s joint moment estimates give the external zero-free bound for this common reference. The measurements around the period-640 witness use relative offsets from its own angle. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Derivation and phase convention](archive/2026-11-19-oriented-return-v001/README.md#the-arithmetic-reference-at-the-two-absolute-angles)
 
+<a name="zero-transport"></a>
+
+### 3.7 Following a zero from one turn to the next
+
+On the right-hand period-640 branch, my two spectral traces recover the signed angle of the marked return. Its measured clockwise turn passes through $60^\circ$ and $45^\circ$. I chose these two angles because both give an exact Riemann factor. With $w=2s$ and $b=1/2-\theta/\pi$, I followed one simple zero of $R(b,w)=\pi^{-w}[\zeta(w,b)+\zeta(w,1-b)]$ continuously from $b=1/6$ to $b=1/4$. [Orbit calibration](archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/NOTES.txt) · [The arithmetic family and its antecedents](archive/2026-11-19-zero-transport-v001/README.md#relation-to-prior-work)
+
+For $w\ne1$, grouping the two reduced residue classes modulo four and six gives
+
+```math
+R(1/4,w)=\pi^{-w}2^w(2^w-1)\zeta(w),\qquad
+R(1/6,w)=2^{-w}(3^w-1)\,R(1/4,w).
+```
+
+The first identity tells me the possible destinations. The second lets me keep the exact ending coordinate and start the same turn again. To find which destination belongs to a particular seed, I followed overlapping disks containing a unique zero at every intervening angle. I saved each endpoint before identifying it from its elementary factor or an independent Riemann zero count. [Lean proof of the reset](archive/2026-11-19-zero-transport-v001/Dottie-Second-Zero/ReferenceReset.lean) · [Path and endpoint checks](archive/2026-11-19-zero-transport-v001/README.md#verification-and-replay)
+
+**Does the turn find the next zero in height order?** I number the positive-height Riemann zeros $\rho_1,\rho_2,\ldots$ from the bottom up. The first seed came from tracing a known zero backward. I called the second, third and fourth zeros before their respective forward tests. The first failure came when I called for the fifth. Each arrow below is one complete turn.
+
+```math
+\rho_1 \longrightarrow \frac{4\pi i}{\log 2} \longrightarrow \rho_2
+\longrightarrow \rho_3 \longrightarrow \rho_4
+\longrightarrow \frac{8\pi i}{\log 2} \longrightarrow \rho_7.
+```
+
+The fourth-zero call hit directly. The next call skipped the fifth and sixth as destinations. They were also absent from the interiors of those paths. On the blue arc leaving $\rho_4$, I counted three crossings of the critical line after departure. Even the narrow upper loop crosses twice. [Predictions, comparison seeds and stopping rule](archive/2026-11-19-zero-transport-v001/README.md#how-the-cases-were-selected)
+
+| Rotation clockwise from the seed | What happens | Height | Ordinary zeta magnitude |
+| --- | --- | ---: | ---: |
+| $0$ | Start at the fourth zero | 30.424876 | 0 |
+| $0.034097675\pi$ | Cross to the left | 33.035367 | 0.142187 |
+| $0.070080843\pi$ | Cross to the right | 35.225270 | 2.920990 |
+| $0.071086383\pi$ | Cross back to the left | 35.325132 | 2.938889 |
+| $\pi/12$ | Reach the elementary address | 36.258881 | 4.055336 |
+
+I report turn sizes as positive distances clockwise. The signed angle change is their negative. The interior angles are rounded. [Native angles, turns and exact elementary addresses](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/rotations.md) · [Directed crossing enclosures](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/blue-crossings.json) · [Download the interactive route explorer](https://github.com/NuckyDucky/The-Super-Zeta-Function/raw/refs/heads/main/archive/2026-11-19-zero-transport-v001/order-of-the-turns.html)
+
+**Which arcs were already in print?** McPhedran, Botten and Nicorovici plotted this same family in 2007. Reading their figures from $a=5/6$ to $a=3/4$ gives my clockwise turn because $a=1-b$. Figures 2b, 3a, 3b and 4 contain, in order, the four individual arcs from $4\pi i/\log 3$ through the first Riemann zero, the base-two address, the second zero and the third. Their labels count zeros at $a=1/2$. I followed those labeled zeros to both of my angles to identify the matches. Reusing each endpoint as the next seed joins pieces of different published trajectories. The later skip asks what order this repeated operation imposes. [Original paper, §3 and Figures 2–4](https://doi.org/10.1098/rspa.2006.1763) · [Five figure identifications and their checks](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/PRIOR-WORK.md)
+
+![Paths from the third zero through the fourth and an elementary address to the seventh. The dashed line marks real part one half.](archive/2026-11-19-zero-transport-v001/Dottie-Forward-Iteration/successor-paths.png)
+
+**Where were the missing two?** After closing the forward trial, I traced the fifth and sixth zeros backward and replayed both paths forward. Their respective starting addresses were $10\pi i/\log 3$ and $12\pi i/\log 3$. Each is present at $60^\circ$ through the factor $3^w-1$. Neither can be inherited from a preceding $45^\circ$ endpoint. On the imaginary axis those endpoints satisfy $2^w=1$, and equality of a nonzero base-three and base-two address would require a positive power of two to equal a positive power of three. Uniqueness along a regular simple path makes the recovered starting address the only one for that destination on this turn. This explains how a direct turn can reach each missing zero while a chain that only reuses endpoints skips it. [Inverse calculation, proof and replay](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/README.md) · [Question log](#zero-transport-questions)
+
 <a name="a-local-strengthening-of-the-seven-eighths-theorem"></a>
 <a name="local-zeta-result"></a>
 
@@ -396,6 +437,8 @@ python tools/check_lean.py --fetch-cache
 
 ## Credits
 
+- **Ross C. McPhedran, Lindsay C. Botten and Nicolae-Alexandru P. Nicorovici** traced zeros of the same symmetrized Hurwitz function. Their paper gives the equation of motion and the rational specializations at both ends of my turn. **Hans Frisk and Serge de Gosson**, and later **Ramūnas Garunkštis and Jörn Steuding**, studied trajectories and endpoint classifications for the single Hurwitz function. I give formula and figure references beside the numerical comparisons. [McPhedran, Botten and Nicorovici (2007), §3](https://doi.org/10.1098/rspa.2006.1763) · [Frisk and de Gosson (2001), §2](https://arxiv.org/abs/math-ph/0102007) · [Garunkštis and Steuding (2011), §2](https://journals.vilniustech.lt/index.php/MMA/article/view/5510) · [Detailed comparison](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/PRIOR-WORK.md)
+
 - **Michael Creutz and Robert M. Sternheimer** and **I. N. Baker and P. J. Rippon** provide the earlier work on alternating towers. Baker and Rippon give the centerline return, boundary, multiplier and antiholomorphic half-step I use. **Lasse Rempe and Dierk Schleicher** give the complex exponential parameter-space framework. **Robert Corless and coauthors** give the Lambert $W$ branches used in my fixed-pair atlas. [Creutz and Sternheimer](https://www.fq.math.ca/Scanned/19-4/creutz.pdf) · [Baker and Rippon, Theorem 8.1 and eqs. (12)–(13)](https://doi.org/10.1080/17476938908814364) · [Rempe and Schleicher](https://doi.org/10.1017/CBO9780511735233.014) · [Corless et al.](https://doi.org/10.1007/BF02124750)
 - **Samuel R. Kaplan** documented the fixed point of cosine as the Dottie number. [*The Dottie Number*](https://doi.org/10.1080/0025570X.2007.11953455)
 - **David R. Stoutemyer** supplied the inverse spherical Bessel framework, and **Riccardo Borghi** supplied the positive Stieltjes representation of the Bessel solution of Kepler’s equation. I used their 2024 results in the companion work on branches and approximation. [Stoutemyer’s paper](https://doi.org/10.5206/mt.v4i2.16787) · [Borghi’s paper](https://www.mdpi.com/2227-7390/12/1/154) · [Companion notes](archive/2026-11-18-lean-foundations-v001/README.md#results-and-their-evidence)
@@ -407,3 +450,19 @@ python tools/check_lean.py --fetch-cache
 - I used **Fredrik Johansson’s** ball arithmetic and **Siegfried Rump’s** verification methods for the numerical certificates. I use **Lean and mathlib** for the formal proofs, **FLINT** for directed interval arithmetic, and **PARI/GP** for the arithmetic descent. The **NIST Digital Library of Mathematical Functions** supplies the classical formulas cited at the Mellin, zeta and Barnes steps. [Johansson](https://doi.org/10.1109/TC.2017.2690633) · [Rump](https://doi.org/10.1017/S096249291000005X) · [mathlib](https://github.com/leanprover-community/mathlib4) · [FLINT](https://flintlib.org/) · [PARI/GP](https://pari.math.u-bordeaux.fr/)
 
 The preprint bibliographies give the wider references for alternating towers, parabolic dynamics and validated numerics. I keep a separate source map for the formulas in the super zeta notes. [Reciprocal tetration bibliography](archive/2026-11-18-lean-foundations-v001/papers/foundations/references.bib) · [Dottie spire bibliography](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/references.bib) · [Super zeta source map](archive/2026-11-16-super-zeta-v001/source-map.md#published-inputs-and-their-actual-use)
+
+<a name="zero-transport-questions"></a>
+
+## Questions in the order I asked them
+
+I leave each answered question in place and put its result beside it. The numbers record the order of the investigation.
+
+1. ~~Can I reuse the previous endpoint to reach the second Riemann zero?~~ Yes. The seed $4\pi i/\log 2$ reached $\rho_2$. [Prediction and certificate](archive/2026-11-19-zero-transport-v001/Dottie-Second-Zero/REPLAY.txt)
+2. ~~Does the second zero itself lead directly to the third?~~ Yes, in one turn. [Path and ordinal count](archive/2026-11-19-zero-transport-v001/Dottie-Third-Zero/REPLAY.txt)
+3. ~~Starting at the third zero, does repeating the turn keep finding consecutive zeros?~~ The first turn reached the fourth. The next two reached an elementary address and then the seventh, triggering the frozen stopping rule. [Prospective record](archive/2026-11-19-zero-transport-v001/Dottie-Forward-Iteration/results.json)
+4. ~~If I turn back from the seventh zero, do I recover the same intermediate address?~~ Yes. Reversing the simple branch recovered $8\pi i/\log 2$. [Reverse certificate](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/reverse-identification.json)
+5. ~~Could the two missed zeros be the critical-line crossings on the blue path leaving the fourth zero?~~ That path has three interior crossings. Ordinary zeta is nonzero at each. [Angles in multiples of π](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/rotations.md)
+6. ~~Which starting addresses lead to the fifth and sixth zeros on this turn?~~ The base-three addresses with indices five and six. I identified them backward, then checked both from the exact seeds in the forward direction. [Retrospective inverse study](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/README.md)
+7. **Open.** Given only a starting address, which features of the moving zero determine its endpoint's family and, when it lands on a Riemann zero, its ordinal?
+8. **Open.** Which positive-height Riemann zeros have a unique regular predecessor on the extra base-three lattice, and can I characterize that set before computing their paths?
+9. ~~Do earlier studies contain these same paths?~~ Yes. The five trajectories in Figures 2–4 of the 2007 paper include four successive links of my early route and one further elementary connection. [Figure-by-figure comparison](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/PRIOR-WORK.md)

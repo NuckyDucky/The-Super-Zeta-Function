@@ -1,0 +1,50 @@
+{
+  "protocol_sha256": "e81a4ec86c3d90be750082a935f62707035971bb47928e55a125ef69fdcd087c",
+  "status": "out-of-order Riemann endpoint",
+  "calls": [
+    {
+      "start_ordinal": 3,
+      "predicted_ordinal": 4,
+      "sweeps": [
+        {
+          "number": 1,
+          "path": "sweep_1.json",
+          "sha256": "a4b7b7c08f919b6f0c8c540b7d2d2687970de674ba7d05c707c0d24d0912ed35",
+          "status": "certified finite endpoint",
+          "address": [
+            "Riemann",
+            4
+          ]
+        }
+      ],
+      "result": "hit",
+      "direct": true
+    },
+    {
+      "start_ordinal": 4,
+      "predicted_ordinal": 5,
+      "sweeps": [
+        {
+          "number": 2,
+          "path": "sweep_2.json",
+          "sha256": "b090b79bc7aa3984a2132ac3b5d51dbf02305d353583b4f21158cbe8ee3717bf",
+          "status": "certified finite endpoint",
+          "address": [
+            "dyadic",
+            4
+          ]
+        },
+        {
+          "number": 3,
+          "path": "sweep_3.json",
+          "sha256": "9c34674c183810413a9141ae0232065c4fc706446fb4c91a5488c159dd540681",
+          "status": "certified finite endpoint",
+          "address": [
+            "Riemann",
+            7
+          ]
+        }
+      ]
+    }
+  ]
+}

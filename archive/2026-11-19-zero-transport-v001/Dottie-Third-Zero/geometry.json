@@ -1,0 +1,12 @@
+{
+  "certified_intervals": 627,
+  "height_strictly_increasing": true,
+  "minimum_lower_bound_for_dt_db": "[0.00565621390304 +/- 8.02e-16]",
+  "total_interior_critical_line_crossings": 1,
+  "crossing_theta_clockwise_native_degrees": "[50.61296554 +/- 1.08e-9]",
+  "crossing_w": {
+    "real": "0.500000000000000000000000000000000000000000000000",
+    "imag": "[22.88524395 +/- 5.36e-9]"
+  },
+  "absolute_riemann_zeta": "[1.4389913 +/- 5.61e-8]"
+}

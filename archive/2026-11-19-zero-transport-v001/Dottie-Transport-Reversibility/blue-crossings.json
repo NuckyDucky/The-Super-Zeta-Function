@@ -1,0 +1,37 @@
+{
+  "sweep": 2,
+  "precision_bits": 256,
+  "segments": 897,
+  "includes_seed": false,
+  "interior_crossings": [
+    {
+      "cell": 104,
+      "angle": "[53.862418565 +/- 2.59e-10]",
+      "degrees_from_start": "[6.137581435 +/- 2.59e-10]",
+      "height": "[33.035367316 +/- 5.13e-10]",
+      "abs_riemann_zeta": "[0.14218747 +/- 7.82e-9]",
+      "direction": "right to left"
+    },
+    {
+      "cell": 215,
+      "angle": "[47.385448343 +/- 4.12e-10]",
+      "degrees_from_start": "[12.614551657 +/- 4.12e-10]",
+      "height": "[35.225270063 +/- 3.67e-10]",
+      "abs_riemann_zeta": "[2.9209899 +/- 1.39e-8]",
+      "direction": "left to right"
+    },
+    {
+      "cell": 218,
+      "angle": "[47.204451051 +/- 6.58e-10]",
+      "degrees_from_start": "[12.795548949 +/- 6.58e-10]",
+      "height": "[35.325131924 +/- 7.85e-10]",
+      "abs_riemann_zeta": "[2.9388894 +/- 1.92e-8]",
+      "direction": "right to left"
+    }
+  ],
+  "upper_loop_sample": {
+    "real": "[0.5005319059825000 +/- 5.55e-17]",
+    "imag": "[35.2804355461154596 +/- 1.44e-17]"
+  },
+  "sample_angle": "12105/256"
+}

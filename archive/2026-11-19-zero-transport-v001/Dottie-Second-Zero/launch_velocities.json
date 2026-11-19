@@ -1,0 +1,103 @@
+{
+  "bits": 320,
+  "native_angle_degrees": 60,
+  "observable": "instantaneous velocity of a simple reference zero per clockwise angular displacement",
+  "rows": [
+    {
+      "role": "previously followed",
+      "p": 3,
+      "k": 2,
+      "seed": "4*pi*i/log(3)",
+      "seed_enclosure": {
+        "real": "0",
+        "imaginary": "[11.438403469520509078608561681335 +/- 4.50e-31]"
+      },
+      "dirichlet_velocity_per_clockwise_radian": {
+        "real": "[0.46760353387451725692388676959436 +/- 3.15e-33]",
+        "imaginary": "[5.3258029652665836148647714765838 +/- 4.53e-32]"
+      },
+      "hurwitz_velocity_per_clockwise_radian": {
+        "real": "[0.46760353387451725692388676959436 +/- 3.15e-33]",
+        "imaginary": "[5.3258029652665836148647714765838 +/- 4.53e-32]"
+      },
+      "velocity_per_clockwise_degree": {
+        "real": "[0.0081612212600711635601901330841929 +/- 4.70e-35]",
+        "imaginary": "[0.092952797056379088050932639140553 +/- 5.22e-35]"
+      },
+      "horizontal_launch": "right",
+      "vertical_launch": "up"
+    },
+    {
+      "role": "previously followed",
+      "p": 3,
+      "k": 3,
+      "seed": "6*pi*i/log(3)",
+      "seed_enclosure": {
+        "real": "0",
+        "imaginary": "[17.157605204280763617912842522002 +/- 1.75e-31]"
+      },
+      "dirichlet_velocity_per_clockwise_radian": {
+        "real": "[-14.040307663519873183146600012806 +/- 2.47e-31]",
+        "imaginary": "[15.534298452020172154390991854358 +/- 9.39e-32]"
+      },
+      "hurwitz_velocity_per_clockwise_radian": {
+        "real": "[-14.040307663519873183146600012806 +/- 2.47e-31]",
+        "imaginary": "[15.534298452020172154390991854358 +/- 9.39e-32]"
+      },
+      "velocity_per_clockwise_degree": {
+        "real": "[-0.24504959672141393465302409968853 +/- 1.25e-33]",
+        "imaginary": "[0.27112465497521038910717848371114 +/- 4.95e-33]"
+      },
+      "horizontal_launch": "left",
+      "vertical_launch": "up"
+    },
+    {
+      "role": "prospective dyadic seed",
+      "p": 2,
+      "k": 2,
+      "seed": "4*pi*i/log(2)",
+      "seed_enclosure": {
+        "real": "0",
+        "imaginary": "[18.129440567308775238510731782867 +/- 3.33e-31]"
+      },
+      "dirichlet_velocity_per_clockwise_radian": {
+        "real": "[10.528541244105780626675797595602 +/- 3.26e-31]",
+        "imaginary": "[6.2375830812028682072810583678287 +/- 4.31e-32]"
+      },
+      "hurwitz_velocity_per_clockwise_radian": {
+        "real": "[10.528541244105780626675797595602 +/- 3.26e-31]",
+        "imaginary": "[6.2375830812028682072810583678287 +/- 4.31e-32]"
+      },
+      "velocity_per_clockwise_degree": {
+        "real": "[0.18375771014166590226801710139864 +/- 1.10e-33]",
+        "imaginary": "[0.10886636213368287493424381771927 +/- 1.74e-33]"
+      },
+      "horizontal_launch": "right",
+      "vertical_launch": "up"
+    },
+    {
+      "role": "prospective triadic seed",
+      "p": 3,
+      "k": 4,
+      "seed": "8*pi*i/log(3)",
+      "seed_enclosure": {
+        "real": "0",
+        "imaginary": "[22.876806939041018157217123362669 +/- 1.01e-31]"
+      },
+      "dirichlet_velocity_per_clockwise_radian": {
+        "real": "[3.5121173851020659601475225014422 +/- 4.08e-33]",
+        "imaginary": "[8.6500604008899362990357731851744 +/- 4.05e-32]"
+      },
+      "hurwitz_velocity_per_clockwise_radian": {
+        "real": "[3.5121173851020659601475225014422 +/- 4.08e-33]",
+        "imaginary": "[8.6500604008899362990357731851744 +/- 4.05e-32]"
+      },
+      "velocity_per_clockwise_degree": {
+        "real": "[0.061298012086564695344117476662924 +/- 3.17e-34]",
+        "imaginary": "[0.15097203449191003153015079357544 +/- 4.42e-33]"
+      },
+      "horizontal_launch": "right",
+      "vertical_launch": "up"
+    }
+  ]
+}

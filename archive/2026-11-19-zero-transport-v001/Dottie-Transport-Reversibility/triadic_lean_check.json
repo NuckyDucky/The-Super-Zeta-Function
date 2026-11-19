@@ -1,0 +1,22 @@
+{
+  "toolchain": "Lean 4.19.0",
+  "project_base_commit": "d083b95873d9c76fbc21ae9c2cac3971b45f906c",
+  "source": "TriadicStart.lean",
+  "source_sha256": "d61cded7a1fbd2050627c9897efed291b4dceccf60fc06758c12754bf381599a",
+  "warnings_as_errors": true,
+  "exit_code": 0,
+  "axioms": {
+    "DottieOriented.TriadicStart.triadic_ne_dyadic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DottieOriented.TriadicStart.start_only": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "scope": "Every nonzero integer k gives a triadic address on the starting zero set and outside the entire endpoint zero set. The numerical identification of particular regular branches is a distinct check.",
+  "replay": "From the pinned project lean directory run lake env python PATH_TO_ARCHIVE/Dottie-Transport-Reversibility/check_triadic.py"
+}

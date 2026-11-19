@@ -1,0 +1,15 @@
+{
+  "bits": 320,
+  "start_winding": 1,
+  "terminal_Hurwitz_winding": 1,
+  "terminal_Riemann_count": 0,
+  "endpoint_kind": "2^w-1",
+  "index": 4,
+  "exact_imag": "[36.25888113461755047702146357 +/- 4.27e-27]",
+  "zeta_magnitude_on_square": "[4.055336 +/- 8.47e-7]",
+  "sealed_sha256": "b090b79bc7aa3984a2132ac3b5d51dbf02305d353583b4f21158cbe8ee3717bf",
+  "unscaled_rouche_tubes": 360,
+  "extra_bisections": 104,
+  "all_isolated_nodes": 361,
+  "largest_uniform_ratio": "[0.99939035158604 +/- 3.84e-15]"
+}

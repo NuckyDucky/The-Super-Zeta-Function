@@ -1,0 +1,77 @@
+A prospective seed for the second Riemann zero
+19 November 2026
+
+The frozen primary seed was 4πi/log 2. The already measured branch that starts
+at the first Riemann zero ends there. At the end of a sweep the same complex
+address is available as a starting zero for the next sweep. In Riemann's
+variable w, the analytic identity supporting this step is
+
+ R(60°,w) = 2^(−w)(3^w−1) R(45°,w),  w ≠ 1,
+ R(θ,w) = π^(−w)[ζ(w,b)+ζ(w,1−b)],  b=1/2−θ/π.
+
+Here θ in the formula for b is expressed in radians. The factor identities
+follow from collecting residue classes modulo six and four. M+ and M− on
+the calibrated Dottie branch recover the native angle and its orientation.
+At a fixed angle all arithmetic zeros see those same two measurements.
+The return rule preserves a third piece of information: the individual
+zero w arriving from the previous sweep. Each new sweep resets the angle
+from 45° to 60° while keeping that address; it does not concatenate three
+consecutive physical 15° rotations.
+
+Primary seed  ->  1/2 + 21.02203963877155499…i  (second Riemann zero).
+Comparison seed 8πi/log 3  ->  6πi/log 2  (zero of the elementary factor).
+
+protocol.txt records both choices before testing. Each continuation uses the
+Hurwitz reference, without a target ordinate or zeta-zero lookup. Two sealed
+terminal records were written before checking ordinary zeta. The independent
+classifier computes Rouché bounds, two cumulative counts, and Hardy Z signs
+at the bracketing heights. The endpoint has positive real part, where the
+45° reference is a nonzero factor times ordinary zeta. A disk centered on
+the critical line contains exactly one zero and is invariant under w→1−conj(w).
+The root therefore has real part exactly 1/2.
+
+The matching two small spectral moments do not identify a seed in isolation.
+At a simple reference zero the motion per radian of clockwise turning is
+R_θ/R_w, evaluated at that zero. In particular the local motion depends on
+both the parameter and the chosen arithmetic address. The 3-lattice seeds
+of index 2 and 3 move in opposite horizontal directions at launch. Toward
+45°, the first harmonic of the Hurwitz Fourier series vanishes. On the
+escaping branch it balances the second harmonic, forcing Re w→−infinity.
+The earlier large-path certificate and Fourier proof are in Dottie-Off-Axis-Return.
+
+Reproduction
+Use Python 3.12 and python-flint 0.9.0. Extract both directories side by side.
+From Dottie-Second-Zero, run with Python assertions enabled:
+
+python -B launch_velocities.py --output launch_velocities.json
+python -B dyadic_continuation.py
+python -B triadic_continue.py
+python -B classify.py dyadic_continuation.json --out dyadic_identification.json
+python -B classify.py triadic_endpoint.json --out triadic_identification.json
+python -B triadic_classify.py
+python -B audit_checkpoints.py
+python -B dyadic_geometry.py
+python -B dyadic_turns.py
+python -B dyadic_after_landing.py
+python -B plot_paths.py
+
+The plot also requires matplotlib. All 514 coarse checkpoints on the two
+prospective paths were audited by Rouché estimates on the unscaled Hurwitz
+sum. The continuous-parameter proof is supplied by the overlapping
+contraction disks in the individual continuation scripts. These numerical
+certificates use FLINT directed ball arithmetic.
+
+Lean replay: use the published project at commit
+d083b95873d9c76fbc21ae9c2cac3971b45f906c from
+https://github.com/NuckyDucky/The-Super-Zeta-Function .
+In its lean directory build SuperZeta.Oriented.LiuConnection and
+SuperZeta.Multiplicity, then run 'lake env python /path/to/check_reset.py'.
+The Lean result concerns the two arithmetic reference functions and reusing
+their zeros. The numerical continuation and the primitive Dottie orbit are
+separately certified.
+
+Literature:
+https://arxiv.org/abs/1910.10430  (Nakamura, bilateral Hurwitz zeta).
+https://dlmf.nist.gov/25.11.E9  (the Hurwitz Fourier expansion).
+https://dlmf.nist.gov/25.4  (the Riemann functional equation).
+https://flintlib.org/doc/acb_dirichlet.html  (the full-strip counting routines).

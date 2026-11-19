@@ -1,0 +1,18 @@
+{
+  "precision_bits": 224,
+  "source": "original k=3 trial; suffix rerun from cell 64",
+  "starting_cell_number": 64,
+  "starting_accepted_count": 22699,
+  "starting_center": {
+    "real": "[-0.723239649668699864357710282453127764665191652601 +/- 3.04e-49]",
+    "imag": "[17.5582911455763012684948043061266895527510484772 +/- 4.17e-47]"
+  },
+  "parameter_b": "302213/1572864",
+  "theta_degrees": "7263285/131072",
+  "theta_degrees_approx": 55.414466857910156,
+  "last_certified_disk": {
+    "real": "[-0.8195540089425 +/- 1.51e-14]",
+    "imag": "[17.6064384821782 +/- 4.93e-14]"
+  },
+  "accepted_segments": 30000
+}
