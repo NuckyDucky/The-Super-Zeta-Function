@@ -2,10 +2,10 @@ name: One Hurwitz term
 
 on:
   pull_request:
-    paths: ['archive/2026-11-19-single-term-inverse-v001/**', '.github/workflows/single-term.yml']
+    paths: ['archive/2026-11-19-single-term-inverse-v001/**', 'tools/replay_single_term.py', '.github/workflows/single-term.yml']
   push:
     branches: [main]
-    paths: ['archive/2026-11-19-single-term-inverse-v001/**', '.github/workflows/single-term.yml']
+    paths: ['archive/2026-11-19-single-term-inverse-v001/**', 'tools/replay_single_term.py', '.github/workflows/single-term.yml']
   workflow_dispatch:
 
 permissions:
@@ -22,4 +22,4 @@ jobs:
           python3 -m venv "$RUNNER_TEMP/single-term-venv"
           "$RUNNER_TEMP/single-term-venv/bin/python" -m pip install --only-binary=:all: python-flint==0.9.0
       - name: Decode the visits, isolate the double point, and replay the orbit sweep
-        run: '"$RUNNER_TEMP/single-term-venv/bin/python" -B archive/2026-11-19-single-term-inverse-v001/replay.py'
+        run: '"$RUNNER_TEMP/single-term-venv/bin/python" -B tools/replay_single_term.py'
