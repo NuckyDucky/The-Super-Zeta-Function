@@ -1,0 +1,46 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6461,
+      "sha256": "9c2fe6ee49b5834449a3fd84b47ebd4cd202f971037f70e265268c20574fd147"
+    },
+    "compute/jets.json": {
+      "bytes": 43962,
+      "sha256": "a5e4c5c0a775047061f5bc2a11c54fe45114a077e081cf644e2df9703d624734"
+    },
+    "compute/turning.json": {
+      "bytes": 672,
+      "sha256": "0b5de132db5701931133bc0eb0e581e422b932296a88a21c194618b6fa3c3157"
+    },
+    "compute/turning.py": {
+      "bytes": 4622,
+      "sha256": "ee24d9c71a66e7c1c530c8f35534b6c1982030d4e9784bfbcd1782ea151767bd"
+    },
+    "compute/verify.py": {
+      "bytes": 12381,
+      "sha256": "595e43a2f8d151d881b5d32e66a00b951a1da8d15c2a96f70585a580b3aef9c6"
+    },
+    "preview.png": {
+      "bytes": 126817,
+      "sha256": "c038fe3498378b5b65bb1e32271336111eb978a8cfbd21fc4c15b36ebc64e22f"
+    },
+    "preview.py": {
+      "bytes": 2534,
+      "sha256": "7c717d3f151afd415e09bcd5ea7ed6cba3d7144630c4e53298691f1a37931f49"
+    },
+    "view/build.py": {
+      "bytes": 2761,
+      "sha256": "d730d8531af254267faadaa195eeb5ccc66dd0db4db7636bbf6fd986733a3281"
+    },
+    "view/fragment.html": {
+      "bytes": 10742,
+      "sha256": "58bdb888ca6949aea81ffaf99d4edb7bfe60f4b9bd55d6677b9941663d0c5e63"
+    },
+    "view/page.html": {
+      "bytes": 1866,
+      "sha256": "2a8b5e101ce14afd3d1f105569afd0ab5d5faebf38f1f31595d7d87d1de13aed"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-19-sixth-passes-v001"
+}

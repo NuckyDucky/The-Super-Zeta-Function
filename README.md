@@ -300,6 +300,14 @@ I report turn sizes as positive distances clockwise. The signed angle change is 
 
 **Where were the missing two?** After closing the forward trial, I traced the fifth and sixth zeros backward and replayed both paths forward. Their respective starting addresses were $10\pi i/\log 3$ and $12\pi i/\log 3$. Each is present at $60^\circ$ through the factor $3^w-1$. Neither can be inherited from a preceding $45^\circ$ endpoint. On the imaginary axis those endpoints satisfy $2^w=1$, and equality of a nonzero base-three and base-two address would require a positive power of two to equal a positive power of three. Uniqueness along a regular simple path makes the recovered starting address the only one for that destination on this turn. This explains how a direct turn can reach each missing zero while a chain that only reuses endpoints skips it. [Inverse calculation, proof and replay](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/README.md) · [Question log](#zero-transport-questions)
 
+### 3.8 Why the sixth path folds back
+
+On the path from $12\pi i/\log 3$ to the sixth Riemann zero, I reach height $37.25$ three times. The moving zero first climbs through it on the left, descends through it farther left, then climbs through it on the right of the imaginary axis. At the crest it travels due left. At the trough it travels due right. Its tangent turns **180° counterclockwise** between them while my input turns only **2.454268° clockwise**. Following the moving zero requires changing both its real part and its height as the two Hurwitz shifts vary. The graph aligns the three crossings so their slopes and accelerations can be compared directly.
+
+[![The sixth path crosses the same height three times. Click to compare the derivatives.](archive/2026-11-19-sixth-passes-v001/preview.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/)
+
+[Open the interactive graph](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Derivative formulas, interval proof and replay](archive/2026-11-19-sixth-passes-v001/README.md)
+
 <a name="a-local-strengthening-of-the-seven-eighths-theorem"></a>
 <a name="local-zeta-result"></a>
 
@@ -466,3 +474,5 @@ I leave each answered question in place and put its result beside it. The number
 7. **Open.** Given only a starting address, which features of the moving zero determine its endpoint's family and, when it lands on a Riemann zero, its ordinal?
 8. **Open.** Which positive-height Riemann zeros have a unique regular predecessor on the extra base-three lattice, and can I characterize that set before computing their paths?
 9. ~~Do earlier studies contain these same paths?~~ Yes. The five trajectories in Figures 2–4 of the 2007 paper include four successive links of my early route and one further elementary connection. [Figure-by-figure comparison](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/PRIOR-WORK.md)
+10. ~~What makes the sixth path pass the same height three times?~~ Its velocity turns through the horizontal twice. The two folds enclose a whole band of repeatedly visited heights. [Three passes, two folds](archive/2026-11-19-sixth-passes-v001/README.md)
+11. **Open.** Can I use the two Hurwitz shifts to bound the total turning of other branches before tracing their zeros?

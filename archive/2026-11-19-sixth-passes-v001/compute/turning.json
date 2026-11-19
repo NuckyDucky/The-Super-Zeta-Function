@@ -1,0 +1,32 @@
+{
+  "source_sha256": "375340cd151b0f4fc8bf3b1c8f1543198a01089a04d79ada4631ba44b381417b",
+  "precision_bits": 192,
+  "angle_degrees": [
+    "645/64",
+    "905/64"
+  ],
+  "accepted_cells": 459,
+  "angular_rate_radians_per_degree_strict_bounds": [
+    "1/20",
+    "6"
+  ],
+  "tangencies": [
+    {
+      "angle_bracket": [
+        "44855/4096",
+        "5615/512"
+      ],
+      "height_direction_after": -1,
+      "horizontal_sign": -1
+    },
+    {
+      "angle_bracket": [
+        "109795/8192",
+        "27465/2048"
+      ],
+      "height_direction_after": 1,
+      "horizontal_sign": 1
+    }
+  ],
+  "signed_turn_between_tangencies": "pi"
+}
