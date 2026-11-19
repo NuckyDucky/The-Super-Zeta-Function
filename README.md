@@ -1,23 +1,31 @@
 # The Super Zeta Function
 
-I start with two alternating exponentials and ask which fixed pairs return a small displacement unchanged to first order. Their complex phases give a complete spectrum. Its determinant is $E(v)=\cos^2\sqrt v-v$. From this one function I recover the individual spectral values as zeros, their positive-integer reciprocal-power sums as coefficients of $-E'/E$, and a comparison with Riemann zeta. [Construction from the ordered phases](#building-the-super-zeta) · [Determinant product in Lean](lean/SuperZeta/UnitSpectrum.lean)
+**NuckyDucky**
 
-**In this work I**
+## Abstract
 
-- Construct the quartet spectrum and a boundary operator that reproduces it.
-- Recover $\zeta(2s)$ by comparing the quartet determinant with the cosine determinant.
-- Strengthen the 7/8ths bound to the critical line in three certified height intervals.
-- Recover the exact Stirling correction for each positive integer from the balanced-sign factor in my quartet normalization.
-- Identify the Dottie fold, certify finite periods, and retain the order of the exponential signs.
-- Approximate $\pi$ using a genus-one quartic that fails the Hasse principle.
+I study the ordered return of the reciprocal exponentials $P'=e^{LQ}$ and $Q'=e^{-LP}$. Fixed pairs with multiplier one give a spectrum with entire determinant $E(v)=\cos^2\sqrt v-v$. Its zeros determine the reciprocal-power sums of my super zeta function. A cosine reference gives an exact comparison with Riemann zeta. I also use a marked family of determinants to measure the rotation of a finite attracting orbit. For a cap-selected orbit of period 640, two labeled spectral traces recover the side of the negative imaginary axis and, on a certified centerline interval, the original orbit parameter. [Unmarked determinant](lean/SuperZeta/UnitSpectrum.lean) · [Oriented inverse theorem](archive/2026-11-19-oriented-return-v001/README.md#the-two-trace-inverse)
 
-I wanted to see how closely I could approximate $\pi$ using $e$ and six integers. When I solved the quadratic, I found a curve with two real ovals and a simple rule that swaps its two roots. The same reciprocal expression showed up in the tower I was studying. It let me find complex fixed pairs with the same first-order return as the Dottie fold. Summing inverse powers of the resulting spectrum led me to my super zeta function.
+**Principal results**
 
-[Quadratic and real ovals](#the-quadratic-and-the-genus-one-curve) · [Reciprocal tetration and the Dottie spire](#reciprocal-tetration) · [The super zeta](#building-the-super-zeta) · [The 7/8ths strengthening](#local-zeta-result) · [Factorial correction](#the-factorial-correction) · [Preprints and proofs](#preprints-and-reproduction) · [Credits](#credits) · [Research impact](#research-impact)
+- I construct the quartet spectrum and a boundary operator with that spectrum.
+- I recover $\zeta(2s)$ by comparing the quartet determinant with the cosine determinant.
+- At a Dottie-selected height and its first two integer multiples above it, I strengthen the 7/8ths conclusion to the critical line within three explicit intervals.
+- I recover the Stirling correction for each positive integer from the balanced-sign factor in my quartet normalization.
+- I certify finite cycles in the Dottie spire and recover the period-640 witness from two labeled traces on a calibrated branch.
+- I approximate $\pi$ from a genus-one quartic that fails the Hasse principle.
+
+## Introduction
+
+My starting problem was to approximate $\pi$ using $e$ and six integers. Solving the resulting quadratic exposed a curve with two real ovals and a reciprocal transformation exchanging its roots. The same reciprocal difference gives a coordinate for fixed pairs of the alternating tower. The Dottie fold identifies the multiplier-one condition. Extending that condition to the complex plane produces the determinant used below.
+
+[1. Quadratic](#the-quadratic-and-the-genus-one-curve) · [2. Reciprocal tetration](#reciprocal-tetration) · [3. Super zeta](#building-the-super-zeta) · [Oriented period-640 return](#oriented-period-640-return) · [4. Local zero counts](#local-zeta-result) · [5. Factorial correction](#the-factorial-correction) · [Conclusions](#research-impact) · [Reproduction](#preprints-and-reproduction) · [Credits](#credits)
 
 <a name="from-the-original-meme-to-the-dottie-spire"></a>
 
-## The quadratic and the genus-one curve
+<a name="the-quadratic-and-the-genus-one-curve"></a>
+
+## 1. The quadratic and the genus-one curve
 
 My six integers are the coefficients of these two polynomials.
 
@@ -39,7 +47,9 @@ Y^2&=(N-D)^2+4N^2\\[0pt]
 \end{aligned}
 ```
 
-### What the right panel shows
+<a name="what-the-right-panel-shows"></a>
+
+### Real ovals and projective completion
 
 On the left, the two values $Y=\pm\sqrt{f(x)}$ are separate graphs because $f(x)>0$ for real $x$. I divide $Y$ by $\sqrt{961000}(1+x^2)$ to draw both on a finite vertical scale. The right panel wraps the real line around a circle using the angle $2\arctan x$. The two directions $x\to+\infty$ and $x\to-\infty$ reach the same angle. [Plot coordinates and source](archive/2026-11-18-quartic-ovals-v001/README.md)
 
@@ -49,7 +59,7 @@ To see why the ends really join, I use the coordinates $t=1/x$ and $V=Y/x^2$ nea
 
 Over $\mathbb C$ I can follow either square root as $x$ moves around the complex sphere. The two sheets meet at the four simple roots of $f$. Riemann–Hurwitz gives $2g-2=2(-2)+4=0$, so the completed complex curve has genus one. It is a torus with those two ovals as its real locus. Its elliptic Jacobian is the curve I use to study rational points. [Complex genus, §3](archive/2026-11-18-lean-foundations-v001/arithmetic/research/geometry.md#3-why-the-complex-completion-is-a-torus) · [Explicit elliptic Jacobian, §5](archive/2026-11-18-lean-foundations-v001/arithmetic/research/geometry.md#5-an-explicit-elliptic-jacobian-and-its-complex-structure) · [Fisher, binary quartics, §2](https://people.maths.bris.ac.uk/~jb12407/ANTS-XV/papers/ANTS-XV_fisher.pdf)
 
-I call the input of the **widest gap in the normalized plot** Nucky’s constant (lol not really but for now), $x=0.057793510152240105777\ldots$. Its exact equation comes from differentiating $f(x)/(1+x^2)^2$. The narrowest plotted gap is near $x=1.400168$. Close by, at the positive zero of $N(x)$, the roots in the original coordinate $y$ are $-1$ and $-2$. Their gap of one is the exact minimum in that coordinate. [Stationary quartic and 384-bit enclosures](archive/2026-11-18-quartic-ovals-v001/README.md#where-the-branches-are-farthest-apart-and-closest-together) · [Exact gap in Lean](lean/SuperZeta/Meme.lean)
+I call the input of the **widest gap in the normalized plot** Nucky’s constant, $x=0.057793510152240105777\ldots$. Its exact equation comes from differentiating $f(x)/(1+x^2)^2$. The narrowest plotted gap is near $x=1.400168$. Close by, at the positive zero of $N(x)$, the roots in the original coordinate $y$ are $-1$ and $-2$. Their gap of one is the exact minimum in that coordinate. [Stationary quartic and 384-bit enclosures](archive/2026-11-18-quartic-ovals-v001/README.md#where-the-branches-are-farthest-apart-and-closest-together) · [Exact gap in Lean](lean/SuperZeta/Meme.lean)
 
 I checked solvability over the reals and over $\mathbb Q_p$ at every prime. The quartic passes all those local tests. The explicit map to the Jacobian would send a rational point of my quartic to one with a nonzero negative square as its first coordinate. The computer-assisted isogeny descent excludes that squareclass. That is what makes the quartic a **counterexample to the Hasse principle**. [Local points in Lean](lean/SuperZeta/HasseCover.lean) · [Map and descent, eqs. (4)–(6)](archive/2026-11-18-lean-foundations-v001/arithmetic/research/hasse-obstruction.md#proof)
 
@@ -68,7 +78,9 @@ The plot is centered at $(\pi,T(\pi))$, with both axes in units of $10^{-20}$. T
 
 The part I carried into the tower was $p=2y+3$. In that coordinate my quadratic is $p-p^{-1}=4N/(N-D)$, and $p\mapsto-1/p$ swaps its two roots. [Reciprocal substitution in Lean](lean/SuperZeta/Meme.lean)
 
-## Reciprocal tetration
+<a name="reciprocal-tetration"></a>
+
+## 2. Reciprocal tetration
 
 In my preprint, the finite tower starts at height zero with $T_0=1$ and grows by $T_{n+1}=e^{LT_n}$. Thus $T_1=x$ and $T_2=x^x$ for $x=e^L$. I call $1$ the cap, the value at the top of the finite tower. For a positive real base I take $L=\log x$. Over the complex plane I work in the logarithmic lift. I choose $L$ first and use $x^z=e^{Lz}$ at every stage, which keeps the chosen logarithm attached to the base. [*Reciprocal Tetration*, §2, “Finite Tet and the reciprocal pair”](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L109-L146) · [PDF](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.pdf)
 
@@ -110,9 +122,13 @@ For the zeta experiment I checked two reflected points $L_\pm=\pm\eta+iy$ and th
 
 <a name="the-spectral-zeta-and-the-critical-line"></a>
 
-## Building the super zeta
+<a name="building-the-super-zeta"></a>
 
-### 1. Compose the two marked stages
+## 3. Building the super zeta
+
+<a name="1-compose-the-two-marked-stages"></a>
+
+### 3.1 Compose the two marked stages
 
 At a fixed pair, $P=e^U$ and $Q=e^V$, where $U=LQ$ and $V=-LP$ are the branch witnesses from my construction. A small change at $P$ passes first through $P\mapsto Q$ with derivative $-LQ$, then through $Q\mapsto P$ with derivative $LP$. By the chain rule the derivative of the whole return, called its **multiplier**, is
 
@@ -122,7 +138,9 @@ g_L'(P)=(-LQ)(LP)=UV.
 
 On the centerline chart, this product is $(u\sec u)^2$ and $Y'(u)/Y(u)=(1-UV)/u$. The condition $UV=1$ is therefore the one already built into the fold, where the two fixed branches meet. It says a small displacement returns unchanged to first order. [*Reciprocal Tetration*, §5, fixed-pair identities](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.pdf#page=7) · [*Dottie Parabolic Fold*, §2, eqs. (6)–(9)](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.pdf#page=3)
 
-### 2. Recover the marked phases from the cosine roots
+<a name="2-recover-the-marked-phases-from-the-cosine-roots"></a>
+
+### 3.2 Recover the marked phases from the cosine roots
 
 From $U=Le^V$ and $V=-Le^U$ I eliminate $L$ to obtain $Ue^U+Ve^V=0$. On the multiplier-one locus I write $U=\alpha$ and $V=\alpha^{-1}$. The equation becomes $\alpha^2 e^{\alpha-\alpha^{-1}}=-1$. The same kind of reciprocal difference that solved my quadratic now gives the coordinate $2iu=\alpha-\alpha^{-1}$. Then $\alpha e^{iu}=\sigma i$, where $\sigma=\pm1$, and substitution yields $u=\sigma\cos u$. The steps also run back from a root to the ordered phases and the parameter.
 
@@ -132,7 +150,9 @@ U=\sigma\sin u+iu,\qquad V=\sigma\sin u-iu,\qquad L=\sigma i e^{-\sigma\sin u}.
 
 This recovery is why I can use cosine roots as a spectrum of the original return. Each root gives me both branch witnesses, the values $P=e^U$ and $Q=e^V$, and the complex $L$ that produced them. [Cosine spectrum, §1, eqs. (1)–(5)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#1-exact-recovery-of-every-ordered-phase-and-parameter) · [Phase recovery in Lean](lean/SuperZeta/Quartet.lean)
 
-### 3. Square the roots and sum their inverse powers
+<a name="3-square-the-roots-and-sum-their-inverse-powers"></a>
+
+### 3.3 Square the roots and sum their inverse powers
 
 The real roots are $\pm d$, and the other roots come in quartets $\lbrace u_n,-u_n,\bar u_n,-\bar u_n\rbrace$. Squaring merges each sign pair. In the variable $v=u^2$ the determinant is the entire function
 
@@ -156,7 +176,9 @@ E(v)=\prod_j(1-v/\lambda_j),\qquad
 
 where the series holds near zero. For example, $E(v)=1-2v+v^2/3+\cdots$ gives $\mathcal Z(1;1)=2$ and $\mathcal Z(2;1)=10/3$. The first equality ties the Dottie root to every nonreal quartet in one exact sum. Lean proves the product for this concrete root family. [Product, traces and a tail bound, eqs. (16)–(19)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#4-canonical-product-and-exact-rational-trace-sums) · [Lean theorem](lean/SuperZeta/UnitSpectrum.lean)
 
-### The boundary operator behind the determinant
+<a name="the-boundary-operator-behind-the-determinant"></a>
+
+### 3.4 The boundary operator behind the determinant
 
 There is another way to obtain those same numbers. On $L^2(-1,1)\oplus\mathbb C$, take a function $f$ in $H^1(-1,1)$ and keep its midpoint value $c=f(0)$ as a second coordinate. For every complex $\varepsilon\ne0$ I define
 
@@ -180,7 +202,9 @@ For $N=2$, $\varepsilon=2$ and $u=1$, this gives $\det(I-uB_N)=1/8$. [Projection
 
 **What was already known?** In Hupkes’s continuous-history space, the midpoint condition and a derivative already appear together. Choosing equal endpoint weights $i\varepsilon/2$ in his characteristic equation and putting $z=iu$ gives exactly $i(u-\varepsilon\cos u)$. What I trace here is the passage from my ordered reciprocal phases to the squared spectrum at $\varepsilon=1$, its explicit Hilbert-space determinant, and the resulting zeta comparison. Varying $\varepsilon$ moves the spectrum. Adding a shift $a$ gives the separate family $\sum_j(\lambda_j+a)^{-s}$, with its own poles and residues. I welcome an earlier reference for this precise combination. [Hupkes, eqs. (2.10), (2.54) and Lemma 2.4.4](https://math.leidenuniv.nl/scripties/PhdHupkes.pdf) · [Shifted spectrum, domain and residues](archive/2026-11-16-super-zeta-v001/research/shifted-superzeta.md)
 
-### 4. Compare with the odd-integer spectrum
+<a name="4-compare-with-the-odd-integer-spectrum"></a>
+
+### 3.5 Compare with the odd-integer spectrum
 
 I compare $E$ with $\cos^2\sqrt v$, whose double zeros are $[(n+\tfrac12)\pi]^2$ for $n=0,1,2,\ldots$. Their reciprocal-power sum is the odd-integer part of $\zeta(2s)$, counted twice and scaled by $(2/\pi)^{2s}$. I use the principal logarithm for each squared root. On the negative real axis $E(-t)=\cosh^2\sqrt t+t>0$, so that axis is free of spectral zeros and the determinant logarithm there is real with $\log E(0)=0$. The full determinant integral and the root sum agree first on $1/2<\Re s<1$. Dividing out the reference determinant leaves $1+t/\cosh^2\sqrt t$. Integrating its logarithmic derivative by parts gives
 
@@ -198,12 +222,53 @@ F(s)=\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s).
 
 With $w=2s$, the prefactor is nonzero in $0<\Re w<1$, so I can recover $\zeta(w)=\pi^w F(w/2)/[2(2^w-1)]$ there. Each Riemann zero corresponds to a zero of $F$ with the same multiplicity. The line $\Re w=1/2$ becomes $\Re s=1/4$, and its heights are halved as well. Lean proves the product over the Dottie square and the two squared roots from each nonreal quartet. Those roots determine the whole determinant, including its value between zeros. On the Mellin strip, their sum gives the same continuation used here. [Cosine spectrum, §5, eqs. (20)–(23)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#5-a-two-variable-zeta-for-the-inverse-cosine-coupling-family) · [Voros, zeta functions over zero sets](https://arxiv.org/abs/1403.4558) · [DLMF, Mellin transforms](https://dlmf.nist.gov/2.5) · [Lean determinant product and root sum](lean/SuperZeta/UnitSpectrum.lean)
 
+<a name="oriented-period-640-return"></a>
+
+### 3.6 Inverting two spectral traces on the period-640 orbit
+
+Here I use the spectrum to read a rotation of the original attracting orbit. Put $L=iy$ and let $p_y$ be the point selected by iterating the scalar lap $G_y=g_{iy}^{320}$ from the cap $1$. The angle $\theta(y)=\arg G_y'(p_y)$ is the turn of a small displacement after one lap of 640 alternating exponential stages. At the centerline witness $y_0=0.509892982511772$ that turn is $-86.2334491153^\circ$. [Period convention and finite witnesses](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L554-L604) · [Derivative of the full lap](lean/SuperZeta/Oriented/OrderedStages.lean)
+
+**Proposition (two-trace inverse).** I mark the two exponential stages by opposite phases. For a probe angle $a$, let $M(a)$ be the sum of the reciprocal zeros of its normalized positive-sign squared determinant. For $\cos a\ne0$, the sum converges absolutely and equals $2/(1-\sin a)$. The unshifted squared spectra agree at angles reflected across $-90^\circ$, even with both stage signs retained. I measure the same positive-sign spectrum at two labeled offsets and write
+
+```math
+M_+=M(\theta+\pi/6),\qquad M_-=M(\theta-\pi/6),\qquad
+S_\pm=1-2/M_\pm .
+```
+
+Where both probes are regular, $S_\pm=\sin(\theta\pm\pi/6)$. Subtracting and adding the two sine addition formulas gives the inverse
+
+```math
+\cos\theta=S_+-S_-,\qquad
+\sin\theta=\frac{S_++S_-}{\sqrt{3}}.
+```
+
+On the sector $-120^\circ<\theta<-60^\circ$, $M_+>M_-$ identifies the side above $-90^\circ$ and $M_+<M_-$ the side below. At the pivot the two readings equal $8-4\sqrt3$. The pair identifies the current side. Reading it before and after a specified turn records which side the orbit came from. [Proof from the complete zero set](lean/SuperZeta/Oriented/SpectralInverse.lean) · [Reflection of the squared determinant](lean/SuperZeta/Oriented/PhaseSymmetry.lean)
+
+![The two trace curves cross at minus 90 degrees. On the original orbit the positive-offset reading is larger. After the clockwise turn the negative-offset reading is larger.](archive/2026-11-19-oriented-return-v001/figures/oriented-traces.png)
+
+**Period-640 round trip.** I turned the measured phase clockwise by $30^\circ$, found the corresponding parameter on the same branch, and evaluated both determinants afresh there. The rounded entries below come from directed enclosures. [Interval record](archive/2026-11-19-oriented-return-v001/data/quarter_probe.json)
+
+| Measurement | Native angle | $M_+$ | $M_-$ |
+| --- | ---: | ---: | ---: |
+| Original orbit | −86.2334491153° | 1.092114930 | 1.054295998 |
+| After the clockwise turn | −116.2334491153° | 1.001081173 | 1.285503688 |
+
+Decoding the second pair and adding back $30^\circ$ gives a parameter interval containing $y_0$ of width below $10^{-29}$. The cap selects the starting point at this parameter. Iterating the ordered map then recovers the same cycle with its actual exponents $U=LQ$ and $V=-LP$ at every step. Each of the 1,280 returned exponent enclosures overlaps its original partner.
+
+Lean proves the determinant product, the inverse formula and the return theorem on a continuous, strictly increasing angle branch with the target in range. The 448-bit interval computation verifies cap capture, primitive period and positive angle derivative on the stated witness interval. Lean separately checks the printed rational return bounds. [Full proof, arithmetic comparison with Liu, and replay](archive/2026-11-19-oriented-return-v001/README.md)
+
+**Arithmetic consequence.** At the *absolute* native angles $-30^\circ$ and $+30^\circ$, the reference spectra give the same function $\pi^{-w}(3^w-1)\zeta(w)$ with $w=2s$. The first dynamical correction is zero at $-30^\circ$ and $8/3$ at $+30^\circ$. Liu’s joint moment estimates give the external zero-free bound for this common reference. The measurements around the period-640 witness use relative offsets from its own angle. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Derivation and phase convention](archive/2026-11-19-oriented-return-v001/README.md#the-arithmetic-reference-at-the-two-absolute-angles)
+
 <a name="a-local-strengthening-of-the-seven-eighths-theorem"></a>
 <a name="local-zeta-result"></a>
 
-## A local strengthening of the 7/8ths theorem
+<a name="a-local-strengthening-of-the-78ths-theorem"></a>
 
-### How the iteration gives the height
+## 4. A local strengthening of the 7/8ths theorem
+
+<a name="how-the-iteration-gives-the-height"></a>
+
+### Selection of the test height
 
 I used the certified period-320 lap at the spire to choose where to count. Each of the two marked exponential stages occurs 320 times per lap. The derivative divided by the output of $z\mapsto e^{\pm Lz}$ is $\pm L$, so comparing the product for one marked stage at a flank with its product at the midpoint gives the modulus ratio $(|L_\pm|/|L_0|)^{320}$.
 
@@ -218,7 +283,9 @@ I also counted zeros in a window of the same width around the nearest multiple o
 
 I then tested whether the Dottie clock picks heights **closer** to a zero than nearby controls. The earlier pilot split one win each. In a publicly preregistered test of 32 transverse inputs, the clock won 20 comparisons and the controls won 16. At 14 inputs the orbit check left both comparisons unresolved, so the predicted overall majority remains open. [Frozen selection rule](archive/2026-11-18-clock-local-controls-protocol-v001/README.md) · [Every input, comparison and unresolved case](archive/2026-11-18-clock-proximity-results-v001/README.md)
 
-### What the three windows tell me
+<a name="what-the-three-windows-tell-me"></a>
+
+### Certified counts in the three windows
 
 I wanted to know whether the spire had pointed me to a sideways pair of zeros, at the same height and on opposite sides of the line. That takes a count over the whole window. A pair could sit between the heights I happened to sample.
 
@@ -234,7 +301,9 @@ I used interval arithmetic around each rectangle to count every zero with multip
 
 **I strengthen the 7/8ths conclusion in these three windows from the allowed strip to the single line $\beta=1/2$.** In particular I exclude the previously allowed points with $1/2<\beta\le7/8$ and their reflections. My addition is a rule for choosing the height from the cap-marked Dottie return, followed by the contour counts and the matching line brackets at those heights. The same result is $\Re s=1/4$ in my super zeta coordinate, over the corresponding halved height intervals. [Full result and evidence](archive/2026-11-18-superzeta-distance-v001/README.md)
 
-## The factorial correction
+<a name="the-factorial-correction"></a>
+
+## 5. The factorial correction
 
 ### What the quarter measures
 
@@ -296,6 +365,17 @@ The numerator comes from the exact product of all the radial factors $R_n/(2\pi 
 
 ![The normalized products approach the Barnes–Dottie limit through five cutoffs up to 1,024](archive/2026-11-16-super-zeta-v001/figures/barnes-dottie-normalization.png)
 
+
+<a name="research-impact"></a>
+
+## Conclusions
+
+- **Two measurements determine the orientation of the cap-selected return.** The labeled root sums recover both coordinates of the normalized return multiplier. On the certified branch this determines the centerline parameter and the ordered period-640 orbit. [The inverse and the witness](#oriented-period-640-return)
+- **I kept the order of the exponential stages in a ring.** A word records which sign I use at each step. Joining words is multiplication, and finite integer sums of words form the free associative ring on the two signs. The balance, given by the difference between the two sign counts, adds when I join words. The balanced words therefore span its degree-zero subring. The two orders +− and −+ already give different compositions at Dottie. In a scalar count, two of the four two-stage histories balance. With two independent streams, the fraction is $1/4$. At level $n$ that fraction is the factor $B_n^2$ in my normalization. [Periodic sign words in my preprint](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L404-L445) · [Word ring acting by composition, eqs. (1)–(4)](archive/2026-11-16-super-zeta-v001/research/ordered-signed-histories.md#1-the-operators-retain-every-arrangement)
+- **I made the factorial error an evaluable part of the formula.** The exact integral explains why the quarter survives and bounds what is left at each truncation. I also found the exact adjacent-level ratio $D_{n+1}/D_n=1+1/(4n(n+1))$, which lets me carry the factorial factor into the phase comparison at the Dottie height. Summing the correction across levels contributes a quarter at zero in the zeta function of those levels. Multiplying across levels gives the factorial factor in the Barnes–Dottie constant. [Adjacent-level phase calculation and certificate](archive/2026-11-18-stirling-correction-v001/README.md#effect-on-phase-at-the-dottie-height)
+- **I verified the exact factorial identities in Lean.** The proofs check the combined Stirling error in the quartet formula and the truncation bound at every order. A separate theorem recovers the error on a single factorial from the same integral and proves the resulting equality for every positive integer $n$. [Combined and single-factorial identities](lean/SuperZeta/StirlingCorrection.lean) · [All-order bounds](lean/SuperZeta/StirlingExpansion.lean)
+- **I used a finite Dottie orbit to choose where to count Riemann zeros.** The marked lap fixes the first test height, and the super zeta reconstruction gives the conversion between the two spectral coordinates. At the three tested heights the contour counts and the critical-line brackets agree, tightening the 7/8ths bound to the critical line in those windows. [Height rule and certified counts](#local-zeta-result)
+
 ## Preprints and reproduction
 
 My two working preprints are available as PDFs and editable TeX. They give the alternating tower, the fixed-point branches and the spire’s marked return structure.
@@ -322,14 +402,8 @@ python tools/check_lean.py --fetch-cache
 - **Jean Écalle and Sergei Voronin** provide the parabolic classification used for the return coordinates. I use **Dudko and Sauzin** for the analytic properties of Fatou coordinates, **Godin and Rousseau** for the antiholomorphic classification, and **Kuehn** for saddle-node scaling. [Écalle and Voronin in the preprint bibliography](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/references.bib#L36-L58) · [Dudko and Sauzin](https://doi.org/10.1016/j.crma.2013.12.005) · [Godin and Rousseau](https://doi.org/10.1017/etds.2021.98) · [Kuehn](https://doi.org/10.1088/1751-8113/42/4/045101)
 - **Tom Fisher** supplied the binary-quartic framework used in the arithmetic notes. I use **Folkmar Bornemann’s** projection methods for the spectral determinant and **André Voros’s** framework for zeta functions over zero sets. [Fisher](https://people.maths.bris.ac.uk/~jb12407/ANTS-XV/papers/ANTS-XV_fisher.pdf) · [Bornemann](https://arxiv.org/abs/0804.2543) · [Voros](https://arxiv.org/abs/1403.4558)
 - **H. J. Hupkes** gives the earlier derivative and midpoint formulation for mixed-type functional differential equations. The endpoint choice above identifies the shared characteristic equation. [Hupkes, chapter 2](https://math.leidenuniv.nl/scripties/PhdHupkes.pdf)
+- **Baiying Liu** derives the strict zero-free half-plane $\Re w>B_*$, $B_*=0.8733458561\ldots$, for unitary Hecke $L$-functions using joint moment estimates. I apply the trivial-character case to the arithmetic reference at the two absolute $30^\circ$ orientations. [Liu, *Joint marked moments and optimized zero-free half-planes for unitary Hecke L-functions*, 13 November 2026, Theorem 1.1 and §1.2](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Reference identity and transfer](archive/2026-11-19-oriented-return-v001/README.md#the-arithmetic-reference-at-the-two-absolute-angles)
 - **OpenAI** proved the 7/8ths zero-free theorem I use at the first Dottie height. The counts use the real $Z$ function of **G. H. Hardy**, and the cross-check uses the procedures credited in FLINT’s zero-counting documentation. [*The Quasi-Riemann Hypothesis*, Theorem 1.1](https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf) · [DLMF, Hardy’s Z function](https://dlmf.nist.gov/25.10.E1) · [FLINT’s algorithms and sources](https://flintlib.org/doc/algorithms/special-functions/zeta-zeros.html)
 - I used **Fredrik Johansson’s** ball arithmetic and **Siegfried Rump’s** verification methods for the numerical certificates. I use **Lean and mathlib** for the formal proofs, **FLINT** for directed interval arithmetic, and **PARI/GP** for the arithmetic descent. The **NIST Digital Library of Mathematical Functions** supplies the classical formulas cited at the Mellin, zeta and Barnes steps. [Johansson](https://doi.org/10.1109/TC.2017.2690633) · [Rump](https://doi.org/10.1017/S096249291000005X) · [mathlib](https://github.com/leanprover-community/mathlib4) · [FLINT](https://flintlib.org/) · [PARI/GP](https://pari.math.u-bordeaux.fr/)
 
 The preprint bibliographies give the wider references for alternating towers, parabolic dynamics and validated numerics. I keep a separate source map for the formulas in the super zeta notes. [Reciprocal tetration bibliography](archive/2026-11-18-lean-foundations-v001/papers/foundations/references.bib) · [Dottie spire bibliography](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/references.bib) · [Super zeta source map](archive/2026-11-16-super-zeta-v001/source-map.md#published-inputs-and-their-actual-use)
-
-## Research impact
-
-- **I kept the order of the exponential stages in a ring.** A word records which sign I use at each step. Joining words is multiplication, and finite integer sums of words form the free associative ring on the two signs. The balance, given by the difference between the two sign counts, adds when I join words. The balanced words therefore span its degree-zero subring. The two orders +− and −+ already give different compositions at Dottie. In a scalar count, two of the four two-stage histories balance. With two independent streams, the fraction is $1/4$. At level $n$ that fraction is the factor $B_n^2$ in my normalization. [Periodic sign words in my preprint](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L404-L445) · [Word ring acting by composition, eqs. (1)–(4)](archive/2026-11-16-super-zeta-v001/research/ordered-signed-histories.md#1-the-operators-retain-every-arrangement)
-- **I made the factorial error an evaluable part of the formula.** The exact integral explains why the quarter survives and bounds what is left at each truncation. I also found the exact adjacent-level ratio $D_{n+1}/D_n=1+1/(4n(n+1))$, which lets me carry the factorial factor into the phase comparison at the Dottie height. Summing the correction across levels contributes a quarter at zero in the zeta function of those levels. Multiplying across levels gives the factorial factor in the Barnes–Dottie constant. [Adjacent-level phase calculation and certificate](archive/2026-11-18-stirling-correction-v001/README.md#effect-on-phase-at-the-dottie-height)
-- **I verified the exact factorial identities in Lean.** The proofs check the combined Stirling error in the quartet formula and the truncation bound at every order. A separate theorem recovers the error on a single factorial from the same integral and proves the resulting equality for every positive integer $n$. [Combined and single-factorial identities](lean/SuperZeta/StirlingCorrection.lean) · [All-order bounds](lean/SuperZeta/StirlingExpansion.lean)
-- **I used a finite Dottie orbit to choose where to count Riemann zeros.** The marked lap fixes the first test height, and the super zeta reconstruction gives the conversion between the two spectral coordinates. At the three tested heights the contour counts and the critical-line brackets agree, tightening the 7/8ths bound to the critical line in those windows. [Height rule and certified counts](#local-zeta-result)

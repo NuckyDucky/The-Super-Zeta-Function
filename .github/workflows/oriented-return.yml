@@ -1,0 +1,39 @@
+name: Period-640 spectral return
+
+on:
+  pull_request:
+    paths:
+      - 'archive/2026-11-19-oriented-return-v001/**'
+      - '.github/workflows/oriented-return.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'archive/2026-11-19-oriented-return-v001/**'
+      - '.github/workflows/oriented-return.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: archive/2026-11-19-oriented-return-v001
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
+      - name: Install pinned numerical dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/orbit-venv"
+          "$RUNNER_TEMP/orbit-venv/bin/python" -m pip install --only-binary=:all: python-flint==0.9.0 mpmath==1.3.0
+          echo "$RUNNER_TEMP/orbit-venv/bin" >> "$GITHUB_PATH"
+      - name: Certify cap capture, primitive period and monotone return angle
+        run: python -B computations/orbit_crossing.py
+      - name: Invert the fresh spectral readings and compare all ordered exponents
+        run: python -B computations/quarter_probe.py
+      - name: Invert the signed characteristic roots independently of the trace formula
+        run: python -B computations/spectral_roundtrip.py

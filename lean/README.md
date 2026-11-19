@@ -1,6 +1,8 @@
 # Lean proofs for The Super Zeta Function
 
-The research overview introduces the quadratic and its two real ovals, the ordered iteration and its Dottie fold, and the cosine determinant. [Research overview](../README.md#the-quadratic-and-the-genus-one-curve)
+The paper develops the quadratic and its two real ovals, the ordered iteration and its Dottie fold, and the cosine determinant. [Main paper](../README.md#the-quadratic-and-the-genus-one-curve)
+
+For the period-640 extension, `full_twisted_spectrum` factors the determinant over its complete zero set, `rootProbes_recover_mark` recovers the unit return direction, and `return_from_fresh_root_sums` proves the inverse on a monotone branch. The directed orbit calculation supplies the finite branch and period bounds. [Formal inverse](SuperZeta/Oriented/SpectralInverse.lean) · [Period-640 evidence](../archive/2026-11-19-oriented-return-v001/README.md#returning-to-the-witness)
 
 The ordered iteration and its two-step return on the first coordinate are
 
