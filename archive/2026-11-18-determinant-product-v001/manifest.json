@@ -1,0 +1,38 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 2026,
+      "sha256": "2b6e0c0e1920e05b24c85af716e4e286b1ff3dae67bbe5313a74a9707f4f2796"
+    },
+    "sources/DeterminantProduct.lean": {
+      "bytes": 5264,
+      "sha256": "4047234c78137f4e1e783ce86eae82238f7c18e9e65097ac3f62c85df1a7379f"
+    },
+    "sources/DiskGrowth.lean": {
+      "bytes": 2447,
+      "sha256": "40bb384ae1ed3e51059c1f68d31a5fd59188b34502a1edfa5e65d0c55297c015"
+    },
+    "sources/DiskLog.lean": {
+      "bytes": 3620,
+      "sha256": "e57a5b8e0f457aa66a50007a6382e95bad8c31533e7d59b314f376da7e407b28"
+    },
+    "sources/DiskProductLimit.lean": {
+      "bytes": 4958,
+      "sha256": "a83073a1d500ae1b0d793396317e5f03b66af8a827fa94f0cf6c2ba2336bc5d4"
+    },
+    "sources/DiskRemoval.lean": {
+      "bytes": 5669,
+      "sha256": "12fb8b88773490db450f01ddd4d8a94b690328af4d1961ae33dba51cedc84518"
+    },
+    "sources/DiskRigidity.lean": {
+      "bytes": 3254,
+      "sha256": "42cfb2aedb5578542fa1c5431a80f1590e405360bd633bfcba7bdf2014cc6b8c"
+    },
+    "sources/UnitSpectrum.lean": {
+      "bytes": 4023,
+      "sha256": "9fa254493826efe692d7013f36f62f328adfbd12d10abe1fae4e05a78e3eff14"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-determinant-product-v001"
+}

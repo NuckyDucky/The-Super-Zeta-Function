@@ -23,6 +23,6 @@ import SuperZeta.ReferenceResolvent
 import SuperZeta.RootBounds
 import SuperZeta.Ray
 import SuperZeta.Multiplicity
-import SuperZeta.CoupledProduct
+import SuperZeta.UnitSpectrum
 import SuperZeta.DeformedZeta
 import SuperZeta.FactorialPhase
