@@ -1,0 +1,25 @@
+name: One Hurwitz term
+
+on:
+  pull_request:
+    paths: ['archive/2026-11-19-single-term-inverse-v001/**', '.github/workflows/single-term.yml']
+  push:
+    branches: [main]
+    paths: ['archive/2026-11-19-single-term-inverse-v001/**', '.github/workflows/single-term.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
+      - name: Install pinned interval arithmetic
+        run: |
+          python3 -m venv "$RUNNER_TEMP/single-term-venv"
+          "$RUNNER_TEMP/single-term-venv/bin/python" -m pip install --only-binary=:all: python-flint==0.9.0
+      - name: Decode the visits, isolate the double point, and replay the orbit sweep
+        run: '"$RUNNER_TEMP/single-term-venv/bin/python" -B archive/2026-11-19-single-term-inverse-v001/replay.py'

@@ -1,0 +1,27 @@
+{
+  "precision_bits": 192,
+  "source_sha256": "375340cd151b0f4fc8bf3b1c8f1543198a01089a04d79ada4631ba44b381417b",
+  "range_degrees": [
+    0,
+    15
+  ],
+  "cells": 4209,
+  "speed_enclosure": [
+    "[0.104383576894 +/- 1.79e-13]",
+    "[3.84947839007 +/- 2.19e-12]"
+  ],
+  "remaining_box_pairs": 3,
+  "possible_collision_hulls_degrees": [
+    [
+      "9915/1024",
+      "19835/2048"
+    ],
+    [
+      "15075/1024",
+      "7545/512"
+    ]
+  ],
+  "uniqueness_on_collision_hull_lipschitz_upper": "[0.523264390358 +/- 2.01e-13]",
+  "transverse_double_points": 1,
+  "joint_coordinate_is_injective": true
+}

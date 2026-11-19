@@ -1,0 +1,134 @@
+{
+  "author": "NuckyDucky",
+  "source_date": "2026-11-19",
+  "predecessor_commit": "eac68c0a3068060d7458fdd3b189194e8c955d8d",
+  "original_files": [
+    {
+      "original": "Dottie-Sixth-Single-Term/chart-crossing.json",
+      "sha256": "eed9609f0637835ffd9280def4159aa97e341a8cc1a6d8d61997c2b06306cf03",
+      "deposit": "chart-crossing.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/chart.json",
+      "sha256": "530c5f0c99cee25b8ca7a5461c1c8e3b1125d22a4b6bb221a63c3b66f5fc0a94",
+      "deposit": "chart.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/chart.py",
+      "sha256": "7dc9ee52a29574de27d91f51b46355231ecc8ea42b8ac38fc5bb3c387c690219",
+      "deposit": "chart.py",
+      "change": "Archived input and output paths"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/collision-orbits.json",
+      "sha256": "2c8f2f7bae670c0ea74f3c60598ee7da924fd533d5fe46326c48c42dc1671cb7",
+      "deposit": "collision-orbits.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/collision-shifts.json",
+      "sha256": "017ca11eea9a161373a417ffabf3f003e37bd711893fdfc4b4ad70404abd3af2",
+      "deposit": "collision-shifts.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/conformal_flank.txt",
+      "sha256": "6eb089a4f511d46617b9d471a3483049dd29c7e5d3dedddf4544e716e8344101",
+      "deposit": "conformal_flank.txt",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/conformal-note.txt",
+      "sha256": "f586cee924d71439a3f43625f1bdad8313758a355aff89a2e8eb7e0edd12bef7",
+      "deposit": "conformal-note.txt",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/contraction-sweep.json",
+      "sha256": "5e94efaf6b02eaf60b68ddea4ee0a93e54b12404a86d6bb77f02611cb18e1582",
+      "deposit": "contraction-sweep.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/decoded.json",
+      "sha256": "cd8a05da015f9c41736d123f6f4218c1f558566961cd51818e132747fa6b46ec",
+      "deposit": "decoded.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/imaginary-axis.json",
+      "sha256": "c8c39367601cfc2f50303e3b49938a0b61a5f432a30977472e1888fcab462e00",
+      "deposit": "imaginary-axis.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/one_term.py",
+      "sha256": "d7e7cb326acb9a19faab099e03f74dede7f12359b8afc004ed54f143c20f04a3",
+      "deposit": "one_term.py",
+      "change": "Archived input and output paths"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/packets.json",
+      "sha256": "e47cefdef3ac71cca4b3601a3e42000c756c4a1afd6b40995744597f4cb48b0b",
+      "deposit": "packets.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/plot_projection.py",
+      "sha256": "492c85379a2549bb232d47ead60dd2b4728c7cbfc1d771dcab6d5998b3aab9cf",
+      "deposit": "plot_projection.py",
+      "change": "Archived input and output paths"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/quarter_example.json",
+      "sha256": "e4f65f102938a381ff74099ac66408053b3056f39df3c8a598ef539cf48c2937",
+      "deposit": "quarter_example.json",
+      "change": "Recomputed at 448 bits; the original companion run recorded 384 bits"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/quarter_example.py",
+      "sha256": "26984dbc0002d5006651db6dc7d866c52206232186659d17fbc8ca5b69ca132f",
+      "deposit": "quarter_example.py",
+      "change": "Restored requested 448-bit precision after importing the predecessor verifier"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/recover_orbit.py",
+      "sha256": "d1e41a9fc8abe9df176ac3b19bb2a8c914eed9bbe98a3051c46e9a72f182d3c0",
+      "deposit": "recover_orbit.py",
+      "change": "Archived input and output paths"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/recovered-orbits.json",
+      "sha256": "dd3e0c089758746f59e53bab982b3dfb930a4c0afcba1fad7b2aee7b0b0c44fc",
+      "deposit": "recovered-orbits.json",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Single-Term/two-projections.png",
+      "sha256": "e69bcb61c70e343bac5fb2426787012436ffca36ebdea5169d6b522aebd1bfe9",
+      "deposit": "two-projections.png",
+      "change": "Original bytes"
+    },
+    {
+      "original": "Dottie-Sixth-Hidden-Visit/truth.json",
+      "sha256": "f8ef1955a8cc9a8b8fb1528efdf40d3c08a6df598f3f80786ce3e2a12b3cfa66",
+      "deposit": "scoring/truth.json",
+      "change": "Original scoring source or record"
+    },
+    {
+      "original": "Dottie-Sixth-Hidden-Visit/orbit_packets.py",
+      "sha256": "07d01f4e8c80d808affb35691e11b4ad83d3c6e88b9212d1ab58fe2945072441",
+      "deposit": "scoring/orbit_packets.py",
+      "change": "Original scoring source or record"
+    }
+  ],
+  "added_for_deposit": [
+    "README.md",
+    "layout.py",
+    "replay.py",
+    "provenance.json",
+    "manifest.json"
+  ]
+}
