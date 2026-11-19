@@ -1,0 +1,118 @@
+{
+  "origin": "NuckyDucky, period-640 Dottie branch and oriented spectral return, 19 November 2026.",
+  "base_repository": "https://github.com/NuckyDucky/The-Super-Zeta-Function",
+  "base_commit": "98aff0b98ef8267332b84912a465750b1396765f",
+  "snapshot_revision": 1,
+  "related_archive": "2026-11-17-quartet-return-recursion-v001",
+  "lean": {
+    "toolchain": "Lean 4.19.0",
+    "mathlib_revision": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+    "original_source_folder": "Dottie-Oriented-Lean",
+    "integrated_source_folder": "lean/SuperZeta/Oriented",
+    "transformation": "The source texts have the original theorem statements and proofs. Sibling import paths were qualified for the main Lean library. The default build imports the extension.",
+    "sources": [
+      {
+        "file": "BranchInverse.lean",
+        "original_bytes_sha256": "6f041c440f2072a50eaecb061612b18f50e78566bc5dfc5adfdf6d4937d23af6"
+      },
+      {
+        "file": "FirstCorrection.lean",
+        "original_bytes_sha256": "f62ab932776a9bd133af59763fca73b30119af24600b9cb98bd0cf3257057a81"
+      },
+      {
+        "file": "GrowthCount.lean",
+        "original_bytes_sha256": "e5ad36c9f19c9dc8c1dd5fc9e83cbf9953b503b93e34e8773f4ca1d7e591ef92"
+      },
+      {
+        "file": "GrowthProduct.lean",
+        "original_bytes_sha256": "225bdb4412d273a5bab6cbc993b161ecba832ac88d3bb720b7a70c8150cbafde"
+      },
+      {
+        "file": "LiuConnection.lean",
+        "original_bytes_sha256": "290f6813179ed2d7510dca6ab77bb941e7c0b25fae5301fd0ff529e51f2d1b6c"
+      },
+      {
+        "file": "MarkedCharacteristic.lean",
+        "original_bytes_sha256": "08cdb1db0afcb174e451ee1d79a08d1804f31de0b9c200850fe396bc16f9c3f8"
+      },
+      {
+        "file": "OrderedStages.lean",
+        "original_bytes_sha256": "ae86de56cb2921e91a62a4885e7afe33f0d899634fabe1087bf107be87871203"
+      },
+      {
+        "file": "PhaseSymmetry.lean",
+        "original_bytes_sha256": "83cc8813f88915ee6d508d3e91529634c2b87333dd9af7a2e3f7a0279bbea5d6"
+      },
+      {
+        "file": "ProductTrace.lean",
+        "original_bytes_sha256": "36c2925f760ac6871c502f38065688da70e47dd61c77e90cc659e953a7f6997e"
+      },
+      {
+        "file": "SpectralInverse.lean",
+        "original_bytes_sha256": "5a438814447a95af695ad7bb4f8c82cdcfa609cb849cb3e7fdb34126528a17b2"
+      },
+      {
+        "file": "TraceRecovery.lean",
+        "original_bytes_sha256": "cf5e0476819828e6eb8b7bbb01a5832c6e385656d94c4186546cc7740a72b0b8"
+      },
+      {
+        "file": "TwistedGrowth.lean",
+        "original_bytes_sha256": "1527c0e6afda7c1b73f376e870862855b5c1d0b16f38e057bc100af3c0bf0b6a"
+      }
+    ],
+    "verification": {
+      "public_theorems_in_extension": 88,
+      "whole_project_theorem_declarations_audited_at_deposit": 1026,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "command": "python tools/check_lean.py --fetch-cache"
+    }
+  },
+  "finite_orbit": {
+    "precision_bits": 448,
+    "python": "3.12.11",
+    "python_flint": "0.9.0",
+    "mpmath": "1.3.0",
+    "parameter": "L = iy, y0 = 127473245627943 / 250000000000000",
+    "phase_convention": "Principal argument of the first coordinate's scalar return derivative; dynamical determinant convention phi = -theta; the labels of the two probes are their offsets.",
+    "replay": "The three programs were also run in an empty source tree with the archived disk verifier and with no JSON results present. The regenerated certificates matched the deposited records byte for byte on the stated environment.",
+    "scripts": [
+      {
+        "original_file": "Dottie-Reversible-Angles/orbit_crossing.py",
+        "original_bytes_sha256": "a4b3be2c4eb097162760a3c9e9c81d694f40379ac891d28c28a34a9f0ff06bc5",
+        "public_file": "computations/orbit_crossing.py",
+        "output": "data/orbit_crossing.json"
+      },
+      {
+        "original_file": "dottie-oriented/quarter_probe.py",
+        "original_bytes_sha256": "88d8e13a7e040d62937e62906cbf16f5986ea25a10ba711dc2a3dae6af5829dd",
+        "public_file": "computations/quarter_probe.py",
+        "output": "data/quarter_probe.json"
+      },
+      {
+        "original_file": "Dottie-Oriented-Spectrum/spectral_roundtrip.py",
+        "original_bytes_sha256": "a37f0105f3d12df5087588af28a0ad3c509576afbc9c23757f7a9c0f7032feb5",
+        "public_file": "computations/spectral_roundtrip.py",
+        "output": "data/spectral_roundtrip.json"
+      }
+    ],
+    "transformation": "Source paths are relative to the public checkout. Each verifier computes the branch enclosures used in its inverse. The measured trace comparison adds strict order and width checks and compares both actual exponents at each of the 640 ordered steps."
+  },
+  "figure": {
+    "source": "figures/plot_oriented_traces.py",
+    "input": "data/quarter_probe.json",
+    "output": "figures/oriented-traces.png",
+    "renderer": "matplotlib 3.11.2"
+  },
+  "external_arithmetic_result": {
+    "author": "Baiying Liu",
+    "title": "Joint marked moments and optimized zero-free half-planes for unitary Hecke L-functions",
+    "date": "2026-11-13",
+    "version": "Hexagon 2611.00421v1",
+    "statement": "Theorem 1.1",
+    "url": "https://hexagonmath.org/2611.00421v1"
+  }
+}

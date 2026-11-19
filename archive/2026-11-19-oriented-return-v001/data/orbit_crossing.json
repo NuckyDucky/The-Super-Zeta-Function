@@ -1,0 +1,48 @@
+{
+  "bits": 448,
+  "centerline_uniform_height_interval": [
+    "0.50989298230",
+    "0.50989298315"
+  ],
+  "scalar_period": 320,
+  "ordered_period": 640,
+  "cap_trap_radius": "1e-15",
+  "uniform_image_radius": "[1.12817513586068e-18 +/- 3.08e-33]",
+  "uniform_contraction": "[7.48313416430584e-16 +/- 7.87e-32]",
+  "proper_divisor_disjointness": {
+    "64": "[1.36769518000 +/- 4.67e-12]",
+    "160": "[1.39581638721 +/- 4.60e-12]"
+  },
+  "crossings": [
+    {
+      "P_target_degrees": -30,
+      "Q_target_degrees": 30,
+      "height_lower": "0.509892982814123928581849896272386908561243",
+      "height_width": "1/1000000000000000000000000000000000000000000",
+      "P_minus_target_left": "[-6.99806963659e-33 +/- 9.5e-47]",
+      "P_minus_target_right": "[1.80567882767e-31 +/- 4.28e-43]",
+      "P_angle_derivative_deg_per_y": "[187565952404.017217 +/- 1.41e-9]",
+      "multiplier_modulus": "[6.87334062021486e-17 +/- 3.20e-32]"
+    },
+    {
+      "P_target_degrees": 30,
+      "Q_target_degrees": -30,
+      "height_lower": "0.509892983131264277956320913142114370309900",
+      "height_width": "1/1000000000000000000000000000000000000000000",
+      "P_minus_target_left": "[-1.88441392245e-31 +/- 2.39e-43]",
+      "P_minus_target_right": "[2.35692284119e-33 +/- 1.76e-45]",
+      "P_angle_derivative_deg_per_y": "[190798315086.429945 +/- 4.80e-7]",
+      "multiplier_modulus": "[6.51372807919566e-17 +/- 3.09e-32]"
+    }
+  ],
+  "monotone_coordinate": {
+    "y_start": "0.50989298230",
+    "y_end": "0.50989298314",
+    "angle_start_degrees": "[-125.04315007823688 +/- 1.65e-15]",
+    "angle_end_degrees": "[31.667143544897272 +/- 1.99e-16]",
+    "cells": 15,
+    "maximum_depth": 5,
+    "slope_lower_degrees_per_y": "180787374336.000",
+    "slope_upper_degrees_per_y": "192423411456.000"
+  }
+}

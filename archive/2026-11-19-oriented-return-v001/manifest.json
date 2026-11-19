@@ -1,0 +1,46 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 12191,
+      "sha256": "5dd3f9cc4ec20c0d3436a05e6fc83a9f7835f7572a110202354e60c6ca4a6e5a"
+    },
+    "computations/orbit_crossing.py": {
+      "bytes": 6577,
+      "sha256": "b0eca5854e58e968c46d58d19ed346a8292f114e67e42dbdaf8a2e375fc3ab62"
+    },
+    "computations/quarter_probe.py": {
+      "bytes": 6190,
+      "sha256": "c75b9521da26f967dd15ca03dd8010c16370b7dbd8c780a3cfe43c2b3a06d744"
+    },
+    "computations/spectral_roundtrip.py": {
+      "bytes": 6017,
+      "sha256": "82d659f55e63fb7ea7f28b68f51141714d1aa8f5ddd52c56eb7f8411c9264874"
+    },
+    "data/orbit_crossing.json": {
+      "bytes": 1801,
+      "sha256": "f733b9c025b4f46483060715c6252e9bb51bfdaeeab0c10e65d2afa8a088ea9a"
+    },
+    "data/quarter_probe.json": {
+      "bytes": 1830,
+      "sha256": "7d3afc4ded30439ec277ef5a3636f187f1ae89ef8de5992ed77392068c1d051f"
+    },
+    "data/spectral_roundtrip.json": {
+      "bytes": 3269,
+      "sha256": "6e5077b32a470a40c43f450631651c4b6ca51b8ee87e5276f04fe8979b826d99"
+    },
+    "figures/oriented-traces.png": {
+      "bytes": 145395,
+      "sha256": "38962da37d6bbc2938c19197a7138fb3c4783537bb40f12f2c28ff80bfa77f10"
+    },
+    "figures/plot_oriented_traces.py": {
+      "bytes": 4883,
+      "sha256": "ec3ec4f4a334a894b83eb78ce959a625d3a3d91db253b55d751ccf349a3a0012"
+    },
+    "provenance.json": {
+      "bytes": 5257,
+      "sha256": "efdd5e392a1195599b88911439b8013b2890ce8d9ac4d03415dc31d16e055608"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-19-oriented-return-v001"
+}
