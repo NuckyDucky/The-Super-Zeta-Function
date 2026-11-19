@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 13224,
+      "sha256": "7b67dbe485920811720c45f553ef300262887d2a68d8fc0acc5a0438f9207c3f"
+    },
+    "check_complex_mellin.py": {
+      "bytes": 3888,
+      "sha256": "ab0e70c87dc8c9fc452292bdf9787d9bb97b9a529ba1d83e3e293af8855b1043"
+    },
+    "check_spire_windows.py": {
+      "bytes": 2724,
+      "sha256": "a5d096e3d64a90996700f293278a8869300b8bc74daa726e4748348abbaf64b1"
+    },
+    "check_three_counts.py": {
+      "bytes": 3508,
+      "sha256": "cc7ab91d0d831822927d3ba4327145279a909bb41355aac80e84a2869ca15203"
+    },
+    "verify_cosine_spectrum.py": {
+      "bytes": 9455,
+      "sha256": "b5d282d30aa5d83222be419b6359056ae52fb4d8129bd7d7c278bca726d92345"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-spectral-reproduction-v001"
+}

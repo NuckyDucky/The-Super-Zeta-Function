@@ -1,13 +1,15 @@
 # The Super Zeta Function
 
-**In this work we**
+I start with two alternating exponentials and ask which fixed pairs return a small displacement unchanged to first order. Their complex phases give a complete spectrum. Its determinant is $E(v)=\cos^2\sqrt v-v$. From this one function I recover the individual spectral values as zeros, their positive-integer reciprocal-power sums as coefficients of $-E'/E$, and a comparison with Riemann zeta. [Construction from the ordered phases](#building-the-super-zeta) · [Determinant product in Lean](lean/SuperZeta/UnitSpectrum.lean)
 
-1. Strengthen OpenAI’s 7/8ths bound to the critical line in three certified height intervals.
-2. Derive the exact Stirling correction for every positive integer from the quartet normalization, with a Lean proof.
-3. Build the super zeta from the quartet spectrum and recover Riemann zeta.
-4. Find the Dottie spire in complex reciprocal tetration and certify finite orbit periods.
-5. Preserve the order of exponential stages in a ring of signed words.
-6. Approximate π using a genus-one quartic that fails the Hasse principle.
+**In this work I**
+
+- Construct the quartet spectrum and a boundary operator that reproduces it.
+- Recover $\zeta(2s)$ by comparing the quartet determinant with the cosine determinant.
+- Strengthen the 7/8ths bound to the critical line in three certified height intervals.
+- Derive the exact Stirling correction for each positive integer from the quartet normalization.
+- Identify the Dottie fold, certify finite periods, and retain the order of the exponential signs.
+- Approximate $\pi$ using a genus-one quartic that fails the Hasse principle.
 
 I wanted to see how closely I could approximate $\pi$ using $e$ and six integers. When I solved the quadratic, I found a curve with two real ovals and a simple rule that swaps its two roots. The same reciprocal expression showed up in the tower I was studying. It let me find complex fixed pairs with the same first-order return as the Dottie fold. Summing inverse powers of the resulting spectrum led me to my super zeta function.
 
@@ -143,11 +145,34 @@ This is the step that gave me a zeta function. The zeros of $E$ are the squared 
 \qquad \Re s>\frac12.
 ```
 
-Writing $E$ as a product over its roots ties this sum to the power series. For instance, the coefficient of $v$ is $-2$, which says the sum of the reciprocal roots is $\mathcal Z(1;1)=2$. The same spectrum comes from a boundary operator whose eigenfunction is $e^{iux}$ and whose boundary condition gives $u=\varepsilon\cos u$. Its inverse-square determinant is $\cos^2\sqrt v-v/\varepsilon^2$. I use $\varepsilon=1$ for the reciprocal return. [Boundary operator and determinant, §§2–3, eqs. (6)–(15)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#2-a-boundary-operator-with-compact-inverse-and-the-cosine-spectrum) · [Product and trace sums, §4, eqs. (16)–(18)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#4-canonical-product-and-exact-rational-trace-sums) · [Bornemann, determinant methods, §§2–5](https://arxiv.org/abs/0804.2543)
+The complete root list gives more than individual frequencies. Write $\lambda_j$ for the squared roots just listed. Their moduli grow quadratically with the quartet index, so $\sum_j|\lambda_j|^{-1}$ converges. The entire determinant has order at most $1/2$. Hadamard factorization therefore leaves only a constant in front of its genus-zero product, and $E(0)=1$ fixes that constant. In particular,
+
+```math
+E(v)=\prod_j(1-v/\lambda_j),\qquad
+-\frac{E'(v)}{E(v)}=\sum_{m\ge1}\mathcal Z(m;1)v^{m-1}
+```
+
+where the series holds near zero. For example, $E(v)=1-2v+v^2/3+\cdots$ gives $\mathcal Z(1;1)=2$ and $\mathcal Z(2;1)=10/3$. The first equality ties the Dottie root to every nonreal quartet in one exact sum. Lean proves the product for this concrete root family. [Product, traces and a tail bound, eqs. (16)–(19)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#4-canonical-product-and-exact-rational-trace-sums) · [Lean theorem](lean/SuperZeta/UnitSpectrum.lean)
+
+### The boundary operator behind the determinant
+
+There is another way to obtain those same numbers. On $L^2(-1,1)\oplus\mathbb C$, take a function $f$ in $H^1(-1,1)$ and keep its midpoint value $c=f(0)$ as a second coordinate. For every complex $\varepsilon\ne0$ I define
+
+```math
+A_\varepsilon(f,c)=\left(-if',\frac{\varepsilon}{2}\bigl[f(-1)+f(1)\bigr]\right).
+```
+
+An eigenfunction must be $f(x)=c e^{iux}$. Its endpoint average is $c\cos u$, so the second coordinate gives $u=\varepsilon\cos u$. My manuscript constructs the inverse $B_\varepsilon$, proves its square is trace class, and computes its Fredholm determinant explicitly. [Operator, inverse and finite-matrix proof, eqs. (6)–(15)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#2-a-boundary-operator-with-compact-inverse-and-the-cosine-spectrum)
+
+```math
+\det(I-vB_\varepsilon^2)=\cos^2\sqrt v-v/\varepsilon^2.
+```
+
+**What was already known?** In Hupkes’s continuous-history space, the midpoint condition and a derivative already appear together. Choosing equal endpoint weights $i\varepsilon/2$ in his characteristic equation and putting $z=iu$ gives exactly $i(u-\varepsilon\cos u)$. What I trace here is the passage from my ordered reciprocal phases to the squared spectrum at $\varepsilon=1$, its explicit Hilbert-space determinant, and the resulting zeta comparison. Varying $\varepsilon$ moves the spectrum. Adding a shift $a$ gives the separate family $\sum_j(\lambda_j+a)^{-s}$, with its own poles and residues. I welcome an earlier reference for this precise combination. [Hupkes, eqs. (2.10), (2.54) and Lemma 2.4.4](https://math.leidenuniv.nl/scripties/PhdHupkes.pdf) · [Shifted spectrum, domain and residues](archive/2026-11-16-super-zeta-v001/research/shifted-superzeta.md)
 
 ### 4. Compare with the odd-integer spectrum
 
-I compare $E$ with $\cos^2\sqrt v$, whose double zeros are the squares of $(n+\tfrac12)\pi$ for $n=0,1,2,\ldots$. They give twice the reciprocal-power sum over odd positive integers with exponent $2s$, scaled by $(2/\pi)^{2s}$. On the negative axis $v=-t$, the ratio of the two determinants is $1+t/\cosh^2\sqrt t$. The root-product integral, integrated by parts, assigns that ratio the correction
+I compare $E$ with $\cos^2\sqrt v$, whose double zeros are $[(n+\tfrac12)\pi]^2$ for $n=0,1,2,\ldots$. Their reciprocal-power sum is the odd-integer part of $\zeta(2s)$, counted twice and scaled by $(2/\pi)^{2s}$. I use the principal logarithm for each squared root. On the negative real axis $E(-t)=\cosh^2\sqrt t+t>0$, so that axis is free of spectral zeros and the determinant logarithm there is real with $\log E(0)=0$. The full determinant integral and the root sum agree first on $1/2<\Re s<1$. Dividing out the reference determinant leaves $1+t/\cosh^2\sqrt t$. Integrating its logarithmic derivative by parts gives
 
 ```math
 J(s;1)=\frac{s\sin(\pi s)}{\pi}
@@ -264,6 +289,8 @@ My two working preprints are available as PDFs and editable TeX. They give the a
 
 I keep the spectral derivations, further experiments and exact checks in the dated archives. [Foundations and rational traces](archive/2026-11-16-super-zeta-v001/README.md) · [Ordered return](archive/2026-11-17-quartet-return-recursion-v001/README.md) · [Off-line zero tests](archive/2026-11-17-offcenter-superzeta-v001/README.md) · [Distance bounds](archive/2026-11-18-superzeta-distance-v001/README.md) · [Newton steps](archive/2026-11-17-quartet-angle-v001/README.md) · [Binary valuation law](archive/2026-11-18-binary-law-v001/README.md)
 
+**I invite independent reproduction.** Three checks matter most to me. Can a separate implementation recover the quartet product and the Mellin integral using the stated cut? Can it enclose every contour segment and recover the sign at both ends of every Hardy bracket? Can the finite cap orbit be carried to a particular horn in one consistent phase coordinate? I give the exact domains, both sets of period counts, per-slice windings, commands and open questions in the [reproduction guide](archive/2026-11-18-spectral-reproduction-v001/README.md). The Dottie window contained two line zeros and its matched grid window contained three. Whether the orbit selects unusually informative heights is still open. [Matched experiment](archive/2026-11-17-dottie-grid-match-v001/README.md)
+
 To check the archive and build the proofs, run these commands from the repository root. [Source inventory](archive/2026-11-18-lean-foundations-v001/README.md) · [Lean theorem index and setup](lean/README.md) · [Archive preservation](PRESERVATION.md)
 
 ~~~sh
@@ -278,6 +305,7 @@ python tools/check_lean.py --fetch-cache
 - **David R. Stoutemyer** supplied the inverse spherical Bessel framework, and **Riccardo Borghi** supplied the positive Stieltjes representation of the Bessel solution of Kepler’s equation. I used their 2024 results in the companion work on branches and approximation. [Stoutemyer’s paper](https://doi.org/10.5206/mt.v4i2.16787) · [Borghi’s paper](https://www.mdpi.com/2227-7390/12/1/154) · [Companion notes](archive/2026-11-18-lean-foundations-v001/README.md#results-and-their-evidence)
 - **Jean Écalle and Sergei Voronin** provide the parabolic classification used for the return coordinates. I use **Dudko and Sauzin** for the analytic properties of Fatou coordinates, **Godin and Rousseau** for the antiholomorphic classification, and **Kuehn** for saddle-node scaling. [Écalle and Voronin in the preprint bibliography](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/references.bib#L36-L58) · [Dudko and Sauzin](https://doi.org/10.1016/j.crma.2013.12.005) · [Godin and Rousseau](https://doi.org/10.1017/etds.2021.98) · [Kuehn](https://doi.org/10.1088/1751-8113/42/4/045101)
 - **Tom Fisher** supplied the binary-quartic framework used in the arithmetic notes. I use **Folkmar Bornemann’s** projection methods for the spectral determinant and **André Voros’s** framework for zeta functions over zero sets. [Fisher](https://people.maths.bris.ac.uk/~jb12407/ANTS-XV/papers/ANTS-XV_fisher.pdf) · [Bornemann](https://arxiv.org/abs/0804.2543) · [Voros](https://arxiv.org/abs/1403.4558)
+- **H. J. Hupkes** gives the earlier derivative and midpoint formulation for mixed-type functional differential equations. The endpoint choice above identifies the shared characteristic equation. [Hupkes, chapter 2](https://math.leidenuniv.nl/scripties/PhdHupkes.pdf)
 - **OpenAI** proved the 7/8ths zero-free theorem I use at the first Dottie height. The counts use the real $Z$ function of **G. H. Hardy**, and the cross-check uses the procedures credited in FLINT’s zero-counting documentation. [*The Quasi-Riemann Hypothesis*, Theorem 1.1](https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf) · [DLMF, Hardy’s Z function](https://dlmf.nist.gov/25.10.E1) · [FLINT’s algorithms and sources](https://flintlib.org/doc/algorithms/special-functions/zeta-zeros.html)
 - I used **Fredrik Johansson’s** ball arithmetic and **Siegfried Rump’s** verification methods for the numerical certificates. I use **Lean and mathlib** for the formal proofs, **FLINT** for directed interval arithmetic, and **PARI/GP** for the arithmetic descent. The **NIST Digital Library of Mathematical Functions** supplies the classical formulas cited at the Mellin, zeta and Barnes steps. [Johansson](https://doi.org/10.1109/TC.2017.2690633) · [Rump](https://doi.org/10.1017/S096249291000005X) · [mathlib](https://github.com/leanprover-community/mathlib4) · [FLINT](https://flintlib.org/) · [PARI/GP](https://pari.math.u-bordeaux.fr/)
 
