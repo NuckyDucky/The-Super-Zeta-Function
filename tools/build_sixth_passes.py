@@ -18,17 +18,19 @@ def build(output):
         data = scratch / "jets.json"
         page = scratch / "index.html"
         turning = scratch / "turning.json"
-        for verifier, result in [("verify.py", data), ("turning.py", turning)]:
+        revisit = scratch / "revisit.json"
+        for verifier, result in [("verify.py", data), ("turning.py", turning), ("revisit.py", revisit)]:
             subprocess.run([
                 sys.executable, "-B", str(SNAPSHOT / "compute" / verifier),
                 "--output", str(result), "--compare", str(SNAPSHOT / "compute" / result.name),
             ], check=True)
         subprocess.run([
             sys.executable, "-B", str(SNAPSHOT / "view" / "build.py"),
-            "--data", str(data), "--output", str(page),
+            "--data", str(data), "--revisit", str(revisit), "--output", str(page),
         ], check=True)
         data.replace(output / data.name)
         turning.replace(output / turning.name)
+        revisit.replace(output / revisit.name)
         page.replace(output / page.name)
 
 

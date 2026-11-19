@@ -43,6 +43,12 @@ At the crest the tangent points due left. At the trough it points due right. Hei
 
 I also checked the direction of turning throughout the larger interval from $645/64$ to $905/64$ degrees, which contains the three passes. For a regular complex curve the angular velocity is $\mathrm{Im}(w''/w')$. The interval calculation bounds it strictly between $1/20$ and $6$ radians per clockwise input degree. Thus every piece of this arc bends counterclockwise in the ordinary complex plane. Its two height folds occur as the velocity passes through the horizontal in opposite directions. [Angular certificate](compute/turning.json) · [Continuous check](compute/turning.py)
 
+## Where the path crosses itself
+
+Just above the trough there is a second, different coincidence. At clockwise input angles $10.01602453524\ldots$ and $13.60742318697\ldots$ the branch passes through **the same complex number**, approximately $-0.14560046150734+37.217595232052i$. Its first visit heads up and left, and its second heads up and right. The angle between the two tangent lines is $40.898223^\circ$.
+
+I solved the two real equations obtained by setting $w(h_1)-w(h_2)=0$. On two disjoint angle intervals a preconditioned two-dimensional interval calculation gives a strict contraction, hence an exact shared point. The determinant of the two velocities lies near $-0.09605119$, excluding parallel tangents. One complex address really can occur twice with different directions of travel. To recover the motion at this point I must retain which shift I am following. [Two-angle certificate](compute/revisit.json) · [Contraction proof](compute/revisit.py)
+
 ## Evidence and replay
 
 I used Python 3.12 and python-flint 0.9.0 with 192-bit ball arithmetic and no random inputs. The input is the sixth forward replay in the immutable [zero-transport snapshot](../2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/rho6-replay.json), previously published at commit `5c5f3a160b2412a49b0b1e86fa24f7605a938823`. Its original SHA-256 is recorded in both result files. I carried overlapping uniqueness disks along the full 15-degree branch. An adaptive census certified exactly three intersections with $T=149/4$. Separate isolations give the positions and derivatives in the table. The angular check covers entire parameter intervals to bound the tangent's angular speed and count the path's horizontal tangencies. These are analytic derivative formulas with computer-assisted interval proofs. The display lines interpolate midpoint samples for viewing. [Directed intervals and display samples](compute/jets.json) · [Full-sweep verifier](compute/verify.py)
@@ -54,4 +60,4 @@ python -m pip install python-flint==0.9.0
 python -B tools/build_sixth_passes.py --output sixth-site
 ```
 
-Open the generated `index.html` to explore the graph offline. The build rechecks both certificates before rendering the page. GitHub performs that calculation on relevant changes or manual dispatch, then serves the saved graph to readers. Only the controls and interpolation run in the reader's browser. The preview figure can be regenerated separately with matplotlib 3.11.2 and `preview.py`.
+Open the generated `index.html` to explore the graph offline. The build rechecks all three certificates before rendering the page. GitHub performs that calculation on relevant changes or manual dispatch, then serves the saved graph to readers. Only the controls and interpolation run in the reader's browser. The preview figure can be regenerated separately with matplotlib 3.11.2 and `preview.py`.

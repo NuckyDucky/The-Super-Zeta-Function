@@ -17,7 +17,7 @@ def compact(row):
     return [round(value, 12) for value in values]
 
 
-def plot_data(record):
+def plot_data(record, revisit=None):
     if tuple(e["id"] for e in record["events"]) != EVENTS:
         raise ValueError("Expected three passes separated by the two height folds")
     samples = [compact(dict(zip(record["columns"], row, strict=True)))
@@ -35,7 +35,14 @@ def plot_data(record):
         raise ValueError("Profile must cover the quarter-degree neighborhood of every pass")
     if any(e[2] != 37.25 for e in events[::2]) or any(e[4] != 0 for e in events[1::2]):
         raise ValueError("Expected crossings at T = 37.25 and height folds at T′ = 0")
-    return json.dumps({"events": events, "samples": samples},
+    data = {"events": events, "samples": samples}
+    if revisit is not None:
+        coordinates = {key: float(revisit["mid"][key])
+                       for key in ("sigma", "T", "alpha1", "alpha2")}
+        if not samples[0][0] <= coordinates["alpha1"] < coordinates["alpha2"] <= samples[-1][0]:
+            raise ValueError("Revisit angles must lie inside the plotted interval")
+        data["revisit"] = coordinates
+    return json.dumps(data,
                       separators=(",", ":"), allow_nan=False)
 
 
@@ -47,12 +54,17 @@ def write_output(path, content):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, required=True, help="computed jets.json")
+    parser.add_argument("--revisit", type=Path,
+                        help="self-crossing certificate (default: revisit.json beside --data, when present)")
     parser.add_argument("--output", type=Path, required=True, help="standalone HTML file")
     parser.add_argument("--fragment", type=Path, help="optional embeddable HTML fragment")
     args = parser.parse_args()
     record = json.loads(args.data.read_text(encoding="utf-8"))
+    sibling = args.data.with_name("revisit.json")
+    revisit_path = args.revisit or (sibling if sibling.exists() else None)
+    revisit = json.loads(revisit_path.read_text(encoding="utf-8")) if revisit_path else None
     fragment = (SOURCE_DIR / "fragment.html").read_text(encoding="utf-8")
-    fragment = fragment.replace("__SIXTH_PASS_DATA__", plot_data(record))
+    fragment = fragment.replace("__SIXTH_PASS_DATA__", plot_data(record, revisit))
     page = (SOURCE_DIR / "page.html").read_text(encoding="utf-8")
     write_output(args.output, page.replace("__SIXTH_PASS_VIEW__", fragment))
     if args.fragment:

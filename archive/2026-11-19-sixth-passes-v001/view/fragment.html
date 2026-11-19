@@ -22,7 +22,7 @@
  <label class="form-label">Derivative below<select class="form-select" data-derivative><option value="T1">Height · first derivative</option><option value="T2">Height · second derivative</option><option value="sigma1">Real part · first derivative</option><option value="sigma2">Real part · second derivative</option></select></label>
 </div>
 <svg data-geometry role="img" aria-label="The three passes and folds in the rotated plane"></svg>
-<div class="passkey text-small" aria-label="Passes in clockwise order"><span><i></i>1 · rising</span><span><i class="p2"></i>2 · falling</span><span><i class="p3"></i>3 · rising</span></div>
+<div class="passkey text-small" aria-label="Passes in clockwise order"><span><i></i>1 · rising</span><span><i class="p2"></i>2 · falling</span><span><i class="p3"></i>3 · rising</span><span data-revisit-legend hidden></span></div>
 <svg data-derivative-plot role="img" aria-label="Derivative versus clockwise angle"></svg>
 <div class="text-small" data-caption></div>
 <table class="table table-sm readout">
@@ -145,6 +145,17 @@
      }
    });
    if(!orig)node(ax.layer,'circle',{cx:ax.X(0),cy:ax.Y(0),r:3.5,fill:'var(--background)',stroke:ink,'stroke-width':1.5});
+   const revisitLegend=select('revisit-legend');
+   revisitLegend.hidden=!(orig&&d.revisit);
+   if(!revisitLegend.hidden){
+     const r=d.revisit, angles=fmt(r.alpha1,4)+'° and '+fmt(r.alpha2,4)+'°';
+     const hint='Self-crossing at σ = '+fmt(r.sigma,6)+', T = '+fmt(r.T,6)+' · clockwise turns '+angles;
+     const x=ax.X(r.T),y=ax.Y(.5-r.sigma);
+     const mark=node(ax.layer,'rect',{x:x-4,y:y-4,width:8,height:8,fill:'var(--background)',
+       stroke:'var(--foreground)','stroke-width':1.8,'data-revisit':'','data-tooltip':hint,'aria-label':hint});
+     node(mark,'title',{},hint);
+     revisitLegend.textContent='□ Self-crossing · '+angles;
+   }
    const yr=clipRange((orig?profiles:locals.flat()).map(p=>p[j]).concat(0),.12);
    const ad=chart(lower,orig?[profiles[0][0],profiles.at(-1)[0]]:[-windowDeg,windowDeg],yr,
        orig?'Clockwise turn α (°)':'Clockwise degrees from each pass',options[field][1],198);

@@ -306,7 +306,7 @@ On the path from $12\pi i/\log 3$ to the sixth Riemann zero, I reach height $37.
 
 [![The sixth path crosses the same height three times. Click to compare the derivatives.](archive/2026-11-19-sixth-passes-v001/preview.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/)
 
-[Open the interactive graph](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Derivative formulas, interval proof and replay](archive/2026-11-19-sixth-passes-v001/README.md)
+The square on the graph marks a different kind of return. At two distinct input angles the path revisits the same complex point near $-0.14560046+37.21759523i$. The two tangents cross at about $40.8982^\circ$. Recording the shift distinguishes those visits even when both coordinates of the zero agree. [Open the interactive graph](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Derivative formulas, interval proofs and replay](archive/2026-11-19-sixth-passes-v001/README.md)
 
 <a name="a-local-strengthening-of-the-seven-eighths-theorem"></a>
 <a name="local-zeta-result"></a>

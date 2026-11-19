@@ -32,6 +32,11 @@ def draw(directory):
     for event, text, offset in [(events[1], "crest", (-3,9)), (events[3], "trough", (3,-15))]:
         plane.scatter(event["sigma"],event["T"],color="#344951",marker="D",s=22)
         plane.annotate(text, (event["sigma"],event["T"]), xytext=offset,textcoords="offset points",fontsize=9)
+    revisit = json.loads((directory / "compute/revisit.json").read_bytes())["mid"]
+    same_point = (revisit["sigma"], revisit["T"])
+    plane.scatter(*same_point, marker="s", s=52, facecolor="none", edgecolor="#161d24", lw=1.2, zorder=5)
+    plane.annotate("same point twice", same_point, xytext=(25,-23), textcoords="offset points",
+                   arrowprops={"arrowstyle":"-", "color":"#53636c"}, fontsize=9)
     plane.set(xlabel="Real part of the moving zero",ylabel="Height T")
     plane.set_title("Three addresses at the same height", loc="left", pad=13)
     overlay.axhline(0, color="#515a60", lw=.8, ls="--")
