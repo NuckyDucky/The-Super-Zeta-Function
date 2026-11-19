@@ -1,0 +1,54 @@
+Forward iteration from the third Riemann zero
+19 November 2026
+
+The frozen call for rho_4 landed directly. The next call for rho_5 landed
+first at 8 pi i/log 2, then at rho_7. The out-of-order landing triggered
+the stopping rule. The fourth and seventh zero ordinates were outputs.
+No zero catalogue or ordinal-to-height lookup was used in the new sweeps.
+
+The three trajectories in successor-paths.png are zeros of the moving
+bilateral Hurwitz reference R(b,w)=pi^(-w)[zeta(w,b)+zeta(w,1-b)].
+Each sweeps b from 1/6 to 1/4 and preserves the endpoint's w on reset.
+Their finite endpoints are classified only after each path is recorded.
+The follow-up interior tests verified nonvanishing of ordinary zeta on
+all three open arcs. height_counts.json brackets the dyadic height by
+two counts of 5. Hence rho_5 and rho_6 are genuinely skipped, with one
+ordinate below the elementary endpoint and the other above it.
+
+Replay from the four extracted directories placed side by side, using
+Python 3.12 with python-flint 0.9.0 and assertions enabled. Matplotlib is
+required only for the graph. Run in Dottie-Forward-Iteration:
+
+python -B iterate.py
+python -B audit_forward.py ../Dottie-Third-Zero/sweep_1.json sweep_1.json audit_1.json
+python -B audit_forward.py sweep_1.json sweep_2.json audit_2.json
+python -B audit_forward.py sweep_2.json sweep_3.json audit_3.json
+python -B interior.py 1
+python -B interior.py 2
+python -B interior.py 3
+python -B height_counts.py
+python -B plot.py
+
+The first proof of the tracks uses 848, 551 and 676 uniform Newton
+contractions. The audit uses a second numerical method on the unscaled
+Hurwitz sum, with 536, 360 and 371 uniform Rouche comparisons. Both use
+FLINT ball arithmetic. Ordinary-zeta windings around the endpoints are
+1, 0, 1 respectively. Strict comparison on each complex disk verifies
+the moving root for every angle in each interval between samples.
+
+Lean 4.19.0 replay:
+
+1. Follow LEAN-ENDPOINTS.txt to recompile the reference, reset and
+   disjoint endpoint classification in the pinned published project.
+2. Run python check_certificate_logic.py PATH_TO_REPOSITORY. This
+   checks branch existence, uniqueness and gluing for the actual reference
+   when the residual, derivative and variation inequalities hold.
+3. Run python -B export_partition.py, then
+   lean -DwarningAsError=true ForwardMesh.lean
+   The kernel checks coverage of each complete normalized interval by
+   the exported rational rows and checks every outward rounded upper
+   comparison bound is below 1. These three decidable proofs use no axioms.
+
+The FLINT evaluations supplying the comparison bounds, the endpoint
+windings, and the full-strip counts have not been reimplemented in Lean.
+The separate proofs document exactly where numerical verification enters.

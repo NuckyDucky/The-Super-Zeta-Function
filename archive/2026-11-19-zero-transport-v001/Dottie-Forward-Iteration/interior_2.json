@@ -1,0 +1,13 @@
+{
+  "sweep": 2,
+  "precision_bits": 256,
+  "counts": {
+    "nonzero_by_direct_bound": 604,
+    "start_isolation_plus_increasing_height": 1,
+    "end_isolation_plus_increasing_height": 0
+  },
+  "endpoint_isolations": {
+    "start": "[0.002009298972552642 +/- 2.27e-19]"
+  },
+  "open_arc_free_of_ordinary_zeta_zeros": true
+}

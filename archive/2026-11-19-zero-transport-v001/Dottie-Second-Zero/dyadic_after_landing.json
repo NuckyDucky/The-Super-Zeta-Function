@@ -1,0 +1,11 @@
+{
+  "angle_degrees": "4499/100",
+  "shift": "4501/18000",
+  "segments": 1,
+  "minimum_rightward_velocity_per_clockwise_degree": "[0.12674277569028373811 +/- 4.22e-21]",
+  "reference_zero": {
+    "real": "[0.501429409793866 +/- 3.11e-16]",
+    "imag": "[21.024533634725923 +/- 2.24e-16]"
+  },
+  "absolute_Riemann_zeta": "[0.00326468826289 +/- 8.10e-15]"
+}

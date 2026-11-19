@@ -1,0 +1,55 @@
+OFF-AXIS DOTTIE RETURN AND THE ARITHMETIC ZERO PATHS
+
+Read NOTES.txt for the derivations and arithmetic_method.txt for the
+continuous zero test. The JSON files contain directed enclosures. The
+figure plots the centers of verified checkpoints on two distinct
+branches. Each arrow points from 60 degrees toward 45 degrees.
+
+Run with Python 3.12, python-flint 0.9.0, and assertions enabled.
+Archive dependencies under foundation/ are exact copies from commit
+d083b95873d9c76fbc21ae9c2cac3971b45f906c at
+https://github.com/NuckyDucky/The-Super-Zeta-Function .
+The original checkout may be substituted for 'foundation' below.
+
+python -B flank_signature.py foundation --out flank_signature.json
+python -B flank_path.py foundation --output flank_path.json
+python -B signature_turned_capture.py foundation --out signature_turned_capture.json
+python -B flank_reference.py flank_signature.json --output flank_reference.json
+python -B arithmetic_reference.py --output arithmetic_reference.json
+python -B arithmetic_braid.py --seed lattice --output arithmetic_braid_lattice.json
+python -B arithmetic_braid.py --seed riemann --output arithmetic_braid_riemann.json
+python -B signature_zero_audit.py arithmetic_braid_lattice.json arithmetic_braid_riemann.json --out signature_zero_audit.json
+python -B fifth_residue.py
+python -B arithmetic_escape_match.py --output arithmetic_escape_match.json
+python -B signature_fourier_escape.py --out signature_fourier_escape.json
+python -B fourier_limit.py
+
+The prospective 6πi/log 3 seed reached the budget in the original test.
+The capped invocation is "python -B arithmetic_braid.py --seed holdout".
+The recorded cutoff is in arithmetic_budget_checkpoint.json. The
+escape_match and signature_fourier_escape verifiers together cover the
+whole open angle interval for the same seed.
+
+The arithmetic checks run independently of the repository checkout.
+The zero audit uses a separately implemented Rouché test on the
+unscaled bilateral Hurwitz function and uses the same FLINT library.
+The original continuous proof joins contracting disks across every
+parameter interval. To reproduce the figure, install matplotlib and run
+
+python -B plot_zero_paths.py
+
+Check the Lean file from the pinned repository's lean/ directory,
+after 'lake build SuperZeta.Oriented.LiuConnection SuperZeta.Multiplicity', by supplying the
+absolute path of the downloaded source to
+
+lake env lean -DwarningAsError=true /path/to/FlankReferences.lean
+
+Lean checks the analytic endpoint identities. Directed arithmetic
+checks the actual orbit captures, inverse intervals, and zero paths.
+ResidueAnchors.lean gives a second proof of the two factorizations using
+the general identity for the complete grid of residues modulo m.
+
+FifthReference.lean proves the quadratic-character decomposition at 54°
+and its shared-zero criterion. From the same Lean directory run
+lake build Mathlib.NumberTheory.LSeries.DirichletContinuation SuperZeta.Oriented.LiuConnection
+lake env lean -DwarningAsError=true /path/to/FifthReference.lean

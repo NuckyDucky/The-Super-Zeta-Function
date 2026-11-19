@@ -1,0 +1,12 @@
+{
+  "precision_bits": 384,
+  "triadic_endpoint_sha256": "561da42cdf39ffc1e13eed9069e135d06578bbbef66a7e62a340fa4d0387cda5",
+  "dyadic_endpoint_sha256": "58449403656bbbbef7199b1daac1f7751683cd66179c80dd293d817c56fc98c1",
+  "identification": "6*pi*i/log(2)",
+  "dyadic_factor_index": 3,
+  "common_disk_radius": "1e-9",
+  "exact_imaginary_ball": "[27.194160850963162857766097674300000861031169 +/- 1.94e-43]",
+  "bare_Hurwitz_Rouche_ratio": "[+/- 1.47e-6]",
+  "zeta_magnitude_over_common_disk": "[4.081711 +/- 4.01e-7]",
+  "zeta_magnitude_at_explicit_point": "[4.08171101885114219000856714 +/- 3.22e-27]"
+}

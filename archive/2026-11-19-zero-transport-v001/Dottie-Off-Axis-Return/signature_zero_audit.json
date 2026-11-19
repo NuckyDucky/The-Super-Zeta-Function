@@ -1,0 +1,21 @@
+{
+  "precision": 320,
+  "checked": [
+    {
+      "path": "arithmetic_braid_riemann.json",
+      "source": "first nontrivial Riemann zero",
+      "terminal": "4*pi*i/log(2)",
+      "simple_zero_disks": 257,
+      "disk_radius": "[1.0000000000e-11 +/- 3e-26]",
+      "largest_Rouche_ratio": "[0.006940231413990 +/- 4.93e-16]"
+    },
+    {
+      "path": "arithmetic_braid_lattice.json",
+      "source": "4*pi*i/log(3)",
+      "terminal": "first nontrivial Riemann zero",
+      "simple_zero_disks": 257,
+      "disk_radius": "[1.0000000000e-11 +/- 3e-26]",
+      "largest_Rouche_ratio": "[0.006871429612397 +/- 4.61e-16]"
+    }
+  ]
+}

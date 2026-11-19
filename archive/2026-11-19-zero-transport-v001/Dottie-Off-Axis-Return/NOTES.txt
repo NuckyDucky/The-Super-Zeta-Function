@@ -1,0 +1,172 @@
+THE TWO OFF-AXIS PERIOD-640 RETURNS
+19 November 2026
+
+1. Starting orbit and measurement
+
+Write A(z)=exp(Lz), B(z)=exp(-Lz). The original ordered map is
+F(P,Q)=(A(Q),B(P)), and F squared acts as (A o B, B o A).
+Use the marked limit of the initial cap (1,1) at the two parameters
+L=±4.749479070945369e-8 + 0.509892982511772 i.
+Each scalar cycle has primitive period 320. Its cyclic derivative product is
+the multiplier μ. The angle θ used here is arg μ for the first scalar phase.
+The orbit has primitive ordered period 640. At the cap's marked phase,
+B(P)=Q on the left and A(Q)=P on the right. Composing the two stages in
+opposite orders cyclically permutes the derivative product, so the two
+scalar phases at one witness share μ. Reflection exchanges their roles.
+
+The two measurements M+ and M− are first reciprocal-root sums of two
+calibrated squared spectral determinants. They probe θ+π/6 and θ−π/6.
+The normalization E(0)=1 gives each measurement as −E'(0).
+The elementary inverse, with H+=1/M+ and H−=1/M−, is
+
+    cos θ = 2(H− − H+),        sin θ = 2(1 − H+ − H−)/sqrt(3).
+
+At a singular normalization use H±=(1−sin(θ±π/6))/2 by continuity.
+Both initial witnesses have M+>M−. Their values decode opposite signs of
+sin θ. The two calibrated vertical paths have disjoint angle ranges.
+They give a unique inverse from a measured angle to a flank and height
+within this experiment. Recovering a point in an unrestricted complex
+parameter plane from an angle alone would require further information.
+
+2. Turning and returning
+
+Hold each witness's real part fixed and vary Im L until the continuously
+followed native angle has decreased by π/6. Recompute the spectral pair
+from the continued orbit at that parameter, decode it, rotate back, and
+invert the monotone angle on the recovered flank. The 448-bit certificate
+uses overlaps of fixed-point trapping disks to follow the same marked
+cycle throughout each turn. It also checks the 1,280 inputs to the two
+exponentials in one ordered orbit. They agree within 5.711e-48 after the
+round trip. The full-precision inverse contains the initial height in a
+width of 2e-56. With only the serialized pairs, each inverse has width
+2e-33. The exact match follows from the two inverse formulae and
+injectivity on the calibrated curves.
+
+Continuation and cap selection differ at the far endpoint. There the
+continued 640-cycle still attracts locally. Starting afresh at (1,1)
+selects an attracting cycle of primitive ordered period 205440 on each
+flank. The difficult scalar coordinate is P on the left and Q on the
+right. At precision 2600 bits, the verifier bounds the complex direction
+of the enormous step-320 excursion and traps the cap's 321-fold scalar
+return. It excludes periods dividing 3 or 107. The companion scalar has
+period 320. The primitive period for F squared is lcm(320,321)=102720.
+An F-period m gives an F-squared period m/gcd(m,2), so m=205440.
+
+3. The arithmetic family and the angle
+
+The comparison with the cosine reference gives π^(−w) times the bilateral
+Hurwitz zeta Z(w,b)=ζ(w,b)+ζ(w,1−b), where w=2s and
+b={1/2−θ/π}. At the source parameters, reflection interchanges b and 1−b
+and hence leaves this arithmetic function identical for every w.
+At the first Riemann zero its magnitude is 2.21428086818 on both starting
+flanks, 1.75980638204 at the turned left endpoint, and 0.759244165779 at
+the turned right endpoint.
+
+The right turn crosses +60° and +45°. At those arithmetic angles b=1/6
+and b=1/4. The same calculation at +30° gives b=1/3. The two unit
+residues mod q are +1 and −1 in all three cases. Summing the Dirichlet
+series over those residues and continuing analytically gives, away from
+the pole w=1,
+
+    R(θ,w)=(q/π)^w ζ(w) product over p|q of (1−p^(−w)).
+
+In particular the endpoints carry the Riemann zeros with their original
+multiplicities in Re w>0. Differentiating the Hurwitz factors with
+respect to the angle in radians gives
+
+    ∂θ R(θq,w) = w (q/π)^(w+1) L(w+1,χq).
+
+Here χq is +1 on residue 1, −1 on residue −1, and 0 on nonunits. The
+right side is nonzero for Re w>0 away from the pole by the Euler product
+of L. Holding any nontrivial Riemann zero w fixed therefore gives a
+simple zero as a function of angle at each of these special angles.
+The sign of the derivative reverses at the reflected angles. These
+identities apply to every zero in the open strip. The published strict
+zero-free bound transfers at each arithmetic anchor via the nonzero
+Euler factors.
+
+At the interior angle +54°, b=1/5. The indicator of the residues ±1
+modulo 5 equals (χ₀+χ₅)/2, where χ₀ is the principal character and χ₅
+is the quadratic character. On summing the Dirichlet series and
+continuing in w this gives
+
+    R(54°,w)=(5/π)^w [(1−5^(−w)) ζ(w) + L(w,χ₅)] / 2.
+
+Thus a zero on an intermediate path can result from cancellation of two
+nonzero arithmetic terms. At the zero continued from 4πi/log(3), the
+ordinary term is about 0.844286291−0.071301339i and the quadratic term
+is its negative. The magnitude of ordinary zeta there is 1.3049615252.
+At the other branch's 54-degree zero it is 1.2821801765. Fifth_residue.py
+uses the certified checkpoint immediately before b=1/5 on each branch,
+joins it to b=1/5, and evaluates both arithmetic terms at the enclosed zero.
+
+The left turn crosses −90°. Here the complementary frequency passes
+through zero. For δ=θ+π/2 measured in radians, remove that single mode
+|δ|^(−w) from the reference. The remaining sum has a regular even Taylor
+expansion, for fixed w≠1,
+
+    2π^(−w)ζ(w) + π^(−w−2) w(w+1)ζ(w+2) δ² + O(δ⁴).
+
+This follows by shifting the Hurwitz parameters to 1±|δ|/π. At each
+nontrivial Riemann zero the constant vanishes and the quadratic
+coefficient is nonzero. This order-two attachment concerns the reference
+with the single zero-frequency mode removed. The unsimplified reference
+includes that mode. The two offset directional probes are both regular
+at this angle.
+
+4. What the two 30-degree statements mean
+
+A relative clockwise turn of 30 degrees was the prescribed experiment.
+At an absolute native angle of ±30 degrees the first trace correction is
+(1+2 sin θ)/cos²θ. It measures the first coefficient of the dynamical
+determinant minus that of the cosine reference, using −E'(0). At −30
+degrees both traces are 4/3. At +30 degrees they are 4 and 4/3. The
+common arithmetic reference is π^(−w)(3^w−1)ζ(w); reflection exchanges
+the two residue classes. The oriented dynamical term distinguishes them.
+
+5. Which zero reaches which endpoint
+
+On the clockwise subarc from +60° to +45°, certified continuous
+reference-zero paths have the following endpoints on the w-scale.
+
+  4πi/log 3  ->  first Riemann zero (4,964 contracting disks)
+  first Riemann zero  ->  4πi/log 2 (6,460 contracting disks)
+  6πi/log 3  ->  Re w tends to −infinity and Im w tends to 4π/log 2.
+
+The first seed was discovered by reverse exploration. A forward
+calculation starting from its explicit value independently enclosed
+the terminal root before looking up the Riemann ordinate. A separate
+Rouché calculation checked a total of 514 checkpoint disks on the
+two finite paths. The first Riemann zero is common to the endpoint
+spectra. It is reached at 45° by a different simple branch from the
+one leaving that coordinate at 60°.
+
+The third row was chosen before its endpoint was evaluated. Its initial
+30,000-disk budget reached 55.41446685791015625°. A separate proof using
+a sharper derivative bound and a switch to the Fourier representation
+followed the same seed through 1,460 contracting disks to 46.40625°.
+Here the zero was enclosed at −3.2935307660654+18.0814811023890i, less
+than 0.069 from the center of the analytic disk of radius greater than
+0.3925. The uniform Fourier estimate in signature_fourier_escape.py
+continues this unique zero for the rest of the open interval. See
+FOURIER-LIMIT.txt for the first real displacement and the verifier's
+docstring for the next, phase-dependent term. Two different paths approach
+the same limiting height 4π/log 2, one at a finite point and the other
+arbitrarily far to its left.
+
+6. Sources
+
+Original witness, oriented determinants and formally checked trace inverse
+https://github.com/NuckyDucky/The-Super-Zeta-Function/tree/d083b95873d9c76fbc21ae9c2cac3971b45f906c/archive/2026-11-19-oriented-return-v001
+Baiying Liu, Joint marked moments and optimized zero-free half-planes for
+unitary Hecke L-functions, Theorem 1.1, preprint of 13 November 2026.
+https://hexagonmath.org/2611.00421v1
+Takashi Nakamura, On zeros of bilateral Hurwitz and periodic zeta and zeta
+star functions. Proposition 1.7 treats the Riemann zero correspondence
+at these rational shifts. Proposition 4.7(3), equation (4.22), gives
+the real branch escaping to the left at b=1/4.
+https://arxiv.org/abs/1910.10430
+Hurwitz parameter derivative, Dirichlet character decomposition and Euler product.
+https://dlmf.nist.gov/25.11.E17
+https://dlmf.nist.gov/25.15.E3
+https://dlmf.nist.gov/25.15.E2

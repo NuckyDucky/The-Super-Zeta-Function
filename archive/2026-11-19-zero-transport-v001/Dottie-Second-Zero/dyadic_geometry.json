@@ -1,0 +1,15 @@
+{
+  "precision_bits": 224,
+  "segments": 768,
+  "source": "dyadic_continuation.json",
+  "height_slope_per_unit_b": [
+    "[0.0251741045198106 +/- 1.47e-17]",
+    "[108.813051425763 +/- 9.68e-14]"
+  ],
+  "segments_using_edge_tangents": 5,
+  "open_strip_condition": "0 < real(w) < 1/2 on 1/6 < b < 1/4, using exact endpoint symmetry",
+  "terminal_slope_per_clockwise_degree": {
+    "real": "[0.14306043878857146 +/- 6.34e-18]",
+    "imag": "[0.24912453413257515 +/- 4.96e-18]"
+  }
+}
