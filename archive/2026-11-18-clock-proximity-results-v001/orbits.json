@@ -1,0 +1,1479 @@
+{
+  "protocol": "26007a2e0f65a12abd39485347976dfb28c018c4736a659500d0d7fa0672183f",
+  "rows": [
+    {
+      "j": 1,
+      "x": "4720416570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 2,
+      "x": "4722291570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 3,
+      "x": "4724166570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 4,
+      "x": "4726041570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 5,
+      "x": "4727916570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 6,
+      "x": "4729791570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 7,
+      "x": "4731666570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 8,
+      "x": "4733541570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 9,
+      "x": "4735416570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 10,
+      "x": "4737291570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 11,
+      "x": "4739166570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 12,
+      "x": "4741041570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 13,
+      "x": "4742916570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 14,
+      "x": "4744791570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 15,
+      "x": "4746666570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 16,
+      "x": "4748541570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 17,
+      "x": "4750416570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 18,
+      "x": "4752291570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 19,
+      "x": "4754166570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 20,
+      "x": "4756041570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 21,
+      "x": "4757916570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 22,
+      "x": "4759791570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 23,
+      "x": "4761666570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 24,
+      "x": "4763541570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 25,
+      "x": "4765416570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 26,
+      "x": "4767291570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 27,
+      "x": "4769166570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 28,
+      "x": "4771041570945369/100000000000000000000000",
+      "status": "unresolved",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": [
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 384,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 768,
+          "reason": "the cap orbit must enter the trapping disk"
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "bits": 1536,
+          "reason": "the cap orbit must enter the trapping disk"
+        }
+      ]
+    },
+    {
+      "j": 29,
+      "x": "4772916570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 30,
+      "x": "4774791570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 31,
+      "x": "4776666570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "j": 32,
+      "x": "4778541570945369/100000000000000000000000",
+      "status": "certified",
+      "marks": [
+        {
+          "side": 0,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 0,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "P",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": -1,
+          "phase": "Q",
+          "k": 1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "P",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        },
+        {
+          "side": 1,
+          "phase": "Q",
+          "k": -1,
+          "bits": 384,
+          "cap_laps": 48
+        }
+      ],
+      "attempts": []
+    }
+  ]
+}
