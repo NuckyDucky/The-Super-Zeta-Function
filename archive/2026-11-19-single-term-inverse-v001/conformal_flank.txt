@@ -1,0 +1,64 @@
+Multiplier coordinates near the calibrated period-640 Dottie flank
+
+Write L=η+iy with η=4.749479070945369×10^(-8), and let K be the compact
+subsegment on which the continuously marked orbit turns from 60° to 45°.
+G(L,p)=(z ↦ exp(L exp(−Lz)))^320(p) denotes the 320-fold scalar iterate.
+The glued trapping-disk certificate selects p with G(L,p)=p and
+μ(L)=∂p G(L,p). Its continued rooted ordered pair has period 640.
+
+Proposition. There is an open neighborhood U of K on which the selected
+multiplier μ(L) has a single holomorphic inverse on μ(U). On K its
+modulus is strictly decreasing with the clockwise turn h (in degrees).
+
+Proof. Each stage is entire in both variables. At a selected periodic
+point, ∂p(G−p)=μ−1 is nonzero by the strict contraction. The complex
+implicit function theorem extends p, and hence μ, holomorphically to a
+disk about each L on K. These extensions agree along overlaps of the
+segment by uniqueness of the continued marking. Taking disks centered on
+the segment, the identity theorem glues them on their intersections.
+
+Every stage derivative is nonzero since L≠0, and their lap product is μ.
+Let θ=arg μ in radians on the calibrated branch. The directed derivative
+dθ/dy>0 throughout K shows that μ'(L)≠0: the imaginary part of
+iμ'(L)/μ(L) is dθ/dy. The inverse function theorem gives a conformal
+chart near each L. The 15° range and strict angle monotonicity give
+injectivity of μ on K. Suppose μ failed to be injective on every
+shrinking tube around K. Take unequal L_n,L'_n in the 1/n tubes with
+μ(L_n)=μ(L'_n). Subsequencing gives limits in K. They coincide by
+injectivity there, contradicting local injectivity at their common limit.
+This supplies U. There is no numerical claim for the tube width.
+
+The orbit computation recovers the complex quantity m_y=∂y log μ.
+The real part measures radial change; its imaginary part measures angle
+change in radians. Thus, for h counting clockwise degrees,
+
+  d log|μ| / dh = −(π/180) Re(m_y)/Im(m_y).
+
+The 448-bit interval certificate contraction-sweep.json bounds this on
+120 cells strictly between −0.008614 and −0.005387. The endpoint moduli
+are 0.204296772848039024... and 0.183971328451083271... . In particular
+|μ| alone distinguishes every value of h on this one continued segment.
+The Cauchy–Riemann equations also give ∂x log|μ|=∂y arg μ here.
+
+Connection to the Hurwitz shift. After shrinking to a symmetric thin
+simply connected tube, let m be the branch of log μ with Im m=θ on K.
+Reflection across the calibration line is L* = 2η − conj L. Then
+
+  B(L) = 1/2 − [m(L) − conj(m(L*))]/(2πi)
+
+is holomorphic there. On K it equals the prescribed shift
+b=1/2−θ/π. Its nonzero derivative along K and strict monotonicity on K
+again give univalence after shrinking the tube. Consequently the actual
+real-parameter calibration has a unique holomorphic extension as a germ
+along this flank. The expression A(B(L)) uses this extension when A is the
+labeled Hurwitz summand along the analytically continued sixth branch.
+At its two different angles with the same A, μ and |μ| remain distinct.
+
+Reproduce from this directory with Python 3.12 and python-flint 0.9.0.
+  python -B recover_orbit.py sweep --repo PATH_TO_SUPER_ZETA
+  python -B recover_orbit.py collision --repo PATH_TO_SUPER_ZETA
+  python -B recover_orbit.py recover --repo PATH_TO_SUPER_ZETA
+  python -B recover_orbit.py score --repo PATH_TO_SUPER_ZETA
+The last command alone uses the original visit labels to score the inverse.
+The original right-flank calibration is archived in
+archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/flank_path.py.

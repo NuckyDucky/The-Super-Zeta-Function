@@ -308,6 +308,12 @@ On the path from $12\pi i/\log 3$ to the sixth Riemann zero, I reach height $37.
 
 The square on the graph marks a different kind of return. At two distinct input angles the path revisits the same complex point near $-0.14560046+37.21759523i$. The two tangents cross at about $40.8982^\circ$. Recording the shift distinguishes those visits even when both coordinates of the zero agree. [Open the interactive graph](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Derivative formulas, interval proofs and replay](archive/2026-11-19-sixth-passes-v001/README.md)
 
+### 3.9 What one Hurwitz term remembers about the orbit
+
+I hid the turn angle, both ordered traces and the position of the moving zero at the sixth path's crossing. I kept just the first complex summand $A=\zeta(w,b)$. One reading recovered the visit heading up and left at $142.21^\circ$. The other recovered the visit heading almost due right at $3.11^\circ$. On the calibrated right flank, each angle also located the original period-640 orbit and its two marked phases. [Blind inputs, decoded directions and orbit enclosures](archive/2026-11-19-single-term-inverse-v001/README.md#the-experiment)
+
+That reading itself takes the same value twice elsewhere. The two Dottie orbits there have multiplier moduli $0.19009231$ and $0.18425549$, so nearby starting points contract at different rates even though the first Hurwitz value agrees. I checked all 15 degrees of this branch. This is the only repeated first-term reading, and its two visits have different zero positions. Recording the pair $(w,A)$ distinguishes every visit on the sweep. [Graph of the two crossings and proof](archive/2026-11-19-single-term-inverse-v001/README.md#where-the-single-reading-agrees-twice)
+
 <a name="a-local-strengthening-of-the-seven-eighths-theorem"></a>
 <a name="local-zeta-result"></a>
 
@@ -476,3 +482,6 @@ I leave each answered question in place and put its result beside it. The number
 9. ~~Do earlier studies contain these same paths?~~ Yes. The five trajectories in Figures 2–4 of the 2007 paper include four successive links of my early route and one further elementary connection. [Figure-by-figure comparison](archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/PRIOR-WORK.md)
 10. ~~What makes the sixth path pass the same height three times?~~ Its velocity turns through the horizontal twice. The two folds enclose a whole band of repeatedly visited heights. [Three passes, two folds](archive/2026-11-19-sixth-passes-v001/README.md)
 11. **Open.** Can I use the two Hurwitz shifts to bound the total turning of other branches before tracing their zeros?
+12. ~~Can one labeled Hurwitz term recover which way I leave the sixth branch's crossing when the position, angle and both traces are hidden?~~ Each of the two readings isolates its own visit. The calibrated angle then recovers its Dottie orbit. [Blinded inverse](archive/2026-11-19-single-term-inverse-v001/README.md#the-experiment)
+13. ~~Does a single term distinguish every visit on that sweep?~~ It has one transverse double point. Adding the position separates that last pair. [Full-sweep comparison](archive/2026-11-19-single-term-inverse-v001/chart.json)
+14. **Open.** On which other positive-height Hurwitz branches does the pair of the zero position and one labeled summand distinguish every visit?

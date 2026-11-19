@@ -1,0 +1,19 @@
+{
+  "clockwise_turn_degrees": [
+    0,
+    15
+  ],
+  "native_angles_degrees": [
+    60,
+    45
+  ],
+  "cells": 120,
+  "d_log_abs_mu_per_clockwise_degree": {
+    "lower": "[-0.00861381495633395389 +/- 2.78e-21]",
+    "upper": "[-0.00538798956040409394 +/- 3.92e-21]"
+  },
+  "initial_abs_mu": "[0.204296772848039024 +/- 3.33e-19]",
+  "terminal_abs_mu": "[0.183971328451083271 +/- 1.38e-19]",
+  "relative_decrease": "[0.0994897966992083622 +/- 3.46e-20]",
+  "precision_bits": 448
+}

@@ -1,0 +1,102 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 7290,
+      "sha256": "1db3c571816845af1b9a19799d34b3879933f8eb1ec766e8ae3c19fcf7dd5b88"
+    },
+    "chart-crossing.json": {
+      "bytes": 747,
+      "sha256": "eed9609f0637835ffd9280def4159aa97e341a8cc1a6d8d61997c2b06306cf03"
+    },
+    "chart.json": {
+      "bytes": 629,
+      "sha256": "530c5f0c99cee25b8ca7a5461c1c8e3b1125d22a4b6bb221a63c3b66f5fc0a94"
+    },
+    "chart.py": {
+      "bytes": 7836,
+      "sha256": "88ccc3be8df46c6565c837a228a6972db8e46ed280711cae04b51462fec74084"
+    },
+    "collision-orbits.json": {
+      "bytes": 5347,
+      "sha256": "2c8f2f7bae670c0ea74f3c60598ee7da924fd533d5fe46326c48c42dc1671cb7"
+    },
+    "collision-shifts.json": {
+      "bytes": 125,
+      "sha256": "017ca11eea9a161373a417ffabf3f003e37bd711893fdfc4b4ad70404abd3af2"
+    },
+    "conformal-note.txt": {
+      "bytes": 6687,
+      "sha256": "f586cee924d71439a3f43625f1bdad8313758a355aff89a2e8eb7e0edd12bef7"
+    },
+    "conformal_flank.txt": {
+      "bytes": 3672,
+      "sha256": "6eb089a4f511d46617b9d471a3483049dd29c7e5d3dedddf4544e716e8344101"
+    },
+    "contraction-sweep.json": {
+      "bytes": 498,
+      "sha256": "5e94efaf6b02eaf60b68ddea4ee0a93e54b12404a86d6bb77f02611cb18e1582"
+    },
+    "decoded.json": {
+      "bytes": 1324,
+      "sha256": "cd8a05da015f9c41736d123f6f4218c1f558566961cd51818e132747fa6b46ec"
+    },
+    "imaginary-axis.json": {
+      "bytes": 163,
+      "sha256": "c8c39367601cfc2f50303e3b49938a0b61a5f432a30977472e1888fcab462e00"
+    },
+    "layout.py": {
+      "bytes": 375,
+      "sha256": "5786d819c258503aebbc074c908fdf68c1fbfce2ef75befc681c6b0cd544145a"
+    },
+    "one_term.py": {
+      "bytes": 5542,
+      "sha256": "d689e53c46447cf2b7078468c290da2a3bf9cca74bbbba355af180fd6e45a93b"
+    },
+    "packets.json": {
+      "bytes": 216,
+      "sha256": "e47cefdef3ac71cca4b3601a3e42000c756c4a1afd6b40995744597f4cb48b0b"
+    },
+    "plot_projection.py": {
+      "bytes": 3247,
+      "sha256": "a7eddbcda1db0e88fc863e2010881b11da726f1aeef974883e87f189b5173462"
+    },
+    "provenance.json": {
+      "bytes": 5272,
+      "sha256": "c3a127d9943034017ba3cea78e0c817d51c256c95acce746e5f11cdc34cfb403"
+    },
+    "quarter_example.json": {
+      "bytes": 2296,
+      "sha256": "c245a2062041ce66f6363c30b4c97f90ea3561234307fd4e2c77a766ce9d69dc"
+    },
+    "quarter_example.py": {
+      "bytes": 3530,
+      "sha256": "0844297b5c78acd5b58d46720c0e89109b9491f24ca4516905e2bd19f3cde271"
+    },
+    "recover_orbit.py": {
+      "bytes": 7113,
+      "sha256": "31223754b1f6b2cea27e97ec0f418d1c4e28113790a33becaf7067fe6573fa69"
+    },
+    "recovered-orbits.json": {
+      "bytes": 5159,
+      "sha256": "dd3e0c089758746f59e53bab982b3dfb930a4c0afcba1fad7b2aee7b0b0c44fc"
+    },
+    "replay.py": {
+      "bytes": 4488,
+      "sha256": "38c0e6f22ea7eb18362a879c02a2b696e2ff3d2c5a2b50fd1b8d7c5695e7a75e"
+    },
+    "scoring/orbit_packets.py": {
+      "bytes": 3829,
+      "sha256": "07d01f4e8c80d808affb35691e11b4ad83d3c6e88b9212d1ab58fe2945072441"
+    },
+    "scoring/truth.json": {
+      "bytes": 3504,
+      "sha256": "f8ef1955a8cc9a8b8fb1528efdf40d3c08a6df598f3f80786ce3e2a12b3cfa66"
+    },
+    "two-projections.png": {
+      "bytes": 110121,
+      "sha256": "e69bcb61c70e343bac5fb2426787012436ffca36ebdea5169d6b522aebd1bfe9"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-19-single-term-inverse-v001"
+}
