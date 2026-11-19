@@ -7,7 +7,7 @@ I start with two alternating exponentials and ask which fixed pairs return a sma
 - Construct the quartet spectrum and a boundary operator that reproduces it.
 - Recover $\zeta(2s)$ by comparing the quartet determinant with the cosine determinant.
 - Strengthen the 7/8ths bound to the critical line in three certified height intervals.
-- Derive the exact Stirling correction for each positive integer from the quartet normalization.
+- Recover the exact Stirling correction for each positive integer from the balanced-sign factor in my quartet normalization.
 - Identify the Dottie fold, certify finite periods, and retain the order of the exponential signs.
 - Approximate $\pi$ using a genus-one quartic that fails the Hasse principle.
 
@@ -170,6 +170,14 @@ An eigenfunction must be $f(x)=c e^{iux}$. Its endpoint average is $c\cos u$, so
 \det(I-vB_\varepsilon^2)=\cos^2\sqrt v-v/\varepsilon^2.
 ```
 
+The reciprocal equations determine the unit-coupling roots. I chose the midpoint and the two endpoint values to realize those roots as eigenvalues. One entry makes the coupling convention easy to check. In the inverse, scalar input $1$ contributes the constant function $1/\varepsilon$. Its coefficient on a normalized indicator of a cell of width $2/N$ is
+
+```math
+(B_N)_{j,N+1}=\frac{\sqrt{2/N}}{\varepsilon}.
+```
+
+For $N=2$, $\varepsilon=2$ and $u=1$, this gives $\det(I-uB_N)=1/8$. [Projection and determinant, eqs. (8), (12) and (13)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#3-exact-fredholm-determinant-and-controlled-finite-matrices)
+
 **What was already known?** In Hupkes’s continuous-history space, the midpoint condition and a derivative already appear together. Choosing equal endpoint weights $i\varepsilon/2$ in his characteristic equation and putting $z=iu$ gives exactly $i(u-\varepsilon\cos u)$. What I trace here is the passage from my ordered reciprocal phases to the squared spectrum at $\varepsilon=1$, its explicit Hilbert-space determinant, and the resulting zeta comparison. Varying $\varepsilon$ moves the spectrum. Adding a shift $a$ gives the separate family $\sum_j(\lambda_j+a)^{-s}$, with its own poles and residues. I welcome an earlier reference for this precise combination. [Hupkes, eqs. (2.10), (2.54) and Lemma 2.4.4](https://math.leidenuniv.nl/scripties/PhdHupkes.pdf) · [Shifted spectrum, domain and residues](archive/2026-11-16-super-zeta-v001/research/shifted-superzeta.md)
 
 ### 4. Compare with the odd-integer spectrum
@@ -236,6 +244,10 @@ At quartet level $n$, the four recovered parameters have the same modulus $R_n$,
 C_n=\frac{R_n B_n^2}{2}=\frac{R_n}{2\pi n}\,D_n,
 \qquad D_n=\pi n B_n^2.
 ```
+
+**What changes if I replace the quartet radii with the grid $2\pi n$?** The binomial factor already gives a limiting displacement of $1/4$ on the grid. My quartet equations give $R_n-2\pi n\to0$, so the actual radii preserve that limit. The difference shows up at finite levels. The actual displacement rises from $0.211094$ at level 28 to $0.211856$ at level 29, crossing the Hurwitz threshold $0.211325$. The grid starts at $1-\pi/4\approx0.214602$ and increases at every level. The corrected independent audit reproduced the crossing. Lean verifies that the grid stays above the exact threshold at every positive integer level. [Comparison, proof and corrected notebook](archive/2026-11-18-quartet-grid-comparison-v001/README.md) · [Quartet-radius theorem](lean/SuperZeta/QuartetRadius.lean)
+
+The two-history count also occurs inside the Dottie map. I select four inverse branches, assign them the four directions of a square lattice, and count their ordered words equally. Among the marked points fixed by $2n$ returns on this subsystem, the fraction with zero total displacement is exactly $B_n^2$. The cap follows its prescribed alternating stages. Counting all four-branch words and pairing their length $2n$ with quartet level $n$ are choices in my normalization. [Four branches and the exact count, eqs. (5) and (15)–(17)](archive/2026-11-16-super-zeta-v001/research/balanced-charge-operators.md)
 
 The leading Stirling factors in $(2n)!/(n!)^2$ give the cancellation. The next term decides whether the normalization produces a real displacement. To measure it exactly, I write $S_n=\sqrt{2\pi n}(n/e)^n$ for the usual Stirling approximation and $\rho_n=\log(n!/S_n)$ for its logarithmic error. My normalization isolates the precise combination of errors that survives.
 
