@@ -48,14 +48,17 @@ def run(script, out, *args):
         raise RuntimeError(proc.stdout.decode("utf-8", errors="replace"))
 
 
-def compare_map(out):
-    report = read(out / "plane_map.json")
-    assert report["accepted"] + report["unresolved"] == report["grid_count"] == 10961
+def compare_map(out, stem, expected_count):
+    report = read(out / f"{stem}.json")
+    assert report["accepted"] + report["unresolved"] == report["grid_count"] == expected_count
     assert report["max_common_node_disagreement"] <= report["agreement_threshold"]
     assert report["max_relative_level_drift"] <= report["level_drift_threshold"]
-    with np.load(ATLAS / "plane_map.npz", allow_pickle=False) as old, \
-         np.load(out / "plane_map.npz", allow_pickle=False) as new:
-        for field in ("x", "y", "accepted", "marked_h", "marked_w"):
+    with np.load(ATLAS / f"{stem}.npz", allow_pickle=False) as old, \
+         np.load(out / f"{stem}.npz", allow_pickle=False) as new:
+        fields = ["x", "y", "accepted"]
+        if stem == "plane_map":
+            fields.extend(("marked_h", "marked_w"))
+        for field in fields:
             np.testing.assert_array_equal(new[field], old[field])
         valid = old["accepted"]
         assert valid.sum() == report["accepted"]
@@ -69,15 +72,44 @@ def compare_map(out):
 def replay(out):
     check_reference()
     run(ATLAS / "plane_map.py", out, "--output", out)
-    for name in ("plane_strain.png", "plane_grid.png"):
+    run(ATLAS / "plane_wide.py", out, "--output", out)
+    for name in ("plane_strain.png", "plane_grid.png", "plane_wide.png"):
         with Image.open(out / name) as regenerated, Image.open(ATLAS / name) as saved:
             assert regenerated.size == saved.size and min(regenerated.size) >= 1440
             regenerated.verify()
-    report = compare_map(out)
+    report = compare_map(out, "plane_map", 10961)
+    wide = compare_map(out, "plane_wide", 38801)
+    assert wide["domain"] == {"Re w": [-2, 2], "Im w": [34, 40]}
     run(ATLAS / "plane_anchors.py", out, "--output", out)
     run(ATLAS / "phase_lift.py", out, "--repo", ROOT, "--out", out / "phase_lift.json")
     for name in ("plane_anchors.json", "phase_lift.json"):
         compare(read(out / name), read(ATLAS / name), name)
+    run(ATLAS / "resolve_staircase.py", out, "--output", out)
+    review = read(out / "staircase.json")
+    compare(review, read(ATLAS / "staircase.json"), "staircase.json")
+    with np.load(out / "plane_map.npz", allow_pickle=False) as cells:
+        rejected = set(zip(*np.nonzero(~cells["accepted"])))
+    assert rejected == {(item["row"], item["column"]) for item in review["entries"]}
+    assert len(review["entries"]) == len(rejected) == 37
+    assert all(arb(item["length"]) > 0 for item in review["entries"])
+    run(ATLAS / "gray_locus.py", out, "--out", out / "gray_locus.json")
+    incidence = read(out / "gray_locus.json")
+    assert incidence["source_grid_sha256"] == sha256((ATLAS / "plane_map.npz").read_bytes()).hexdigest()
+    assert incidence["original_gray_count"] == incidence["inside_square_certificates"] == 37
+    assert len(incidence["pixel_checks"]) == 37
+    assert {(p["row"], p["column"]) for p in incidence["pixel_checks"]} == rejected
+    assert all(p["arc"] == 1 and p["source_pixel_contains_level_preimage"] for p in incidence["pixel_checks"])
+    # Fix the archived rational shifts for the sheet and collision comparison.
+    run(ATLAS / "gray_collision.py", out, "--locus", ATLAS / "gray_locus.json",
+        "--out", out / "gray_collision.json")
+    collision = read(out / "gray_collision.json")
+    compare(collision, read(ATLAS / "gray_collision.json"), "gray_collision.json")
+    curve = collision["critical_curve"]
+    assert curve["matched_pixel_critical_points"] == 37 and arb(curve["lower_Re_Hb_along_branch"]) > 196
+    cases = collision["illustrated_pixels"]
+    assert len(cases) == 37 and {(e["row"], e["col"]) for e in cases} == rejected
+    assert all(e["sqrt_t_sheet_sign"] == -1 for e in cases)
+    assert all(arb(e["rouche_main_lower"]) > arb(e["rouche_error_upper"]) for e in cases)
     lift = read(out / "phase_lift.json")
     assert lift["stages"] == 640 and lift["lifted_winding_relative_to_45_degrees"] == -1
     assert arb(lift["sixth_length_factor"]) < 1

@@ -12,6 +12,8 @@ The basin result holds for every point within $10^{-6}$ of $37i$. With the princ
 
 The first diagram measures final length divided by starting length for a very short segment. A value of $1/2$ halves it and a value of $2$ doubles it. The second diagram plots every resolved endpoint, including points outside the original rectangle. [Length change across the plane](atlas/plane_strain.png) · [Entire starting and final grids](atlas/plane_grid.png)
 
+I measured a wider rectangle using 38,801 starting positions. The original closeup has 37 flagged samples. I followed each of those exact grid centers with directed arithmetic and verified all their endpoints. In every one of the 37 squares I also isolated a different source position whose level reaches a moving critical value. All 37 paths reach the same branch from its negative square-root sheet. [Proof of the 37 folds](atlas/gray_collision.json) [Wide view](atlas/plane_wide.png) · [Verified centers](atlas/staircase.json) · [Critical levels in the squares](atlas/gray_locus.json)
+
 After scoring the two new seeds, I measured the same ratio over their whole turns. Seed 7 expanded by a factor of $1.18120$, while seed 8 shrank to $0.51124$ of its starting length. Both expanded slightly over the final eighth of a degree. [Length and angle at both seeds](holdout/local_scale.json)
 
 ## Reproduce the experiments

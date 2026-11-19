@@ -11,14 +11,18 @@
     ],
     "raw_maps": [
       "atlas/plane_map.npz",
-      "atlas/basins.npz"
+      "atlas/basins.npz",
+      "atlas/plane_wide.npz"
     ],
     "directed_methods": [
       "atlas/plane_anchors.py",
       "atlas/phase_lift.py",
       "atlas/basin_certificate.py",
       "atlas/critical_loop.py",
-      "atlas/critical_branches.py"
+      "atlas/critical_branches.py",
+      "atlas/resolve_staircase.py",
+      "atlas/gray_locus.py",
+      "atlas/gray_collision.py"
     ]
   },
   "landing": {

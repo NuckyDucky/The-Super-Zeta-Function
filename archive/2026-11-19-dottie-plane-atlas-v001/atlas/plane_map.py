@@ -122,13 +122,15 @@ def reference(path):
     return np.array(angles),np.array(points)
 
 
-def compute(out):
+def compute(out, *, x=None, y=None, prefix="plane_map"):
     ctx.prec,ctx.cap = 160,2
     reference_path=HERE/"plane_reference.json"
     angles,track = reference(reference_path)
     h0=angles[0]
-    x=np.linspace(-.75,.65,113)
-    y=np.linspace(36.75,37.95,97)
+    if x is None:
+        x=np.linspace(-.75,.65,113)
+    if y is None:
+        y=np.linspace(36.75,37.95,97)
     W=np.add.outer(1j*y,x).ravel()
     outputs=list(transported(W,h0,12))
     depth=np.full(W.shape,24)
@@ -197,15 +199,22 @@ def compute(out):
         most_compressed=item(good[np.argmin(log2[good])]),most_expanded=item(good[np.argmax(log2[good])]),
         nearest_marked_grid_point=item(nearest_start),agreement_threshold=STEP_AGREEMENT,level_drift_threshold=LEVEL_TOL)
     reshape=lambda t:t.reshape(len(y),len(x))
-    np.savez_compressed(out/"plane_map.npz",x=x,y=y,end=reshape(dest),log2_length=reshape(log2),
+    np.savez_compressed(out/(prefix+".npz"),x=x,y=y,end=reshape(dest),log2_length=reshape(log2),
         accepted=reshape(mask),node_error=reshape(step_err),level_error=reshape(level_err),
         min_sampled_abs_Hw=reshape(mind),steps=reshape(depth),marked_h=angles,marked_w=track,
         example_h=np.linspace(h0,END,385),example_w=example_paths)
-    (out/"plane_map.json").write_text(json.dumps(summary,indent=2,allow_nan=False)+"\n",encoding="utf-8")
+    (out/(prefix+".json")).write_text(json.dumps(summary,indent=2,allow_nan=False)+"\n",encoding="utf-8")
     print(json.dumps(summary,indent=2),flush=True)
 
 
-def plot(out):
+def mark_unresolved(ax,x,y,ok,size):
+    """Cross out each unresolved seed, including those in nearly neutral areas."""
+    j,i=np.where(~ok)
+    for width,color in ((2.0,"#fffcf0"),(.85,"#191c1c")):
+        ax.scatter(x[i],y[j],s=size,marker="x",linewidths=width,color=color,zorder=5)
+
+
+def plot(out,staircase=None):
     """Render the field of length ratios and the complete before/after lattice."""
     import matplotlib
     matplotlib.use("Agg")
@@ -217,8 +226,17 @@ def plot(out):
     data = np.load(out/"plane_map.npz")
     x, y = data["x"], data["y"]
     start = np.add.outer(1j*y, x)
-    end, ok = data["end"], data["accepted"]
-    scale = np.ma.array(data["log2_length"], mask=~ok)
+    end, ok = data["end"].copy(), data["accepted"]
+    scale = data["log2_length"].copy()
+    entries=json.loads((staircase or HERE/"staircase.json").read_bytes())["entries"]
+    restored=np.zeros(ok.shape,dtype=bool)
+    for entry in entries:
+        j,i=entry["row"],entry["column"]
+        assert not ok[j,i] and not restored[j,i] and [x[i],y[j]]==entry["start"]
+        end[j,i]=complex(*(float(arb(v).mid()) for v in entry["end"]))
+        scale[j,i]=np.log2(float(arb(entry["length"]).mid()))
+        restored[j,i]=True
+    assert np.array_equal(restored,~ok)
     track = data["marked_w"]
     trails = data["example_w"]
     accepted, unresolved = int(ok.sum()), int((~ok).sum())
@@ -266,6 +284,7 @@ def plot(out):
     cmap.set_bad("#969fa2")
     im=ax.pcolormesh(x,y,scale,shading="nearest",cmap=cmap,
                      norm=TwoSlopeNorm(vcenter=0,vmin=-2,vmax=3),rasterized=True)
+    mark_unresolved(ax,x,y,ok,9)
     ax.set_xlim(x[0]-half_step,x[-1]+half_step)
     ax.set_ylim(y[0]-.023,y[-1]+half_step)
     marked(ax,True)
@@ -275,6 +294,12 @@ def plot(out):
         add_label(ax,w,text,offset,color)
     ax.text(.02,.976,"Color at the starting point",transform=ax.transAxes,va="top",fontsize=9.5,
             bbox=dict(facecolor=paper,edgecolor="none",alpha=.86,pad=3))
+    failed=start[~ok]
+    marker=failed[np.argmin(abs(failed-(-.35+36.97j)))]
+    ax.annotate("Refined starts",xy=(marker.real,marker.imag),xytext=(-.69,36.95),
+                arrowprops=dict(arrowstyle="-|>",color=ink,lw=1),
+                bbox=dict(facecolor=paper,edgecolor="none",alpha=.92,pad=2),
+                fontsize=9.5,fontweight="bold",zorder=12)
     sidebar=.695
     fig.text(sidebar,.82,"An initially short segment",fontsize=15,fontweight="bold",va="top")
     fig.text(sidebar,.766,"Below 1× it gets shorter.\nAbove 1× it gets longer.\nAt 1× its length is preserved.",
@@ -283,10 +308,11 @@ def plot(out):
     fig.text(sidebar,.570,"About 29% of its original length.\nStart at 0.075 + 36.75i.",fontsize=10.8,linespacing=1.6,va="top")
     fig.text(sidebar,.460,"B   8.075×",fontsize=17,fontweight="bold",color=B,va="top")
     fig.text(sidebar,.405,"Just over eight times as long.\nStart at −0.525 + 37.3125i.",fontsize=10.8,linespacing=1.6,va="top")
-    fig.text(sidebar,.292,"A and B have interval certificates.\nThe colored grid is numerical.",
+    fig.text(sidebar,.292,"A and B have interval certificates.\n10,924 points passed the numerical checks.",
              fontsize=10.5,linespacing=1.6,color=secondary,va="top")
-    fig.text(sidebar,.195,f"Gray cells   ·   {unresolved} unresolved",fontsize=10.5,color=secondary,va="top")
-    fig.text(sidebar,.149,f"{accepted:,} numerical values passed\nthe two resolution checks.",fontsize=10,linespacing=1.4,color=secondary,va="top")
+    fig.text(sidebar,.192,"×   The grid solver needed refinement.",fontsize=10.4,color=ink,va="top")
+    fig.text(sidebar,.151,f"All {unresolved} marked colors come from separate\ninterval certificates.",fontsize=10.1,color=secondary,va="top")
+    fig.text(sidebar,.077,"Off-white   ·   Measured near 1×",fontsize=10.4,color=ink,va="top")
     cbax=fig.add_axes([.108,.131,.544,.025])
     cb=fig.colorbar(im,cax=cbax,orientation="horizontal",ticks=[-2,-1,0,1,2,3],extend="max",extendfrac=.025)
     cb.ax.set_xticklabels(["0.25×","0.5×","1×","2×","4×","8×"])
@@ -315,13 +341,14 @@ def plot(out):
         p.grid(True,color="#dcdfda",lw=.5)
     left.set_ylabel("Imaginary part of w")
     left.set_title(f"The {len(x)} × {len(y)} starting grid",loc="left",fontsize=15,fontweight="bold",pad=8)
-    right.set_title(f"All {accepted:,} resolved destinations",loc="left",fontsize=15,fontweight="bold",pad=8)
+    right.set_title(f"All {start.size:,} destinations",loc="left",fontsize=15,fontweight="bold",pad=8)
     left.scatter(start.real.ravel(),start.imag.ravel(),s=1.2,color="#7795a0",alpha=.50,
                  edgecolors="none",zorder=2)
     cloud=end[ok]
     right.scatter(cloud.real,cloud.imag,s=1.85,color="#477989",alpha=.54,edgecolors="none",zorder=2)
-    left.scatter(start.real[~ok],start.imag[~ok],s=9.5,marker="s",color="#98504d",
-                 edgecolors="none",zorder=4)
+    for p,points in ((left,start[restored]),(right,end[restored])):
+        p.scatter(points.real,points.imag,s=11.5,marker="D",color="#98504d",
+                  edgecolors="white",linewidths=.22,zorder=4)
 
     safe=ok.copy()
     for i,j in zip(*np.where(~ok)):
@@ -367,6 +394,7 @@ def plot(out):
 
     # Mark the extreme horizontal destinations. All other endpoints, including
     # those from the outer rows and columns, also participate in the limits.
+    cloud=end.ravel()
     for name,idx,offset in (("Leftmost",np.argmin(cloud.real),(5,-6)),
                             ("Rightmost",np.argmax(cloud.real),(-6,5))):
         w=cloud[idx]
@@ -380,14 +408,14 @@ def plot(out):
         p.set_ylim(*ylim)
     assert np.all((xlim[0]<cloud.real)&(cloud.real<xlim[1])&(ylim[0]<cloud.imag)&(cloud.imag<ylim[1]))
     from matplotlib.lines import Line2D
-    handles=[Line2D([],[],marker="o",ls="",color="#477989",ms=4,label="Numerical grid points"),
+    handles=[Line2D([],[],marker="o",ls="",color="#477989",ms=4,label=f"{accepted:,} grid solutions"),
              Line2D([],[],color=grid_ink,lw=1,label="Sample rows and columns"),
              Line2D([],[],color=edge_ink,lw=2,label="Starting grid perimeter, tracked"),
-             Line2D([],[],marker="s",ls="",color="#98504d",ms=6,label=f"{unresolved} unresolved starts")]
+             Line2D([],[],marker="D",ls="",color="#98504d",ms=5,label=f"{unresolved} interval-verified additions")]
     fig.legend(handles=handles,loc="lower center",bbox_to_anchor=(.5,.087),ncol=4,frameon=False,
                handlelength=1.5,columnspacing=1.6,fontsize=10.0)
     fig.text(.065,.045,"A and B follow two independently verified paths. The black path carries the marked zero. "
-             "Lines break near unresolved cells.",fontsize=10.5,color=secondary)
+             "Mesh lines break near sharply separated destinations.",fontsize=10.5,color=secondary)
     fig.savefig(out/"plane_grid.png",dpi=220)
     plt.close(fig)
 
@@ -396,7 +424,8 @@ if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output",type=Path,default=HERE)
     parser.add_argument("--plot-only",action="store_true")
+    parser.add_argument("--refined",type=Path,default=HERE/"staircase.json",help="Directed fine-grid refinement")
     args=parser.parse_args()
     args.output.mkdir(parents=True,exist_ok=True)
     if not args.plot_only: compute(args.output)
-    plot(args.output)
+    plot(args.output,args.refined)

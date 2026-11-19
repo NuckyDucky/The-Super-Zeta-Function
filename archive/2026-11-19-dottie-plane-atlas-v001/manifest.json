@@ -1,12 +1,12 @@
 {
   "files": {
     "README.md": {
-      "bytes": 5132,
-      "sha256": "c08c366230dd82b4e32be8993f723b4e0d504ba4b8338750adc842e08f3b6a52"
+      "bytes": 5723,
+      "sha256": "905dd09864fbbae238533e65a00b95c7ce4bb0d1c9baf45d748ab0d2ae8e1320"
     },
     "atlas/THESIS.md": {
-      "bytes": 10607,
-      "sha256": "0ff3bb9be24a0d5ea1d271b5614e803748514075424816e2172123567040666c"
+      "bytes": 12610,
+      "sha256": "34992611ebbc4030898ed3ae991fe1f84799db4b41d804fbaa37c0ae5013ea17"
     },
     "atlas/basin-summary.json": {
       "bytes": 1611,
@@ -48,6 +48,22 @@
       "bytes": 2010,
       "sha256": "6c1622b1c307f708cda8ffd4ce883f0b58479388e069036554f3ee00332926e6"
     },
+    "atlas/gray_collision.json": {
+      "bytes": 28201,
+      "sha256": "8a391246c7682c254768a4d180e950185e6d668a5b5eee17bf1e4c87f07f202e"
+    },
+    "atlas/gray_collision.py": {
+      "bytes": 6304,
+      "sha256": "f35b183473481f6d65e051b0b288c27c0238911e006f24a2436118d9b137264a"
+    },
+    "atlas/gray_locus.json": {
+      "bytes": 18411,
+      "sha256": "352e4c28e8a71e14ec54799a881b570a861036f4349bcc533f9936601da0610b"
+    },
+    "atlas/gray_locus.py": {
+      "bytes": 6253,
+      "sha256": "0432682faeb35dde621dd6f83392154680230d8dcee25acccf5ed0812c437dc1"
+    },
     "atlas/phase_lift.json": {
       "bytes": 1737,
       "sha256": "ef04abbdf6f8caba77d839f38d3002599a7bde0e7d27d5db85dbdb200f77c480"
@@ -65,8 +81,8 @@
       "sha256": "333a463dee12e19a8d9fc2dc6e139f6f3576d394d0018ae4339ff8bfdec951fe"
     },
     "atlas/plane_grid.png": {
-      "bytes": 924114,
-      "sha256": "f638da373f43aa22aa90932bf536e5976d3a9e6fc2ea074407b2061a14231a86"
+      "bytes": 934324,
+      "sha256": "a532d10763bac5e42c249a319f6d88791bbfff7672bf47548218ddca3f170d4c"
     },
     "atlas/plane_map.json": {
       "bytes": 2073,
@@ -77,20 +93,44 @@
       "sha256": "57021b93f50ac602c5d7912251f4b199bb89d2459a751137b9d9782108e17c79"
     },
     "atlas/plane_map.py": {
-      "bytes": 19866,
-      "sha256": "c979cbc0e957ec6e79579f668e5a32ec26f4f06ea3f200a7617a6fbd80750a35"
+      "bytes": 21466,
+      "sha256": "46c7ef1efe9fa2766243416ac293a832be0a8158919417a1aa79ca025fe9b8ab"
     },
     "atlas/plane_notes.md": {
-      "bytes": 3463,
-      "sha256": "59bf989be4bde1ec39f13bb48c7b1baaecb71cff8008f55bbd97a1ce7c7cb2fa"
+      "bytes": 4589,
+      "sha256": "b1b043991f2f99104ed6a9438f9a837f6b204f44dba0ec85d8de5017e900538b"
     },
     "atlas/plane_reference.json": {
       "bytes": 4227,
       "sha256": "0abdd078fdf911ab7247b60a7369fb6a29c0f581ea39a81ac614a9ba3777ba03"
     },
     "atlas/plane_strain.png": {
-      "bytes": 258149,
-      "sha256": "091e9c145c0de3f8265377bee84e106aad95794ef9d02f2aa78823d9e2883355"
+      "bytes": 287689,
+      "sha256": "4d5a4d5098531b910a849341168802be22beddb95c4d8d388dfd7e5a26251d6c"
+    },
+    "atlas/plane_wide.json": {
+      "bytes": 2076,
+      "sha256": "f3d789c089e2a6e054db25098b055d7baba13239debc2d479cfe666f62dda679"
+    },
+    "atlas/plane_wide.npz": {
+      "bytes": 1767671,
+      "sha256": "39424bf42abe193c38a47c650639719c32bfc2105809cbc12a3dcf1ade93165b"
+    },
+    "atlas/plane_wide.png": {
+      "bytes": 367212,
+      "sha256": "96340be4b1ef5e963ffe4fb13a9c5e707c97e109b5ea980eb15441fe52e6d1ce"
+    },
+    "atlas/plane_wide.py": {
+      "bytes": 5883,
+      "sha256": "5205500bf3cc160dac582b47d4c6ee6fdc912efbdef6234c350d7319fc16adb5"
+    },
+    "atlas/resolve_staircase.py": {
+      "bytes": 2926,
+      "sha256": "de04be08cdc01c3c7f83e26dcaf75cc8e18e579acd550b051d09e68c2b07eac7"
+    },
+    "atlas/staircase.json": {
+      "bytes": 28490,
+      "sha256": "258bf5ccbd4ba50db2f01586863e602f2e9088d8bef787ac453afe979bec34f4"
     },
     "holdout/README.md": {
       "bytes": 5005,
@@ -297,8 +337,8 @@
       "sha256": "9a9a19c670553724281cbba8c7e9d2b0ac1f3116606410ff40c36a986e68a6df"
     },
     "provenance.json": {
-      "bytes": 1374,
-      "sha256": "d7eb9828a1a8bf0537a1d9aa361ff043c4fa02d61c8c9a1f81b10e6d6b26eae7"
+      "bytes": 1506,
+      "sha256": "8e8021a85b93e918c31d81bf139f12c140c7a887677138cba2b4e13a09ee9317"
     }
   },
   "format_version": 1,
