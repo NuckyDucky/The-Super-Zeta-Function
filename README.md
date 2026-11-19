@@ -86,6 +86,8 @@ I write the second base as $x^c=e^{cL}$. After two updates, the return on the fi
 
 ### The Dottie spire
 
+At six off-axis inputs the cap $(1,1)$ approaches a primitive period-321 cycle in one scalar coordinate and a primitive period-320 cycle in the other. The resulting attracting orbit has primitive period **205,440** under the ordered map. At the 320th scalar step one coordinate makes a large excursion whose direction sends the next iterate back near $1$. [Proof, six inputs, and standalone verifier](archive/2026-11-18-dottie-mixed-cap-period-v001/README.md)
+
 I let the complex logarithm $L$ range over a grid. Each pixel records the period detected from the same cap, $(1,1)$. The narrow stack of period groups is what I call the **Dottie spire**. I keep track of the individual exponential stages in a lap, which lets me compare cycles that repeat after different numbers of paired updates. [*Reciprocal Tetration*, §§6–8, “Periodic reciprocal sign words” through “Directed anchors”](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L404-L547) · [Figure settings and orbit data](archive/2026-11-18-research-figures-v001/README.md)
 
 I specialize Baker and Rippon’s fixed-pair parametrization to the imaginary axis and write the phase angle as $u$. This gives $L=iY(u)$ with

@@ -1,0 +1,18 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 5323,
+      "sha256": "39bdf7fcbd4237293cd79577be5c387f8c75348de0e44cd232af6e8e8e97f6e5"
+    },
+    "dottie-cap-periods-320-and-321.zip": {
+      "bytes": 48779,
+      "sha256": "4cb6a7c28be7845ee78eb301b510894b4c60b9f87c4b8118dfaf0f0f2982f4ca"
+    },
+    "verify_mixed_cap_period.py": {
+      "bytes": 3066,
+      "sha256": "a64a6c6f980d3e5612f4183c9ae5031b8e62ffbd1eed6b9f7d61557f31ae5a6c"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-dottie-mixed-cap-period-v001"
+}
