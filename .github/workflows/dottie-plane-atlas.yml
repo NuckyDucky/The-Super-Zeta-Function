@@ -1,0 +1,55 @@
+name: Dottie plane atlas
+
+on:
+  pull_request:
+    paths: ['archive/2026-11-19-dottie-plane-atlas-v001/**', 'tools/replay_plane_atlas.py', 'tools/replay_single_term.py', '.github/workflows/dottie-plane-atlas.yml']
+  push:
+    branches: [main]
+    paths: ['archive/2026-11-19-dottie-plane-atlas-v001/**', 'tools/replay_plane_atlas.py', 'tools/replay_single_term.py', '.github/workflows/dottie-plane-atlas.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  landing:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install pinned directed arithmetic
+        run: |
+          python3 -m venv "$RUNNER_TEMP/landing-env"
+          "$RUNNER_TEMP/landing-env/bin/python" -m pip install --only-binary=:all: python-flint==0.9.0
+      - name: Recompute the masked forecasts, comparisons and branch enclosures
+        run: '"$RUNNER_TEMP/landing-env/bin/python" -B archive/2026-11-19-dottie-plane-atlas-v001/landing/replay.py --geometry --backward'
+      - name: Repeat the two preregistered seeds and compare every sealed result
+        working-directory: archive/2026-11-19-dottie-plane-atlas-v001/holdout
+        run: |
+          out="$RUNNER_TEMP/two-seed-replay"
+          "$RUNNER_TEMP/landing-env/bin/python" -B holdout.py launch --out "$out" --freeze-commit a739bf30c0db09774d4fd3681596a1821f31d081
+          for stage in forecast terminal score; do
+            "$RUNNER_TEMP/landing-env/bin/python" -B holdout.py "$stage" --out "$out"
+          done
+          "$RUNNER_TEMP/landing-env/bin/python" -B local_scale.py --dir "$out"
+          for stage in launch forecast terminal score local_scale; do
+            cmp "$stage.json" "$out/$stage.json"
+          done
+  plane:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      MPLBACKEND: Agg
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned map and certificate dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/atlas-env"
+          "$RUNNER_TEMP/atlas-env/bin/python" -m pip install --only-binary=:all: python-flint==0.9.0 numpy==2.5.5 matplotlib==3.11.2
+      - name: Rebuild both maps and verify the interval witnesses
+        run: '"$RUNNER_TEMP/atlas-env/bin/python" -B tools/replay_plane_atlas.py'

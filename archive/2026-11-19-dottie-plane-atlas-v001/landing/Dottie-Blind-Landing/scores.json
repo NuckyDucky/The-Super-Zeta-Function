@@ -1,0 +1,3650 @@
+{
+  "protocol_sha256": "c1377dd7d9eac80e691c40b7c024aad63247e945f2260174372f7cfcbaa080a2",
+  "sealed_predictions_sha256": "15d777274758a8fb97b549418139ef9d15373e23b67d5c15cc59353f9a150bb7",
+  "thresholds": [
+    "0.1",
+    "0.01",
+    "0.001"
+  ],
+  "num_cases": 10,
+  "cohort_members": {
+    "all_ten": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "other_nine": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+    ],
+    "historically_forward": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "historically_backward": [
+      8,
+      9,
+      10
+    ],
+    "accelerating_at_arrival": [
+      1,
+      2,
+      5,
+      8,
+      10
+    ],
+    "slowing_at_arrival": [
+      3,
+      4,
+      6,
+      7,
+      9
+    ]
+  },
+  "arrival_sign_cohorts": "Descriptive labels from an earlier endpoint-jet study, accessed only by the scorer.",
+  "summaries": {
+    "all_ten": {
+      "trough": {
+        "constant": {
+          "mean_complex_error": "[0.6198300162789 +/- 5.94e-14]",
+          "median_complex_error": "[0.6351568219088 +/- 7.08e-14]",
+          "mean_absolute_height_error": "[0.5513065175713 +/- 4.14e-14]",
+          "median_absolute_height_error": "[0.5170870531482 +/- 3.15e-14]",
+          "mean_height_gain": "[0.5513065175713 +/- 4.14e-14]",
+          "median_height_gain": "[0.5170870531482 +/- 3.15e-14]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.17342280652 +/- 4.58e-12]",
+          "median_complex_error": "[0.140497106167 +/- 9.15e-13]",
+          "mean_absolute_height_error": "[0.10937321495 +/- 4.10e-12]",
+          "median_absolute_height_error": "[0.06314512534 +/- 8.67e-12]",
+          "mean_height_gain": "[0.5513065175713 +/- 4.14e-14]",
+          "median_height_gain": "[0.5170870531482 +/- 3.15e-14]",
+          "mean_predicted_height_gain": "[0.49011226697 +/- 6.66e-12]",
+          "median_predicted_height_gain": "[0.52246075092 +/- 5.27e-12]",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ],
+          "beats_constant": 10
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0834543412 +/- 3.02e-11]",
+          "median_complex_error": "[0.0580065531 +/- 4.10e-11]",
+          "mean_absolute_height_error": "[0.0657171895 +/- 2.03e-11]",
+          "median_absolute_height_error": "[0.02142392559 +/- 5.26e-12]",
+          "mean_height_gain": "[0.5513065175713 +/- 4.14e-14]",
+          "median_height_gain": "[0.5170870531482 +/- 3.15e-14]",
+          "mean_predicted_height_gain": "[0.5341173755 +/- 1.33e-11]",
+          "median_predicted_height_gain": "[0.52550462011 +/- 6.42e-12]",
+          "within_complex_error_thresholds": [
+            8,
+            1,
+            0
+          ],
+          "beats_constant": 10,
+          "beats_linear": 10
+        }
+      },
+      "1": {
+        "constant": {
+          "mean_complex_error": "[0.40784561851754118989 +/- 2.43e-22]",
+          "median_complex_error": "[0.37901600245265282238 +/- 2.11e-21]",
+          "mean_absolute_height_error": "[0.36292578978400856364 +/- 1.55e-21]",
+          "median_absolute_height_error": "[0.34445760187144338051 +/- 1.98e-21]",
+          "mean_height_gain": "[0.36292578978400856364 +/- 1.55e-21]",
+          "median_height_gain": "[0.34445760187144338051 +/- 1.98e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.080493356073358085635 +/- 1.03e-22]",
+          "median_complex_error": "[0.057448812448931001965 +/- 4.48e-22]",
+          "mean_absolute_height_error": "[0.059509905663137340503 +/- 3.56e-23]",
+          "median_absolute_height_error": "[0.031629292249739540075 +/- 4.96e-22]",
+          "mean_height_gain": "[0.36292578978400856364 +/- 1.55e-21]",
+          "median_height_gain": "[0.34445760187144338051 +/- 1.98e-21]",
+          "mean_predicted_height_gain": "[0.33109879431157160394 +/- 3.53e-21]",
+          "median_predicted_height_gain": "[0.33294385090699732755 +/- 7.86e-22]",
+          "within_complex_error_thresholds": [
+            7,
+            0,
+            0
+          ],
+          "beats_constant": 10
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.032411186690770323491 +/- 3.68e-22]",
+          "median_complex_error": "[0.015699388162409786078 +/- 7.32e-23]",
+          "mean_absolute_height_error": "[0.020018744546218933718 +/- 3.37e-22]",
+          "median_absolute_height_error": "[0.0072158824586806476459 +/- 4.99e-23]",
+          "mean_height_gain": "[0.36292578978400856364 +/- 1.55e-21]",
+          "median_height_gain": "[0.34445760187144338051 +/- 1.98e-21]",
+          "mean_predicted_height_gain": "[0.35676783278260345321 +/- 4.97e-21]",
+          "median_predicted_height_gain": "[0.30550590575725362418 +/- 4.10e-21]",
+          "within_complex_error_thresholds": [
+            9,
+            5,
+            1
+          ],
+          "beats_constant": 10,
+          "beats_linear": 10
+        }
+      },
+      "1/2": {
+        "constant": {
+          "mean_complex_error": "[0.20993072391793871898 +/- 1.64e-21]",
+          "median_complex_error": "[0.19601282107065496531 +/- 1.71e-21]",
+          "mean_absolute_height_error": "[0.18928738790196922419 +/- 1.13e-21]",
+          "median_absolute_height_error": "[0.17376663585064615418 +/- 4.71e-21]",
+          "mean_height_gain": "[0.18928738790196922419 +/- 1.13e-21]",
+          "median_height_gain": "[0.17376663585064615418 +/- 4.71e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.021599805460990232831 +/- 4.53e-22]",
+          "median_complex_error": "[0.014521127789062907019 +/- 9.13e-23]",
+          "mean_absolute_height_error": "[0.016199632778615097396 +/- 1.71e-22]",
+          "median_absolute_height_error": "[0.011365629341900374533 +/- 4.62e-22]",
+          "mean_height_gain": "[0.18928738790196922419 +/- 1.13e-21]",
+          "median_height_gain": "[0.17376663585064615418 +/- 4.71e-21]",
+          "mean_predicted_height_gain": "[0.18273795999386294142 +/- 1.80e-22]",
+          "median_predicted_height_gain": "[0.17679834780334591437 +/- 2.46e-21]",
+          "within_complex_error_thresholds": [
+            10,
+            3,
+            0
+          ],
+          "beats_constant": 10
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0048861691290240612505 +/- 4.35e-23]",
+          "median_complex_error": "[0.0019445251395508857466 +/- 4.89e-23]",
+          "mean_absolute_height_error": "[0.0039780511859038477979 +/- 3.89e-23]",
+          "median_absolute_height_error": "[0.0013816520859294197751 +/- 1.95e-23]",
+          "mean_height_gain": "[0.18928738790196922419 +/- 1.13e-21]",
+          "median_height_gain": "[0.17376663585064615418 +/- 4.71e-21]",
+          "mean_predicted_height_gain": "[0.19155785107531483917 +/- 4.82e-21]",
+          "median_predicted_height_gain": "[0.17142704081976577771 +/- 2.78e-21]",
+          "within_complex_error_thresholds": [
+            10,
+            9,
+            3
+          ],
+          "beats_constant": 10,
+          "beats_linear": 10
+        }
+      },
+      "1/4": {
+        "constant": {
+          "mean_complex_error": "[0.10570207293307224470 +/- 4.15e-21]",
+          "median_complex_error": "[0.096873387818523684574 +/- 2.22e-22]",
+          "mean_absolute_height_error": "[0.095992125161566072819 +/- 2.77e-22]",
+          "median_absolute_height_error": "[0.089067036180149081761 +/- 4.28e-22]",
+          "mean_height_gain": "[0.095992125161566072819 +/- 2.77e-22]",
+          "median_height_gain": "[0.089067036180149081761 +/- 4.28e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            6,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0052917337048158145095 +/- 2.97e-23]",
+          "median_complex_error": "[0.0036311616820024212178 +/- 2.67e-23]",
+          "mean_absolute_height_error": "[0.0038173393733443538042 +/- 4.86e-23]",
+          "median_absolute_height_error": "[0.0027466605850927530649 +/- 1.76e-23]",
+          "mean_height_gain": "[0.095992125161566072819 +/- 2.77e-22]",
+          "median_height_gain": "[0.089067036180149081761 +/- 4.28e-22]",
+          "mean_predicted_height_gain": "[0.094920271042443677058 +/- 3.14e-22]",
+          "median_predicted_height_gain": "[0.086590202043739277276 +/- 4.59e-22]",
+          "within_complex_error_thresholds": [
+            10,
+            9,
+            1
+          ],
+          "beats_constant": 10
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.00054694761682353622136 +/- 1.89e-24]",
+          "median_complex_error": "[0.00023671515196370714904 +/- 3.30e-24]",
+          "mean_absolute_height_error": "[0.00046483564714786271958 +/- 4.04e-24]",
+          "median_absolute_height_error": "[0.00018091568127700087013 +/- 1.45e-25]",
+          "mean_height_gain": "[0.095992125161566072819 +/- 2.77e-22]",
+          "median_height_gain": "[0.089067036180149081761 +/- 4.28e-22]",
+          "mean_predicted_height_gain": "[0.096243862394418817782 +/- 2.13e-22]",
+          "median_predicted_height_gain": "[0.088782239854852035788 +/- 2.09e-23]",
+          "within_complex_error_thresholds": [
+            10,
+            10,
+            8
+          ],
+          "beats_constant": 10,
+          "beats_linear": 10
+        }
+      },
+      "1/8": {
+        "constant": {
+          "mean_complex_error": "[0.052959603411230880829 +/- 4.48e-22]",
+          "median_complex_error": "[0.048071080378312727972 +/- 3.93e-22]",
+          "mean_absolute_height_error": "[0.048234641766920523854 +/- 8.86e-23]",
+          "median_absolute_height_error": "[0.044913458850741322874 +/- 3.96e-22]",
+          "mean_height_gain": "[0.048234641766920523854 +/- 8.86e-23]",
+          "median_height_gain": "[0.044913458850741322874 +/- 3.96e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            10,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0013055078358105505702 +/- 7.04e-24]",
+          "median_complex_error": "[0.00090705503281265957601 +/- 1.60e-24]",
+          "mean_absolute_height_error": "[0.00093505399185192022838 +/- 2.31e-24]",
+          "median_absolute_height_error": "[0.00068430670208425098185 +/- 4.62e-24]",
+          "mean_height_gain": "[0.048234641766920523854 +/- 8.86e-23]",
+          "median_height_gain": "[0.044913458850741322874 +/- 3.96e-22]",
+          "mean_predicted_height_gain": "[0.048023351269312177252 +/- 1.86e-24]",
+          "median_predicted_height_gain": "[0.044500548201355346171 +/- 1.47e-23]",
+          "within_complex_error_thresholds": [
+            10,
+            10,
+            6
+          ],
+          "beats_constant": 10
+        },
+        "quadratic": {
+          "mean_complex_error": "[6.4359390376963875028e-5 +/- 4.89e-26]",
+          "median_complex_error": "[2.9107245435383767242e-5 +/- 2.30e-25]",
+          "mean_absolute_height_error": "[4.9961338611729294238e-5 +/- 4.29e-25]",
+          "median_absolute_height_error": "[2.2485447311279548143e-5 +/- 2.79e-25]",
+          "mean_height_gain": "[0.048234641766920523854 +/- 8.86e-23]",
+          "median_height_gain": "[0.044913458850741322874 +/- 3.96e-22]",
+          "mean_predicted_height_gain": "[0.048259856902654618385 +/- 3.25e-22]",
+          "median_predicted_height_gain": "[0.044927825438281724489 +/- 1.23e-22]",
+          "within_complex_error_thresholds": [
+            10,
+            10,
+            10
+          ],
+          "beats_constant": 10,
+          "beats_linear": 10
+        }
+      },
+      "1/16": {
+        "constant": {
+          "mean_complex_error": "[0.026499695567778357521 +/- 1.52e-22]",
+          "median_complex_error": "[0.023939109819799259684 +/- 4.89e-22]",
+          "mean_absolute_height_error": "[0.024167115443345628343 +/- 9.80e-23]",
+          "median_absolute_height_error": "[0.022314113179315890178 +/- 8.33e-23]",
+          "mean_height_gain": "[0.024167115443345628343 +/- 9.80e-23]",
+          "median_height_gain": "[0.022314113179315890178 +/- 8.33e-23]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            10,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.00032427530106847947932 +/- 1.33e-24]",
+          "median_complex_error": "[0.00022662878482150587264 +/- 3.66e-24]",
+          "mean_absolute_height_error": "[0.00023200184784545378728 +/- 1.28e-24]",
+          "median_absolute_height_error": "[0.00017483985405491856488 +/- 3.96e-24]",
+          "mean_height_gain": "[0.024167115443345628343 +/- 9.80e-23]",
+          "median_height_gain": "[0.022314113179315890178 +/- 8.33e-23]",
+          "mean_predicted_height_gain": "[0.024120227922590924981 +/- 2.79e-22]",
+          "median_predicted_height_gain": "[0.022458509537430681674 +/- 3.80e-22]",
+          "within_complex_error_thresholds": [
+            10,
+            10,
+            10
+          ],
+          "beats_constant": 10
+        },
+        "quadratic": {
+          "mean_complex_error": "[7.8261869956927113459e-6 +/- 3.85e-26]",
+          "median_complex_error": "[3.6067749483797359079e-6 +/- 1.83e-26]",
+          "mean_absolute_height_error": "[5.6958939249992512964e-6 +/- 3.88e-26]",
+          "median_absolute_height_error": "[2.7891135602179886140e-6 +/- 5.00e-26]",
+          "mean_height_gain": "[0.024167115443345628343 +/- 9.80e-23]",
+          "median_height_gain": "[0.022314113179315890178 +/- 8.33e-23]",
+          "mean_predicted_height_gain": "[0.024169904452034574935 +/- 4.02e-22]",
+          "median_predicted_height_gain": "[0.022315884623451913132 +/- 2.49e-22]",
+          "within_complex_error_thresholds": [
+            10,
+            10,
+            10
+          ],
+          "beats_constant": 10,
+          "beats_linear": 10
+        }
+      }
+    },
+    "other_nine": {
+      "trough": {
+        "constant": {
+          "mean_complex_error": "[0.5997088188262 +/- 6.53e-14]",
+          "median_complex_error": "[0.6308436689868 +/- 5.10e-14]",
+          "mean_absolute_height_error": "[0.5714130418833 +/- 5.89e-14]",
+          "median_absolute_height_error": "[0.6017689343437 +/- 4.36e-14]",
+          "mean_height_gain": "[0.5714130418833 +/- 5.89e-14]",
+          "median_height_gain": "[0.6017689343437 +/- 4.36e-14]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.14432293991 +/- 5.90e-12]",
+          "median_complex_error": "[0.12016628727 +/- 1.36e-12]",
+          "mean_absolute_height_error": "[0.08037603897 +/- 5.35e-12]",
+          "median_absolute_height_error": "[0.06146718433 +/- 6.52e-12]",
+          "mean_height_gain": "[0.5714130418833 +/- 5.89e-14]",
+          "median_height_gain": "[0.6017689343437 +/- 4.36e-14]",
+          "mean_predicted_height_gain": "[0.54456918553 +/- 4.64e-12]",
+          "median_predicted_height_gain": "[0.63362622967 +/- 4.76e-12]",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ],
+          "beats_constant": 9
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.06227662870 +/- 8.72e-12]",
+          "median_complex_error": "[0.0323284721 +/- 4.25e-11]",
+          "mean_absolute_height_error": "[0.04307531342 +/- 7.29e-12]",
+          "median_absolute_height_error": "[0.01877660367 +/- 7.75e-12]",
+          "mean_height_gain": "[0.5714130418833 +/- 5.89e-14]",
+          "median_height_gain": "[0.6017689343437 +/- 4.36e-14]",
+          "mean_predicted_height_gain": "[0.58225778117 +/- 7.63e-12]",
+          "median_predicted_height_gain": "[0.62043508030 +/- 7.54e-12]",
+          "within_complex_error_thresholds": [
+            8,
+            1,
+            0
+          ],
+          "beats_constant": 9,
+          "beats_linear": 9
+        }
+      },
+      "1": {
+        "constant": {
+          "mean_complex_error": "[0.38673751980416587294 +/- 4.22e-22]",
+          "median_complex_error": "[0.36630938631658478663 +/- 1.12e-21]",
+          "mean_absolute_height_error": "[0.36456594469577109084 +/- 8.80e-22]",
+          "median_absolute_height_error": "[0.34075080816474094215 +/- 2.68e-21]",
+          "mean_height_gain": "[0.36456594469577109084 +/- 8.80e-22]",
+          "median_height_gain": "[0.34075080816474094215 +/- 2.68e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.061692202147481759434 +/- 1.95e-22]",
+          "median_complex_error": "[0.050889602455780872549 +/- 3.82e-22]",
+          "mean_absolute_height_error": "[0.038449512932958814233 +/- 3.99e-22]",
+          "median_absolute_height_error": "[0.031008659252333372069 +/- 4.51e-22]",
+          "mean_height_gain": "[0.36456594469577109084 +/- 8.80e-22]",
+          "median_height_gain": "[0.34075080816474094215 +/- 2.68e-21]",
+          "mean_predicted_height_gain": "[0.35687522086359047750 +/- 9.85e-22]",
+          "median_predicted_height_gain": "[0.39789176455641792187 +/- 1.42e-21]",
+          "within_complex_error_thresholds": [
+            7,
+            0,
+            0
+          ],
+          "beats_constant": 9
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.017682953623027172419 +/- 4.47e-23]",
+          "median_complex_error": "[0.0091241582977594735020 +/- 2.55e-23]",
+          "mean_absolute_height_error": "[0.013220585497574772615 +/- 3.50e-22]",
+          "median_absolute_height_error": "[0.0068800402397500740178 +/- 4.37e-23]",
+          "mean_height_gain": "[0.36456594469577109084 +/- 8.80e-22]",
+          "median_height_gain": "[0.34075080816474094215 +/- 2.68e-21]",
+          "mean_predicted_height_gain": "[0.36674623424798945520 +/- 2.83e-21]",
+          "median_predicted_height_gain": "[0.33460949304206766682 +/- 7.77e-22]",
+          "within_complex_error_thresholds": [
+            9,
+            5,
+            1
+          ],
+          "beats_constant": 9,
+          "beats_linear": 9
+        }
+      },
+      "1/2": {
+        "constant": {
+          "mean_complex_error": "[0.19695194868444204017 +/- 2.72e-22]",
+          "median_complex_error": "[0.19243855447797528771 +/- 1.45e-21]",
+          "mean_absolute_height_error": "[0.18394940121839902513 +/- 2.33e-21]",
+          "median_absolute_height_error": "[0.16221041945768639126 +/- 7.29e-22]",
+          "mean_height_gain": "[0.18394940121839902513 +/- 2.33e-21]",
+          "median_height_gain": "[0.16221041945768639126 +/- 7.29e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.016611457052899059055 +/- 1.57e-22]",
+          "median_complex_error": "[0.013458519671071335552 +/- 2.21e-22]",
+          "mean_absolute_height_error": "[0.012145804186810490043 +/- 6.11e-23]",
+          "median_absolute_height_error": "[0.0097486715883425296393 +/- 3.24e-23]",
+          "mean_height_gain": "[0.18394940121839902513 +/- 2.33e-21]",
+          "median_height_gain": "[0.16221041945768639126 +/- 7.29e-22]",
+          "mean_predicted_height_gain": "[0.18252604688770944023 +/- 4.03e-21]",
+          "median_predicted_height_gain": "[0.16895151765744737657 +/- 6.73e-22]",
+          "within_complex_error_thresholds": [
+            9,
+            3,
+            0
+          ],
+          "beats_constant": 9
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0026184349302302562462 +/- 4.68e-23]",
+          "median_complex_error": "[0.0012969083529825766560 +/- 3.24e-23]",
+          "mean_absolute_height_error": "[0.0021303216307550549210 +/- 1.51e-23]",
+          "median_absolute_height_error": "[0.0010914254352926926126 +/- 3.33e-23]",
+          "mean_height_gain": "[0.18394940121839902513 +/- 2.33e-21]",
+          "median_height_gain": "[0.16221041945768639126 +/- 7.29e-22]",
+          "mean_predicted_height_gain": "[0.18418240283520048802 +/- 4.63e-21]",
+          "median_predicted_height_gain": "[0.15650076763625851086 +/- 1.48e-21]",
+          "within_complex_error_thresholds": [
+            9,
+            9,
+            3
+          ],
+          "beats_constant": 9,
+          "beats_linear": 9
+        }
+      },
+      "1/4": {
+        "constant": {
+          "mean_complex_error": "[0.099221631416858240447 +/- 4.65e-22]",
+          "median_complex_error": "[0.095084108701330002983 +/- 4.39e-22]",
+          "mean_absolute_height_error": "[0.092301763021013521042 +/- 1.17e-22]",
+          "median_absolute_height_error": "[0.088038280191927689485 +/- 4.38e-22]",
+          "mean_height_gain": "[0.092301763021013521042 +/- 1.17e-22]",
+          "median_height_gain": "[0.088038280191927689485 +/- 4.38e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            6,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0043034349735783386591 +/- 4.69e-23]",
+          "median_complex_error": "[0.0034457993342351672259 +/- 3.17e-23]",
+          "mean_absolute_height_error": "[0.0033490833922177762496 +/- 4.34e-23]",
+          "median_absolute_height_error": "[0.0026931846924493001847 +/- 9.64e-24]",
+          "mean_height_gain": "[0.092301763021013521042 +/- 1.17e-22]",
+          "median_height_gain": "[0.088038280191927689485 +/- 4.38e-22]",
+          "mean_predicted_height_gain": "[0.092003218800153475952 +/- 3.21e-22]",
+          "median_predicted_height_gain": "[0.080391427226658780329 +/- 2.40e-23]",
+          "within_complex_error_thresholds": [
+            9,
+            9,
+            1
+          ],
+          "beats_constant": 9
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.00035624642092252351617 +/- 4.22e-24]",
+          "median_complex_error": "[0.00017235110630419961233 +/- 4.57e-24]",
+          "mean_absolute_height_error": "[0.00026512805818368867948 +/- 5.01e-24]",
+          "median_absolute_height_error": "[0.00012893591083032280771 +/- 4.18e-24]",
+          "mean_height_gain": "[0.092301763021013521042 +/- 1.17e-22]",
+          "median_height_gain": "[0.088038280191927689485 +/- 4.38e-22]",
+          "mean_predicted_height_gain": "[0.092330115063313745547 +/- 8.51e-23]",
+          "median_predicted_height_gain": "[0.087342654392480720569 +/- 6.56e-23]",
+          "within_complex_error_thresholds": [
+            9,
+            9,
+            8
+          ],
+          "beats_constant": 9,
+          "beats_linear": 9
+        }
+      },
+      "1/8": {
+        "constant": {
+          "mean_complex_error": "[0.049769077100627470645 +/- 4.71e-22]",
+          "median_complex_error": "[0.047220204882227078351 +/- 2.04e-22]",
+          "mean_absolute_height_error": "[0.046221975019013513952 +/- 3.73e-22]",
+          "median_absolute_height_error": "[0.044359000635383676846 +/- 3.94e-22]",
+          "mean_height_gain": "[0.046221975019013513952 +/- 3.73e-22]",
+          "median_height_gain": "[0.044359000635383676846 +/- 3.94e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            9,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0010926793711868440946 +/- 1.69e-23]",
+          "median_complex_error": "[0.00087028300958491819354 +/- 4.30e-24]",
+          "mean_absolute_height_error": "[0.00087173091646050942246 +/- 2.36e-24]",
+          "median_absolute_height_error": "[0.00066429454755389990941 +/- 4.95e-24]",
+          "mean_height_gain": "[0.046221975019013513952 +/- 3.73e-22]",
+          "median_height_gain": "[0.044359000635383676846 +/- 3.94e-22]",
+          "mean_predicted_height_gain": "[0.046154425762823641892 +/- 8.30e-23]",
+          "median_predicted_height_gain": "[0.043937776910712413441 +/- 2.73e-22]",
+          "within_complex_error_thresholds": [
+            9,
+            9,
+            6
+          ],
+          "beats_constant": 9
+        },
+        "quadratic": {
+          "mean_complex_error": "[4.6140645482706764260e-5 +/- 1.06e-25]",
+          "median_complex_error": "[2.2158527103151731783e-5 +/- 3.62e-25]",
+          "mean_absolute_height_error": "[3.1044999164196598521e-5 +/- 3.94e-25]",
+          "median_absolute_height_error": "[1.5300512633107843123e-5 +/- 4.95e-25]",
+          "mean_height_gain": "[0.046221975019013513952 +/- 3.73e-22]",
+          "median_height_gain": "[0.044359000635383676846 +/- 3.94e-22]",
+          "mean_predicted_height_gain": "[0.046225524237202560813 +/- 4.56e-23]",
+          "median_predicted_height_gain": "[0.044374226919620244372 +/- 2.31e-22]",
+          "within_complex_error_thresholds": [
+            9,
+            9,
+            9
+          ],
+          "beats_constant": 9,
+          "beats_linear": 9
+        }
+      },
+      "1/16": {
+        "constant": {
+          "mean_complex_error": "[0.024919836039775782965 +/- 3.16e-22]",
+          "median_complex_error": "[0.023524728196747237648 +/- 9.59e-23]",
+          "mean_absolute_height_error": "[0.023127430538934765586 +/- 4.63e-22]",
+          "median_absolute_height_error": "[0.022001531660663356386 +/- 3.51e-22]",
+          "mean_height_gain": "[0.023127430538934765586 +/- 4.63e-22]",
+          "median_height_gain": "[0.022001531660663356386 +/- 3.51e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            9,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.00027505276233488625348 +/- 1.25e-24]",
+          "median_complex_error": "[0.00021857216648025948428 +/- 4.29e-24]",
+          "mean_absolute_height_error": "[0.00022168058432930748472 +/- 2.10e-24]",
+          "median_absolute_height_error": "[0.00016983713269467228176 +/- 4.80e-24]",
+          "mean_height_gain": "[0.023127430538934765586 +/- 4.63e-22]",
+          "median_height_gain": "[0.022001531660663356386 +/- 3.51e-22]",
+          "mean_predicted_height_gain": "[0.023111432540261847462 +/- 3.92e-23]",
+          "median_predicted_height_gain": "[0.022181374236078521234 +/- 3.55e-22]",
+          "within_complex_error_thresholds": [
+            9,
+            9,
+            9
+          ],
+          "beats_constant": 9
+        },
+        "quadratic": {
+          "mean_complex_error": "[5.8544185311135915720e-6 +/- 4.00e-26]",
+          "median_complex_error": "[2.8067140830392669381e-6 +/- 2.91e-26]",
+          "mean_absolute_height_error": "[3.6757656886057377037e-6 +/- 2.64e-26]",
+          "median_absolute_height_error": "[1.8582102811272521801e-6 +/- 1.02e-26]",
+          "mean_height_gain": "[0.023127430538934765586 +/- 4.63e-22]",
+          "median_height_gain": "[0.022001531660663356386 +/- 3.51e-22]",
+          "mean_predicted_height_gain": "[0.023127876432138868368 +/- 1.30e-22]",
+          "median_predicted_height_gain": "[0.022003389870944483639 +/- 4.69e-22]",
+          "within_complex_error_thresholds": [
+            9,
+            9,
+            9
+          ],
+          "beats_constant": 9,
+          "beats_linear": 9
+        }
+      }
+    },
+    "historically_forward": {
+      "trough": {
+        "constant": {
+          "mean_complex_error": "[0.5645081512946 +/- 5.13e-14]",
+          "median_complex_error": "[0.6308436689868 +/- 5.10e-14]",
+          "mean_absolute_height_error": "[0.4789044561256 +/- 4.94e-14]",
+          "median_absolute_height_error": "[0.4324051719527 +/- 1.95e-14]",
+          "mean_height_gain": "[0.4789044561256 +/- 4.94e-14]",
+          "median_height_gain": "[0.4324051719527 +/- 1.95e-14]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.14154446180 +/- 5.80e-12]",
+          "median_complex_error": "[0.10722465637 +/- 3.49e-12]",
+          "mean_absolute_height_error": "[0.10876277012 +/- 4.51e-12]",
+          "median_absolute_height_error": "[0.058172032505 +/- 9.02e-13]",
+          "mean_height_gain": "[0.4789044561256 +/- 4.94e-14]",
+          "median_height_gain": "[0.4324051719527 +/- 1.95e-14]",
+          "mean_predicted_height_gain": "[0.43896877795 +/- 5.86e-12]",
+          "median_predicted_height_gain": "[0.411295272165 +/- 7.83e-13]",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ],
+          "beats_constant": 7
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0654241273 +/- 4.44e-11]",
+          "median_complex_error": "[0.02409208659 +/- 6.77e-12]",
+          "mean_absolute_height_error": "[0.05222736194 +/- 8.86e-12]",
+          "median_absolute_height_error": "[0.01877660367 +/- 7.75e-12]",
+          "mean_height_gain": "[0.4789044561256 +/- 4.94e-14]",
+          "median_height_gain": "[0.4324051719527 +/- 1.95e-14]",
+          "mean_predicted_height_gain": "[0.4444086741 +/- 2.17e-11]",
+          "median_predicted_height_gain": "[0.43057415992 +/- 5.29e-12]",
+          "within_complex_error_thresholds": [
+            6,
+            1,
+            0
+          ],
+          "beats_constant": 7,
+          "beats_linear": 7
+        }
+      },
+      "1": {
+        "constant": {
+          "mean_complex_error": "[0.36712683679647074296 +/- 3.29e-21]",
+          "median_complex_error": "[0.36630938631658478663 +/- 1.12e-21]",
+          "mean_absolute_height_error": "[0.31425206932178840727 +/- 3.35e-21]",
+          "median_absolute_height_error": "[0.34075080816474094215 +/- 2.68e-21]",
+          "mean_height_gain": "[0.31425206932178840727 +/- 3.35e-21]",
+          "median_height_gain": "[0.34075080816474094215 +/- 2.68e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.068455593423125159459 +/- 2.74e-22]",
+          "median_complex_error": "[0.045752143463164163879 +/- 8.64e-23]",
+          "mean_absolute_height_error": "[0.060914886015703693797 +/- 3.43e-22]",
+          "median_absolute_height_error": "[0.031008659252333372069 +/- 4.51e-22]",
+          "mean_height_gain": "[0.31425206932178840727 +/- 3.35e-21]",
+          "median_height_gain": "[0.34075080816474094215 +/- 2.68e-21]",
+          "mean_predicted_height_gain": "[0.28440750728475479005 +/- 1.11e-21]",
+          "median_predicted_height_gain": "[0.26799593725757673323 +/- 2.99e-21]",
+          "within_complex_error_thresholds": [
+            6,
+            0,
+            0
+          ],
+          "beats_constant": 7
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.030814045601524224201 +/- 5.50e-23]",
+          "median_complex_error": "[0.0078136203264383613364 +/- 2.22e-23]",
+          "mean_absolute_height_error": "[0.015942652837285405245 +/- 3.53e-22]",
+          "median_absolute_height_error": "[0.0061413151226732753335 +/- 4.95e-23]",
+          "mean_height_gain": "[0.31425206932178840727 +/- 3.35e-21]",
+          "median_height_gain": "[0.34075080816474094215 +/- 2.68e-21]",
+          "mean_predicted_height_gain": "[0.30261389970077398898 +/- 1.79e-21]",
+          "median_predicted_height_gain": "[0.27640231847243958153 +/- 2.60e-21]",
+          "within_complex_error_thresholds": [
+            6,
+            5,
+            1
+          ],
+          "beats_constant": 7,
+          "beats_linear": 7
+        }
+      },
+      "1/2": {
+        "constant": {
+          "mean_complex_error": "[0.18677629054850180001 +/- 9.93e-22]",
+          "median_complex_error": "[0.16741903773967116315 +/- 1.92e-21]",
+          "mean_absolute_height_error": "[0.16476816103724911404 +/- 3.21e-21]",
+          "median_absolute_height_error": "[0.15596893056198915714 +/- 4.87e-21]",
+          "mean_height_gain": "[0.16476816103724911404 +/- 3.21e-21]",
+          "median_height_gain": "[0.15596893056198915714 +/- 4.87e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.017945314353210867020 +/- 1.68e-22]",
+          "median_complex_error": "[0.012167527372766250343 +/- 4.14e-22]",
+          "mean_absolute_height_error": "[0.014262850685610311751 +/- 2.50e-22]",
+          "median_absolute_height_error": "[0.0090593113183566547771 +/- 2.05e-23]",
+          "mean_height_gain": "[0.16476816103724911404 +/- 3.21e-21]",
+          "median_height_gain": "[0.15596893056198915714 +/- 4.87e-21]",
+          "mean_predicted_height_gain": "[0.15856443153545108580 +/- 3.78e-21]",
+          "median_predicted_height_gain": "[0.16895151765744737657 +/- 6.73e-22]",
+          "within_complex_error_thresholds": [
+            7,
+            3,
+            0
+          ],
+          "beats_constant": 7
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0045518997532115301079 +/- 2.03e-23]",
+          "median_complex_error": "[0.0011824274405201597679 +/- 3.52e-23]",
+          "mean_absolute_height_error": "[0.0036578462482959014200 +/- 2.61e-23]",
+          "median_absolute_height_error": "[0.0010304617596671274631 +/- 1.78e-23]",
+          "mean_height_gain": "[0.16476816103724911404 +/- 3.21e-21]",
+          "median_height_gain": "[0.15596893056198915714 +/- 4.87e-21]",
+          "mean_predicted_height_gain": "[0.16761792493086979155 +/- 3.60e-21]",
+          "median_predicted_height_gain": "[0.15429705182542301021 +/- 2.75e-21]",
+          "within_complex_error_thresholds": [
+            7,
+            6,
+            3
+          ],
+          "beats_constant": 7,
+          "beats_linear": 7
+        }
+      },
+      "1/4": {
+        "constant": {
+          "mean_complex_error": "[0.093275161811414687902 +/- 1.52e-22]",
+          "median_complex_error": "[0.080031142482245697816 +/- 8.52e-23]",
+          "mean_absolute_height_error": "[0.083571844594350933888 +/- 1.06e-22]",
+          "median_absolute_height_error": "[0.074957600721962102257 +/- 3.51e-22]",
+          "mean_height_gain": "[0.083571844594350933888 +/- 1.06e-22]",
+          "median_height_gain": "[0.074957600721962102257 +/- 3.51e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            6,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0041636234233543518669 +/- 3.17e-23]",
+          "median_complex_error": "[0.0031230058272008043304 +/- 3.58e-23]",
+          "mean_absolute_height_error": "[0.0028638219380878112415 +/- 1.44e-23]",
+          "median_absolute_height_error": "[0.0025313412477818691515 +/- 2.20e-23]",
+          "mean_height_gain": "[0.083571844594350933888 +/- 1.06e-22]",
+          "median_height_gain": "[0.074957600721962102257 +/- 3.51e-22]",
+          "mean_predicted_height_gain": "[0.082729334071423019084 +/- 2.63e-22]",
+          "median_predicted_height_gain": "[0.077757737199698308202 +/- 4.95e-22]",
+          "within_complex_error_thresholds": [
+            7,
+            6,
+            1
+          ],
+          "beats_constant": 7
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.00044087976201679544337 +/- 7.36e-25]",
+          "median_complex_error": "[0.00015968601925068523782 +/- 3.53e-24]",
+          "mean_absolute_height_error": "[0.00041524607008711000052 +/- 1.04e-24]",
+          "median_absolute_height_error": "[0.00012603314885287696948 +/- 2.94e-24]",
+          "mean_height_gain": "[0.083571844594350933888 +/- 1.06e-22]",
+          "median_height_gain": "[0.074957600721962102257 +/- 3.51e-22]",
+          "mean_predicted_height_gain": "[0.083881414586715581069 +/- 7.50e-23]",
+          "median_predicted_height_gain": "[0.074724705270238423325 +/- 2.05e-22]",
+          "within_complex_error_thresholds": [
+            7,
+            7,
+            6
+          ],
+          "beats_constant": 7,
+          "beats_linear": 7
+        }
+      },
+      "1/8": {
+        "constant": {
+          "mean_complex_error": "[0.046537102785913742792 +/- 4.80e-22]",
+          "median_complex_error": "[0.039154256546295533140 +/- 4.00e-22]",
+          "mean_absolute_height_error": "[0.041960837024362190609 +/- 2.61e-22]",
+          "median_absolute_height_error": "[0.036808109902607661364 +/- 7.05e-23]",
+          "mean_height_gain": "[0.041960837024362190609 +/- 2.61e-22]",
+          "median_height_gain": "[0.036808109902607661364 +/- 7.05e-23]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            7,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.00099717063097334284055 +/- 3.55e-25]",
+          "median_complex_error": "[0.00078966264600787216635 +/- 3.62e-24]",
+          "mean_absolute_height_error": "[0.00064728463746591932818 +/- 3.41e-25]",
+          "median_absolute_height_error": "[0.00064116126520690787628 +/- 2.58e-24]",
+          "mean_height_gain": "[0.041960837024362190609 +/- 2.61e-22]",
+          "median_height_gain": "[0.036808109902607661364 +/- 7.05e-23]",
+          "mean_predicted_height_gain": "[0.041818633911642611835 +/- 2.88e-23]",
+          "median_predicted_height_gain": "[0.037449271167814569240 +/- 2.08e-22]",
+          "within_complex_error_thresholds": [
+            7,
+            7,
+            6
+          ],
+          "beats_constant": 7
+        },
+        "quadratic": {
+          "mean_complex_error": "[4.7290166052507346379e-5 +/- 1.47e-25]",
+          "median_complex_error": "[2.0625305009676112897e-5 +/- 1.18e-26]",
+          "mean_absolute_height_error": "[4.2873281880257658671e-5 +/- 1.36e-25]",
+          "median_absolute_height_error": "[1.5226284236567525837e-5 +/- 4.06e-26]",
+          "mean_height_gain": "[0.041960837024362190609 +/- 2.61e-22]",
+          "median_height_gain": "[0.036808109902607661364 +/- 7.05e-23]",
+          "mean_predicted_height_gain": "[0.041990578900948918304 +/- 1.0e-25]",
+          "median_predicted_height_gain": "[0.036778439520618210111 +/- 2.35e-22]",
+          "within_complex_error_thresholds": [
+            7,
+            7,
+            7
+          ],
+          "beats_constant": 7,
+          "beats_linear": 7
+        }
+      },
+      "1/16": {
+        "constant": {
+          "mean_complex_error": "[0.023238560729460475092 +/- 3.65e-22]",
+          "median_complex_error": "[0.019370367674781434276 +/- 2.35e-22]",
+          "mean_absolute_height_error": "[0.021012428989324716072 +/- 2.60e-22]",
+          "median_absolute_height_error": "[0.018247478367692714684 +/- 4.16e-22]",
+          "mean_height_gain": "[0.021012428989324716072 +/- 2.60e-22]",
+          "median_height_gain": "[0.018247478367692714684 +/- 4.16e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            7,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.00024419015302078719651 +/- 5.69e-25]",
+          "median_complex_error": "[0.00019843308719936934704 +/- 3.69e-24]",
+          "mean_absolute_height_error": "[0.00015482989163755430823 +/- 4.97e-24]",
+          "median_absolute_height_error": "[0.00015285912145284663047 +/- 6.10e-25]",
+          "mean_height_gain": "[0.021012428989324716072 +/- 2.60e-22]",
+          "median_height_gain": "[0.018247478367692714684 +/- 4.16e-22]",
+          "mean_predicted_height_gain": "[0.020983785337024998798 +/- 3.28e-22]",
+          "median_predicted_height_gain": "[0.018400337489145561315 +/- 1.14e-22]",
+          "within_complex_error_thresholds": [
+            7,
+            7,
+            7
+          ],
+          "beats_constant": 7
+        },
+        "quadratic": {
+          "mean_complex_error": "[5.4846366328040799439e-6 +/- 1.65e-26]",
+          "median_complex_error": "[2.6163985729548723032e-6 +/- 4.22e-26]",
+          "mean_absolute_height_error": "[4.8238312224904708033e-6 +/- 2.98e-26]",
+          "median_absolute_height_error": "[1.8495777826999400716e-6 +/- 1.96e-26]",
+          "mean_height_gain": "[0.021012428989324716072 +/- 2.60e-22]",
+          "median_height_gain": "[0.018247478367692714684 +/- 4.16e-22]",
+          "mean_predicted_height_gain": "[0.021015626562613641834 +/- 3.45e-22]",
+          "median_predicted_height_gain": "[0.018243758350853405959 +/- 3.68e-22]",
+          "within_complex_error_thresholds": [
+            7,
+            7,
+            7
+          ],
+          "beats_constant": 7,
+          "beats_linear": 7
+        }
+      }
+    },
+    "historically_backward": {
+      "trough": {
+        "constant": {
+          "mean_complex_error": "[0.7489143679090 +/- 3.55e-14]",
+          "median_complex_error": "[0.8678597624787 +/- 4.13e-14]",
+          "mean_absolute_height_error": "[0.7202446609445 +/- 3.49e-14]",
+          "median_absolute_height_error": "[0.8397287376822 +/- 2.24e-14]",
+          "mean_height_gain": "[0.7202446609445 +/- 3.49e-14]",
+          "median_height_gain": "[0.8397287376822 +/- 2.24e-14]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.24780561088 +/- 5.90e-12]",
+          "median_complex_error": "[0.21577573557 +/- 7.91e-12]",
+          "mean_absolute_height_error": "[0.11079758623 +/- 8.09e-12]",
+          "median_absolute_height_error": "[0.06482306636 +/- 6.51e-12]",
+          "mean_height_gain": "[0.7202446609445 +/- 3.49e-14]",
+          "median_height_gain": "[0.8397287376822 +/- 2.24e-14]",
+          "mean_predicted_height_gain": "[0.60944707471 +/- 3.59e-12]",
+          "median_predicted_height_gain": "[0.63362622967 +/- 4.76e-12]",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ],
+          "beats_constant": 3
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.1255248402 +/- 5.57e-11]",
+          "median_complex_error": "[0.09608867608 +/- 4.51e-12]",
+          "mean_absolute_height_error": "[0.0971934538 +/- 5.34e-11]",
+          "median_absolute_height_error": "[0.09389844865 +/- 5.18e-12]",
+          "mean_height_gain": "[0.7202446609445 +/- 3.49e-14]",
+          "median_height_gain": "[0.8397287376822 +/- 2.24e-14]",
+          "mean_predicted_height_gain": "[0.74343767878 +/- 6.99e-12]",
+          "median_predicted_height_gain": "[0.8226265323 +/- 2.66e-11]",
+          "within_complex_error_thresholds": [
+            2,
+            0,
+            0
+          ],
+          "beats_constant": 3,
+          "beats_linear": 3
+        }
+      },
+      "1": {
+        "constant": {
+          "mean_complex_error": "[0.50285610920003889938 +/- 4.86e-21]",
+          "median_complex_error": "[0.57519972890417702265 +/- 2.15e-21]",
+          "mean_absolute_height_error": "[0.47649780419585559518 +/- 2.95e-21]",
+          "median_absolute_height_error": "[0.56792350655055612778 +/- 4.47e-21]",
+          "mean_height_gain": "[0.47649780419585559518 +/- 2.95e-21]",
+          "median_height_gain": "[0.56792350655055612778 +/- 4.47e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.10858146892390158005 +/- 4.64e-21]",
+          "median_complex_error": "[0.10332884504826723274 +/- 7.67e-22]",
+          "mean_absolute_height_error": "[0.056231618173815849485 +/- 4.16e-22]",
+          "median_absolute_height_error": "[0.058907800788644672668 +/- 4.21e-22]",
+          "mean_height_gain": "[0.47649780419585559518 +/- 2.95e-21]",
+          "median_height_gain": "[0.56792350655055612778 +/- 4.47e-21]",
+          "mean_predicted_height_gain": "[0.44004513070747750303 +/- 4.16e-21]",
+          "median_predicted_height_gain": "[0.49612208450381283234 +/- 5.70e-22]",
+          "within_complex_error_thresholds": [
+            1,
+            0,
+            0
+          ],
+          "beats_constant": 3
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.036137849232344555169 +/- 2.38e-22]",
+          "median_complex_error": "[0.034358636052140295810 +/- 4.55e-24]",
+          "mean_absolute_height_error": "[0.029529625200397166821 +/- 3.68e-22]",
+          "median_absolute_height_error": "[0.034350629134070838418 +/- 4.56e-22]",
+          "mean_height_gain": "[0.47649780419585559518 +/- 2.95e-21]",
+          "median_height_gain": "[0.56792350655055612778 +/- 4.47e-21]",
+          "mean_predicted_height_gain": "[0.48312700997353886973 +/- 4.05e-21]",
+          "median_predicted_height_gain": "[0.58312076144820914615 +/- 2.44e-21]",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ],
+          "beats_constant": 3,
+          "beats_linear": 3
+        }
+      },
+      "1/2": {
+        "constant": {
+          "mean_complex_error": "[0.26395773511329152991 +/- 3.15e-21]",
+          "median_complex_error": "[0.28123998498935291961 +/- 3.56e-21]",
+          "mean_absolute_height_error": "[0.24649891725298281453 +/- 1.22e-21]",
+          "median_absolute_height_error": "[0.27036244442158161417 +/- 4.65e-21]",
+          "mean_height_gain": "[0.24649891725298281453 +/- 1.22e-21]",
+          "median_height_gain": "[0.27036244442158161417 +/- 4.65e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.030126951379142086392 +/- 1.01e-22]",
+          "median_complex_error": "[0.031259661056239132234 +/- 4.91e-22]",
+          "mean_absolute_height_error": "[0.020718790995626263902 +/- 1.51e-22]",
+          "median_absolute_height_error": "[0.020044100209201080846 +/- 5.21e-23]",
+          "mean_height_gain": "[0.24649891725298281453 +/- 1.22e-21]",
+          "median_height_gain": "[0.27036244442158161417 +/- 4.65e-21]",
+          "mean_predicted_height_gain": "[0.23914285973015727119 +/- 6.01e-22]",
+          "median_predicted_height_gain": "[0.28966684551147237576 +/- 4.93e-21]",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ],
+          "beats_constant": 3
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0056661310059199672498 +/- 2.70e-24]",
+          "median_complex_error": "[0.0062842565766169772260 +/- 3.81e-23]",
+          "mean_absolute_height_error": "[0.0047251960403223893464 +/- 2.10e-24]",
+          "median_absolute_height_error": "[0.0057096518214278803993 +/- 4.90e-23]",
+          "mean_height_gain": "[0.24649891725298281453 +/- 1.22e-21]",
+          "median_height_gain": "[0.27036244442158161417 +/- 4.65e-21]",
+          "mean_predicted_height_gain": "[0.24741767874568661694 +/- 2.36e-21]",
+          "median_predicted_height_gain": "[0.27701365652574427592 +/- 7.11e-22]",
+          "within_complex_error_thresholds": [
+            3,
+            3,
+            0
+          ],
+          "beats_constant": 3,
+          "beats_linear": 3
+        }
+      },
+      "1/4": {
+        "constant": {
+          "mean_complex_error": "[0.13469819888360654391 +/- 1.20e-21]",
+          "median_complex_error": "[0.13720735277338918276 +/- 9.61e-22]",
+          "mean_absolute_height_error": "[0.12497277981840139699 +/- 2.01e-21]",
+          "median_absolute_height_error": "[0.12934240530834164460 +/- 4.16e-21]",
+          "mean_height_gain": "[0.12497277981840139699 +/- 2.01e-21]",
+          "median_height_gain": "[0.12934240530834164460 +/- 4.16e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0079239910282258940087 +/- 2.73e-23]",
+          "median_complex_error": "[0.0085411409404731968866 +/- 4.08e-23]",
+          "mean_absolute_height_error": "[0.0060422133889429531174 +/- 3.81e-23]",
+          "median_absolute_height_error": "[0.0066528363180501526847 +/- 2.27e-23]",
+          "mean_height_gain": "[0.12497277981840139699 +/- 2.01e-21]",
+          "median_height_gain": "[0.12934240530834164460 +/- 4.16e-21]",
+          "mean_predicted_height_gain": "[0.12336579064149187900 +/- 2.24e-21]",
+          "median_predicted_height_gain": "[0.13599524162639179729 +/- 1.17e-21]",
+          "within_complex_error_thresholds": [
+            3,
+            3,
+            0
+          ],
+          "beats_constant": 3
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.00079443927803926470333 +/- 2.13e-24]",
+          "median_complex_error": "[0.00093076157697642746291 +/- 4.59e-24]",
+          "mean_absolute_height_error": "[0.00058054466028961906404 +/- 2.52e-24]",
+          "median_absolute_height_error": "[0.00069562579944696891637 +/- 2.47e-24]",
+          "mean_height_gain": "[0.12497277981840139699 +/- 2.01e-21]",
+          "median_height_gain": "[0.12934240530834164460 +/- 4.16e-21]",
+          "mean_predicted_height_gain": "[0.12508957394572637011 +/- 1.80e-21]",
+          "median_predicted_height_gain": "[0.13013081214836771489 +/- 3.52e-21]",
+          "within_complex_error_thresholds": [
+            3,
+            3,
+            2
+          ],
+          "beats_constant": 3,
+          "beats_linear": 3
+        }
+      },
+      "1/8": {
+        "constant": {
+          "mean_complex_error": "[0.067945438203637536248 +/- 2.93e-22]",
+          "median_complex_error": "[0.067490410104704634954 +/- 3.27e-22]",
+          "mean_absolute_height_error": "[0.062873519499556634758 +/- 9.64e-23]",
+          "median_absolute_height_error": "[0.062912368828697189967 +/- 2.60e-22]",
+          "mean_height_gain": "[0.062873519499556634758 +/- 9.64e-23]",
+          "median_height_gain": "[0.062912368828697189967 +/- 2.60e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0020249613137640352727 +/- 4.10e-23]",
+          "median_complex_error": "[0.0022178852175720187983 +/- 2.24e-23]",
+          "mean_absolute_height_error": "[0.0016065158187525889955 +/- 2.03e-23]",
+          "median_absolute_height_error": "[0.0018510321346056761937 +/- 4.57e-23]",
+          "mean_height_gain": "[0.062873519499556634758 +/- 9.64e-23]",
+          "median_height_gain": "[0.062912368828697189967 +/- 2.60e-22]",
+          "mean_predicted_height_gain": "[0.062501025103874496558 +/- 4.07e-22]",
+          "median_predicted_height_gain": "[0.064763400963302866160 +/- 4.87e-22]",
+          "within_complex_error_thresholds": [
+            3,
+            3,
+            0
+          ],
+          "beats_constant": 3
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.00010418758046736244188 +/- 4.53e-24]",
+          "median_complex_error": "[0.00012456591391387593647 +/- 4.11e-24]",
+          "mean_absolute_height_error": "[6.6500137651829777229e-5 +/- 2.30e-25]",
+          "median_absolute_height_error": "[7.7771095860818943609e-5 +/- 1.40e-26]",
+          "mean_height_gain": "[0.062873519499556634758 +/- 9.64e-23]",
+          "median_height_gain": "[0.062912368828697189967 +/- 2.60e-22]",
+          "mean_predicted_height_gain": "[0.062888172239967918573 +/- 8.12e-23]",
+          "median_predicted_height_gain": "[0.063000627578073068205 +/- 1.05e-22]",
+          "within_complex_error_thresholds": [
+            3,
+            3,
+            3
+          ],
+          "beats_constant": 3,
+          "beats_linear": 3
+        }
+      },
+      "1/16": {
+        "constant": {
+          "mean_complex_error": "[0.034109010190520083187 +/- 3.13e-22]",
+          "median_complex_error": "[0.033433742390027387585 +/- 2.85e-22]",
+          "mean_absolute_height_error": "[0.031528050502727756976 +/- 3.88e-22]",
+          "median_absolute_height_error": "[0.030982689497315676722 +/- 1.69e-22]",
+          "mean_height_gain": "[0.031528050502727756976 +/- 3.88e-22]",
+          "median_height_gain": "[0.030982689497315676722 +/- 1.69e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.00051114064651309480587 +/- 9.39e-25]",
+          "median_complex_error": "[0.00056377434149146792562 +/- 1.61e-24]",
+          "mean_absolute_height_error": "[0.00041206974566388590505 +/- 2.51e-24]",
+          "median_absolute_height_error": "[0.00048391979777132250361 +/- 2.14e-24]",
+          "mean_height_gain": "[0.031528050502727756976 +/- 3.88e-22]",
+          "median_height_gain": "[0.030982689497315676722 +/- 1.69e-22]",
+          "mean_predicted_height_gain": "[0.031438593955578086073 +/- 2.69e-23]",
+          "median_predicted_height_gain": "[0.031466609295086999226 +/- 2.20e-22]",
+          "within_complex_error_thresholds": [
+            3,
+            3,
+            3
+          ],
+          "beats_constant": 3
+        },
+        "quadratic": {
+          "mean_complex_error": "[1.3289804509099517950e-5 +/- 4.13e-25]",
+          "median_complex_error": "[1.6018992902823722600e-5 +/- 4.82e-25]",
+          "mean_absolute_height_error": "[7.7307068975197391136e-6 +/- 2.65e-26]",
+          "median_absolute_height_error": "[8.8425234127868168906e-6 +/- 9.35e-27]",
+          "mean_height_gain": "[0.031528050502727756976 +/- 3.88e-22]",
+          "median_height_gain": "[0.030982689497315676722 +/- 1.69e-22]",
+          "mean_predicted_height_gain": "[0.031529886194016752170 +/- 1.33e-22]",
+          "median_predicted_height_gain": "[0.030992785880095330993 +/- 4.88e-22]",
+          "within_complex_error_thresholds": [
+            3,
+            3,
+            3
+          ],
+          "beats_constant": 3,
+          "beats_linear": 3
+        }
+      }
+    },
+    "accelerating_at_arrival": {
+      "trough": {
+        "constant": {
+          "mean_complex_error": "[0.5111386595049 +/- 4.03e-14]",
+          "median_complex_error": "[0.4337269718219 +/- 4.95e-14]",
+          "mean_absolute_height_error": "[0.4745428983149 +/- 3.39e-14]",
+          "median_absolute_height_error": "[0.4152114051460 +/- 1.30e-14]",
+          "mean_height_gain": "[0.4745428983149 +/- 3.39e-14]",
+          "median_height_gain": "[0.4152114051460 +/- 1.30e-14]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.12837592042 +/- 3.92e-12]",
+          "median_complex_error": "[0.10722465637 +/- 3.49e-12]",
+          "mean_absolute_height_error": "[0.08420446893 +/- 3.40e-12]",
+          "median_absolute_height_error": "[0.06482306636 +/- 6.51e-12]",
+          "mean_height_gain": "[0.4745428983149 +/- 3.39e-14]",
+          "median_height_gain": "[0.4152114051460 +/- 1.30e-14]",
+          "mean_predicted_height_gain": "[0.39033842938 +/- 6.81e-12]",
+          "median_predicted_height_gain": "[0.35038833878 +/- 7.92e-12]",
+          "within_complex_error_thresholds": [
+            2,
+            0,
+            0
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0488060763 +/- 2.00e-11]",
+          "median_complex_error": "[0.0323284721 +/- 4.25e-11]",
+          "mean_absolute_height_error": "[0.02911682323 +/- 5.88e-12]",
+          "median_absolute_height_error": "[0.0171022054 +/- 4.44e-11]",
+          "mean_height_gain": "[0.4745428983149 +/- 3.39e-14]",
+          "median_height_gain": "[0.4152114051460 +/- 1.30e-14]",
+          "mean_predicted_height_gain": "[0.44564468810 +/- 9.49e-12]",
+          "median_predicted_height_gain": "[0.33565600758 +/- 8.01e-12]",
+          "within_complex_error_thresholds": [
+            5,
+            1,
+            0
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1": {
+        "constant": {
+          "mean_complex_error": "[0.34746418951062511127 +/- 3.91e-21]",
+          "median_complex_error": "[0.27805877529333766561 +/- 2.23e-21]",
+          "mean_absolute_height_error": "[0.32040847147711900723 +/- 1.01e-21]",
+          "median_absolute_height_error": "[0.27690485071939802173 +/- 4.94e-21]",
+          "mean_height_gain": "[0.32040847147711900723 +/- 1.01e-21]",
+          "median_height_gain": "[0.27690485071939802173 +/- 4.94e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.056130793166322235617 +/- 2.72e-24]",
+          "median_complex_error": "[0.045752143463164163879 +/- 8.64e-23]",
+          "mean_absolute_height_error": "[0.041526213088625484814 +/- 3.37e-22]",
+          "median_absolute_height_error": "[0.032249925247145708080 +/- 4.61e-22]",
+          "mean_height_gain": "[0.32040847147711900723 +/- 1.01e-21]",
+          "median_height_gain": "[0.27690485071939802173 +/- 4.94e-21]",
+          "mean_predicted_height_gain": "[0.27888225838849352242 +/- 4.67e-21]",
+          "median_predicted_height_gain": "[0.22642138403990691296 +/- 1.28e-21]",
+          "within_complex_error_thresholds": [
+            4,
+            0,
+            0
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.015164729424522008746 +/- 4.22e-22]",
+          "median_complex_error": "[0.0091241582977594735020 +/- 2.55e-23]",
+          "mean_absolute_height_error": "[0.010422816476881621288 +/- 3.85e-22]",
+          "median_absolute_height_error": "[0.0068800402397500740178 +/- 4.37e-23]",
+          "mean_height_gain": "[0.32040847147711900723 +/- 1.01e-21]",
+          "median_height_gain": "[0.27690485071939802173 +/- 4.94e-21]",
+          "mean_predicted_height_gain": "[0.31341528130142840380 +/- 2.97e-21]",
+          "median_predicted_height_gain": "[0.25097855569448074721 +/- 2.16e-21]",
+          "within_complex_error_thresholds": [
+            5,
+            3,
+            1
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1/2": {
+        "constant": {
+          "mean_complex_error": "[0.18623770938748111555 +/- 1.60e-21]",
+          "median_complex_error": "[0.14147055939072825483 +/- 1.08e-21]",
+          "mean_absolute_height_error": "[0.17148689927852227976 +/- 1.19e-21]",
+          "median_absolute_height_error": "[0.14074350336113503023 +/- 4.86e-21]",
+          "mean_height_gain": "[0.17148689927852227976 +/- 1.19e-21]",
+          "median_height_gain": "[0.14074350336113503023 +/- 4.86e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.015430257399142977318 +/- 4.37e-22]",
+          "median_complex_error": "[0.012167527372766250343 +/- 4.14e-22]",
+          "mean_absolute_height_error": "[0.012212242665750067450 +/- 1.79e-22]",
+          "median_absolute_height_error": "[0.0090593113183566547771 +/- 2.05e-23]",
+          "mean_height_gain": "[0.17148689927852227976 +/- 1.19e-21]",
+          "median_height_gain": "[0.14074350336113503023 +/- 4.86e-21]",
+          "mean_predicted_height_gain": "[0.15927465661277221231 +/- 1.01e-21]",
+          "median_predicted_height_gain": "[0.13735518904821674279 +/- 3.72e-21]",
+          "within_complex_error_thresholds": [
+            5,
+            2,
+            0
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0023353277617602947728 +/- 1.09e-23]",
+          "median_complex_error": "[0.0012969083529825766560 +/- 3.24e-23]",
+          "mean_absolute_height_error": "[0.0017972141409526190974 +/- 1.09e-23]",
+          "median_absolute_height_error": "[0.0010914254352926926126 +/- 3.33e-23]",
+          "mean_height_gain": "[0.17148689927852227976 +/- 1.19e-21]",
+          "median_height_gain": "[0.14074350336113503023 +/- 4.86e-21]",
+          "mean_predicted_height_gain": "[0.17053768888898489199 +/- 3.74e-22]",
+          "median_predicted_height_gain": "[0.14067851929163058608 +/- 3.82e-21]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            2
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1/4": {
+        "constant": {
+          "mean_complex_error": "[0.096401882371808382859 +/- 3.33e-22]",
+          "median_complex_error": "[0.073095939692167312215 +/- 2.48e-23]",
+          "mean_absolute_height_error": "[0.088913325729376833574 +/- 4.10e-22]",
+          "median_absolute_height_error": "[0.070968777093563392030 +/- 3.80e-22]",
+          "mean_height_gain": "[0.088913325729376833574 +/- 4.10e-22]",
+          "median_height_gain": "[0.070968777093563392030 +/- 3.80e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0040461674919458456967 +/- 4.75e-25]",
+          "median_complex_error": "[0.0031230058272008043304 +/- 3.58e-23]",
+          "mean_absolute_height_error": "[0.0032828648517700392061 +/- 2.77e-23]",
+          "median_absolute_height_error": "[0.0025313412477818691515 +/- 2.20e-23]",
+          "mean_height_gain": "[0.088913325729376833574 +/- 4.10e-22]",
+          "median_height_gain": "[0.070968777093563392030 +/- 3.80e-22]",
+          "mean_predicted_height_gain": "[0.085630460877606794368 +/- 4.83e-22]",
+          "median_predicted_height_gain": "[0.070363671407298639112 +/- 2.75e-22]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            1
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.00032226726993397176977 +/- 4.38e-24]",
+          "median_complex_error": "[0.00017235110630419961233 +/- 4.57e-24]",
+          "mean_absolute_height_error": "[0.00022622948177560343985 +/- 3.61e-24]",
+          "median_absolute_height_error": "[0.00012893591083032280771 +/- 4.18e-24]",
+          "mean_height_gain": "[0.088913325729376833574 +/- 4.10e-22]",
+          "median_height_gain": "[0.070968777093563392030 +/- 3.80e-22]",
+          "mean_predicted_height_gain": "[0.088806516563251673072 +/- 3.29e-22]",
+          "median_predicted_height_gain": "[0.070960742184088773901 +/- 7.38e-23]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            5
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1/8": {
+        "constant": {
+          "mean_complex_error": "[0.049026973299604322353 +/- 4.60e-22]",
+          "median_complex_error": "[0.037317092057085684718 +/- 2.24e-22]",
+          "mean_absolute_height_error": "[0.045290075747666825697 +/- 3.54e-22]",
+          "median_absolute_height_error": "[0.035636664828976446592 +/- 1.82e-22]",
+          "mean_height_gain": "[0.045290075747666825697 +/- 3.54e-22]",
+          "median_height_gain": "[0.035636664828976446592 +/- 1.82e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            5,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0010343844598149167733 +/- 4.95e-23]",
+          "median_complex_error": "[0.00078966264600787216635 +/- 3.62e-24]",
+          "mean_absolute_height_error": "[0.00084535215538534333395 +/- 1.10e-24]",
+          "median_absolute_height_error": "[0.00066429454755389990941 +/- 4.95e-24]",
+          "mean_height_gain": "[0.045290075747666825697 +/- 3.54e-22]",
+          "median_height_gain": "[0.035636664828976446592 +/- 1.82e-22]",
+          "mean_predicted_height_gain": "[0.044444723592281482363 +/- 4.03e-22]",
+          "median_predicted_height_gain": "[0.035483393793750860821 +/- 3.57e-22]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            3
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[4.2061023733036812835e-5 +/- 4.30e-25]",
+          "median_complex_error": "[2.2158527103151731783e-5 +/- 3.62e-25]",
+          "mean_absolute_height_error": "[2.6548537206327332964e-5 +/- 2.12e-25]",
+          "median_absolute_height_error": "[1.5300512633107843123e-5 +/- 4.95e-25]",
+          "mean_height_gain": "[0.045290075747666825697 +/- 3.54e-22]",
+          "median_height_gain": "[0.035636664828976446592 +/- 1.82e-22]",
+          "mean_predicted_height_gain": "[0.045279000031913664005 +/- 3.66e-22]",
+          "median_predicted_height_gain": "[0.035635675805071650815 +/- 2.94e-22]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            5
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1/16": {
+        "constant": {
+          "mean_complex_error": "[0.024719238930714941092 +/- 4.68e-23]",
+          "median_complex_error": "[0.018853986989702920880 +/- 5.09e-23]",
+          "mean_absolute_height_error": "[0.022857696125354543701 +/- 4.84e-22]",
+          "median_absolute_height_error": "[0.017856773382500143115 +/- 1.62e-23]",
+          "mean_height_gain": "[0.022857696125354543701 +/- 4.84e-22]",
+          "median_height_gain": "[0.017856773382500143115 +/- 1.62e-23]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            5,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.00026132590579292123922 +/- 4.57e-24]",
+          "median_complex_error": "[0.00019843308719936934704 +/- 3.69e-24]",
+          "mean_absolute_height_error": "[0.00021391072470200304739 +/- 4.28e-24]",
+          "median_absolute_height_error": "[0.00016983713269467228176 +/- 4.80e-24]",
+          "mean_height_gain": "[0.022857696125354543701 +/- 4.84e-22]",
+          "median_height_gain": "[0.017856773382500143115 +/- 1.62e-23]",
+          "mean_predicted_height_gain": "[0.022643785400652540654 +/- 8.90e-23]",
+          "median_predicted_height_gain": "[0.017818209645135661010 +/- 4.10e-22]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            5
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[5.3593678517195360137e-6 +/- 3.94e-26]",
+          "median_complex_error": "[2.8067140830392669381e-6 +/- 2.91e-26]",
+          "mean_absolute_height_error": "[3.1445206612885472543e-6 +/- 1.84e-26]",
+          "median_absolute_height_error": "[1.8495777826999400716e-6 +/- 1.96e-26]",
+          "mean_height_gain": "[0.022857696125354543701 +/- 4.84e-22]",
+          "median_height_gain": "[0.017856773382500143115 +/- 1.62e-23]",
+          "mean_predicted_height_gain": "[0.022856514882279450420 +/- 4.44e-22]",
+          "median_predicted_height_gain": "[0.017856651074354675299 +/- 2.59e-23]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            5
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      }
+    },
+    "slowing_at_arrival": {
+      "trough": {
+        "constant": {
+          "mean_complex_error": "[0.7285213730530 +/- 8.85e-14]",
+          "median_complex_error": "[0.6652752464691 +/- 5.67e-14]",
+          "mean_absolute_height_error": "[0.6280701368277 +/- 4.89e-14]",
+          "median_absolute_height_error": "[0.6197852780018 +/- 4.56e-14]",
+          "mean_height_gain": "[0.6280701368277 +/- 4.89e-14]",
+          "median_height_gain": "[0.6197852780018 +/- 4.56e-14]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.21846969262 +/- 5.24e-12]",
+          "median_complex_error": "[0.16082792506 +/- 4.47e-12]",
+          "mean_absolute_height_error": "[0.13454196097 +/- 4.81e-12]",
+          "median_absolute_height_error": "[0.06146718433 +/- 6.52e-12]",
+          "mean_height_gain": "[0.6280701368277 +/- 4.89e-14]",
+          "median_height_gain": "[0.6197852780018 +/- 4.56e-14]",
+          "mean_predicted_height_gain": "[0.58988610457 +/- 5.82e-12]",
+          "median_predicted_height_gain": "[0.700826865530 +/- 6.55e-13]",
+          "within_complex_error_thresholds": [
+            1,
+            0,
+            0
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.1181026060 +/- 6.43e-11]",
+          "median_complex_error": "[0.08368463421 +/- 9.25e-12]",
+          "mean_absolute_height_error": "[0.1023175558 +/- 1.44e-11]",
+          "median_absolute_height_error": "[0.02407124750 +/- 2.36e-12]",
+          "mean_height_gain": "[0.6280701368277 +/- 4.89e-14]",
+          "median_height_gain": "[0.6197852780018 +/- 4.56e-14]",
+          "mean_predicted_height_gain": "[0.6225900629 +/- 1.70e-11]",
+          "median_predicted_height_gain": "[0.63856188168 +/- 7.37e-12]",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1": {
+        "constant": {
+          "mean_complex_error": "[0.46822704752445726851 +/- 3.42e-21]",
+          "median_complex_error": "[0.41008499687488463272 +/- 2.08e-21]",
+          "mean_absolute_height_error": "[0.40544310809089812005 +/- 4.10e-21]",
+          "median_absolute_height_error": "[0.38225981527769859287 +/- 3.50e-21]",
+          "mean_height_gain": "[0.40544310809089812005 +/- 4.10e-21]",
+          "median_height_gain": "[0.38225981527769859287 +/- 3.50e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.10485591898039393565 +/- 3.21e-21]",
+          "median_complex_error": "[0.064008022442081131382 +/- 2.77e-22]",
+          "mean_absolute_height_error": "[0.077493598237649196192 +/- 4.08e-22]",
+          "median_absolute_height_error": "[0.031008659252333372069 +/- 4.51e-22]",
+          "mean_height_gain": "[0.40544310809089812005 +/- 4.10e-21]",
+          "median_height_gain": "[0.38225981527769859287 +/- 3.50e-21]",
+          "mean_predicted_height_gain": "[0.38331533023464968547 +/- 1.73e-21]",
+          "median_predicted_height_gain": "[0.40285633355903350912 +/- 7.73e-23]",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.049657643957018638237 +/- 1.57e-22]",
+          "median_complex_error": "[0.022274618027060098654 +/- 1.72e-22]",
+          "mean_absolute_height_error": "[0.029614672615556246148 +/- 2.90e-22]",
+          "median_absolute_height_error": "[0.0075517246776112212741 +/- 4.33e-23]",
+          "mean_height_gain": "[0.40544310809089812005 +/- 4.10e-21]",
+          "median_height_gain": "[0.38225981527769859287 +/- 3.50e-21]",
+          "mean_predicted_height_gain": "[0.40012038426377850261 +/- 3.04e-21]",
+          "median_predicted_height_gain": "[0.38807975634380835534 +/- 2.84e-21]",
+          "within_complex_error_thresholds": [
+            4,
+            2,
+            0
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1/2": {
+        "constant": {
+          "mean_complex_error": "[0.23362373844839632241 +/- 4.88e-21]",
+          "median_complex_error": "[0.20028141401557341331 +/- 3.51e-21]",
+          "mean_absolute_height_error": "[0.20708787652541616862 +/- 3.43e-21]",
+          "median_absolute_height_error": "[0.18645588734580313893 +/- 3.84e-21]",
+          "mean_height_gain": "[0.20708787652541616862 +/- 3.43e-21]",
+          "median_height_gain": "[0.18645588734580313893 +/- 3.84e-21]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            0,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.027769353522837488344 +/- 4.69e-22]",
+          "median_complex_error": "[0.015583735907054478486 +/- 3.78e-23]",
+          "mean_absolute_height_error": "[0.020187022891480127342 +/- 1.63e-22]",
+          "median_absolute_height_error": "[0.012982587095458219426 +/- 1.91e-22]",
+          "mean_height_gain": "[0.20708787652541616862 +/- 3.43e-21]",
+          "median_height_gain": "[0.18645588734580313893 +/- 3.84e-21]",
+          "mean_predicted_height_gain": "[0.20620126337495367053 +/- 1.37e-21]",
+          "median_predicted_height_gain": "[0.19193155280534538216 +/- 1.64e-21]",
+          "within_complex_error_thresholds": [
+            5,
+            1,
+            0
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.0074370104962878277281 +/- 2.41e-23]",
+          "median_complex_error": "[0.0025921419261191948371 +/- 3.46e-23]",
+          "mean_absolute_height_error": "[0.0061588882308550764985 +/- 3.32e-23]",
+          "median_absolute_height_error": "[0.0016718787365661469376 +/- 5.70e-24]",
+          "mean_height_gain": "[0.20708787652541616862 +/- 3.43e-21]",
+          "median_height_gain": "[0.18645588734580313893 +/- 3.84e-21]",
+          "mean_predicted_height_gain": "[0.21257801326164478634 +/- 5e-25]",
+          "median_predicted_height_gain": "[0.18728915871743960159 +/- 1.15e-21]",
+          "within_complex_error_thresholds": [
+            5,
+            4,
+            1
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1/4": {
+        "constant": {
+          "mean_complex_error": "[0.11500226349433610655 +/- 3.75e-22]",
+          "median_complex_error": "[0.098662666935717366166 +/- 1.19e-22]",
+          "mean_absolute_height_error": "[0.10307092459375531206 +/- 4.97e-21]",
+          "median_absolute_height_error": "[0.091753440343563300612 +/- 1.77e-22]",
+          "mean_height_gain": "[0.10307092459375531206 +/- 4.97e-21]",
+          "median_height_gain": "[0.091753440343563300612 +/- 1.77e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            3,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0065372999176857833222 +/- 4.12e-23]",
+          "median_complex_error": "[0.0038165240297696752097 +/- 2.16e-23]",
+          "mean_absolute_height_error": "[0.0043518138949186684024 +/- 2.48e-23]",
+          "median_absolute_height_error": "[0.0028001364777362059451 +/- 4.47e-23]",
+          "mean_height_gain": "[0.10307092459375531206 +/- 4.97e-21]",
+          "median_height_gain": "[0.091753440343563300612 +/- 1.77e-22]",
+          "mean_predicted_height_gain": "[0.10421008120728055975 +/- 8.92e-22]",
+          "median_predicted_height_gain": "[0.093334709126437432014 +/- 9.19e-23]",
+          "within_complex_error_thresholds": [
+            5,
+            4,
+            0
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[0.00077162796371310067295 +/- 6.28e-25]",
+          "median_complex_error": "[0.00030107919762321468574 +/- 1.15e-24]",
+          "mean_absolute_height_error": "[0.00070344181252012199931 +/- 4.48e-24]",
+          "median_absolute_height_error": "[0.00023289545172367893255 +/- 3.89e-24]",
+          "mean_height_gain": "[0.10307092459375531206 +/- 4.97e-21]",
+          "median_height_gain": "[0.091753440343563300612 +/- 1.77e-22]",
+          "mean_predicted_height_gain": "[0.10368120822558596249 +/- 1.25e-21]",
+          "median_predicted_height_gain": "[0.091861110017735855337 +/- 7.55e-23]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            3
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1/8": {
+        "constant": {
+          "mean_complex_error": "[0.056892233522857439305 +/- 4.37e-22]",
+          "median_complex_error": "[0.048921955874398377594 +/- 1.06e-23]",
+          "mean_absolute_height_error": "[0.051179207786174222010 +/- 4.70e-22]",
+          "median_absolute_height_error": "[0.045467917066098968901 +/- 1.84e-22]",
+          "mean_height_gain": "[0.051179207786174222010 +/- 4.70e-22]",
+          "median_height_gain": "[0.045467917066098968901 +/- 1.84e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            5,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.0015766312118061843671 +/- 3.54e-23]",
+          "median_complex_error": "[0.00094382705604040095849 +/- 2.52e-24]",
+          "mean_absolute_height_error": "[0.0010247558283184971228 +/- 1.36e-23]",
+          "median_absolute_height_error": "[0.00070431885661460205430 +/- 4.18e-24]",
+          "mean_height_gain": "[0.051179207786174222010 +/- 4.70e-22]",
+          "median_height_gain": "[0.045467917066098968901 +/- 1.84e-22]",
+          "mean_predicted_height_gain": "[0.051601978946342872141 +/- 3.99e-22]",
+          "median_predicted_height_gain": "[0.045890222280889650909 +/- 1.48e-22]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            3
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[8.6657757020890937221e-5 +/- 3.39e-25]",
+          "median_complex_error": "[3.6055963767615802702e-5 +/- 1.85e-25]",
+          "mean_absolute_height_error": "[7.3374140017131255513e-5 +/- 3.60e-25]",
+          "median_absolute_height_error": "[2.9670381989451253164e-5 +/- 4.93e-26]",
+          "mean_height_gain": "[0.051179207786174222010 +/- 4.70e-22]",
+          "median_height_gain": "[0.045467917066098968901 +/- 1.84e-22]",
+          "mean_predicted_height_gain": "[0.051240713773395572765 +/- 2.84e-22]",
+          "median_predicted_height_gain": "[0.045481423956943204606 +/- 4.76e-22]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            5
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      },
+      "1/16": {
+        "constant": {
+          "mean_complex_error": "[0.028280152204841773950 +/- 2.57e-22]",
+          "median_complex_error": "[0.024353491442851281719 +/- 7.26e-23]",
+          "mean_absolute_height_error": "[0.025476534761336712984 +/- 3.21e-22]",
+          "median_absolute_height_error": "[0.022626694697968423969 +/- 4.83e-22]",
+          "mean_height_gain": "[0.025476534761336712984 +/- 3.21e-22]",
+          "median_height_gain": "[0.022626694697968423969 +/- 4.83e-22]",
+          "mean_predicted_height_gain": "0",
+          "median_predicted_height_gain": "0",
+          "within_complex_error_thresholds": [
+            5,
+            0,
+            0
+          ]
+        },
+        "linear": {
+          "mean_complex_error": "[0.00038722469634403771941 +/- 2.80e-24]",
+          "median_complex_error": "[0.00023468540316275226100 +/- 3.04e-24]",
+          "mean_absolute_height_error": "[0.00025009297098890452716 +/- 3.19e-24]",
+          "median_absolute_height_error": "[0.00017984257541516484800 +/- 3.12e-24]",
+          "mean_height_gain": "[0.025476534761336712984 +/- 3.21e-22]",
+          "median_height_gain": "[0.022626694697968423969 +/- 4.83e-22]",
+          "mean_predicted_height_gain": "[0.025596670444529309307 +/- 3.54e-22]",
+          "median_predicted_height_gain": "[0.022735644838782842113 +/- 1.14e-22]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            5
+          ],
+          "beats_constant": 5
+        },
+        "quadratic": {
+          "mean_complex_error": "[1.0293006139665886678e-5 +/- 1.33e-26]",
+          "median_complex_error": "[4.4068358137202048778e-6 +/- 3.69e-26]",
+          "mean_absolute_height_error": "[8.2472671887099553384e-6 +/- 9.64e-27]",
+          "median_absolute_height_error": "[3.7200168393087250480e-6 +/- 9.01e-27]",
+          "mean_height_gain": "[0.025476534761336712984 +/- 3.21e-22]",
+          "median_height_gain": "[0.022626694697968423969 +/- 4.83e-22]",
+          "mean_predicted_height_gain": "[0.025483294021789699450 +/- 3.60e-22]",
+          "median_predicted_height_gain": "[0.022628379375959342625 +/- 2.74e-23]",
+          "within_complex_error_thresholds": [
+            5,
+            5,
+            5
+          ],
+          "beats_constant": 5,
+          "beats_linear": 5
+        }
+      }
+    }
+  },
+  "details": [
+    {
+      "case": 1,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[14.134725141734693790 +/- 4.58e-19]"
+      },
+      "observed_height_gain": "[0.4324051719527 +/- 1.95e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.4337269718219 +/- 4.95e-14]",
+          "height_error": "[-0.4324051719527 +/- 1.95e-14]",
+          "real_error": "[0.0338356816746 +/- 4.64e-14]",
+          "predicted_height_gain": "[+/- 2.65e-14]",
+          "nearest_positive_Riemann_ordinal": 1
+        },
+        "linear": {
+          "complex_error": "[0.02734293965 +/- 4.91e-12]",
+          "height_error": "[-0.02110989979 +/- 3.08e-12]",
+          "real_error": "[0.017378391164 +/- 8.00e-13]",
+          "predicted_height_gain": "[0.411295272165 +/- 7.83e-13]",
+          "nearest_positive_Riemann_ordinal": 1
+        },
+        "quadratic": {
+          "complex_error": "[0.00183385965 +/- 6.98e-12]",
+          "height_error": "[-0.00183101203 +/- 7.97e-12]",
+          "real_error": "[-0.00010215751 +/- 7.13e-12]",
+          "predicted_height_gain": "[0.43057415992 +/- 5.29e-12]",
+          "nearest_positive_Riemann_ordinal": 1
+        }
+      }
+    },
+    {
+      "case": 1,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[14.134725141734693790 +/- 4.58e-19]"
+      },
+      "observed_height_gain": "[0.27690485071939802173 +/- 4.94e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.27805877529333766561 +/- 2.23e-21]",
+          "height_error": "[-0.27690485071939802173 +/- 4.94e-21]",
+          "real_error": "[0.025305852400161230123 +/- 3.80e-22]",
+          "predicted_height_gain": "[+/- 2.87e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.011192533229666890833 +/- 2.78e-22]",
+          "height_error": "[-0.0089089134618212885079 +/- 1.87e-23]",
+          "real_error": "[0.0067752535765812475636 +/- 4.58e-23]",
+          "predicted_height_gain": "[0.26799593725757673323 +/- 2.99e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00052103504349560054079 +/- 1.92e-24]",
+          "height_error": "[-0.00050253224695844020234 +/- 2.85e-24]",
+          "real_error": "[-0.00013761852098232859373 +/- 3.75e-24]",
+          "predicted_height_gain": "[0.27640231847243958153 +/- 2.60e-21]"
+        }
+      }
+    },
+    {
+      "case": 1,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[14.134725141734693790 +/- 4.58e-19]"
+      },
+      "observed_height_gain": "[0.14074350336113503023 +/- 4.86e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.14147055939072825483 +/- 1.08e-21]",
+          "height_error": "[-0.14074350336113503023 +/- 4.86e-21]",
+          "real_error": "[0.014324295304123789782 +/- 1.71e-22]",
+          "predicted_height_gain": "[+/- 1.19e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.0028721803263756191179 +/- 2.31e-23]",
+          "height_error": "[-0.0023556643429920278436 +/- 6.42e-24]",
+          "real_error": "[0.0016432484079940852805 +/- 2.34e-23]",
+          "predicted_height_gain": "[0.13838783901814300239 +/- 1.25e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[7.3455786104413347406e-5 +/- 1.88e-25]",
+          "height_error": "[-6.4984069504444158667e-5 +/- 3.50e-25]",
+          "real_error": "[-3.4246506724904012240e-5 +/- 4.48e-26]",
+          "predicted_height_gain": "[0.14067851929163058608 +/- 3.82e-21]"
+        }
+      }
+    },
+    {
+      "case": 1,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[14.134725141734693790 +/- 4.58e-19]"
+      },
+      "observed_height_gain": "[0.070968777093563392030 +/- 3.80e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.071371183000416610058 +/- 4.34e-22]",
+          "height_error": "[-0.070968777093563392030 +/- 3.80e-22]",
+          "real_error": "[0.0075682521577355552547 +/- 2.33e-23]",
+          "predicted_height_gain": "[+/- 6.87e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00072589105805829241251 +/- 4.94e-24]",
+          "height_error": "[-0.00060510568626475291790 +/- 4.80e-24]",
+          "real_error": "[0.00040095503066933785251 +/- 7.22e-25]",
+          "predicted_height_gain": "[0.070363671407298639112 +/- 2.75e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[9.7976056620865180153e-6 +/- 2.03e-26]",
+          "height_error": "[-8.0349094746181286940e-6 +/- 3.01e-26]",
+          "real_error": "[-5.6065413977283378444e-6 +/- 2.61e-26]",
+          "predicted_height_gain": "[0.070960742184088773901 +/- 7.38e-23]"
+        }
+      }
+    },
+    {
+      "case": 1,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[14.134725141734693790 +/- 4.58e-19]"
+      },
+      "observed_height_gain": "[0.035636664828976446592 +/- 1.82e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.035847656734310627127 +/- 4.26e-23]",
+          "height_error": "[-0.035636664828976446592 +/- 1.82e-22]",
+          "real_error": "[0.0038836340208829135441 +/- 7.15e-24]",
+          "predicted_height_gain": "[+/- 7.57e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00018232638669370937202 +/- 3.06e-24]",
+          "height_error": "[-0.00015327103522558577082 +/- 4.38e-24]",
+          "real_error": "[9.8746650807312385271e-5 +/- 4.42e-25]",
+          "predicted_height_gain": "[0.035483393793750860821 +/- 3.57e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[1.2672089194301299947e-6 +/- 4.72e-26]",
+          "height_error": "[-9.8902390479577747512e-7 +/- 6.97e-27]",
+          "real_error": "[-7.9224375114341582628e-7 +/- 5.52e-27]",
+          "predicted_height_gain": "[0.035635675805071650815 +/- 2.94e-22]"
+        }
+      }
+    },
+    {
+      "case": 1,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[14.134725141734693790 +/- 4.58e-19]"
+      },
+      "observed_height_gain": "[0.017856773382500143115 +/- 1.62e-23]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.017964718062614835755 +/- 2.07e-22]",
+          "height_error": "[-0.017856773382500143115 +/- 1.62e-23]",
+          "real_error": "[0.0019664026635646462559 +/- 2.45e-23]",
+          "predicted_height_gain": "[+/- 8.71e-28]"
+        },
+        "linear": {
+          "complex_error": "[4.5678900743216026589e-5 +/- 2.04e-25]",
+          "height_error": "[-3.8563737364482105426e-5 +/- 1.48e-25]",
+          "real_error": "[2.4482649644019914041e-5 +/- 4.08e-25]",
+          "predicted_height_gain": "[0.017818209645135661010 +/- 4.10e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[1.6120431800824986582e-7 +/- 2.91e-27]",
+          "height_error": "[-1.2230814546781599033e-7 +/- 2.99e-27]",
+          "real_error": "[-1.0501214071110308915e-7 +/- 7.42e-28]",
+          "predicted_height_gain": "[0.017856651074354675299 +/- 2.59e-23]"
+        }
+      }
+    },
+    {
+      "case": 2,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[21.022039638771554993 +/- 3.72e-19]"
+      },
+      "observed_height_gain": "[0.3175072516458 +/- 6.38e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.3993254466405 +/- 4.93e-14]",
+          "height_error": "[-0.3175072516458 +/- 6.38e-14]",
+          "real_error": "[-0.2421775329939 +/- 2.07e-14]",
+          "predicted_height_gain": "[+/- 3.75e-14]",
+          "nearest_positive_Riemann_ordinal": 2
+        },
+        "linear": {
+          "complex_error": "[0.0846716858 +/- 2.17e-11]",
+          "height_error": "[-0.08451102982 +/- 7.14e-12]",
+          "real_error": "[-0.00521346501 +/- 1.92e-12]",
+          "predicted_height_gain": "[0.2329962218 +/- 2.98e-11]",
+          "nearest_positive_Riemann_ordinal": 2
+        },
+        "quadratic": {
+          "complex_error": "[0.02317760834 +/- 9.15e-12]",
+          "height_error": "[0.00054653253 +/- 8.50e-12]",
+          "real_error": "[0.02317116377 +/- 6.80e-12]",
+          "predicted_height_gain": "[0.3180537842 +/- 3.28e-11]",
+          "nearest_positive_Riemann_ordinal": 2
+        }
+      }
+    },
+    {
+      "case": 2,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[21.022039638771554993 +/- 3.72e-19]"
+      },
+      "observed_height_gain": "[0.21906944557360181511 +/- 1.80e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.26636599758420921723 +/- 4.96e-21]",
+          "height_error": "[-0.21906944557360181511 +/- 1.80e-21]",
+          "real_error": "[-0.15152367037894001149 +/- 3.12e-21]",
+          "predicted_height_gain": "[+/- 2.25e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.032533989682275953067 +/- 5.62e-23]",
+          "height_error": "[-0.032249925247145708080 +/- 4.61e-22]",
+          "real_error": "[0.0042898492048033587240 +/- 2.73e-23]",
+          "predicted_height_gain": "[0.18681952032645610703 +/- 2.26e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0051660929194409395124 +/- 1.48e-23]",
+          "height_error": "[0.0016940255132274706214 +/- 2.34e-23]",
+          "real_error": "[0.0048804501444879256450 +/- 2.50e-23]",
+          "predicted_height_gain": "[0.22076347108682928573 +/- 4.22e-22]"
+        }
+      }
+    },
+    {
+      "case": 2,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[21.022039638771554993 +/- 3.72e-19]"
+      },
+      "observed_height_gain": "[0.11734851828732122215 +/- 2.25e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.13879781746265866651 +/- 3.69e-21]",
+          "height_error": "[-0.11734851828732122215 +/- 2.25e-21]",
+          "real_error": "[-0.074122597014458092771 +/- 1.62e-22]",
+          "predicted_height_gain": "[+/- 9.83e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0078378224524746786530 +/- 2.90e-23]",
+          "height_error": "[-0.0075339648897239437697 +/- 3.91e-23]",
+          "real_error": "[0.0021612111967420190343 +/- 3.19e-24]",
+          "predicted_height_gain": "[0.10981455339759727838 +/- 1.92e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00056574159056462849960 +/- 1.64e-24]",
+          "height_error": "[0.00030528518316145242262 +/- 2.46e-24]",
+          "real_error": "[0.00047630295425986410395 +/- 4.21e-24]",
+          "predicted_height_gain": "[0.11765380347048267457 +/- 3.69e-22]"
+        }
+      }
+    },
+    {
+      "case": 2,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[21.022039638771554993 +/- 3.72e-19]"
+      },
+      "observed_height_gain": "[0.060518505444712965852 +/- 3.13e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.070655045289027543055 +/- 3.45e-22]",
+          "height_error": "[-0.060518505444712965852 +/- 3.13e-22]",
+          "real_error": "[-0.036464310270904347828 +/- 1.19e-22]",
+          "predicted_height_gain": "[+/- 1.04e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.0019178847447235587692 +/- 4.13e-23]",
+          "height_error": "[-0.0018040734760248672935 +/- 3.61e-23]",
+          "real_error": "[0.00065084620852156983352 +/- 1.99e-24]",
+          "predicted_height_gain": "[0.058714431968688098558 +/- 1.52e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[6.5453949050294486088e-5 +/- 8.80e-26]",
+          "height_error": "[4.0949447730289360073e-5 +/- 1.07e-25]",
+          "real_error": "[5.1062336186888727526e-5 +/- 3.25e-25]",
+          "predicted_height_gain": "[0.060559454892443255212 +/- 2.40e-22]"
+        }
+      }
+    },
+    {
+      "case": 2,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[21.022039638771554993 +/- 3.72e-19]"
+      },
+      "observed_height_gain": "[0.030705117295430299716 +/- 3.91e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.035624213200417326126 +/- 3.22e-22]",
+          "height_error": "[-0.030705117295430299716 +/- 3.91e-22]",
+          "real_error": "[-0.018063231660548871627 +/- 2.52e-22]",
+          "predicted_height_gain": "[+/- 6.57e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00047414330917258375566 +/- 5.80e-26]",
+          "height_error": "[-0.00044067987249514019671 +/- 9.89e-25]",
+          "real_error": "[0.00017496607559980113397 +/- 4.31e-24]",
+          "predicted_height_gain": "[0.030264437422935159519 +/- 1.02e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[7.8532840034864241516e-6 +/- 3.42e-26]",
+          "height_error": "[5.2114859141219506924e-6 +/- 3.95e-26]",
+          "real_error": "[5.8749029103742858364e-6 +/- 5.23e-26]",
+          "predicted_height_gain": "[0.030710328781344421666 +/- 3.02e-22]"
+        }
+      }
+    },
+    {
+      "case": 2,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[21.022039638771554993 +/- 3.72e-19]"
+      },
+      "observed_height_gain": "[0.015462075879270485649 +/- 4.89e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.017884201419724086848 +/- 3.71e-22]",
+          "height_error": "[-0.015462075879270485649 +/- 4.89e-22]",
+          "real_error": "[-0.0089871502671838575284 +/- 1.17e-23]",
+          "predicted_height_gain": "[+/- 1.09e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.00011786600223433940917 +/- 4.88e-24]",
+          "height_error": "[-0.00010886331423052563825 +/- 5.17e-26]",
+          "real_error": "[4.5179345916592646668e-5 +/- 2.01e-25]",
+          "predicted_height_gain": "[0.015353212565039960010 +/- 2.62e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[9.6126092457161492861e-7 +/- 3.16e-27]",
+          "height_error": "[6.5497946537003321273e-7 +/- 1.79e-27]",
+          "real_error": "[7.0357975031396506834e-7 +/- 4.90e-27]",
+          "predicted_height_gain": "[0.015462730858735855682 +/- 2.76e-22]"
+        }
+      }
+    },
+    {
+      "case": 3,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[25.010857580145688763 +/- 2.14e-19]"
+      },
+      "observed_height_gain": "[0.6197852780018 +/- 4.56e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.6308436689868 +/- 5.10e-14]",
+          "height_error": "[-0.6197852780018 +/- 4.56e-14]",
+          "real_error": "[0.1176007817703 +/- 3.75e-14]",
+          "predicted_height_gain": "[+/- 6.87e-14]",
+          "nearest_positive_Riemann_ordinal": 3
+        },
+        "linear": {
+          "complex_error": "[0.05525613242 +/- 3.47e-12]",
+          "height_error": "[0.02389641824 +/- 5.13e-12]",
+          "real_error": "[0.049821695724 +/- 4.94e-13]",
+          "predicted_height_gain": "[0.64368169625 +/- 4.76e-12]",
+          "nearest_positive_Riemann_ordinal": 3
+        },
+        "quadratic": {
+          "complex_error": "[0.01879847697 +/- 3.64e-12]",
+          "height_error": "[0.01877660367 +/- 7.75e-12]",
+          "real_error": "[0.00090658196 +/- 4.03e-12]",
+          "predicted_height_gain": "[0.63856188168 +/- 7.37e-12]",
+          "nearest_positive_Riemann_ordinal": 3
+        }
+      }
+    },
+    {
+      "case": 3,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[25.010857580145688763 +/- 2.14e-19]"
+      },
+      "observed_height_gain": "[0.38225981527769859287 +/- 3.50e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.39172261858872085812 +/- 4.69e-21]",
+          "height_error": "[-0.38225981527769859287 +/- 3.50e-21]",
+          "real_error": "[0.085580625949242889526 +/- 8.31e-23]",
+          "predicted_height_gain": "[+/- 2.77e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.025109121282662083058 +/- 3.83e-22]",
+          "height_error": "[0.015631949278719328998 +/- 8.14e-23]",
+          "real_error": "[0.019649685324070210694 +/- 4.84e-22]",
+          "predicted_height_gain": "[0.39789176455641792187 +/- 1.42e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0058335102960164127194 +/- 3.23e-23]",
+          "height_error": "[0.0058199410661097624637 +/- 2.77e-23]",
+          "real_error": "[-0.00039765356874880005930 +/- 1.55e-24]",
+          "predicted_height_gain": "[0.38807975634380835534 +/- 2.84e-21]"
+        }
+      }
+    },
+    {
+      "case": 3,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[25.010857580145688763 +/- 2.14e-19]"
+      },
+      "observed_height_gain": "[0.18645588734580313893 +/- 3.84e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.19243855447797528771 +/- 1.45e-21]",
+          "height_error": "[-0.18645588734580313893 +/- 3.84e-21]",
+          "real_error": "[0.047610916013681479504 +/- 5.40e-23]",
+          "predicted_height_gain": "[+/- 1.09e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.0072024736089229101658 +/- 1.33e-23]",
+          "height_error": "[0.0054756654595422432245 +/- 3.31e-23]",
+          "real_error": "[0.0046789650418021979722 +/- 1.18e-23]",
+          "predicted_height_gain": "[0.19193155280534538216 +/- 1.64e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00085684625802143135884 +/- 1.93e-24]",
+          "height_error": "[0.00083327137163646265502 +/- 2.87e-24]",
+          "real_error": "[-0.00019961044836485254379 +/- 4.50e-24]",
+          "predicted_height_gain": "[0.18728915871743960159 +/- 1.15e-21]"
+        }
+      }
+    },
+    {
+      "case": 3,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[25.010857580145688763 +/- 2.14e-19]"
+      },
+      "observed_height_gain": "[0.091753440343563300612 +/- 1.77e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.095084108701330002983 +/- 4.39e-22]",
+          "height_error": "[-0.091753440343563300612 +/- 1.77e-22]",
+          "real_error": "[0.024945819542490691449 +/- 2.92e-22]",
+          "predicted_height_gain": "[+/- 8.35e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0019298366835398679575 +/- 4.85e-23]",
+          "height_error": "[0.0015812687828741314019 +/- 1.59e-23]",
+          "real_error": "[0.0011062814567025515983 +/- 1.32e-23]",
+          "predicted_height_gain": "[0.093334709126437432014 +/- 9.19e-23]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00011453207629443699557 +/- 1.26e-24]",
+          "height_error": "[0.00010766967417255472475 +/- 1.23e-24]",
+          "real_error": "[-3.9049171103758897114e-5 +/- 4.52e-25]",
+          "predicted_height_gain": "[0.091861110017735855337 +/- 7.55e-23]"
+        }
+      }
+    },
+    {
+      "case": 3,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[25.010857580145688763 +/- 2.14e-19]"
+      },
+      "observed_height_gain": "[0.045467917066098968901 +/- 1.84e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.047220204882227078351 +/- 2.04e-22]",
+          "height_error": "[-0.045467917066098968901 +/- 1.84e-22]",
+          "real_error": "[0.012744264074078508301 +/- 4.09e-23]",
+          "predicted_height_gain": "[+/- 2.83e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00049898799189000658728 +/- 3.34e-24]",
+          "height_error": "[0.00042230521479068200804 +/- 3.88e-24]",
+          "real_error": "[0.00026579563881113101114 +/- 2.78e-24]",
+          "predicted_height_gain": "[0.045890222280889650909 +/- 1.48e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[1.4742779138913351185e-5 +/- 1.21e-25]",
+          "height_error": "[1.3506890844235704708e-5 +/- 7.82e-26]",
+          "real_error": "[-5.9087592996059997545e-6 +/- 3.24e-26]",
+          "predicted_height_gain": "[0.045481423956943204606 +/- 4.76e-22]"
+        }
+      }
+    },
+    {
+      "case": 3,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[25.010857580145688763 +/- 2.14e-19]"
+      },
+      "observed_height_gain": "[0.022626694697968423969 +/- 4.83e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.023524728196747237648 +/- 9.59e-23]",
+          "height_error": "[-0.022626694697968423969 +/- 4.83e-22]",
+          "real_error": "[0.0064378197998827328745 +/- 4.17e-23]",
+          "predicted_height_gain": "[+/- 5.63e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00012681736165475533563 +/- 2.65e-24]",
+          "height_error": "[0.00010895014081441814340 +/- 3.90e-24]",
+          "real_error": "[6.4903852224590389191e-5 +/- 3.86e-25]",
+          "predicted_height_gain": "[0.022735644838782842113 +/- 1.14e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[1.8679395404295613837e-6 +/- 7.07e-27]",
+          "height_error": "[1.6846779909186554900e-6 +/- 2.33e-26]",
+          "real_error": "[-8.0688177176986934174e-7 +/- 3.41e-27]",
+          "predicted_height_gain": "[0.022628379375959342625 +/- 2.74e-23]"
+        }
+      }
+    },
+    {
+      "case": 4,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[30.424876125859513210 +/- 3.12e-19]"
+      },
+      "observed_height_gain": "[0.6426548330247 +/- 5.31e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.6652752464691 +/- 5.67e-14]",
+          "height_error": "[-0.6426548330247 +/- 5.31e-14]",
+          "real_error": "[0.1720055788470 +/- 4.66e-14]",
+          "predicted_height_gain": "[+/- 7.97e-14]",
+          "nearest_positive_Riemann_ordinal": 4
+        },
+        "linear": {
+          "complex_error": "[0.12016628727 +/- 1.36e-12]",
+          "height_error": "[0.058172032505 +/- 9.02e-13]",
+          "real_error": "[0.105147283515 +/- 6.26e-13]",
+          "predicted_height_gain": "[0.700826865530 +/- 6.55e-13]",
+          "nearest_positive_Riemann_ordinal": 4
+        },
+        "quadratic": {
+          "complex_error": "[0.02409208659 +/- 6.77e-12]",
+          "height_error": "[0.02407124750 +/- 2.36e-12]",
+          "real_error": "[-0.00100183821 +/- 2.22e-12]",
+          "predicted_height_gain": "[0.66672608053 +/- 6.71e-12]",
+          "nearest_positive_Riemann_ordinal": 4
+        }
+      }
+    },
+    {
+      "case": 4,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[30.424876125859513210 +/- 3.12e-19]"
+      },
+      "observed_height_gain": "[0.38811701488334911860 +/- 3.54e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.41008499687488463272 +/- 2.08e-21]",
+          "height_error": "[-0.38811701488334911860 +/- 3.54e-21]",
+          "real_error": "[0.13241936195251923108 +/- 1.40e-21]",
+          "predicted_height_gain": "[+/- 1.16e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.050889602455780872549 +/- 3.82e-22]",
+          "height_error": "[0.031008659252333372069 +/- 4.51e-22]",
+          "real_error": "[0.040351142356569021588 +/- 4.71e-22]",
+          "predicted_height_gain": "[0.41912567413568249067 +/- 4.99e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0078136203264383613364 +/- 2.22e-23]",
+          "height_error": "[0.0075517246776112212741 +/- 4.33e-23]",
+          "real_error": "[-0.0020060201891527464100 +/- 7.02e-24]",
+          "predicted_height_gain": "[0.39566873956096033987 +/- 6.14e-22]"
+        }
+      }
+    },
+    {
+      "case": 4,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[30.424876125859513210 +/- 3.12e-19]"
+      },
+      "observed_height_gain": "[0.18532285224360591709 +/- 1.41e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.20028141401557341331 +/- 3.51e-21]",
+          "height_error": "[-0.18532285224360591709 +/- 1.41e-22]",
+          "real_error": "[0.075947911336468863936 +/- 3.14e-22]",
+          "predicted_height_gain": "[+/- 7.59e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.013458519671071335552 +/- 2.21e-22]",
+          "height_error": "[0.0097486715883425296393 +/- 3.24e-23]",
+          "real_error": "[0.0092787474369796934583 +/- 2.06e-23]",
+          "predicted_height_gain": "[0.19507152383194844673 +/- 8.73e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0011824274405201597679 +/- 3.52e-23]",
+          "height_error": "[0.0010304617596671274631 +/- 1.78e-23]",
+          "real_error": "[-0.00057989931363882748262 +/- 3.90e-24]",
+          "predicted_height_gain": "[0.18635331400327304455 +/- 2.98e-21]"
+        }
+      }
+    },
+    {
+      "case": 4,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[30.424876125859513210 +/- 3.12e-19]"
+      },
+      "observed_height_gain": "[0.090095792168370474037 +/- 4.17e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.098662666935717366166 +/- 1.19e-22]",
+          "height_error": "[-0.090095792168370474037 +/- 4.17e-22]",
+          "real_error": "[0.040212809904582524317 +/- 3.81e-22]",
+          "predicted_height_gain": "[+/- 5.57e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0034457993342351672259 +/- 3.17e-23]",
+          "height_error": "[0.0026931846924493001847 +/- 9.64e-24]",
+          "real_error": "[0.0021494858139034763292 +/- 2.39e-24]",
+          "predicted_height_gain": "[0.092788976860819774222 +/- 1.07e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00015968601925068523782 +/- 3.53e-24]",
+          "height_error": "[0.00012603314885287696948 +/- 2.94e-24]",
+          "real_error": "[-9.8057483826369790223e-5 +/- 1.65e-25]",
+          "predicted_height_gain": "[0.090221825317223351007 +/- 1.07e-22]"
+        }
+      }
+    },
+    {
+      "case": 4,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[30.424876125859513210 +/- 3.12e-19]"
+      },
+      "observed_height_gain": "[0.044359000635383676846 +/- 3.94e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.048921955874398377594 +/- 1.06e-23]",
+          "height_error": "[-0.044359000635383676846 +/- 3.94e-22]",
+          "real_error": "[0.020630967723463979087 +/- 2.72e-22]",
+          "predicted_height_gain": "[+/- 4.45e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00087028300958491819354 +/- 4.30e-24]",
+          "height_error": "[0.00070431885661460205430 +/- 4.18e-24]",
+          "real_error": "[0.00051120198061948316788 +/- 5.44e-25]",
+          "predicted_height_gain": "[0.045063319491998278901 +/- 3.03e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[2.0625305009676112897e-5 +/- 1.18e-26]",
+          "height_error": "[1.5226284236567525837e-5 +/- 4.06e-26]",
+          "real_error": "[-1.3912709121139054290e-5 +/- 1.03e-25]",
+          "predicted_height_gain": "[0.044374226919620244372 +/- 2.31e-22]"
+        }
+      }
+    },
+    {
+      "case": 4,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[30.424876125859513210 +/- 3.12e-19]"
+      },
+      "observed_height_gain": "[0.022001531660663356386 +/- 3.51e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.024353491442851281719 +/- 7.26e-23]",
+          "height_error": "[-0.022001531660663356386 +/- 3.51e-22]",
+          "real_error": "[0.010441510907998829209 +/- 2.30e-22]",
+          "predicted_height_gain": "[+/- 2.13e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00021857216648025948428 +/- 4.29e-24]",
+          "height_error": "[0.00017984257541516484800 +/- 3.12e-24]",
+          "real_error": "[0.00012421932228085537205 +/- 4.69e-24]",
+          "predicted_height_gain": "[0.022181374236078521234 +/- 3.55e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[2.6163985729548723032e-6 +/- 4.22e-26]",
+          "height_error": "[1.8582102811272521801e-6 +/- 1.02e-26]",
+          "real_error": "[-1.8419001177244304270e-6 +/- 2.16e-26]",
+          "predicted_height_gain": "[0.022003389870944483639 +/- 4.69e-22]"
+        }
+      }
+    },
+    {
+      "case": 5,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[32.935061587739189691 +/- 3.38e-19]"
+      },
+      "observed_height_gain": "[0.3678619251478 +/- 5.53e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.3819949569600 +/- 8.73e-14]",
+          "height_error": "[-0.3678619251478 +/- 5.53e-14]",
+          "real_error": "[-0.1029453795440 +/- 4.70e-14]",
+          "predicted_height_gain": "[+/- 8.99e-14]",
+          "nearest_positive_Riemann_ordinal": 5
+        },
+        "linear": {
+          "complex_error": "[0.10722465637 +/- 3.49e-12]",
+          "height_error": "[-0.044475840667 +/- 9.35e-13]",
+          "real_error": "[-0.09756549867 +/- 2.91e-12]",
+          "predicted_height_gain": "[0.32338608448 +/- 1.39e-12]",
+          "nearest_positive_Riemann_ordinal": 5
+        },
+        "quadratic": {
+          "complex_error": "[0.0323284721 +/- 4.25e-11]",
+          "height_error": "[-0.03220591757 +/- 7.38e-12]",
+          "real_error": "[0.00281229080 +/- 3.67e-12]",
+          "predicted_height_gain": "[0.33565600758 +/- 8.01e-12]",
+          "nearest_positive_Riemann_ordinal": 5
+        }
+      }
+    },
+    {
+      "case": 5,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[32.935061587739189691 +/- 3.38e-19]"
+      },
+      "observed_height_gain": "[0.24449815505558454154 +/- 2.54e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.25952757597963899799 +/- 9.67e-22]",
+          "height_error": "[-0.24449815505558454154 +/- 2.54e-21]",
+          "real_error": "[-0.087035710304923876687 +/- 1.27e-23]",
+          "predicted_height_gain": "[+/- 8.27e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.045752143463164163879 +/- 8.64e-23]",
+          "height_error": "[-0.027445789240869515017 +/- 4.09e-22]",
+          "real_error": "[-0.036605836753443111284 +/- 2.02e-22]",
+          "predicted_height_gain": "[0.21705236581471502652 +/- 5.69e-23]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0091241582977594735020 +/- 2.55e-23]",
+          "height_error": "[-0.0086868552504012831791 +/- 4.10e-23]",
+          "real_error": "[0.0027908440481597521247 +/- 1.16e-23]",
+          "predicted_height_gain": "[0.23581129980518325836 +/- 1.60e-21]"
+        }
+      }
+    },
+    {
+      "case": 5,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[32.935061587739189691 +/- 3.38e-19]"
+      },
+      "observed_height_gain": "[0.13020816740678831701 +/- 1.60e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.14028694973349698631 +/- 1.39e-21]",
+          "height_error": "[-0.13020816740678831701 +/- 1.60e-21]",
+          "real_error": "[-0.052213613225810170532 +/- 1.89e-22]",
+          "predicted_height_gain": "[+/- 1.15e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.012167527372766250343 +/- 4.14e-22]",
+          "height_error": "[-0.0090593113183566547771 +/- 2.05e-23]",
+          "real_error": "[-0.0081226597124409305146 +/- 3.71e-23]",
+          "predicted_height_gain": "[0.12114885608843166223 +/- 4.48e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0012969083529825766560 +/- 3.24e-23]",
+          "height_error": "[-0.0010914254352926926126 +/- 3.33e-23]",
+          "real_error": "[0.00070054392812452246602 +/- 3.55e-24]",
+          "predicted_height_gain": "[0.12911674197149562440 +/- 1.05e-21]"
+        }
+      }
+    },
+    {
+      "case": 5,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[32.935061587739189691 +/- 3.38e-19]"
+      },
+      "observed_height_gain": "[0.067503411961745263615 +/- 2.27e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.073095939692167312215 +/- 2.48e-23]",
+          "height_error": "[-0.067503411961745263615 +/- 2.27e-22]",
+          "real_error": "[-0.028041144288417817755 +/- 4.67e-22]",
+          "predicted_height_gain": "[+/- 1.09e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.0031230058272008043304 +/- 3.58e-23]",
+          "height_error": "[-0.0025313412477818691515 +/- 2.20e-23]",
+          "real_error": "[-0.0018290644832832739256 +/- 3.68e-23]",
+          "predicted_height_gain": "[0.064972070713963394463 +/- 2.52e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00017235110630419961233 +/- 4.57e-24]",
+          "height_error": "[-0.00012893591083032280771 +/- 4.18e-24]",
+          "real_error": "[0.00011436972826161895299 +/- 4.00e-24]",
+          "predicted_height_gain": "[0.067374476050914940807 +/- 6.77e-23]"
+        }
+      }
+    },
+    {
+      "case": 5,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[32.935061587739189691 +/- 3.38e-19]"
+      },
+      "observed_height_gain": "[0.034400406943954667871 +/- 4.28e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.037317092057085684718 +/- 2.24e-22]",
+          "height_error": "[-0.034400406943954667871 +/- 4.28e-22]",
+          "real_error": "[-0.014462965176177496711 +/- 4.70e-22]",
+          "predicted_height_gain": "[+/- 1.08e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.00078966264600787216635 +/- 3.62e-24]",
+          "height_error": "[-0.00066429454755389990941 +/- 4.95e-24]",
+          "real_error": "[-0.00042694244177677327668 +/- 2.05e-24]",
+          "predicted_height_gain": "[0.033736112396400767962 +/- 2.21e-23]"
+        },
+        "quadratic": {
+          "complex_error": "[2.2158527103151731783e-5 +/- 3.62e-25]",
+          "height_error": "[-1.5300512633107843123e-5 +/- 4.95e-25]",
+          "real_error": "[1.6027933009131813047e-5 +/- 4.88e-25]",
+          "predicted_height_gain": "[0.034385106431321560028 +/- 3.05e-22]"
+        }
+      }
+    },
+    {
+      "case": 5,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[32.935061587739189691 +/- 3.38e-19]"
+      },
+      "observed_height_gain": "[0.017368169354134495539 +/- 2.19e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.018853986989702920880 +/- 5.09e-23]",
+          "height_error": "[-0.017368169354134495539 +/- 2.19e-22]",
+          "real_error": "[-0.0073361787528651691415 +/- 6.71e-24]",
+          "predicted_height_gain": "[+/- 1.15e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.00019843308719936934704 +/- 3.69e-24]",
+          "height_error": "[-0.00016983713269467228176 +/- 4.80e-24]",
+          "real_error": "[-0.00010262084804524272932 +/- 3.17e-24]",
+          "predicted_height_gain": "[0.017198332221439823257 +/- 4.55e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[2.8067140830392669381e-6 +/- 2.91e-26]",
+          "height_error": "[-1.8495777826999400716e-6 +/- 1.96e-26]",
+          "real_error": "[2.1110911798578777375e-6 +/- 1.25e-26]",
+          "predicted_height_gain": "[0.017366319776351795599 +/- 1.48e-22]"
+        }
+      }
+    },
+    {
+      "case": 6,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[37.586178158825671257 +/- 2.18e-19]"
+      },
+      "observed_height_gain": "[0.3703477987629 +/- 7.80e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.800920793353 +/- 2.07e-13]",
+          "height_error": "[-0.3703477987629 +/- 7.80e-14]",
+          "real_error": "[-0.7101525365560 +/- 4.85e-14]",
+          "predicted_height_gain": "[+/- 9.85e-14]",
+          "nearest_positive_Riemann_ordinal": 6
+        },
+        "linear": {
+          "complex_error": "[0.4353216060 +/- 1.63e-11]",
+          "height_error": "[-0.3703477987629 +/- 7.80e-14]",
+          "real_error": "[-0.2287955607 +/- 1.81e-11]",
+          "predicted_height_gain": "[+/- 9.85e-14]",
+          "nearest_positive_Riemann_ordinal": 6
+        },
+        "quadratic": {
+          "complex_error": "[0.2740537535 +/- 6.60e-11]",
+          "height_error": "[-0.2694940743 +/- 5.66e-11]",
+          "real_error": "[0.0497835688 +/- 7.87e-11]",
+          "predicted_height_gain": "[0.1008537244 +/- 6.82e-11]",
+          "nearest_positive_Riemann_ordinal": 6
+        }
+      }
+    },
+    {
+      "case": 6,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[37.586178158825671257 +/- 2.18e-19]"
+      },
+      "observed_height_gain": "[0.34816439557814581886 +/- 3.37e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.59781850693791904244 +/- 1.37e-21]",
+          "height_error": "[-0.34816439557814581886 +/- 3.37e-21]",
+          "real_error": "[-0.48597172848756043090 +/- 2.72e-22]",
+          "predicted_height_gain": "[+/- 3.57e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.24970374140624502145 +/- 3.23e-21]",
+          "height_error": "[-0.24905344023474407694 +/- 3.06e-21]",
+          "real_error": "[-0.018009508030916463215 +/- 5.36e-23]",
+          "predicted_height_gain": "[0.099110955343401741926 +/- 4.23e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.16496528430045868314 +/- 2.28e-21]",
+          "height_error": "[-0.081202175984016383638 +/- 4.88e-22]",
+          "real_error": "[0.14359579255602161597 +/- 1.17e-21]",
+          "predicted_height_gain": "[0.26696221959412943522 +/- 4.89e-21]"
+        }
+      }
+    },
+    {
+      "case": 6,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[37.586178158825671257 +/- 2.18e-19]"
+      },
+      "observed_height_gain": "[0.23732926805410101574 +/- 3.24e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.32673970101940882826 +/- 3.95e-21]",
+          "height_error": "[-0.23732926805410101574 +/- 3.24e-22]",
+          "real_error": "[-0.22457437687135488867 +/- 4.14e-21]",
+          "predicted_height_gain": "[+/- 4.57e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.066494941133810796821 +/- 6.65e-23]",
+          "height_error": "[-0.052684090104856563575 +/- 2.53e-22]",
+          "real_error": "[0.040570479984988072870 +/- 3.29e-22]",
+          "predicted_height_gain": "[0.18464517794924445216 +/- 4.43e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.025295776918168306288 +/- 3.46e-22]",
+          "height_error": "[0.020607617182242983691 +/- 4.77e-22]",
+          "real_error": "[0.014669779956218164232 +/- 1.61e-22]",
+          "predicted_height_gain": "[0.25793688523634399943 +/- 2.01e-22]"
+        }
+      }
+    },
+    {
+      "case": 6,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[37.586178158825671257 +/- 2.18e-19]"
+      },
+      "observed_height_gain": "[0.12920538442653903881 +/- 3.72e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.16402604657899828302 +/- 2.65e-21]",
+          "height_error": "[-0.12920538442653903881 +/- 3.72e-21]",
+          "real_error": "[-0.10104708106385843327 +/- 4.74e-21]",
+          "predicted_height_gain": "[+/- 7.57e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.014186422285953097163 +/- 2.26e-22]",
+          "height_error": "[-0.0080316432034835517957 +/- 4.44e-24]",
+          "real_error": "[0.011693899466273992588 +/- 4.50e-22]",
+          "predicted_height_gain": "[0.12117374122305548702 +/- 1.99e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0022632583799326505680 +/- 1.34e-23]",
+          "height_error": "[0.0022622039478254290804 +/- 5.31e-24]",
+          "real_error": "[-6.9078164266354171726e-5 +/- 4.33e-25]",
+          "predicted_height_gain": "[0.13146758837436446789 +/- 4.11e-21]"
+        }
+      }
+    },
+    {
+      "case": 6,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[37.586178158825671257 +/- 2.18e-19]"
+      },
+      "observed_height_gain": "[0.066348642498083612974 +/- 4.70e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.081674340206661572485 +/- 2.44e-22]",
+          "height_error": "[-0.066348642498083612974 +/- 4.70e-22]",
+          "real_error": "[-0.047629355305892900781 +/- 1.54e-22]",
+          "predicted_height_gain": "[+/- 9.97e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0032209640174239088505 +/- 1.84e-23]",
+          "height_error": "[-0.0015049616703746174817 +/- 4.24e-24]",
+          "real_error": "[0.0028477534254641513459 +/- 1.32e-23]",
+          "predicted_height_gain": "[0.064843680827708995493 +/- 2.36e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00022832809442527787194 +/- 1.38e-24]",
+          "height_error": "[0.00022020839363952355570 +/- 1.24e-24]",
+          "real_error": "[-6.0348836563592919370e-5 +/- 4.67e-25]",
+          "predicted_height_gain": "[0.066568850891723136530 +/- 1.68e-22]"
+        }
+      }
+    },
+    {
+      "case": 6,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[37.586178158825671257 +/- 2.18e-19]"
+      },
+      "observed_height_gain": "[0.033524279583043393159 +/- 1.87e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.040718431319801528521 +/- 3.55e-22]",
+          "height_error": "[-0.033524279583043393159 +/- 1.87e-22]",
+          "real_error": "[-0.023110891968579099935 +/- 2.28e-22]",
+          "predicted_height_gain": "[+/- 8.61e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00076727814967081851188 +/- 2.02e-24]",
+          "height_error": "[-0.00032489321949077051033 +/- 3.87e-24]",
+          "real_error": "[0.00069509722693389950730 +/- 5.20e-26]",
+          "predicted_height_gain": "[0.033199386363552622649 +/- 1.40e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[2.5572103176904789310e-5 +/- 2.93e-25]",
+          "height_error": "[2.3877048052540873630e-5 +/- 1.03e-25]",
+          "real_error": "[-9.1552737363182151961e-6 +/- 3.18e-26]",
+          "predicted_height_gain": "[0.033548156631095934033 +/- 1.84e-22]"
+        }
+      }
+    },
+    {
+      "case": 7,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[40.918719012147495187 +/- 3.99e-19]"
+      },
+      "observed_height_gain": "[0.6017689343437 +/- 4.36e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.6394699748307 +/- 7.04e-14]",
+          "height_error": "[-0.6017689343437 +/- 4.36e-14]",
+          "real_error": "[0.2163238275569 +/- 1.29e-14]",
+          "predicted_height_gain": "[+/- 7.75e-14]",
+          "nearest_positive_Riemann_ordinal": 7
+        },
+        "linear": {
+          "complex_error": "[0.16082792506 +/- 4.47e-12]",
+          "height_error": "[0.15882637103 +/- 2.25e-12]",
+          "real_error": "[0.025294373805 +/- 6.54e-13]",
+          "predicted_height_gain": "[0.76059530537 +/- 2.99e-12]",
+          "nearest_positive_Riemann_ordinal": 7
+        },
+        "quadratic": {
+          "complex_error": "[0.08368463421 +/- 9.25e-12]",
+          "height_error": "[0.01866614595 +/- 6.21e-12]",
+          "real_error": "[-0.08157630169 +/- 4.21e-12]",
+          "predicted_height_gain": "[0.62043508030 +/- 7.54e-12]",
+          "nearest_positive_Riemann_ordinal": 7
+        }
+      }
+    },
+    {
+      "case": 7,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[40.918719012147495187 +/- 3.99e-19]"
+      },
+      "observed_height_gain": "[0.34075080816474094215 +/- 2.68e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.36630938631658478663 +/- 1.12e-21]",
+          "height_error": "[-0.34075080816474094215 +/- 2.68e-21]",
+          "real_error": "[0.13443010540317548747 +/- 1.29e-21]",
+          "predicted_height_gain": "[+/- 7.85e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.064008022442081131382 +/- 2.77e-22]",
+          "height_error": "[0.062105525394292566967 +/- 4.03e-22]",
+          "real_error": "[-0.015489695040408085980 +/- 1.55e-22]",
+          "predicted_height_gain": "[0.40285633355903350912 +/- 7.73e-23]"
+        },
+        "quadratic": {
+          "complex_error": "[0.022274618027060098654 +/- 1.72e-22]",
+          "height_error": "[-0.0061413151226732753335 +/- 4.95e-23]",
+          "real_error": "[-0.021411278729105724642 +/- 1.13e-22]",
+          "predicted_height_gain": "[0.33460949304206766682 +/- 7.77e-22]"
+        }
+      }
+    },
+    {
+      "case": 7,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[40.918719012147495187 +/- 3.99e-19]"
+      },
+      "observed_height_gain": "[0.15596893056198915714 +/- 4.87e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.16741903773967116315 +/- 1.92e-21]",
+          "height_error": "[-0.15596893056198915714 +/- 4.87e-21]",
+          "real_error": "[0.060850857816688516015 +/- 2.54e-22]",
+          "predicted_height_gain": "[+/- 5.67e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.015583735907054478486 +/- 3.78e-23]",
+          "height_error": "[0.012982587095458219426 +/- 1.91e-22]",
+          "real_error": "[-0.0086200497173543484785 +/- 4.11e-23]",
+          "predicted_height_gain": "[0.16895151765744737657 +/- 6.73e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0025921419261191948371 +/- 3.46e-23]",
+          "height_error": "[-0.0016718787365661469376 +/- 5.70e-24]",
+          "real_error": "[-0.0019809142473521951011 +/- 2.88e-23]",
+          "predicted_height_gain": "[0.15429705182542301021 +/- 2.75e-21]"
+        }
+      }
+    },
+    {
+      "case": 7,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[40.918719012147495187 +/- 3.99e-19]"
+      },
+      "observed_height_gain": "[0.074957600721962102257 +/- 3.51e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.080031142482245697816 +/- 8.52e-23]",
+          "height_error": "[-0.074957600721962102257 +/- 3.51e-22]",
+          "real_error": "[0.028041787764342319132 +/- 4.75e-22]",
+          "predicted_height_gain": "[+/- 6.87e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0038165240297696752097 +/- 2.16e-23]",
+          "height_error": "[0.0028001364777362059451 +/- 4.47e-23]",
+          "real_error": "[-0.0025932781138667782567 +/- 2.67e-23]",
+          "predicted_height_gain": "[0.077757737199698308202 +/- 4.95e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00030107919762321468574 +/- 1.15e-24]",
+          "height_error": "[-0.00023289545172367893255 +/- 3.89e-24]",
+          "real_error": "[-0.00019080983152831066685 +/- 8.84e-25]",
+          "predicted_height_gain": "[0.074724705270238423325 +/- 2.05e-22]"
+        }
+      }
+    },
+    {
+      "case": 7,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[40.918719012147495187 +/- 3.99e-19]"
+      },
+      "observed_height_gain": "[0.036808109902607661364 +/- 7.05e-23]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.039154256546295533140 +/- 4.00e-22]",
+          "height_error": "[-0.036808109902607661364 +/- 7.05e-23]",
+          "real_error": "[0.013349863336030164347 +/- 2.37e-22]",
+          "predicted_height_gain": "[+/- 7.91e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00094382705604040095849 +/- 2.52e-24]",
+          "height_error": "[0.00064116126520690787628 +/- 2.58e-24]",
+          "real_error": "[-0.00069261947973773255332 +/- 2.56e-24]",
+          "predicted_height_gain": "[0.037449271167814569240 +/- 2.08e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[3.6055963767615802702e-5 +/- 1.85e-25]",
+          "height_error": "[-2.9670381989451253164e-5 +/- 4.93e-26]",
+          "real_error": "[-2.0486604301632573058e-5 +/- 2.89e-25]",
+          "predicted_height_gain": "[0.036778439520618210111 +/- 2.35e-22]"
+        }
+      }
+    },
+    {
+      "case": 7,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[40.918719012147495187 +/- 3.99e-19]"
+      },
+      "observed_height_gain": "[0.018247478367692714684 +/- 4.16e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.019370367674781434276 +/- 2.35e-22]",
+          "height_error": "[-0.018247478367692714684 +/- 4.16e-22]",
+          "real_error": "[0.0064992828124958471928 +/- 2.61e-23]",
+          "predicted_height_gain": "[+/- 4.27e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00023468540316275226100 +/- 3.04e-24]",
+          "height_error": "[0.00015285912145284663047 +/- 6.10e-25]",
+          "real_error": "[-0.00017807674594490840477 +/- 3.46e-24]",
+          "predicted_height_gain": "[0.018400337489145561315 +/- 1.14e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[4.4068358137202048778e-6 +/- 3.69e-26]",
+          "height_error": "[-3.7200168393087250480e-6 +/- 9.01e-27]",
+          "real_error": "[-2.3625572171582519347e-6 +/- 3.54e-26]",
+          "predicted_height_gain": "[0.018243758350853405959 +/- 3.68e-22]"
+        }
+      }
+    },
+    {
+      "case": 8,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[43.327073280914999519 +/- 4.97e-19]"
+      },
+      "observed_height_gain": "[0.8397287376822 +/- 2.24e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.8678597624787 +/- 4.13e-14]",
+          "height_error": "[-0.8397287376822 +/- 2.24e-14]",
+          "real_error": "[-0.2191716551935 +/- 4.96e-14]",
+          "predicted_height_gain": "[+/- 4.39e-14]",
+          "nearest_positive_Riemann_ordinal": 8
+        },
+        "linear": {
+          "complex_error": "[0.20686458470 +/- 5.71e-12]",
+          "height_error": "[-0.20610250801 +/- 6.93e-12]",
+          "real_error": "[0.01774014069 +/- 6.67e-12]",
+          "predicted_height_gain": "[0.63362622967 +/- 4.76e-12]",
+          "nearest_positive_Riemann_ordinal": 8
+        },
+        "quadratic": {
+          "complex_error": "[0.0906017654 +/- 4.27e-11]",
+          "height_error": "[-0.0171022054 +/- 4.44e-11]",
+          "real_error": "[0.0889729985 +/- 5.95e-11]",
+          "predicted_height_gain": "[0.8226265323 +/- 2.66e-11]",
+          "nearest_positive_Riemann_ordinal": 8
+        }
+      }
+    },
+    {
+      "case": 8,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[43.327073280914999519 +/- 4.97e-19]"
+      },
+      "observed_height_gain": "[0.57624072120845907213 +/- 4.68e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.58970083023440656520 +/- 4.35e-22]",
+          "height_error": "[-0.57624072120845907213 +/- 4.68e-21]",
+          "real_error": "[-0.12527450019977465099 +/- 7.88e-22]",
+          "predicted_height_gain": "[+/- 1.16e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.087846454408236937565 +/- 3.56e-22]",
+          "height_error": "[-0.080118636704646239794 +/- 1.10e-22]",
+          "real_error": "[0.036027817095785350874 +/- 3.28e-22]",
+          "predicted_height_gain": "[0.49612208450381283234 +/- 5.70e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.026653724809773734363 +/- 2.57e-22]",
+          "height_error": "[0.0068800402397500740178 +/- 4.37e-23]",
+          "real_error": "[0.025750458103392406174 +/- 4.69e-22]",
+          "predicted_height_gain": "[0.58312076144820914615 +/- 2.44e-21]"
+        }
+      }
+    },
+    {
+      "case": 8,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[43.327073280914999519 +/- 4.97e-19]"
+      },
+      "observed_height_gain": "[0.30692388787968043815 +/- 9.88e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.31104613268718702721 +/- 3.91e-21]",
+          "height_error": "[-0.30692388787968043815 +/- 9.88e-22]",
+          "real_error": "[-0.050472009158309811177 +/- 3.70e-22]",
+          "predicted_height_gain": "[+/- 4.65e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.023014095787859206244 +/- 4.12e-22]",
+          "height_error": "[-0.017257042368208062386 +/- 5.88e-23]",
+          "real_error": "[0.015226394636769097242 +/- 1.77e-22]",
+          "predicted_height_gain": "[0.28966684551147237576 +/- 4.93e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0034562765025328781349 +/- 3.25e-23]",
+          "height_error": "[0.0018147241953766258939 +/- 1.52e-23]",
+          "real_error": "[0.0029415341841759313621 +/- 3.33e-25]",
+          "predicted_height_gain": "[0.30873861207505706404 +/- 4.88e-21]"
+        }
+      }
+    },
+    {
+      "case": 8,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[43.327073280914999519 +/- 4.97e-19]"
+      },
+      "observed_height_gain": "[0.15753765395493485689 +/- 3.57e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.15894030281723295146 +/- 3.98e-21]",
+          "height_error": "[-0.15753765395493485689 +/- 3.57e-21]",
+          "real_error": "[-0.021069111182223770601 +/- 3.28e-22]",
+          "predicted_height_gain": "[+/- 1.01e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.0059229148892733760847 +/- 3.51e-23]",
+          "height_error": "[-0.0038269508835097975109 +/- 4.70e-23]",
+          "real_error": "[0.0045205494932341830436 +/- 3.24e-23]",
+          "predicted_height_gain": "[0.15371070307142505938 +/- 4.52e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00043297211167685076948 +/- 4.82e-24]",
+          "height_error": "[0.00025760134139581798639 +/- 3.22e-24]",
+          "real_error": "[0.00034800344596136769450 +/- 4.49e-24]",
+          "predicted_height_gain": "[0.15779525529633067487 +/- 2.83e-21]"
+        }
+      }
+    },
+    {
+      "case": 8,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[43.327073280914999519 +/- 4.97e-19]"
+      },
+      "observed_height_gain": "[0.079692916539671273104 +/- 2.08e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.080240837801353199022 +/- 4.90e-22]",
+          "height_error": "[-0.079692916539671273104 +/- 2.08e-22]",
+          "real_error": "[-0.0093611486722549880105 +/- 7.10e-24]",
+          "predicted_height_gain": "[+/- 6.37e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0015079047396283997744 +/- 4.47e-24]",
+          "height_error": "[-0.00089101910206306303075 +/- 2.89e-24]",
+          "real_error": "[0.0012164956488013119823 +/- 9.82e-24]",
+          "predicted_height_gain": "[0.078801897437608210073 +/- 4.61e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[5.4460184725239841774e-5 +/- 1.03e-25]",
+          "height_error": "[3.3470567718792149922e-5 +/- 6.04e-26]",
+          "real_error": "[4.2960828866410338819e-5 +/- 1.23e-25]",
+          "predicted_height_gain": "[0.079726387107390065254 +/- 1.30e-22]"
+        }
+      }
+    },
+    {
+      "case": 8,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[43.327073280914999519 +/- 4.97e-19]"
+      },
+      "observed_height_gain": "[0.040065005777769518605 +/- 2.48e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.040302742515901370047 +/- 6.00e-23]",
+          "height_error": "[-0.040065005777769518605 +/- 2.48e-22]",
+          "real_error": "[-0.0043710829699673954635 +/- 2.12e-24]",
+          "predicted_height_gain": "[+/- 6.41e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00038087719729621348771 +/- 5.36e-25]",
+          "height_error": "[-0.00021431713060397726848 +/- 4.81e-24]",
+          "real_error": "[0.00031485807429681152297 +/- 1.04e-25]",
+          "predicted_height_gain": "[0.039850688647165541336 +/- 2.68e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[6.8486670301548257357e-6 +/- 1.14e-26]",
+          "height_error": "[4.2532145001181301063e-6 +/- 1.99e-26]",
+          "real_error": "[5.3679052251240991299e-6 +/- 3.08e-26]",
+          "predicted_height_gain": "[0.040069258992269636735 +/- 1.42e-22]"
+        }
+      }
+    },
+    {
+      "case": 9,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[48.005150881167159728 +/- 5.76e-20]"
+      },
+      "observed_height_gain": "[0.9057938400054 +/- 5.08e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.9060971816250 +/- 1.95e-14]",
+          "height_error": "[-0.9057938400054 +/- 5.08e-14]",
+          "real_error": "[0.0234440175119 +/- 3.33e-14]",
+          "predicted_height_gain": "[+/- 2.11e-14]",
+          "nearest_positive_Riemann_ordinal": 9
+        },
+        "linear": {
+          "complex_error": "[0.32077651237 +/- 7.55e-12]",
+          "height_error": "[-0.06146718433 +/- 6.52e-12]",
+          "real_error": "[0.31483226667 +/- 2.88e-12]",
+          "predicted_height_gain": "[0.84432665568 +/- 5.49e-12]",
+          "nearest_positive_Riemann_ordinal": 9
+        },
+        "quadratic": {
+          "complex_error": "[0.1898840790 +/- 6.30e-11]",
+          "height_error": "[0.1805797075 +/- 3.07e-11]",
+          "real_error": "[0.0587105840 +/- 5.17e-11]",
+          "predicted_height_gain": "[1.08637354753 +/- 9.59e-12]",
+          "nearest_positive_Riemann_ordinal": 9
+        }
+      }
+    },
+    {
+      "case": 9,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[48.005150881167159728 +/- 5.76e-20]"
+      },
+      "observed_height_gain": "[0.56792350655055612778 +/- 4.47e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.57519972890417702265 +/- 2.15e-21]",
+          "height_error": "[-0.56792350655055612778 +/- 4.47e-21]",
+          "real_error": "[0.091200980470382942117 +/- 1.52e-22]",
+          "predicted_height_gain": "[+/- 3.07e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.13456910731520056983 +/- 1.46e-23]",
+          "height_error": "[0.029668417028156635991 +/- 2.23e-22]",
+          "real_error": "[0.13125787471482750196 +/- 1.55e-21]",
+          "predicted_height_gain": "[0.59759192357871276378 +/- 4.32e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.047401186835119635334 +/- 4.51e-22]",
+          "height_error": "[0.047358206227370588029 +/- 1.99e-22]",
+          "real_error": "[-0.0020181219744496829359 +/- 9.48e-24]",
+          "predicted_height_gain": "[0.61528171277792671581 +/- 3.27e-21]"
+        }
+      }
+    },
+    {
+      "case": 9,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[48.005150881167159728 +/- 5.76e-20]"
+      },
+      "observed_height_gain": "[0.27036244442158161417 +/- 4.65e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.28123998498935291961 +/- 3.56e-21]",
+          "height_error": "[-0.27036244442158161417 +/- 4.65e-21]",
+          "real_error": "[0.077460169140008003565 +/- 8.69e-23]",
+          "predicted_height_gain": "[+/- 5.11e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.036107097293327920698 +/- 2.24e-22]",
+          "height_error": "[0.020044100209201080846 +/- 5.21e-23]",
+          "real_error": "[0.030032590993008805733 +/- 1.78e-22]",
+          "predicted_height_gain": "[0.29040654463078269502 +/- 5.89e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0072578599386100463884 +/- 3.76e-23]",
+          "height_error": "[0.0066512121041626617461 +/- 2.97e-23]",
+          "real_error": "[-0.0029048078135946832318 +/- 4.99e-23]",
+          "predicted_height_gain": "[0.27701365652574427592 +/- 7.11e-22]"
+        }
+      }
+    },
+    {
+      "case": 9,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[48.005150881167159728 +/- 5.76e-20]"
+      },
+      "observed_height_gain": "[0.12934240530834164460 +/- 4.16e-21]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.13720735277338918276 +/- 9.61e-22]",
+          "height_error": "[-0.12934240530834164460 +/- 4.16e-21]",
+          "real_error": "[0.045786459178822109673 +/- 4.74e-22]",
+          "predicted_height_gain": "[+/- 7.63e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0093079172549311090549 +/- 2.42e-23]",
+          "height_error": "[0.0066528363180501526847 +/- 2.27e-23]",
+          "real_error": "[0.0065097690089493313959 +/- 3.10e-23]",
+          "predicted_height_gain": "[0.13599524162639179729 +/- 1.17e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0010195841454645158776 +/- 6.12e-24]",
+          "height_error": "[0.00078840684002607028935 +/- 3.23e-24]",
+          "real_error": "[-0.00064650327476565305031 +/- 3.14e-24]",
+          "predicted_height_gain": "[0.13013081214836771489 +/- 3.52e-21]"
+        }
+      }
+    },
+    {
+      "case": 9,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[48.005150881167159728 +/- 5.76e-20]"
+      },
+      "observed_height_gain": "[0.062912368828697189967 +/- 2.60e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.067490410104704634954 +/- 3.27e-22]",
+          "height_error": "[-0.062912368828697189967 +/- 2.60e-22]",
+          "real_error": "[0.024433364575170314774 +/- 1.71e-22]",
+          "predicted_height_gain": "[+/- 8.13e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0023490939840916872455 +/- 4.91e-24]",
+          "height_error": "[0.0018510321346056761937 +/- 4.57e-23]",
+          "real_error": "[0.0014463480157807490899 +/- 2.02e-23]",
+          "predicted_height_gain": "[0.064763400963302866160 +/- 4.87e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00013353664276297154738 +/- 1.76e-24]",
+          "height_error": "[8.8258749375878238155e-5 +/- 2.83e-25]",
+          "real_error": "[-0.00010021191605298939720 +/- 4.46e-24]",
+          "predicted_height_gain": "[0.063000627578073068205 +/- 1.05e-22]"
+        }
+      }
+    },
+    {
+      "case": 9,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[48.005150881167159728 +/- 5.76e-20]"
+      },
+      "observed_height_gain": "[0.030982689497315676722 +/- 1.69e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.033433742390027387585 +/- 2.85e-22]",
+          "height_error": "[-0.030982689497315676722 +/- 1.69e-22]",
+          "real_error": "[0.012565352431015976494 +/- 4.84e-22]",
+          "predicted_height_gain": "[+/- 9.25e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.00058877040075160300428 +/- 6.70e-25]",
+          "height_error": "[0.00048391979777132250361 +/- 2.14e-24]",
+          "real_error": "[0.00033536877333193311958 +/- 9.04e-25]",
+          "predicted_height_gain": "[0.031466609295086999226 +/- 2.20e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[1.7001753594320005515e-5 +/- 4.40e-26]",
+          "height_error": "[1.0096382779654270344e-5 +/- 1.80e-25]",
+          "real_error": "[-1.3679279222556791430e-5 +/- 7.53e-26]",
+          "predicted_height_gain": "[0.030992785880095330993 +/- 4.88e-22]"
+        }
+      }
+    },
+    {
+      "case": 10,
+      "cutoff": "trough",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[49.773832477672302182 +/- 8.33e-20]"
+      },
+      "observed_height_gain": "[0.4152114051460 +/- 1.30e-14]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.4727861596233 +/- 6.09e-14]",
+          "height_error": "[-0.4152114051460 +/- 1.30e-14]",
+          "real_error": "[-0.2261111270327 +/- 3.42e-14]",
+          "predicted_height_gain": "[+/- 2.17e-14]",
+          "nearest_positive_Riemann_ordinal": 10
+        },
+        "linear": {
+          "complex_error": "[0.21577573557 +/- 7.91e-12]",
+          "height_error": "[-0.06482306636 +/- 6.51e-12]",
+          "real_error": "[-0.20580849868 +/- 5.15e-12]",
+          "predicted_height_gain": "[0.35038833878 +/- 7.92e-12]",
+          "nearest_positive_Riemann_ordinal": 10
+        },
+        "quadratic": {
+          "complex_error": "[0.09608867608 +/- 4.51e-12]",
+          "height_error": "[-0.09389844865 +/- 5.18e-12]",
+          "real_error": "[-0.02039889731 +/- 7.20e-12]",
+          "predicted_height_gain": "[0.32131295649 +/- 6.59e-12]",
+          "nearest_positive_Riemann_ordinal": 10
+        }
+      }
+    },
+    {
+      "case": 10,
+      "cutoff": "1",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[49.773832477672302182 +/- 8.33e-20]"
+      },
+      "observed_height_gain": "[0.28532918482855158563 +/- 3.01e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.34366776846153311031 +/- 2.87e-21]",
+          "height_error": "[-0.28532918482855158563 +/- 3.01e-22]",
+          "real_error": "[-0.19155884569605283467 +/- 1.96e-21]",
+          "predicted_height_gain": "[+/- 2.35e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.10332884504826723274 +/- 7.67e-22]",
+          "height_error": "[-0.058907800788644672668 +/- 4.21e-22]",
+          "real_error": "[-0.084892409703425040095 +/- 3.30e-22]",
+          "predicted_height_gain": "[0.22642138403990691296 +/- 1.28e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.034358636052140295810 +/- 4.55e-24]",
+          "height_error": "[-0.034350629134070838418 +/- 4.56e-22]",
+          "real_error": "[0.00074172060572604673966 +/- 1.74e-24]",
+          "predicted_height_gain": "[0.25097855569448074721 +/- 2.16e-21]"
+        }
+      }
+    },
+    {
+      "case": 10,
+      "cutoff": "1/2",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[49.773832477672302182 +/- 8.33e-20]"
+      },
+      "observed_height_gain": "[0.16221041945768639126 +/- 7.29e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.19958708766333464291 +/- 1.97e-21]",
+          "height_error": "[-0.16221041945768639126 +/- 7.29e-22]",
+          "real_error": "[-0.11628751171683511349 +/- 3.33e-21]",
+          "predicted_height_gain": "[+/- 6.07e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.031259661056239132234 +/- 4.91e-22]",
+          "height_error": "[-0.024855230409469648474 +/- 4.46e-22]",
+          "real_error": "[-0.018957424156333282583 +/- 3.64e-22]",
+          "predicted_height_gain": "[0.13735518904821674279 +/- 3.72e-21]"
+        },
+        "quadratic": {
+          "complex_error": "[0.0062842565766169772260 +/- 3.81e-23]",
+          "height_error": "[-0.0057096518214278803993 +/- 4.90e-23]",
+          "real_error": "[0.0026252155718757684364 +/- 4.03e-23]",
+          "predicted_height_gain": "[0.15650076763625851086 +/- 1.48e-21]"
+        }
+      }
+    },
+    {
+      "case": 10,
+      "cutoff": "1/4",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[49.773832477672302182 +/- 8.33e-20]"
+      },
+      "observed_height_gain": "[0.088038280191927689485 +/- 4.38e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.10794694106019749750 +/- 1.48e-21]",
+          "height_error": "[-0.088038280191927689485 +/- 4.38e-22]",
+          "real_error": "[-0.062464416311219822810 +/- 2.90e-22]",
+          "predicted_height_gain": "[+/- 6.57e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0085411409404731968866 +/- 4.08e-23]",
+          "height_error": "[-0.0076468529652689091565 +/- 3.84e-23]",
+          "real_error": "[-0.0038048296009920677414 +/- 4.29e-23]",
+          "predicted_height_gain": "[0.080391427226658780329 +/- 2.40e-23]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00093076157697642746291 +/- 4.59e-24]",
+          "height_error": "[-0.00069562579944696891637 +/- 2.47e-24]",
+          "real_error": "[0.00061840266842843707529 +/- 1.04e-24]",
+          "predicted_height_gain": "[0.087342654392480720569 +/- 6.56e-23]"
+        }
+      }
+    },
+    {
+      "case": 10,
+      "cutoff": "1/8",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[49.773832477672302182 +/- 8.33e-20]"
+      },
+      "observed_height_gain": "[0.046015273130301441203 +/- 3.41e-22]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.056105066704854774770 +/- 3.09e-22]",
+          "height_error": "[-0.046015273130301441203 +/- 3.41e-22]",
+          "real_error": "[-0.032099425987078990429 +/- 3.29e-22]",
+          "predicted_height_gain": "[+/- 8.61e-28]"
+        },
+        "linear": {
+          "complex_error": "[0.0022178852175720187983 +/- 2.24e-23]",
+          "height_error": "[-0.0020774962195890277621 +/- 3.21e-23]",
+          "real_error": "[-0.00077654639006164937815 +/- 4.02e-24]",
+          "predicted_height_gain": "[0.043937776910712413441 +/- 2.73e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[0.00012456591391387593647 +/- 4.11e-24]",
+          "height_error": "[-7.7771095860818943609e-5 +/- 1.40e-26]",
+          "real_error": "[9.7305311046244856053e-5 +/- 3.66e-25]",
+          "predicted_height_gain": "[0.045937502034440622260 +/- 2.69e-22]"
+        }
+      }
+    },
+    {
+      "case": 10,
+      "cutoff": "1/16",
+      "true_w": {
+        "real": "0.50000000000000000000",
+        "imag": "[49.773832477672302182 +/- 8.33e-20]"
+      },
+      "observed_height_gain": "[0.023536456233098075600 +/- 8.29e-23]",
+      "methods": {
+        "constant": {
+          "complex_error": "[0.028590545665631491930 +/- 2.88e-22]",
+          "height_error": "[-0.023536456233098075600 +/- 8.29e-23]",
+          "real_error": "[-0.016231282433807207814 +/- 4.70e-23]",
+          "predicted_height_gain": "[+/- 1.08e-27]"
+        },
+        "linear": {
+          "complex_error": "[0.00056377434149146792562 +/- 1.61e-24]",
+          "height_error": "[-0.00053797230861635794305 +/- 4.43e-24]",
+          "real_error": "[-0.00016860398360099448817 +/- 4.06e-24]",
+          "predicted_height_gain": "[0.022998483924481717657 +/- 1.29e-22]"
+        },
+        "quadratic": {
+          "complex_error": "[1.6018992902823722600e-5 +/- 4.82e-25]",
+          "height_error": "[-8.8425234127868168906e-6 +/- 9.35e-27]",
+          "real_error": "[1.3357316845648072718e-5 +/- 9.88e-26]",
+          "predicted_height_gain": "[0.023527613709685288783 +/- 2.66e-23]"
+        }
+      }
+    }
+  ]
+}

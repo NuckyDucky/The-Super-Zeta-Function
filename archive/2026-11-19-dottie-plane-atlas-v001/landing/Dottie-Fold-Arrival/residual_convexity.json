@@ -1,0 +1,17 @@
+{
+  "angle_degrees": [
+    14.75,
+    15
+  ],
+  "precision_bits": 192,
+  "accepted_cells": 357,
+  "source_sha256": "375340cd151b0f4fc8bf3b1c8f1543198a01089a04d79ada4631ba44b381417b",
+  "observable": "one half the squared modulus of ordinary zeta on w(h)",
+  "strict_lower_second_derivative": 1,
+  "strict_upper_second_derivative": 6,
+  "extrema_of_interval_enclosures": [
+    "[1.000568972578787 +/- 4.85e-16]",
+    "[4.447809396975083 +/- 4.41e-16]"
+  ],
+  "endpoint": "The sixth Riemann zero has value zero, so the observable and its derivative vanish at h=15."
+}

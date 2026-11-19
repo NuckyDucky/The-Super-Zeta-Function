@@ -1,0 +1,29 @@
+{
+  "scope": "post-scoring, unweighted symmetric Hurwitz level chart; principal rotation modulo 360 degrees",
+  "precision_bits": 224,
+  "score_sha256": "3d047fcfe34b25d12483436a4750abe718d53572044d33ef9a995f8e54b9d11c",
+  "rows": [
+    {
+      "k": 7,
+      "entire_turn": {
+        "length_factor": "[1.1811968078396528914 +/- 3.70e-20]",
+        "orientation_change_principal_degrees": "[66.346345979232668113 +/- 1.04e-19]"
+      },
+      "last_eighth_degree": {
+        "length_factor": "[1.0057603495926470433 +/- 4.28e-20]",
+        "orientation_change_principal_degrees": "[2.386445358002571437 +/- 4.80e-19]"
+      }
+    },
+    {
+      "k": 8,
+      "entire_turn": {
+        "length_factor": "[0.51124375301343846391 +/- 4.95e-21]",
+        "orientation_change_principal_degrees": "[-130.56801897253416268 +/- 5.78e-20]"
+      },
+      "last_eighth_degree": {
+        "length_factor": "[1.0191419344255531025 +/- 2.73e-20]",
+        "orientation_change_principal_degrees": "[6.6125402950896383143 +/- 4.48e-20]"
+      }
+    }
+  ]
+}

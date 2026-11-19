@@ -1,0 +1,75 @@
+{
+  "reference_sha256": "0abdd078fdf911ab7247b60a7369fb6a29c0f581ea39a81ac614a9ba3777ba03",
+  "domain": {
+    "Re w": [
+      -0.75,
+      0.65
+    ],
+    "Im w": [
+      36.75,
+      37.95
+    ]
+  },
+  "h_degrees": [
+    13.409173609185943,
+    15.0
+  ],
+  "shape": [
+    97,
+    113
+  ],
+  "grid_count": 10961,
+  "accepted": 10924,
+  "unresolved": 37,
+  "RK_steps_used": {
+    "24": 9774,
+    "64": 895,
+    "192": 206,
+    "384": 86
+  },
+  "accepted_min_length_ratio": 0.28612873408444717,
+  "accepted_max_length_ratio": 8.075187344878104,
+  "accepted_median_length_ratio": 0.9335775735479326,
+  "accepted_fraction_compressed": 0.6417063346759428,
+  "max_common_node_disagreement": 1.982167876885003e-05,
+  "max_relative_level_drift": 4.989595934649761e-07,
+  "marked_zero_length_ratio": 0.9390976728292763,
+  "marked_zero_max_checkpoint_error": 1.0561231889323063e-11,
+  "marked_zero_sampled_residual": 1.278761020714774e-14,
+  "flint_comparison_points": 28,
+  "flint_relative_jet_errors": [
+    1.8165821318872687e-13,
+    3.7397461250922213e-13,
+    1.3410921996385169e-14
+  ],
+  "flint_max_endpoint_relative_level_drift": 6.595759538434844e-08,
+  "most_compressed": {
+    "sigma0": 0.07499999999999996,
+    "T0": 36.75,
+    "sigma1": 0.7963828080488973,
+    "T1": 37.66947203587867,
+    "length_ratio": 0.28612873408444717,
+    "level_real": -0.9253586826902074,
+    "level_imag": 0.6760895858645428
+  },
+  "most_expanded": {
+    "sigma0": -0.525,
+    "T0": 37.3125,
+    "sigma1": 0.2764237383276624,
+    "T1": 37.035755562294355,
+    "length_ratio": 8.075187344878104,
+    "level_real": 1.037025737394355,
+    "level_imag": 0.31262107651659843
+  },
+  "nearest_marked_grid_point": {
+    "sigma0": -0.21250000000000002,
+    "T0": 37.2125,
+    "sigma1": 0.5024477875190974,
+    "T1": 37.58323996065825,
+    "length_ratio": 0.93803034785511,
+    "level_real": 0.0014912324996033677,
+    "level_imag": 0.011779503420243032
+  },
+  "agreement_threshold": 2e-05,
+  "level_drift_threshold": 5e-07
+}

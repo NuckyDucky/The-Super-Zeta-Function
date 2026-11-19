@@ -1,0 +1,85 @@
+{
+  "grid": [
+    95,
+    117
+  ],
+  "x_limits": [
+    -1.25,
+    1.25
+  ],
+  "T_limits": [
+    34.65,
+    39.0
+  ],
+  "labels": [
+    "Riemann #3",
+    "Riemann #4",
+    "Riemann #5",
+    "Riemann #6",
+    "Riemann #7",
+    "Riemann #8",
+    "Riemann #9",
+    "Riemann #10",
+    "Riemann #11",
+    "Elementary k=3",
+    "Elementary k=4",
+    "Elementary k=5",
+    "Elementary k=6"
+  ],
+  "both_resolved": 11110,
+  "different": 6632,
+  "comparisons": {
+    "Riemann #5 to Riemann #6": 19,
+    "Elementary k=4 to Riemann #6": 3584,
+    "Elementary k=4 to Riemann #5": 451,
+    "Riemann #6 to Elementary k=4": 2032,
+    "Elementary k=4 to Riemann #7": 41,
+    "Riemann #6 to Riemann #7": 395,
+    "Riemann #6 to Riemann #8": 110
+  },
+  "probes": {
+    "37j": [
+      "Elementary k=4",
+      "Riemann #6"
+    ],
+    "(0.25+37j)": [
+      "Riemann #6",
+      "Riemann #6"
+    ],
+    "(0.25+36.75j)": [
+      "Elementary k=4",
+      "Elementary k=4"
+    ],
+    "(-0.25+37j)": [
+      "Elementary k=4",
+      "Riemann #6"
+    ],
+    "(0.5+36.75j)": [
+      "Elementary k=4",
+      "Elementary k=4"
+    ],
+    "36.75j": [
+      "Elementary k=4",
+      "Elementary k=4"
+    ],
+    "(0.75+37j)": [
+      "Riemann #6",
+      "Elementary k=4"
+    ],
+    "(-0.5+37j)": [
+      "Elementary k=4",
+      "Riemann #6"
+    ]
+  },
+  "steps": [
+    0.055,
+    0.022
+  ],
+  "max_step_lengths": [
+    0.05,
+    0.018
+  ],
+  "max_laps": 8,
+  "terminal_radius": 0.004,
+  "display": "matching classifications at both step sizes; numerical samples"
+}

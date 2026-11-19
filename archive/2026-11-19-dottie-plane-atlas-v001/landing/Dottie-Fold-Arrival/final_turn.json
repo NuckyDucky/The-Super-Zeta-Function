@@ -1,0 +1,36 @@
+{
+  "precision_bits": 224,
+  "clock": "clockwise degrees from 60 degrees",
+  "source_sha256": "375340cd151b0f4fc8bf3b1c8f1543198a01089a04d79ada4631ba44b381417b",
+  "positive_speed_derivative_h": [
+    "14",
+    "14.69"
+  ],
+  "strictly_decreasing_half_squared_speed_derivative_h": [
+    "14.69",
+    "14.75"
+  ],
+  "negative_speed_derivative_h": [
+    "14.75",
+    "15"
+  ],
+  "accepted_cells": [
+    397,
+    256,
+    406
+  ],
+  "maximum_h": "[14.71757109734 +/- 4.63e-12]",
+  "maximum_speed": "[0.66229408 +/- 1.31e-9]",
+  "initial_speed_at_14": "[0.4783425772851445 +/- 1.55e-17]",
+  "terminal_speed": "[0.6493557345752285 +/- 8.24e-18]",
+  "terminal_speed_derivative": "[-0.07149864464305428 +/- 3.62e-18]",
+  "percent_drop": "[1.953565 +/- 2.06e-7]",
+  "maximum_w": {
+    "real": "[0.38413158338 +/- 7.55e-12]",
+    "imag": "[37.44143357821 +/- 5.36e-12]"
+  },
+  "endpoint_w": {
+    "real": "[0.5000000000000000 +/- 1e-21]",
+    "imag": "[37.58617815882567 +/- 1.26e-15]"
+  }
+}
