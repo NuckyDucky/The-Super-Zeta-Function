@@ -206,6 +206,8 @@ T_D=\frac{2\pi}{160\log(1+(\eta/y)^2)}
 
 I also counted zeros in a window of the same width around the nearest multiple of $\pi$. That comparison interval contained three zeros, all on the critical line. [Height rule and frozen inputs](archive/2026-11-17-dottie-grid-match-v001/README.md#nomination-before-forecasting) · [Winding and matched comparison](archive/2026-11-17-dottie-grid-match-v001/README.md#forecast-and-directed-counts)
 
+I then tested whether the Dottie clock picks heights **closer** to a zero than nearby controls. The earlier pilot split one win each. In a publicly preregistered test of 32 transverse inputs, the clock won 20 comparisons and the controls won 16. At 14 inputs the orbit check left both comparisons unresolved, so the predicted overall majority remains open. [Frozen selection rule](archive/2026-11-18-clock-local-controls-protocol-v001/README.md) · [Every input, comparison and unresolved case](archive/2026-11-18-clock-proximity-results-v001/README.md)
+
 ### What the three windows tell me
 
 I wanted to know whether the spire had pointed me to a sideways pair of zeros, at the same height and on opposite sides of the line. That takes a count over the whole window. A pair could sit between the heights I happened to sample.

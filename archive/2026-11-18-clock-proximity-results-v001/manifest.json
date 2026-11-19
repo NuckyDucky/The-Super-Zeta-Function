@@ -1,0 +1,50 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 4726,
+      "sha256": "5c69181a20386c07e529cd6212a17e687f8d9fceeabd5d4630affe1deb730bac"
+    },
+    "check_records.py": {
+      "bytes": 3368,
+      "sha256": "7a89897294c276b07f1c4f974d626a5c3627b25e305db7977d8734ec1f2a2b77"
+    },
+    "comparisons.csv": {
+      "bytes": 9149,
+      "sha256": "177f998e80731615434941c3bbf56c2193fa438b24f515e0d2a7b0f67f411445"
+    },
+    "orbits.json": {
+      "bytes": 29858,
+      "sha256": "a9f7fbe163d49db5dcefaa1294869ca45413a48a354f9df1b30ca19764612a2b"
+    },
+    "pilot/README.md": {
+      "bytes": 2058,
+      "sha256": "c839eebff444e0562665bfa87d5e9eacd6015977dc2a2e49c1fa4d17afccbbfa"
+    },
+    "pilot/clock_test.py": {
+      "bytes": 6416,
+      "sha256": "817655af0febfbc05e397e60e1cbca49bec0fee5b99f731ea37dc34176edeb5b"
+    },
+    "pilot/protocol.json": {
+      "bytes": 4257,
+      "sha256": "3f51d2bf0ed501d1f1dfba019f534102a22bc8e52e77009fc42b3e494ccd32ff"
+    },
+    "pilot/replay_128.json": {
+      "bytes": 2533,
+      "sha256": "71cbae880b968f219256e5b35fbfa7017604a22f277de63954fa6d7ed4e6c074"
+    },
+    "pilot/replay_128.py": {
+      "bytes": 3734,
+      "sha256": "59f82126bf81cc2776daf8861532611b24039fedadf3fccb0bcdf54408debd99"
+    },
+    "pilot/results.json": {
+      "bytes": 2407,
+      "sha256": "c160968e0c959199e641b10bbed72587791387a1da3017f68108999cd536ffeb"
+    },
+    "results.json": {
+      "bytes": 29020,
+      "sha256": "440c9f511af40ebbcfa5f49b3c6521bd264189bd0382d177a27438fd89a043f0"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-clock-proximity-results-v001"
+}

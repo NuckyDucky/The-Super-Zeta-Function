@@ -1,0 +1,182 @@
+{
+  "repository_revision": "ca09c1b1519d441d38dfa7f7152bee6385bfabaf",
+  "source_sha256": {
+    "dottie_multiplier_winding.py": "aaa9fe379c183a2b56c23b2a0e1c1ecf7af185713c305e4e4c12e76f6f7d8d01",
+    "verify_dottie_horn_slice.py": "4b801849c9d531683368b5499de097b1325556dc4c3f7bef114c989863e2a2b2"
+  },
+  "evaluator_sha256": "817655af0febfbc05e397e60e1cbca49bec0fee5b99f731ea37dc34176edeb5b",
+  "pyflint": "0.9.0",
+  "flint": "3.6.0",
+  "python": "3.12.11",
+  "nomination": "Two transverse magnitudes eta plus/minus half of the published box half-width (3e-10); same y, primitive scalar period 320, both rooted winds of absolute value 1. Exact height is 2*pi/(160*log1p((x/y)^2)).",
+  "control": "Nearest pi*n whose closed window is disjoint from its paired clock window. All four half-widths = 1/4 in Riemann height.",
+  "prediction": "New pilot hypothesis: both Dottie centers are strictly closer to a nontrivial Riemann zero ordinate than their respective grid controls. Distance is censored at 1/4. One win is mixed, two losses favor the grid. Report ties and unresolved pairs; no replacement cases or tuning.",
+  "method": "Use the full count N(H) and the adjacent indexed ordinates, then minimize the two directed distances, censored at 1/4. Primary statistic counts Dottie wins, comparing distances in raw Riemann height units within each matched pair. No claim of global significance. This is a proximity test, not a prediction of an off-line zero.",
+  "budget": "Two nominated and two control centers. Per center one global count and one batch of two indexed zeros at 96 bits. If a bound or count is ambiguous, allow one retry at 160 bits; report unresolved if ambiguous again. No alternative statistic.",
+  "arms": [
+    {
+      "x": "4734479070945369/100000000000000000000000",
+      "y": "0.509892982511772",
+      "T": "[4554844484340.235846053417671323139279866 +/- 7.06e-29]",
+      "n": 1449852029395,
+      "G": "[4554844484339.584958643512679143956067160 +/- 2.18e-29]",
+      "separation": "[0.6508874099049921791832 +/- 1.28e-23]",
+      "windings": [
+        [
+          1,
+          -1,
+          "P",
+          1
+        ],
+        [
+          1,
+          -1,
+          "Q",
+          1
+        ],
+        [
+          1,
+          0,
+          "P",
+          1
+        ],
+        [
+          1,
+          0,
+          "Q",
+          -1
+        ],
+        [
+          1,
+          1,
+          "P",
+          -1
+        ],
+        [
+          1,
+          1,
+          "Q",
+          -1
+        ],
+        [
+          -1,
+          -1,
+          "P",
+          -1
+        ],
+        [
+          -1,
+          -1,
+          "Q",
+          -1
+        ],
+        [
+          -1,
+          0,
+          "P",
+          -1
+        ],
+        [
+          -1,
+          0,
+          "Q",
+          1
+        ],
+        [
+          -1,
+          1,
+          "P",
+          1
+        ],
+        [
+          -1,
+          1,
+          "Q",
+          1
+        ]
+      ]
+    },
+    {
+      "x": "4764479070945369/100000000000000000000000",
+      "y": "0.509892982511772",
+      "T": "[4497665039424.440209285311743884919678200 +/- 3.37e-28]",
+      "n": 1431651246793,
+      "G": "[4497665039427.556837024124562226632073362 +/- 1.18e-28]",
+      "separation": "[3.116627738812818341712 +/- 3.96e-22]",
+      "windings": [
+        [
+          1,
+          -1,
+          "P",
+          1
+        ],
+        [
+          1,
+          -1,
+          "Q",
+          1
+        ],
+        [
+          1,
+          0,
+          "P",
+          1
+        ],
+        [
+          1,
+          0,
+          "Q",
+          -1
+        ],
+        [
+          1,
+          1,
+          "P",
+          -1
+        ],
+        [
+          1,
+          1,
+          "Q",
+          -1
+        ],
+        [
+          -1,
+          -1,
+          "P",
+          -1
+        ],
+        [
+          -1,
+          -1,
+          "Q",
+          -1
+        ],
+        [
+          -1,
+          0,
+          "P",
+          -1
+        ],
+        [
+          -1,
+          0,
+          "Q",
+          1
+        ],
+        [
+          -1,
+          1,
+          "P",
+          1
+        ],
+        [
+          -1,
+          1,
+          "Q",
+          1
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 2369,
+      "sha256": "6a0a7475142f2b492118024bb9126c81b8da45e0362f2e80b65af01f46f2149a"
+    },
+    "local_controls.py": {
+      "bytes": 8742,
+      "sha256": "b9ef5d871ab8e727d2ba0f28453de468bca9d20e66f8103bb372ea09c2b4f725"
+    },
+    "protocol.json": {
+      "bytes": 12031,
+      "sha256": "26007a2e0f65a12abd39485347976dfb28c018c4736a659500d0d7fa0672183f"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-clock-local-controls-protocol-v001"
+}
