@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex map · Sixth Hurwitz branch</title>
+<style>
+:root{color-scheme:light;--ink:#143039;--muted:#475e65;--carrier:#167386;--rust:#aa4929;--line:#c3d0cd;--paper:#faf9f5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.45 system-ui,sans-serif}
+main{max-width:1040px;margin:auto;padding:32px clamp(15px,3vw,42px) 28px}h1,h2,p{margin:0}
+h1{font-size:clamp(1.75rem,4.5vw,2.75rem);line-height:1.12;letter-spacing:-.04em}
+.intro{max-width:78ch;color:var(--muted);margin-top:10px}.leg,.controls{display:flex;flex-wrap:wrap;align-items:center;gap:6px 15px}
+.leg{margin:18px 0 8px;color:var(--muted);font-size:.88rem}.key{font-weight:800;padding-right:3px}.point{color:var(--carrier)}.refine{color:var(--rust)}
+.controls{margin:9px 0 15px;gap:8px}.controls strong{font-size:.88rem;margin-right:2px}
+button{font:inherit;padding:5px 12px;border:1px solid #92a6a5;background:#fff;color:var(--ink);border-radius:4px;cursor:pointer;font-size:.91rem}
+button:hover,button[aria-pressed=true]{background:#e3efed;border-color:#427878}button:focus-visible,canvas:focus-visible,summary:focus-visible{outline:3px solid #127bb8;outline-offset:3px}
+.plots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+section h2{font-size:1.14rem;letter-spacing:-.015em}section p{font-size:.88rem;color:var(--muted);margin-top:2px}
+canvas{width:100%;aspect-ratio:1.05;display:block;border-bottom:1px solid var(--line);background:white;touch-action:manipulation;cursor:crosshair}
+.panel-head{padding:7px 4px 8px;border-top:2px solid var(--ink)}.results{margin:17px 0 5px}
+.row{display:grid;grid-template-columns:1fr 1fr 1.12fr;gap:8px 23px;padding:9px 0}.value{font:clamp(.88rem,1.7vw,1.04rem)/1.4 ui-monospace,monospace;white-space:nowrap}
+.label{font-size:.79rem;color:var(--muted);margin-bottom:4px}.status,.foot{font-size:.86rem;color:var(--muted)}.foot{margin-top:10px}
+details{margin-top:14px;max-width:82ch}summary{cursor:pointer;font-weight:600;font-size:.91rem}details p{color:var(--muted);font-size:.9rem;margin:7px 0}
+@media (max-width:680px){main{padding-top:20px}.plots{gap:12px}.row{grid-template-columns:1fr 1fr}.value{font-size:.88rem}.intro{font-size:.94rem}}
+@media (max-width:530px){.plots{grid-template-columns:1fr}.panel-head{padding:4px 0}canvas{max-height:365px;aspect-ratio:1.25}.row{grid-template-columns:1fr}.row>div{display:grid;grid-template-columns:80px 1fr}.controls{margin-bottom:8px}.intro{font-size:.91rem}.leg{margin-top:10px}}
+</style>
+</head>
+<body><main>
+<h1>Match a complex start to its landing</h1>
+<p class="intro">Choose a dot on either plane to see the same sample on the other. Both planes use the same axes. The angle runs from 13.40917° to 15°, the final leg that takes the marked branch to the sixth Riemann zero.</p>
+<div class="leg"><span><span class="key point">●</span> Grid sample</span><span><span class="key refine">◇</span> 37 centers refined by interval arithmetic</span><span><span class="key">⊙</span> Your selected pair</span></div>
+<div class="controls"><strong>Try a start</strong><button type="button" id="a">A · contraction</button><button type="button" id="b">B · expansion</button><button type="button" id="r">A refined center</button></div>
+<div class="plots">
+<section><div class="panel-head"><h2>Starting plane</h2><p>113 columns × 97 rows</p></div><canvas id="source" tabindex="0" aria-label="Starting complex plane. Click a sample or use arrow keys to move through the starting grid.">Use the example buttons to inspect coordinate pairs.</canvas></section>
+<section><div class="panel-head"><h2>Landing plane</h2><p>10,961 matched destinations</p></div><canvas id="landing" tabindex="0" aria-label="Landing complex plane. Click a destination to find its starting point. Arrow keys move through the starting grid.">Use the example buttons to inspect coordinate pairs.</canvas></section>
+</div>
+<div class="results" aria-live="polite" aria-atomic="true"><div class="row">
+<div><div class="label">Start</div><div class="value" id="first"></div></div>
+<div><div class="label">Landing</div><div class="value" id="last"></div></div>
+<div><div class="label">Landing minus start</div><div class="value" id="change"></div></div></div>
+<p class="status" id="status"></p></div>
+<p class="foot">Click to pick the nearest stored point. On a focused plot, the arrow keys move one starting-grid cell.</p>
+<details><summary>What moves through these planes?</summary><p>Each start sets a complex value of H(w,b) = ζ(w,b) + ζ(w,1−b). The point w moves so that H keeps that value as b increases from about 0.24116208 to ¼. Only the marked zero path has the requirement H = 0. The plots display the starting and finishing positions of the sampled paths.</p><p>The local scale is the final distance divided by the initial distance for two infinitesimally close starts. Values below one bring neighboring landings closer. Values above one spread them apart. The coordinates are numerical approximations. A, B, and the 37 refined centers display the midpoints of their interval checks.</p></details>
+<noscript>Enable JavaScript to select the paired coordinates.</noscript>
+</main>
+<script type="application/json" id="payload">__GRID_PAYLOAD__</script>
+<script>
+"use strict";
+const input=JSON.parse(document.getElementById("payload").textContent);
+function floats(base64){
+  const bytes=Uint8Array.from(atob(base64),c=>c.charCodeAt(0)), d=new DataView(bytes.buffer);
+  return Float64Array.from({length:bytes.length/8},(_,i)=>d.getFloat64(8*i,true));
+}
+const x=floats(input.x),y=floats(input.y),re=floats(input.re),im=floats(input.im),scale=floats(input.scale);
+const refined=new Set(input.restored), examples=[...input.examples,input.restored[18]];
+const ink="#142f39", ocean="#237280", rust="#a94726", bg="#ffffff";
+const box=[-.85,1.15,36.1,38.8], xTicks=[-.5,0,.5,1], yTicks=[36.5,37,37.5,38,38.5];
+const controls=[...document.querySelectorAll("button")], N=x.length*y.length;
+let selected=examples[0];
+function start(id){return [x[id%x.length],y[Math.floor(id/x.length)]]}
+function end(id){return [re[id],im[id]]}
+function layout(w,h){
+  const left=42,right=12,top=12,bottom=34;
+  const k=Math.min((w-left-right)/(box[1]-box[0]),(h-top-bottom)/(box[3]-box[2]));
+  return {k, x0:left+(w-left-right-k*(box[1]-box[0]))/2, y0:top+(h-top-bottom-k*(box[3]-box[2]))/2};
+}
+function pixel(v,L){return [L.x0+(v[0]-box[0])*L.k,L.y0+(box[3]-v[1])*L.k]}
+function nearest(get, v){
+  let ix=0, best=Infinity;
+  for(let id=0;id<N;id++){const p=get(id), d=(p[0]-v[0])**2+(p[1]-v[1])**2;if(d<best){ix=id;best=d}}
+  return ix;
+}
+function grid(canvas,get){
+  let base, L, dims;
+  function backing(){
+    const rect=canvas.getBoundingClientRect(), w=rect.width,h=rect.height,d=Math.max(1,window.devicePixelRatio||1);
+    dims=[w,h,d];L=layout(w,h);canvas.width=Math.round(w*d);canvas.height=Math.round(h*d);
+    base=document.createElement("canvas");base.width=canvas.width;base.height=canvas.height;
+    const g=base.getContext("2d");g.scale(d,d);g.fillStyle=bg;g.fillRect(0,0,w,h);
+    const xy=(a,b)=>pixel([a,b],L), [lx,ty]=xy(box[0],box[3]),[rx,by]=xy(box[1],box[2]);
+    g.font="11px system-ui, sans-serif";g.lineWidth=.7;
+    const line=(x0,y0,x1,y1)=>{g.beginPath();g.moveTo(x0,y0);g.lineTo(x1,y1);g.stroke()};
+    for(const t of xTicks){const [px]=xy(t,box[2]);g.strokeStyle="#dbe2df";line(px,ty,px,by);g.fillStyle="#455d65";g.textAlign="center";g.fillText(t.toString().replace("-","−"),px,by+13)}
+    for(const t of yTicks){const [,py]=xy(box[0],t);g.strokeStyle="#dbe2df";line(lx,py,rx,py);g.fillStyle="#455d65";g.textAlign="right";g.fillText(t.toFixed(1),lx-5,py+3)}
+    g.strokeStyle="#839592";line(lx,ty,lx,by);line(lx,by,rx,by);
+    g.textAlign="center";g.fillStyle=ink;g.fillText("Re w",(lx+rx)/2,by+29);
+    g.save();g.translate(lx-33,(ty+by)/2);g.rotate(-Math.PI/2);g.fillText("Im w",0,0);g.restore();
+    g.fillStyle=ocean;g.globalAlpha=.60;
+    const dot=Math.max(.83,Math.min(1.55,L.k*.0105));
+    for(let i=0;i<N;i++){const [px,py]=pixel(get(i),L);g.fillRect(px-dot/2,py-dot/2,dot,dot)}
+    g.globalAlpha=1;g.strokeStyle=rust;g.lineWidth=1;
+    for(const i of refined){const [px,py]=pixel(get(i),L),r=1.85;g.beginPath();g.moveTo(px,py-r);g.lineTo(px+r,py);g.lineTo(px,py+r);g.lineTo(px-r,py);g.closePath();g.stroke()}
+  }
+  function paint(rebuild){
+    if(!base||rebuild)backing();
+    const g=canvas.getContext("2d");g.setTransform(1,0,0,1,0,0);g.drawImage(base,0,0);g.scale(dims[2],dims[2]);
+    const [px,py]=pixel(get(selected),L);g.beginPath();g.arc(px,py,6,0,2*Math.PI);g.strokeStyle="white";g.lineWidth=5;g.stroke();g.lineWidth=2.5;g.strokeStyle=ink;g.stroke();
+    g.fillStyle=ink;g.beginPath();g.arc(px,py,1.7,0,2*Math.PI);g.fill();
+  }
+  canvas.addEventListener("click",e=>{
+    canvas.focus({preventScroll:true});const rect=canvas.getBoundingClientRect(),vx=box[0]+(e.clientX-rect.left-L.x0)/L.k,vy=box[3]-(e.clientY-rect.top-L.y0)/L.k;
+    select(nearest(get,[vx,vy]));
+  });
+  canvas.addEventListener("keydown",e=>{
+    let col=selected%x.length,row=Math.floor(selected/x.length);
+    if(e.key==="ArrowRight")col++;else if(e.key==="ArrowLeft")col--;else if(e.key==="ArrowUp")row++;else if(e.key==="ArrowDown")row--;else return;
+    e.preventDefault();select(Math.max(0,Math.min(x.length-1,col))+x.length*Math.max(0,Math.min(y.length-1,row)));
+  });
+  return {paint};
+}
+const panels=[grid(document.getElementById("source"),start),grid(document.getElementById("landing"),end)];
+function fmt(a,b){return a.toFixed(7).replace("-","−")+(b<0?" − ":" + ")+Math.abs(b).toFixed(7)+"i"}
+function select(id){
+  selected=id;const a=start(id),z=end(id),name=examples.indexOf(id);
+  document.getElementById("first").textContent=fmt(...a);
+  document.getElementById("last").textContent=fmt(...z);
+  document.getElementById("change").textContent=fmt(z[0]-a[0],z[1]-a[1]);
+  const basis=refined.has(id)?"Interval-refined center":name===0||name===1?"Individually interval-checked example":"Numerical grid solution";
+  document.getElementById("status").textContent=basis+" · Column "+(1+id%x.length)+", row "+(1+Math.floor(id/x.length))+" · Local scale "+scale[id].toFixed(4)+"×";
+  for(let j=0;j<controls.length;j++)controls[j].setAttribute("aria-pressed",String(name===j));
+  for(const p of panels)p.paint(false);
+}
+for(let j=0;j<controls.length;j++)controls[j].addEventListener("click",()=>select(examples[j]));
+select(selected);
+new ResizeObserver(()=>{for(const p of panels)p.paint(true)}).observe(document.querySelector(".plots"));
+</script></body></html>

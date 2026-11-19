@@ -1,0 +1,126 @@
+What an arrival measures
+
+Use the marked symmetric Hurwitz sum
+    H(w,b) = ζ(w,b) + ζ(w,1−b),
+    b = 1/6 + h/180.
+The real parameter h counts clockwise degrees from the 60° reference.
+The 45° reference lies at h=15 and b=1/4. Write β(z)=L(z,χ₄) for
+Dirichlet's beta function and K(w)=4^w(1−2^(−w)). Powers of 2 and
+4 use their real logarithms.
+
+1. Velocity and acceleration of a marked zero
+
+At b=1/4 the residue classes 1 and 3 modulo 4 give
+    H(w,1/4) = K(w) ζ(w),
+    H_b(w,1/4) = −P(w),        P(w) = w 4^(w+1) β(w+1),
+    H_bb(w,1/4) = Q(w),        Q(w) = w(w+1)K(w+2)ζ(w+2).
+These follow by differentiating the two Hurwitz shifts with their
+respective signs. Dirichlet series give the identities in Re w>1.
+Analytic continuation gives the meromorphic identities elsewhere.
+
+At a simple H-zero, put v = dw/dh and a = d²w/dh². Differentiating
+H(w(h),b(h))=0 once and twice gives, whenever v≠0 at arrival,
+    H_w  = P/(180v),
+    H_ww = (2P'v/180 − Q/180² − H_w a)/v².
+For a simple Riemann zero ρ with K(ρ)≠0, these yield
+    ζ'(ρ)  = H_w/K,
+    ζ''(ρ) = (H_ww−2K'ζ')/K.
+For a simple zero of K with ζ(w)≠0 the equations instead yield
+    ζ(w)  = H_w/K',
+    ζ'(w) = (H_ww−K''ζ)/(2K').
+
+The enclosed endpoint traces cover the first ten Riemann landings and
+one nonzero dyadic lattice endpoint. Every tangent is nonzero. At the
+sixth Riemann landing the degree-based tangent and acceleration are
+    v = 0.358804723126 + 0.541222727431 i,
+    a = −0.346011813121 + 0.143605606255 i.
+They give ζ'(ρ₆) = 1.853466249983 − 0.561004420496 i and
+ζ''(ρ₆) = −3.203353763732 + 1.373503603108 i. At fixed precision
+256 bits, every reconstructed derivative in the archive agrees within
+10^(−54) with a direct Riemann Taylor-series evaluation, and the full
+interval enclosures overlap. The tests use distinct analytic formulas
+with the same FLINT backend. The orbit tubes supply the branch labels.
+At the end of the ρ₄ path, K has its simple zero at 8πi/log 2. There
+K'=log 2 and the elementary-endpoint formula applies.
+
+2. A replay using two strictly interior positions
+
+Write t=15, u=w(t−ε), z=w(t−2ε), and M=sup |w''| on [t−2ε,t].
+The difference of successive increments gives
+    |w(t)−(2u−z)| ≤ M ε².
+The mean integral of w' between the two interior points gives
+    |w'(t)−(u−z)/ε| ≤ 3 M ε/2.
+Substituting these enclosures into P/(180Kv) encloses ζ'(ρ₆).
+For ε=10^(−8) degrees, the two interior positions alone give
+    1.85346625168737 − 0.56100440382440 i
+as the central estimate. Its measured error is 1.676×10^(−8).
+The endpoint position estimate has certified error below 3.747×10^(−17).
+Branch anchoring, the comparison evaluation and uniform derivative bounds
+use the certified local family, including the landing for validation.
+The interior estimator takes its position and velocity data only at
+t−ε and t−2ε. This test reuses a previously located branch.
+
+3. The full arithmetic expansion on the local zero branch
+
+At any marked simple arrival with v≠0, the holomorphic inverse
+function theorem makes the shift a local analytic function b(w).
+Let d=b(w)−1/4. The same identity holds pointwise at any H(w,b)=0
+with |d|<1/4, Re w>0, K(w)≠0 and w≠1. The inverse is only
+needed to regard the expansion as a function of w on a neighborhood.
+Its exact value is
+
+    K(w) ζ(w)
+       = sum over odd j≥1 of (w)_j 4^(w+j) β(w+j) d^j / j!
+       − sum over even j≥2 of (w)_j K(w+j) ζ(w+j) d^j / j!.
+
+Here (w)_j=w(w+1)...(w+j−1). Expand H(w,1/4+d) in d and set
+the sum to zero. The nearest possible singularity of either shift
+to d=0 is d=−1/4, so the expansion converges for |d|<1/4.
+The j-th shift derivative is
+    (w)_j [ (−1)^j ζ(w+j,1/4) + ζ(w+j,3/4) ].
+The two residue classes combine into 4^(w+j)β(w+j) for the odd
+terms and K(w+j)ζ(w+j) for the even terms, with the signs displayed
+in the exact identity. For j≥1 and Re w>0 each shifted series
+on the right converges absolutely. Thus a measured zero branch
+and ordinary, convergent arithmetic specify the ζ germ at arrival.
+The zero branch itself is obtained from the continued Hurwitz family.
+
+For σ=Re w, q=4|d|, S(s)=(1−2^(−s))ζ(s) and cutoff N≥0,
+set r=q max(1,(|w|+N+1)/(N+2)). If r<1, a bound for the modulus
+of the tail in ζ(w) is
+    S(σ+1) / |1−2^(−w)| · (|w|)_(N+1)/(N+1)! · q^(N+1)/(1−r).
+Indeed each residue-class sum after dividing by 4^(w+j) is
+bounded by the positive odd-integer sum S(σ+j)≤S(σ+1). The
+Pochhammer coefficient has modulus at most (|w|)_j. Successive
+terms of this majorant have ratio q(|w|+j)/(j+1), which is ≤r
+for j≥N+1. This proves the error bound by a geometric series.
+
+On the sixth-landing path at h=14.5°, eight terms recover
+ζ(0.275425623129+37.348848890772i)≈−0.593449543615−0.522635518461i
+with analytic tail <9.328×10^(−9). At h=14.9°, eight terms recover
+ζ(0.462350158108+37.532865368664i)≈−0.099946296968−0.085286111958i
+with analytic tail <3.022×10^(−15). The certified input enclosures
+and rounding errors appear separately from the analytic tail in
+arrival.json. The measurements use the full input coordinates.
+
+4. Relation to attraction
+
+The complex path has velocity w' and change of speed
+Re(conj(w')w'')/|w'|. The ordered exponential orbit has an attracting
+multiplier μ. The right flank from 60° to 45° has endpoint moduli
+0.204296772848039 and 0.183971328451083. Each of the ten spectral
+arrivals is observed at the same final Dottie parameter. Their
+speeds range from 0.287279 to 0.649356. Landings 1,2,5,8,10
+accelerate and 3,4,6,7,9 slow down at arrival.
+
+On 12πi/log 3 → ρ₆ the speed change at ρ₆ is −0.071498644643.
+Reset the very same ρ₆ to h=0 as the seed of the path ending at ρ₈
+and its initial speed change becomes +0.076885689946. The two
+reference shifts attach different zero germs to that same w.
+
+Replay in the workspace with python-flint 0.9.0 and Python 3.12
+    python -B outputs/Dottie-Fold-Arrival/arrival.py
+The script uses the existing ten-path archive and certified sixth-path
+tubes. It reuses the verified 448-bit right-flank multiplier receipt.
+Standard identity for Hurwitz shift derivatives
+    https://dlmf.nist.gov/25.11.E17

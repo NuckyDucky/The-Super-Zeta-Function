@@ -1,0 +1,107 @@
+{
+  "zero-transport-v001": {
+    "commit": "5c5f3a160b2412a49b0b1e86fa24f7605a938823",
+    "files": [
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/arithmetic_braid_lattice.json",
+        "layout": "Dottie-Off-Axis-Return/arithmetic_braid_lattice.json",
+        "sha256": "c7ab23a39af7dd05f871cbe52093ad424dcb16e2646f09723f547efc737a27b3"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Second-Zero/dyadic_continuation.json",
+        "layout": "Dottie-Second-Zero/dyadic_continuation.json",
+        "sha256": "58449403656bbbbef7199b1daac1f7751683cd66179c80dd293d817c56fc98c1"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Third-Zero/sweep_1.json",
+        "layout": "Dottie-Third-Zero/sweep_1.json",
+        "sha256": "6a4fe6ab50adf27f48bd2688cf16025ab3c4b551bc27d9416328d3064c53fab5"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Forward-Iteration/sweep_1.json",
+        "layout": "Dottie-Forward-Iteration/sweep_1.json",
+        "sha256": "a4b7b7c08f919b6f0c8c540b7d2d2687970de674ba7d05c707c0d24d0912ed35"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/rho5-replay.json",
+        "layout": "Dottie-Transport-Reversibility/rho5-replay.json",
+        "sha256": "9c8c54d27a0ea3a0d7bd2a7c1b59b95455dccc9fc9c8b171349d7ba7315dc88f"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/rho6-replay.json",
+        "layout": "Dottie-Transport-Reversibility/rho6-replay.json",
+        "sha256": "375340cd151b0f4fc8bf3b1c8f1543198a01089a04d79ada4631ba44b381417b"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Forward-Iteration/sweep_3.json",
+        "layout": "Dottie-Forward-Iteration/sweep_3.json",
+        "sha256": "9c34674c183810413a9141ae0232065c4fc706446fb4c91a5488c159dd540681"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Forward-Iteration/sweep_2.json",
+        "layout": "Dottie-Forward-Iteration/sweep_2.json",
+        "sha256": "b090b79bc7aa3984a2132ac3b5d51dbf02305d353583b4f21158cbe8ee3717bf"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/arithmetic_braid.py",
+        "layout": "Dottie-Off-Axis-Return/arithmetic_braid.py",
+        "sha256": "77e8eb1de9b3fdd3f50d2ebadee12eb821cefcd4492b7de06e30e9b010748833"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/arithmetic_holdout_replay.py",
+        "layout": "Dottie-Off-Axis-Return/arithmetic_holdout_replay.py",
+        "sha256": "5c6ce226a98c60a2ebd9b952e6a50475b8ef14c20533ee95cf712a52bee430af"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/arithmetic_reference.py",
+        "layout": "Dottie-Off-Axis-Return/arithmetic_reference.py",
+        "sha256": "1bbdb64d532df600b6aa4f5c56b34a95d015bee8a82b14b703ff6efc8c6585ff"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Second-Zero/dyadic_geometry.py",
+        "layout": "Dottie-Second-Zero/dyadic_geometry.py",
+        "sha256": "6fc61d19b5868ae049aa3bec83006ee2b59baf1e553907a1f6139d5850fe48d1"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Second-Zero/dyadic_continuation.py",
+        "layout": "Dottie-Second-Zero/dyadic_continuation.py",
+        "sha256": "af4bc42416ea664cd2ed265635ba383124c550ff95573fd5545c7a26b070ee18"
+      },
+      {
+        "public": "archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/reverse.py",
+        "layout": "Dottie-Transport-Reversibility/reverse.py",
+        "sha256": "1c2f62e3ec6f5b392036b719478c9a444333537da9c90763ae7d79f116fcf68a"
+      }
+    ]
+  },
+  "sixth-passes-v001": {
+    "commit": "eac68c0a3068060d7458fdd3b189194e8c955d8d",
+    "files": [
+      {
+        "public": "archive/2026-11-19-sixth-passes-v001/compute/verify.py",
+        "layout": "Dottie-Sixth-Passes/compute/verify.py",
+        "sha256": "595e43a2f8d151d881b5d32e66a00b951a1da8d15c2a96f70585a580b3aef9c6"
+      },
+      {
+        "public": "archive/2026-11-19-sixth-passes-v001/compute/turning.py",
+        "layout": "Dottie-Sixth-Passes/compute/turning.py",
+        "sha256": "ee24d9c71a66e7c1c530c8f35534b6c1982030d4e9784bfbcd1782ea151767bd"
+      },
+      {
+        "public": "archive/2026-11-19-sixth-passes-v001/compute/jets.json",
+        "layout": "Dottie-Sixth-Passes/compute/jets.json",
+        "sha256": "a5e4c5c0a775047061f5bc2a11c54fe45114a077e081cf644e2df9703d624734"
+      }
+    ]
+  },
+  "single-term-inverse-v001": {
+    "commit": "703381cb3e6df97aabcf3f3784e9aba6c66c927b",
+    "files": [
+      {
+        "public": "archive/2026-11-19-single-term-inverse-v001/contraction-sweep.json",
+        "layout": "Dottie-Sixth-Single-Term/contraction-sweep.json",
+        "sha256": "5e94efaf6b02eaf60b68ddea4ee0a93e54b12404a86d6bb77f02611cb18e1582"
+      }
+    ]
+  }
+}

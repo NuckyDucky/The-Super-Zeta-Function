@@ -1,0 +1,54 @@
+{
+  "precision_bits": 192,
+  "input_sha256": "ef04abbdf6f8caba77d839f38d3002599a7bde0e7d27d5db85dbdb200f77c480",
+  "function": "f(w)=2^w (2^w-1) zeta(w)",
+  "starting_center": "37i",
+  "principal_k4": {
+    "ell": [
+      "[-1.69297535715033244871341974138 +/- 4.91e-30]",
+      "[0.785398163397448309615660845819 +/- 8.77e-31]"
+    ],
+    "initial_disk_radius": "1e-6",
+    "finite_cutoff": "4",
+    "accepted_tubes": 137,
+    "maximum_finite_contraction": "[0.6369421985000372 +/- 6.71e-18]",
+    "endpoint_disk_radius": "1e-4",
+    "cutoff_center": [
+      "[-0.000156696523843101088699936 +/- 1.52e-28]",
+      "[36.2584023529435900156928 +/- 1.81e-23]"
+    ],
+    "root": [
+      "0",
+      "[36.25888113461755047702146 +/- 3.57e-24]"
+    ],
+    "root_disk_radius": "1/64",
+    "uniform_tail_contraction": "[0.185935675166547298 +/- 4.32e-19]",
+    "max_tail_newton_image_radius": "[0.00340913916988938581 +/- 1.99e-21]",
+    "absolute_distance_coefficient": "[0.540356145624413193 +/- 4.11e-19]",
+    "decay_bound": "abs(w(t)-root) <= coefficient * exp(t*Re(ell)), t >= 4"
+  },
+  "ordered_rho6": {
+    "ell": [
+      "[-1.69297535715033244871341974138 +/- 4.91e-30]",
+      "[-5.49778714378213816730962592074 +/- 8.72e-31]"
+    ],
+    "initial_disk_radius": "1e-6",
+    "finite_cutoff": "4",
+    "accepted_tubes": 199,
+    "maximum_finite_contraction": "[0.6653073420748115 +/- 4.15e-17]",
+    "endpoint_disk_radius": "1e-4",
+    "cutoff_center": [
+      "[0.500193262069532469769887 +/- 2.45e-26]",
+      "[37.5865910169675510532940 +/- 2.17e-23]"
+    ],
+    "root": [
+      "0.5000000000000000000000000",
+      "[37.58617815882567125721776 +/- 3.49e-24]"
+    ],
+    "root_disk_radius": "1/64",
+    "uniform_tail_contraction": "[0.312155941035598516 +/- 4.65e-19]",
+    "max_tail_newton_image_radius": "[0.00533342206313136558 +/- 4.18e-21]",
+    "absolute_distance_coefficient": "[0.578709270065585388 +/- 4.70e-20]",
+    "decay_bound": "abs(w(t)-root) <= coefficient * exp(t*Re(ell)), t >= 4"
+  }
+}

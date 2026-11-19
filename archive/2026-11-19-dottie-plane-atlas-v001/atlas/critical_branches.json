@@ -1,0 +1,46 @@
+{
+  "precision_bits": 192,
+  "input_sha256": "8ef1f421059da7a0404a71a0aa187d482d7d7bb99b9ba32c38245d2ca5e5bc8b",
+  "family": "f(w)=q f(w_c), 0 <= q <= 1",
+  "q_cutoff": "999999/1000000",
+  "root_sources": [
+    "8 pi i/log(2)",
+    "Riemann zero 6"
+  ],
+  "elementary": {
+    "accepted_tubes": 132,
+    "maximum_newton_contraction": "[0.6656005177647 +/- 1.25e-14]",
+    "end": [
+      "[0.235718797554570601359 +/- 3.39e-22]",
+      "[36.9445288021841077786 +/- 9.76e-21]"
+    ],
+    "node_radius": "[1.000000e-13 +/- 3e-24]"
+  },
+  "riemann": {
+    "accepted_tubes": 127,
+    "maximum_newton_contraction": "[0.6650427402928 +/- 4.72e-14]",
+    "end": [
+      "[0.236182004833809139715 +/- 6.00e-23]",
+      "[36.9458305101399143281 +/- 1.79e-20]"
+    ],
+    "node_radius": "[1.000000e-13 +/- 3e-24]"
+  },
+  "local_radius": "1/256",
+  "third_derivative_upper": "[74.00395500659943 +/- 3.74e-15]",
+  "quadratic_boundary_lower": "[3.535470985584876e-5 +/- 1.49e-21]",
+  "remainder_plus_target_upper": "[1.840957081850093e-6 +/- 4.54e-22]",
+  "derivative_linear_boundary_lower": "[0.01810161144619456 +/- 4.36e-18]",
+  "derivative_remainder_upper": "[0.0005646053696182207 +/- 2.05e-20]",
+  "sqrt_coefficient": [
+    "[0.23160362304627 +/- 1.12e-15]",
+    "[0.65085396517774 +/- 1.97e-15]"
+  ],
+  "square_root_signs": {
+    "elementary_k4": -1,
+    "riemann_6": 1
+  },
+  "relative_separating_disk_radius": "1/4",
+  "signed_sheet_quadratic_lower": "[0.4837848050698696 +/- 2.29e-17]",
+  "signed_sheet_remainder_upper": "[0.007942443909186421 +/- 3.53e-20]",
+  "conclusion": "Both continued sheets approach the same order-two branch point as q increases to one."
+}

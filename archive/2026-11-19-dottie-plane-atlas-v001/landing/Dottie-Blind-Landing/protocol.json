@@ -1,0 +1,74 @@
+{
+  "study": "one endpoint-masked Taylor extrapolation, historical target-selected archive",
+  "cases": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "archive_paths": [
+    "Dottie-Off-Axis-Return/arithmetic_braid_lattice.json",
+    "Dottie-Second-Zero/dyadic_continuation.json",
+    "Dottie-Third-Zero/sweep_1.json",
+    "Dottie-Forward-Iteration/sweep_1.json",
+    "Dottie-Transport-Reversibility/rho5-replay.json",
+    "Dottie-Transport-Reversibility/rho6-replay.json",
+    "Dottie-Forward-Iteration/sweep_3.json",
+    "Dottie-Turn-Geometry/ten/backwards-8.json",
+    "Dottie-Turn-Geometry/ten/backwards-9.json",
+    "Dottie-Turn-Geometry/ten/backwards-10.json"
+  ],
+  "forward_archive_cases": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "backward_archive_cases": [
+    8,
+    9,
+    10
+  ],
+  "h": "clockwise degrees, b=1/6+h/180, end h=15",
+  "cutoff_labels": [
+    "trough",
+    "1",
+    "1/2",
+    "1/4",
+    "1/8",
+    "1/16"
+  ],
+  "trough_h_bounds": [
+    "13.40917360918594367527",
+    "13.40917360918594367533"
+  ],
+  "trough_source": "sixth-passes-v001, jets.json: minimum alpha only. Exact last minimum for sixth landing. Same time for every other track.",
+  "models": [
+    "constant",
+    "linear",
+    "quadratic"
+  ],
+  "forecast_formula": "z, z+D*v, z+D*v+D^2*a/2, D=15-h",
+  "targets": "full complex endpoint, signed height gain; forecast must not set real part to 1/2; thresholds strict 0.1, 0.01, 0.001 on complex distance",
+  "thresholds": [
+    "0.1",
+    "0.01",
+    "0.001"
+  ],
+  "comparison": "unweighted arithmetic mean and standard median of complex and absolute height errors, per-method threshold counts and paired wins at each cutoff. All ten, nine excluding the focal sixth, historical forward seven and backward three. Report sixth separately with signed height gains. At the shared trough classify each frozen forecast by nearest positive-height Riemann zero after scoring, including unchanged-position baseline.",
+  "leakage_control": "Extraction sees the frozen archive. Only the nearest marked past checkpoint, parameter interval, opaque ordinal, and cutoff name enter the numerical observation subprocess. It refines the zero in the symmetric Hurwitz family, continues only to the left bound of the cutoff, and encloses local derivatives on the cutoff. No endpoint, arithmetic zero rank lookup, endpoint geometry, future checkpoints, or fitting. The scorer alone uses independent ordinary zeta zeros. Historical endpoint-based inclusion and backward-traced paths 8-10 are disclosed.",
+  "verification": "192-bit directed Hurwitz jets and endpoint distances; distinguish endpoint error from input uncertainty and forecast error",
+  "forecast_code_sha256": {
+    "observe.py": "c0a08c11149f632d538524012311d693de682bc99dd2637c3c1bf2bb8d5ff4b6",
+    "make_predictions.py": "07ac0589e58b64d74664a820dd966c11d1aa2f7a4619cbadef189ff88ac23dcb"
+  }
+}

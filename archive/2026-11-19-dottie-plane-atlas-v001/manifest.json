@@ -1,0 +1,406 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 7390,
+      "sha256": "06177093473367bf81ae8c7f1271541218362d17f4d34048732e9f9381bf288b"
+    },
+    "atlas/THESIS.md": {
+      "bytes": 13782,
+      "sha256": "6c921b827a66c2e1ff75758209f9bdceea9c72ac80bb2a6fb838010b0c6d0508"
+    },
+    "atlas/basin-summary.json": {
+      "bytes": 1611,
+      "sha256": "254298f75db7f29a7c451cf8c8ade5ba1cde81a5d53f9758747bd64e5d825ad5"
+    },
+    "atlas/basin_certificate.json": {
+      "bytes": 2062,
+      "sha256": "efd072b8999b1279eb13b7872ea202613514b76183833741510befad20ce11bb"
+    },
+    "atlas/basin_certificate.py": {
+      "bytes": 4989,
+      "sha256": "affd7daab4766573929449a282ac27ed37eb0594d3962aecdae8699663263aec"
+    },
+    "atlas/basin_map.py": {
+      "bytes": 8142,
+      "sha256": "9a18210535ae9744083a76c6eb7879c111cc335ca04bd18329b8e0e1bbb0f063"
+    },
+    "atlas/basins.npz": {
+      "bytes": 3969,
+      "sha256": "abee13ae29838382219568273c3a38b83587b6cf09d4c785f98d8bcd4f734665"
+    },
+    "atlas/basins.png": {
+      "bytes": 187386,
+      "sha256": "7242d3593f4a10542d86f87d64267b28f3ab6dc196ed3d6798c858418a6bee05"
+    },
+    "atlas/complex_explorer.html": {
+      "bytes": 363932,
+      "sha256": "918e08f4e53e15faa67c9b06897089e8bda8473dc1b7e54d5c058a557930ac39"
+    },
+    "atlas/complex_explorer.py": {
+      "bytes": 2679,
+      "sha256": "1e5a9f1a94aae0d28a4f79dbb18a0c483f54c4038c08b4b890b0689040613784"
+    },
+    "atlas/complex_explorer.template.html": {
+      "bytes": 10695,
+      "sha256": "0a7e9caccbfebdfad676528311deb2d9c981527dfbcc24730775c4bc44f5d6a8"
+    },
+    "atlas/complex_offset.png": {
+      "bytes": 155701,
+      "sha256": "3d4ef236d08043c252913eb0e0ad29bfb9707f0db33b9fa26d60a54441d027ed"
+    },
+    "atlas/complex_turn.png": {
+      "bytes": 255684,
+      "sha256": "b5cf90b96f12e60c56fcff42342baeb75e5028f7cf670c2bdb25dfc23041f889"
+    },
+    "atlas/complex_turn.py": {
+      "bytes": 7512,
+      "sha256": "59e9ddc432566268e63f60d949d894763221b6c2d206b32989911388aa0e221c"
+    },
+    "atlas/critical_branches.json": {
+      "bytes": 1707,
+      "sha256": "c42f464d35091a64e29e583feaa7178a0ef7230b8fb2cb29ca668d9119f8e1f4"
+    },
+    "atlas/critical_branches.py": {
+      "bytes": 5493,
+      "sha256": "cbcf211628028580015314ae6bc4f5fddada3080c8d14760f4d0ed859ad0afbf"
+    },
+    "atlas/critical_loop.json": {
+      "bytes": 865,
+      "sha256": "8ef1f421059da7a0404a71a0aa187d482d7d7bb99b9ba32c38245d2ca5e5bc8b"
+    },
+    "atlas/critical_loop.py": {
+      "bytes": 2010,
+      "sha256": "6c1622b1c307f708cda8ffd4ce883f0b58479388e069036554f3ee00332926e6"
+    },
+    "atlas/gray_collision.json": {
+      "bytes": 28201,
+      "sha256": "6b10c770b113fdf8d4a254a56080e2ea3b04014734af5c1437f71f849b5974cb"
+    },
+    "atlas/gray_collision.py": {
+      "bytes": 6304,
+      "sha256": "f35b183473481f6d65e051b0b288c27c0238911e006f24a2436118d9b137264a"
+    },
+    "atlas/gray_locus.json": {
+      "bytes": 18411,
+      "sha256": "352e4c28e8a71e14ec54799a881b570a861036f4349bcc533f9936601da0610b"
+    },
+    "atlas/gray_locus.py": {
+      "bytes": 6253,
+      "sha256": "0432682faeb35dde621dd6f83392154680230d8dcee25acccf5ed0812c437dc1"
+    },
+    "atlas/neighbor.json": {
+      "bytes": 2544,
+      "sha256": "bee304cee9320b43ea842466a2ad26104f5f3ed8a46a34c368bb409bed2cbca1"
+    },
+    "atlas/neighbor.py": {
+      "bytes": 2866,
+      "sha256": "4417121ce211d5f521e2be27c3189304933148444921fd50761592654ebb3158"
+    },
+    "atlas/neighbor_proof.json": {
+      "bytes": 2565,
+      "sha256": "aebc1a8ecc42e1eec8e63d8572cd7300313a92eee187356a827baf5b945c98ce"
+    },
+    "atlas/neighbor_proof.py": {
+      "bytes": 5249,
+      "sha256": "9a44102f5c9c8b0c72b65f8a9d7a309dc476966c6b33b2e99b3de12e15a10d4b"
+    },
+    "atlas/neighbor_proof.txt": {
+      "bytes": 2561,
+      "sha256": "0687c72a79d4530cb5eee1062f8f06d0fac7fdb3739969f123447366938d42cf"
+    },
+    "atlas/phase_lift.json": {
+      "bytes": 1737,
+      "sha256": "ef04abbdf6f8caba77d839f38d3002599a7bde0e7d27d5db85dbdb200f77c480"
+    },
+    "atlas/phase_lift.py": {
+      "bytes": 3365,
+      "sha256": "d16264afef225c02354ce30e4f983a345b2d1b1fd537c57573d9f08d58175812"
+    },
+    "atlas/plane_anchors.json": {
+      "bytes": 1309,
+      "sha256": "e43e0bde5b07b08cab6feae449fd7ac408e60c9b0921170ad614fe52c2f63f00"
+    },
+    "atlas/plane_anchors.py": {
+      "bytes": 3515,
+      "sha256": "333a463dee12e19a8d9fc2dc6e139f6f3576d394d0018ae4339ff8bfdec951fe"
+    },
+    "atlas/plane_grid.png": {
+      "bytes": 934324,
+      "sha256": "a532d10763bac5e42c249a319f6d88791bbfff7672bf47548218ddca3f170d4c"
+    },
+    "atlas/plane_map.json": {
+      "bytes": 2073,
+      "sha256": "8abc749f4abe4daad8555b51a193e0838b5e253c6627687da8deaf2989e57c2d"
+    },
+    "atlas/plane_map.npz": {
+      "bytes": 509285,
+      "sha256": "57021b93f50ac602c5d7912251f4b199bb89d2459a751137b9d9782108e17c79"
+    },
+    "atlas/plane_map.py": {
+      "bytes": 21560,
+      "sha256": "5b4b60f4854a53013d54cbc0f917c63dd436d745ac5f50b988f9370bb04a9889"
+    },
+    "atlas/plane_notes.md": {
+      "bytes": 4589,
+      "sha256": "b1b043991f2f99104ed6a9438f9a837f6b204f44dba0ec85d8de5017e900538b"
+    },
+    "atlas/plane_reference.json": {
+      "bytes": 4227,
+      "sha256": "0abdd078fdf911ab7247b60a7369fb6a29c0f581ea39a81ac614a9ba3777ba03"
+    },
+    "atlas/plane_strain.png": {
+      "bytes": 294995,
+      "sha256": "bf8bc959c7fdc49aa5dcd188155faa515c0f604e3b2d5a5f0e4f7b86d4b34805"
+    },
+    "atlas/plane_wide.json": {
+      "bytes": 2076,
+      "sha256": "f3d789c089e2a6e054db25098b055d7baba13239debc2d479cfe666f62dda679"
+    },
+    "atlas/plane_wide.npz": {
+      "bytes": 1767671,
+      "sha256": "39424bf42abe193c38a47c650639719c32bfc2105809cbc12a3dcf1ade93165b"
+    },
+    "atlas/plane_wide.png": {
+      "bytes": 385903,
+      "sha256": "77341b37f56de269981ab8bc6d9f6d974d50ea7a9575cc4a07431f7dade27c31"
+    },
+    "atlas/plane_wide.py": {
+      "bytes": 6557,
+      "sha256": "fd9bce5f6944c70648ef20a6b6b3d736bb8b69b3fb79bdb49a7bee220ed6ee7f"
+    },
+    "atlas/resolve_staircase.py": {
+      "bytes": 2926,
+      "sha256": "de04be08cdc01c3c7f83e26dcaf75cc8e18e579acd550b051d09e68c2b07eac7"
+    },
+    "atlas/staircase.json": {
+      "bytes": 28490,
+      "sha256": "258bf5ccbd4ba50db2f01586863e602f2e9088d8bef787ac453afe979bec34f4"
+    },
+    "atlas/trace_order.png": {
+      "bytes": 196640,
+      "sha256": "aca71b59005f64b5dd9aa4ee61240a83c05c1591316f68e2f2edecc12995b670"
+    },
+    "atlas/trace_order.py": {
+      "bytes": 5294,
+      "sha256": "857be3591eff52b4af6895a92c51cb8fa97eccec7c8742d24a5a16fd3c880826"
+    },
+    "atlas/two_paths.png": {
+      "bytes": 232308,
+      "sha256": "8fa17c23fec6ebe69580e1e2b06d842d60d83a8b63480f8da7d0148d9adc4af9"
+    },
+    "atlas/two_paths.py": {
+      "bytes": 6391,
+      "sha256": "e1acd19cd3332796ff2529f3293663069ffb30e6075491e78b8e7569845f5fa1"
+    },
+    "holdout/README.md": {
+      "bytes": 5005,
+      "sha256": "8a50db4d56b9ef0456f8bec9781c0364e6e41e059d1efdbc53d76fc80fd95787"
+    },
+    "holdout/forecast.json": {
+      "bytes": 4190,
+      "sha256": "385021ce89f4f5fb278375c8fe7a5f5bc84dee47efa93c0a6534b3240b002b37"
+    },
+    "holdout/holdout.py": {
+      "bytes": 8679,
+      "sha256": "c753a824056298056c4fdecec435cc2485784a5dee8c074427bbe37a1bbf5321"
+    },
+    "holdout/launch.json": {
+      "bytes": 1599,
+      "sha256": "8a70d31c772a0ac6b15b2b7a3cdbf186d982589a7bc57fda7e0d5bdc1d65676d"
+    },
+    "holdout/local_scale.json": {
+      "bytes": 1041,
+      "sha256": "cce7f584b6aae00b20a2311d89420dcdb9a1a9cfb868dbeffbab7461b7918be8"
+    },
+    "holdout/local_scale.py": {
+      "bytes": 1982,
+      "sha256": "b1d5cf6c74610941f5d02d2a3bbfc0f655b3fd2312f0dc4261fd03ed51768b5d"
+    },
+    "holdout/protocol.json": {
+      "bytes": 3444,
+      "sha256": "8ab949c14e7edb66d59dbe91da6d3bb8a252ec7857b45a9129986e0ec9b7c7cb"
+    },
+    "holdout/score.json": {
+      "bytes": 5592,
+      "sha256": "3d047fcfe34b25d12483436a4750abe718d53572044d33ef9a995f8e54b9d11c"
+    },
+    "holdout/terminal.json": {
+      "bytes": 4715,
+      "sha256": "e2bf3861f38db4aeb99032212f820a5af9969c223e88be7496873f0bcfa45287"
+    },
+    "landing/Dottie-Blind-Landing/freeze_protocol.py": {
+      "bytes": 3735,
+      "sha256": "58e270bbaa65a148ecc2506b0c48dec95b2c7343c2df08cd217a6b6d0e7be89b"
+    },
+    "landing/Dottie-Blind-Landing/make_predictions.py": {
+      "bytes": 2041,
+      "sha256": "07ac0589e58b64d74664a820dd966c11d1aa2f7a4619cbadef189ff88ac23dcb"
+    },
+    "landing/Dottie-Blind-Landing/masked-test.txt": {
+      "bytes": 4602,
+      "sha256": "a5423dd167ae40500cb344f231714c427204099c764d75afa235def794407c0e"
+    },
+    "landing/Dottie-Blind-Landing/observe.py": {
+      "bytes": 2657,
+      "sha256": "c0a08c11149f632d538524012311d693de682bc99dd2637c3c1bf2bb8d5ff4b6"
+    },
+    "landing/Dottie-Blind-Landing/predictions.json": {
+      "bytes": 65837,
+      "sha256": "15d777274758a8fb97b549418139ef9d15373e23b67d5c15cc59353f9a150bb7"
+    },
+    "landing/Dottie-Blind-Landing/predictions.json.sha256": {
+      "bytes": 84,
+      "sha256": "bae2f7cae0ccedd980166c89b2886827d83428315b34df5db943aef703e4ac3e"
+    },
+    "landing/Dottie-Blind-Landing/protocol.json": {
+      "bytes": 2929,
+      "sha256": "c1377dd7d9eac80e691c40b7c024aad63247e945f2260174372f7cfcbaa080a2"
+    },
+    "landing/Dottie-Blind-Landing/protocol.json.sha256": {
+      "bytes": 81,
+      "sha256": "6025edda33854fc1db06c5ae95b46e5cdc522ed385478cacf7c19e8428e12493"
+    },
+    "landing/Dottie-Blind-Landing/score.py": {
+      "bytes": 5127,
+      "sha256": "c7d82b30883d2c14adbb77917a2a1c0fbe5438dddb545cdc493e6e3c487fcf83"
+    },
+    "landing/Dottie-Blind-Landing/scores.json": {
+      "bytes": 159566,
+      "sha256": "d586ce09ce20102bd5909150bf40fed2fca18f95f0cc5fa8abe3024195c6c314"
+    },
+    "landing/Dottie-Fold-Arrival/arrival-proof.txt": {
+      "bytes": 6279,
+      "sha256": "92b0d1c776184df429300086a1b20d6c75691c96a766315d640a26e6ac986c23"
+    },
+    "landing/Dottie-Fold-Arrival/arrival.json": {
+      "bytes": 19199,
+      "sha256": "06c6dc954968c6c56a36ee00fc16ca7606fe109fe16b68fd28b84bfd1cadc034"
+    },
+    "landing/Dottie-Fold-Arrival/arrival.py": {
+      "bytes": 6857,
+      "sha256": "c26abfb5cf2e08bf8ae4154bf2fa3b58d9eea913ce7574e33a0e381e206d0829"
+    },
+    "landing/Dottie-Fold-Arrival/final_turn.json": {
+      "bytes": 1019,
+      "sha256": "967e44cc36bc04cc814d6fea90965638049bc815628f790c98403fddc1263904"
+    },
+    "landing/Dottie-Fold-Arrival/final_turn.py": {
+      "bytes": 5259,
+      "sha256": "2cc9f4ec75d05a24febb39a7696bba67672104f30df9ca16cbaa23a73a82d857"
+    },
+    "landing/Dottie-Fold-Arrival/fold-shapes.json": {
+      "bytes": 54626,
+      "sha256": "a02165b16aa9893a3762eb374254145c806853c87f0d6a74d80ebc08140991fc"
+    },
+    "landing/Dottie-Fold-Arrival/fold-shapes.png": {
+      "bytes": 182403,
+      "sha256": "6c7d3ad4d3cb0fea94c029133346b1b16569842db7eb939f4e4e23a9277996c0"
+    },
+    "landing/Dottie-Fold-Arrival/fold_plot.py": {
+      "bytes": 3040,
+      "sha256": "1c183472b8db68ee4ec2c3334211d41a19f6eef0c82c953c5c94826fde0010ac"
+    },
+    "landing/Dottie-Fold-Arrival/fold_shapes.py": {
+      "bytes": 5060,
+      "sha256": "6af4667bb3e4a17b03895026b900bef8e576b385deaf1eefee8d82046a143f4b"
+    },
+    "landing/Dottie-Fold-Arrival/residual_convexity.json": {
+      "bytes": 583,
+      "sha256": "5f642c3e8b6bdfa0e28b087ce3f6f224995105000a8234521d1bc6e604be952f"
+    },
+    "landing/Dottie-Fold-Arrival/residual_convexity.py": {
+      "bytes": 2154,
+      "sha256": "6e04881eff34b957132a336c9a97c65e081f6aa33da2d19134891cd4a8d2dc87"
+    },
+    "landing/Dottie-Forward-From-Trough/certified.json": {
+      "bytes": 3157,
+      "sha256": "0cd6983a7ba2b2819915c972cf603a8fe0a316d3df306b177de1a16ba45d12f0"
+    },
+    "landing/Dottie-Forward-From-Trough/forward.py": {
+      "bytes": 4464,
+      "sha256": "1b44c4a3cd4153bbebb5f6cccf43ab41dcf023b1a67eac504772cc1fa1aff738"
+    },
+    "landing/Dottie-Forward-From-Trough/horizon.json": {
+      "bytes": 1367,
+      "sha256": "dcb6c270c20618bce7817eaf6045c6c65cca25981cc4e55b2a32ceb867da6699"
+    },
+    "landing/Dottie-Forward-From-Trough/horizon.py": {
+      "bytes": 4588,
+      "sha256": "c2aa1bd42a676a2cb92b5806ddc5b4459e8e30d6f9c69092db077cfcedd754f2"
+    },
+    "landing/Dottie-Forward-From-Trough/masked-landing.png": {
+      "bytes": 156174,
+      "sha256": "eb32aa77c5b3db0e929a7e7ed05cded2492cae5e2690205dba920db09432bf7c"
+    },
+    "landing/Dottie-Forward-From-Trough/plot_landing.py": {
+      "bytes": 3465,
+      "sha256": "8e0b2b82c235e57d84bb9ecceb71e5ebe9c401558b0ce2564aa2a17aa9999f77"
+    },
+    "landing/Dottie-Forward-From-Trough/predicted.json": {
+      "bytes": 8323,
+      "sha256": "a34c0f1ba70167907e8e7ae3d541989e0825020404f93f1355d40aaf38a02dce"
+    },
+    "landing/Dottie-Forward-From-Trough/protocol.json": {
+      "bytes": 1144,
+      "sha256": "19036e7c40f0efb88d6fb7385f1ab1489ff2905671dde1360bce9ededc06e452"
+    },
+    "landing/Dottie-Forward-From-Trough/scored.json": {
+      "bytes": 3225,
+      "sha256": "158b453d52e2fc09cd595df26d518e35a8282daf5f7a4bf19b0194e304d75bdc"
+    },
+    "landing/Dottie-Forward-From-Trough/uniform_eighth.json": {
+      "bytes": 2437,
+      "sha256": "d5b6f571fcc1236813cb6f6af7c0bb3e18363a319b0ebdca805f2d9cd43dfc25"
+    },
+    "landing/Dottie-Forward-From-Trough/uniform_eighth.py": {
+      "bytes": 2286,
+      "sha256": "a3c68a86e0d9414be7b191d7f43b5bf66a03e2c196fb593fced9e499d5096357"
+    },
+    "landing/Dottie-Turn-Geometry/ten/backwards-10.json": {
+      "bytes": 34533,
+      "sha256": "be91729eff189df1ac9dc17ba8c315096fc9c70b3038ae3182ec412d4f77e924"
+    },
+    "landing/Dottie-Turn-Geometry/ten/backwards-8.json": {
+      "bytes": 34532,
+      "sha256": "22c1488937716270c13a4d5d19370c27f490892d744a872cb742326052281ea6"
+    },
+    "landing/Dottie-Turn-Geometry/ten/backwards-9.json": {
+      "bytes": 34532,
+      "sha256": "ee0ebb36a4dca788c7f03be26ddba7598736bf74b778051ff7dd1d857282d810"
+    },
+    "landing/Dottie-Turn-Geometry/ten/geometry.py": {
+      "bytes": 6802,
+      "sha256": "13337580468a842fab0fb2a919a3c92eec255380e023d8b7fad856c760d2589d"
+    },
+    "landing/Dottie-Turn-Geometry/ten/summary-6.json": {
+      "bytes": 14885,
+      "sha256": "f0fd24f567e4ec9899e179ebace0683d52e88a68dce7b928a66c9ab5eece9a24"
+    },
+    "landing/Dottie-Turn-Geometry/ten/trace.py": {
+      "bytes": 756,
+      "sha256": "82d2919e2aa80016010579a8e26c59d885bd39639488d8b040445df4e04672d4"
+    },
+    "landing/README.md": {
+      "bytes": 6805,
+      "sha256": "0a08b126337ee8150f113cdaf2ae6d0ecdaba0d791fe7a643c6af407f24dfd04"
+    },
+    "landing/dependencies.json": {
+      "bytes": 5074,
+      "sha256": "7b632ec1ff4f12b000222ebcf654c70b59d459c68aa618678df065ac9f4fad14"
+    },
+    "landing/payload-sha256.json": {
+      "bytes": 4339,
+      "sha256": "c50a0692bbd20ed7af86b0a4e1d0805019663c8a28a7a83b51488bc89b84c7a2"
+    },
+    "landing/replay.py": {
+      "bytes": 4583,
+      "sha256": "9a9a19c670553724281cbba8c7e9d2b0ac1f3116606410ff40c36a986e68a6df"
+    },
+    "provenance.json": {
+      "bytes": 1506,
+      "sha256": "8e8021a85b93e918c31d81bf139f12c140c7a887677138cba2b4e13a09ee9317"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-19-dottie-plane-atlas-v001"
+}

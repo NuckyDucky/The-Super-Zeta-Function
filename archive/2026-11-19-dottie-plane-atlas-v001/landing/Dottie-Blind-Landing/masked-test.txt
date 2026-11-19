@@ -1,0 +1,85 @@
+Endpoint-masked forecast on the first ten archived Riemann landings
+
+Question
+How well can one local position z, tangent v and acceleration a
+predict the terminal complex coordinate? The lead D is measured in
+clockwise degrees. Each prediction uses only its own cutoff and
+the three formulas z, z+Dv and z+Dv+D²a/2. The last formula allows
+both coordinates to move freely. It can overshoot the centerline.
+
+At the last height minimum of the sixth path, the remaining angle
+is about 1.590826390814 degrees. At the same time on all ten paths,
+the mean complex errors are 0.619830, 0.173423 and 0.083454 for
+the position, tangent and quadratic predictions. Their corresponding
+median errors are 0.635157, 0.140497 and 0.058007. At that cutoff
+each unchanged position already has its own landing as the nearest
+known Riemann zero. Endpoint accuracy discriminates the three models.
+
+Sixth landing
+At the trough the predicted height gains are 0, 0 and 0.1008537244.
+The branch actually rises 0.3703477988, so the acceleration alone
+captures 27.23% of the rise. Starting from −0.21015254+37.21583036i
+the quadratic forecast reaches 0.54978357+37.31668408i. It misses
+the height by 0.26949407 and the full coordinate by 0.27405375.
+With 1/4 degree left the quadratic full error falls to 0.00226326.
+At 1/8 degree it is 0.00022833. The sixth path has the largest
+quadratic error among the ten at the trough lead.
+
+All ten landing tracks
+Lead                 Mean |quadratic error|    Counts below 0.1 / 0.01 / 0.001
+1.59082639°          0.08345434                8 / 1 / 0
+1°                   0.03241119                9 / 5 / 1
+1/2°                 0.00488617               10 / 9 / 3
+1/4°                 0.00054695               10 / 10 / 8
+1/8°                 0.00006436               10 / 10 / 10
+1/16°                0.00000783               10 / 10 / 10
+
+The quadratic forecast has smaller complex error than the linear
+forecast in all 60 paired comparisons. Smooth paths give second-
+and third-order local errors for the linear and quadratic forecasts
+respectively. The distance over which a chosen accuracy holds is
+an empirical property of these particular paths. The six leads
+are nested measurements on the same ten previously known cases.
+
+Arrival speed groups at the common trough time
+The accelerating five (1,2,5,8,10) have mean and median complex
+quadratic errors 0.048806 and 0.032328. Their mean and median
+absolute height errors are 0.029117 and 0.017102. All five
+are within 0.1 in complex distance. The slowing five (3,4,6,7,9)
+have mean and median complex errors 0.118103 and 0.083685.
+Their mean and median absolute height errors are 0.102318 and
+0.024071. Three of the five are within 0.1. The scorer obtained
+the arrival-speed labels from the existing endpoint jet experiment.
+The two groups have different remaining displacements at the same
+angular lead. These ten observations are a descriptive comparison.
+
+Validation and chronology
+protocol.json fixes the methods, cutoffs, error thresholds, nearest-
+zero baseline and source files. It hashes the forecast code. The data
+preparer opens each original archive to extract one past checkpoint
+per forecast. The 60 isolated observation processes each receive only
+an ordinal, cutoff, cutoff interval and the single eligible point.
+Each attaches to the marked root by a contracting Newton disk, uses
+interval tubes only up to the cutoff's left endpoint, and bounds the
+Hurwitz shift derivatives over the certified cutoff interval. A Python
+audit hook bars further file access after each process receives its
+packet. For the exact sixth trough, the earlier isolation certificate
+supplies both the scalar cutoff interval and the equality Im v=0.
+
+The seal was recorded before scoring. The independent scoring formula
+uses FLINT ordinary Riemann zero enclosures. The first seven archived
+branches in the atlas were originally traced forward. The last three
+were originally traced backward from their known endpoints. Every
+branch was included because its endpoint was known from earlier
+research. This is a masked local extrapolation on a historical atlas.
+The hashes record content and work-session chronology. The experiment
+used a local workspace.
+
+Python 3.12 and python-flint 0.9.0
+    python -B freeze_protocol.py
+    python -B make_predictions.py
+    python -B score.py
+Protocol and predictions are content-sealed, with exclusive first
+creation and byte-for-byte verification on replay. scores.json
+contains the directed errors, signed height gains, counts and
+summary statistics for all the cases and comparison groups.

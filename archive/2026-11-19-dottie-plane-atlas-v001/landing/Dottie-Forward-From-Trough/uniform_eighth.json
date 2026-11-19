@@ -1,0 +1,68 @@
+{
+  "source_sha256": "15d777274758a8fb97b549418139ef9d15373e23b67d5c15cc59353f9a150bb7",
+  "scope": "all real h from 14.875 through 15 on each of ten marked branches",
+  "working_bits": 192,
+  "theorem": "|endpoint-P2(h)| <= sup |w third derivative| (15-h)^3 / 6",
+  "rows": [
+    {
+      "case": 1,
+      "cells": 4,
+      "upper_abs_w3_per_degree_cubed": "[1.7894404586405 +/- 4.39e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00058250014929702 +/- 3.51e-18]"
+    },
+    {
+      "case": 2,
+      "cells": 4,
+      "upper_abs_w3_per_degree_cubed": "[1.8920489940792 +/- 3.23e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00061590136526017 +/- 3.27e-18]"
+    },
+    {
+      "case": 3,
+      "cells": 8,
+      "upper_abs_w3_per_degree_cubed": "[1.5145067535341 +/- 2.15e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00049300350049937 +/- 4.55e-18]"
+    },
+    {
+      "case": 4,
+      "cells": 8,
+      "upper_abs_w3_per_degree_cubed": "[1.6929594967514 +/- 2.77e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00055109358618211 +/- 4.65e-18]"
+    },
+    {
+      "case": 5,
+      "cells": 4,
+      "upper_abs_w3_per_degree_cubed": "[1.8749383576214 +/- 3.14e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00061033149662156 +/- 3.16e-19]"
+    },
+    {
+      "case": 6,
+      "cells": 78,
+      "upper_abs_w3_per_degree_cubed": "[2.9941767863929 +/- 2.72e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00097466692265395 +/- 2.36e-18]"
+    },
+    {
+      "case": 7,
+      "cells": 4,
+      "upper_abs_w3_per_degree_cubed": "[1.6611050311476 +/- 7.81e-16]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00054072429399336 +/- 8.80e-19]"
+    },
+    {
+      "case": 8,
+      "cells": 32,
+      "upper_abs_w3_per_degree_cubed": "[2.3223771080375 +/- 2.83e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00075598213152261 +/- 4.51e-18]"
+    },
+    {
+      "case": 9,
+      "cells": 32,
+      "upper_abs_w3_per_degree_cubed": "[1.9315687082708 +/- 1.19e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00062876585555690 +/- 2.81e-18]"
+    },
+    {
+      "case": 10,
+      "cells": 16,
+      "upper_abs_w3_per_degree_cubed": "[2.3131039962173 +/- 4.92e-14]",
+      "upper_quadratic_error_for_all_h_in_final_eighth": "[0.00075296354043530 +/- 3.01e-18]"
+    }
+  ]
+}

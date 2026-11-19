@@ -1,0 +1,26 @@
+{
+  "title": "Forward Hurwitz transport from the seventh and eighth triadic seeds",
+  "version": 1,
+  "seeds": [7, 8],
+  "start": "w_k(0)=2*pi*i*k/log(3). Both are exact zeros of H(w,1/6)=(2^w-1)(3^w-1)*zeta(w).",
+  "prior_use": "The archived zero-transport experiments explicitly cover triadic indices 2 through 6. A search of the repository's transport scripts, notes and Lean sources and the local continuation archives found no earlier forward test named for 7 or 8. Cases use the next two consecutive addresses. Neither was selected by a Riemann endpoint.",
+  "equation": "H(w,b)=HurwitzZeta(w,b)+HurwitzZeta(w,1-b)=0. Clockwise degrees h in [0,15], b=1/6+h/180. Work on each marked simple root branch.",
+  "rules": [
+    "At h=0 compute the sign of Re(v), v=-H_b/(180*H_w), and seal these two signed launch forecasts before tracing either branch. If a sign is indeterminate, record unresolved. A launch hit means that the predicted sign matches sign(Re(w(1/4 degree)-w(0))).",
+    "Using only the exact seeds and forward contracting tubes, proceed to h=119/8=14.875 degrees. With D=1/8, seal the three complex endpoint forecasts w, w+D*v, and P2=w+D*v+D^2*a/2, where a is the second implicit derivative per degree squared. Do not project real parts onto the critical line.",
+    "Primary per-seed prediction: |P2-w(15)|<0.001. Matched comparisons: errors of the frozen position and tangent; record whether quadratic improves on each.",
+    "Secondary per-seed forecast: predict a dyadic elementary endpoint when Re(P2)<1/4 and an ordinary Riemann zero when Re(P2)>1/4. A ball touching 1/4 gives no call. This discriminator is an empirical threshold.",
+    "Only after both endpoint forecasts or budget failures are sealed, continue from the two saved cutoff disks to h=15. Seal the resulting terminal disks before classification. An unresolved seed remains in the table.",
+    "The endpoint reference is K(w)*zeta(w), K(w)=2^w*(2^w-1). Test every elementary candidate 2*pi*i*j/log(2) for 1<=j<=32 and ordinary positive-height Riemann zero ordinals 1..40 using directed enclosures; check unique root in the same terminal disk. Record unmatched, overlapping, or exhausted cases as unresolved. No choice of additional seeds, revised tolerance, or replacement cases."
+  ],
+  "computation": {
+    "precision_bits": 224,
+    "disk_radius": "1e-24",
+    "max_tube_attempts_per_seed_total": 6000,
+    "max_bisection_depth_per_base_cell": 22,
+    "initial_mesh": "separate 0..1/4, 1/4..119/8, 119/8..15 stages in clockwise degrees, with uniform subintervals of at most 1/8 degree per stage",
+    "interval_method": "The zero-transport archive's centered_tube at commit 5c5f3a160b2412a49b0b1e86fa24f7605a938823 with its pinned arithmetic_braid and arithmetic_reference. At most 32 elementary and 40 Riemann comparisons per finished seed.",
+    "report": "Signed detachment, cutoff and endpoint coordinates, full complex errors, inferred and certified type, ordinal or elementary index when identified, tube counts, all failures. Forecast phase reads no Riemann zeros or later path nodes."
+  },
+  "chronology": "The protocol is to appear in a public GitHub commit before any seed evaluation. Launch, final-window forecasts, terminal disks, and scores are generated in four separate processes that hash their predecessors. The subsequent local seals fix their content and sequence; the GitHub commits separately date the protocol and the results."
+}

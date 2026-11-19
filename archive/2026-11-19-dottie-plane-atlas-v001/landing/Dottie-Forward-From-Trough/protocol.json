@@ -1,0 +1,12 @@
+{
+  "protocol": "Continue the ten previously selected branches from the sixth path's last trough angle",
+  "endpoint": "h = 15 clockwise degrees",
+  "input": "Only the case identifier, cutoff h interval, and local complex position from each sealed trough row",
+  "fixed_steps": [1, 4, 16, 64],
+  "formula": "ODE w'=-H_b/(180 H_w); second-order Taylor advance using the current w' and w'' at every step, no root correction and no intermediate exact roots",
+  "baseline": "One step is the local position, velocity and acceleration extrapolation",
+  "certificate": "Independent forward interval continuation from the same cutoff; budget 4096 tested intervals per case, terminal disk radius 1e-30",
+  "arithmetic": "224-bit FLINT; only the symmetric Hurwitz family in the forward calculation",
+  "scoring": "Seal every fixed-step prediction before interval continuation or querying Riemann zeros. Score absolute complex error against certified endpoint disk, then compare the disk with the ten Riemann zeros. No critical-line projection.",
+  "sampling": "Retrospective test. The ten source branches were originally chosen by known destinations."
+}

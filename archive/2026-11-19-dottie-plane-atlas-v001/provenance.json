@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-19",
+  "author": "NuckyDucky",
+  "snapshot": "2026-11-19-dottie-plane-atlas-v001",
+  "base": "703381cb3e6df97aabcf3f3784e9aba6c66c927b",
+  "atlas": {
+    "input": "atlas/plane_reference.json",
+    "calibration": [
+      "archive/2026-11-19-oriented-return-v001/computations",
+      "archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return"
+    ],
+    "raw_maps": [
+      "atlas/plane_map.npz",
+      "atlas/basins.npz",
+      "atlas/plane_wide.npz"
+    ],
+    "directed_methods": [
+      "atlas/plane_anchors.py",
+      "atlas/phase_lift.py",
+      "atlas/basin_certificate.py",
+      "atlas/critical_loop.py",
+      "atlas/critical_branches.py",
+      "atlas/resolve_staircase.py",
+      "atlas/gray_locus.py",
+      "atlas/gray_collision.py"
+    ]
+  },
+  "landing": {
+    "generation": "Ten previously located branches with the endpoint concealed during extrapolation",
+    "dependencies": "landing/dependencies.json",
+    "original_payload": "landing/payload-sha256.json",
+    "reproduction": "landing/replay.py"
+  },
+  "holdout": {
+    "public_protocol_commit": "a739bf30c0db09774d4fd3681596a1821f31d081",
+    "public_protocol_original_path": "protocols/2026-11-19-dottie-plane-holdout.json",
+    "sha256": "8ab949c14e7edb66d59dbe91da6d3bb8a252ec7857b45a9129986e0ec9b7c7cb",
+    "sealed_order": [
+      "launch",
+      "forecast",
+      "terminal",
+      "score"
+    ],
+    "post_score_analysis": "holdout/local_scale.json"
+  }
+}

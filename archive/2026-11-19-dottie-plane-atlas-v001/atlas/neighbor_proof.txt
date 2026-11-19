@@ -1,0 +1,45 @@
+Two points on the last turn of the sixth Hurwitz trajectory
+
+Write H(w,b)=zeta(w,b)+zeta(w,1-b), where zeta(w,b) is the Hurwitz zeta
+function. The turn angle h is in clockwise degrees, b=1/6+h/180.
+At h0=13.4091736091859436753 (the exact stated decimal), p starts at the
+simple root near -0.21015253655603836+37.21583036006284i. The second
+point starts at q=p+10^-6. Continue p on level zero and q on its own
+initial level. Their distinct levels ensure that their distance stays positive.
+
+On each regular disk the complex velocity is v=-H_b/(180 H_w).
+Let g=(d/dh) log |q-p|. For z_s=p+s(q-p),
+
+  g  = Re int_0^1 v_w(z_s,b) ds,
+  g' = Re int_0^1 [v_wb(z_s,b)/180
+                   +v_ww(z_s,b)((1-s)v(p,b)+s v(q,b))] ds.
+
+These equations follow by integrating the complex derivative along the
+straight segment from p to q, then differentiating under the integral.
+They describe the actual finite gap, for which the two velocities differ.
+
+The 176-bit calculation first encloses the initial root in a disk of radius
+2e-31 by a contraction. Propagated disks enclose both solutions at every
+angle. The Newton operator with one fixed nonzero complex preconditioner
+maps each disk inside itself and is strictly contracting there, uniformly
+for both levels and all parameter values in the subinterval. The tiny
+endpoint disks overlap the common continuation through strict containment
+in that contracting disk. Each working square used to enclose derivatives
+contains the entire working disk and hence each interpolating segment.
+Taylor enclosures for each Hurwitz derivative use its two first partial
+derivatives on the whole working box. That bounds both integrands above.
+
+The directed bounds show g>0 between h0 and 14.24 degrees and g<0 from
+14.36 to 15 degrees. Between 14.24 and 14.36 they give g'<0. The signs
+of g at 14.298713824150 and 14.298713824153 are opposite, locating its
+unique zero. The growing then decreasing distance therefore has one maximum.
+The value at the two ends of this small bracket and the upper bound on the
+logarithmic slope from its left endpoint enclose the value at the maximum.
+On the decreasing part the ratio crosses 1 between 14.879019351554 and
+14.879019351557 degrees. The final length is smaller than its launch value
+and is the minimum on the closed interval.
+
+Run neighbor.py to reproduce the two numerical meshes. Run neighbor_proof.py
+with python-flint and assertions enabled for the directed bounds. The shared
+Hurwitz routines are in plane_anchors.py in the atlas directory. Both scripts
+accept --output DIRECTORY.
