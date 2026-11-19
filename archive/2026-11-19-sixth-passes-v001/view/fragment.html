@@ -1,0 +1,188 @@
+<section id="sixth-fold-view" aria-label="Three passages through height 37.25">
+<style>
+#sixth-fold-view {display:grid;gap:.55rem}
+#sixth-fold-view svg {display:block;width:100%;overflow:visible}
+#sixth-fold-view svg text {fill:var(--foreground)}
+#sixth-fold-view .readout {font-variant-numeric:tabular-nums;justify-self:start;max-width:100%}
+#sixth-fold-view .readout th {font-weight:500}
+#sixth-fold-view .readout td, #sixth-fold-view .readout th {white-space:nowrap}
+#sixth-fold-view .readout th:first-child {white-space:normal}
+#sixth-fold-view .readout td {text-align:right}
+#sixth-fold-view .sf-tools {display:flex;flex-wrap:wrap;align-items:end;gap:.5rem 1rem}
+#sixth-fold-view .sf-tools label {max-width:100%}
+#sixth-fold-view .passkey {display:flex;flex-wrap:wrap;gap:.25rem 1rem}
+#sixth-fold-view .passkey span {white-space:nowrap}
+#sixth-fold-view .passkey i {display:inline-block;width:1.2rem;margin-inline-end:.32rem;vertical-align:middle;border-top:2px solid var(--viz-series-1)}
+#sixth-fold-view .passkey .p2 {border-top:2px dashed var(--viz-series-2)}
+#sixth-fold-view .passkey .p3 {border-top:2px dotted var(--viz-series-3)}
+</style>
+<h3>Three passes at T = 37.25</h3>
+<div class="sf-tools">
+ <label class="form-label">Geometry<select class="form-select" data-view><option value="fold">Original fold · rotated 90°</option><option value="aligned">Align the three passes</option></select></label>
+ <label class="form-label">Derivative below<select class="form-select" data-derivative><option value="T1">Height · first derivative</option><option value="T2">Height · second derivative</option><option value="sigma1">Real part · first derivative</option><option value="sigma2">Real part · second derivative</option></select></label>
+</div>
+<svg data-geometry role="img" aria-label="The three passes and folds in the rotated plane"></svg>
+<div class="passkey text-small" aria-label="Passes in clockwise order"><span><i></i>1 · rising</span><span><i class="p2"></i>2 · falling</span><span><i class="p3"></i>3 · rising</span><span data-revisit-legend hidden></span></div>
+<svg data-derivative-plot role="img" aria-label="Derivative versus clockwise angle"></svg>
+<div class="text-small" data-caption></div>
+<table class="table table-sm readout">
+ <caption class="sr-only">Rounded values from directed enclosures at each pass. Derivatives per clockwise degree.</caption>
+ <thead><tr><th scope="col">At T = 37.25</th><th scope="col">Pass 1</th><th scope="col">Pass 2</th><th scope="col">Pass 3</th></tr></thead>
+ <tbody data-rows></tbody>
+</table>
+<script type="application/json" data-values>__SIXTH_PASS_DATA__</script>
+</section>
+<script>
+(()=>{
+ const root=document.getElementById('sixth-fold-view');
+ const select=q=>root.querySelector('[data-'+q+']');
+ const d=JSON.parse(select('values').textContent);
+ const pens=['var(--viz-series-1)','var(--viz-series-2)','var(--viz-series-3)'];
+ const pattern=['','7 3','2 3'],ink='var(--muted-foreground)',grid='var(--border)';
+ const geo=select('geometry'), lower=select('derivative-plot'), views=select('view'), derivatives=select('derivative');
+ const events=d.events, passes=[events[0],events[2],events[4]], folds=[events[1],events[3]];
+ const windowDeg=.25;
+ const options={T1:[4,'Height velocity · T′ per °'],T2:[6,'Height acceleration · T″ per °²'],
+   sigma1:[3,'Sideways velocity · σ′ per °'],sigma2:[5,'Sideways acceleration · σ″ per °²']};
+ function node(parent,tag,attrs={},content=''){
+   const n=document.createElementNS('http://www.w3.org/2000/svg',tag);
+   for(const [key,val] of Object.entries(attrs))n.setAttribute(key,val);
+   if(content)n.textContent=content;
+   parent.append(n);return n;
+ }
+ function label(g,x,y,content,anchor='middle'){
+   return node(g,'text',{x,y,'text-anchor':anchor,class:'text-small'},content);
+ }
+ function line(g,x1,y1,x2,y2,color,dash='',width=1){
+   return node(g,'line',{x1,y1,x2,y2,stroke:color,'stroke-dasharray':dash,'stroke-width':width});
+ }
+ function clipRange(vals,margin=.09){
+   const low=Math.min(...vals),high=Math.max(...vals),pad=(high-low||1)*margin;
+   return [low-pad,high+pad];
+ }
+ function gridTicks([low,high],target){
+   const approx=(high-low)/target,base=10**Math.floor(Math.log10(approx));
+   const step=([1,2,2.5,5,10].find(k=>k*base>=approx)||10)*base;
+   const result=[];
+   for(let j=Math.ceil(low/step-1e-9);j<=Math.floor(high/step+1e-9);j++)result.push(j*step);
+   return result;
+ }
+ function fmt(v,places=3){return Number(v.toFixed(places)).toString().replace('-','−')}
+ function chart(svg,xrange,yrange,xtitle,ytitle,height){
+   svg.replaceChildren();const width=svg.clientWidth||640,narrow=width<410;
+   const left=narrow?47:57,right=width-(narrow?21:25),top=28,bottom=height-42;
+   const X=x=>left+(x-xrange[0])*(right-left)/(xrange[1]-xrange[0]);
+   const Y=y=>bottom-(y-yrange[0])*(bottom-top)/(yrange[1]-yrange[0]);
+   svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.style.height=height+'px';
+   for(const x of gridTicks(xrange,narrow?4:7)){
+     line(svg,X(x),top,X(x),bottom,grid);label(svg,X(x),bottom+17,fmt(x,4));
+   }
+   for(const y of gridTicks(yrange,narrow?4:5)){
+     line(svg,left,Y(y),right,Y(y),Math.abs(y)<1e-12?ink:grid,Math.abs(y)<1e-12?'4 3':'');label(svg,left-5,Y(y)+4,fmt(y,4),'end');
+   }
+   label(svg,left,15,ytitle,'start');label(svg,(left+right)/2,height-2,xtitle);
+   const key=svg===geo?'sf-geometry-clip':'sf-derivative-clip';
+   const rect=node(node(svg,'defs',{}),'clipPath',{id:key});
+   node(rect,'rect',{x:left,y:top,width:right-left,height:bottom-top});
+   const layer=node(svg,'g',{'clip-path':'url(#'+key+')'});return {X,Y,layer,svg,left,right,top,bottom,width,narrow};
+ }
+ function trace(ax,pts,color,weight,dash=''){
+   if(!pts.length)return;
+   node(ax.layer,'polyline',{points:pts.map(([x,y])=>ax.X(x).toFixed(2)+','+ax.Y(y).toFixed(2)).join(' '),stroke:color,fill:'none','stroke-width':weight,'stroke-linejoin':'round','stroke-dasharray':dash});
+ }
+ function circle(ax,x,y,k,name){
+   const c=node(ax.layer,'circle',{cx:ax.X(x),cy:ax.Y(y),r:4,fill:'var(--background)',stroke:pens[k],'stroke-width':2,'data-tooltip':name,'aria-label':name});
+   return c;
+ }
+ function diamond(ax,x,y,name){
+   const px=ax.X(x),py=ax.Y(y),r=4;
+   node(ax.layer,'polygon',{points:[[px-r,py],[px,py-r],[px+r,py],[px,py+r]].map(q=>q.join(',')).join(' '),
+      fill:'var(--background)',stroke:ink,'stroke-width':1.6,'data-tooltip':name});
+ }
+ function arrow(ax,p,q,col){
+   const x=ax.X(q[0]),y=ax.Y(q[1]),u=x-ax.X(p[0]),v=y-ax.Y(p[1]),m=Math.hypot(u,v);
+   if(m<1e-6)return;
+   const ex=u/m,ey=v/m;
+   node(ax.layer,'polyline',{points:[[x-7*ex+3*ey,y-7*ey-3*ex],[x,y],[x-7*ex-3*ey,y-7*ey+3*ex]].map(a=>a.join(',')).join(' '),
+      stroke:col,fill:'none','stroke-width':2,'stroke-linecap':'round'});
+ }
+ const profiles=d.samples;
+ function atAngle(alpha){
+   const idx=profiles.findIndex(p=>p[0]>=alpha);
+   if(idx===0||profiles[idx][0]===alpha)return profiles[idx];
+   const p=profiles[idx-1],q=profiles[idx],weight=(alpha-p[0])/(q[0]-p[0]);
+   return p.map((v,k)=>v+weight*(q[k]-v));
+ }
+ function localRows(e){
+   const lo=e[0]-windowDeg,hi=e[0]+windowDeg;
+   const rows=profiles.filter(p=>p[0]>lo&&p[0]<hi);
+   return [atAngle(lo),...rows,e,atAngle(hi)].sort((x,y)=>x[0]-y[0]);
+ }
+ const locals=passes.map(localRows);
+ let mode='fold',field='T1';
+ function draw(){
+   views.value=mode;derivatives.value=field;
+   const orig=mode==='fold',j=options[field][0];
+   const windows=locals.map((rows,i)=>rows.map(p=>[p[2]-37.25,passes[i][1]-p[1]]));
+   const xlim=orig?[37.197,37.329]:clipRange(windows.flat().map(p=>p[0]).concat(0),.20);
+   const ylim=orig?clipRange(profiles.map(p=>.5-p[1]),.07):clipRange(windows.flat().map(p=>p[1]).concat(0),.12);
+   const ax=chart(geo,xlim,ylim,orig?'Height T':'Height change · T − 37.25',orig?'Rotated position · Y = ½ − σ':'Shifted position · Y − Y at pass',236);
+   const xx=orig?37.25:0;line(ax.layer,ax.X(xx),ax.top,ax.X(xx),ax.bottom,ink,'4 4');
+   if(orig){
+     trace(ax,profiles.map(p=>[p[2],.5-p[1]]),ink,1.7);
+     folds.forEach((e,i)=>{
+       diamond(ax,e[2],.5-e[1],(i?'Minimum':'Maximum')+' T = '+fmt(e[2],7));
+       label(ax.svg,ax.X(e[2])+(i?7:-7),ax.Y(.5-e[1])-9,i?'Min T':'Max T',i?'start':'end');
+     });
+   }
+   passes.forEach((e,i)=>{
+     const pts=orig?locals[i].map(p=>[p[2],.5-p[1]]):windows[i];
+     trace(ax,pts,pens[i],2.5,pattern[i]);
+     const n=pts.length;arrow(ax,pts[n-3],pts[n-2],pens[i]);
+     if(orig){
+       circle(ax,e[2],.5-e[1],i,'Pass '+(i+1)+' · σ '+fmt(e[1],7));
+       label(ax.svg,ax.X(xx)+8,ax.Y(.5-e[1])-5,String(i+1),'start');
+     }
+   });
+   if(!orig)node(ax.layer,'circle',{cx:ax.X(0),cy:ax.Y(0),r:3.5,fill:'var(--background)',stroke:ink,'stroke-width':1.5});
+   const revisitLegend=select('revisit-legend');
+   revisitLegend.hidden=!(orig&&d.revisit);
+   if(!revisitLegend.hidden){
+     const r=d.revisit, angles=fmt(r.alpha1,4)+'° and '+fmt(r.alpha2,4)+'°';
+     const hint='Self-crossing at σ = '+fmt(r.sigma,6)+', T = '+fmt(r.T,6)+' · clockwise turns '+angles;
+     const x=ax.X(r.T),y=ax.Y(.5-r.sigma);
+     const mark=node(ax.layer,'rect',{x:x-4,y:y-4,width:8,height:8,fill:'var(--background)',
+       stroke:'var(--foreground)','stroke-width':1.8,'data-revisit':'','data-tooltip':hint,'aria-label':hint});
+     node(mark,'title',{},hint);
+     revisitLegend.textContent='□ Self-crossing · '+angles;
+   }
+   const yr=clipRange((orig?profiles:locals.flat()).map(p=>p[j]).concat(0),.12);
+   const ad=chart(lower,orig?[profiles[0][0],profiles.at(-1)[0]]:[-windowDeg,windowDeg],yr,
+       orig?'Clockwise turn α (°)':'Clockwise degrees from each pass',options[field][1],198);
+   if(orig){
+     trace(ad,profiles.map(p=>[p[0],p[j]]),ink,1.7);
+     folds.forEach((e,i)=>diamond(ad,e[0],e[j],(i?'Minimum':'Maximum')+' T · '+fmt(e[0],6)+'°'));
+   }else{
+     line(ad.layer,ad.X(0),ad.top,ad.X(0),ad.bottom,ink,'4 4');
+   }
+   passes.forEach((e,i)=>{
+      trace(ad,locals[i].map(p=>[orig?p[0]:p[0]-e[0],p[j]]),pens[i],2.3,pattern[i]);
+      circle(ad,orig?e[0]:0,e[j],i,'Pass '+(i+1)+' · '+fmt(e[j],6));
+   });
+   select('caption').textContent=orig?'Diamonds mark the maximum and minimum height. Arrows follow increasing angle.':'Each colored arc spans a quarter degree on either side of its own pass. Arrows follow increasing angle.';
+ }
+ const body=select('rows');
+ [['Angle α (°)',0],['Real part σ',1],['T′ / °',4],['T″ / °²',6],['σ′ / °',3],['σ″ / °²',5],['dY/dT',7],['d²Y/dT²',8]].forEach(([name,j])=>{
+    const tr=body.insertRow();const th=document.createElement('th');th.scope='row';th.textContent=name;tr.append(th);
+    for(const e of passes)tr.insertCell().textContent=fmt(e[j],4);
+ });
+ function save(){window.openai?.setWidgetState?.({modelContent:{mode,field},privateContent:null})?.catch(()=>{});}
+ function restore(s){s=s?.modelContent??s;if(s&&['aligned','fold'].includes(s.mode)&&Object.hasOwn(options,s.field)){mode=s.mode;field=s.field;draw();}}
+ views.addEventListener('change',()=>{mode=views.value;draw();save()});
+ derivatives.addEventListener('change',()=>{field=derivatives.value;draw();save()});
+ let lastWidth=0;
+ new ResizeObserver(()=>{const width=geo.clientWidth;if(width!==lastWidth){lastWidth=width;draw()}}).observe(root);
+ window.addEventListener('openai:set_globals',e=>restore(e.detail?.globals?.widgetState));
+ draw();restore(window.openai?.widgetState);
+})();
+</script>
