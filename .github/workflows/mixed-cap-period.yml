@@ -1,0 +1,46 @@
+name: Dottie mixed-period certificate
+
+on:
+  pull_request:
+    paths:
+      - 'archive/2026-11-18-dottie-mixed-cap-period-v001/**'
+      - '.github/workflows/mixed-cap-period.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'archive/2026-11-18-dottie-mixed-cap-period-v001/**'
+      - '.github/workflows/mixed-cap-period.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: archive/2026-11-18-dottie-mixed-cap-period-v001
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
+      - name: Install interval arithmetic
+        run: |
+          python3 -m venv "$RUNNER_TEMP/cap-venv"
+          "$RUNNER_TEMP/cap-venv/bin/python" -m pip install --only-binary=:all: python-flint==0.9.0
+          echo "$RUNNER_TEMP/cap-venv/bin" >> "$GITHUB_PATH"
+      - name: Verify both cap periods from six exact inputs
+        run: |
+          python -c 'import sys, flint; print(sys.version, flint.__version__, flint.__FLINT_VERSION__)'
+          python -B verify_mixed_cap_period.py
+      - name: Replay the original certificate
+        run: |
+          echo "4cb6a7c28be7845ee78eb301b510894b4c60b9f87c4b8118dfaf0f0f2982f4ca  dottie-cap-periods-320-and-321.zip" | sha256sum --check
+          python -m zipfile -e dottie-cap-periods-320-and-321.zip "$RUNNER_TEMP/cap-packet"
+          cd "$RUNNER_TEMP/cap-packet"
+          plan=archive/2026-11-18-clock-local-controls-protocol-v001/protocol.json
+          python -B check_dottie_whole_box.py phase3k "$plan"
+          python -B check_dottie_cap_321.py phase3k "$plan"
+          python -B check_cap_321_rectangles.py "$plan"
