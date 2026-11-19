@@ -316,9 +316,15 @@ That reading itself takes the same value twice elsewhere. The two Dottie orbits 
 
 ### 3.10 What a full turn changes near the sixth zero
 
-I start a second path one millionth of a unit to the right of the sixth path’s last height minimum. Each keeps its own Hurwitz value through the same turn. The distance between them is largest in the sampled data near $14.30^\circ$, at about $1.234$ millionths. It finishes at $0.939097$ millionths. On the left I plot the path through the complex plane. On the right I plot the distance between the two paths at each angle.
+I followed the sixth moving zero and 16 neighboring starting positions through the last part of the turn. Each arrow shows the direction of travel in the complex plane. The horizontal and vertical axes use the same scale.
 
-![The sixth path through its last height minimum, and the separation of two paths that start one millionth apart.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/two_paths.png)
+![Sixteen nearby paths and the sixth moving zero, with starts, endpoints and arrows in the complex plane.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/complex_turn.png)
+
+For a closer comparison I placed a second point exactly one millionth to the right of the zero at its last height minimum. The offset panel draws the vector from the moving zero to this neighbor. It starts at $(1,0)$ in millionths of a unit. At the landing it points $74.73753^\circ$ counterclockwise from the positive real axis, with coordinates $(0.247209,0.905975)$. The distance between the points reaches its unique maximum of $1.233768546$ millionths near $14.29871382415^\circ$, returns to its starting length near $14.87901935156^\circ$, and ends at $0.939096964$ millionths. [Proof for this pair](archive/2026-11-19-dottie-plane-atlas-v001/atlas/neighbor_proof.txt) · [Interval bounds](archive/2026-11-19-dottie-plane-atlas-v001/atlas/neighbor_proof.json) · [Distance plotted against the turn angle](archive/2026-11-19-dottie-plane-atlas-v001/atlas/two_paths.png)
+
+![Magnified complex displacement from the moving zero to its neighbor, measured in millionths on equal axes.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/complex_offset.png)
+
+To explore the map, download the HTML file from GitHub using **Download raw file** and open it in a browser. Choose any of the 10,961 starting points to see its paired endpoint on the same complex axes. It also works offline. [Interactive complex-plane map](archive/2026-11-19-dottie-plane-atlas-v001/atlas/complex_explorer.html)
 
 The sixth path ends at the native $45^\circ$ angle of my marked Dottie orbit. I asked what happens to points on either side of that path. I followed each point from the final trough to the landing while holding its own complex value of $H(w,b)=\zeta(w,b)+\zeta(w,1-b)$ fixed. A tiny line segment at the trough on the zero path shrinks to $0.93910$ times its length. A segment starting at $0.075+36.75i$ shrinks to $0.28613$ times its length, while one starting at $-0.525+37.3125i$ expands by a factor of $8.0752$. Colored pixels give numerical estimates. I verified these last two factors by following their nonzero levels with directed arithmetic. [Plane map and derivative](archive/2026-11-19-dottie-plane-atlas-v001/atlas/plane_notes.md) · [Two certified paths](archive/2026-11-19-dottie-plane-atlas-v001/atlas/plane_anchors.json)
 

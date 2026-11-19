@@ -1,5 +1,6 @@
 """Recompute the maps and interval proofs for the marked starting points and inverse branches."""
 import argparse
+import base64
 from fractions import Fraction
 from hashlib import sha256
 import json
@@ -69,15 +70,45 @@ def compare_map(out, stem, expected_count):
     return report
 
 
+def compare_explorer(output):
+    prefix, suffix = (ATLAS / "complex_explorer.template.html").read_text("utf-8").split("__GRID_PAYLOAD__")
+
+    def payload(page):
+        text = page.read_text("utf-8")
+        assert text.startswith(prefix) and text.endswith(suffix)
+        return json.loads(text[len(prefix):-len(suffix)])
+
+    old = payload(ATLAS / output.name)
+    new = payload(output)
+    assert old.keys() == new.keys()
+    for label in ("restored", "examples", "x", "y"):
+        assert new[label] == old[label]
+    for label in ("re", "im", "scale"):
+        saved = np.frombuffer(base64.b64decode(old[label], validate=True), dtype="<f8")
+        fresh = np.frombuffer(base64.b64decode(new[label], validate=True), dtype="<f8")
+        assert saved.size == fresh.size == 10961
+        np.testing.assert_allclose(fresh, saved, rtol=3e-15, atol=2e-15)
+
+
 def replay(out):
     check_reference()
     record = ARCHIVE / "2026-11-19-oriented-return-v001" / "data" / "quarter_probe.json"
     assert sha256(record.read_bytes()).hexdigest() == "7d3afc4ded30439ec277ef5a3636f187f1ae89ef8de5992ed77392068c1d051f"
+    run(ATLAS / "neighbor_proof.py", out, "--output", out)
+    growth = read(out / "neighbor_proof.json")
+    compare(growth, read(ATLAS / "neighbor_proof.json"), "neighbor_proof.json")
+    assert arb(growth["maximum_normalized_gap"]) > 1 and growth["minimum"] == "right endpoint"
+    assert arb(growth["finite_gap_over_initial_at_right_ends"]["15.0"]) < 1
     run(ATLAS / "two_paths.py", out, "--output", out)
+    run(ATLAS / "complex_turn.py", out, "--output", out)
+    viewer = out / "complex_explorer.html"
+    run(ATLAS / "complex_explorer.py", out, "--output", viewer)
+    compare_explorer(viewer)
     run(ATLAS / "trace_order.py", out, "--data", record, "--output", out / "trace_order.png")
     run(ATLAS / "plane_map.py", out, "--output", out)
     run(ATLAS / "plane_wide.py", out, "--output", out)
-    for name in ("plane_strain.png", "plane_grid.png", "plane_wide.png", "trace_order.png", "two_paths.png"):
+    for name in ("plane_strain.png", "plane_grid.png", "plane_wide.png", "trace_order.png", "two_paths.png",
+                 "complex_turn.png", "complex_offset.png"):
         with Image.open(out / name) as regenerated, Image.open(ATLAS / name) as saved:
             assert regenerated.size == saved.size and min(regenerated.size) >= 1440
             regenerated.verify()

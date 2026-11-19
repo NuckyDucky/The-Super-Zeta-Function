@@ -1,12 +1,12 @@
 {
   "files": {
     "README.md": {
-      "bytes": 6428,
-      "sha256": "b7d0cfe9c12a07901980584ea3e8b98dde940718ab69472c5b5ef2e6f512fecb"
+      "bytes": 7390,
+      "sha256": "06177093473367bf81ae8c7f1271541218362d17f4d34048732e9f9381bf288b"
     },
     "atlas/THESIS.md": {
-      "bytes": 12850,
-      "sha256": "d1b2d61404e330f15f4d7560c09aad5e3db848a95e4734295e39a6189dc353a4"
+      "bytes": 13782,
+      "sha256": "6c921b827a66c2e1ff75758209f9bdceea9c72ac80bb2a6fb838010b0c6d0508"
     },
     "atlas/basin-summary.json": {
       "bytes": 1611,
@@ -31,6 +31,30 @@
     "atlas/basins.png": {
       "bytes": 187386,
       "sha256": "7242d3593f4a10542d86f87d64267b28f3ab6dc196ed3d6798c858418a6bee05"
+    },
+    "atlas/complex_explorer.html": {
+      "bytes": 363932,
+      "sha256": "918e08f4e53e15faa67c9b06897089e8bda8473dc1b7e54d5c058a557930ac39"
+    },
+    "atlas/complex_explorer.py": {
+      "bytes": 2679,
+      "sha256": "1e5a9f1a94aae0d28a4f79dbb18a0c483f54c4038c08b4b890b0689040613784"
+    },
+    "atlas/complex_explorer.template.html": {
+      "bytes": 10695,
+      "sha256": "0a7e9caccbfebdfad676528311deb2d9c981527dfbcc24730775c4bc44f5d6a8"
+    },
+    "atlas/complex_offset.png": {
+      "bytes": 155701,
+      "sha256": "3d4ef236d08043c252913eb0e0ad29bfb9707f0db33b9fa26d60a54441d027ed"
+    },
+    "atlas/complex_turn.png": {
+      "bytes": 255684,
+      "sha256": "b5cf90b96f12e60c56fcff42342baeb75e5028f7cf670c2bdb25dfc23041f889"
+    },
+    "atlas/complex_turn.py": {
+      "bytes": 7512,
+      "sha256": "59e9ddc432566268e63f60d949d894763221b6c2d206b32989911388aa0e221c"
     },
     "atlas/critical_branches.json": {
       "bytes": 1707,
@@ -63,6 +87,26 @@
     "atlas/gray_locus.py": {
       "bytes": 6253,
       "sha256": "0432682faeb35dde621dd6f83392154680230d8dcee25acccf5ed0812c437dc1"
+    },
+    "atlas/neighbor.json": {
+      "bytes": 2544,
+      "sha256": "bee304cee9320b43ea842466a2ad26104f5f3ed8a46a34c368bb409bed2cbca1"
+    },
+    "atlas/neighbor.py": {
+      "bytes": 2866,
+      "sha256": "4417121ce211d5f521e2be27c3189304933148444921fd50761592654ebb3158"
+    },
+    "atlas/neighbor_proof.json": {
+      "bytes": 2565,
+      "sha256": "aebc1a8ecc42e1eec8e63d8572cd7300313a92eee187356a827baf5b945c98ce"
+    },
+    "atlas/neighbor_proof.py": {
+      "bytes": 5249,
+      "sha256": "9a44102f5c9c8b0c72b65f8a9d7a309dc476966c6b33b2e99b3de12e15a10d4b"
+    },
+    "atlas/neighbor_proof.txt": {
+      "bytes": 2561,
+      "sha256": "0687c72a79d4530cb5eee1062f8f06d0fac7fdb3739969f123447366938d42cf"
     },
     "atlas/phase_lift.json": {
       "bytes": 1737,
