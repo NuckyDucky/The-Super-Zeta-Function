@@ -11,7 +11,6 @@ def plot(out,close_data):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.colors import TwoSlopeNorm
-    from matplotlib.patches import Rectangle
     from matplotlib.ticker import MultipleLocator
 
     g=np.load(out/"plane_wide.npz")
@@ -49,21 +48,14 @@ def plot(out,close_data):
     # carry a ring and a cross at the same point.
     ax.scatter(old.real,old.imag,s=27,marker="o",facecolors="none",edgecolors=blue,lw=.9,zorder=4)
     mark_unresolved(ax,x,y,ok,8)
-    ax.add_patch(Rectangle((close["x"][0],close["y"][0]),np.ptp(close["x"]),np.ptp(close["y"]),
-                           fc="none",ec=blue,lw=1.55,linestyle="--",zorder=5))
     track=g["marked_w"]
     ax.plot(track.real,track.imag,lw=3.7,color="white",zorder=6)
     ax.plot(track.real,track.imag,lw=1.6,color=ink,zorder=7)
     ax.plot(track[0].real,track[0].imag,"o",mfc="white",mec=ink,ms=5,zorder=8)
     ax.plot(track[-1].real,track[-1].imag,"*",mfc=ink,mec="white",ms=11,mew=.6,zorder=8)
-    ax.plot(neutral.real,neutral.imag,"o",mfc="white",mec=ink,ms=5,zorder=8)
-    def callout(text,xy,xytext,color):
-        ax.annotate(text,xy=xy,xytext=xytext,fontsize=9.5,ha="left",va="center",color=color,
-                    arrowprops=dict(arrowstyle="-|>",lw=.95,color=color,shrinkA=3,shrinkB=4),
-                    bbox=dict(boxstyle="round,pad=.2",fc=paper,ec="none",alpha=.95),zorder=10)
-    callout("Original staircase",(-.33,36.96),(-1.88,36.41),blue)
-    callout("Close-up area",(.64,37.93),(.68,38.28),blue)
-    callout("Measured near 1×",(neutral.real,neutral.imag),(-1.87,39.05),ink)
+    ax.annotate("Trough",xy=(track[0].real,track[0].imag),xytext=(4,-7),
+                textcoords="offset points",ha="left",va="top",fontsize=9.5,fontweight="bold",
+                color=ink,bbox=dict(boxstyle="round,pad=.16",fc=paper,ec="none",alpha=.88),zorder=10)
     S=.585
     def txt(y,text,*,size=11,weight="normal",color=muted):
         fig.text(S,y,text,fontsize=size,fontweight=weight,color=color,va="top",linespacing=1.5)
@@ -71,7 +63,7 @@ def plot(out,close_data):
     txt(.755,"Off-white means a measured ratio near 1×.\nAt −1 + 38.65i the ratio is 1.000010×.",size=10.8)
     txt(.65,"×   Unresolved by the wide grid solver",size=11.5,weight="bold",color=ink)
     txt(.605,f"{counts[1]} starts missed the required agreement\nbetween the two step sizes.",size=10.8)
-    txt(.50,"○   Original close-up flags",size=11.5,weight="bold",color=blue)
+    txt(.50,"○   Individually verified starts",size=11.5,weight="bold",color=blue)
     txt(.454,f"All {len(old)} blue-ringed starts were later solved\nwith interval arithmetic. Twelve fall exactly\non this wider grid and carry both marks.",size=10.8)
     txt(.327,"How much do lengths change?",size=13,weight="bold",color=ink)
     txt(.278,f"{counts[0]:,} accepted numerical readings span\n{minrat:.3f}× to {maxrat:.3f}×. Purple shrinks an initial\nlength. Orange stretches it.",size=10.8)

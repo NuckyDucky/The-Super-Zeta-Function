@@ -33,7 +33,7 @@ Substitution gives $dw/dL=-b'(L)H_b/H_w$. This extends the measured turn to comp
 
 ![Where the sampled grid goes. Positions in the initial rectangle and all resolved final positions share the same complex axes.](plane_grid.png)
 
-![The zoomed-out calculation marks the close-up footprint. The continuous color scale measures lengths, and discrete symbols mark numerical checks.](plane_wide.png)
+![The wide heatmap labels the trough on the path to the sixth zero. Color measures local length change. Crosses mark results flagged by the wide grid calculation, and blue rings mark individually verified starting points.](plane_wide.png)
 
 From the last trough to the sixth landing, the length factor is $0.93909767282928$. At $0.075+36.75i$ it is $0.286128734$. At $-0.525+37.3125i$ it is $8.075195$. The three values have interval enclosures. Thus neighboring points can approach one another or spread apart on the same angular interval. At a regular finite endpoint the transport derivative is nonzero. In particular those finite arrows keep their complex level $c$, including the nonzero levels marked A and B. [Two nonzero-level interval proofs](plane_anchors.json) · [Zero-path length and area](phase_lift.json)
 

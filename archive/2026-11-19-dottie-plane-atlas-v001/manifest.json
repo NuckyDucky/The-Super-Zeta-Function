@@ -5,8 +5,8 @@
       "sha256": "905dd09864fbbae238533e65a00b95c7ce4bb0d1c9baf45d748ab0d2ae8e1320"
     },
     "atlas/THESIS.md": {
-      "bytes": 12610,
-      "sha256": "34992611ebbc4030898ed3ae991fe1f84799db4b41d804fbaa37c0ae5013ea17"
+      "bytes": 12684,
+      "sha256": "3adde0e18447c0cd72fb32d57cf4255cb97caf7c8232348bcb7df294980c92c5"
     },
     "atlas/basin-summary.json": {
       "bytes": 1611,
@@ -50,7 +50,7 @@
     },
     "atlas/gray_collision.json": {
       "bytes": 28201,
-      "sha256": "8a391246c7682c254768a4d180e950185e6d668a5b5eee17bf1e4c87f07f202e"
+      "sha256": "6b10c770b113fdf8d4a254a56080e2ea3b04014734af5c1437f71f849b5974cb"
     },
     "atlas/gray_collision.py": {
       "bytes": 6304,
@@ -117,12 +117,12 @@
       "sha256": "39424bf42abe193c38a47c650639719c32bfc2105809cbc12a3dcf1ade93165b"
     },
     "atlas/plane_wide.png": {
-      "bytes": 367212,
-      "sha256": "96340be4b1ef5e963ffe4fb13a9c5e707c97e109b5ea980eb15441fe52e6d1ce"
+      "bytes": 343901,
+      "sha256": "6027f096ed34792b328f74cf5cdc039e097a578cf1e350435974a6cd9b01a3aa"
     },
     "atlas/plane_wide.py": {
-      "bytes": 5883,
-      "sha256": "5205500bf3cc160dac582b47d4c6ee6fdc912efbdef6234c350d7319fc16adb5"
+      "bytes": 5336,
+      "sha256": "21c42cba2da2a6afe03fbc0cecdfec9edd633b2d3e30716e468a2c0321792a43"
     },
     "atlas/resolve_staircase.py": {
       "bytes": 2926,

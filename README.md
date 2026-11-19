@@ -322,7 +322,7 @@ I also extended the sampled rectangle to $-2\leq\Re w\leq2$ and $34\leq\Im w\leq
 
 In each of those 37 squares, a nearby point has a different fate from the grid center. Its two solutions coalesce in a square-root fold. I followed all 37 examples to the same moving critical branch and identified the same incoming square-root sign in each. This locates the fold inside the squares traced by the crosses. [Moving critical branch and the 37 collisions](archive/2026-11-19-dottie-plane-atlas-v001/atlas/gray_collision.json)
 
-![Length change on the wider rectangle, with the original sampling area marked.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/plane_wide.png)
+![Length change across the wider plane. The trough is labeled on the path to the sixth Riemann zero.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/plane_wide.png)
 
 ![Relative length change on the initial plane, with a color scale for compression and expansion.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/plane_strain.png)
 
