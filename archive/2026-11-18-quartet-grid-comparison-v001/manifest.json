@@ -1,0 +1,22 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 5761,
+      "sha256": "ae4263abc1396e23efd0dd125df44a92614d15782483ca48ad74ea1a732abf08"
+    },
+    "computations/global-quarter-shift-results.json": {
+      "bytes": 158239,
+      "sha256": "41ad48dbb5dec23055c67da7b88a0ceb57e571fabbe780227030470047576cad"
+    },
+    "computations/verify_global_quarter_shift.py": {
+      "bytes": 4331,
+      "sha256": "b23f0621505321c51d388eeb87129d4ca0b21d73ae06b2a87519c250927d821a"
+    },
+    "super_zeta_second_adversarial_audit_corrected.ipynb": {
+      "bytes": 13975,
+      "sha256": "4373890956913db02b30dc1a847b4e845ddcef11342caf8564e1a20d51928027"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-18-quartet-grid-comparison-v001"
+}

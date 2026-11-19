@@ -1,4 +1,5 @@
 import Mathlib.Data.Real.Pi.Wallis
+import Mathlib.Data.Real.Pi.Bounds
 import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
 import Mathlib.Data.Nat.Choose.Central
 import Mathlib.Tactic.FieldSimp
@@ -135,8 +136,8 @@ theorem D_tendsto : Tendsto D atTop (𝓝 1) := by
 private def lower (n : ℕ) := D n + Real.pi*B n^2/4
 private def upper (n : ℕ) := lower n + Real.pi*B n^2/(4*((n:ℝ)+1))
 
-private lemma lower_monotone : Monotone lower := by
-  apply monotone_nat_of_le_succ
+private lemma lower_strictMono : StrictMono lower := by
+  apply strictMono_nat_of_lt_succ
   intro n
   have h : lower (n+1)-lower n = Real.pi * B n^2 / (16*((n:ℝ)+1)^2) := by
     dsimp only [lower,D]
@@ -144,7 +145,11 @@ private lemma lower_monotone : Monotone lower := by
     push_cast
     field_simp [show (2*(n:ℝ)+2) ≠ 0 by positivity, show (n:ℝ)+1 ≠ 0 by positivity]
     ring
-  exact sub_nonneg.mp (h.symm ▸ (by positivity))
+  have hb : 0 < B n := by
+    unfold B
+    have hc := Nat.centralBinom_pos n
+    positivity
+  exact sub_pos.mp (h.symm ▸ (by positivity))
 
 private lemma upper_antitone : Antitone upper := by
   apply antitone_nat_of_succ_le
@@ -176,7 +181,7 @@ private lemma upper_tendsto : Tendsto upper atTop (𝓝 1) := by
 /-- A uniform finite-level envelope for the quarter correction. -/
 theorem quarter_bounds (n : ℕ) : D n / 4 ≤ n*(1-D n) ∧
     (n:ℝ)*(1-D n) ≤ D n / 4 + D n/(4*((n:ℝ)+1)) := by
-  have h := mul_le_mul_of_nonneg_left (lower_monotone.ge_of_tendsto lower_tendsto n)
+  have h := mul_le_mul_of_nonneg_left (lower_strictMono.monotone.ge_of_tendsto lower_tendsto n)
     (show 0 ≤ (n:ℝ) by positivity)
   have k := mul_le_mul_of_nonneg_left (upper_antitone.le_of_tendsto upper_tendsto n)
     (show 0 ≤ (n:ℝ) by positivity)
@@ -186,6 +191,34 @@ theorem quarter_bounds (n : ℕ) : D n / 4 ≤ n*(1-D n) ∧
   · convert (show (n:ℝ)*(1-Real.pi*n*B n^2) ≤
         n*(Real.pi*B n^2/4) + n*(Real.pi*B n^2/(4*((n:ℝ)+1))) by linarith) using 1
     ring
+
+/-- The displacement on the reference grid of radii 2πn increases strictly. -/
+theorem grid_displacement_strictMono : StrictMono (fun n : ℕ => (n:ℝ)*(1-D n)) := by
+  apply strictMono_nat_of_lt_succ
+  intro n
+  have h : lower n < 1 :=
+    (lower_strictMono (Nat.lt_succ_self n)).trans_le
+      (lower_strictMono.monotone.ge_of_tendsto lower_tendsto (n+1))
+  have step : ((n:ℝ)+1)*(1-D (n+1)) - n*(1-D n) = 1-lower n := by
+    simp only [lower, D, B_succ, Nat.cast_succ]
+    field_simp [show 2*(n:ℝ)+2 ≠ 0 by positivity]
+    ring
+  simp only [Nat.cast_succ]
+  linarith
+
+/-- Every positive grid level lies above the lower zero of the Hurwitz value at −1. -/
+theorem grid_displacement_gt_hurwitz {n : ℕ} (hn : 1 ≤ n) :
+    (1 - 1 / Real.sqrt 3) / 2 < (n:ℝ)*(1-D n) := by
+  apply lt_of_lt_of_le _ (grid_displacement_strictMono.monotone hn)
+  have hs : Real.sqrt 3 < 40 / 23 :=
+    (Real.sqrt_lt' (by norm_num)).2 (by norm_num)
+  have hi : (23:ℝ)/40 < 1 / Real.sqrt 3 := by
+    apply (lt_div_iff₀ (by positivity)).2
+    linarith
+  have hb : B 1 = 1/2 := by
+    norm_num [B, Nat.centralBinom, Nat.choose]
+  simp only [Nat.cast_one, one_mul, D, hb]
+  linarith [Real.pi_lt_d2]
 
 /-- The first binomial correction from the Barnes–Dottie normalization, at every scale. -/
 theorem quarter_limit : Tendsto (fun n : ℕ => n*(1-D n)) atTop (𝓝 (1/4 : ℝ)) := by
