@@ -29,13 +29,11 @@ $$
 
 Substitution gives $dw/dL=-b'(L)H_b/H_w$. This extends the measured turn to complex $L$ on its calibrated neighborhood and lets initial $w$ vary independently. [Flank chart, proof and choice of logarithm](../../2026-11-19-single-term-inverse-v001/conformal_flank.txt)
 
-![The gradient measures final divided by starting separation for two very close points. Purple means contraction, pale means unchanged, and orange means expansion.](plane_strain.png)
+I start a second path one millionth of a unit to the right of the sixth path’s last height minimum. Each keeps its own Hurwitz value through the same turn. The distance between them is largest in the sampled data near $14.30^\circ$, at about $1.234$ millionths. It finishes at $0.939097$ millionths. On the left I plot the path through the complex plane. On the right I plot the distance between the two paths at each angle.
 
-![Where the sampled grid goes. Positions in the initial rectangle and all resolved final positions share the same complex axes.](plane_grid.png)
+![The sixth path through its last height minimum, and the separation of two paths that start one millionth apart.](two_paths.png)
 
-![How sensitive is the landing to the starting point? A pair of dots shows the same tiny starting gap halving in purple, staying the same in off-white, or doubling in orange. The trough is the open circle on the black path to the sixth zero.](plane_wide.png)
-
-I read the color at the **start**. Imagine missing that start by one millionth of a unit in the complex plane. A local factor of $2$ means the landing shifts by about two millionths. This matters if I want to know how precisely a starting position determines its endpoint. The black curve follows one particular start over the final $1.59083^\circ$ of the turn. At the open circle the height has just stopped falling, even though the point is moving sideways. That last height minimum gives me a repeatable place to begin the comparison. From there the path rises by $0.37035$ to the sixth zero, while a tiny starting displacement reaches the endpoint at about $93.91\%$ of its original size.
+[Wider field](plane_wide.png) · [Closeup](plane_strain.png) · [Complete starting and final grids](plane_grid.png)
 
 From the last trough to the sixth landing, the length factor is $0.93909767282928$. At $0.075+36.75i$ it is $0.286128734$. At $-0.525+37.3125i$ it is $8.075195$. The three values have interval enclosures. Thus neighboring points can approach one another or spread apart on the same angular interval. At a regular finite endpoint the transport derivative is nonzero. In particular those finite arrows keep their complex level $c$, including the nonzero levels marked A and B. [Two nonzero-level interval proofs](plane_anchors.json) · [Zero-path length and area](phase_lift.json)
 

@@ -1,12 +1,12 @@
 {
   "files": {
     "README.md": {
-      "bytes": 5863,
-      "sha256": "787d2fac750682e4ee1071b2154868ac9fa80baf89f9e15bc0914f742d142a1e"
+      "bytes": 6428,
+      "sha256": "b7d0cfe9c12a07901980584ea3e8b98dde940718ab69472c5b5ef2e6f512fecb"
     },
     "atlas/THESIS.md": {
-      "bytes": 13458,
-      "sha256": "da8cd4ab8d2f8a95de7e6fc35be56248384c9c7a54507d448c4ef99a6d84ad4a"
+      "bytes": 12850,
+      "sha256": "d1b2d61404e330f15f4d7560c09aad5e3db848a95e4734295e39a6189dc353a4"
     },
     "atlas/basin-summary.json": {
       "bytes": 1611,
@@ -139,6 +139,14 @@
     "atlas/trace_order.py": {
       "bytes": 5294,
       "sha256": "857be3591eff52b4af6895a92c51cb8fa97eccec7c8742d24a5a16fd3c880826"
+    },
+    "atlas/two_paths.png": {
+      "bytes": 232308,
+      "sha256": "8fa17c23fec6ebe69580e1e2b06d842d60d83a8b63480f8da7d0148d9adc4af9"
+    },
+    "atlas/two_paths.py": {
+      "bytes": 6391,
+      "sha256": "e1acd19cd3332796ff2529f3293663069ffb30e6075491e78b8e7569845f5fa1"
     },
     "holdout/README.md": {
       "bytes": 5005,

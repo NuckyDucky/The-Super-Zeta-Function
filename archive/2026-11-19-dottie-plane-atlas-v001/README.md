@@ -1,5 +1,9 @@
 # The Dottie clocks and the moving Hurwitz plane
 
+I start a second path one millionth of a unit to the right of the sixth path’s last height minimum. Each keeps its own Hurwitz value through the same turn. The distance between them is largest in the sampled data near $14.30^\circ$, at about $1.234$ millionths. It finishes at $0.939097$ millionths. On the left I plot the path through the complex plane. On the right I plot the distance between the two paths at each angle.
+
+![The sixth path through its last height minimum, and the separation of two paths that start one millionth apart.](atlas/two_paths.png)
+
 I studied two experiments near the sixth Riemann zero. In the first, I turned the Hurwitz shift and followed the deformation of the surrounding plane. In the second, I fixed the Hurwitz shift at $b=1/4$ and used the multiplier of one 640-stage return on the right flank of the Dottie spire. I compared the path given by its principal logarithm with the path obtained by retaining the exponents of all 640 stages.
 
 | What I hold fixed | What I vary | What the data answer |

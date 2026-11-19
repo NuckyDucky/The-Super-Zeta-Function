@@ -73,10 +73,11 @@ def replay(out):
     check_reference()
     record = ARCHIVE / "2026-11-19-oriented-return-v001" / "data" / "quarter_probe.json"
     assert sha256(record.read_bytes()).hexdigest() == "7d3afc4ded30439ec277ef5a3636f187f1ae89ef8de5992ed77392068c1d051f"
+    run(ATLAS / "two_paths.py", out, "--output", out)
     run(ATLAS / "trace_order.py", out, "--data", record, "--output", out / "trace_order.png")
     run(ATLAS / "plane_map.py", out, "--output", out)
     run(ATLAS / "plane_wide.py", out, "--output", out)
-    for name in ("plane_strain.png", "plane_grid.png", "plane_wide.png", "trace_order.png"):
+    for name in ("plane_strain.png", "plane_grid.png", "plane_wide.png", "trace_order.png", "two_paths.png"):
         with Image.open(out / name) as regenerated, Image.open(ATLAS / name) as saved:
             assert regenerated.size == saved.size and min(regenerated.size) >= 1440
             regenerated.verify()
