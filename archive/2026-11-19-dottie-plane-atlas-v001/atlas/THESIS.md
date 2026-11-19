@@ -33,7 +33,9 @@ Substitution gives $dw/dL=-b'(L)H_b/H_w$. This extends the measured turn to comp
 
 ![Where the sampled grid goes. Positions in the initial rectangle and all resolved final positions share the same complex axes.](plane_grid.png)
 
-![The wide heatmap labels the trough on the path to the sixth zero. Color measures local length change. Crosses mark results flagged by the wide grid calculation, and blue rings mark individually verified starting points.](plane_wide.png)
+![How sensitive is the landing to the starting point? A pair of dots shows the same tiny starting gap halving in purple, staying the same in off-white, or doubling in orange. The trough is the open circle on the black path to the sixth zero.](plane_wide.png)
+
+I read the color at the **start**. Imagine missing that start by one millionth of a unit in the complex plane. A local factor of $2$ means the landing shifts by about two millionths. This matters if I want to know how precisely a starting position determines its endpoint. The black curve follows one particular start over the final $1.59083^\circ$ of the turn. At the open circle the height has just stopped falling, even though the point is moving sideways. That last height minimum gives me a repeatable place to begin the comparison. From there the path rises by $0.37035$ to the sixth zero, while a tiny starting displacement reaches the endpoint at about $93.91\%$ of its original size.
 
 From the last trough to the sixth landing, the length factor is $0.93909767282928$. At $0.075+36.75i$ it is $0.286128734$. At $-0.525+37.3125i$ it is $8.075195$. The three values have interval enclosures. Thus neighboring points can approach one another or spread apart on the same angular interval. At a regular finite endpoint the transport derivative is nonzero. In particular those finite arrows keep their complex level $c$, including the nonzero levels marked A and B. [Two nonzero-level interval proofs](plane_anchors.json) · [Zero-path length and area](phase_lift.json)
 
@@ -43,7 +45,7 @@ At an intermediate shift $b$, a simple critical point has $H_w(w_c,b)=0$ and $H_
 
 ## How the signs survive the move into a spectral coordinate
 
-At the 45° end of the measured period-640 flank, write $E_j(z)=\exp(a_jz)$ for the ordered scalar stages, beginning with $a_0=-L$ and then $a_1=L$, alternating through all 640. Set $z_{j+1}=E_j(z_j)$ and $c_j=a_jz_{j+1}$. The negative stage has exponent $-LP$ and the positive stage has exponent $LQ$, with $Q$ the intermediate scalar phase. The derivative of the full return is $\mu=\prod_j c_j$. Keeping the exponent *before* applying the exponential gives the following lift. I use the principal logarithms of the two fixed coefficients $+L,-L$.
+At the 45° end of the right-flank segment defined above, I use the cap-selected orbit of ordered period 640. Write $E_j(z)=\exp(a_jz)$ for the ordered scalar stages, beginning with $a_0=-L$ and then $a_1=L$, alternating through all 640. Set $z_{j+1}=E_j(z_j)$ and $c_j=a_jz_{j+1}$. The negative stage has exponent $-LP$ and the positive stage has exponent $LQ$, with $Q$ the intermediate scalar phase. The derivative of the full return is $\mu=\prod_j c_j$. Keeping the exponent *before* applying the exponential gives the following lift. I use the principal logarithms of the two fixed coefficients $+L,-L$.
 
 $$
 \ell_*=\sum_{j=0}^{639}\big(\log a_j+a_jz_j\big),\qquad

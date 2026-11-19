@@ -12,7 +12,7 @@ I study the ordered return of the reciprocal exponentials $P'=e^{LQ}$ and $Q'=e^
 - I recover $\zeta(2s)$ by comparing the quartet determinant with the cosine determinant.
 - At a Dottie-selected height and its first two integer multiples above it, I strengthen the 7/8ths conclusion to the critical line within three explicit intervals.
 - I recover the Stirling correction for each positive integer from the balanced-sign factor in my quartet normalization.
-- I certify finite cycles in the Dottie spire and recover the period-640 witness from two labeled traces on a calibrated branch.
+- I certify finite cycles in the Dottie spire. For one period-640 cycle, two labeled spectral traces recover its centerline parameter, and iteration from the cap recovers the orbit.
 - I approximate $\pi$ from a genus-one quartic that fails the Hasse principle.
 
 ## Introduction
@@ -90,7 +90,7 @@ The pair $x^{x-a},x^{x+a}$ is a way to start thinking about two exponents at onc
 F_L(P,Q)=\bigl(e^{LQ},e^{-LP}\bigr).
 ```
 
-With center $m=(Q-P)/2$ and half-difference $a=(Q+P)/2$, the updated pair is $(x^{m+a},x^{m-a})$. I keep the branch witnesses $U=LQ$ and $V=-LP$, the actual exponents fed to the two maps. For $L\ne0$ they give back $Q=U/L$ and $P=-V/L$. My papers use $M$ for the second phase $Q$. [*Reciprocal Tetration*, §5, “Branch-sensitive complex fixed data”](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L359-L402) · [Ordered return in Lean](lean/SuperZeta/Reciprocal.lean)
+With center $m=(Q-P)/2$ and half-difference $a=(Q+P)/2$, the updated pair is $(x^{m+a},x^{m-a})$. I keep the exponents in their original order, $U=LQ$ for the positive stage and $V=-LP$ for the negative stage. For $L\ne0$ they give back $Q=U/L$ and $P=-V/L$. My papers use $M$ for the second phase $Q$. [*Reciprocal Tetration*, §5, “Branch-sensitive complex fixed data”](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L359-L402) · [Ordered return in Lean](lean/SuperZeta/Reciprocal.lean)
 
 ### The complex two-base family
 
@@ -118,7 +118,7 @@ The Layer 4 survey searches paired periods up to 256. Gray marks unresolved pixe
 
 Baker and Rippon give the centerline return and convergence boundary. My spire analysis starts from that boundary and follows the cap into nearby cycles. The exact Dottie normalization gives separate return equations for the two parities, and the trapping certificates apply those periods to the original map. Under the cap and branch matching hypotheses in §9, the parameters of period $p$ on a rail approach the tip on the scale $p^{-2}$. I can follow the same marked period-640 cycle and its 25/295 itinerary across a finite interval. Matching its phase coordinates and logarithmic branches all the way to a specific limiting horn remains open. Section 10 estimates finite multiplier minima through paired period $4800$. [*Dottie Parabolic Fold*, §§9–10, rail law and finite data](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L605-L715) · [The finite orbit and the remaining horn matching](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L739-L750) · [Godin and Rousseau, antiholomorphic parabolic germs](https://doi.org/10.1017/etds.2021.98)
 
-For the zeta experiment I checked two reflected points $L_\pm=\pm\eta+iy$ and their midpoint $L_0=iy$, using $\eta=4.749479070945369\times10^{-8}$ and $y=0.509892982511772$. The original cap is attracted to a cycle of primitive period 320 under the two-step return at each point. These finite orbits give me the marked laps and the parameter values used in the height rule below. [Preprint §8, off-axis witnesses](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L580-L604) · [Later three-point certificate, 384-bit arithmetic](archive/2026-11-18-lean-foundations-v001/checks/dottie_slice.py) · [Johansson, Arb ball arithmetic](https://arxiv.org/abs/1611.02831)
+For the zeta experiment I checked the two reflected flank parameters $L_\pm=\pm\eta+iy$ and their midpoint $L_0=iy$, using $\eta=4.749479070945369\times10^{-8}$ and $y=0.509892982511772$. The original cap is attracted to a cycle of primitive period 320 under the two-step return at all three parameters. These finite orbits give me the marked laps and the parameter values used in the height rule below. [Preprint §8, period-640 dynamics off the centerline](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L580-L604) · [Later three-point certificate, 384-bit arithmetic](archive/2026-11-18-lean-foundations-v001/checks/dottie_slice.py) · [Johansson, Arb ball arithmetic](https://arxiv.org/abs/1611.02831)
 
 <a name="the-spectral-zeta-and-the-critical-line"></a>
 
@@ -130,7 +130,7 @@ For the zeta experiment I checked two reflected points $L_\pm=\pm\eta+iy$ and th
 
 ### 3.1 Compose the two marked stages
 
-At a fixed pair, $P=e^U$ and $Q=e^V$, where $U=LQ$ and $V=-LP$ are the branch witnesses from my construction. A small change at $P$ passes first through $P\mapsto Q$ with derivative $-LQ$, then through $Q\mapsto P$ with derivative $LP$. By the chain rule the derivative of the whole return, called its **multiplier**, is
+At a fixed pair, the ordered exponents $U=LQ$ and $V=-LP$ give $P=e^U$ and $Q=e^V$. A small change at $P$ passes first through $P\mapsto Q$ with derivative $-LQ$, then through $Q\mapsto P$ with derivative $LP$. By the chain rule the derivative of the whole return, called its **multiplier**, is
 
 ```math
 g_L'(P)=(-LQ)(LP)=UV.
@@ -148,7 +148,7 @@ From $U=Le^V$ and $V=-Le^U$ I eliminate $L$ to obtain $Ue^U+Ve^V=0$. On the mult
 U=\sigma\sin u+iu,\qquad V=\sigma\sin u-iu,\qquad L=\sigma i e^{-\sigma\sin u}.
 ```
 
-This recovery is why I can use cosine roots as a spectrum of the original return. Each root gives me both branch witnesses, the values $P=e^U$ and $Q=e^V$, and the complex $L$ that produced them. [Cosine spectrum, §1, eqs. (1)–(5)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#1-exact-recovery-of-every-ordered-phase-and-parameter) · [Phase recovery in Lean](lean/SuperZeta/Quartet.lean)
+This recovery is why I can use cosine roots as a spectrum of the original return. Each root gives me the ordered logarithms $U,V$, the phases $P=e^U$ and $Q=e^V$, and the parameter $L$ that produced them. [Cosine spectrum, §1, eqs. (1)–(5)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#1-exact-recovery-of-every-ordered-phase-and-parameter) · [Phase recovery in Lean](lean/SuperZeta/Quartet.lean)
 
 <a name="3-square-the-roots-and-sum-their-inverse-powers"></a>
 
@@ -226,7 +226,7 @@ With $w=2s$, the prefactor is nonzero in $0<\Re w<1$, so I can recover $\zeta(w)
 
 ### 3.6 Inverting two spectral traces on the period-640 orbit
 
-Here I use the spectrum to read a rotation of the original attracting orbit. Put $L=iy$ and let $p_y$ be the point selected by iterating the scalar lap $G_y=g_{iy}^{320}$ from the cap $1$. The angle $\theta(y)=\arg G_y'(p_y)$ is the turn of a small displacement after one lap of 640 alternating exponential stages. At the centerline witness $y_0=0.509892982511772$ that turn is $-86.2334491153^\circ$. [Period convention and finite witnesses](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L554-L604) · [Derivative of the full lap](lean/SuperZeta/Oriented/OrderedStages.lean)
+Here I use the spectrum to read a rotation of the original attracting orbit. Put $L=iy$ and let $p_y$ be the point selected by iterating the scalar lap $G_y=g_{iy}^{320}$ from the cap $1$. The angle $\theta(y)=\arg G_y'(p_y)$ is the turn of a small displacement after one lap of 640 alternating exponential stages. At the centerline parameter $L=i y_0$, with $y_0=0.509892982511772$, I measure a turn of $-86.2334491153^\circ$. [Period convention and the cap-selected cycles](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L554-L604) · [Derivative of the full lap](lean/SuperZeta/Oriented/OrderedStages.lean)
 
 **Proposition (two-trace inverse).** I mark the two exponential stages by opposite phases. For a probe angle $a$, let $M(a)$ be the sum of the reciprocal zeros of its normalized positive-sign squared determinant. For $\cos a\ne0$, the sum converges absolutely and equals $2/(1-\sin a)$. The unshifted squared spectra agree at angles reflected across $-90^\circ$, even with both stage signs retained. I measure the same positive-sign spectrum at two labeled offsets and write
 
@@ -244,7 +244,7 @@ Where both probes are regular, $S_\pm=\sin(\theta\pm\pi/6)$. Subtracting and add
 
 On the sector $-120^\circ<\theta<-60^\circ$, $M_+>M_-$ identifies the side above $-90^\circ$ and $M_+<M_-$ the side below. At the pivot the two readings equal $8-4\sqrt3$. The pair identifies the current side. Reading it before and after a specified turn records which side the orbit came from. [Proof from the complete zero set](lean/SuperZeta/Oriented/SpectralInverse.lean) · [Reflection of the squared determinant](lean/SuperZeta/Oriented/PhaseSymmetry.lean)
 
-![The two trace curves cross at minus 90 degrees. On the original orbit the positive-offset reading is larger. After the clockwise turn the negative-offset reading is larger.](archive/2026-11-19-oriented-return-v001/figures/oriented-traces.png)
+![The two reciprocal-root sums at the centerline period-640 orbit before the turn and on the same branch 30° clockwise.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/trace_order.png)
 
 **Period-640 round trip.** I turned the measured phase clockwise by $30^\circ$, found the corresponding parameter on the same branch, and evaluated both determinants afresh there. The rounded entries below come from directed enclosures. [Interval record](archive/2026-11-19-oriented-return-v001/data/quarter_probe.json)
 
@@ -255,9 +255,9 @@ On the sector $-120^\circ<\theta<-60^\circ$, $M_+>M_-$ identifies the side above
 
 Decoding the second pair and adding back $30^\circ$ gives a parameter interval containing $y_0$ of width below $10^{-29}$. The cap selects the starting point at this parameter. Iterating the ordered map then recovers the same cycle with its actual exponents $U=LQ$ and $V=-LP$ at every step. Each of the 1,280 returned exponent enclosures overlaps its original partner.
 
-Lean proves the determinant product, the inverse formula and the return theorem on a continuous, strictly increasing angle branch with the target in range. The 448-bit interval computation verifies cap capture, primitive period and positive angle derivative on the stated witness interval. Lean separately checks the printed rational return bounds. [Full proof, arithmetic comparison with Liu, and replay](archive/2026-11-19-oriented-return-v001/README.md)
+Lean proves the determinant product, the inverse formula and the return theorem on a continuous, strictly increasing angle branch with the target in range. On the centerline interval $0.50989298230\le y\le0.50989298314$, my 448-bit calculation verifies that the cap is attracted to a cycle of primitive ordered period 640 and that the return angle increases with $y$. Lean separately checks the printed rational return bounds. [Full proof, arithmetic comparison with Liu, and replay](archive/2026-11-19-oriented-return-v001/README.md)
 
-**Arithmetic consequence.** At the *absolute* native angles $-30^\circ$ and $+30^\circ$, the reference spectra give the same function $\pi^{-w}(3^w-1)\zeta(w)$ with $w=2s$. The first dynamical correction is zero at $-30^\circ$ and $8/3$ at $+30^\circ$. Liu’s joint moment estimates give the external zero-free bound for this common reference. The measurements around the period-640 witness use relative offsets from its own angle. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Derivation and phase convention](archive/2026-11-19-oriented-return-v001/README.md#the-arithmetic-reference-at-the-two-absolute-angles)
+**Arithmetic consequence.** At the *absolute* native angles $-30^\circ$ and $+30^\circ$, the reference spectra give the same function $\pi^{-w}(3^w-1)\zeta(w)$ with $w=2s$. The first dynamical correction is zero at $-30^\circ$ and $8/3$ at $+30^\circ$. Liu’s joint moment estimates give the external zero-free bound for this common reference. In my period-640 round trip, I measure the $30^\circ$ turn from the original orbit’s return angle of $-86.2334491153^\circ$. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Derivation and phase convention](archive/2026-11-19-oriented-return-v001/README.md#the-arithmetic-reference-at-the-two-absolute-angles)
 
 <a name="zero-transport"></a>
 
@@ -445,7 +445,7 @@ The numerator comes from the exact product of all the radial factors $R_n/(2\pi 
 
 ## Conclusions
 
-- **Two measurements determine the orientation of the cap-selected return.** The labeled root sums recover both coordinates of the normalized return multiplier. On the certified branch this determines the centerline parameter and the ordered period-640 orbit. [The inverse and the witness](#oriented-period-640-return)
+- **Two measurements determine the orientation of the cap-selected return.** The labeled root sums recover both coordinates of the normalized return multiplier. On the certified branch this determines the centerline parameter and the ordered period-640 orbit. [Recovering the centerline parameter and its cycle](#oriented-period-640-return)
 - **I kept the order of the exponential stages in a ring.** A word records which sign I use at each step. Joining words is multiplication, and finite integer sums of words form the free associative ring on the two signs. The balance, given by the difference between the two sign counts, adds when I join words. The balanced words therefore span its degree-zero subring. The two orders +− and −+ already give different compositions at Dottie. In a scalar count, two of the four two-stage histories balance. With two independent streams, the fraction is $1/4$. At level $n$ that fraction is the factor $B_n^2$ in my normalization. [Periodic sign words in my preprint](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L404-L445) · [Word ring acting by composition, eqs. (1)–(4)](archive/2026-11-16-super-zeta-v001/research/ordered-signed-histories.md#1-the-operators-retain-every-arrangement)
 - **I made the factorial error an evaluable part of the formula.** The exact integral explains why the quarter survives and bounds what is left at each truncation. I also found the exact adjacent-level ratio $D_{n+1}/D_n=1+1/(4n(n+1))$, which lets me carry the factorial factor into the phase comparison at the Dottie height. Summing the correction across levels contributes a quarter at zero in the zeta function of those levels. Multiplying across levels gives the factorial factor in the Barnes–Dottie constant. [Adjacent-level phase calculation and certificate](archive/2026-11-18-stirling-correction-v001/README.md#effect-on-phase-at-the-dottie-height)
 - **I verified the exact factorial identities in Lean.** The proofs check the combined Stirling error in the quartet formula and the truncation bound at every order. A separate theorem recovers the error on a single factorial from the same integral and proves the resulting equality for every positive integer $n$. [Combined and single-factorial identities](lean/SuperZeta/StirlingCorrection.lean) · [All-order bounds](lean/SuperZeta/StirlingExpansion.lean)

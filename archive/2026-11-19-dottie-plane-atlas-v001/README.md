@@ -1,6 +1,6 @@
 # The Dottie clocks and the moving Hurwitz plane
 
-I studied two experiments near the sixth Riemann zero. In the first, I turned the Hurwitz shift and followed the deformation of the surrounding plane. In the second, I held the shift fixed and changed the continuous path by which the Dottie multiplier acts on the value of the function.
+I studied two experiments near the sixth Riemann zero. In the first, I turned the Hurwitz shift and followed the deformation of the surrounding plane. In the second, I fixed the Hurwitz shift at $b=1/4$ and used the multiplier of one 640-stage return on the right flank of the Dottie spire. I compared the path given by its principal logarithm with the path obtained by retaining the exponents of all 640 stages.
 
 | What I hold fixed | What I vary | What the data answer |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ python -B archive/2026-11-19-dottie-plane-atlas-v001/landing/replay.py --geometr
 python -B tools/replay_single_term.py
 ~~~
 
-Both maps use step-size comparisons as numerical acceptance criteria. Their companion scripts provide directed enclosures at the named witnesses. The retrospective study uses the known first ten landings. The next two seeds were selected by consecutive index in a public commit before I computed either path. The cutoff family rule and quadratic error target were fixed in that commit. The ordinal of the Riemann landing came from comparing the final disk with a zero isolator after the prediction. [Retrospective protocol](landing/Dottie-Blind-Landing/protocol.json) · [Forward-test protocol](holdout/protocol.json) · [Scores](holdout/score.json)
+Both maps use step-size comparisons as numerical acceptance criteria. I checked the marked starting points and the branches they follow by interval arithmetic. The retrospective study uses the known first ten landings. The next two seeds were selected by consecutive index in a public commit before I computed either path. The cutoff family rule and quadratic error target were fixed in that commit. The ordinal of the Riemann landing came from comparing the final disk with a zero isolator after the prediction. [Retrospective protocol](landing/Dottie-Blind-Landing/protocol.json) · [Forward-test protocol](holdout/protocol.json) · [Scores](holdout/score.json)
 
 The one-term inverse from the preceding snapshot now also has a stricter regression check. It rereads the output intervals at 768 bits, tests the real and imaginary parts of both marked phases and of the multiplier, and compares the exact rational enclosures of the recovered parameter. A fresh interval must overlap its published interval and have radius no larger than $5/4$ of the published radius. That last factor is the regression tolerance. The generating proofs retain their original working precisions. [Earlier inverse](../2026-11-19-single-term-inverse-v001/README.md) · [Improved comparison](../../tools/replay_single_term.py)
 

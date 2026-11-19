@@ -1,12 +1,12 @@
 {
   "files": {
     "README.md": {
-      "bytes": 5723,
-      "sha256": "905dd09864fbbae238533e65a00b95c7ce4bb0d1c9baf45d748ab0d2ae8e1320"
+      "bytes": 5863,
+      "sha256": "787d2fac750682e4ee1071b2154868ac9fa80baf89f9e15bc0914f742d142a1e"
     },
     "atlas/THESIS.md": {
-      "bytes": 12684,
-      "sha256": "3adde0e18447c0cd72fb32d57cf4255cb97caf7c8232348bcb7df294980c92c5"
+      "bytes": 13458,
+      "sha256": "da8cd4ab8d2f8a95de7e6fc35be56248384c9c7a54507d448c4ef99a6d84ad4a"
     },
     "atlas/basin-summary.json": {
       "bytes": 1611,
@@ -93,8 +93,8 @@
       "sha256": "57021b93f50ac602c5d7912251f4b199bb89d2459a751137b9d9782108e17c79"
     },
     "atlas/plane_map.py": {
-      "bytes": 21466,
-      "sha256": "46c7ef1efe9fa2766243416ac293a832be0a8158919417a1aa79ca025fe9b8ab"
+      "bytes": 21560,
+      "sha256": "5b4b60f4854a53013d54cbc0f917c63dd436d745ac5f50b988f9370bb04a9889"
     },
     "atlas/plane_notes.md": {
       "bytes": 4589,
@@ -105,8 +105,8 @@
       "sha256": "0abdd078fdf911ab7247b60a7369fb6a29c0f581ea39a81ac614a9ba3777ba03"
     },
     "atlas/plane_strain.png": {
-      "bytes": 287689,
-      "sha256": "4d5a4d5098531b910a849341168802be22beddb95c4d8d388dfd7e5a26251d6c"
+      "bytes": 294995,
+      "sha256": "bf8bc959c7fdc49aa5dcd188155faa515c0f604e3b2d5a5f0e4f7b86d4b34805"
     },
     "atlas/plane_wide.json": {
       "bytes": 2076,
@@ -117,12 +117,12 @@
       "sha256": "39424bf42abe193c38a47c650639719c32bfc2105809cbc12a3dcf1ade93165b"
     },
     "atlas/plane_wide.png": {
-      "bytes": 343901,
-      "sha256": "6027f096ed34792b328f74cf5cdc039e097a578cf1e350435974a6cd9b01a3aa"
+      "bytes": 385903,
+      "sha256": "77341b37f56de269981ab8bc6d9f6d974d50ea7a9575cc4a07431f7dade27c31"
     },
     "atlas/plane_wide.py": {
-      "bytes": 5336,
-      "sha256": "21c42cba2da2a6afe03fbc0cecdfec9edd633b2d3e30716e468a2c0321792a43"
+      "bytes": 6557,
+      "sha256": "fd9bce5f6944c70648ef20a6b6b3d736bb8b69b3fb79bdb49a7bee220ed6ee7f"
     },
     "atlas/resolve_staircase.py": {
       "bytes": 2926,
@@ -131,6 +131,14 @@
     "atlas/staircase.json": {
       "bytes": 28490,
       "sha256": "258bf5ccbd4ba50db2f01586863e602f2e9088d8bef787ac453afe979bec34f4"
+    },
+    "atlas/trace_order.png": {
+      "bytes": 196640,
+      "sha256": "aca71b59005f64b5dd9aa4ee61240a83c05c1591316f68e2f2edecc12995b670"
+    },
+    "atlas/trace_order.py": {
+      "bytes": 5294,
+      "sha256": "857be3591eff52b4af6895a92c51cb8fa97eccec7c8742d24a5a16fd3c880826"
     },
     "holdout/README.md": {
       "bytes": 5005,

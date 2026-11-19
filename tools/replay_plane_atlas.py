@@ -1,4 +1,4 @@
-"""Recompute the two maps and their certified witnesses in a fresh directory."""
+"""Recompute the maps and interval proofs for the marked starting points and inverse branches."""
 import argparse
 from fractions import Fraction
 from hashlib import sha256
@@ -71,9 +71,12 @@ def compare_map(out, stem, expected_count):
 
 def replay(out):
     check_reference()
+    record = ARCHIVE / "2026-11-19-oriented-return-v001" / "data" / "quarter_probe.json"
+    assert sha256(record.read_bytes()).hexdigest() == "7d3afc4ded30439ec277ef5a3636f187f1ae89ef8de5992ed77392068c1d051f"
+    run(ATLAS / "trace_order.py", out, "--data", record, "--output", out / "trace_order.png")
     run(ATLAS / "plane_map.py", out, "--output", out)
     run(ATLAS / "plane_wide.py", out, "--output", out)
-    for name in ("plane_strain.png", "plane_grid.png", "plane_wide.png"):
+    for name in ("plane_strain.png", "plane_grid.png", "plane_wide.png", "trace_order.png"):
         with Image.open(out / name) as regenerated, Image.open(ATLAS / name) as saved:
             assert regenerated.size == saved.size and min(regenerated.size) >= 1440
             regenerated.verify()
@@ -100,6 +103,12 @@ def replay(out):
     assert {(p["row"], p["column"]) for p in incidence["pixel_checks"]} == rejected
     assert all(p["arc"] == 1 and p["source_pixel_contains_level_preimage"] for p in incidence["pixel_checks"])
     # Fix the archived rational shifts for the sheet and collision comparison.
+    archived_cases = read(ATLAS / "gray_collision.json")["illustrated_pixels"]
+    archived_inputs = read(ATLAS / "gray_locus.json")["pixel_checks"]
+    for inp, case in zip(archived_inputs, archived_cases, strict=True):
+        assert (inp["row"], inp["column"]) == (case["row"], case["col"])
+        h = (Fraction(inp["shift"]) - Fraction(1, 6)) * 180
+        assert arb(case["collision_h"]).contains(arb(h.numerator) / h.denominator)
     run(ATLAS / "gray_collision.py", out, "--locus", ATLAS / "gray_locus.json",
         "--out", out / "gray_collision.json")
     collision = read(out / "gray_collision.json")

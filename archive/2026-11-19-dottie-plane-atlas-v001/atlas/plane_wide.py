@@ -31,17 +31,17 @@ def plot(out,close_data):
     ink="#192e38"; muted="#49616a"; blue="#19657d"; paper="#faf9f5"
     plt.rcParams.update({"font.family":"DejaVu Sans","font.size":11,"axes.labelcolor":ink,
                          "text.color":ink,"xtick.color":muted,"ytick.color":muted,"axes.edgecolor":"#81918f"})
-    fig=plt.figure(figsize=(10.5,9.15),facecolor=paper)
-    fig.text(.067,.946,"The sixth path in a wider complex plane",fontsize=24,fontweight="bold")
-    fig.text(.067,.903,"A new 38,801-point grid. The return-lift angle runs from 13.40917° to 15° clockwise.",
-             fontsize=12.2,color=muted)
-    ax=fig.add_axes([.081,.17,.505,.665])
+    fig=plt.figure(figsize=(12.8,9.4),facecolor=paper)
+    fig.text(.065,.938,"How sensitive is the landing to the starting point?",fontsize=23,fontweight="bold",color=ink)
+    fig.text(.065,.882,"Imagine nudging a starting point. Its color tells you how much that tiny nudge changes where you land.",
+             fontsize=12.3,color=muted)
+    ax=fig.add_axes([.063,.211,.497,.61])
     ax.set_aspect("equal",adjustable="box")
     cmap=plt.get_cmap("PuOr_r").copy();cmap.set_bad("#a5aaa8")
     im=ax.pcolormesh(x,y,np.ma.array(g["log2_length"],mask=~ok),shading="nearest",
                      cmap=cmap,norm=TwoSlopeNorm(vcenter=0,vmin=np.log2(minrat),vmax=np.log2(maxrat)),rasterized=True)
     ax.set_xlim(x[0]-.0125,x[-1]+.0125);ax.set_ylim(y[0]-.0125,y[-1]+.0125)
-    ax.set_xlabel("Starting real part of w");ax.set_ylabel("Starting imaginary part of w")
+    ax.set_xlabel("Starting real part");ax.set_ylabel("Starting height (imaginary part)")
     ax.xaxis.set_major_locator(MultipleLocator(1));ax.yaxis.set_major_locator(MultipleLocator(1))
     # The rings show the finer predecessor data even where that point is
     # between nodes of the new grid. The twelve shared unresolved nodes
@@ -56,22 +56,37 @@ def plot(out,close_data):
     ax.annotate("Trough",xy=(track[0].real,track[0].imag),xytext=(4,-7),
                 textcoords="offset points",ha="left",va="top",fontsize=9.5,fontweight="bold",
                 color=ink,bbox=dict(boxstyle="round,pad=.16",fc=paper,ec="none",alpha=.88),zorder=10)
-    S=.585
+    S=.555
     def txt(y,text,*,size=11,weight="normal",color=muted):
         fig.text(S,y,text,fontsize=size,fontweight=weight,color=color,va="top",linespacing=1.5)
-    txt(.82,"Reading the colors and marks",size=15,weight="bold",color=ink)
-    txt(.755,"Off-white means a measured ratio near 1×.\nAt −1 + 38.65i the ratio is 1.000010×.",size=10.8)
-    txt(.65,"×   Unresolved by the wide grid solver",size=11.5,weight="bold",color=ink)
-    txt(.605,f"{counts[1]} starts missed the required agreement\nbetween the two step sizes.",size=10.8)
-    txt(.50,"○   Individually verified starts",size=11.5,weight="bold",color=blue)
-    txt(.454,f"All {len(old)} blue-ringed starts were later solved\nwith interval arithmetic. Twelve fall exactly\non this wider grid and carry both marks.",size=10.8)
-    txt(.327,"How much do lengths change?",size=13,weight="bold",color=ink)
-    txt(.278,f"{counts[0]:,} accepted numerical readings span\n{minrat:.3f}× to {maxrat:.3f}×. Purple shrinks an initial\nlength. Orange stretches it.",size=10.8)
-    txt(.165,"The black curve follows the marked zero.\nThe star is its arrival at the sixth Riemann zero.",size=9.65)
-    cb=fig.colorbar(im,cax=fig.add_axes([.075,.086,.485,.022]),orientation="horizontal",
+    txt(.823,"Read one colored point",size=15.5,weight="bold",color=ink)
+    txt(.778,"Follow two very close starts through the same turn.\nCompare the gap between them at the beginning and end.",size=10.6)
+    key=fig.add_axes([S,.548,.394,.145])
+    key.set_xlim(0,1);key.set_ylim(0,1)
+    key.axis("off")
+    key.text(.385,.94,"Starting gap",color=muted,fontsize=9,ha="center")
+    key.text(.76,.94,"Landing gap",color=muted,fontsize=9,ha="center")
+    for ratio,level,yrow in ((.5,"Purple",.69),(1,"Off-white",.40),(2,"Orange",.11)):
+        # The example dots use one ruler in both columns. Each represents
+        # a pair of infinitesimally close trajectories, magnified for display.
+        color=im.cmap(im.norm(np.log2(ratio)))
+        key.scatter(.022,yrow,marker="s",c=[color],s=96,edgecolor="#74838a",linewidth=.65)
+        key.text(.064,yrow,f"{level}   {ratio:g}×",va="center",color=ink,fontsize=9.5)
+        for origin,dist in ((.325,.12),(.685,.12*ratio)):
+            key.plot([origin,origin+dist],[yrow,yrow],lw=1.85,color=ink,solid_capstyle="round")
+            key.scatter([origin,origin+dist],[yrow,yrow],s=25,color=ink,zorder=3)
+    txt(.493,"Why start at the trough?",size=15.5,weight="bold",color=ink)
+    txt(.445,"The open circle is the last low point of the black path.\nIts height stops falling at 37.21583 while the point is still\nmoving sideways. From here the path rises to the star,\nthe sixth Riemann zero at height 37.58618.",size=10.6)
+    txt(.313,"At that starting point the factor is 0.939×.",size=11,weight="bold",color=ink)
+    txt(.273,"The marked point travels 0.801 in straight-line distance.\nA tiny gap between neighboring starts shrinks by 6.1%.\nColor measures that gap, regardless of the distance traveled.",size=10.4)
+    cb=fig.colorbar(im,cax=fig.add_axes([.09,.126,.433,.016]),orientation="horizontal",
                     ticks=[-4,-3,-2,-1,0,1,2,3])
     cb.ax.set_xticklabels(["1/16×","1/8×","1/4×","1/2×","1×","2×","4×","8×"])
-    cb.ax.tick_params(labelsize=9);cb.set_label("Final local length ÷ starting length")
+    cb.ax.tick_params(labelsize=8.5);cb.set_label("Landing gap ÷ starting gap, for a tiny nudge",size=10)
+    txt(.155,"×  Wide-grid calculation needed refinement (152 starts).",size=9.2,color=ink)
+    txt(.126,"○  Blue ring: starting point checked separately (37 starts).",size=9.2,color=blue)
+    fig.text(.065,.039,"The angle changes from 13.40917° to 15°. Each start keeps its own value of the symmetric Hurwitz sum. The black path keeps value zero.",
+             fontsize=9,color=muted)
     fig.savefig(out/"plane_wide.png",dpi=220,facecolor=paper)
     plt.close(fig)
 

@@ -270,13 +270,13 @@ def plot(out,staircase=None):
         ax.plot(track[0].real,track[0].imag,"o",ms=6.5,mfc=paper,mec=ink,mew=1.5,zorder=8)
         ax.plot(track[-1].real,track[-1].imag,"*",ms=13,mfc=ink,mec="white",mew=.7,zorder=8)
         if labels:
-            add_label(ax,track[0],"Trough",(-8,-6))
+            add_label(ax,track[0],"Last height minimum",(-8,-6))
             add_label(ax,track[-1],"Sixth zero",(-4,8))
 
     # Original complete cell extents, including all four outer half-cells.
     fig=plt.figure(figsize=(11.5,7.55),**fig_options)
-    fig.text(.065,.938,"Which neighborhoods shrink or grow?",fontsize=24,fontweight="bold")
-    fig.text(.065,.89,"Length change along the sixth path's final 1.59083° clockwise",fontsize=13,color=secondary)
+    fig.text(.065,.938,"How sensitive is the landing to where you start?",fontsize=22,fontweight="bold")
+    fig.text(.065,.89,"Follow two very close starts through the final 1.59083° clockwise. The color measures their change in separation.",fontsize=12,color=secondary)
     ax=fig.add_axes([.085,.242,.585,.585])
     axes(ax)
     ax.set_ylabel("Imaginary part of w")
@@ -301,23 +301,23 @@ def plot(out,staircase=None):
                 bbox=dict(facecolor=paper,edgecolor="none",alpha=.92,pad=2),
                 fontsize=9.5,fontweight="bold",zorder=12)
     sidebar=.695
-    fig.text(sidebar,.82,"An initially short segment",fontsize=15,fontweight="bold",va="top")
-    fig.text(sidebar,.766,"Below 1× it gets shorter.\nAbove 1× it gets longer.\nAt 1× its length is preserved.",
-             fontsize=11.3,linespacing=1.55,color=secondary,va="top")
-    fig.text(sidebar,.625,"A   0.286×",fontsize=17,fontweight="bold",color=A,va="top")
-    fig.text(sidebar,.570,"About 29% of its original length.\nStart at 0.075 + 36.75i.",fontsize=10.8,linespacing=1.6,va="top")
-    fig.text(sidebar,.460,"B   8.075×",fontsize=17,fontweight="bold",color=B,va="top")
-    fig.text(sidebar,.405,"Just over eight times as long.\nStart at −0.525 + 37.3125i.",fontsize=10.8,linespacing=1.6,va="top")
-    fig.text(sidebar,.292,"A and B have interval certificates.\n10,924 points passed the numerical checks.",
-             fontsize=10.5,linespacing=1.6,color=secondary,va="top")
-    fig.text(sidebar,.192,"×   The grid solver needed refinement.",fontsize=10.4,color=ink,va="top")
-    fig.text(sidebar,.151,f"All {unresolved} marked colors come from separate\ninterval certificates.",fontsize=10.1,color=secondary,va="top")
-    fig.text(sidebar,.077,"Off-white   ·   Measured near 1×",fontsize=10.4,color=ink,va="top")
+    fig.text(sidebar,.82,"Two nearby starts",fontsize=15,fontweight="bold",va="top")
+    fig.text(sidebar,.761,"Purple brings their landings closer.\nOrange spreads them farther apart.\nOff-white keeps their distance near 1×.",
+             fontsize=10.7,linespacing=1.48,color=secondary,va="top")
+    fig.text(sidebar,.615,"A   0.286×",fontsize=15,fontweight="bold",color=A,va="top")
+    fig.text(sidebar,.563,"A tiny starting gap shrinks to 29%.",fontsize=10.6,va="top")
+    fig.text(sidebar,.488,"B   8.075×",fontsize=15,fontweight="bold",color=B,va="top")
+    fig.text(sidebar,.435,"The same gap grows eightfold.",fontsize=10.6,va="top")
+    fig.text(sidebar,.354,"Why start at the minimum?",fontsize=14,fontweight="bold",va="top")
+    fig.text(sidebar,.295,"The black path stops descending here,\nthen rises 0.37035 to the sixth zero.\nAt its start, the gap scales by 0.9391×.",
+             fontsize=10.3,linespacing=1.48,color=secondary,va="top")
+    fig.text(sidebar,.148,"×   Grid refinement",fontsize=10.8,fontweight="bold",va="top")
+    fig.text(sidebar,.109,f"All {unresolved} marked centers, A and B have\nseparate interval certificates.",fontsize=10.25,linespacing=1.4,color=secondary,va="top")
     cbax=fig.add_axes([.108,.131,.544,.025])
     cb=fig.colorbar(im,cax=cbax,orientation="horizontal",ticks=[-2,-1,0,1,2,3],extend="max",extendfrac=.025)
     cb.ax.set_xticklabels(["0.25×","0.5×","1×","2×","4×","8×"])
     cb.ax.tick_params(labelsize=10)
-    cb.set_label("Final length ÷ starting length",labelpad=7,fontsize=11)
+    cb.set_label("Final separation ÷ starting separation, for an infinitesimal gap",labelpad=7,fontsize=10.5)
     fig.savefig(out/"plane_strain.png",dpi=220)
     plt.close(fig)
 
