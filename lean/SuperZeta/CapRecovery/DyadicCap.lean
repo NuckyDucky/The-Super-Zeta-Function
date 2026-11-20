@@ -10,7 +10,7 @@ open SignWords CapJets DyadicWeights
 def polynomial (w : List Sign) (t : ℂ) : ℂ :=
   ∑ j ∈ Finset.range w.length, (signProduct (w.take (j+1)) : ℂ) * t^j
 
-private theorem polynomial_snoc (w : List Sign) (s : Sign) (t : ℂ) :
+theorem polynomial_snoc (w : List Sign) (s : Sign) (t : ℂ) :
     polynomial (w ++ [s]) t = polynomial w t +
       (signProduct (w ++ [s]) : ℂ) * t^w.length := by
   unfold polynomial
@@ -26,7 +26,7 @@ private theorem rate_letter (s : Sign) :
     s.rate lift = (letter s : ℂ) * lift := by
   cases s <;> simp [Sign.rate, letter]
 
-private theorem product_snoc (w : List Sign) (s : Sign) :
+theorem product_snoc (w : List Sign) (s : Sign) :
     signProduct (w ++ [s]) = signProduct w * letter s := by
   simp [signProduct]
 

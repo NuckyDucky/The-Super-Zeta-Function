@@ -11,7 +11,7 @@ I started with six integers that put a root of a quadratic within $8.7\times10^{
 - From the balanced sign counts I recover the Stirling remainder for a single factorial. The actual quartet radii determine a finite Hurwitz sign change between levels 28 and 29. [Factorial proof](archive/2026-11-18-stirling-correction-v001/README.md) · [Comparison with equally spaced radii](archive/2026-11-18-quartet-grid-comparison-v001/README.md)
 - I identify the arithmetic character of a branch of my quartic over the Gaussian integers. Its conductor gives three finite reductions that determine the sign at every nonzero marked Gaussian lattice point coprime to the conductor, and give zero at the excluded points. [Field and conductor proof](archive/2026-11-20-dedekind-phase-v001/README.md)
 - I recover which branch supplied those signs from the completed zeros of an angular Hecke function. At norm 73 the two signs can then be read in order as exponential stages. Starting both words at 1 gives $\sqrt{2}$ and $1/4$. [Branch recovery and sign words](archive/2026-11-20-gaussian-branch-spectrum-v001/README.md)
-- At $L=\pi i$, every nonempty sign word sends the cap $1$ to $-1$. I recover the entire word, including its length, from the ratio of its second and first cap derivatives. [Theorem and hidden-label experiment](archive/2026-11-20-cap-derivative-recovery-v001/README.md)
+- At any unknown nonzero integral lift $L=m\pi i$, two derivatives at the starting cap recover the magnitude of the lift and every signed exponential stage in order. One independently retained odd-stage prime reading also recovers which sign convention I used. [Theorem and blind experiment](archive/2026-11-20-hidden-lift-v001/README.md)
 
 [Full derivations and preprints](docs/proofs/reciprocal-constructions.md) · [Interactive Hurwitz paths](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Two-input spectral map](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
 
@@ -153,6 +153,17 @@ For any finite sign word, let $c_j$ be the product of its first $j$ signs. The c
 ~~~
 
 The highest power at which two histories differ outweighs every lower difference combined. This makes their derivative ratios distinct even when their lengths are hidden. To compare with the earlier prime detector, I use one exponent step for each minus and two for each plus. At powers of 2 the detector then records $1+c_j/7$, while the quadratic field records $1+c_j$. Both readings recover the same signs in order. [Derivation and blind test](archive/2026-11-20-cap-derivative-recovery-v001/README.md) · [Lean proof for all finite words](lean/SuperZeta/CapRecovery/Dominance.lean) · [General detector weights](lean/SuperZeta/CapRecovery/GeneralWeights.lean)
+
+</details>
+
+<details>
+<summary><strong>Recovering an unknown integral lift and an ordered sign word</strong></summary>
+
+Within this family I can decide whether two compositions agree for every complex starting value by comparing just their first two derivatives at 1. This includes the empty word, which acts as the identity, and the nonempty words at zero lift, which are constant.
+
+When I hide both the word and the integer in $L=m\pi i$, the stage rates still have a unique reconstruction. For a nonempty word and $m\ne0$, I measure $K=W''(1)/W'(1)$. If both Cartesian components are nonzero, dividing the larger absolute component by the smaller gives $|m|\pi$ to within one unit. Rounding after division by $\pi$ gives $|m|$. A single stage gives $|K|=|m|\pi$ exactly. With the positive lift as representative I can now recover the word, including its length.
+
+The two labels $(2,\text{+--})$ and $(-2,\text{-++})$ give the same exponential at every stage. To recover the original labels, I retain the prime reading at the first selected power of two. With the earlier weight $1/7$ it reads $8/7$ for the first label and $6/7$ for the second. This is where the arithmetic supplies information the two derivatives cannot distinguish. [Proof, calculation and replay](archive/2026-11-20-hidden-lift-v001/README.md) · [Lean statement](lean/SuperZeta/CapRecovery/HiddenLift.lean)
 
 </details>
 

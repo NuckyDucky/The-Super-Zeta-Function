@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "precision_bits": 192,
+  "flint_version": "0.9.0",
+  "observations": 693,
+  "candidate_checks_per_channel": 480249,
+  "nonempty_nonzero_cases": 620,
+  "nonempty_nonzero_orbits": 310,
+  "empty_observations": 11,
+  "nonempty_zero_lift_observations": 62,
+  "distinct_groups_including_controls": 312,
+  "counts": {
+    "both_undefined": 3844,
+    "different_domains": 78244,
+    "finite_disjoint": 396800,
+    "finite_overlap": 1361,
+    "raw_jet_disjoint": 475044,
+    "raw_jet_overlap": 5205
+  },
+  "wrong_finite_K_distance_lower_bound": "[3.1415926535897932385 +/- 3.74e-20]",
+  "maximum_rounding_error_upper_by_positive_lift": {
+    "1": "[0.236912616236216237 +/- 4.53e-19]",
+    "2": "[0.105270976407368101 +/- 8.65e-20]",
+    "3": "[0.0687011081707019119 +/- 3.73e-20]",
+    "4": "[0.0511448765079625762 +/- 4.50e-20]",
+    "5": "[0.0407758596495215177 +/- 2.62e-20]"
+  },
+  "correct_constructive_calls_including_controls": 693,
+  "all_minus_and_global_flip_examples": [
+    {
+      "id": 115,
+      "m": -4,
+      "word": "+++++",
+      "positive_lift_reading": [
+        4,
+        "-----"
+      ],
+      "group": 88,
+      "K": [
+        "[24778.8136342871941946273733123104900617652 +/- 4.28e-38]",
+        "[-311392.321883203378822770467893716689754422 +/- 2.95e-37]"
+      ]
+    },
+    {
+      "id": 244,
+      "m": -4,
+      "word": "-----",
+      "positive_lift_reading": [
+        4,
+        "+++++"
+      ],
+      "group": 172,
+      "K": [
+        "[24778.8136342871941946273733123104900617652 +/- 4.28e-38]",
+        "[311392.321883203378822770467893716689754422 +/- 2.95e-37]"
+      ]
+    },
+    {
+      "id": 649,
+      "m": 4,
+      "word": "+++++",
+      "positive_lift_reading": [
+        4,
+        "+++++"
+      ],
+      "group": 172,
+      "K": [
+        "[24778.8136342871941946273733123104900617652 +/- 4.28e-38]",
+        "[311392.321883203378822770467893716689754422 +/- 2.95e-37]"
+      ]
+    },
+    {
+      "id": 435,
+      "m": 4,
+      "word": "-----",
+      "positive_lift_reading": [
+        4,
+        "-----"
+      ],
+      "group": 88,
+      "K": [
+        "[24778.8136342871941946273733123104900617652 +/- 4.28e-38]",
+        "[-311392.321883203378822770467893716689754422 +/- 2.95e-37]"
+      ]
+    }
+  ],
+  "protocol_sha256": "786855e40f1b077909a661573af2d1ff276d4ef6aad1a8d41fe427cdefc1da53",
+  "assignment_commitment": "dd04a04dfac78573be08f46c1abd3e147b74517e79370f52cd52c5fba69927a9",
+  "packets_sha256": "06e3b2981df3d2a0949e2713699fa38cf20753b683c8feb6de91e164ca82aa34",
+  "calls_sha256": "bfa340a551cc41f1e288cd2e775d14cb00997f671712a03336031710c67c0bd1"
+}

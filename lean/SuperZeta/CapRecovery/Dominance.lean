@@ -7,7 +7,7 @@ noncomputable section
 namespace SuperZeta.CapDominance
 open SignWords
 
-private def digit : Sign → ℂ
+def digit : Sign → ℂ
   | .plus => 1
   | .minus => -1
 
@@ -79,10 +79,16 @@ theorem capPolynomial_injective :
   intro u v h
   exact injective (-r) (hr.symm ▸ Real.pi_gt_three.le) (mul_left_cancel₀ hr0 h)
 
-private noncomputable def prefixes : List Sign → List Sign
+/-- The sign of the product through each successive letter. -/
+noncomputable def prefixes : List Sign → List Sign
   | [] => []
   | .plus :: tail => .plus :: prefixes tail
   | .minus :: tail => .minus :: (prefixes tail).map Sign.flip
+
+@[simp] theorem length_prefixes (w : List Sign) : (prefixes w).length = w.length := by
+  induction w with
+  | nil => rfl
+  | cons s w ih => cases s <;> simp [prefixes, ih]
 
 private theorem flip_flip (a : Sign) : a.flip.flip = a := by cases a <;> rfl
 
@@ -110,7 +116,7 @@ private theorem value_flip (t : ℂ) (w : List Sign) :
   | cons s w ih =>
     cases s <;> simp [value, Sign.flip, digit, ih] <;> ring
 
-private theorem polynomial_cons (s : Sign) (w : List Sign) (t : ℂ) :
+theorem polynomial_cons (s : Sign) (w : List Sign) (t : ℂ) :
     DyadicCap.polynomial (s::w) t = (DyadicWeights.letter s : ℂ) *
       (1 + t * DyadicCap.polynomial w t) := by
   unfold DyadicCap.polynomial
@@ -125,7 +131,7 @@ private theorem polynomial_cons (s : Sign) (w : List Sign) (t : ℂ) :
   rw [pow_succ]
   ring
 
-private theorem value_prefixes (t : ℂ) (w : List Sign) :
+theorem value_prefixes (t : ℂ) (w : List Sign) :
     value t (prefixes w) = DyadicCap.polynomial w t := by
   induction w with
   | nil => simp [prefixes, value, DyadicCap.polynomial]
@@ -133,6 +139,14 @@ private theorem value_prefixes (t : ℂ) (w : List Sign) :
     rw [polynomial_cons]
     cases s <;> simp [prefixes, value, value_flip, ih, DyadicWeights.letter, digit]
     ring
+
+/-- A finite prefix polynomial determines its chronological word whenever
+the complex base has norm at least three. -/
+theorem polynomial_injective (t : ℂ) (ht : 3 ≤ ‖t‖) :
+    Function.Injective (fun w => DyadicCap.polynomial w t) := by
+  intro u v h
+  simp only [← value_prefixes] at h
+  exact prefix_injective (injective t ht h)
 
 /-- The second-to-first derivative ratio of the actual exponential maps at their
 common cap identifies every finite chronological word, even its length. -/
