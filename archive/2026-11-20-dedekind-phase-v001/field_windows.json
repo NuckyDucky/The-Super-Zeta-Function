@@ -1,0 +1,95 @@
+{
+  "field": "Q(sqrt(-3))",
+  "window_bits": 160,
+  "independent_prime_power_checks": 4194304,
+  "residue_polynomial_check": "every prime <= 257, powers 1 through 6",
+  "windows": [
+    {
+      "lower": 4096,
+      "upper_endpoint": 262144,
+      "knots": 22549,
+      "bounds": [
+        {
+          "exponent": "11/20",
+          "upper": "[0.0462317963991217945 +/- 4.40e-20]",
+          "passes": true
+        },
+        {
+          "exponent": "1/2",
+          "upper": "[0.0703231947237255949 +/- 1.49e-20]",
+          "passes": true
+        }
+      ]
+    },
+    {
+      "lower": 6501,
+      "upper_endpoint": 524288,
+      "knots": 42694,
+      "bounds": [
+        {
+          "exponent": "21/40",
+          "upper": "[0.0498448568028080513 +/- 1.71e-20]",
+          "passes": true
+        },
+        {
+          "exponent": "1/2",
+          "upper": "[0.0655968293616892463 +/- 4.80e-20]",
+          "passes": true
+        }
+      ]
+    },
+    {
+      "lower": 10321,
+      "upper_endpoint": 1048576,
+      "knots": 80951,
+      "bounds": [
+        {
+          "exponent": "41/80",
+          "upper": "[0.0567122308075380672 +/- 4.83e-20]",
+          "passes": true
+        },
+        {
+          "exponent": "1/2",
+          "upper": "[0.0655968293616892463 +/- 4.80e-20]",
+          "passes": true
+        }
+      ]
+    },
+    {
+      "lower": 16384,
+      "upper_endpoint": 2097152,
+      "knots": 153962,
+      "bounds": [
+        {
+          "exponent": "81/160",
+          "upper": "[0.0609929711278505236 +/- 1.50e-20]",
+          "passes": true
+        },
+        {
+          "exponent": "1/2",
+          "upper": "[0.0655968293616892463 +/- 4.80e-20]",
+          "passes": true
+        }
+      ]
+    },
+    {
+      "lower": 26007,
+      "upper_endpoint": 4194304,
+      "knots": 293417,
+      "bounds": [
+        {
+          "exponent": "161/320",
+          "upper": "[0.0632530277483698712 +/- 3.55e-20]",
+          "passes": true
+        },
+        {
+          "exponent": "1/2",
+          "upper": "[0.0655968293616892463 +/- 4.80e-20]",
+          "passes": true
+        }
+      ]
+    }
+  ],
+  "conditional_limsup_bits": 192,
+  "conditional_limsup": "[0.159421387789714409540402099451628430 +/- 3.00e-37]"
+}

@@ -1,0 +1,124 @@
+{
+  "delta": [
+    -5045155,
+    1027708
+  ],
+  "norm": 26509772707289,
+  "absolute_discriminant": 424156363316624,
+  "conductor_primes": [
+    {
+      "p": 41,
+      "i_image": 32,
+      "gaussian_primes": [
+        {
+          "generator": [
+            4,
+            5
+          ],
+          "value": 0
+        },
+        {
+          "generator": [
+            4,
+            -5
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "p": 457,
+      "i_image": 109,
+      "gaussian_primes": [
+        {
+          "generator": [
+            4,
+            21
+          ],
+          "value": -1
+        },
+        {
+          "generator": [
+            4,
+            -21
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "p": 1414835497,
+      "i_image": 516876951,
+      "gaussian_primes": [
+        {
+          "generator": [
+            10596,
+            36091
+          ],
+          "value": -1
+        },
+        {
+          "generator": [
+            10596,
+            -36091
+          ],
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "dyadic_value": 1,
+  "rational_prime_bound": 997,
+  "rational_primes_checked": 168,
+  "gaussian_ideals_checked": 248,
+  "local_signs_at_13_37_73": [
+    [
+      13,
+      [
+        2,
+        3
+      ],
+      -1
+    ],
+    [
+      13,
+      [
+        2,
+        -3
+      ],
+      -1
+    ],
+    [
+      37,
+      [
+        1,
+        6
+      ],
+      1
+    ],
+    [
+      37,
+      [
+        1,
+        -6
+      ],
+      1
+    ],
+    [
+      73,
+      [
+        3,
+        8
+      ],
+      -1
+    ],
+    [
+      73,
+      [
+        3,
+        -8
+      ],
+      1
+    ]
+  ]
+}

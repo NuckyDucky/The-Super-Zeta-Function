@@ -1,0 +1,50 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 18410,
+      "sha256": "15ca73c8bad0b1d8b87241e32dd8fa5dd5c231d3b43a81479a6954fde7a9f2f3"
+    },
+    "check_conductor.py": {
+      "bytes": 3951,
+      "sha256": "042d629ce1402dc58d44698c4dea28c444aa68a90f5849a461a50fd48c7083c6"
+    },
+    "check_field_windows.py": {
+      "bytes": 5981,
+      "sha256": "05a08ad2058b767b57dc5dd94ba19b1d3c19578cf02a367617b94dec0b3e3f45"
+    },
+    "check_first_zero.py": {
+      "bytes": 1346,
+      "sha256": "29b8e9db8441ba0c899e3bc966234679f768e659d69bcb4de3eab014ec46fc82"
+    },
+    "check_gaussian_branch.py": {
+      "bytes": 2845,
+      "sha256": "74a463e151a99b04420ae2df5b92d56a3bdd0fb817ce0c426e97bfc93c4416cd"
+    },
+    "check_phase_classes.py": {
+      "bytes": 2921,
+      "sha256": "cd0fefb93527c4196758a135602ffb73c8f7d44ad22864cf84ed49f1bb98e9c8"
+    },
+    "conductor.json": {
+      "bytes": 1787,
+      "sha256": "05286c0d30125f6b54f6921fd60f9f1f0d43173a12a66ba371f3b6fa08627cb5"
+    },
+    "field_windows.json": {
+      "bytes": 2323,
+      "sha256": "274e1affb9080702fe14a9f0ffc887a028cefb4a187cfbed359cff06b9aee526"
+    },
+    "first-zero.json": {
+      "bytes": 576,
+      "sha256": "c9945e8eb18d2490cb32922bfcde6bc124069b5c28227b78a6ac96e852b645d5"
+    },
+    "first-zero.md": {
+      "bytes": 2321,
+      "sha256": "c8ac7b868e30d4975bf62605b29a9ceaabaf850738fe61bf96e88bb08add4f33"
+    },
+    "phase_classes.json": {
+      "bytes": 648,
+      "sha256": "a04cba563d37003b54b3f555bd8c3832a48cf438ee76f3f2c56191ed1e561388"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-dedekind-phase-v001"
+}

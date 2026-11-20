@@ -1,0 +1,57 @@
+{
+  "discriminant": -23,
+  "forms": [
+    [
+      1,
+      1,
+      6
+    ],
+    [
+      2,
+      1,
+      3
+    ],
+    [
+      2,
+      -1,
+      3
+    ]
+  ],
+  "limit_inclusive": 4096,
+  "quadratic_coefficients_verified": 4096,
+  "cubic_coefficients_verified": 4096,
+  "n2_by_class": [
+    0,
+    1,
+    1
+  ],
+  "first_principal_only_mismatch": 2,
+  "cubic_artin_n1_to_n12": [
+    1,
+    -1,
+    -1,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "cubic_dedekind_n1_to_n12": [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    1,
+    0
+  ]
+}
