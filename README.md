@@ -465,16 +465,11 @@ At one fixed real part, the two imaginary inputs let me read the radii and angle
 
 For each squared root $\lambda$ I evaluate its principal power at two complex inputs, multiply the first reading by the conjugate of the second, and sum over roots. For ordinary Dirichlet powers the same operation pairs equal integers and gives $\zeta(x+\bar y)$. My indices are complex roots, so each contributes its argument as well as its modulus. [Hedenmalm, Lindqvist and Seip, §4.3, kernel formula](https://arxiv.org/pdf/math/9512211#page=17) · [Source comparison](archive/2026-11-20-hurwitz-speed-mean-square-v002/README.md)
 
-$$
-\mathrm{Sz}_E(x,y)=\sum_{E(\lambda)=0}\lambda^{-x}\overline{\lambda^{-y}},
-\qquad \Re x+\Re y>\tfrac12.
-$$
+$`\displaystyle \mathrm{Sz}_E(x,y)=\sum_{E(\lambda)=0}\lambda^{-x}\overline{\lambda^{-y}}, \qquad \Re x+\Re y>\tfrac12.`$
 
 **Recovery from one plane.** The four roots $u,-u,\bar u,-\bar u$ give two squared roots $R e^{i\psi},R e^{-i\psi}$. Set $x=r+ih$ and $y=r+ik$ with $r>1/4$. This pair contributes
 
-$$
-2R^{-2r}e^{-i(h-k)\log R}\cosh\!\big((h+k)\psi\big).
-$$
+$`\displaystyle 2R^{-2r}e^{-i(h-k)\log R}\cosh\!\big((h+k)\psi\big).`$
 
 As I vary $h-k$, the oscillation has frequency $\log R$. Once I isolate that frequency, varying $h+k$ gives the angles at that radius. Exact values across the whole plane at one fixed $r$ determine the squared roots and their multiplicities. Setting $y=0$ in the defining sum recovers my original one-input super zeta where its series converges. [Full-plane proof and principal logarithms](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#a-plane-indexed-by-two-imaginary-displacements)
 

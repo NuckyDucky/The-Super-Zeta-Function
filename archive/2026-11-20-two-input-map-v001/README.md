@@ -8,9 +8,9 @@ I fix the real parts of both exponents at one, set $x=1+ih$ and $y=1+ik$, and va
 
 For $\delta=h-k$ and $\eta=h+k$, write $K_1(\delta,\eta)$ for the full complex sum on this plane. The linear color scale gives $|K_1(h-k,h+k)-K_1(h-k,0)|$. Pale colors indicate a smaller change and dark purple a larger one. The four marked choices show that equal shifts can change the sum while opposite shifts of the same size cancel the angular contribution. I keep $\delta$ fixed in the subtraction so the radial phase stays the same. Each conjugate pair of squared roots of modulus $r_n$ and principal arguments $\pm\psi_n$ contributes
 
-~~~math
+$$
 2r_n^{-2} e^{-i\delta\log r_n}\left[\cosh(\eta\psi_n)-1\right]
-~~~
+$$
 
 to this difference. The real Dottie root cancels throughout the map. The dotted diagonal $k=-h$ sets $\eta=0$, so the difference vanishes there. The complex sum itself can still vary along that diagonal. The angles $\psi_n$ are in radians, positive counterclockwise.
 
