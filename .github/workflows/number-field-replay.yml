@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - 'archive/2026-11-20-hidden-lift-v001/**'
       - 'archive/2026-11-20-cap-derivative-recovery-v001/**'
       - 'archive/2026-11-20-dedekind-phase-v001/**'
       - 'archive/2026-11-20-gaussian-branch-spectrum-v001/**'
@@ -11,6 +12,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'archive/2026-11-20-hidden-lift-v001/**'
       - 'archive/2026-11-20-cap-derivative-recovery-v001/**'
       - 'archive/2026-11-20-dedekind-phase-v001/**'
       - 'archive/2026-11-20-gaussian-branch-spectrum-v001/**'
@@ -70,3 +72,6 @@ jobs:
           python -B test_cap_jets.py prepare --folder "$RUNNER_TEMP/cap-fresh"
           python -B test_cap_jets.py decode --folder "$RUNNER_TEMP/cap-fresh"
           python -B test_cap_jets.py verify --folder "$RUNNER_TEMP/cap-fresh"
+      - name: Recover hidden integer lifts and chronological words and compare the archived calls
+        working-directory: archive/2026-11-20-hidden-lift-v001
+        run: python -B blind_trial.py verify

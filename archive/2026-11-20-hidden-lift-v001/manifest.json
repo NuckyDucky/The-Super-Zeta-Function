@@ -1,0 +1,34 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 8940,
+      "sha256": "f727368d7b96e72fe7fba76abae0f13313173afbbd90300770a7f5b62b2c0f0d"
+    },
+    "blind-calls.json": {
+      "bytes": 30335,
+      "sha256": "88d6b534e63c73575780c14bb589890a086e36ae35c306cbdeee47975c924980"
+    },
+    "blind-packets.json": {
+      "bytes": 185537,
+      "sha256": "90c3544bd1db0d82ca53ebfa3b8d5c6c0bfebeb77341e808dc95ed12b7cb939d"
+    },
+    "blind-results.json": {
+      "bytes": 2625,
+      "sha256": "069f2725d8168597b7896ca2460faca4fc2f0364e74bda2363850f3748a0bd20"
+    },
+    "blind-reveal.json": {
+      "bytes": 81,
+      "sha256": "d9d3624e7184875258ec20851e9451c2ea94777752ea54025b89323793751342"
+    },
+    "blind_trial.py": {
+      "bytes": 11217,
+      "sha256": "f7c1dc64d979a13388169bf6fec979561358d6359caeb1e4e1abb3250b97742b"
+    },
+    "protocol.md": {
+      "bytes": 4831,
+      "sha256": "786855e40f1b077909a661573af2d1ff276d4ef6aad1a8d41fe427cdefc1da53"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-hidden-lift-v001"
+}
