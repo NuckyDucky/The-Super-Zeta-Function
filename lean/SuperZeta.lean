@@ -42,6 +42,8 @@ import SuperZeta.ZeroMoment
 import SuperZeta.TwoRootMoments
 import SuperZeta.TwoRootCircleIntegral
 import SuperZeta.GaussianEndpointParity
+import SuperZeta.GaussianDiskCount
+import SuperZeta.GaussianDiskKernel
 import SuperZeta.CapRecovery.Dominance
 import SuperZeta.CapRecovery.GeneralWeights
 import SuperZeta.CapRecovery.Coalescence
