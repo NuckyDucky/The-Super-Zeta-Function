@@ -2,11 +2,27 @@
 
 <div><a name="abstract"></a><a name="introduction"></a></div>
 
-I started with six integers that put a root of a quadratic within $8.7\times10^{-20}$ of $\pi$. Completing the square gave me a genus-one quartic. In my reciprocal tower I kept both exponents, $U=LQ$ and $V=-LP$, so I could recover which stage of the tower produced which value. These constructions meet in a square lattice. The ratio $U/V=i$ supplies its coordinates, and the discriminant of one quadratic factor of **my original quartic** supplies a rule for distinguishing primes at the same squared distance from the origin.
+I define the super zeta function from the fixed pairs of my reciprocal exponential tower. One update sends $(P,Q)$ to $(e^{LQ},e^{-LP})$. I keep the two exponents in order, $U=LQ$ and $V=-LP$. At a fixed pair, the derivative after two updates is $UV$ in either coordinate. I select the pairs with $UV=1$. Their difference $u=(U-V)/(2i)$ then satisfies $u=\cos u$ or $u=-\cos u$. Given $u$ and its sign in that equation, I can recover both exponents and the original parameter $L$. [Fixed pairs and their inverse, equations (1)–(3)](docs/proofs/quartet-spectrum.md#eq-1)
+
+The two roots $u$ and $-u$ give one spectral value $v=u^2$. At unit coupling these values are exactly the zeros of the entire function $E$ below. I count them with multiplicity and use the principal logarithm for each inverse power. This is the defining sum, in the half-plane where it converges.
+
+~~~math
+E(v)=\cos^2\!\sqrt v-v,\qquad
+\mathcal Z(s;1)=\sum_{E(v)=0}e^{-s\mathrm{Log}\,v},
+\qquad \Re s>\tfrac12.
+~~~
+
+Ordinary zeta enters when I compare $E(v)$ with $\cos^2\!\sqrt v$. The reference has double zeros at the squares of the half-integer multiples $(n+\tfrac12)\pi$, for $n=0,1,\ldots$. Their inverse powers give the odd-integer part of the Riemann series. Integrating the logarithm of the determinant ratio on the negative real axis gives the correction $J$. After continuation their difference satisfies
+
+~~~math
+\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s).
+~~~
+
+Thus a Riemann zero at $w$ in the critical strip is a point where the continued super zeta and its correction agree at $s=w/2$, with the same order of vanishing for their difference. [Root sum, Mellin comparison and continuation](docs/proofs/quartet-spectrum.md#5-a-two-variable-zeta-for-the-inverse-cosine-coupling-family)
 
 **Results in this proof**
 
-- I construct a spectral determinant from the multiplier-one fixed pairs of the reciprocal tower. Each pair of cosine roots $u,-u$ gives one determinant zero $u^2$. Summing the inverse powers of those determinant zeros defines my super zeta. A Mellin comparison recovers the Riemann factor $\zeta(2s)$. [Operator, product and comparison](docs/proofs/quartet-spectrum.md)
+- From the product for $E$ I obtain exact sums over the tower spectrum. For example, $\mathcal Z(1;1)=2$ and $\mathcal Z(2;1)=10/3$. [Determinant product and first four sums](docs/proofs/quartet-spectrum.md#4-canonical-product-and-exact-rational-trace-sums)
 - Near the Dottie fold I isolate paired periods 640 and 205,440. A period-640 return sets three height windows in which all eleven Riemann zeros are simple and lie on the critical line, sharpening the 7/8ths and Liu bounds in those windows. [Orbit certificate](archive/2026-11-18-dottie-mixed-cap-period-v001/README.md) · [Three window counts](archive/2026-11-20-liu-angular-velocity-v002/README.md)
 - From the balanced sign counts I recover the Stirling remainder for a single factorial. The actual quartet radii determine a finite Hurwitz sign change between levels 28 and 29. [Factorial proof](archive/2026-11-18-stirling-correction-v001/README.md) · [Comparison with equally spaced radii](archive/2026-11-18-quartet-grid-comparison-v001/README.md)
 - I identify the arithmetic character of a branch of my quartic over the Gaussian integers. Its conductor gives three finite reductions that determine the sign at every nonzero marked Gaussian lattice point coprime to the conductor, and give zero at the excluded points. [Field and conductor proof](archive/2026-11-20-dedekind-phase-v001/README.md)
@@ -46,9 +62,7 @@ Y^2=f(x)=A(x)^2+4N(x)^2
 
 <div><a name="what-the-right-panel-shows"></a><a name="real-ovals-and-projective-completion"></a><a name="the-point-giving-my-approximation-to-π"></a></div>
 
-At $x=e$ the upper branch gives $\widehat\pi=(3D-N+\sqrt f)/(2A)$, with all terms evaluated at $e$. Following either real branch to infinity closes it into one oval. Over the Gaussian integers the same equation gives two quadratic factors. The discriminant of the first one will determine the prime weights in §2. [Coordinates, ovals and rational-point obstruction](docs/proofs/reciprocal-constructions.md#user-content-read-quartic)
-
-![Affine branches and their two closed real ovals. The marked point selects the upper square root at x=e.](archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)
+The signs of $Y$ give two real branches. Adding their points at infinity closes each into an oval. For the arithmetic in §2 I use the factor $A+2iN$. Its discriminant determines which Gaussian prime splits in the quartic field, even when two primes have the same norm. [Diagram of the ovals and the quartic derivation](docs/proofs/reciprocal-constructions.md#user-content-read-quartic)
 
 <div><a name="reciprocal-tetration"></a><a name="2-reciprocal-tetration"></a><a name="read-tetration" id="user-content-read-tetration"></a></div>
 
@@ -193,6 +207,8 @@ A marked period-640 return first supplied a Riemann height $T_D\approx4.5261\tim
 In the open critical strip all these factors are holomorphic. The order at any point is the sum of the orders of the factors. Thus each of the eleven certified Riemann zeros contributes at least one zero to each field product. To claim that a whole box has only those zeros, I need counts for every extra factor on the same contour. A *simple zero* means multiplicity one, equivalently that the first derivative there is nonzero. [Three Riemann counting intervals](archive/2026-11-20-liu-angular-velocity-v002/README.md) · [Field factors and the domain of Liu’s bound](archive/2026-11-20-dedekind-phase-v001/README.md)
 
 Liu’s stated unitary Hecke bound applies directly to the finite-order character over $k$. A critical-line theorem restricted to Dirichlet characters over $\mathbb Q$ would cover the Riemann and beta factors. A critical-line bound for the extra Gaussian-ideal factor would extend that conclusion to this particular quartic field. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [OpenAI, Theorem 1.1](https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf)
+
+Masullo’s November 20 draft treats Hecke characters over number fields and gives a trace formula with a separate calculation for each character. For my quartic the relevant character is $\eta_\delta$ over $\mathbb Q(i)$. At norm 73 its two prime contributions cancel. Keeping the fourth angular harmonic gives a nonzero imaginary coefficient whose sign identifies the branch. [Calculation at 73 and reading guide to Masullo’s draft](docs/number-fields/masullo-trace-formula.md)
 
 **Global hypothesis for my quartic field.** Let $G_E(x)$ be its smoothed prime-power sum after removing the two main terms specified in the proof. I ask whether for every $\epsilon>0$ some $C_\epsilon$ satisfies $\lvert G_E(x)\rvert\le C_\epsilon x^{1/2+\epsilon}$ for every real $x\ge2$. This two-sided bound would make its Mellin integral holomorphic for $\Re v>-1/2$. A field zero $\rho$ with $\Re\rho>1/2$ would give a pole at $v=\rho-1$ there. The field functional equation reflects the resulting exclusion across the critical line. The finite one-sided calculation in §1 uses the Eisenstein field. [Two main terms, pole residue and Mellin proof](archive/2026-11-20-dedekind-phase-v001/README.md#which-zero-counts-transfer)
 
