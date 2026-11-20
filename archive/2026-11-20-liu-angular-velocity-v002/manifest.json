@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 7845,
+      "sha256": "03647477d0a209acfff1af4b43b750827953f77f6553b25c199b677ac7408e02"
+    },
+    "check_tangents.py": {
+      "bytes": 2188,
+      "sha256": "596c7c4236fa181e2b2b8524b8f33ab343d2f56f75e52748cfdf5d41d327846b"
+    },
+    "tangents.json": {
+      "bytes": 1571,
+      "sha256": "9ac7e2cbfe23319ab78d2693d05339b46578d6364849380d723cc579db30b349"
+    },
+    "verify_windows.py": {
+      "bytes": 3539,
+      "sha256": "12d6d34ba9427ff4267ca6a70c44a2148653650616a811359877bd87c68bd535"
+    },
+    "windows.json": {
+      "bytes": 2812,
+      "sha256": "13313056f1839349187a8bffe67268df160f8440dd48be4ca9ef729ad69d65a6"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-liu-angular-velocity-v002"
+}
