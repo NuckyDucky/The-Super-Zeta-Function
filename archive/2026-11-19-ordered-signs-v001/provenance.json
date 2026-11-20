@@ -46,6 +46,6 @@
     "newton_seed": "185 significant decimal digits per component from a 205-digit refinement; the Krawczyk proof checks the supplied centers independently.",
     "primary_output": "bounds.json",
     "secondary_output": "independent-bounds.json",
-    "lean_audited_theorem_declarations": 1078
+    "lean_audited_theorem_declarations": 1079
   }
 }

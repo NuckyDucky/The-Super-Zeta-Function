@@ -186,6 +186,47 @@ def adjacent_readings(y):
             "max_state_error_upper": worst_state.str(12)}
 
 
+def sliding_readings(y):
+    """Read the 160/161 derivative windows from consecutive starting phases."""
+    states, signs = fixed_orbit(y)
+    width = 160
+    rates = [signs[j % 2][1] for j in range(PERIOD)]
+    factors = [a * z for a, z in zip(rates, states[1:])]
+    exponents = [a * z for a, z in zip(rates, states[:-1])]
+    # Any 160 stages contain 80 rates of each sign.
+    rate_product = Disk.enclose(1)
+    for _ in range(width // 2):
+        rate_product = rate_product * (rates[0] * rates[1])
+
+    ratios = []
+    for j in range(PERIOD):
+        short = Disk.enclose(1)
+        total = Disk.enclose(0)
+        for k in range(j, j+width):
+            short = short * factors[k % PERIOD]
+            total = total + exponents[k % PERIOD]
+        end = (j+width) % PERIOD
+        # Independent formulas compute the two window derivatives. The longer
+        # one uses the sum of the actual exponents, the shorter the chain rule.
+        long = (rate_product * rates[end]) * (total + exponents[end]).exp()
+        ratios.append(long * short.inv())
+
+    readings = [(ratios[(j+1) % PERIOD] * ratios[j].exp(), (-ratios[j]).exp())
+                for j in range(PERIOD)]
+    worst_rate, worst_state = arb(0), arb(0)
+    for j, (rate, state) in enumerate(readings):
+        end = (j+width+1) % PERIOD
+        error = (rate-rates[end]).upper()
+        check(error < y.re() and (rate+rates[end]).lower() > y.re(),
+              f"sliding windows failed to distinguish stage {end+1}")
+        worst_rate = max(worst_rate, error)
+        worst_state = max(worst_state, (state-states[end+1]).upper())
+    check(worst_state < real("1e-6"), "sliding windows lost output precision")
+    return {"lengths": [width, width+1], "starting_phases": PERIOD,
+            "max_rate_error_upper": worst_rate.str(12),
+            "max_state_error_upper": worst_state.str(12)}
+
+
 def verify_trap(y, gauge=None):
     D = trap()
     states, signs = lap(D, y)
@@ -308,6 +349,7 @@ def main():
                "first_minimum": certify_minimum(FIRST, halfwidth),
                "second_minimum": certify_minimum(SECOND, halfwidth),
                "adjacent_derivative_recovery": adjacent_readings(parameter(SECOND-halfwidth, SECOND+halfwidth)),
+               "sliding_derivative_recovery": sliding_readings(parameter(SECOND-halfwidth, SECOND+halfwidth)),
                "balanced_words_at_second_minimum": example_words(
                    parameter(SECOND-halfwidth, SECOND+halfwidth))}
     print(json.dumps(records, indent=2))

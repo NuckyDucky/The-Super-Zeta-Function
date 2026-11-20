@@ -65,6 +65,15 @@
     "max_rate_error_upper": "[7.42685416073e-15 +/- 1.16e-27]",
     "max_state_error_upper": "[2.90318382772e-14 +/- 4.50e-26]"
   },
+  "sliding_derivative_recovery": {
+    "lengths": [
+      160,
+      161
+    ],
+    "starting_phases": 640,
+    "max_rate_error_upper": "[9.77960146016e-15 +/- 1.78e-27]",
+    "max_state_error_upper": "[2.89580060261e-14 +/- 1.91e-28]"
+  },
   "balanced_words_at_second_minimum": {
     "++--": [
       "[0.682245293388 +/- 1.20e-13]",

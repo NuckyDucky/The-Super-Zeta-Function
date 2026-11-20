@@ -52,6 +52,20 @@ The second equality uses $a_{j+1}=-a_j$. The third divides the next stage deriva
 
 For the marked orbit at the secondary minimum I formed the prefix derivatives, then decoded stages 2–641. Stage 641 reads the first position on its next lap. All 640 rate disks distinguish the sign, with absolute error below $7.43\times10^{-15}$ against the prescribed complex rate. The recovered states agree with forward propagation within $2.91\times10^{-14}$. This checks recovery from overlapping derivative measurements. The measured lap multiplier by itself is only the last prefix derivative. [Directed-arithmetic replay](verify.py) · [Enclosures](bounds.json)
 
+<details>
+<summary>Sliding the 160- and 161-stage windows around the marked orbit</summary>
+
+Let $P_m(j)$ be the derivative of $m$ stages starting at $z_j$. I measure the same two lengths at each of the 640 starting phases. The longer window contains exactly one additional factor, so
+
+```math
+A_j=\frac{P_{161}(j)}{P_{160}(j)}=a_{j+161}z_{j+161},\qquad
+z_{j+162}=e^{-A_j},\qquad a_{j+162}=A_{j+1}e^{A_j}.
+```
+
+I form each 160-stage derivative by the chain rule. I compute the 161-stage derivative separately from the product of its rates times the exponential of the sum of its actual exponents. The decoder receives their ratios in starting-phase order. Over one lap it reads each sign once, including those across the marked start. The largest certified absolute error was below $9.78\times10^{-15}$ in the signed rate and $2.90\times10^{-14}$ in the stage output. The theorem also applies to other consecutive window lengths. [Lean proof for sliding windows](../../lean/SuperZeta/SignWords.lean) · [All 640 comparisons](bounds.json)
+
+</details>
+
 ## Two minima on the imaginary centerline
 
 Put $L=iy$, $H_y(z)=\exp(iy\overline z)$ and $G_y=H_y^{640}=g_{iy}^{320}$. The cap is $1$. I mark the periodic phase $p_y$ selected by iteration from this cap and measure $\mu(y)=G_y'(p_y)$. The two rows are local minima of $|\mu|$ at different **heights on the centerline**. The table rounds heights for readability. The first verifier encloses each in a rational bracket of radius $10^{-24}$. [Finite data and the previous secondary interval, preprint §8](../2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L553-L604)

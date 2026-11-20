@@ -297,4 +297,22 @@ theorem invert_adjacent_alternating (w : List NonzeroRate) (a : NonzeroRate) (z 
   simp only [stage, neg_mul, mul_assoc, ← exp_add, neg_add_cancel, exp_zero, mul_one, and_self]
 
 
+/-- Take the same two lengths at consecutive starting phases. Each short
+    window has length w.length + 1. With 159 interior rates these are the
+    160- and 161-stage measurements around the Dottie cycle. -/
+theorem invert_sliding_windows (b : NonzeroRate) (w : List NonzeroRate)
+    (a : NonzeroRate) (z : ℂ) :
+    let c : NonzeroRate := ⟨-a.val, neg_ne_zero.mpr a.property⟩
+    let start₂ := stage b.val z
+    let u := b :: w
+    let v := w ++ [a]
+    let d₁ := prefixDerivative (u ++ [a]) z / prefixDerivative u z
+    let d₂ := prefixDerivative (v ++ [c]) start₂ / prefixDerivative v start₂
+    run ((v ++ [c]).map Subtype.val) start₂ = exp (-d₁) ∧
+      d₂ * exp d₁ = -a.val := by
+  have h := invert_adjacent_alternating (b :: w) a z
+  dsimp only at h ⊢
+  simp only [adjacent_ratio, List.map_append, List.map_cons, List.map_nil, run_append, run] at h ⊢
+  exact h
+
 end SuperZeta.SignWords

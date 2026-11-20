@@ -1,12 +1,12 @@
 {
   "files": {
     "README.md": {
-      "bytes": 11927,
-      "sha256": "9438e4f3dec555e89000a7b4fc5a9e9e4375dbd185131c1707afddca0bd5ef42"
+      "bytes": 12978,
+      "sha256": "28eb3dd843a874252ed5e77c39ae00b2017b8f2c3ecab4d5c9feb5e2e47a55de"
     },
     "bounds.json": {
-      "bytes": 3184,
-      "sha256": "b2582388cde8378a96682e64f16d24f4f329385ec892183c370730774feb6ae4"
+      "bytes": 3434,
+      "sha256": "4bd95aeaea2bea377c46f396da1ce6da8c9f52637e5d93e27d40b3a428387986"
     },
     "crosscheck.py": {
       "bytes": 6587,
@@ -18,15 +18,15 @@
     },
     "provenance.json": {
       "bytes": 2353,
-      "sha256": "08dbad26adc1ec20543e919e9a5d8a5053a63171df01a1438fc18610ae3978e8"
+      "sha256": "46bdd65d5149915f29aea910f032a71b228c4a66f64b0291c4521deb58670aa1"
     },
     "secondary-center.json": {
       "bytes": 587,
       "sha256": "97478e9bdb6bfc4ac8f2547cb876dbbcc02fb46d9893ea4d807786dbf243fd50"
     },
     "verify.py": {
-      "bytes": 12252,
-      "sha256": "7b03d6195a63cc917b554d7cfa564fdf328d93b825e81cd7eaf006d261927cbe"
+      "bytes": 14227,
+      "sha256": "ec5f8640278898f4072878ad4ddfa0794e48290083370339084d3470a66bf68d"
     }
   },
   "format_version": 1,
