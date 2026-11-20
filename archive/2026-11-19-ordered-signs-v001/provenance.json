@@ -1,0 +1,51 @@
+{
+  "author": "NuckyDucky",
+  "date": "2026-11-19",
+  "parent_commit": "ae66273fc185814a2255402820173aacb3802bd8",
+  "sources": [
+    {
+      "path": "archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex",
+      "use": "Reciprocal pair, rooted phase indexing and rotation, reversal and complement, sections 4 and 5 and Periodic sign words."
+    },
+    {
+      "path": "archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex",
+      "use": "Imaginary centerline, canonical unfolding, P3K-640 finite range, period convention, conditional horn matching in sections 2, 4, 8 and 9."
+    },
+    {
+      "path": "P3K-640/phase3k_directed_continuation/certify_directed_continuation.py",
+      "sha256": "5294403f7dd3fe3e1cba73e0bd99de2feb2cd782217513bff5bf61176026a3a3",
+      "use": "Copied the exact upper-channel center and radius for the disk containment in verify.py."
+    },
+    {
+      "path": "OpenAI-Math-Greater-Work/computations/certify_finite_stationarity.py",
+      "sha256": "8862950bbd74f039034e0bd23e9da4de8bde4be5b7dd8a24d6b847199d1d8040",
+      "use": "crosscheck.py retains the real jet system and Krawczyk calculation. The runner reads the frozen secondary seed and tests the new parameter bracket and cap disk."
+    },
+    {
+      "path": "lean/SuperZeta/SignWords.lean",
+      "use": "New formal proof based on the existing SpireDisk.run, Reciprocal.step and DottieOriented.run_derivative_from_lifts."
+    }
+  ],
+  "software": {
+    "python": "3.12.11",
+    "python_flint": "0.9.0",
+    "FLINT": "3.6.0",
+    "mpmath": "1.3.0",
+    "Lean": "4.19.0",
+    "mathlib": "c44e0c8ee63ca166450922a373c7409c5d26b00b"
+  },
+  "computations": {
+    "sampling": "32 overlapping-at-endpoints rational tiles, 640 ordered stages, 320 scalar gate measurements. Rational brackets for both minima. No random inputs.",
+    "interval_precisions_bits": [
+      384,
+      640
+    ],
+    "printed_fields_match_across_precisions": true,
+    "krawczyk_precision_decimal_digits": 230,
+    "krawczyk_preconditioner_decimal_digits": 190,
+    "newton_seed": "185 significant decimal digits per component from a 205-digit refinement; the Krawczyk proof checks the supplied centers independently.",
+    "primary_output": "bounds.json",
+    "secondary_output": "independent-bounds.json",
+    "lean_audited_theorem_declarations": 1078
+  }
+}

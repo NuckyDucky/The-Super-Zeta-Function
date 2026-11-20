@@ -1,0 +1,19 @@
+{
+  "p": 640,
+  "working_decimal_digits": 230,
+  "box_halfwidth": "1e-130",
+  "strict_krawczyk_inclusion": true,
+  "krawczyk_radius_ratios": [
+    "[2.152095956073237e-5 +/- 4.91e-21]",
+    "[1.498477992781112e-5 +/- 3.58e-22]",
+    "[7.902026093812387e-9 +/- 1.99e-25]"
+  ],
+  "derivative_defect_infinity": "[9.715588647101332e-26 +/- 3.33e-42]",
+  "log_modulus_curvature": "[946013315383989380.42 +/- 1.92e-3]",
+  "return_modulus": "[0.00030154191132272253921 +/- 8.77e-25]",
+  "inside_cap_disk_and_parameter_bracket": true,
+  "proper_divisor_distance_lower": {
+    "128": "[1.367702015122404 +/- 4.62e-16]",
+    "320": "[1.395840398023536 +/- 4.69e-16]"
+  }
+}
