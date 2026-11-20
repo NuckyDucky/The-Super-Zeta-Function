@@ -1,0 +1,42 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 11966,
+      "sha256": "08c39721e281c6d81134309ccac79d33c3840678289ce05e11e72cba07dd9a47"
+    },
+    "calls.json": {
+      "bytes": 1913,
+      "sha256": "0730e49dda19a0be7b13a464fed6df7dd81cdd89e32ef954a587d3f06dd6afcc"
+    },
+    "derivative-words.png": {
+      "bytes": 111959,
+      "sha256": "2ae3d02343cb901260a9d068ad7cc35d008f43094d4966ab79de804db3e89916"
+    },
+    "packets.json": {
+      "bytes": 4219,
+      "sha256": "ca00e8ae8ce822b6d2f66bfcaee99cce273f89342e9b5c31a35857e02cc1c222"
+    },
+    "plot_derivative_words.py": {
+      "bytes": 2731,
+      "sha256": "52207a4b0f3139fcb430fa9bad1aa2c6a28274e748720dfdb3d8ba2370602d5f"
+    },
+    "protocol.md": {
+      "bytes": 1304,
+      "sha256": "afdb5b1cd103d850bc30974468c7de702319e822a7a3810f8a14e464d2ea387e"
+    },
+    "results.json": {
+      "bytes": 2105,
+      "sha256": "9f61bf03df7192318bd4b39bc4ae31e87c70c5d0f84991c33acf49cd9b35c786"
+    },
+    "reveal.json": {
+      "bytes": 181,
+      "sha256": "067a04cf3f96e95048d1dc0b40c0343f668b9388ca4a54b53ca132c187d38843"
+    },
+    "test_cap_jets.py": {
+      "bytes": 6366,
+      "sha256": "5fd3bf7f8b10e6868e6495ea26492542bacb8aa9f01bd2c6acd30ebfcba3c0e1"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-cap-derivative-recovery-v001"
+}

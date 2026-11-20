@@ -39,3 +39,5 @@ import SuperZeta.DedekindLift
 import SuperZeta.FieldWeights
 import SuperZeta.MarkedBranch
 import SuperZeta.ZeroMoment
+import SuperZeta.CapRecovery.Dominance
+import SuperZeta.CapRecovery.GeneralWeights
