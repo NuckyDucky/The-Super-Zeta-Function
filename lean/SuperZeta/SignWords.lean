@@ -184,6 +184,23 @@ theorem first_stage_at_pi_I :
     eval (Real.pi * I) [.plus] 1 = -1 ∧ eval (Real.pi * I) [.minus] 1 = -1 := by
   simp [eval, Sign.rate, run, stage, exp_neg, Complex.exp_pi_mul_I]
 
+/-- Every nonempty word at lift πi and cap 1 has endpoint −1. The first
+stage reaches −1 and both choices of the following stage fix it. -/
+theorem cap_at_pi_I (s : Sign) (rest : List Sign) :
+    eval (Real.pi * I) (s :: rest) 1 = -1 := by
+  have fixed (w : List Sign) : eval (Real.pi * I) w (-1) = -1 := by
+    induction w with
+    | nil => rfl
+    | cons t tail ih =>
+      change eval _ tail (stage (t.rate _) (-1)) = -1
+      have ht : stage (t.rate (Real.pi * I)) (-1) = -1 := by
+        cases t <;> simp [Sign.rate, stage, exp_neg, Complex.exp_pi_mul_I]
+      rw [ht, ih]
+  change eval _ rest (stage (s.rate _) 1) = -1
+  have hs : stage (s.rate (Real.pi * I)) 1 = -1 := by
+    cases s <;> simp [Sign.rate, stage, exp_neg, Complex.exp_pi_mul_I]
+  rw [hs, fixed]
+
 /-- At a positive real lift the value at the cap also determines its word. -/
 private def realRate (L : ℝ) : Sign → ℝ
   | .plus => L
@@ -289,6 +306,48 @@ theorem real_cap_injective {L : ℝ} (hL : 0 < L) :
     simpa only [← cap_joins, List.reverse_reverse] using h
   have hr := cap_injective hL (Complex.ofReal_injective he)
   simpa using congrArg List.reverse hr
+
+/-- Execute each phrase from the endpoint of the preceding phrase. -/
+def evalPhrases (L : ℂ) : List (List Sign) → ℂ → ℂ
+  | [], z => z
+  | u :: rest, z => evalPhrases L rest (eval L u z)
+
+/-- Regrouping a run preserves its ordered sequence of individual stages. -/
+theorem evalPhrases_flatten (L : ℂ) (phrases : List (List Sign)) (z : ℂ) :
+    evalPhrases L phrases z = eval L phrases.flatten z := by
+  induction phrases generalizing z with
+  | nil => rfl
+  | cons u rest ih =>
+    rw [evalPhrases, List.flatten_cons, eval_append, ih]
+
+/-- Two executions at the common cap and positive real lift give the same
+endpoint if and only if the letters in chronological order are identical.
+The input lists permit arbitrary phrase breaks and empty phrases. -/
+theorem rooted_phrase_order_iff {L : ℝ} (hL : 0 < L) (u v : List (List Sign)) :
+    evalPhrases (L : ℂ) u 1 = evalPhrases (L : ℂ) v 1 ↔ u.flatten = v.flatten := by
+  rw [evalPhrases_flatten, evalPhrases_flatten]
+  exact (real_cap_injective hL).eq_iff
+
+/-- At a nonzero complex lift the same classification holds for equality
+of the entire maps, with the starting value allowed to vary. -/
+theorem phrase_map_order_iff {L : ℂ} (hL : L ≠ 0) (u v : List (List Sign)) :
+    evalPhrases L u = evalPhrases L v ↔ u.flatten = v.flatten := by
+  rw [funext (evalPhrases_flatten L u), funext (evalPhrases_flatten L v)]
+  exact (eval_injective hL).eq_iff
+
+/-- The words ++--, --++, and -+-+ all have two letters of each kind.
+Starting at the same cap, their three endpoint values are pairwise distinct. -/
+theorem three_balanced_rooted_words {L : ℝ} (hL : 0 < L) :
+    let words : List (List Sign) :=
+      [[.plus, .plus, .minus, .minus], [.minus, .minus, .plus, .plus],
+       [.minus, .plus, .minus, .plus]]
+    words.map (fun w => (w.count .plus, w.count .minus)) = [(2, 2), (2, 2), (2, 2)] ∧
+      (words.map (fun w => eval (L : ℂ) w 1)).Nodup := by
+  dsimp only
+  constructor
+  · decide
+  · apply List.Nodup.map (real_cap_injective hL)
+    decide
 
 /-- Derivative of the actual run up through the last letter in w. -/
 def prefixDerivative (w : List NonzeroRate) (z : ℂ) : ℂ := deriv (run (w.map Subtype.val)) z

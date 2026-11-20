@@ -120,6 +120,8 @@ A primitive scalar period $r$ takes $2r$ exponential stages along one phase. An 
 
 <div><a name="read-sign-words" id="user-content-read-sign-words"></a></div>
 
+The [lemma on unique chronological order](chronological-order.md) proves exactly what the cap remembers when I group signs into phrases. It compares the six balanced four-stage histories at base 2 with a complex lift at which all their cap values coincide.
+
 The order of the signs can change the value reached from the same cap. At $L=\log 2$, the minus stage followed by the plus stage sends $1$ to $1/2$ to $\sqrt2$. Reversing them sends $1$ to $2$ to $1/4$. I write the signs in the order they act, so $-+$ denotes $E_+\circ E_-$ for $E_\pm(z)=e^{\pm Lz}$. These are the two scalar returns followed by $P$ and $Q$, respectively.
 
 For **every fixed nonzero complex lift** $L$, two finite words give the same entire function exactly when every sign agrees in order. Moving the marked start around a periodic orbit rotates its word. If that changes the letter sequence, it changes the entire function. For real $L>0$ there is a shorter test from the cap $1$. The last sign is plus if the endpoint $x>1$ and minus if $0<x<1$. The previous value is $|\log x|/L$, so I can read the whole word backward. At the complex lift $L=\pi i$, both one-letter words send $1$ to $-1$, even though their entire functions differ. [My original definitions of rotation, reversal and complement](../../archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L404-L445) · [Proof and all six balanced four-stage outcomes at the spire](../../archive/2026-11-19-ordered-signs-v001/README.md#the-order-of-the-signed-exponentials)

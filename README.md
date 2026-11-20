@@ -131,6 +131,15 @@ Lean proves that relabeling the zeros preserves this sum and that conjugating th
 
 </details>
 
+<details>
+<summary><strong>Lemma. Unique chronological order of the signed stages</strong></summary>
+
+At a fixed positive real lift, two finite sign histories give the same endpoint from the cap $1$ exactly when the signs agree at every stage. Parentheses can move because composition is associative. The last sign can be read from the endpoint itself. If it lies above $1$, the last stage was plus. If it lies below $1$, the last stage was minus. Taking the absolute logarithm and dividing by the lift recovers the preceding value.
+
+My earlier balanced-history count assigns the same weight to `++--`, `--++`, and `-+-+`. The first two even describe the same cyclic order when the starting phase is hidden. Applied from the same cap at base 2, the three words give $0.957603\ldots$, $3.100555\ldots$, and $1.297032\ldots$, respectively. At the complex lift $L=\pi i$, every nonempty word sends that same cap to $-1$. [Proof, six exact endpoints and the complex example](docs/proofs/chronological-order.md) · [Lean formalization](lean/SuperZeta/SignWords.lean)
+
+</details>
+
 </details>
 
 <div><a name="4-strengthening-the-78ths-and-liu-bounds-in-three-height-intervals"></a><a name="a-local-strengthening-of-the-seven-eighths-theorem"></a><a name="local-zeta-result"></a><a name="a-local-strengthening-of-the-78ths-theorem"></a><a name="4-a-local-strengthening-of-the-78ths-theorem"></a><a name="read-zero-counts" id="user-content-read-zero-counts"></a></div>
