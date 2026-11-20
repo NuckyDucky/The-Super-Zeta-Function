@@ -1,0 +1,60 @@
+{
+  "precision_bits": 160,
+  "prime_norm_cutoff": 100000,
+  "target_normalization": "H(w)/S",
+  "real_input_bounds": [
+    -1,
+    2
+  ],
+  "input_height_offsets": [
+    "-1/16",
+    "+1/16"
+  ],
+  "core_real_input_bounds": [
+    "-9/500",
+    "509/500"
+  ],
+  "core_radius_upper": "[1.0523763217910148956631986953782223587958966378e-18 +/- 6.56e-67]",
+  "damping_lambda": "1/2",
+  "maximum_principle_window_radius": 12,
+  "local_phase_cells": 800,
+  "near_prime_envelope": "[2.8251035016185121908304973433403119555250884423 +/- 3.09e-47]",
+  "middle_prime_envelope": "[0.00016502036563214530249550329839570552827968366678 +/- 6.16e-51]",
+  "far_prime_envelope": "[5.617358195317194198906898282521427734145994092e-14 +/- 5.48e-60]",
+  "grid_euler_log_tail": "[1.1933407011734188512739820313466907587817517356 +/- 1.57e-47]",
+  "finite_product_log_derivative_bound": "[9.5875197887568084135789238403768773553551178146 +/- 3.86e-47]",
+  "horizontal_subcells_per_extension": 128,
+  "phase_unexcluded_subcells": {
+    "bottom": {
+      "1": 0,
+      "-1": 15
+    },
+    "top": {
+      "1": 0,
+      "-1": 0
+    }
+  },
+  "origin_count": null,
+  "corridors": [
+    {
+      "sign": -1,
+      "small_endpoint_magnitude": "105238e-23",
+      "large_endpoint_magnitude": "6e-16",
+      "preimages": 2,
+      "distinct_simple": true,
+      "certified_obstruction_upper": "[1.0523763217910148956631986953782223587958966378e-18 +/- 6.56e-67]",
+      "horizontal_cap": "[1.0139781538706729197919605486054877242738121700e-18 +/- 4.36e-65]",
+      "old_arc_segment_clearance_lower": "[7.1495431777682405340541920089946658810650770318e-18 +/- 3.55e-66]"
+    },
+    {
+      "sign": 1,
+      "small_endpoint_magnitude": "105238e-23",
+      "large_endpoint_magnitude": "6e-16",
+      "preimages": 2,
+      "distinct_simple": true,
+      "certified_obstruction_upper": "[1.0523763217910148956631986953782223587958966378e-18 +/- 6.56e-67]",
+      "horizontal_cap": "0",
+      "old_arc_segment_clearance_lower": "[1.6164274980405773793839018879605026042668795329e-17 +/- 4.52e-64]"
+    }
+  ]
+}

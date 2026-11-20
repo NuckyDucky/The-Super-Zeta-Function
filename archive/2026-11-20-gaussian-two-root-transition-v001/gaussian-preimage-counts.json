@@ -1,0 +1,50 @@
+{
+  "precision_bits": 160,
+  "input_real_bounds": [
+    -1,
+    2
+  ],
+  "height_offsets": [
+    "-1/16",
+    "1/16"
+  ],
+  "target_units": "B^w Gamma(w)L(w,eta) / |B^(2+iT_D) Gamma(2+iT_D)|",
+  "target_origin_count": null,
+  "regions": [
+    {
+      "target_center_re": "0.5",
+      "target_center_im": "0",
+      "target_radius": "0.3",
+      "verified_clearance_lower": "[0.37503674476293964935621599106947436269946823996 +/- 9.17e-49]",
+      "preimages_with_multiplicity": 2
+    },
+    {
+      "target_center_re": "0",
+      "target_center_im": "0.91",
+      "target_radius": "0.01",
+      "verified_clearance_lower": "[0.014356434963061546727500431708201650149119046656 +/- 1.18e-49]",
+      "preimages_with_multiplicity": 1
+    },
+    {
+      "target_center_re": "1.2",
+      "target_center_im": "0",
+      "target_radius": "0.2",
+      "verified_clearance_lower": "[0.25228574468347265739804021037990293176949986277 +/- 4.98e-48]",
+      "preimages_with_multiplicity": 0
+    },
+    {
+      "target_center_re": "6e-16",
+      "target_center_im": "0",
+      "target_radius": "2e-17",
+      "verified_clearance_lower": "[2.6681936321310149239946919611672982805964613070e-17 +/- 2.22e-64]",
+      "preimages_with_multiplicity": 2
+    },
+    {
+      "target_center_re": "-6e-16",
+      "target_center_im": "0",
+      "target_radius": "2e-17",
+      "verified_clearance_lower": "[2.6681936321310149239946919611672982805964613070e-17 +/- 2.22e-64]",
+      "preimages_with_multiplicity": 2
+    }
+  ]
+}
