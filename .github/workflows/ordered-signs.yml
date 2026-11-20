@@ -1,0 +1,35 @@
+name: Ordered sign words and the period-640 minima
+
+on:
+  pull_request:
+    paths: ['archive/2026-11-19-ordered-signs-v001/**', '.github/workflows/ordered-signs.yml']
+  push:
+    branches: [main]
+    paths: ['archive/2026-11-19-ordered-signs-v001/**', '.github/workflows/ordered-signs.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: archive/2026-11-19-ordered-signs-v001
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the interval arithmetic libraries
+        run: |
+          python3 -m venv "$RUNNER_TEMP/signs-venv"
+          "$RUNNER_TEMP/signs-venv/bin/python" -m pip install --only-binary=:all: python-flint==0.9.0 mpmath==1.3.0
+          echo "$RUNNER_TEMP/signs-venv/bin" >> "$GITHUB_PATH"
+      - name: Check the two minima, gate itinerary and decoded signs
+        run: |
+          python -B verify.py --bits 384
+          python -B verify.py --bits 640
+      - name: Check the second minimum using the antiholomorphic return
+        run: python -B crosscheck.py

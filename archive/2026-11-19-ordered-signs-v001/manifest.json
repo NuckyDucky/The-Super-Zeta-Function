@@ -1,0 +1,34 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 13841,
+      "sha256": "fed9546f4e966c3718d3c376386ad433e43caef63faa434b29acc3d7dea9e548"
+    },
+    "bounds.json": {
+      "bytes": 3434,
+      "sha256": "4bd95aeaea2bea377c46f396da1ce6da8c9f52637e5d93e27d40b3a428387986"
+    },
+    "crosscheck.py": {
+      "bytes": 6587,
+      "sha256": "4b06df676990051f9bd7fcd84281d693530ddcd2e68e07314a7f0ed8be0bb0ab"
+    },
+    "independent-bounds.json": {
+      "bytes": 682,
+      "sha256": "f5da55a8c48b216c93d5e4f7aa44d82cd7e7f30eb4f6a81bc08ec588cd89454e"
+    },
+    "provenance.json": {
+      "bytes": 2353,
+      "sha256": "46bdd65d5149915f29aea910f032a71b228c4a66f64b0291c4521deb58670aa1"
+    },
+    "secondary-center.json": {
+      "bytes": 587,
+      "sha256": "97478e9bdb6bfc4ac8f2547cb876dbbcc02fb46d9893ea4d807786dbf243fd50"
+    },
+    "verify.py": {
+      "bytes": 14227,
+      "sha256": "ec5f8640278898f4072878ad4ddfa0794e48290083370339084d3470a66bf68d"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-19-ordered-signs-v001"
+}

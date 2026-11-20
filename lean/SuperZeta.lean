@@ -31,3 +31,4 @@ import SuperZeta.Oriented.LiuConnection
 import SuperZeta.Oriented.MarkedCharacteristic
 import SuperZeta.Oriented.PhaseSymmetry
 import SuperZeta.Oriented.SpectralInverse
+import SuperZeta.SignWords
