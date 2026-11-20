@@ -8,15 +8,15 @@ I started with a quadratic approximation to π built from six integers and the n
 
 - I count every Riemann zero in three height intervals selected from the Dottie spire. The counts are 2, 5 and 4. All eleven lie on the critical line and have multiplicity one. This sharpens the 7/8ths and Liu bounds there. [Intervals and counts](#user-content-read-zero-counts)
 - I recover the exact Stirling remainder of each $n!$ from the factorial weight on my quartet radii. The actual radii give a Hurwitz sign change between levels 28 and 29. [Factorial correction](#user-content-read-factorial)
-- I derive the determinant $`E(v)=\cos^2\!\sqrt v-v`$, realize its roots as a boundary spectrum, and recover $\zeta(2s)$ by comparison with the cosine spectrum. [Determinant and reconstruction](#user-content-read-super-zeta) · [Formal determinant](lean/SuperZeta/UnitSpectrum.lean)
+- I derive the determinant $`E(v)=\cos^2\!\sqrt v-v`$, realize its roots as a boundary spectrum, and recover $\zeta(2s)$ by comparison with the cosine spectrum. Five values of its two-input super zeta recover the first nonreal pair’s modulus and angle. [Determinant](#user-content-read-super-zeta) · [Two-input recovery, §3.13](#user-content-read-two-inputs) · [Formal determinant](lean/SuperZeta/UnitSpectrum.lean)
 - I isolate cap-selected cycles near the Dottie fold, including a paired orbit of period 205,440. For a period-640 centerline orbit, two ordered spectral measurements recover the parameter and its marked return. [Finite periods](#user-content-read-dottie-spire) · [Two-trace inverse](archive/2026-11-19-oriented-return-v001/README.md#the-two-trace-inverse)
-- At the angles $+\pi/6$ and $-\pi/6$, the two Hurwitz zero paths through any simple nontrivial Riemann zero have opposite velocities. I use Liu’s zero-free bound to give upper and lower bounds for their common normalized speed at every height. [Angular velocity, §3.11](#user-content-read-liu-speed)
+- At the angles $+\pi/6$ and $-\pi/6$, the Hurwitz zero paths have opposite velocities. I use Liu’s bound to control their normalized speed, compute its mean square in my three Dottie windows, and derive the long-run mean of the arithmetic quotient over all zeros. [Angular velocity, §3.11](#user-content-read-liu-speed) · [Mean squared speed, §3.12](#user-content-read-speed-moment)
 - I prove that each finite sign order gives a distinct exponential map at every nonzero complex lift. Consecutive derivative measurements recover all 640 signed stages at the secondary centerline minimum. [Sign words and recovery](#user-content-read-sign-words)
 - My quadratic gives a genus-one curve with two real ovals. Evaluating its upper branch at $x=e$ gives my approximation to $\pi$. [Quadratic and quartic](#user-content-read-quartic)
 
 **Contents**
 
-[1. Quadratic](#user-content-read-quartic) · [2. Reciprocal tetration](#user-content-read-tetration) · [3. Super zeta](#user-content-read-super-zeta) ([§3.6 Period-640 return](#user-content-read-period-640) · [§3.11 Liu’s bound and angular velocity](#user-content-read-liu-speed)) · [4. Local zero counts](#user-content-read-zero-counts) · [5. Factorial correction](#user-content-read-factorial)
+[1. Quadratic](#user-content-read-quartic) · [2. Reciprocal tetration](#user-content-read-tetration) · [3. Super zeta](#user-content-read-super-zeta) ([§3.6 Period-640 return](#user-content-read-period-640) · [§3.11 Angular velocity](#user-content-read-liu-speed) · [§3.12 Mean squared speed](#user-content-read-speed-moment) · [§3.13 Two complex inputs](#user-content-read-two-inputs)) · [4. Local zero counts](#user-content-read-zero-counts) · [5. Factorial correction](#user-content-read-factorial)
 
 [Consequences](#user-content-read-consequences) · [Preprints and reproduction](#user-content-read-preprints) · [Open questions](#user-content-read-questions) · [Credits](#user-content-read-credits)
 
@@ -439,6 +439,28 @@ I divide out the explicit factor $`\lvert\rho/\zeta'(\rho)\rvert`$ to compare sp
 
 </details>
 
+<details>
+<summary><h3>3.12 Mean squared speed at Riemann zeros</h3></summary>
+
+<div><a name="read-speed-moment" id="user-content-read-speed-moment"></a></div>
+
+The three Dottie windows give mean squared normalized speeds of about **0.475, 0.920 and 1.422**. I can distinguish the first two from their heights alone. Across the entire first critical-line segment, the squared arithmetic value stays below 0.644. Across the entire second segment, it stays above 0.798. [Individual zero enclosures and bounds over the segments](archive/2026-11-20-hurwitz-speed-mean-square-v001/README.md#three-short-intervals-with-every-zero-counted)
+
+At a simple zero, squared normalized speed is the squared modulus of $`G(z)=(3/\pi)L(1+z,\chi_{-3})/(1-3^{-z})`$. At a multiple zero I can still evaluate $G$. Counting every zero with multiplicity, the average of $`\lvert G\rvert^2`$ up to height $T$ tends to $`13\zeta(3)/\pi^2=1.583319767\ldots`$. Its first correction comes from pairs of indices whose ratio is a prime power in Landau’s explicit formula. For the first 1,024 zeros the two-term value is 1.31503 and the measured mean is 1.32677. I also bound the mean restricted to simple zeros in shrinking windows using the arithmetic value at the window center. [Derivation, scope and open question](archive/2026-11-20-hurwitz-speed-mean-square-v001/README.md) · [Reproducible computation](archive/2026-11-20-hurwitz-speed-mean-square-v001/verify_moments.py)
+
+</details>
+
+<details>
+<summary><h3>3.13 Two complex inputs and recovery of the quartet spectrum</h3></summary>
+
+<div><a name="read-two-inputs" id="user-content-read-two-inputs"></a></div>
+
+I can read the first nonreal squared root’s modulus and angle from **five real values of the super zeta sum**. I give the inverse the five totals, their precision, and a bound on the higher quartet levels. It recovers a radius between 9.458388942732 and 9.458388942826, and an angle between 1.257969768180 and 1.257969768339 radians. A separate solve of the original cosine equation puts the root inside both intervals. [Five values, inversion and comparison](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#recovering-the-first-nonreal-pair-from-five-full-readings)
+
+I form $`\mathrm{Sz}_E(x,y)=\sum_{\lambda}\lambda^{-x}\overline{\lambda^{-y}}`$ by evaluating both powers on the same determinant root before adding. For $`x=r+ih,\ y=r+ik`$, the difference $`h-k`$ multiplies each log radius, while the sum $`h+k`$ weights each conjugate pair by its angle. Varying both over one plane at fixed $`r>1/4`$ determines the entire squared spectrum. On the original $`y=0`$ slice the function is my one-input super zeta. [Proof, convergence and the Riemann reference](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md) · [Numerical enclosures](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-inputs.json) · [Lean identities](lean/SuperZeta/Oriented/TwoInputSpectrum.lean)
+
+</details>
+
 </details>
 
 <div><a name="4-strengthening-the-78ths-and-liu-bounds-in-three-height-intervals"></a><a name="a-local-strengthening-of-the-seven-eighths-theorem"></a><a name="local-zeta-result"></a><a name="a-local-strengthening-of-the-78ths-theorem"></a><a name="4-a-local-strengthening-of-the-78ths-theorem"></a></div>
@@ -652,7 +674,11 @@ Following a Hurwitz zero through one turn gave me successive Riemann zeros, then
 17. ~~Can two logarithms of the same Dottie multiplier send the same starting point to different zeros?~~ Yes. All seeds in a disk around $37i$ go to different named zeros under the principal and ordered logarithms of the multiplier. [Basin certificate](archive/2026-11-19-dottie-plane-atlas-v001/atlas/basin_certificate.json)
 18. ~~Do the two publicly chosen next triadic seeds meet the forecast rule for the last $\pi/1440$ radians?~~ Both landed in their forecast boxes and in the forecast families. [Results and fixed protocol](archive/2026-11-19-dottie-plane-atlas-v001/holdout/README.md)
 19. **Open.** Which other marked orbits and starting domains admit a comparable description of the branch values that separate their destinations?
-20. **Open.** At a simple Riemann zero $\rho$, can the condition $\zeta(\rho)=0$ sharpen the bound on $\lvert L(1+\rho,\chi_{-3})/(1-3^{-\rho})\rvert$? My current estimate uses the lower bound on $\Re\rho$ and bounds the Euler factors separately. [Angular speed and the estimates used](archive/2026-11-20-liu-angular-velocity-v001/README.md#from-a-bound-on-position-to-a-bound-on-speed)
+20. **Open for individual zeros.** At a simple Riemann zero $\rho$, can $\zeta(\rho)=0$ sharpen the pointwise bound on $\lvert L(1+\rho,\chi_{-3})/(1-3^{-\rho})\rvert$ at every height? [Pointwise estimate](archive/2026-11-20-liu-angular-velocity-v001/README.md#from-a-bound-on-position-to-a-bound-on-speed)
+21. ~~Can I estimate the mean square over simple zeros in a short interval and compute it in my three Dottie windows?~~ I have certified values in all three. At almost all centers of shrinking windows containing simple zeros, their mean squared speed is approximated by $`\lvert G(1/2+it)\rvert^2`$ at the center height $t$. [Theorem and enclosures](archive/2026-11-20-hurwitz-speed-mean-square-v001/README.md)
+22. **Open.** If I count only simple zeros up to height $T$, does their mean squared speed still tend to $`13\zeta(3)/\pi^2`$, and does it retain the same prime-power correction? [Bounds for the simple-zero average](archive/2026-11-20-hurwitz-speed-mean-square-v001/README.md#a-cumulative-bound-when-only-simple-zeros-are-counted)
+23. ~~Can two complex exponents determine the entire squared quartet spectrum?~~ On a plane of exponents with equal fixed real parts, the difference of their imaginary shifts isolates each radius and the sum distinguishes its root angles. Five finite readings recover the first nonreal pair with a directed error bound. [Proof and inverse](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md)
+24. **Open.** Given a fixed precision for the readings, how many consecutive quartet levels can be recovered with disjoint certified enclosures? The first level is the finite test case. [Five input intervals](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-inputs.json)
 
 </details>
 

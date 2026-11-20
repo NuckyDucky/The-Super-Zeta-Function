@@ -66,6 +66,10 @@ For the two angles $+\pi/6$ and $-\pi/6$, the local transfer specializes the ext
 
 ## Factorial and arithmetic results
 
+For the normalized Hurwitz speed, Lean checks the finite sum over a reflection-permuted list of the actual Dirichlet quotients, the nonnegative squared difference, and the evaluation of the diagonal after separation by powers of three. The height asymptotic and the short-window estimate use the analytic proofs cited in §3.12. [Formal statements](SuperZeta/Oriented/HurwitzSpeedMoment.lean) · [Mean-square proof and data](../archive/2026-11-20-hurwitz-speed-mean-square-v001/README.md)
+
+For the two-input spectrum I use the principal powers of `UnitSpectrum.squaredRoot`. Lean checks conjugation on exchanging the inputs, the squared-norm diagonal, recovery of the original convergent root sum on its Mellin strip, and the trigonometric identities that isolate each quartet’s angular contribution. The infinite-plane uniqueness theorem has a written proof. FLINT checks the inversion from five real totals. [Lean statements](SuperZeta/Oriented/TwoInputSpectrum.lean) · [Proof and numerical verification](../archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md)
+
 | Result | Lean statement |
 | --- | --- |
 | [Factorial correction](SuperZeta/Barnes.lean) | For $D_n=\pi n[4^{-n}\binom{2n}{n}]^2$, `quarter_bounds` bounds the error at finite $n$ and `quarter_limit` proves $n(1-D_n)\to1/4$ using Wallis’ product. `quartet_barnes_product` gives the finite product using the Gamma recurrence. [QuartetRadius](SuperZeta/QuartetRadius.lean) proves $R_n-2\pi n\to0$ and the quarter limit for $R_nB_n^2/2$. |

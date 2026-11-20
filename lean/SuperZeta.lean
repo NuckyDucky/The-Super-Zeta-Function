@@ -29,6 +29,8 @@ import SuperZeta.FactorialPhase
 import SuperZeta.Oriented.FirstCorrection
 import SuperZeta.Oriented.LiuConnection
 import SuperZeta.Oriented.LiuEndpointTransfer
+import SuperZeta.Oriented.HurwitzSpeedMoment
+import SuperZeta.Oriented.TwoInputSpectrum
 import SuperZeta.Oriented.MarkedCharacteristic
 import SuperZeta.Oriented.PhaseSymmetry
 import SuperZeta.Oriented.SpectralInverse

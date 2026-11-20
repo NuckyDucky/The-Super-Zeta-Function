@@ -1,0 +1,30 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 16565,
+      "sha256": "ec7862202c8a2c587596e9f212e7dbc0a3906d21dc4578c5c55f6872042d1284"
+    },
+    "two-input-spectrum.md": {
+      "bytes": 12965,
+      "sha256": "dab26291094c21d302228249e9616864bc3261ec68caa49e902a39b4c3fee73b"
+    },
+    "two-inputs.json": {
+      "bytes": 8676,
+      "sha256": "01dacb9f8fa4a029ff0d4241ffdad4c2eada9ea305fc5e5c080600d145f666ae"
+    },
+    "verify_moments.py": {
+      "bytes": 10347,
+      "sha256": "dd6303a89377d69601182847de9870e005ae8e944865d12a3d487a08ce87c8e8"
+    },
+    "verify_two_inputs.py": {
+      "bytes": 12273,
+      "sha256": "4aa88715645fcf554b489fc4dfd92b6cf0fbc297747eb654bceca4d55a237758"
+    },
+    "windows-and-means.json": {
+      "bytes": 5118,
+      "sha256": "daf138a202b7e78076a1f0539c7141b75e86d5f0b432c1653679974acfbc2a5f"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-hurwitz-speed-mean-square-v001"
+}
