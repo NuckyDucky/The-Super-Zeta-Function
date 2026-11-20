@@ -1,0 +1,12 @@
+{
+  "A": {
+    "scalar": "both branches compatible",
+    "angular_series": "A+2iN",
+    "completed_zero_moment": "A+2iN"
+  },
+  "B": {
+    "scalar": "both branches compatible",
+    "angular_series": "A-2iN",
+    "completed_zero_moment": "A-2iN"
+  }
+}
