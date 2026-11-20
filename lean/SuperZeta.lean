@@ -35,3 +35,5 @@ import SuperZeta.Oriented.MarkedCharacteristic
 import SuperZeta.Oriented.PhaseSymmetry
 import SuperZeta.Oriented.SpectralInverse
 import SuperZeta.SignWords
+import SuperZeta.DedekindLift
+import SuperZeta.FieldWeights

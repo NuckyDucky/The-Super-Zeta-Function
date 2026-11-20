@@ -12,6 +12,16 @@ $$
 
 At a fixed pair put $U=LQ$ and $V=-LP$. The multiplier of the return is $UV$. When $UV=1$, the fixed-pair equations give the characteristic equation $U^2e^{U-U^{-1}}=-1$. The converse constructs the fixed pair from a solution of this equation. [Reciprocal iteration](SuperZeta/Reciprocal.lean) · [Converse](SuperZeta/Quartet.lean)
 
+## Ordered lifts and arithmetic factors
+
+At a fixed pair I keep the two actual exponents $U=LQ$ and $V=-LP$.
+For $\tau=U/V\ne 1$ and $V\ne0$, their difference $d=V-U$ records the logarithm of $-\tau$.
+Lean checks the inverse formulas $V=d/(1-\tau)$, $U=\tau V$ and $L=U/e^V$ against the original ordered map. At $\tau=i$ a marked vector $mV+nU$ reads $m+ni$ after division by $V$. [Inverse lift and marked vectors](SuperZeta/DedekindLift.lean)
+
+For the character modulo three, Lean checks all prime-power weights and the analytic zero multiplicities of the products $\zeta L$ and $\zeta^7 L$ away from $w=1$. The identification of the first product with the Eisenstein field zeta function uses the classical field factorization. For the six-coefficient quartic, Lean checks the Gaussian factorization, the discriminant criterion for a root, and direct enumeration at $p=13,37,73$. At $73$ the two conjugate reductions give zero and two roots respectively. [Prime weights, product orders and Gaussian branch tests](SuperZeta/FieldWeights.lean)
+
+For a marked vector $z=m+ni$, the three explicit Legendre symbols can distinguish $z$ from its conjugate. Lean checks the three residue substitutions into the quartic discriminant and proves that multiplying the two readings gives the product of the three symbols evaluated on $m^2+n^2$. The identification with the branch field's Hecke character uses Gaussian quadratic reciprocity in the written argument. [Conjugation and norm](SuperZeta/FieldWeights.lean)
+
 ## Run the proofs
 
 Install [elan](https://lean-lang.org/install/) and Python 3. From the repository root run
