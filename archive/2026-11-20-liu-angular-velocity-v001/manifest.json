@@ -1,0 +1,18 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 8263,
+      "sha256": "1ea5583472d62c7cc62ae346e35587029444379031e76515fcbf04a79b729322"
+    },
+    "bounds.json": {
+      "bytes": 12530,
+      "sha256": "30f247e34cb6b1cfc31b43999c52428d556fb57b37df3dc4435cf93d053a7c67"
+    },
+    "verify_angular_velocity.py": {
+      "bytes": 4428,
+      "sha256": "078a96a3e235c6368b443b82e44d30d3676eb22245c093ae20e1b2854eb57460"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-liu-angular-velocity-v001"
+}

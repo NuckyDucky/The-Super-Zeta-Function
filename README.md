@@ -6,16 +6,17 @@ I started with a quadratic approximation to π built from six integers and the n
 
 **Principal results**
 
-- In three intervals selected from a Dottie height, I strengthen the 7/8ths conclusion to the critical line. I count 2, 5 and 4 zeros there, respectively. All eleven are simple zeros, meaning each has multiplicity one and counts once. [Intervals and counts](#user-content-read-zero-counts)
+- In three height intervals selected from the Dottie spire, I narrow both the 7/8ths strip and Liu’s smaller strip to the critical line. The intervals contain 2, 5 and 4 zeros. All eleven are simple, meaning each has multiplicity one. [Intervals and counts](#user-content-read-zero-counts)
 - I recover the exact Stirling remainder of each $n!$ from the factorial weight on my quartet radii. The actual radii give a Hurwitz sign change between levels 28 and 29. [Factorial correction](#user-content-read-factorial)
 - I derive the determinant $`E(v)=\cos^2\!\sqrt v-v`$, realize its roots as a boundary spectrum, and recover $\zeta(2s)$ by comparison with the cosine spectrum. [Determinant and reconstruction](#user-content-read-super-zeta) · [Formal determinant](lean/SuperZeta/UnitSpectrum.lean)
 - I isolate cap-selected cycles near the Dottie fold, including a paired orbit of period 205,440. For a period-640 centerline orbit, two ordered spectral measurements recover the parameter and its marked return. [Finite periods](#user-content-read-dottie-spire) · [Two-trace inverse](archive/2026-11-19-oriented-return-v001/README.md#the-two-trace-inverse)
+- At the angles $+\pi/6$ and $-\pi/6$, the two Hurwitz zero paths through any simple nontrivial Riemann zero have opposite velocities. I use Liu’s zero-free bound to give upper and lower bounds for their common normalized speed at every height. [Angular velocity, §3.11](#user-content-read-liu-speed)
 - I prove that each finite sign order gives a distinct exponential map at every nonzero complex lift. Consecutive derivative measurements recover all 640 signed stages at the secondary centerline minimum. [Sign words and recovery](#user-content-read-sign-words)
 - My quadratic gives a genus-one curve with two real ovals. Evaluating its upper branch at $x=e$ gives my approximation to $\pi$. [Quadratic and quartic](#user-content-read-quartic)
 
 **Contents**
 
-[1. Quadratic](#user-content-read-quartic) · [2. Reciprocal tetration](#user-content-read-tetration) · [3. Super zeta](#user-content-read-super-zeta) ([§3.6 Period-640 return](#user-content-read-period-640)) · [4. Local zero counts](#user-content-read-zero-counts) · [5. Factorial correction](#user-content-read-factorial)
+[1. Quadratic](#user-content-read-quartic) · [2. Reciprocal tetration](#user-content-read-tetration) · [3. Super zeta](#user-content-read-super-zeta) ([§3.6 Period-640 return](#user-content-read-period-640) · [§3.11 Liu’s bound and angular velocity](#user-content-read-liu-speed)) · [4. Local zero counts](#user-content-read-zero-counts) · [5. Factorial correction](#user-content-read-factorial)
 
 [Consequences](#user-content-read-consequences) · [Preprints and reproduction](#user-content-read-preprints) · [Open questions](#user-content-read-questions) · [Credits](#user-content-read-credits)
 
@@ -295,7 +296,7 @@ I turned the measured angle clockwise by $\pi/6$, inverted the angle on the same
 
 Decoding the second pair and adding back $\pi/6$ recovered $y_0$ in an interval of width below $10^{-29}$. The cap marks the starting point, and the ordered map recovers $U=LQ$ and $V=-LP$ at every step. All 1,280 returned exponent enclosures overlap their original partners. In the interval $0.50989298230\le y\le0.50989298314$, 448-bit interval arithmetic proves cap attraction, primitive ordered period 640, and a positive angle derivative. Lean proves the spectral inverse and the round trip for regular readouts on a continuous branch with positive derivative and the target angle in range. It also checks the printed rational return bounds. [Full proof, arithmetic comparison with Liu, and replay](archive/2026-11-19-oriented-return-v001/README.md)
 
-At the absolute angles $-\pi/6$ and $+\pi/6$, the reference spectra give the same function $\pi^{-w}(3^w-1)\zeta(w)$, where $w=2s$. The first dynamical trace minus the first reference trace is $0$ at $-\pi/6$ and $8/3$ at $+\pi/6$. Liu’s zero-free theorem applies to the common reference via its Riemann factor. The round trip above uses $\pi/6$ as a displacement from the measured centerline return angle. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Derivation and phase convention](archive/2026-11-19-oriented-return-v001/README.md#the-arithmetic-reference-at-the-two-absolute-angles)
+The round trip above turns by $\pi/6$ from the measured orbit angle. At the two *absolute* angles $a=-\pi/6$ and $a=+\pi/6$, the reference spectra give the same function $\pi^{-w}(3^w-1)\zeta(w)$, with $w=2s$. The first dynamical trace minus the first reference trace is $0$ at the negative angle and $8/3$ at the positive angle. Following a zero as $a$ varies gives another way to distinguish the two orientations. [Derivation and phase convention](archive/2026-11-19-oriented-return-v001/README.md#the-arithmetic-reference-at-the-two-absolute-angles) · [Angular derivatives at the two angles](#user-content-read-liu-speed)
 
 </details>
 
@@ -423,16 +424,31 @@ From the last trough on the sixth path, one quadratic extrapolation accounts for
 
 </details>
 
+<details>
+<summary><h3>3.11 Liu’s zero-free bound and the angular velocity at ±π/6</h3></summary>
+
+<div><a name="read-liu-speed" id="user-content-read-liu-speed"></a></div>
+
+Choose a simple nontrivial Riemann zero $\rho$. Start at each of the angles $a=\pm\pi/6$ and increase both angles by the same small amount. The two moving Hurwitz zeros leave $\rho$ in opposite directions. I use Liu’s bound on the real part of $\rho$ to bound their common speed after scaling by the local slope of Riemann zeta. [Proposition and proof](archive/2026-11-20-liu-angular-velocity-v001/README.md)
+
+Write $b=1/2-a/\pi$. My corrected reference is $`R(a,w)=\pi^{-w}[\zeta(w,b)+\zeta(w,1-b)]`$ with $w=2s$. At $+\pi/6$ the shifts are $1/3$ and $2/3$. Their sum gives the Riemann factor. Differentiating in $a$ subtracts the two terms and gives the odd Dirichlet character $\chi_{-3}$, whose values on $1,2,0$ modulo three are $1,-1,0$. If $V_+$ and $V_-$ are the derivatives $dw/da$ of the zero at the two angles, I obtain
+
+$`\displaystyle V_-=-V_+,\qquad V_+=-\frac{3\rho}{\pi\zeta'(\rho)}\,\frac{L(1+\rho,\chi_{-3})}{1-3^{-\rho}}.`$
+
+I divide out the explicit factor $`\lvert\rho/\zeta'(\rho)\rvert`$ to compare speeds across heights. With $`S=\lvert V_+\rvert\,\lvert\zeta'(\rho)\rvert/\lvert\rho\rvert`$, the 7/8ths theorem gives $0.11197\lt S\lt45.333$. Liu’s endpoint $B_{\ast}=0.8733458561067185768\ldots$ tightens this to **$0.11325\lt S\lt44.270$ at every simple nontrivial Riemann zero**. At the sixth zero I find $V_+\approx5.82821-7.57291i$ per radian and $S\approx0.49229847$. The negative-angle path moves left and up as the positive-angle path moves right and down. [Euler-product bounds and verification scope](archive/2026-11-20-liu-angular-velocity-v001/README.md#from-a-bound-on-position-to-a-bound-on-speed) · [First ten zeros at 256 bits](archive/2026-11-20-liu-angular-velocity-v001/bounds.json) · [Lean transfer and path reversal](lean/SuperZeta/Oriented/LiuEndpointTransfer.lean)
+
+</details>
+
 </details>
 
 <div><a name="a-local-strengthening-of-the-seven-eighths-theorem"></a><a name="local-zeta-result"></a><a name="a-local-strengthening-of-the-78ths-theorem"></a><a name="4-a-local-strengthening-of-the-78ths-theorem"></a></div>
 
 <details>
-<summary><h2>4. A local strengthening of the 7/8ths theorem</h2></summary>
+<summary><h2>4. Strengthening the 7/8ths and Liu bounds in three height intervals</h2></summary>
 
 <div><a name="read-zero-counts" id="user-content-read-zero-counts"></a></div>
 
-I used the period-640 orbit to fix a height $T_D\approx4.526119322478\times10^{12}$ before evaluating Riemann zeta there. In windows around $T_D$, $2T_D$ and $3T_D$ I found 2, 5 and 4 zeros. All eleven are simple and lie on $\Re w=1/2$. In these intervals this sharpens the 7/8ths bound to the critical line itself. Write $w=\beta+it$, so the table gives intervals in height $t$.
+I used the period-640 orbit to fix $T_D\approx4.526119322478\times10^{12}$ before evaluating Riemann zeta there. Write $w=\beta+it$. At arbitrary height, Liu’s theorem and reflection put each nontrivial zero in $1-B_{\ast}\le\beta\le B_{\ast}$. In the three intervals below I can replace that whole range by **$\beta=1/2$**. The contour counts are 2, 5 and 4, and the critical-line zeros account for every one of them. This is the local improvement in position. It also lets me set $\beta=1/2$ in the speed estimate of §3.11, giving $0.33217\lt S\lt4.76646$ for each of these eleven zeros. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Speed bound on the critical line](archive/2026-11-20-liu-angular-velocity-v001/README.md#from-a-bound-on-position-to-a-bound-on-speed)
 
 A **simple zero** $\rho$ of Riemann zeta satisfies $\zeta(\rho)=0$ and $\zeta'(\rho)\ne0$. Equivalently, near $\rho$ the function has exactly one factor of $w-\rho$. It contributes one to the contour count. A double zero has two such factors and contributes two.
 
@@ -636,6 +652,7 @@ Following a Hurwitz zero through one turn gave me successive Riemann zeros, then
 17. ~~Can two logarithms of the same Dottie multiplier send the same starting point to different zeros?~~ Yes. All seeds in a disk around $37i$ go to different named zeros under the principal and ordered logarithms of the multiplier. [Basin certificate](archive/2026-11-19-dottie-plane-atlas-v001/atlas/basin_certificate.json)
 18. ~~Do the two publicly chosen next triadic seeds meet the forecast rule for the last $\pi/1440$ radians?~~ Both landed in their forecast boxes and in the forecast families. [Results and fixed protocol](archive/2026-11-19-dottie-plane-atlas-v001/holdout/README.md)
 19. **Open.** Which other marked orbits and starting domains admit a comparable description of the branch values that separate their destinations?
+20. **Open.** At a simple Riemann zero $\rho$, can the condition $\zeta(\rho)=0$ sharpen the bound on $\lvert L(1+\rho,\chi_{-3})/(1-3^{-\rho})\rvert$? My current estimate uses the lower bound on $\Re\rho$ and bounds the Euler factors separately. [Angular speed and the estimates used](archive/2026-11-20-liu-angular-velocity-v001/README.md#from-a-bound-on-position-to-a-bound-on-speed)
 
 </details>
 
@@ -656,7 +673,7 @@ I use Baker and Rippon’s half-step to locate the fold, the symmetric Hurwitz f
 - **Jean Écalle and Sergei Voronin** provide the parabolic classification used for the return coordinates. I use **Dudko and Sauzin** for the analytic properties of Fatou coordinates, **Godin and Rousseau** for the antiholomorphic classification, and **Kuehn** for saddle-node scaling. [Écalle and Voronin in the preprint bibliography](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/references.bib#L36-L58) · [Dudko and Sauzin](https://doi.org/10.1016/j.crma.2013.12.005) · [Godin and Rousseau](https://doi.org/10.1017/etds.2021.98) · [Kuehn](https://doi.org/10.1088/1751-8113/42/4/045101)
 - **Tom Fisher** supplied the binary-quartic framework used in the arithmetic notes. I use **Folkmar Bornemann’s** projection methods for the spectral determinant and **André Voros’s** framework for zeta functions over zero sets. [Fisher](https://people.maths.bris.ac.uk/~jb12407/ANTS-XV/papers/ANTS-XV_fisher.pdf) · [Bornemann](https://arxiv.org/abs/0804.2543) · [Voros](https://arxiv.org/abs/1403.4558)
 - **H. J. Hupkes** gives the earlier derivative and midpoint formulation for mixed-type functional differential equations. The endpoint choice above identifies the shared characteristic equation. [Hupkes, chapter 2](https://math.leidenuniv.nl/scripties/PhdHupkes.pdf)
-- **Baiying Liu** derives the strict zero-free half-plane $\Re w>B_{\ast}$, $B_{\ast}=0.8733458561\ldots$, for unitary Hecke $L$-functions using joint moment estimates. I apply the trivial-character case to the arithmetic reference at the absolute angles $-\pi/6$ and $+\pi/6$. [Liu, *Joint marked moments and optimized zero-free half-planes for unitary Hecke L-functions*, 13 November 2026, Theorem 1.1 and §1.2](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Reference identity and transfer](archive/2026-11-19-oriented-return-v001/README.md#the-arithmetic-reference-at-the-two-absolute-angles)
+- **Baiying Liu** obtains the zero-free half-plane $\Re w>B_{\ast}$ from joint moment estimates for unitary Hecke $L$-functions. I use the Riemann case in §3.11. **Joseph Bebel** gives a separate Lean proof at the same algebraic endpoint for every Dirichlet character, building on **TheSil**’s bounds. Modulus one supplies the Riemann theorem used by my local Lean transfer. [Liu, *Joint marked moments and optimized zero-free half-planes for unitary Hecke L-functions*, Theorems 1.1 and 7.2](https://hexagonmath.org/pdf/2611.00421v1) · [TheSil’s bound](https://github.com/GTimG/QuasiRiemannTracker/pull/137) · [Bebel’s exact endpoint](https://github.com/GTimG/QuasiRiemannTracker/pull/143) · [Verification and reproduction](archive/2026-11-20-liu-angular-velocity-v001/README.md#verification-and-reproduction)
 - **OpenAI** proved the 7/8ths zero-free theorem I use at the first Dottie height. The counts use the real $Z$ function of **G. H. Hardy**, and the cross-check uses the procedures credited in FLINT’s zero-counting documentation. [*The Quasi-Riemann Hypothesis*, Theorem 1.1](https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf) · [DLMF, Hardy’s Z function](https://dlmf.nist.gov/25.10.E1) · [FLINT’s algorithms and sources](https://flintlib.org/doc/algorithms/special-functions/zeta-zeros.html)
 - I used **Fredrik Johansson’s** ball arithmetic and **Siegfried Rump’s** verification methods for the numerical certificates. I use **Lean and mathlib** for the formal proofs, **FLINT** for directed interval arithmetic, and **PARI/GP** for the arithmetic descent. The **NIST Digital Library of Mathematical Functions** supplies the classical formulas cited at the Mellin, zeta and Barnes steps. [Johansson](https://doi.org/10.1109/TC.2017.2690633) · [Rump](https://doi.org/10.1017/S096249291000005X) · [mathlib](https://github.com/leanprover-community/mathlib4) · [FLINT](https://flintlib.org/) · [PARI/GP](https://pari.math.u-bordeaux.fr/)
 
