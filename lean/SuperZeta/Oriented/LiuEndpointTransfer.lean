@@ -41,6 +41,46 @@ theorem factored_contact (x : ℝ) :
   unfold paperPolynomial
   ring
 
+/-- The positive comparison equation (33) in Liu's moment parameter. -/
+def momentEquation (r : ℝ) : Prop :=
+  (19*(3*r-2)*(9*r+2)/(3*(45*r-14)))^5 = 7*r^4*(r-2/3)
+
+private def reducedMoment (r : ℝ) : ℝ :=
+  19^5*(3*r-2)^4*(9*r+2)^5 - 7*3^4*r^4*(45*r-14)^5
+
+private theorem cancel_moment_factor {r : ℝ} (hr : 2/3 < r) :
+    momentEquation r ↔ reducedMoment r = 0 := by
+  have hd : 3*(45*r-14) ≠ 0 := by linarith
+  have hn : 3*r-2 ≠ 0 := by linarith
+  have factor :
+      (19*(3*r-2)*(9*r+2))^5 - 7*r^4*(r-2/3)*(3*(45*r-14))^5 =
+        (3*r-2)*reducedMoment r := by
+    unfold reducedMoment
+    ring
+  rw [momentEquation, div_pow, div_eq_iff (pow_ne_zero 5 hd), ← sub_eq_zero,
+    factor, mul_eq_zero, or_iff_right hn]
+
+/-- Liu's (33) in r and (35) in B give the exact endpoint polynomial on the
+    comparison interval. The hypotheses exclude both cleared denominators
+    and the removable root 3r = 2. -/
+theorem moment_equation_iff_endpoint {r B : ℝ} (hr : 2/3 < r) (hB : B < 7/8)
+    (coord : B = (99*r-14)/(12*(9*r-1))) :
+    momentEquation r ↔ trackerPolynomial B = 0 := by
+  have hrd : 12*(9*r-1) ≠ 0 := by linarith
+  have hBd : 108*B-99 ≠ 0 := by linarith
+  have hinv : r = (12*B-14)/(108*B-99) := by
+    apply (eq_div_iff hBd).2
+    nlinarith only [(eq_div_iff hrd).1 coord]
+  have hpoly : reducedMoment ((12*B-14)/(108*B-99)) =
+      19042491875328 * paperPolynomial B / (108*B-99)^9 := by
+    unfold reducedMoment
+    rw [factored_contact]
+    field_simp [hBd]
+    ring
+  rw [cancel_moment_factor hr, hinv, hpoly, div_eq_zero_iff, mul_eq_zero,
+    same_polynomial]
+  norm_num [hBd]
+
 def contact : ℝ :=
   sInf {x : ℝ | 13/15 < x ∧ x < 7/8 ∧ trackerPolynomial x = 0}
 
@@ -197,6 +237,7 @@ end LiuTurnTransfer
 #print axioms LiuTurnTransfer.same_polynomial
 #print axioms LiuTurnTransfer.same_contact
 #print axioms LiuTurnTransfer.factored_contact
+#print axioms LiuTurnTransfer.moment_equation_iff_endpoint
 #print axioms LiuTurnTransfer.rational_bracket_signs
 #print axioms LiuTurnTransfer.reflected_floor
 #print axioms LiuTurnTransfer.at_liu_endpoint
