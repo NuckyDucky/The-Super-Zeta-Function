@@ -221,6 +221,8 @@ In my quartic, two solutions of $P(z)=v$ meet and separate in a perpendicular di
 
 At $T_D$, directed arithmetic gives exactly two simple solutions for every real target with $1.05238\times10^{-18}\leq |v|\leq 6\times10^{-16}$. One lies to the right of $1.018$ and its partner to the left of $-0.018$, at the same height. As I reduce the magnitude of either signed target, the two move horizontally toward each other. The Gaussian zero count concerns the remaining target $v=0$, where the contour is still unresolved. [Proof, positions and reproduction](archive/2026-11-20-gaussian-two-root-transition-v001/README.md)
 
+I can also say exactly where an odd count can occur as I lower the target. I read the completed Gaussian factor at the two ends of the critical-line segment, at heights $T_D-1/16$ and $T_D+1/16$. A real target distinct from those two readings has an odd number of preimages, counted with multiplicity, exactly when it falls strictly between the readings. Reflection gives every off-line preimage a partner in the rectangle. Using 404 split primes whose two signs cancel, I bound the magnitudes of the lower and upper readings by $3.584\times10^{-19}$ and $2.945\times10^{-19}$, respectively, in the same units as $v$. Both enclosures still contain zero. Independently, the ordinary Riemann count at the two heights agrees exactly, so ordinary zeta contributes no zeros in this window. [Parity proof, endpoint values and replay](archive/2026-11-20-gaussian-endpoint-parity-v001/README.md)
+
 </details>
 
 </details>

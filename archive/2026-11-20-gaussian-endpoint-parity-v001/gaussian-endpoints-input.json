@@ -1,0 +1,9 @@
+{
+  "height": "T_D = pi / (80 log(1+(4.749479070945369e-8/0.509892982511772)^2))",
+  "left_offset": "-1/16",
+  "right_offset": "1/16",
+  "selection": "Previously displayed trial bracket at offset zero, before either field sign was used.",
+  "quartic_field": "Q(i,sqrt(-5045155+1027708*i))",
+  "base_field": "Q(i)",
+  "test": "Nonzero real completed field values at both endpoints. Exactly one field sign flips to certify positive line weight."
+}

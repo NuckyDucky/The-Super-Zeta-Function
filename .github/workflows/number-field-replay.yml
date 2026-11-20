@@ -9,6 +9,7 @@ on:
       - 'archive/2026-11-20-dedekind-phase-v001/**'
       - 'archive/2026-11-20-gaussian-branch-spectrum-v001/**'
       - 'archive/2026-11-20-gaussian-two-root-transition-v001/**'
+      - 'archive/2026-11-20-gaussian-endpoint-parity-v001/**'
       - '.github/workflows/number-field-replay.yml'
   push:
     branches: [main]
@@ -18,6 +19,7 @@ on:
       - 'archive/2026-11-20-dedekind-phase-v001/**'
       - 'archive/2026-11-20-gaussian-branch-spectrum-v001/**'
       - 'archive/2026-11-20-gaussian-two-root-transition-v001/**'
+      - 'archive/2026-11-20-gaussian-endpoint-parity-v001/**'
       - '.github/workflows/number-field-replay.yml'
 
 permissions:
@@ -90,3 +92,6 @@ jobs:
           python -B check_gaussian_preimage_counts.py
           python -B check_gaussian_target_corridor.py
           python -B check_branch_positions.py
+      - name: Verify the Gaussian Hardy bounds and the ordinary zeta count at both endpoints
+        working-directory: archive/2026-11-20-gaussian-endpoint-parity-v001
+        run: python -B replay.py

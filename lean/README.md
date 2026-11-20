@@ -1,5 +1,7 @@
 # Lean proofs for The Super Zeta Function
 
+For a real analytic function on a closed height interval with nonzero endpoint values, the product of the endpoint signs gives the parity of its interior zeros counted with their analytic orders. Lean constructs the finite set of zeros and proves the same rule after subtracting a real target. The accompanying Gaussian calculation encloses both endpoint values at the Dottie height. [Endpoint parity](SuperZeta/GaussianEndpointParity.lean) · [Numerical signs and unresolved case](../archive/2026-11-20-gaussian-endpoint-parity-v001/README.md)
+
 The paper develops the quadratic and its two real ovals, the ordered iteration and its Dottie fold, and the cosine determinant. [Main paper](../README.md#the-quadratic-and-the-genus-one-curve)
 
 For an isolated pair of solutions, Lean recovers their signed squared separation from two power sums, classifies its sign under reflection in the critical line, and proves the collision criterion when these sums vary continuously. The companion complex-analysis proof identifies the weighted circle integrals giving the sums. The rectangular enclosure for the particular Gaussian Hecke factor uses a separate interval calculation. [Two-root algebra and continuity](SuperZeta/TwoRootMoments.lean) · [Weighted circle integrals](SuperZeta/TwoRootCircleIntegral.lean) · [Gaussian enclosure and assumptions](../archive/2026-11-20-gaussian-two-root-transition-v001/README.md)

@@ -1,0 +1,66 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6865,
+      "sha256": "4e495c5fcaa998b4d91bccdfc7e49efedcf18936cb542c5a4482d62ab3be0f22"
+    },
+    "check_endpoint_refinement.py": {
+      "bytes": 5180,
+      "sha256": "b014c4d7ad953890d153cf20edb99762dc62fe9a129dab0db47a24e8860ee474"
+    },
+    "check_endpoint_transfer.py": {
+      "bytes": 1838,
+      "sha256": "73fd75c1c953cd155f45d88da547165521861e3e0b0b168714e709a8203c9bae"
+    },
+    "check_gaussian_base_endpoints.py": {
+      "bytes": 2387,
+      "sha256": "7bc18c7305a028479430510521f1fc7835a6b224c64a34deaf0c71215d835095"
+    },
+    "check_gaussian_hardy_endpoints.py": {
+      "bytes": 3283,
+      "sha256": "c3a1ee89ffe2a122f9bad75ef280e993e3575c46bdb0f3c00e43727494ff27ac"
+    },
+    "endpoint-refinement.json": {
+      "bytes": 3510,
+      "sha256": "7f172fad9e4ad461865667c1c96db86748c09ccbf5e948336c5fb4d933523f6f"
+    },
+    "endpoint-refinement.md": {
+      "bytes": 7140,
+      "sha256": "c623028b31824d4faa238d2e504dd31312fbdaeb1d5ac5090ba467f140b03190"
+    },
+    "endpoint-transfer.json": {
+      "bytes": 654,
+      "sha256": "0a697969633fa2ba7a7092b21f733d3190aefbb542fc3aa8eb790f196f3338bb"
+    },
+    "gaussian-base-endpoints.json": {
+      "bytes": 1294,
+      "sha256": "7f1a4e7e38394ccd2ddb9f08d36e74c3941f8321f00458563192ceb5677efd4a"
+    },
+    "gaussian-endpoints-input.json": {
+      "bytes": 446,
+      "sha256": "d04d6206f7c524e522328f783894eb9ee66ba32cf8d9830a210ddd1aea9d7821"
+    },
+    "gaussian-endpoints.md": {
+      "bytes": 4027,
+      "sha256": "bde2fa2a0d91788235dac6050e3b3f3c1519d5115a6b8cb3e02abf909c95f61b"
+    },
+    "gaussian-hardy-endpoints-balls.json": {
+      "bytes": 2937,
+      "sha256": "064817e9b8adafdda6fc984b39f10c76f0f03a3c622a45fa9eb8d08fe1fc0ca6"
+    },
+    "gaussian-hardy-endpoints.md": {
+      "bytes": 4308,
+      "sha256": "3e8d212aadf308ccc30edf07cd3497388b82583d48f758dfda695a344626db0b"
+    },
+    "gaussian_inputs.py": {
+      "bytes": 1334,
+      "sha256": "1b95364f557bc92e42cdb622687d57462cde79fdf40302e95c1d311faa62f95c"
+    },
+    "replay.py": {
+      "bytes": 2249,
+      "sha256": "5a135ebd4eccf90cf909073a5bbd849c7301f7f8d470c2c668d015c3657737da"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-gaussian-endpoint-parity-v001"
+}

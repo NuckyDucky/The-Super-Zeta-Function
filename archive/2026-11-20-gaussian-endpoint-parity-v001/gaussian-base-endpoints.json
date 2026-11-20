@@ -1,0 +1,34 @@
+{
+  "precision_bits": 144,
+  "phase": "product of positive-modulus normalized completed zeta and beta",
+  "rows": [
+    {
+      "offset": "-1/16",
+      "t": "[4526119322477.88289331920732885695023024516 +/- 4.36e-30]",
+      "zeta_hardy": "[1.3401316554583920923854 +/- 4.24e-23]",
+      "beta_hardy": "[0.192 +/- 6.09e-4]",
+      "base_hardy_product": "[0.257 +/- 5.86e-4]",
+      "base_sign": 1,
+      "beta_verifier": {
+        "smoothing": 16,
+        "terms_through": 4660355,
+        "smoothing_error": "[0.000408951943038617023991819251414855719346772 +/- 6.40e-46]",
+        "omitted_series_error": "[1.500916666542953255709850790347986704207e-27 +/- 1.08e-67]"
+      }
+    },
+    {
+      "offset": "1/16",
+      "t": "[4526119322478.00789331920732885695023024516 +/- 4.36e-30]",
+      "zeta_hardy": "[0.2333814333626054382167 +/- 1.24e-23]",
+      "beta_hardy": "[2.791 +/- 6.12e-4]",
+      "base_hardy_product": "[0.651 +/- 4.16e-4]",
+      "base_sign": 1,
+      "beta_verifier": {
+        "smoothing": 16,
+        "terms_through": 4660355,
+        "smoothing_error": "[0.000408951943038611376881210100011230056259805 +/- 5.56e-46]",
+        "omitted_series_error": "[1.500916666545653233077517410150645341459e-27 +/- 1.66e-67]"
+      }
+    }
+  ]
+}
