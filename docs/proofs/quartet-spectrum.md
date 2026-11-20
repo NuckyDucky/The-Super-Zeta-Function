@@ -232,7 +232,7 @@ are covered by polynomial continuation.
 
 Since $\operatorname{tr}(B_N)=1/\varepsilon$, its regularized determinant is
 $e^{u/\varepsilon}\delta_{N,\varepsilon}(u)$. Formula [(13)](#eq-13) converges locally uniformly
-to $\cos u-u/\varepsilon$. Hilbert–Schmidt continuity of $\det{}_2$ and [(12)](#eq-12) give [(10)](#eq-10).
+to $\cos u-u/\varepsilon$. Hilbert–Schmidt continuity of $`\det{}_2`$ and [(12)](#eq-12) give [(10)](#eq-10).
 Multiplying [(10)](#eq-10) at $u$ and $-u$ cancels the exponentials and gives [(11)](#eq-11).
 For each eigenvalue $\nu$ of $\mathcal B_\varepsilon$, the pair of regularized factors becomes
 $1-u^2\nu^2$. This also follows by trace-class convergence of $B_N^2$ to $\mathcal B_\varepsilon^2$. ∎

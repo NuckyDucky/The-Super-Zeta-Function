@@ -39,7 +39,7 @@ $`\displaystyle \begin{aligned} 0&=(N-D)y^2+(N-3D)y-N-2D,\\ Y&=2(N-D)y+N-3D,\\ f
 
 [![The two signs of Y form separate real ovals. The marked upper point at x=e gives pi-hat.](archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)](archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)
 
-*Both panels show the same curve. On the left, the upper and lower heights are the two choices of sign in $Y=\pm\sqrt{f(x)}$, rescaled to fit the axes. On the right, following either branch as $x$ tends to $-\infty$ or $+\infty$ reaches the same hollow point for that branch, closing it into an oval. The marked point selects the positive square root at $x=e$ that I use to compute $\widehat\pi$.* [Coordinates used in the drawing](archive/2026-11-18-quartic-ovals-v001/README.md)
+Both panels show the same curve. On the left, the upper and lower heights are the two choices of sign in $Y=\pm\sqrt{f(x)}$, rescaled to fit the axes. On the right, following either branch as $x$ tends to $-\infty$ or $+\infty$ reaches the same hollow point for that branch, closing it into an oval. The marked point selects the positive square root at $x=e$ that I use to compute $\widehat\pi$. [Coordinates used in the drawing](archive/2026-11-18-quartic-ovals-v001/README.md)
 
 <div><a name="what-the-right-panel-shows"></a><a name="real-ovals-and-projective-completion"></a></div>
 
@@ -96,7 +96,7 @@ Their mean is $m=(Q-P)/2$ and their half-difference is $a=(Q+P)/2$. Thus $Q=m+a$
 
 [![Paired periods reached from the cap across the complex logarithm plane, with a magnified view of the Dottie fold.](archive/2026-11-18-research-figures-v001/dottie-spire.png)](archive/2026-11-18-research-figures-v001/dottie-spire.png)
 
-*Each sampled $L$ starts the same pair $(1,1)$. Blue records convergence to a fixed pair, while the other period colors identify how many updates it takes the pair to repeat. The right panel samples a finer grid around the fold $L_*$, where changing $L$ by a small amount can change the detected period. A gray sample reached 8,000 updates with no period detected in the tested range of 1 through 256.* [Layer 4 survey and color key](archive/2026-11-18-research-figures-v001/README.md#the-dottie-spire) · [Derivation of the fold](#user-content-read-dottie-spire)
+Each sampled $L$ starts the same pair $(1,1)$. Blue records convergence to a fixed pair, while the other period colors identify how many updates it takes the pair to repeat. The right panel samples a finer grid around the fold $L_*$, where changing $L$ by a small amount can change the detected period. A gray sample reached 8,000 updates with no period detected in the tested range of 1 through 256. [Layer 4 survey and color key](archive/2026-11-18-research-figures-v001/README.md#the-dottie-spire) · [Derivation of the fold](#user-content-read-dottie-spire)
 
 <div><a name="the-complex-two-base-family"></a></div>
 
@@ -465,22 +465,22 @@ At one fixed real part, the two imaginary inputs let me read the radii and angle
 
 For each squared root $\lambda$ I evaluate its principal power at two complex inputs, multiply the first reading by the conjugate of the second, and sum over roots. For ordinary Dirichlet powers the same operation pairs equal integers and gives $\zeta(x+\bar y)$. My indices are complex roots, so each contributes its argument as well as its modulus. [Hedenmalm, Lindqvist and Seip, §4.3, kernel formula](https://arxiv.org/pdf/math/9512211#page=17) · [Source comparison](archive/2026-11-20-hurwitz-speed-mean-square-v002/README.md)
 
-~~~math
+$$
 \mathrm{Sz}_E(x,y)=\sum_{E(\lambda)=0}\lambda^{-x}\overline{\lambda^{-y}},
 \qquad \Re x+\Re y>\tfrac12.
-~~~
+$$
 
 **Recovery from one plane.** The four roots $u,-u,\bar u,-\bar u$ give two squared roots $R e^{i\psi},R e^{-i\psi}$. Set $x=r+ih$ and $y=r+ik$ with $r>1/4$. This pair contributes
 
-~~~math
+$$
 2R^{-2r}e^{-i(h-k)\log R}\cosh\!\big((h+k)\psi\big).
-~~~
+$$
 
 As I vary $h-k$, the oscillation has frequency $\log R$. Once I isolate that frequency, varying $h+k$ gives the angles at that radius. Exact values across the whole plane at one fixed $r$ determine the squared roots and their multiplicities. Setting $y=0$ in the defining sum recovers my original one-input super zeta where its series converges. [Full-plane proof and principal logarithms](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#a-plane-indexed-by-two-imaginary-displacements)
 
 [![Two imaginary shifts at real part one. The change in the complex sum from the quartet angles vanishes on the dotted diagonal k equals minus h. Open the interactive map.](archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
 
-*At $r=1$ I compare each point with the point on the dotted line that has the same $h-k$. Color gives the magnitude of the difference between their complex sums. At the two opposite-sign circles the difference is zero, and the sums are about $2.685091+1.968416i$ and its conjugate. At the two same-sign circles the sums agree and the color reads about $0.022907$.* [Explore all four readings](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/) · [Full-resolution figure](archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png) · [Figure source and truncation bound](archive/2026-11-20-two-input-map-v001/README.md)
+At $r=1$ I compare each point with the point on the dotted line that has the same $h-k$. Color gives the magnitude of the difference between their complex sums. At the two opposite-sign circles the difference is zero, and the sums are about $2.685091+1.968416i$ and its conjugate. At the two same-sign circles the sums agree and the color reads about $0.022907$. [Explore all four readings](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/) · [Full-resolution figure](archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png) · [Figure source and truncation bound](archive/2026-11-20-two-input-map-v001/README.md)
 
 **Recovery from five readings.** Here I set $h=k$, write $\eta=h+k$, and use five real totals. At $r=16$ I take $\eta=0,1,2$. At $r=17$ I take $\eta=0,1$. Subtracting the $\eta=0$ reading cancels the real Dottie root. A bound on the higher levels isolates the first conjugate pair. With the archived readings I obtain a modulus between 9.458388942732 and 9.458388942826 and a positive argument between 1.257969768180 and 1.257969768339 radians. The conjugate has the negative argument. Solving the original cosine equation separately gives values inside both intervals. [Five inputs, tail bound and inverse](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#recovering-the-first-nonreal-pair-from-five-full-readings)
 
