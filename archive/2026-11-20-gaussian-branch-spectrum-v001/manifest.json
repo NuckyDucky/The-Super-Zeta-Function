@@ -1,0 +1,38 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 15531,
+      "sha256": "c62f95db353fbbee72aa33db4b1affa06b5968613a0220f5fc49a81e9d6c0832"
+    },
+    "branch_test.py": {
+      "bytes": 7545,
+      "sha256": "a36874c64910a51018606452bfcad917c5a8569590fc87c67b52a2690e04e1b5"
+    },
+    "calls.json": {
+      "bytes": 263,
+      "sha256": "5fc2c07e8185c8c130a4f57836520d585f34994cbfa57be2c6b4223f0e3d894f"
+    },
+    "check_w2.py": {
+      "bytes": 4698,
+      "sha256": "3af604536f8fe21f52fe1e95f904f91aed92734e4c996c0f7748286882dc1868"
+    },
+    "protocol.md": {
+      "bytes": 2140,
+      "sha256": "1ddd717dcef0fd17c0828cca83909c37f8d459dcb044cf60f5af63598ff7cead"
+    },
+    "reveal.json": {
+      "bytes": 111,
+      "sha256": "c9c94af971ce735fabdc70589163743a82871ff6a9a6a5a2eab1f366f45158a8"
+    },
+    "sealed-input.json": {
+      "bytes": 1465,
+      "sha256": "9b1bf7a00a29c7a6081ef5fe6b2b710c6de8b7a66eb13a14ca35875515b72363"
+    },
+    "w2.json": {
+      "bytes": 2119,
+      "sha256": "add952fe41b2b76a176b67409934748c8f0d6aaf8f1cd68564f1dbbfef9ae720"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-gaussian-branch-spectrum-v001"
+}

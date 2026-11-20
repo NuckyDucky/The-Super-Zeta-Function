@@ -10,6 +10,7 @@ I started with six integers that put a root of a quadratic within $8.7\times10^{
 - Near the Dottie fold I isolate paired periods 640 and 205,440. A period-640 return sets three height windows in which all eleven Riemann zeros are simple and lie on the critical line, sharpening the 7/8ths and Liu bounds in those windows. [Orbit certificate](archive/2026-11-18-dottie-mixed-cap-period-v001/README.md) · [Three window counts](archive/2026-11-20-liu-angular-velocity-v002/README.md)
 - From the balanced sign counts I recover the Stirling remainder for a single factorial. The actual quartet radii determine a finite Hurwitz sign change between levels 28 and 29. [Factorial proof](archive/2026-11-18-stirling-correction-v001/README.md) · [Comparison with equally spaced radii](archive/2026-11-18-quartet-grid-comparison-v001/README.md)
 - I identify the arithmetic character of a branch of my quartic over the Gaussian integers. Its conductor gives three finite reductions that determine the sign at every nonzero marked Gaussian lattice point coprime to the conductor, and give zero at the excluded points. [Field and conductor proof](archive/2026-11-20-dedekind-phase-v001/README.md)
+- I recover which branch supplied those signs from the completed zeros of an angular Hecke function. At norm 73 the two signs can then be read in order as exponential stages. Starting both words at 1 gives $\sqrt{2}$ and $1/4$. [Branch recovery and sign words](archive/2026-11-20-gaussian-branch-spectrum-v001/README.md)
 
 [Full derivations and preprints](docs/proofs/reciprocal-constructions.md) · [Interactive Hurwitz paths](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Two-input spectral map](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
 
@@ -119,6 +120,17 @@ For every nonzero $z=m+ni$ the quadratic Hecke character $\eta_\delta((z))$ is g
 
 Multiplying the formula for $z$ by the one for its conjugate replaces each numerator by $m^2+n^2$ inside its Legendre symbol. Away from the conductor this tells me from the norm alone **whether the two signs agree**. Keeping the marked coordinates tells me **which prime gets which sign**. I can now compare any candidate reading of the ordered exponential stages against these values. Whether a spectral observable of the stages alone produces the character is open. [Conductor proof and direct prime checks](archive/2026-11-20-dedekind-phase-v001/README.md)
 
+<details>
+<summary><strong>Recovering the quartic branch from the completed zeros and reading its sign word</strong></summary>
+
+Conjugating my quartic interchanges the primes above 73 and preserves the field zeta. To recover the branch I keep the positive imaginary direction fixed by $U/V=i$ and weight each marked ideal by the fourth power of its unit direction. The ordinary coefficient gives the sum of the two prime signs. The imaginary part of the angular coefficient gives their difference times a known sine. This recovers which prime received each sign.
+
+The same choice is visible in the zeros of the completed angular function. Counting every zero $\rho$ with its multiplicity, the quantity $-\Im\sum_\rho(2-\rho)^{-2}$ is positive for $A+2iN$ and negative for $A-2iN$. I bounded it by evaluating the corresponding differentiated Euler series, including its infinite tail. Reading $3+8i$ before $3-8i$ then gives the sign words $-+$ and $+-$. Under the original exponential stages with $L=\log 2$ their respective cap values are $\sqrt{2}$ and $1/4$. [Proof and numerical enclosures](archive/2026-11-20-gaussian-branch-spectrum-v001/README.md) · [Lean proof of ordered recovery](lean/SuperZeta/MarkedBranch.lean)
+
+Lean proves that relabeling the zeros preserves this sum and that conjugating them reverses its sign. Since the value at 2 excludes zero, the two completed angular functions have different complex zero multisets. The individual zero where they first differ is still unknown. [Lean proof of the zero sum and conjugation](lean/SuperZeta/ZeroMoment.lean)
+
+</details>
+
 </details>
 
 <div><a name="4-strengthening-the-78ths-and-liu-bounds-in-three-height-intervals"></a><a name="a-local-strengthening-of-the-seven-eighths-theorem"></a><a name="local-zeta-result"></a><a name="a-local-strengthening-of-the-78ths-theorem"></a><a name="4-a-local-strengthening-of-the-78ths-theorem"></a><a name="read-zero-counts" id="user-content-read-zero-counts"></a></div>
@@ -185,6 +197,8 @@ My two preprints give the definitions of the reciprocal tower and the local Dott
 <summary><h2>Credits</h2></summary>
 
 <div><a name="credits"></a><a name="read-credits" id="user-content-read-credits"></a></div>
+
+For the Gaussian prime angles I use the fourth angular harmonic in Rudnick and Waxman. The order-one completion used in the zero sum is the standard Hecke case of the analytic framework described by Lemke Oliver and Thorner. [Rudnick and Waxman, §4.1](https://arxiv.org/pdf/1705.07498#page=13) · [Lemke Oliver and Thorner, §2](https://arxiv.org/pdf/1505.03122#page=10)
 
 I use Baker and Rippon’s iteration theory at the Dottie fold, McPhedran, Botten and Nicorovici’s symmetrized Hurwitz family for the motion of its zeros, and the bounds of OpenAI and Baiying Liu when locating nontrivial zeros. The field calculations use classical quadratic factorization, ideal norms, and quadratic Hecke characters. The formal and numerical checks use Lean, mathlib, FLINT and PARI/GP. Author and theorem references are listed beside the corresponding derivations. [Complete credits](docs/proofs/reciprocal-constructions.md#user-content-read-credits) · [Source map](archive/2026-11-16-super-zeta-v001/source-map.md) · [Archive and reproduction policy](PRESERVATION.md)
 

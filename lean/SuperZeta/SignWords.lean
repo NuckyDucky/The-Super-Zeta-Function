@@ -225,6 +225,40 @@ private theorem cap_joins (L : ℝ) (w : List Sign) :
     rw [List.reverse_cons, eval_append, ih]
     cases s <;> simp [eval, Sign.rate, run, stage, capOutside, realRate, Complex.ofReal_exp]
 
+/-- At most `fuel` signed stages may be removed from the endpoint. A successful
+decoding returns the letters in chronological order. -/
+def decodeReal (L : ℝ) : ℕ → ℝ → Option (List Sign)
+  | 0, x => if x = 1 then some [] else none
+  | n + 1, x =>
+    match readReal L x with
+    | none => some []
+    | some (s, y) => (decodeReal L n y).map (fun w => w ++ [s])
+
+private theorem decode_outside {L : ℝ} (hL : 0 < L) (w : List Sign) (n : ℕ)
+    (hn : w.length ≤ n) : decodeReal L n (capOutside L w) = some w.reverse := by
+  induction n generalizing w with
+  | zero =>
+    cases w with
+    | nil => simp [decodeReal, capOutside]
+    | cons s w => simp at hn
+  | succ n ih =>
+    cases w with
+    | nil => simp [decodeReal, capOutside, readReal]
+    | cons s w =>
+      have hw : w.length ≤ n := Nat.le_of_succ_le_succ hn
+      simp only [capOutside, decodeReal, read_step hL (cap_pos L w), ih w hw,
+        Option.map_some, List.reverse_cons]
+      rfl
+
+/-- Repeated signed logarithms recover the chronological word from the real
+part of its actual complex cap evaluation, given any upper bound on length. -/
+theorem decodeReal_eval {L : ℝ} (hL : 0 < L) (w : List Sign) (n : ℕ)
+    (hn : w.length ≤ n) : decodeReal L n (eval (L : ℂ) w 1).re = some w := by
+  have he := cap_joins L w.reverse
+  rw [List.reverse_reverse] at he
+  rw [he]
+  simpa using decode_outside hL w.reverse n (by simpa using hn)
+
 private theorem cap_injective {L : ℝ} (hL : 0 < L) : Function.Injective (capOutside L) := by
   intro u
   induction u with
