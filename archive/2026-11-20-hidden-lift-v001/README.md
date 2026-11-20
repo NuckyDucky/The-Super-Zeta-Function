@@ -4,6 +4,8 @@ I start the reciprocal exponential stages at the cap $`z=1`$. I hide the sign of
 
 ## The inverse theorem
 
+**Two derivatives determine the whole map in this family.** For any two integer lifts and any two finite words, equality of the first derivatives at 1 and equality of the second derivatives there are together equivalent to equality of the composed functions at every complex input. This formulation includes the identity and the constant map. It means that measuring the response to a nudge at one cap determines how the composition acts at every other cap. [Lean theorem `cap_derivatives_iff_map`](../../lean/SuperZeta/CapRecovery/HiddenLift.lean)
+
 Apply the letters in chronological order. Write $`W_0(z)=z`$ and $`W_j(z)=\exp(\sigma_j L W_{j-1}(z))`$, where $`\sigma_j\in\{-1,1\}`$. Let $`W=W_n`$. The two one-stage maps agree at the cap exactly when $`e^{2L}=1`$, or equivalently $`L=m\pi i`$ for some integer $`m`$. In this family every nonempty word sends the cap to $`q=(-1)^m`$.
 
 **Theorem.** For two nonempty words $`u,v`$ with nonzero integer lifts $`m,k`$, the measured ratios $`K_m(u)=W''(1)/W'(1)`$ and $`K_k(v)`$ agree exactly in the following two cases.

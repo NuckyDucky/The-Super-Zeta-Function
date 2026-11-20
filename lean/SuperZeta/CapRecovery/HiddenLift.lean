@@ -198,4 +198,50 @@ theorem curvature_eq_iff {m n : ℤ} (hm : m ≠ 0) (hn : n ≠ 0)
     · rfl
     · exact (flip_lift_curvature _ _).symm
 
+private theorem zero_lift_map (w : List Sign) (hw : w ≠ []) :
+    eval (lift 0) w = fun _ => 1 := by
+  induction w using List.reverseRecOn with
+  | nil => exact (hw rfl).elim
+  | append_singleton w s _ =>
+    funext z
+    rw [eval_append]
+    cases s <;> simp [Resonant.lift, eval, Sign.rate, SpireDisk.run, SpireDisk.stage]
+
+private theorem regular_of_curvature_ne_zero {m : ℤ} {w : List Sign}
+    (h : curvature m w ≠ 0) : m ≠ 0 ∧ w ≠ [] := by
+  constructor <;> rintro rfl <;> apply h <;>
+    simp [curvature_eq, Resonant.lift, DyadicCap.polynomial]
+
+private theorem maps_at_zero_curvature (m : ℤ) (w : List Sign) (h : curvature m w = 0) :
+    eval (lift m) w = id ∨ eval (lift m) w = fun _ => 1 := by
+  by_cases hw : w = []
+  · subst w; exact Or.inl rfl
+  by_cases hm : m = 0
+  · subst m; exact Or.inr (zero_lift_map w hw)
+  exact (hw (curvature_injective hm (show curvature m w = curvature m [] by
+    simpa [curvature_eq, DyadicCap.polynomial] using h))).elim
+
+/-- Across all integer lifts and all finite words, the two ordinary cap
+derivatives characterize equality of the entire maps, including the identity
+from the empty word and the constant map from a nonempty word at lift zero. -/
+theorem cap_derivatives_iff_map (m n : ℤ) (u v : List Sign) :
+    (deriv (eval (lift m) u) 1 = deriv (eval (lift n) v) 1 ∧
+      deriv (deriv (eval (lift m) u)) 1 = deriv (deriv (eval (lift n) v)) 1) ↔
+    eval (lift m) u = eval (lift n) v := by
+  constructor
+  · rintro ⟨hf, hs⟩
+    have hK : curvature m u = curvature n v := by simp only [curvature, hf, hs]
+    by_cases hz : curvature m u = 0
+    · rcases maps_at_zero_curvature m u hz with ha | ha <;>
+        rcases maps_at_zero_curvature n v (hK.symm.trans hz) with hb | hb
+      all_goals first
+        | exact ha.trans hb.symm
+        | simp [ha, hb] at hf
+    · obtain ⟨hm, hu⟩ := regular_of_curvature_ne_zero hz
+      obtain ⟨hn, hv⟩ := regular_of_curvature_ne_zero (hK ▸ hz)
+      rcases (curvature_eq_iff hm hn hu hv).mp hK with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩
+      · rfl
+      · exact (flip_lift_map _ _).symm
+  · intro h; simp only [h, and_self]
+
 end SuperZeta.HiddenLift

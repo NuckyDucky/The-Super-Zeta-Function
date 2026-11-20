@@ -159,6 +159,8 @@ The highest power at which two histories differ outweighs every lower difference
 <details>
 <summary><strong>Recovering an unknown integral lift and an ordered sign word</strong></summary>
 
+Within this family I can decide whether two compositions agree for every complex starting value by comparing just their first two derivatives at 1. This includes the empty word, which acts as the identity, and the nonempty words at zero lift, which are constant.
+
 When I hide both the word and the integer in $L=m\pi i$, the stage rates still have a unique reconstruction. For a nonempty word and $m\ne0$, I measure $K=W''(1)/W'(1)$. If both Cartesian components are nonzero, dividing the larger absolute component by the smaller gives $|m|\pi$ to within one unit. Rounding after division by $\pi$ gives $|m|$. A single stage gives $|K|=|m|\pi$ exactly. With the positive lift as representative I can now recover the word, including its length.
 
 The two labels $(2,\text{+--})$ and $(-2,\text{-++})$ give the same exponential at every stage. To recover the original labels, I retain the prime reading at the first selected power of two. With the earlier weight $1/7$ it reads $8/7$ for the first label and $6/7$ for the second. This is where the arithmetic supplies information the two derivatives cannot distinguish. [Proof, calculation and replay](archive/2026-11-20-hidden-lift-v001/README.md) · [Lean statement](lean/SuperZeta/CapRecovery/HiddenLift.lean)
