@@ -4,12 +4,14 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - 'archive/2026-11-20-cap-derivative-recovery-v001/**'
       - 'archive/2026-11-20-dedekind-phase-v001/**'
       - 'archive/2026-11-20-gaussian-branch-spectrum-v001/**'
       - '.github/workflows/number-field-replay.yml'
   push:
     branches: [main]
     paths:
+      - 'archive/2026-11-20-cap-derivative-recovery-v001/**'
       - 'archive/2026-11-20-dedekind-phase-v001/**'
       - 'archive/2026-11-20-gaussian-branch-spectrum-v001/**'
       - '.github/workflows/number-field-replay.yml'
@@ -59,3 +61,12 @@ jobs:
         run: |
           python -B branch_test.py verify
           python -B check_w2.py
+      - name: Recover the six hidden stage orders from their cap derivatives
+        working-directory: archive/2026-11-20-cap-derivative-recovery-v001
+        run: |
+          mkdir "$RUNNER_TEMP/cap-replay"
+          cp packets.json calls.json reveal.json "$RUNNER_TEMP/cap-replay/"
+          python -B test_cap_jets.py verify --folder "$RUNNER_TEMP/cap-replay"
+          python -B test_cap_jets.py prepare --folder "$RUNNER_TEMP/cap-fresh"
+          python -B test_cap_jets.py decode --folder "$RUNNER_TEMP/cap-fresh"
+          python -B test_cap_jets.py verify --folder "$RUNNER_TEMP/cap-fresh"

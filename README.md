@@ -11,6 +11,7 @@ I started with six integers that put a root of a quadratic within $8.7\times10^{
 - From the balanced sign counts I recover the Stirling remainder for a single factorial. The actual quartet radii determine a finite Hurwitz sign change between levels 28 and 29. [Factorial proof](archive/2026-11-18-stirling-correction-v001/README.md) · [Comparison with equally spaced radii](archive/2026-11-18-quartet-grid-comparison-v001/README.md)
 - I identify the arithmetic character of a branch of my quartic over the Gaussian integers. Its conductor gives three finite reductions that determine the sign at every nonzero marked Gaussian lattice point coprime to the conductor, and give zero at the excluded points. [Field and conductor proof](archive/2026-11-20-dedekind-phase-v001/README.md)
 - I recover which branch supplied those signs from the completed zeros of an angular Hecke function. At norm 73 the two signs can then be read in order as exponential stages. Starting both words at 1 gives $\sqrt{2}$ and $1/4$. [Branch recovery and sign words](archive/2026-11-20-gaussian-branch-spectrum-v001/README.md)
+- At $L=\pi i$, every nonempty sign word sends the cap $1$ to $-1$. I recover the entire word, including its length, from the ratio of its second and first cap derivatives. [Theorem and hidden-label experiment](archive/2026-11-20-cap-derivative-recovery-v001/README.md)
 
 [Full derivations and preprints](docs/proofs/reciprocal-constructions.md) · [Interactive Hurwitz paths](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Two-input spectral map](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
 
@@ -137,6 +138,21 @@ Lean proves that relabeling the zeros preserves this sum and that conjugating th
 At a fixed positive real lift, two finite sign histories give the same endpoint from the cap $1$ exactly when the signs agree at every stage. Parentheses can move because composition is associative. The last sign can be read from the endpoint itself. If it lies above $1$, the last stage was plus. If it lies below $1$, the last stage was minus. Taking the absolute logarithm and dividing by the lift recovers the preceding value.
 
 My earlier balanced-history count assigns the same weight to `++--`, `--++`, and `-+-+`. The first two even describe the same cyclic order when the starting phase is hidden. Applied from the same cap at base 2, the three words give $0.957603\ldots$, $3.100555\ldots$, and $1.297032\ldots$, respectively. At the complex lift $L=\pi i$, every nonempty word sends that same cap to $-1$. [Proof, six exact endpoints and the complex example](docs/proofs/chronological-order.md) · [Lean formalization](lean/SuperZeta/SignWords.lean)
+
+</details>
+
+<details>
+<summary><strong>The second cap derivative recovers the sign order at the common endpoint</strong></summary>
+
+I keep $L=\pi i$ fixed and vary the starting value $z$ in the same signed exponential stages. All six balanced four-stage words give $W(1)=-1$ and $W'(1)=\pi^4$. They leave that point with the same velocity for a real change in the cap. Their complex accelerations $W''(1)$ distinguish all six. For example, the words `++--` and `+-+-` bend upwards at the same rate there, but their horizontal accelerations differ.
+
+For any finite sign word, let $c_j$ be the product of its first $j$ signs. The chain rule gives
+
+~~~math
+\frac{W''(1)}{W'(1)}=-\sum_{j=1}^{n}c_j(-\pi i)^j.
+~~~
+
+The highest power at which two histories differ outweighs every lower difference combined. This makes their derivative ratios distinct even when their lengths are hidden. To compare with the earlier prime detector, I use one exponent step for each minus and two for each plus. At powers of 2 the detector then records $1+c_j/7$, while the quadratic field records $1+c_j$. Both readings recover the same signs in order. [Derivation and blind test](archive/2026-11-20-cap-derivative-recovery-v001/README.md) · [Lean proof for all finite words](lean/SuperZeta/CapRecovery/Dominance.lean) · [General detector weights](lean/SuperZeta/CapRecovery/GeneralWeights.lean)
 
 </details>
 
