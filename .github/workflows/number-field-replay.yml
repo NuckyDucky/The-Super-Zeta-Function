@@ -109,7 +109,8 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install the interval arithmetic library
-        run: python -m pip install --only-binary=:all: python-flint==0.9.0
+        run: |
+          python -m pip install --only-binary=:all: python-flint==0.9.0
       - name: Recompute the five circle records and the three zero-weight counts
         working-directory: archive/2026-11-20-gaussian-reflected-disks-v001
         run: python -B replay.py
