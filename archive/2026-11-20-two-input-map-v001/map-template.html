@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two complex inputs · The Super Zeta Function</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f6f4ef;color:#21252d;font:1rem/1.55 system-ui,sans-serif}
+main{max-width:1200px;margin:auto;padding:clamp(1rem,3vw,2.5rem)}
+header{max-width:72ch;margin-bottom:1.4rem}
+h1,h2{font-family:Georgia,serif;font-weight:500;line-height:1.13;margin:.28rem 0 .6rem}
+h1{font-size:clamp(2rem,5vw,3.65rem);letter-spacing:-.035em}
+h2{font-size:1.65rem}
+p{margin:.4rem 0 .75rem}
+a{color:#255678;text-underline-offset:.2em}
+section{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(17rem,1fr);align-items:start;gap:clamp(.8rem,2vw,1.7rem)}
+figure{margin:0}
+.plot{position:relative;background:#fff;border:1px solid #cecac2;border-radius:.55rem}
+img{width:100%;height:auto;display:block;border-radius:inherit}
+figcaption,footer,.hint{font-size:.9rem;color:#4b505c}
+figcaption{margin-top:.65rem}
+aside{background:#fffcf7;border:1px solid #cecac2;border-radius:.65rem;padding:1rem}
+#hit{position:absolute;cursor:crosshair;touch-action:pan-y}
+#mark{position:absolute;width:15px;height:15px;border:2px solid #243945;outline:2px solid white;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+:focus-visible{outline:3px solid #245f85;outline-offset:3px}
+label{display:flex;justify-content:space-between;gap:.5rem;font-weight:650}
+input[type=range]{width:100%;height:36px;margin:0;accent-color:#245f85}
+.control{margin:.85rem 0}
+fieldset{padding:0;border:0;margin:1rem 0 .65rem;min-width:0}
+legend{font-weight:650;padding:0}
+.buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.3rem;margin-top:.5rem}
+button{min-height:44px;border:1px solid #aca79f;border-radius:.35rem;background:#f6f4ef;color:#21252d;font:inherit;font-weight:650;cursor:pointer}
+button:hover,button[aria-pressed=true]{background:#dbe9ef;border-color:#245f85}
+dl{margin:.65rem 0;font-variant-numeric:tabular-nums}
+dt{margin-top:.65rem;color:#4b505c}
+dd{font-size:1.12rem;font-weight:680;margin:0;overflow-wrap:anywhere}
+.shift-value{font-variant-numeric:tabular-nums}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+footer{border-top:1px solid #cecac2;margin-top:1.4rem;padding-top:1rem}
+footer nav{display:flex;flex-wrap:wrap;gap:.3rem 1rem}
+@media(max-width:780px){section{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body><main>
+<header>
+<a href="https://github.com/NuckyDucky/The-Super-Zeta-Function#user-content-read-two-inputs">The Super Zeta Function · §3.13</a>
+<h1>How much do the quartet angles contribute?</h1>
+<p>Vary the imaginary parts <i>h</i> and <i>k</i> of <i>x</i> = 1 + <i>ih</i> and <i>y</i> = 1 + <i>ik</i>. At each point, I compare the full complex sum with the sum at the same <i>h</i> − <i>k</i> and with <i>h</i> + <i>k</i> set to zero. Holding the difference fixed keeps the phase from each root radius fixed. The color measures how much including the root angles changes the sum.</p>
+</header>
+<section aria-label="Interactive spectral map">
+<figure>
+<div class="plot">
+<img alt="Angular change over two imaginary shifts with h horizontal and k vertical. The change vanishes on the descending diagonal and is greatest near the same-sign corners." src="data:image/png;base64,@IMAGE@">
+<div id="hit" aria-hidden="true"><span id="mark"></span></div>
+</div>
+<figcaption>Both axes are dimensionless and run from −π/3 to π/3. Pale colors show a small change and dark purple shows a larger change on the linear scale. The dotted line marks <i>k</i> = −<i>h</i>, where the root angles cancel exactly even when the full sum is complex. The four open circles mark the sign choices at ±π/6. Compare those points to see what happens when the two shifts have the same sign or opposite signs.</figcaption>
+</figure>
+<aside aria-labelledby="point-heading">
+<h2 id="point-heading">Read a point</h2>
+<p class="hint">Tap or point to a location, or Tab to a shift and use the arrow keys. The ring marks the selected point.</p>
+<div class="control"><label for="h-shift"><span>Horizontal shift <i>h</i></span><span id="h-value" class="shift-value" aria-hidden="true"></span></label><input id="h-shift" type="range" min="-60" max="60" step="any" value="30"></div>
+<div class="control"><label for="k-shift"><span>Vertical shift <i>k</i></span><span id="k-value" class="shift-value" aria-hidden="true"></span></label><input id="k-shift" type="range" min="-60" max="60" step="any" value="30"></div>
+<fieldset>
+<legend>Four sign choices at π/6</legend>
+<p class="hint">The first sign is for <i>h</i> and the second is for <i>k</i>.</p>
+<div class="buttons">
+<button type="button" data-h="1" data-k="1" aria-label="Positive h, positive k" aria-pressed="false">+ +</button>
+<button type="button" data-h="1" data-k="-1" aria-label="Positive h, negative k" aria-pressed="false">+ −</button>
+<button type="button" data-h="-1" data-k="1" aria-label="Negative h, positive k" aria-pressed="false">− +</button>
+<button type="button" data-h="-1" data-k="-1" aria-label="Negative h, negative k" aria-pressed="false">− −</button>
+</div>
+</fieldset>
+<dl>
+<dt>Full complex sum</dt><dd id="full"></dd>
+<dt>Magnitude of the change from including root angles</dt><dd id="angular"></dd>
+</dl>
+<p id="point-status" class="sr-only" role="status"></p>
+</aside>
+</section>
+<footer>
+<p>The display uses the real Dottie root and 1,024 nonreal conjugate pairs. The figure fixes both real parts at one. The five-reading inverse uses real parts 16 and 17.</p>
+<nav aria-label="Research links">
+<a href="https://github.com/NuckyDucky/The-Super-Zeta-Function/blob/main/archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#recovering-the-first-nonreal-pair-from-five-full-readings">First-pair recovery and bounds</a>
+<a href="https://github.com/NuckyDucky/The-Super-Zeta-Function/blob/main/lean/SuperZeta/Oriented/TwoInputSpectrum.lean">Lean statements</a>
+</nav>
+</footer>
+</main>
+<script>
+const data = @DATA@;
+const plotBounds = @POS@;
+const edge = Math.PI / 3;
+const hit = document.getElementById("hit");
+const mark = document.getElementById("mark");
+const hShift = document.getElementById("h-shift");
+const kShift = document.getElementById("k-shift");
+const hValue = document.getElementById("h-value");
+const kValue = document.getElementById("k-value");
+const full = document.getElementById("full");
+const angular = document.getElementById("angular");
+const pointStatus = document.getElementById("point-status");
+const presets = [...document.querySelectorAll("button[data-h]")];
+Object.assign(hit.style, {
+  left: plotBounds[0] + "%", top: plotBounds[1] + "%",
+  width: plotBounds[2] + "%", height: plotBounds[3] + "%"
+});
+const clamp = value => Math.max(-edge, Math.min(edge, value));
+const format = (value, digits = 6) => (Math.abs(value) < .5 * 10 ** -digits ? 0 : value).toFixed(digits);
+const exactShifts = new Map([[-edge, "−π/3"], [-edge / 2, "−π/6"], [0, "0"], [edge / 2, "π/6"], [edge, "π/3"]]);
+const showShift = (control, output, value) => {
+  control.value = String(value * 60 / edge);
+  output.textContent = exactShifts.get(value) ?? format(value, 4);
+  control.setAttribute("aria-valuetext", output.textContent);
+};
+let h = 0;
+let k = 0;
+let announceTimer;
+function setPoint(a, b, announce) {
+  h = clamp(a);
+  k = clamp(b);
+  const delta = h - k;
+  const eta = h + k;
+  const logDottieSquared = data[0];
+  let real = Math.exp(-2 * logDottieSquared) * Math.cos(delta * logDottieSquared);
+  let imaginary = -Math.exp(-2 * logDottieSquared) * Math.sin(delta * logDottieSquared);
+  let angularReal = 0;
+  let angularImaginary = 0;
+  for (const [logRadius, angle] of data[1]) {
+    const weight = 2 * Math.exp(-2 * logRadius);
+    const cosine = Math.cos(delta * logRadius);
+    const sine = -Math.sin(delta * logRadius);
+    const change = 2 * Math.sinh(eta * angle / 2) ** 2;
+    real += weight * (1 + change) * cosine;
+    imaginary += weight * (1 + change) * sine;
+    angularReal += weight * change * cosine;
+    angularImaginary += weight * change * sine;
+  }
+  showShift(hShift, hValue, h);
+  showShift(kShift, kValue, k);
+  for (const button of presets) {
+    button.setAttribute("aria-pressed", String(h === Number(button.dataset.h) * edge / 2 && k === Number(button.dataset.k) * edge / 2));
+  }
+  mark.style.left = (50 + 50 * h / edge) + "%";
+  mark.style.top = (50 - 50 * k / edge) + "%";
+  const fullValue = format(real) + (imaginary < -.0000005 ? " − " : " + ") + format(Math.abs(imaginary)) + "i";
+  const angularValue = format(Math.hypot(angularReal, angularImaginary));
+  full.textContent = fullValue;
+  angular.textContent = angularValue;
+  clearTimeout(announceTimer);
+  if (announce) {
+    announceTimer = setTimeout(() => {
+      pointStatus.textContent = "Full sum " + fullValue + ". Angular change " + angularValue + ".";
+    }, 120);
+  }
+}
+function pointFromPointer(event, announce) {
+  const bounds = hit.getBoundingClientRect();
+  setPoint(edge * (2 * (event.clientX - bounds.left) / bounds.width - 1),
+    edge * (1 - 2 * (event.clientY - bounds.top) / bounds.height), announce);
+}
+hit.addEventListener("pointermove", event => {
+  if (event.pointerType === "mouse") pointFromPointer(event, false);
+});
+hit.addEventListener("click", event => pointFromPointer(event, true));
+hShift.addEventListener("input", () => setPoint(Number(hShift.value) / 60 * edge, k, true));
+kShift.addEventListener("input", () => setPoint(h, Number(kShift.value) / 60 * edge, true));
+for (const button of presets) {
+  button.addEventListener("click", () => setPoint(Number(button.dataset.h) * edge / 2, Number(button.dataset.k) * edge / 2, true));
+}
+setPoint(edge / 2, edge / 2, true);
+</script>
+</body></html>

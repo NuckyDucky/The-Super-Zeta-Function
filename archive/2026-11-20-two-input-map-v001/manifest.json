@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 3775,
+      "sha256": "52ee5571cf7af027055138aeaad9f7279cb9a06d9aeef15e053ebeee41e0d3af"
+    },
+    "make_map.py": {
+      "bytes": 4656,
+      "sha256": "914eb064790d32973614116cd1bfdd14e072e4bee41677208f43b1bfa653eb88"
+    },
+    "map-template.html": {
+      "bytes": 9890,
+      "sha256": "07c512cc73146029c38ff7304b77c770205276d8330be66818bd648749a57cfd"
+    },
+    "requirements.txt": {
+      "bytes": 68,
+      "sha256": "9f8b801c55a7e6ea0b467cc930174994e491bf7ec48a450f9316874998cf5eee"
+    },
+    "two-input-dottie-map.png": {
+      "bytes": 388185,
+      "sha256": "defd4e0797dd28d5bd34cd1c99d9db0dd823ab7a6ed7c6500a77cc86424ceefc"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-two-input-map-v001"
+}

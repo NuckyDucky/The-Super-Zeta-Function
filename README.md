@@ -2,23 +2,25 @@
 
 <div><a name="abstract"></a><a name="introduction"></a></div>
 
-I started with a quadratic approximation to π built from six integers and the number $e$. Its two roots led me to the reciprocal difference $z-1/z$. I met the same expression in the alternating tower with stages $P'=e^{LQ}$ and $Q'=e^{-LP}$. At the Dottie fold the derivative of the two-stage return equals one. Imposing that same condition on all complex fixed pairs gives the signed cosine equations $u=\pm\cos u$. I call the sum of inverse powers of its squared roots the **super zeta function**. [Fixed pairs in my tetration preprint](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L360-L402) · [The Dottie fold](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L145-L244)
+I started with a quadratic approximation to π built from six integers and the number $e$. Its two real branches close into the two ovals of a genus-one quartic. At $x=e$ the upper branch gives my approximation $\widehat\pi$. Comparing the roots led me to the reciprocal difference $z-1/z$. I met the same expression in the alternating tower with stages $P'=e^{LQ}$ and $Q'=e^{-LP}$. At the Dottie fold the derivative of the two-stage return equals one. Imposing that same condition on all complex fixed pairs gives the signed cosine equations $u=\pm\cos u$. I call the sum of inverse powers of its squared roots the **super zeta function**. [Fixed pairs in my tetration preprint](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L360-L402) · [The Dottie fold](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L145-L244)
 
 **Principal results**
 
-- I count every Riemann zero in three height intervals selected from the Dottie spire. The counts are 2, 5 and 4. All eleven lie on the critical line and have multiplicity one. This sharpens the 7/8ths and Liu bounds there. [Intervals and counts](#user-content-read-zero-counts)
-- I recover the exact Stirling remainder of each $n!$ from the factorial weight on my quartet radii. The actual radii give a Hurwitz sign change between levels 28 and 29. [Factorial correction](#user-content-read-factorial)
-- I derive the determinant $`E(v)=\cos^2\!\sqrt v-v`$, realize its roots as a boundary spectrum, and recover $\zeta(2s)$ by comparison with the cosine spectrum. Five values of its two-input super zeta recover the first nonreal pair’s modulus and angle. [Determinant](#user-content-read-super-zeta) · [Two-input recovery, §3.13](#user-content-read-two-inputs) · [Formal determinant](lean/SuperZeta/UnitSpectrum.lean)
-- I isolate cap-selected cycles near the Dottie fold, including a paired orbit of period 205,440. For a period-640 centerline orbit, two ordered spectral measurements recover the parameter and its marked return. [Finite periods](#user-content-read-dottie-spire) · [Two-trace inverse](archive/2026-11-19-oriented-return-v001/README.md#the-two-trace-inverse)
-- At the angles $+\pi/6$ and $-\pi/6$, the Hurwitz zero paths have opposite velocities. I use Liu’s bound to control their normalized speed, compute its mean square in my three Dottie windows, and derive the long-run mean of the arithmetic quotient over all zeros. [Angular velocity, §3.11](#user-content-read-liu-speed) · [Mean squared speed, §3.12](#user-content-read-speed-moment)
-- I prove that each finite sign order gives a distinct exponential map at every nonzero complex lift. Consecutive derivative measurements recover all 640 signed stages at the secondary centerline minimum. [Sign words and recovery](#user-content-read-sign-words)
-- My quadratic gives a genus-one curve with two real ovals. Evaluating its upper branch at $x=e$ gives my approximation to $\pi$. [Quadratic and quartic](#user-content-read-quartic)
+- In three height intervals selected from the Dottie return, I sharpen the 7/8ths and Liu bounds to $`\Re w=1/2`$. The intervals contain 2, 5 and 4 distinct Riemann zeros respectively, and each occurs with multiplicity one. [Locations, counts and controls](#user-content-read-zero-counts)
+- I recover the exact Stirling remainder of each $n!$ from the factorial weight on my quartet radii. Those radii give a Hurwitz sign change between levels 28 and 29. [Factorial correction](#user-content-read-factorial)
+- The cosine roots of my reciprocal tower give a spectral determinant. Comparing it with the half-integer cosine spectrum recovers $\zeta(2s)$. [Determinant and proof](docs/proofs/quartet-spectrum.md)
+- Five high-precision readings at real parts 16 and 17 recover the modulus and angle of the first nonreal squared pair. [Two-input inverse and precision test](#user-content-read-two-inputs)
+- Near the Dottie fold I isolate a paired orbit of period 205,440. On a period-640 orbit two ordered spectral measurements recover the parameter and its marked return. [Finite periods](#user-content-read-dottie-spire) · [Two-trace inverse](archive/2026-11-19-oriented-return-v001/README.md#the-two-trace-inverse)
+- At $+\pi/6$ and $-\pi/6$ the Hurwitz zero paths have opposite velocities. I bound their normalized speed using Liu’s theorem, compute its mean square in the three intervals, and derive the long-run mean of the arithmetic quotient. [Angular velocity](#user-content-read-liu-speed) · [Mean squared speed](#user-content-read-speed-moment)
+- Each finite sign order gives a distinct exponential map at every nonzero complex lift. Consecutive derivative products recover all 640 signed stages at the secondary centerline minimum. [Sign order and recovery](#user-content-read-sign-words)
 
 **Contents**
 
-[1. Quadratic](#user-content-read-quartic) · [2. Reciprocal tetration](#user-content-read-tetration) · [3. Super zeta](#user-content-read-super-zeta) ([§3.6 Period-640 return](#user-content-read-period-640) · [§3.11 Angular velocity](#user-content-read-liu-speed) · [§3.12 Mean squared speed](#user-content-read-speed-moment) · [§3.13 Two complex inputs](#user-content-read-two-inputs)) · [4. Local zero counts](#user-content-read-zero-counts) · [5. Factorial correction](#user-content-read-factorial)
+[1. My quadratic and its two ovals](#user-content-read-quartic) · [2. Reciprocal tetration and the spire](#user-content-read-tetration) · [3. The super zeta](#user-content-read-super-zeta) · [4. Riemann zero counts](#user-content-read-zero-counts) · [5. The factorial correction](#user-content-read-factorial)
 
-[Consequences](#user-content-read-consequences) · [Preprints and reproduction](#user-content-read-preprints) · [Open questions](#user-content-read-questions) · [Credits](#user-content-read-credits)
+[The determinant proof](docs/proofs/quartet-spectrum.md) · [The two-input inverse](#user-content-read-two-inputs) · [The period-640 return](#user-content-read-period-640) · [Consequences](#user-content-read-consequences) · [Preprints and reproduction](#user-content-read-preprints) · [Open questions](#user-content-read-questions) · [Credits](#user-content-read-credits)
+
+**Interactive figures** · [Follow three passes of the sixth-zero path at one height](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Vary both imaginary inputs of the quartet spectrum](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
 
 <div><a name="from-the-original-meme-to-the-dottie-spire"></a><a name="the-quadratic-and-the-genus-one-curve"></a><a name="1-the-quadratic-and-the-genus-one-curve"></a></div>
 
@@ -35,14 +37,16 @@ Clearing the denominators gave me a quadratic in $y$. Completing the square gave
 
 $`\displaystyle \begin{aligned} 0&=(N-D)y^2+(N-3D)y-N-2D,\\ Y&=2(N-D)y+N-3D,\\ f(x)&=(N-D)^2+4N^2\\ &=961000x^4-1039740x^3-1810543x^2+644010x+1813853. \end{aligned}`$
 
+[![The two signs of Y form separate real ovals. The marked upper point at x=e gives pi-hat.](archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)](archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)
+
+Both panels show the same curve. On the left, the upper and lower heights are the two choices of sign in $Y=\pm\sqrt{f(x)}$, rescaled to fit the axes. On the right, following either branch as $x$ tends to $-\infty$ or $+\infty$ reaches the same hollow point for that branch, closing it into an oval. The marked point selects the positive square root at $x=e$ that I use to compute $\widehat\pi$. [Coordinates used in the drawing](archive/2026-11-18-quartic-ovals-v001/README.md)
+
 <div><a name="what-the-right-panel-shows"></a><a name="real-ovals-and-projective-completion"></a></div>
 
 <details>
 <summary><h3>Real ovals and projective completion</h3></summary>
 
 Each real branch closes through its own point at infinity. To see why they stay apart, write $N-D=310(x-579/620)^2+8239/1240$. This is positive for every real $x$, so $f(x)=(N-D)^2+4N^2$ is positive too. The left figure plots the two heights $Y/[\sqrt{961000}(1+x^2)]$. The right figure uses $2\arctan x$ as the angle to bring the two ends of each graph together. [Plot coordinates and source](archive/2026-11-18-quartic-ovals-v001/README.md)
-
-![The upper and lower real branches close into two ovals, with the point at x=e marked on the upper branch](archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)
 
 In the chart $t=1/x$, $V=Y/x^2$, the two points at $t=0$ satisfy $V^2=961000$. Both ends of the positive graph reach $V=310\sqrt{10}$, and both ends of the negative graph reach $V=-310\sqrt{10}$. The hollow dots mark those two points. Each graph closes into a circle through its own point at infinity. [Proof of the two real circles, §2](archive/2026-11-18-lean-foundations-v001/arithmetic/research/geometry.md#2-why-the-real-completion-is-exactly-two-circles) · [Radial drawing convention](archive/2026-11-18-quartic-ovals-v001/README.md)
 
@@ -89,6 +93,10 @@ In my original pair $x^{x-a},x^{x+a}$, the two exponents are equally far from $x
 $`\displaystyle F_L(P,Q)=\bigl(e^{LQ},e^{-LP}\bigr).`$
 
 Their mean is $m=(Q-P)/2$ and their half-difference is $a=(Q+P)/2$. Thus $Q=m+a$ and $-P=m-a$, giving the next pair $(x^{m+a},x^{m-a})$. I retain the ordered exponents $U=LQ$ and $V=-LP$. My preprints write $M$ for the second phase $Q$. [*Reciprocal Tetration*, §5, “Branch-sensitive complex fixed data”](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L359-L402) · [Ordered return in Lean](lean/SuperZeta/Reciprocal.lean)
+
+[![Paired periods reached from the cap across the complex logarithm plane, with a magnified view of the Dottie fold.](archive/2026-11-18-research-figures-v001/dottie-spire.png)](archive/2026-11-18-research-figures-v001/dottie-spire.png)
+
+Each sampled $L$ starts the same pair $(1,1)$. Blue records convergence to a fixed pair, while the other period colors identify how many updates it takes the pair to repeat. The right panel samples a finer grid around the fold $L_*$, where changing $L$ by a small amount can change the detected period. A gray sample reached 8,000 updates with no period detected in the tested range of 1 through 256. [Layer 4 survey and color key](archive/2026-11-18-research-figures-v001/README.md#the-dottie-spire) · [Derivation of the fold](#user-content-read-dottie-spire)
 
 <div><a name="the-complex-two-base-family"></a></div>
 
@@ -144,9 +152,7 @@ $`\displaystyle \begin{aligned} L&=iY(u),&Y(u)&=u\sec u\,e^{-u\tan u},&Z(u)&=e^{
 
 At the maximum of $Y$ the derivative of the scalar return at its fixed point is one. The equation for that point is $d=\cos d$, where $d=0.7390851332\ldots$ is the Dottie number. The boundary is exactly $`L_{\ast}=ie^{-\sin d}\approx0.509863605523013\,i`$ and the fixed point is $Z_{\ast}=e^{\sin d+id}$. The quadratic term of $Y(d+h)-Y(d)$ is $-Y(d)(1+\sin d)h^2/d^2$, so the two fixed branches meet in a quadratic fold. I center and rescale the scalar return there to obtain the parabolic germ $f(z)=z+z^2+\cdots$. [*Dottie Parabolic Fold*, §2, exact fixed curve and fold](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L145-L243) · [§3, normalized germ and antiholomorphic square root](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L244-L304) · [Fold in Lean](lean/SuperZeta/Dottie.lean) · [Kaplan, *The Dottie Number*](https://doi.org/10.1080/0025570X.2007.11953455)
 
-To draw the spire I started from the same cap $(1,1)$ at each sampled lift and colored that lift by the period I found. The Layer 4 survey checks paired periods up to 256. Gray marks samples that reached the numerical limit without an assigned period. [*Reciprocal Tetration*, §§6–8, “Periodic reciprocal sign words” through “Directed anchors”](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L404-L547) · [Figure settings and orbit data](archive/2026-11-18-research-figures-v001/README.md)
-
-![The Dottie spire with the parabolic fold marked and a Layer 4 close-up near the tip](archive/2026-11-18-research-figures-v001/dottie-spire.png)
+The Layer 4 survey tests paired periods through 256. For the longer cycles below I follow the orbit into a trapping disk and check its return and the shorter candidate periods with interval arithmetic. [Figure settings and orbit data](archive/2026-11-18-research-figures-v001/README.md) · [Finite-period certificates](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L554-L604) · [*Reciprocal Tetration*, §§6–8](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L404-L547)
 
 I use the half-step in the normalized coordinates to obtain separate even and odd return equations. For an orbit of primitive paired period $p$ on the centerline, its period under $H_y^2$ is $p/\gcd(p,2)$. Thus paired periods 639, 640 and 641 have scalar periods 639, 320 and 641. In three finite parameter windows I certified that the cap enters a contracting disk and excluded every shorter period. [*Dottie Parabolic Fold*, §§5–6, cylinder and physical return equations](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L347-L489) · [§8, directed finite windows](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.tex#L554-L604) · [Window verifier](archive/2026-11-18-spectral-reproduction-v001/check_spire_windows.py) · [Rump, verified numerics](https://doi.org/10.1017/S096249291000005X)
 
@@ -173,7 +179,7 @@ where the coefficients $C_{\ast}$ and $A_4$ are explicit in $d$. My estimates of
 
 <div><a name="read-super-zeta" id="user-content-read-super-zeta"></a></div>
 
-I obtain the super zeta by asking which fixed pairs have a two-stage return of derivative one. The ordered exponents give $u=\pm\cos u$. Squaring each root gives a zero of $E(v)=\cos^2\sqrt v-v$. I sum inverse powers of those squared roots to define $\mathcal Z(s;1)$. For instance, their reciprocals sum to exactly $2$. Comparing $E$ with the determinant $\cos^2\sqrt v$ then gives the Mellin correction $J$ and the Riemann factor $\zeta(2s)$.
+I obtain the super zeta by asking which fixed pairs have a two-stage return of derivative one. Their ordered exponents give $u=\pm\cos u$. Squaring each root gives a zero of $E(v)=\cos^2\sqrt v-v$. I define $\mathcal Z(s;1)$ by summing inverse powers of those squared roots. Their reciprocals sum to exactly 2. Comparing $E$ with $\cos^2\sqrt v$ gives the Mellin correction $J$ and the Riemann factor $\zeta(2s)$. [Recover the phases, eq. (3)](docs/proofs/quartet-spectrum.md#eq-3) · [Determinant, eq. (11)](docs/proofs/quartet-spectrum.md#eq-11) · [Reciprocal sum, eq. (18)](docs/proofs/quartet-spectrum.md#eq-18)
 
 <details>
 <summary><h3>3.1 The multiplier of the two-step return</h3></summary>
@@ -199,7 +205,7 @@ The calculation also runs backward. From a signed root I recover the ordered exp
 
 $`\displaystyle U=\sigma\sin u+iu,\qquad V=\sigma\sin u-iu,\qquad L=\sigma i e^{-\sigma\sin u}.`$
 
-[Cosine spectrum, §1, eqs. (1)–(5)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#1-exact-recovery-of-every-ordered-phase-and-parameter) · [Phase recovery in Lean](lean/SuperZeta/Quartet.lean)
+[Cosine spectrum, §1, eqs. (1)–(5)](docs/proofs/quartet-spectrum.md#1-exact-recovery-of-every-ordered-phase-and-parameter) · [Phase recovery in Lean](lean/SuperZeta/Quartet.lean)
 
 </details>
 
@@ -220,7 +226,7 @@ The squared roots $\lambda_j$ grow quadratically with the quartet index, so $\su
 
 $`\displaystyle E(v)=\prod_j(1-v/\lambda_j),\qquad -\frac{E'(v)}{E(v)}=\sum_{m\ge1}\mathcal Z(m;1)v^{m-1}.`$
 
-The first two traces are $\mathcal Z(1;1)=2$ and $\mathcal Z(2;1)=10/3$. The first ties the Dottie root to every nonreal quartet in one exact sum. Lean proves the product over the complete squared-root family. [Product, traces and a tail bound, eqs. (16)–(19)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#4-canonical-product-and-exact-rational-trace-sums) · [Lean theorem](lean/SuperZeta/UnitSpectrum.lean)
+The first two traces are $\mathcal Z(1;1)=2$ and $\mathcal Z(2;1)=10/3$. The first ties the Dottie root to every nonreal quartet in one exact sum. Lean proves the product over the complete squared-root family. [Product, traces and a tail bound, eqs. (16)–(19)](docs/proofs/quartet-spectrum.md#4-canonical-product-and-exact-rational-trace-sums) · [Lean theorem](lean/SuperZeta/UnitSpectrum.lean)
 
 </details>
 
@@ -233,7 +239,7 @@ The same cosine equation arises as an eigenvalue condition. I take a function on
 
 $`\displaystyle A_\varepsilon(f,c)=\left(-if',\frac{\varepsilon}{2}\bigl[f(-1)+f(1)\bigr]\right).`$
 
-For eigenvalue $u$ the first coordinate gives $f(x)=c e^{iux}$, so the endpoint average in the second gives $u=\varepsilon\cos u$. The inverse $B_\varepsilon$ is Hilbert–Schmidt and its square is trace class. Its Fredholm determinant is the convergent determinant of $I-vB_\varepsilon^2$. At $\varepsilon=1$ it equals $E(v)$. [Operator, inverse and finite-matrix proof, eqs. (6)–(15)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#2-a-boundary-operator-with-compact-inverse-and-the-cosine-spectrum)
+For eigenvalue $u$ the first coordinate gives $f(x)=c e^{iux}$, so the endpoint average in the second gives $u=\varepsilon\cos u$. The inverse $B_\varepsilon$ is Hilbert–Schmidt and its square is trace class. Its Fredholm determinant is the convergent determinant of $I-vB_\varepsilon^2$. At $\varepsilon=1$ it equals $E(v)$. [Operator, inverse and finite-matrix proof, eqs. (6)–(15)](docs/proofs/quartet-spectrum.md#2-a-boundary-operator-with-compact-inverse-and-the-cosine-spectrum)
 
 $`\displaystyle \det(I-vB_\varepsilon^2)=\cos^2\sqrt v-v/\varepsilon^2.`$
 
@@ -241,7 +247,7 @@ The inverse sends scalar input $1$ to the constant function $1/\varepsilon$ in i
 
 $`\displaystyle (B_N)_{j,N+1}=\frac{\sqrt{2/N}}{\varepsilon}.`$
 
-For $N=2$, $\varepsilon=2$ and $u=1$, the projected determinant $\det(I-uB_N)$ is $1/8$. [Projection and determinant, eqs. (8), (12) and (13)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#3-exact-fredholm-determinant-and-controlled-finite-matrices)
+For $N=2$, $\varepsilon=2$ and $u=1$, the projected determinant $\det(I-uB_N)$ is $1/8$. [Projection and determinant, eqs. (8), (12) and (13)](docs/proofs/quartet-spectrum.md#3-exact-fredholm-determinant-and-controlled-finite-matrices)
 
 Hupkes’s midpoint condition gives the same characteristic equation in a continuous-history space. Put equal weights $i\varepsilon/2$ at the two endpoints and set $z=iu$ to get $i(u-\varepsilon\cos u)$. My starting point is the ordered reciprocal pair, which selects the unit-coupling spectrum and gives the Hilbert-space determinant used below. Varying $\varepsilon$ moves the roots. I can also add a shift $a$ to the squared roots, giving the series $\sum_j(\lambda_j+a)^{-s}$ with its own poles and residues. [Hupkes, eqs. (2.10), (2.54) and Lemma 2.4.4](https://math.leidenuniv.nl/scripties/PhdHupkes.pdf) · [Shifted spectrum, domain and residues](archive/2026-11-16-super-zeta-v001/research/shifted-superzeta.md)
 
@@ -262,7 +268,7 @@ Subtracting Taylor terms at $t=0$ continues the integral. The factor $\sin(\pi s
 
 $`\displaystyle F(s)=\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s).`$
 
-With $w=2s$, the prefactor is nonzero in $0<\Re w<1$. There $\zeta(w)=\pi^w F(w/2)/[2(2^w-1)]$, with the same zero multiplicities. In particular $w=1/2+iT$ corresponds to $s=1/4+iT/2$. Lean identifies the root sum with the continuation on the Mellin strip and proves the multiplicity identity on the pulled-back critical strip. [Cosine spectrum, §5, eqs. (20)–(23)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#5-a-two-variable-zeta-for-the-inverse-cosine-coupling-family) · [Voros, zeta functions over zero sets](https://arxiv.org/abs/1403.4558) · [DLMF, Mellin transforms](https://dlmf.nist.gov/2.5) · [Lean determinant product and root sum](lean/SuperZeta/UnitSpectrum.lean)
+With $w=2s$, the prefactor is nonzero in $0<\Re w<1$. There $\zeta(w)=\pi^w F(w/2)/[2(2^w-1)]$, with the same zero multiplicities. In particular $w=1/2+iT$ corresponds to $s=1/4+iT/2$. Lean identifies the root sum with the continuation on the Mellin strip and proves the multiplicity identity on the pulled-back critical strip. [Cosine spectrum, §5, eqs. (20)–(23)](docs/proofs/quartet-spectrum.md#5-a-two-variable-zeta-for-the-inverse-cosine-coupling-family) · [Voros, zeta functions over zero sets](https://arxiv.org/abs/1403.4558) · [DLMF, Mellin transforms](https://dlmf.nist.gov/2.5) · [Lean determinant product and root sum](lean/SuperZeta/UnitSpectrum.lean)
 
 </details>
 
@@ -287,7 +293,7 @@ With both probes regular, $S_\pm=\sin(\theta\pm\pi/6)$. In $-2\pi/3<\theta<-\pi/
 
 ![The two reciprocal-root sums on the centerline period-640 branch before and after a clockwise turn of π/6.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/trace_order.png)
 
-I turned the measured angle clockwise by $\pi/6$, inverted the angle on the same centerline branch, and evaluated both traces afresh at the turned parameter. The table rounds the interval enclosures. [Interval record](archive/2026-11-19-oriented-return-v001/data/quarter_probe.json)
+The two curves use the same horizontal coordinate $\theta$. At their intersection the offset measurements give equal reciprocal-root sums. On either side, the larger of $M_+$ and $M_-$ identifies which side of $-\pi/2$ the return angle occupies. I tested this by turning the measured angle clockwise by $\pi/6$, solving for the parameter on the same centerline branch, and evaluating both traces again. The table gives rounded values from the interval enclosures. [Interval record](archive/2026-11-19-oriented-return-v001/data/quarter_probe.json)
 
 | Measurement | Return angle in radians | $M_+$ | $M_-$ |
 | --- | ---: | ---: | ---: |
@@ -377,7 +383,7 @@ Elsewhere on the same sweep, the first summand takes the same value at two disti
 
 <div><a name="310-what-a-full-turn-changes-near-the-sixth-zero"></a></div>
 
-At the last trough on the sixth path, the moving zero turns upward. I followed it and 16 neighbors to $\theta=\pi/4$, keeping each point’s own value of the Hurwitz sum $H(w,b)$ fixed as $b$ varies. A point just to the right of the trough first moves farther from the zero and then comes closer. The arrows show all 17 paths on equal real and imaginary scales.
+The trough is the last local minimum of $\Im w$ along the sixth moving zero. From that angle to $\theta=\pi/4$, I follow the zero and 16 neighboring starting points. Each path keeps its own starting value of $H(w,b)$ as the angle changes, so only the path that starts at zero is required to stay on the zero set. With equal scales on the real and imaginary axes, the distance between positions at the same angle measures how much the two paths have separated.
 
 ![Sixteen nearby paths and the sixth moving zero, with starts, endpoints and arrows in the complex plane.](archive/2026-11-19-dottie-plane-atlas-v001/atlas/complex_turn.png)
 
@@ -455,11 +461,34 @@ At a simple zero, squared normalized speed is the squared modulus of $`G(z)=(3/\
 
 <div><a name="read-two-inputs" id="user-content-read-two-inputs"></a></div>
 
-For ordinary Dirichlet powers, pairing the same integer at two inputs gives $`\sum_{n\ge1} n^{-x}\overline{n^{-y}}=\zeta(x+\bar y)`$. Hedenmalm, Lindqvist and Seip give this kernel explicitly in §4.3. I use the squared roots of the Dottie determinant as the common index. [Original paper, pp. 16–17](https://arxiv.org/pdf/math/9512211#page=16) · [Source note](archive/2026-11-20-hurwitz-speed-mean-square-v002/README.md)
+At one fixed real part, the two imaginary inputs let me read the radii and angles of the squared roots separately. I show the separation across the whole plane, then test how much of the first pair I can recover from five readings.
 
-I can read the first nonreal squared root’s modulus and angle from **five real values of the super zeta sum**. I give the inverse the five totals, their precision, and a bound on the higher quartet levels. It recovers a radius between 9.458388942732 and 9.458388942826, and an angle between 1.257969768180 and 1.257969768339 radians. A separate solve of the original cosine equation puts the root inside both intervals. [Five values, inversion and comparison](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#recovering-the-first-nonreal-pair-from-five-full-readings)
+For each squared root $\lambda$ I evaluate its principal power at two complex inputs, multiply the first reading by the conjugate of the second, and sum over roots. For ordinary Dirichlet powers the same operation pairs equal integers and gives $\zeta(x+\bar y)$. My indices are complex roots, so each contributes its argument as well as its modulus. [Hedenmalm, Lindqvist and Seip, §4.3, kernel formula](https://arxiv.org/pdf/math/9512211#page=17) · [Source comparison](archive/2026-11-20-hurwitz-speed-mean-square-v002/README.md)
 
-I form $`\mathrm{Sz}_E(x,y)=\sum_{\lambda}\lambda^{-x}\overline{\lambda^{-y}}`$ by evaluating both powers on the same determinant root before adding. For $`x=r+ih,\ y=r+ik`$, the difference $`h-k`$ multiplies each log radius, while the sum $`h+k`$ weights each conjugate pair by its angle. Varying both over one plane at fixed $`r>1/4`$ determines the entire squared spectrum. On the original $`y=0`$ slice the function is my one-input super zeta. [Proof, convergence and the Riemann reference](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md) · [Numerical enclosures](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-inputs.json) · [Lean identities](lean/SuperZeta/Oriented/TwoInputSpectrum.lean)
+$`\displaystyle \mathrm{Sz}_E(x,y)=\sum_{E(\lambda)=0}\lambda^{-x}\overline{\lambda^{-y}}, \qquad \Re x+\Re y>\tfrac12.`$
+
+**Recovery from one plane.** The four roots $u,-u,\bar u,-\bar u$ give two squared roots $R e^{i\psi},R e^{-i\psi}$. Set $x=r+ih$ and $y=r+ik$ with $r>1/4$. This pair contributes
+
+$`\displaystyle 2R^{-2r}e^{-i(h-k)\log R}\cosh\!\big((h+k)\psi\big).`$
+
+As I vary $h-k$, the oscillation has frequency $\log R$. Once I isolate that frequency, varying $h+k$ gives the angles at that radius. Exact values across the whole plane at one fixed $r$ determine the squared roots and their multiplicities. Setting $y=0$ in the defining sum recovers my original one-input super zeta where its series converges. [Full-plane proof and principal logarithms](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#a-plane-indexed-by-two-imaginary-displacements)
+
+[![Two imaginary shifts at real part one. The change in the complex sum from the quartet angles vanishes on the dotted diagonal k equals minus h. Open the interactive map.](archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
+
+At $r=1$ I compare each point with the point on the dotted line that has the same $h-k$. Color gives the magnitude of the difference between their complex sums. At the two opposite-sign circles the difference is zero, and the sums are about $2.685091+1.968416i$ and its conjugate. At the two same-sign circles the sums agree and the color reads about $0.022907$. [Explore all four readings](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/) · [Full-resolution figure](archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png) · [Figure source and truncation bound](archive/2026-11-20-two-input-map-v001/README.md)
+
+**Recovery from five readings.** Here I set $h=k$, write $\eta=h+k$, and use five real totals. At $r=16$ I take $\eta=0,1,2$. At $r=17$ I take $\eta=0,1$. Subtracting the $\eta=0$ reading cancels the real Dottie root. A bound on the higher levels isolates the first conjugate pair. With the archived readings I obtain a modulus between 9.458388942732 and 9.458388942826 and a positive argument between 1.257969768180 and 1.257969768339 radians. The conjugate has the negative argument. Solving the original cosine equation separately gives values inside both intervals. [Five inputs, tail bound and inverse](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#recovering-the-first-nonreal-pair-from-five-full-readings)
+
+Two totals near $8.49\times10^8$ differ by only $1.20\times10^{-33}$. I rounded each of the five stored intervals outward to the indicated number of significant digits and repeated the inverse at 320 bits. The table gives the approximate *widths* of the resulting enclosures.
+
+| Significant digits per reading | Width in modulus | Width in angle (radians) |
+| ---: | ---: | ---: |
+| 42 | Unresolved | Unresolved |
+| 43 | 0.80 | 0.00393 |
+| 51 | $8.08\times10^{-9}$ | $1.98\times10^{-10}$ |
+| 52 | $8.92\times10^{-10}$ | $1.63\times10^{-10}$ |
+
+At 52 digits both widths are below $10^{-9}$ for these five readings. The full-plane uniqueness and tail bounds have written proofs. Lean proves conjugation exchanges the inputs of each root term, and checks the double-shift identity used to isolate its angle. The numerical replay rounds all five readings outward and repeats the inversion. [Conjugation and principal powers in Lean](lean/SuperZeta/Oriented/TwoInputSpectrum.lean#L18-L32) · [Double shift and isolated angle in Lean](lean/SuperZeta/Oriented/TwoInputSpectrum.lean#L41-L49) · [Outward-rounding replay](tools/replay_two_input_results.py) · [Original intervals](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-inputs.json)
 
 </details>
 
@@ -472,15 +501,17 @@ I form $`\mathrm{Sz}_E(x,y)=\sum_{\lambda}\lambda^{-x}\overline{\lambda^{-y}}`$ 
 
 <div><a name="read-zero-counts" id="user-content-read-zero-counts"></a></div>
 
-I used the period-640 orbit to fix $T_D\approx4.526119322478\times10^{12}$ before evaluating Riemann zeta there. Write $w=\beta+it$. At arbitrary height, Liu’s theorem and reflection put each nontrivial zero in $1-B_{\ast}\le\beta\le B_{\ast}$. In the three intervals below I can replace that whole range by **$\beta=1/2$**. The contours give 2, 5 and 4 zeros. I also evaluated the cumulative count across the full critical strip at both ends of every window. Both methods give the same totals, and the critical-line zeros account for every one. Setting $\beta=1/2$ in the speed estimate of §3.11 now gives $0.33217\lt S\lt4.76646$ for each of these eleven zeros. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Speed bound on the critical line](archive/2026-11-20-liu-angular-velocity-v001/README.md#from-a-bound-on-position-to-a-bound-on-speed)
+I used the period-640 orbit to fix $T_D\approx4.526119322478\times10^{12}$ before evaluating Riemann zeta there. Write $w=\beta+it$. At arbitrary height, Liu’s theorem and reflection put each nontrivial zero in $1-B_{\ast}\le\beta\le B_{\ast}$. In the three intervals below I can replace that whole range by **$\beta=1/2$**. For each window I compared the count around its boundary with the increase in the cumulative count across the critical strip. The two calculations agree on totals of 2, 5 and 4, and disjoint sign changes on the critical line account for all eleven. Setting $\beta=1/2$ in the speed estimate of §3.11 now gives $0.33217\lt S\lt4.76646$ for each of these eleven zeros. [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Speed bound on the critical line](archive/2026-11-20-liu-angular-velocity-v001/README.md#from-a-bound-on-position-to-a-bound-on-speed)
 
-A **simple zero** $\rho$ of Riemann zeta satisfies $\zeta(\rho)=0$ and $\zeta'(\rho)\ne0$. Equivalently, near $\rho$ the function has exactly one factor of $w-\rho$. It contributes one to the contour count. A double zero has two such factors and contributes two.
+A **simple zero** $\rho$ is a point where $\zeta(\rho)=0$ and $\zeta'(\rho)\ne0$. Near that point $\zeta(w)$ has exactly one factor of $w-\rho$, so it contributes one to a count taken around the boundary. In the first window I found two disjoint intervals on the critical line where Hardy’s real function changes sign, each guaranteeing a distinct zero. The boundary count is exactly two including multiplicity, which accounts for the entire window and forces both zeros to be simple.
 
 | Interval in Riemann height $t$ | Simple zeros on $\beta=\tfrac12$ | Off-critical-line zeros | Certificate |
 | --- | ---: | ---: | --- |
 | $\lvert t-T_D\rvert\le\tfrac14$ | 2 | 0 | [Count and endpoint signs](archive/2026-11-20-liu-angular-velocity-v002/README.md#where-the-zero-locations-are-sharper) |
 | $\lvert t-2T_D\rvert\le\tfrac12$ | 5 | 0 | [Second height](archive/2026-11-18-superzeta-distance-v001/README.md) |
 | $\lvert t-3T_D\rvert\le\tfrac12$ | 4 | 0 | [Third height](archive/2026-11-18-superzeta-distance-v001/README.md) |
+
+I also tested whether the Dottie rule picks heights *closer* to a Riemann zero than nearby controls. Each of 32 inputs had two controls. Of the 64 comparisons, 20 favored Dottie, 16 favored a control, and 28 stayed unresolved because 14 inputs did not pass the orbit check. The preregistered majority across all 64 comparisons is still open. [Frozen rule](archive/2026-11-18-clock-local-controls-protocol-v001/README.md) · [All 32 inputs and their outcomes](archive/2026-11-18-clock-proximity-results-v001/README.md)
 
 <div><a name="how-the-iteration-gives-the-height"></a><a name="selection-of-the-test-height"></a></div>
 
@@ -502,18 +533,26 @@ I compared the first window with one of the same width centered at the nearest m
 <details>
 <summary><h3>Eleven simple critical-line zeros in the three height windows</h3></summary>
 
+Each zero below has the form $\rho=1/2+i(kT_D+u)$. For example, the first window contains one zero about $0.199139$ below $T_D$ and another about $0.082089$ above it. I give the midpoints of the certified height brackets rounded to six decimals. The linked record retains both rational endpoints for each zero. [Exact brackets and Hardy signs](archive/2026-11-20-liu-angular-velocity-v002/windows.json)
+
+| Center | Height offsets $u$ within that window |
+| --- | --- |
+| $T_D$ | −0.199139, +0.082089 |
+| $2T_D$ | −0.238174, −0.024279, +0.080224, +0.355996, +0.493434 |
+| $3T_D$ | −0.481659, −0.335074, +0.016093, +0.183093 |
+
 I counted every zero in each rectangle, including multiplicity, and found the same number of distinct critical-line zeros from disjoint intervals where Hardy’s $Z(t)$ changes sign. Write $w=\beta+it$. OpenAI’s Theorem 1.1 excludes zeros for $\beta>7/8$, and reflection gives $1/8\le\beta\le7/8$ for every nontrivial zero. At $T_D$ my contour covers $1/16<\beta<15/16$, including both boundary lines of that strip. At $2T_D$ and $3T_D$ the rectangles cover the full width $0\le\beta\le1$. [OpenAI, Theorem 1.1](https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf) · [Riemann reflection](https://dlmf.nist.gov/25.4) · [First full-strip corollary](archive/2026-11-17-dottie-local-strip-v001/README.md#full-strip-corollary)
 
 For the contour count I bound zeta on each boundary segment by interval arithmetic. These enclosures exclude zero and give the change of argument around the rectangle. The first-height verifier counts boxes with height offsets in $[-1/4,1/4]$ using two charts that meet at $t=T_D$. The two contours give one zero each and certify that shared edge as zero-free. At $2T_D$ and $3T_D$ I use four separate quarter-height charts per window. Their counts from bottom to top are $(0,2,1,2)$ and $(2,0,2,0)$, with both outer height endpoints and every shared edge certified zero-free. In each window I also enclose opposite signs of the real Hardy function $Z(t)$ on disjoint intervals on the critical line. At $T_D$, for example, two disjoint sign-change brackets give two distinct critical-line zeros. The contour count is exactly two with multiplicity, so each of those zeros contributes one and together they exhaust the rectangle. The same argument applies to the five brackets at $2T_D$ and the four at $3T_D$. A second proof uses FLINT’s global zero counter over guards of radius $2^{-18}$ at all six endpoints and checks all 22 Hardy signs directly. At the first height, for example, the count rises from 18,947,484,639,340 to 18,947,484,639,342. Both endpoints are zero-free because each count stays constant throughout its guard. [All three full-strip counts and signs](archive/2026-11-20-liu-angular-velocity-v002/windows.json). [First interval certificate](archive/2026-11-17-dottie-local-strip-v001/README.md#full-strip-corollary) · [Higher interval counts and independent check](archive/2026-11-18-superzeta-distance-v001/README.md#how-the-computations-certify-the-statements) · [FLINT's zero-counting methods](https://flintlib.org/doc/algorithms/special-functions/zeta-zeros.html)
 
-In the super zeta coordinate $w=2s$, I count the same zeros through $F(s)=\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s)$. The factor multiplying $\zeta(2s)$ is nonzero for $0<\Re(2s)<1$, so each simple Riemann zero $\rho$ in the table gives a simple zero of $F$ at $s=\rho/2$. My three windows put the zeros of $F$ on $\Re s=1/4$, with $|\Im s-T_D/2|\le1/8$ for the first and $|\Im s-kT_D/2|\le1/4$ for $k=2,3$. The higher two certificates also check the elementary factor on the closed left edge $\Re s=0$. [Spectral reconstruction, eqs. (21)–(22)](archive/2026-11-16-super-zeta-v001/sources/foundation/cosine-spectrum.md#5-a-two-variable-zeta-for-the-inverse-cosine-coupling-family) · [Full result and evidence](archive/2026-11-18-superzeta-distance-v001/README.md)
+In the super zeta coordinate $w=2s$, I count the same zeros through $F(s)=\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s)$. The factor multiplying $\zeta(2s)$ is nonzero for $0<\Re(2s)<1$, so each simple Riemann zero $\rho$ in the table gives a simple zero of $F$ at $s=\rho/2$. My three windows put the zeros of $F$ on $\Re s=1/4$, with $|\Im s-T_D/2|\le1/8$ for the first and $|\Im s-kT_D/2|\le1/4$ for $k=2,3$. The higher two certificates also check the elementary factor on the closed left edge $\Re s=0$. [Spectral reconstruction, eqs. (21)–(22)](docs/proofs/quartet-spectrum.md#5-a-two-variable-zeta-for-the-inverse-cosine-coupling-family) · [Full result and evidence](archive/2026-11-18-superzeta-distance-v001/README.md)
 
 </details>
 
 <details>
 <summary><h3>Zero proximity in the grid pilot and the 32-input test</h3></summary>
 
-The first matched grid window contained three critical-line zeros, compared with two in the Dottie window. To test distance to the nearest zero, I also ran a two-height pilot and then a preregistered test of 32 transverse inputs. The pilot split one win each. In the larger test I placed controls four local mean spacings below and above each orbit-selected height. Of 64 comparisons, 20 favored the Dottie height and 16 favored a control. At 14 inputs the orbit check left both comparisons open, so the remaining 28 can still change the overall majority. [Earlier pilot](archive/2026-11-18-clock-proximity-results-v001/pilot/README.md) · [Frozen selection rule](archive/2026-11-18-clock-local-controls-protocol-v001/README.md) · [Every input, comparison and unresolved case](archive/2026-11-18-clock-proximity-results-v001/README.md)
+The first matched grid window contained three critical-line zeros, compared with two in the Dottie window. In a two-height pilot, Dottie and the grid each gave the closer height once. For the 32-input test I put the controls four local mean spacings above and below each selected height. Of the 18 inputs with a certified orbit, Dottie beat both controls at seven, beat one at six, and beat neither at five. [Pilot](archive/2026-11-18-clock-proximity-results-v001/pilot/README.md) · [Selection rule](archive/2026-11-18-clock-local-controls-protocol-v001/README.md) · [Every comparison](archive/2026-11-18-clock-proximity-results-v001/README.md)
 
 </details>
 
@@ -532,6 +571,8 @@ I weight the radius $R_n$ of each quartet by the fraction of two independently c
 
 <details>
 <summary><h3>A quarter-step displacement in the normalized levels</h3></summary>
+
+The difference between the quartet index $n$ and its weighted level $\Lambda_n$ tends to $1/4$. The displaced levels in this section come from weighting each actual quartet radius by two balanced sign counts.
 
 The fraction of words of length $2n$ with equally many plus and minus signs is $B_n=4^{-n}\binom{2n}{n}$. I choose two words independently, so the fraction for which both balance is $B_n^2$. At nonunit multiplier-one level $n$, the four recovered parameters $L$ share a radius $R_n$. I number the quartets from $n=1$ in increasing positive characteristic level. Since $R_n\sim2\pi n$ and $B_n^2\sim1/(\pi n)$, the weighted radius tends to $2$. Dividing by $2$ defines my normalized factor $C_n$. [Quartet radii and balanced sign counts](archive/2026-11-16-super-zeta-v001/research/binomial-normalization.md)
 
@@ -639,11 +680,12 @@ The archive contains the derivations and computations in the order I developed t
 
 **I invite independent reproduction** of the determinant product and Mellin integral on their specified logarithm branch, the contour winding and both endpoint signs in every Hardy bracket, and the passage from a finite cap orbit to a particular horn in a common phase coordinate. The first Dottie window contained two line zeros and its matched grid window contained three. The separate height-selection experiment asks how often an orbit-selected window improves on its controls. [Reproduction guide](archive/2026-11-18-spectral-reproduction-v001/README.md) · [Matched experiment](archive/2026-11-17-dottie-grid-match-v001/README.md)
 
-From the repository root, the first command checks the archived inventory and file hashes. The second builds the pinned Lean project and runs its theorem audit. The individual interval certificates have replay commands in their own deposits. [Source inventory](archive/2026-11-18-lean-foundations-v001/README.md) · [Lean theorem index and setup](lean/README.md) · [Archive preservation](PRESERVATION.md)
+From the repository root, the first command checks archive hashes. The second builds the pinned Lean project and audits theorem dependencies. The third regenerates the Hurwitz speed and two-input spectral reports in temporary storage, compares their bytes with the archive, and checks the precision table in §3.13. For that numerical replay I used Python 3.12.11 with python-flint 0.9.0 (FLINT 3.6.0). The contour and global-count checks in §4 use different algorithms in FLINT. I would welcome a reproduction with a separately implemented zeta evaluator. [Lean setup](lean/README.md) · [Archive preservation](PRESERVATION.md) · [Numerical replay](tools/replay_two_input_results.py)
 
 ~~~sh
 python tools/verify_archive.py
 python tools/check_lean.py --fetch-cache
+python -B tools/replay_two_input_results.py
 ~~~
 
 </details>
@@ -679,7 +721,7 @@ Following a Hurwitz zero through one turn gave me successive Riemann zeros, then
 20. **Open for individual zeros.** At a simple Riemann zero $\rho$, can $\zeta(\rho)=0$ sharpen the pointwise bound on $\lvert L(1+\rho,\chi_{-3})/(1-3^{-\rho})\rvert$ at every height? [Pointwise estimate](archive/2026-11-20-liu-angular-velocity-v001/README.md#from-a-bound-on-position-to-a-bound-on-speed)
 21. ~~Can I estimate the mean square over simple zeros in a short interval and compute it in my three Dottie windows?~~ I have certified values in all three. At almost all centers of shrinking windows containing simple zeros, their mean squared speed is approximated by $`\lvert G(1/2+it)\rvert^2`$ at the center height $t$. [Theorem and enclosures](archive/2026-11-20-hurwitz-speed-mean-square-v001/README.md)
 22. **Open.** If I count only simple zeros up to height $T$, does their mean squared speed still tend to $`13\zeta(3)/\pi^2`$, and does it retain the same prime-power correction? [Bounds for the simple-zero average](archive/2026-11-20-hurwitz-speed-mean-square-v001/README.md#a-cumulative-bound-when-only-simple-zeros-are-counted)
-23. ~~Can two complex exponents determine the entire squared quartet spectrum?~~ On a plane of exponents with equal fixed real parts, the difference of their imaginary shifts isolates each radius and the sum distinguishes its root angles. Five finite readings recover the first nonreal pair with a directed error bound. [Proof and inverse](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md)
+23. ~~Can two complex exponents determine the entire squared quartet spectrum?~~ Exact data across one plane of fixed real part determine every squared root with multiplicity. In the finite calculation, five readings across $r=16,17$ recover the first conjugate pair. [Full-plane proof and five-reading inverse](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md)
 24. **Open.** Given a fixed precision for the readings, how many consecutive quartet levels can be recovered with disjoint certified enclosures? The first level is the finite test case. [Five input intervals](archive/2026-11-20-hurwitz-speed-mean-square-v001/two-inputs.json)
 
 </details>
