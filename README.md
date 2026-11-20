@@ -225,6 +225,17 @@ I can also say exactly where an odd count can occur as I lower the target. I rea
 
 </details>
 
+<details>
+<summary><strong>At most seven Gaussian zeros in each of two reflected disks</strong></summary>
+
+I centered two disks at $31/64+iT$ and $33/64+iT$, where $T=T_D-1/512$. With radius $15/1024$, each disk clears the critical line by $1/1024$. Reflection pairs their zeros at the same height, preserving multiplicity. The Gaussian prime sum bounds the total weight of all zeros by $87.057901$, and each zero in this height band contributes more than $5.481507$. Eight in either disk would require sixteen in the band and a weight above $87.704112$. This gives at most seven per closed disk without assuming that any zero lies on the critical line. The exact count in each disk is still open. [Derivation and two numerical checks](archive/2026-11-20-gaussian-reflected-disks-v001/README.md)
+
+The earlier $1/7$ is a coefficient in a different prime sum. For a cyclic subgroup of order $o$, the coefficient used there is $1/(3o+1)$ in the unmarked case. The Dirichlet character $\chi_{-3}$ has order two. Here seven comes from the measured upper bound. In the same two disks, increasing the Gaussian prime-power cutoff from $2^{20}$ to $2^{23}$ lowered the upper count from eight to seven. [Alpöge’s coefficient rule](https://github.com/Deicyde/riemann-hypothesis/blob/ba2a065656ec7c638baa601994de3e0245ff6665/src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean#L37-L41) · [My prime weights](archive/2026-11-20-dedekind-phase-v001/README.md) · [Cutoff comparison](archive/2026-11-20-gaussian-reflected-disks-v001/README.md#how-the-arithmetic-rules-out-eight-per-disk)
+
+Lean checks the per-zero lower integrand and its numerical integration rule, the count deduction from the trace inequalities, and a sufficient condition for both disks to be empty. The explicit formula and the numerical bounds fed into those deductions have their own derivation and interval replay. [Fourier weight proof in Lean](lean/SuperZeta/GaussianDiskKernel.lean) · [Disk and boundary proofs in Lean](lean/SuperZeta/GaussianDiskCount.lean) · [Open question on the omitted prime terms](archive/2026-11-20-gaussian-reflected-disks-v001/README.md#what-the-circle-calculation-resolves)
+
+</details>
+
 </details>
 
 <details>
@@ -249,6 +260,8 @@ I keep the derivations, figures, and computational certificates together so each
 <div><a name="zero-transport-questions"></a><a name="questions-in-the-order-i-asked-them"></a><a name="read-questions" id="user-content-read-questions"></a></div>
 
 The open field question is whether the native determinant, or another specified spectral reading of the ordered return, gives the three character residues independently of reducing the quartic. The test must specify the observable and its input before evaluating the comparison primes. The open spire question is how the certified finite cap orbits match to the limiting horn maps. [Chronological research questions](docs/proofs/reciprocal-constructions.md#user-content-read-questions)
+
+For the two Gaussian disks, my next question is whether cancellation in the omitted terms keeps the real part of the completed factor negative around the entire right circle. That would settle both counts at zero. [Question 25 and its numerical threshold](docs/proofs/reciprocal-constructions.md#gaussian-disk-remainder)
 
 <div><a name="preprints-and-reproduction"></a><a name="read-preprints" id="user-content-read-preprints"></a></div>
 

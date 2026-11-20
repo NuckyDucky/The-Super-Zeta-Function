@@ -1,0 +1,70 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 4301,
+      "sha256": "bc841d9810dc2946d03353706283528c9522dc06ea5d74b2f625da2b985de2ed"
+    },
+    "arc-gaussian-1048576-64.json": {
+      "bytes": 12269,
+      "sha256": "b769b48362f9263b974990d958f0ede96ec0fe48ee63e644f09d88a3aebfac9d"
+    },
+    "arc-gaussian-262144-64.json": {
+      "bytes": 12247,
+      "sha256": "633a5d087a18148d1b7954f0c0372fd1811a277e3531db00ffcb0554f6e5f615"
+    },
+    "arc-gaussian-65536-512.json": {
+      "bytes": 91639,
+      "sha256": "92ee525ee49530df26bca47dda536e26df37fc096d4b8a9d78a5bc386ec90b0e"
+    },
+    "arc-gaussian-65536-64.json": {
+      "bytes": 12146,
+      "sha256": "7d35dfb8a85012efe701dafd9f68209884670744eaf791dccf07d1bd011fc257"
+    },
+    "arc-gaussian.json": {
+      "bytes": 12132,
+      "sha256": "9a07e6b0a3c0df1fe9e2f50cd887c04f22121b6c58a06bfcf224db55c7ab68f0"
+    },
+    "arc-gaussian.py": {
+      "bytes": 5363,
+      "sha256": "c5478d43d7efccec5ba05f33a68ba51d636648f1f9da5cc7d476ac9815a87a8b"
+    },
+    "arc-method.md": {
+      "bytes": 5300,
+      "sha256": "de2e234373b63fa84ccf27a1550e4f9eaf6b065822b41fe0e37df024856fab52"
+    },
+    "fourier-count-2pow23.json": {
+      "bytes": 716,
+      "sha256": "ebfb1c74b544d1491b9e213bbc287dc111eadb34efe74b8a1ac006a1ffe44f82"
+    },
+    "fourier-count.json": {
+      "bytes": 717,
+      "sha256": "0033db48ffbf277f456e41a75cdc4fee70c7566e3b31cf7bd76e30d9fc8cc193"
+    },
+    "fourier_count.py": {
+      "bytes": 3946,
+      "sha256": "4385ba0a09412db2af89876dd03ee459ed0ae80c0eac4c6c9ab530a944539ef2"
+    },
+    "gaussian_inputs.py": {
+      "bytes": 1334,
+      "sha256": "1b95364f557bc92e42cdb622687d57462cde79fdf40302e95c1d311faa62f95c"
+    },
+    "mass-count.json": {
+      "bytes": 589,
+      "sha256": "6b42eda48fa5c5d3d176379549dfa674ab5ff6136214a4b0785628f1928a5f8d"
+    },
+    "mass-proof.md": {
+      "bytes": 4173,
+      "sha256": "c4eee663dcaed12e1d8ed66acc577e3009cc0356373de5924d3416b3dfb684fd"
+    },
+    "mass.py": {
+      "bytes": 2583,
+      "sha256": "c01a955a2c0ec0f50bdd9d8d8f3119003f6e1e40a7f4ef0050ed25f52fd54209"
+    },
+    "replay.py": {
+      "bytes": 3284,
+      "sha256": "d03b0ff09bf6f2b49fbe6938d596896e71b81e331cbaf788a645b84fca411f6f"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-gaussian-reflected-disks-v001"
+}
