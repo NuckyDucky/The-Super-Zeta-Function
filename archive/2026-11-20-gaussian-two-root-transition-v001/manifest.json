@@ -1,0 +1,98 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 12193,
+      "sha256": "0098ca055a0224468ffdcbd48580eb67ad7e917d9e72e618702031ac0974f1d0"
+    },
+    "branch-positions.json": {
+      "bytes": 4915,
+      "sha256": "a477c4605ef32045a3d97da4fb3bb822615f6cd9580c8b04c51f0bba8555ecfa"
+    },
+    "check_branch_positions.py": {
+      "bytes": 3467,
+      "sha256": "8c88328d9a52214e0c5ec09d84c9e23451c63fb521a71461c9bbfae344064a8d"
+    },
+    "check_gaussian_loop_arcs.py": {
+      "bytes": 6566,
+      "sha256": "b82eb940929f174bed00768e77d684b5b22e95d168501000c9e8015c760f690e"
+    },
+    "check_gaussian_preimage_counts.py": {
+      "bytes": 2475,
+      "sha256": "4b01c4ab31562093f294535f513d00f0d51612c32cc702dea448a54fe9794fd4"
+    },
+    "check_gaussian_strip_image.py": {
+      "bytes": 1869,
+      "sha256": "ea2d4b229e6c1edaee802003c41d516e510296796af3f07e4088a531eab2f729"
+    },
+    "check_gaussian_target_corridor.py": {
+      "bytes": 6021,
+      "sha256": "5c40562eac9b40b287d36029a35dba20e7d332575df0047ae038200a72030042"
+    },
+    "check_quartic_neck.py": {
+      "bytes": 2856,
+      "sha256": "26a5af79bec5fb736e4bf313eda26668ab50d7f8b8665fa4407d69f528b9c999"
+    },
+    "check_quartic_tube.py": {
+      "bytes": 2187,
+      "sha256": "300b8d84b52f6292e2e888832afc9326683194a6910735ac55e7ee1c387c5744"
+    },
+    "gaussian-branch-positions.png": {
+      "bytes": 169311,
+      "sha256": "359b4c9d2770c31b072e3f54d52faa0dd186b63e04f7dbd028f4dce56ccffd5c"
+    },
+    "gaussian-loop-arcs.json": {
+      "bytes": 60578,
+      "sha256": "43a8e0cbb7d86efb83db3839c57449764cafaf559ce781e3e346e034a7cf5c1e"
+    },
+    "gaussian-preimage-counts.json": {
+      "bytes": 1552,
+      "sha256": "171c3c604ec6cc5dbb22c8696a8524f3e20fbcf9a3b1b860b33c365f711ea326"
+    },
+    "gaussian-strip-image.json": {
+      "bytes": 1133,
+      "sha256": "eb5fae9ee22113ccdfb09f81f75bbf1f0df2c3385d042bee4aa63a583591e24e"
+    },
+    "gaussian-strip-image.md": {
+      "bytes": 6992,
+      "sha256": "1437d7d1dbb10db4b3b9312cd9aee0ad8bde8630c47eaae0b4b91f873f2664c7"
+    },
+    "gaussian-target-corridor.json": {
+      "bytes": 2131,
+      "sha256": "88e75cedc320482ee5917204d567a2f576633e8a3896361c51ff2fa6a9805079"
+    },
+    "gaussian-target-corridor.md": {
+      "bytes": 5524,
+      "sha256": "7ea16d16b65101ec4468fb57e67a9fc5581b3c7c7ec914ad73c71849db481a4f"
+    },
+    "gaussian_inputs.py": {
+      "bytes": 1334,
+      "sha256": "1b95364f557bc92e42cdb622687d57462cde79fdf40302e95c1d311faa62f95c"
+    },
+    "plot_gaussian_branch_positions.py": {
+      "bytes": 4410,
+      "sha256": "5c2521808d8ecff42f8811adeb32f514cc982763f8de75722229f209f960558e"
+    },
+    "plot_quartic_neck.py": {
+      "bytes": 2798,
+      "sha256": "a62bc8182525e39440bd8b47c57ed7c3725e5c227aee343e7b6f27938101bb79"
+    },
+    "quartic-first-tube.json": {
+      "bytes": 1506,
+      "sha256": "16d86ea8cf1095108388e6b1ec65f6dbb4d294a76e9fc322f997062c0c11cfc4"
+    },
+    "quartic-neck-readings.md": {
+      "bytes": 4616,
+      "sha256": "6b8135c562c09feb163b8f85b7ef7fa600b516d24ce13154eef1a9ece9703031"
+    },
+    "quartic-neck-readings.png": {
+      "bytes": 147069,
+      "sha256": "799ae2f504f04ff7e973edb3d1756a1e84de17e1ec2745ffd9b05cb1d32e3563"
+    },
+    "quartic-neck.json": {
+      "bytes": 1832,
+      "sha256": "b655156895bde1b582f2be3e79bc00f5bc845a9f8bc1370d4e4ef27ee39aa771"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-gaussian-two-root-transition-v001"
+}
