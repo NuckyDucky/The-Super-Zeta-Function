@@ -1,0 +1,40 @@
+name: Hurwitz and two-input numerical replay
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'archive/2026-11-20-hurwitz-speed-mean-square-v001/**'
+      - 'archive/2026-11-20-liu-angular-velocity-v002/windows.json'
+      - 'tools/replay_two_input_results.py'
+      - '.github/workflows/two-inputs-replay.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'archive/2026-11-20-hurwitz-speed-mean-square-v001/**'
+      - 'archive/2026-11-20-liu-angular-velocity-v002/windows.json'
+      - 'tools/replay_two_input_results.py'
+      - '.github/workflows/two-inputs-replay.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: two-inputs-replay-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.12.11'
+      - name: Install the pinned interval arithmetic library
+        run: python -m pip install --only-binary=:all: python-flint==0.9.0
+      - name: Match both archived reports and check five-reading precision
+        run: python -B tools/replay_two_input_results.py
