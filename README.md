@@ -10,7 +10,7 @@ The Dottie fold gives me a periodic return from which I select three height wind
 
 - From the product for $E$ I obtain exact sums over the tower spectrum. For example, $\mathcal Z(1;1)=2$ and $\mathcal Z(2;1)=10/3$. For every positive index $m$, the exponent of 2 in $\mathcal Z(m;1)$ equals the number of ones in the binary expansion of $m$. [All-index trace law](archive/2026-11-18-binary-law-v001/README.md#what-the-binary-digits-measure) · [Determinant product and first four sums](docs/proofs/quartet-spectrum.md#4-canonical-product-and-exact-rational-trace-sums)
 - Near the Dottie fold I isolate paired periods 640 and 205,440. A period-640 return sets three height windows in which all eleven Riemann zeros lie on the critical line and have multiplicity one. Such zeros are called simple. This sharpens the 7/8ths and Liu bounds in those windows. [Orbit certificate](archive/2026-11-18-dottie-mixed-cap-period-v001/README.md) · [Count in each window](#4-transferring-zero-results-one-factor-at-a-time) · [Three window counts](archive/2026-11-20-liu-angular-velocity-v002/README.md)
-- From the balanced sign counts I recover the Stirling remainder for a single factorial. The actual quartet radii determine a finite Hurwitz sign change between levels 28 and 29. [Factorial proof](archive/2026-11-18-stirling-correction-v001/README.md) · [Comparison with equally spaced radii](archive/2026-11-18-quartet-grid-comparison-v001/README.md)
+- I express $n!$ exactly as Stirling’s leading factor times an explicit integral correction derived from the balanced sign counts. The actual quartet radii determine a finite Hurwitz sign change between levels 28 and 29. [Exact factorial formula](#the-exact-factorial-from-the-balanced-sign-count) · [Factorial proof](archive/2026-11-18-stirling-correction-v001/README.md) · [Comparison with equally spaced radii](archive/2026-11-18-quartet-grid-comparison-v001/README.md)
 - I identify the arithmetic character of a branch of my quartic over the Gaussian integers. Its conductor gives three finite reductions that determine the sign at every nonzero marked Gaussian lattice point coprime to the conductor, and give zero at the excluded points. [Field and conductor proof](archive/2026-11-20-dedekind-phase-v001/README.md)
 - I recover which branch supplied those signs from the completed zeros of an angular Hecke function. At norm 73 the two signs can then be read in order as exponential stages. Starting both words at 1 gives $\sqrt{2}$ and $1/4$. [Branch recovery and sign words](archive/2026-11-20-gaussian-branch-spectrum-v001/README.md)
 - At any unknown nonzero integral lift $L=m\pi i$, two derivatives at the starting cap recover the magnitude of the lift and every signed exponential stage in order. One independently retained odd-stage prime reading also recovers which sign convention I used. [Theorem and blind experiment](archive/2026-11-20-hidden-lift-v001/README.md)
@@ -101,6 +101,36 @@ At $UV=1$, specifying a cosine root and the sign in its equation recovers the or
 | The two ordered logarithms at a fixed pair | Mark a vector by its two integers $m,n$ and measure the squared length of $m+nU/V$. | At $U/V=e^{2\pi i/3}$ this is the Eisenstein norm. At $U/V=i$ it is the Gaussian norm. The extra prime weight at the Gaussian ratio comes from $f$. [Lattice derivation](archive/2026-11-20-dedekind-phase-v001/README.md) |
 
 The lattice ratios use fixed pairs of the full logarithmic lift. For example, the fixed pair at $u=\pi/4$ has multiplier $\pi^2/8$. The multiplier-one condition selects the smaller family in the first row. [Ordered phases and inverse logarithmic lift](lean/SuperZeta/DedekindLift.lean)
+
+</details>
+
+### The exact factorial from the balanced sign count
+
+For every integer $n\ge1$, I recover $n!$ by multiplying Stirling’s leading approximation by the exponential of one definite integral. The right-hand side uses only $n$.
+
+~~~math
+n!=\sqrt{2\pi n}\left(\frac ne\right)^n
+\exp\!\left[
+  \int_0^\infty e^{-nt}
+  \left(\frac12\coth\frac t2-\frac1t\right)\frac{dt}{t}
+\right].
+~~~
+
+This is Binet’s integral for the Stirling remainder. In my construction it comes from counting two independent balanced sign histories of length $2n$. The count involves both $(2n)!$ and $n!$. Reading the same count at $n,2n,4n,\ldots$ isolates the correction for a single factorial. For $10!$, Stirling’s leading factor is about $3{,}598{,}695.62$. The integral supplies the multiplier $1.0083653591\ldots$, giving exactly $3{,}628{,}800$ when evaluated without rounding. [Derivation from the sign histories](docs/proofs/reciprocal-constructions.md#recovering-the-error-on-one-factorial) · [Exact factorial theorem in Lean](lean/SuperZeta/StirlingCorrection.lean#L355) · [Binet’s formula, DLMF](https://dlmf.nist.gov/5.9.E10_2)
+
+<details>
+<summary>How doubling the word length recovers the correction for one factorial</summary>
+
+Write $B_n=4^{-n}\binom{2n}{n}$ for the fraction of balanced words. With two independent words the fraction is $B_n^2$. Removing the quartet radius from $C_n=R_nB_n^2/2$ leaves the factorial factor $D_n=\pi n B_n^2$. If $\rho_n$ denotes the logarithm of the ratio of $n!$ to its leading Stirling factor, the factorials in $D_n$ give
+
+~~~math
+\begin{aligned}
+I(x)&=\int_0^\infty e^{-xt}\frac{\tanh(t/4)}{t}\,dt,\qquad x>0,\\
+\log D_n&=2\rho_{2n}-4\rho_n=-I(n).
+\end{aligned}
+~~~
+
+Solving for $\rho_n$ and iterating gives $\rho_n=\tfrac14\sum_{j\ge0}2^{-j}I(2^j n)$. The kernels at successive doubled indices telescope to the single integral above. After $k$ terms the omitted logarithmic correction is between zero and $4^{-k}/(12n)$. For $n=10$, twelve terms with that tail bound enclose the answer between $3{,}628{,}799.9981$ and $3{,}628{,}800.0001$. The only integer in that interval is $3{,}628{,}800$. [Kernel, recurrence and doubling proof](lean/SuperZeta/StirlingCorrection.lean#L306) · [Quartet normalization and all-order error bound](archive/2026-11-18-stirling-correction-v001/README.md#the-exact-correction)
 
 </details>
 

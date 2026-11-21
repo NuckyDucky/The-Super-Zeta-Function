@@ -761,6 +761,27 @@ $`\displaystyle \rho_n=\frac14\sum_{j=0}^{\infty}2^{-j}I(2^j n), \qquad n!=\sqrt
 
 Since $0\le I(x)\le1/(4x)$, stopping after the first $k$ terms leaves at most $4^{-k}/(12n)$ in the logarithm of the factorial ratio. For $10!$ the leading expression gives about $3{,}598{,}695.62$. The exact remainder multiplies it by about $1.0083653591$, giving $3{,}628{,}800$. This is the Stirling remainder in Binet's formula, recovered here by doubling the kernel of the balanced histories. [Binet's formula, DLMF 5.9.10₂](https://dlmf.nist.gov/5.9.E10_2) · [Exact factorial identity and kernel in Lean](../../lean/SuperZeta/StirlingCorrection.lean)
 
+I can also evaluate the correction as one definite integral. In each $I(2^j n)$, rescale the integration variable so that the exponential becomes $e^{-nt}$. Every rescaled kernel is nonnegative, so monotone convergence allows the sum inside the integral. The identity $\tanh x=2\coth(2x)-\coth x$ cancels adjacent terms. For $t>0$ the first $k$ kernels give
+
+~~~math
+\frac14\sum_{j=0}^{k-1}2^{-j}\tanh\!\left(\frac{t}{2^{j+2}}\right)
+=\frac12\coth\!\left(\frac t2\right)
+ -\frac{1}{2^{k+1}}\coth\!\left(\frac{t}{2^{k+1}}\right).
+~~~
+
+Since $x\coth x\to1$ as $x\to0$, the last term on the right tends to $1/t$. This gives a formula for the factorial with no factorials in its integrand. The kernel multiplying $e^{-nt}$ tends to $1/12$ at $t=0$, and the exponential ensures convergence at infinity.
+
+~~~math
+n!=\sqrt{2\pi n}\left(\frac ne\right)^n
+\exp\!\left[\int_0^\infty e^{-nt}
+\left(\frac12\coth\frac t2-\frac1t\right)\frac{dt}{t}\right],
+\qquad n\ge1 .
+~~~
+
+The Lean theorem gives the exact factorial in the doubled-index series. The cancellation above identifies that series with Binet’s single integral, using $\tfrac12\coth(t/2)=\tfrac12+1/(e^t-1)$. [Doubled-index factorial equality in Lean](../../lean/SuperZeta/StirlingCorrection.lean#L355) · [Binet’s integral](https://dlmf.nist.gov/5.9.E10_2)
+
+For $10!$, I used $k=12$ and bounded the logarithmic tail by $1/(120\cdot4^{12})$. To evaluate each $I(x)$ without using any factorials, I substituted $u=xt$. I enclosed $e^{-u}\tanh(u/(4x))/u$ with 160-bit ball quadrature on the three intervals with endpoints $2^{-40},1,16,96$. The positive pieces below and above those cutoffs together contribute at most $(2^{-40}+e^{-96})/(4x)$ to $I(x)$, since $\tanh y\le y$ for $y\ge0$. Exponentiating the bounded sum and multiplying by Stirling’s factor gave $3{,}628{,}799.9981<10!<3{,}628{,}800.0001$ after outward rounding. The interval contains exactly one integer.
+
 </details>
 
 <div><a name="where-the-correction-enters-the-level-zeta"></a></div>
