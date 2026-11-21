@@ -38,6 +38,10 @@ import SuperZeta.SignWords
 import SuperZeta.DedekindLift
 import SuperZeta.FieldWeights
 import SuperZeta.MarkedBranch
+import SuperZeta.FractionalTurn
+import SuperZeta.GaussianIdealEuler
+import SuperZeta.GaussianPrimeResidue
+import SuperZeta.GaussianSpectralTransfer
 import SuperZeta.ZeroMoment
 import SuperZeta.TwoRootMoments
 import SuperZeta.TwoRootCircleIntegral

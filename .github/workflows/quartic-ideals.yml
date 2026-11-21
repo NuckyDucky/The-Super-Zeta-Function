@@ -1,0 +1,33 @@
+name: Quartic ideals at 73
+on:
+  pull_request:
+    paths: ['lean-ideal73/**', '.github/workflows/quartic-ideals.yml']
+  push:
+    branches: [main]
+    paths: ['lean-ideal73/**', '.github/workflows/quartic-ideals.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ideal-count:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: lean-ideal73
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
+        with:
+          persist-credentials: false
+      - name: Install pinned elan
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --silent --show-error --location --retry 3 -o elan.tar.gz https://github.com/leanprover/elan/releases/download/v4.3.0/elan-x86_64-unknown-linux-gnu.tar.gz
+          echo '0c71472fa3ac34871dc1e2539993cca222d7656b42a1469f8f8c97c22f9adab2  elan.tar.gz' | sha256sum --check
+          tar -xzf elan.tar.gz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build the field model and audit the ideal count
+        run: |
+          lake exe cache get $(sed -n 's/^import \(Mathlib\.[[:alnum:]_.]*\)$/\1/p' *.lean | sort -u)
+          lake build

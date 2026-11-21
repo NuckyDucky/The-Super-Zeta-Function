@@ -1,0 +1,14 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 5269,
+      "sha256": "f6253ee2b36575f398fb6ca4cb9631309d407231bffa8ae48c481fada53070bd"
+    },
+    "replay.py": {
+      "bytes": 3682,
+      "sha256": "630e9abf3206487f0bcbc24c7a5110a2f9793bc17a5349270a23a5a8306fef5e"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-gaussian-local-factor-v001"
+}
