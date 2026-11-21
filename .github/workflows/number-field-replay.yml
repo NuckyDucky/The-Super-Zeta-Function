@@ -15,6 +15,8 @@ on:
       - 'archive/2026-11-20-gaussian-relative-remainder-v001/**'
       - 'archive/2026-11-20-gaussian-common-sector-v001/**'
       - 'archive/2026-11-20-gaussian-local-factor-v001/**'
+      - 'archive/2026-11-21-gaussian-rectangle-v001/**'
+      - 'tools/gaussian_prefix_smoothing.py'
       - 'tools/check_quartic_ideal_series.py'
       - '.github/workflows/number-field-replay.yml'
   push:
@@ -31,6 +33,8 @@ on:
       - 'archive/2026-11-20-gaussian-relative-remainder-v001/**'
       - 'archive/2026-11-20-gaussian-common-sector-v001/**'
       - 'archive/2026-11-20-gaussian-local-factor-v001/**'
+      - 'archive/2026-11-21-gaussian-rectangle-v001/**'
+      - 'tools/gaussian_prefix_smoothing.py'
       - 'tools/check_quartic_ideal_series.py'
       - '.github/workflows/number-field-replay.yml'
 
@@ -144,3 +148,7 @@ jobs:
       - name: Remove the opposite-sign local factors on the two Dottie circles
         working-directory: archive/2026-11-20-gaussian-local-factor-v001
         run: python -B replay.py
+      - name: Check the first retained Gaussian zero and the prefix weighting error
+        run: |
+          python -B archive/2026-11-21-gaussian-rectangle-v001/replay_rectangle.py
+          python -B tools/gaussian_prefix_smoothing.py

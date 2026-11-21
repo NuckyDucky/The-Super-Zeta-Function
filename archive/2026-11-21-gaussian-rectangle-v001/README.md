@@ -34,3 +34,7 @@ python -B archive/2026-11-21-gaussian-rectangle-v001/retained.py
 
 The first command evaluates the archived sharp moments, encloses the six retained bands and computes the infinite-tail bound. It checks the derivative and sign brackets again. The second regenerates the six band sums from the signed prime-ideal coefficients, checks their hashes and compares the complex enclosures. [Sharp moment inputs](signed-blocks.json) · [Six band sums](carriers.json) · [Earlier moment regeneration](../../docs/proofs/gaussian-moment-regeneration.md)
 
+
+### The next 67,108,864 consecutive norms
+
+At every new integer cutoff through $360{,}710{,}144$, the smoothed prefix together with the same six bands and infinite tail still has exactly one simple critical-line zero in the rectangle. The signed slope bound holds throughout the rectangle. The separate test beyond that cutoff sampled three fixed inputs through norm $2^{30}$. The two records specify the coverage of each calculation. [Rectangle and zero brackets](gaussian-intervening-slope.json) · [Three-point screen](gaussian-slope-screen.json) · [Proof and commands](../../docs/proofs/gaussian-intervening-slope.md)

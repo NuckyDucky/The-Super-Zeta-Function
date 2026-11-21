@@ -1,8 +1,8 @@
 {
   "files": {
     "README.md": {
-      "bytes": 4063,
-      "sha256": "a86bd852c994af218a9c3112bd3a10729c2e1bb5e2feb2d2a40e75d18b467ea2"
+      "bytes": 4687,
+      "sha256": "1ef6dc3438526a3595aecd67e718afa87da4f1e835019c43d3af1f1af0a4faea"
     },
     "bounds.md": {
       "bytes": 8841,
@@ -15,6 +15,14 @@
     "certificate.json": {
       "bytes": 11681,
       "sha256": "1da52191dd3df90661f8363a7bacefcf3bbcc679c4344b6d159fbe1926aeba2f"
+    },
+    "gaussian-intervening-slope.json": {
+      "bytes": 119197,
+      "sha256": "bf7231155fd71496bfd6b0f4e5d4214f0c28118521ecc5076c5d3d54b4c6c6e0"
+    },
+    "gaussian-slope-screen.json": {
+      "bytes": 923,
+      "sha256": "b758ca2e8988c6f937b33580856320677bbbbdbaba727d24b69a53c7f6e95d67"
     },
     "plot.py": {
       "bytes": 2346,

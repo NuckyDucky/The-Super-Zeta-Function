@@ -1,0 +1,28 @@
+{
+  "after_norm": 360710144,
+  "planned_stop": 1073741824,
+  "last_tested": 1073741824,
+  "step": 1048576,
+  "tested_cutoffs": 680,
+  "additional_nonzero_coefficients": 45685748,
+  "hash_of_ordered_raw_block_digests": "61561aa20ac165a40ddb97b607e09bad541bea74506cdcf650a655859bebd996",
+  "minimum_lower_reading_by_probe": [
+    {
+      "probe": "line at bottom",
+      "cutoff": 824180736,
+      "negative_slope": "[123.7444862057 +/- 3.21e-11]"
+    },
+    {
+      "probe": "line at center height",
+      "cutoff": 824180736,
+      "negative_slope": "[169.63821279845 +/- 8.73e-12]"
+    },
+    {
+      "probe": "right edge at top",
+      "cutoff": 533725184,
+      "negative_slope": "[287.439581409 +/- 9.14e-10]"
+    }
+  ],
+  "first_strict_reversal": null,
+  "smooth_slope_error_over_scale": "[2.654643191090217578364308146628905578125798963596630383273254337861825338333e-41 +/- 4.01e-117]"
+}
