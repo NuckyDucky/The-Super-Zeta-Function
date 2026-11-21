@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 4452,
+      "sha256": "ab1dc2b870628b92a4d392d1716fcdd7ee8df53f0d1849c7585b4eb902bef3fc"
+    },
+    "moments.json.gz": {
+      "bytes": 190010,
+      "sha256": "97a05d2f01f56b4495d1a4b2d84d25af3645b56417bd3d552acc9fc29569a9d7"
+    },
+    "replay.py": {
+      "bytes": 5780,
+      "sha256": "5f9b26db1f02a46c5975862327b8db74f638626325f54381496e260e1e6c8aeb"
+    },
+    "replay_tail.py": {
+      "bytes": 1969,
+      "sha256": "ec317c1d579881d83417fc565d490ec90c3930b26688eb2021b80082c6786620"
+    },
+    "tail-bound.json": {
+      "bytes": 993,
+      "sha256": "04247f8e796b9eca7cc53232fe3eb30402499427b00b1d998c848880da096dd5"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-gaussian-circle-phases-v001"
+}

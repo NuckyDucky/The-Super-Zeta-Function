@@ -11,6 +11,7 @@ on:
       - 'archive/2026-11-20-gaussian-two-root-transition-v001/**'
       - 'archive/2026-11-20-gaussian-endpoint-parity-v001/**'
       - 'archive/2026-11-20-gaussian-reflected-disks-v001/**'
+      - 'archive/2026-11-20-gaussian-circle-phases-v001/**'
       - '.github/workflows/number-field-replay.yml'
   push:
     branches: [main]
@@ -22,6 +23,7 @@ on:
       - 'archive/2026-11-20-gaussian-two-root-transition-v001/**'
       - 'archive/2026-11-20-gaussian-endpoint-parity-v001/**'
       - 'archive/2026-11-20-gaussian-reflected-disks-v001/**'
+      - 'archive/2026-11-20-gaussian-circle-phases-v001/**'
       - '.github/workflows/number-field-replay.yml'
 
 permissions:
@@ -114,3 +116,8 @@ jobs:
       - name: Recompute the five circle records and the three zero-weight counts
         working-directory: archive/2026-11-20-gaussian-reflected-disks-v001
         run: python -B replay.py
+      - name: Check the spiral phase on both circles at 193 cutoffs and bound the omitted terms
+        working-directory: archive/2026-11-20-gaussian-circle-phases-v001
+        run: |
+          python -B replay.py
+          python -B replay_tail.py
