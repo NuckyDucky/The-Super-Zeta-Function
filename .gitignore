@@ -5,4 +5,5 @@ __pycache__/
 .env.*
 *.bundle
 /lean/.lake/
+/lean-ideal73/.lake/
 /.lean-tools/
