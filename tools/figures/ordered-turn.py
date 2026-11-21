@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[2]
 FIGURES = ROOT / "docs" / "figures"
 DATA = ROOT / "archive/2026-11-19-oriented-return-v001/data/quarter_probe.json"
-W, H, SCALE = 1056, 466, 2
+W, H, SCALE = 1056, 376, 2
 PAPER, INK, MUTED = "#faf7ef", "#143640", "#415e62"
 GRID, TEAL, RUST, GOLD = "#d5dcd5", "#006a74", "#ad471d", "#a97b27"
 PIVOT = -math.pi / 2
@@ -50,12 +50,10 @@ def render(theta, start, end):
         count=max(1, round(math.hypot(dx,dy)/8))
         for k in range(count):
             line([(x+dx*k/count,y+dy*k/count),(x+dx*(k+.5)/count,y+dy*(k+.5)/count)],color)
-    label(36,22,"Turning the period-640 return by π/6",35,serif=True)
-    label(38,74,"The same angle θ sets two reciprocal-root sums, measured at θ + π/6 and θ − π/6.",19)
-    line([(36,113),(1020,113)],GRID)
-    label(37,129,"Direction of the return",22,bold=True)
-    label(494,129,"The two spectral readings",22,bold=True)
-    cx,cy,rad=233,215,148
+    label(36,25,"θ",28,bold=True)
+    label(104,28,"θ₀  →  θ₀ − π/6  →  θ₀",22)
+    label(530,23,"M±(θ) = 2 / [1 − sin(θ ± π/6)]",25,bold=True)
+    cx,cy,rad=233,112,148
     def unit(t):
         return (cx+rad*math.cos(t),cy-rad*math.sin(t))
     arc=[unit(-math.pi*j/150) for j in range(151)]
@@ -64,9 +62,9 @@ def render(theta, start, end):
         angle=-math.pi*i/12
         x,y=unit(angle)
         line([(x,y),(cx+(rad+5)*math.cos(angle),cy-(rad+5)*math.sin(angle))],MUTED)
-    label(72,211,"−π",16,MUTED,anchor="ra");label(390,211,"0",16,MUTED)
+    label(72,108,"−π",16,MUTED,anchor="ra");label(390,108,"0",16,MUTED)
     dashed((cx,cy),unit(PIVOT),GOLD)
-    label(cx,380,"−π/2",17,MUTED,anchor="ma")
+    label(cx,273,"−π/2",17,MUTED,anchor="ma")
     line([unit(start+(end-start)*j/90) for j in range(91)],GOLD,4)
     for t in [start,end]:
         x,y=unit(t);dot(x,y,4,GOLD)
@@ -74,23 +72,23 @@ def render(theta, start, end):
     dot(*tip,8,PAPER);dot(*tip,5,INK)
     low,hi=end-.021,start+.018
     def plot(t,val):
-        return 571+(t-low)/(hi-low)*420,356-(val-.995)/.31*170
+        return 571+(t-low)/(hi-low)*420,252-(val-.995)/.31*170
     for value in [1,1.1,1.2,1.3]:
         _,y=plot(low,value);line([(571,y),(997,y)],GRID)
         label(559,y,f"{value:.2f}",15,MUTED,anchor="rm")
     for t,mark in [(-2,"−2"),(-1.8,"−1.8"),(PIVOT,"−π/2"),(start,"θ₀")]:
-        x,_=plot(t,1);dashed((x,185),(x,360),GOLD if t==PIVOT else GRID)
-        label(x,367,mark,16,MUTED,anchor="ma")
+        x,_=plot(t,1);dashed((x,81),(x,256),GOLD if t==PIVOT else GRID)
+        label(x,263,mark,16,MUTED,anchor="ma")
     full=[end+(start-end)*i/180 for i in range(181)]
     for k,color,shape in [(0,TEAL,"circle"),(1,RUST,"square")]:
         line([plot(t,traces(t)[k]) for t in full],color,3)
         x,y=plot(theta,traces(theta)[k]);dot(x,y,9,PAPER,shape);dot(x,y,6,color,shape)
-    label(777,390,"Return angle θ (radians)",16,MUTED,anchor="ma")
-    line([(36,419),(1020,419)],GRID)
-    label(39,428,f"θ = {theta:+.4f} rad".replace("-","−"),20,bold=True)
+    label(1009,264,"θ",21,INK,anchor="ma")
+    line([(36,307),(1020,307)],GRID)
+    label(39,322,f"θ = {theta:+.4f}".replace("-","−"),20,bold=True)
     for k,color,shape,x,mark in [(0,TEAL,"circle",573,"M+"),(1,RUST,"square",808,"M−")]:
-        dot(x,445,5,color,shape)
-        label(x+13,428,f"{mark}   {traces(theta)[k]:.4f}",20,color,True)
+        dot(x,339,5,color,shape)
+        label(x+13,322,f"{mark}   {traces(theta)[k]:.4f}",20,color,True)
     return im.resize((W,H),Image.Resampling.LANCZOS)
 
 

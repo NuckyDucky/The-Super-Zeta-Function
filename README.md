@@ -21,7 +21,7 @@ I count each zero with its multiplicity and use the principal logarithm. Compari
 
 ![A clockwise turn of π/6 from the period-640 return angle and its reversal, alongside the two reciprocal-root sums.](docs/figures/ordered-turn.gif)
 
-I measure the same return from two angles, $\theta+\pi/6$ and $\theta-\pi/6$. The hand starts just to the right of $-\pi/2$. When it passes that direction, the two reciprocal-root sums exchange order. On reversing the turn, both readings return to their original values. The gold arc marks the part of the angle circle used in this comparison. [Still figure](docs/figures/ordered-turn.png) · [Angle, two traces and inverse](archive/2026-11-19-oriented-return-v001/README.md)
+The teal circles give $M_+$ and the rust squares give $M_-$. I measure the same return from two angles, $\theta+\pi/6$ and $\theta-\pi/6$. The hand starts just to the right of $-\pi/2$. When it passes that direction, the two reciprocal-root sums exchange order. On reversing the turn, both readings return to their original values. The gold arc marks the part of the angle circle used in this comparison. [Still figure](docs/figures/ordered-turn.png) · [Angle, two traces and inverse](archive/2026-11-19-oriented-return-v001/README.md)
 
 <div><a name="from-the-original-meme-to-the-dottie-spire"></a><a name="the-quadratic-and-the-genus-one-curve"></a><a name="1-the-quadratic-and-the-genus-one-curve"></a><a name="read-quartic" id="user-content-read-quartic"></a><a name="what-the-right-panel-shows"></a><a name="real-ovals-and-projective-completion"></a><a name="the-point-giving-my-approximation-to-π"></a></div>
 
@@ -33,7 +33,7 @@ My quadratic supplies the two conjugate factors of a genus-one quartic. The reci
 
 My six coefficients give $N(x)=465x^2-183x-659$ and $D(x)=155x^2+396x-936$.
 
-![The two branches of the quartic in affine coordinates and the separate ovals obtained after adding their points at infinity.](archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)
+![The two branches of the quartic in affine coordinates and the separate ovals obtained after adding their points at infinity.](docs/figures/proof-quartic-ovals.png)
 
 Follow one color from the left panel to the right. Each sign of $Y$ closes through its own point at infinity. For the arithmetic below, I keep the two complex factors of the same quartic. [Quartic figure and coordinates](archive/2026-11-18-quartic-ovals-v001/README.md)
 
@@ -50,9 +50,9 @@ The signs of $Y$ give the two real branches. Adding their points at infinity clo
 
 <div><a name="reciprocal-tetration"></a><a name="2-reciprocal-tetration"></a><a name="read-tetration" id="user-content-read-tetration"></a><a name="the-dottie-spire"></a><a name="read-dottie-spire" id="user-content-read-dottie-spire"></a></div>
 
-The figure varies the complex logarithm $L$ while keeping the starting pair $(1,1)$ fixed. Each color gives the period reached in the iteration survey. Gray marks parameters where the iteration limit was reached without identifying a period in the search range. The enlarged region contains the Dottie fold. [Tetration preprint](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.pdf) · [Dottie spire preprint](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.pdf) · [Sampling limits](archive/2026-11-18-research-figures-v001/README.md)
+![Paired periods from the cap in the complex logarithm plane, with the Dottie fold magnified at right.](docs/figures/proof-dottie-spire.png)
 
-![Paired periods from the cap in the complex logarithm plane, with the Dottie fold magnified at right.](archive/2026-11-18-research-figures-v001/dottie-spire.png)
+I vary the complex logarithm $L$ and start each run at $(1,1)$. Blue marks fixed pairs. The other cycle colors encode the detected paired period from 2 through 256. Gray marks runs that reached 8,000 iterations without an assigned period. Dark navy marks an arithmetic range limit and purple marks insufficient precision in the phase. Four samples contribute to each pixel. The right panel enlarges the region around the Dottie fold. [Tetration preprint](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.pdf) · [Dottie spire preprint](archive/2026-11-18-lean-foundations-v001/papers/dottie-spire/main.pdf) · [Sampling limits](archive/2026-11-18-research-figures-v001/README.md)
 
 <div><a name="the-spectral-zeta-and-the-critical-line"></a><a name="building-the-super-zeta"></a><a name="3-building-the-super-zeta"></a><a name="read-super-zeta" id="user-content-read-super-zeta"></a><a name="1-compose-the-two-marked-stages"></a><a name="31-compose-the-two-marked-stages"></a><a name="2-recover-the-marked-phases-from-the-cosine-roots"></a><a name="32-recover-the-marked-phases-from-the-cosine-roots"></a><a name="3-square-the-roots-and-sum-their-inverse-powers"></a><a name="33-square-the-roots-and-sum-their-inverse-powers"></a><a name="4-compare-with-the-odd-integer-spectrum"></a><a name="35-compare-with-the-odd-integer-spectrum"></a></div>
 
@@ -81,7 +81,7 @@ I keep the integer address $(1,1)$ fixed while turning the second lattice basis 
 
 ![Prime-power weights in the Eisenstein field at the first four powers of 2, 3 and 7.](docs/figures/lattice-prime-weights.png)
 
-The prime over 2 first contributes at norm 4, while the two primes above 7 already contribute at norm 7. The figure compares the coefficients at four successive powers of each rational prime. [Field weights](archive/2026-11-20-dedekind-phase-v001/README.md)
+Rows label the rational prime $p$ and columns the exponent $j$. Each entry is the coefficient of $\log p$ at $p^j$. The prime over 2 first contributes at norm 4, while the two primes above 7 already contribute at norm 7. [Field weights](archive/2026-11-20-dedekind-phase-v001/README.md)
 
 <details>
 <summary><strong>The Eisenstein norm and the prime-power weight</strong></summary>
@@ -100,7 +100,7 @@ At $u=\pi/4$ the ordered ratio is $i$, so each Gaussian integer $m+ni$ marks a l
 
 ![Marked conjugate Gaussian prime directions for norms 13, 37 and 73, with the quartic sign at each prime.](docs/figures/direction-marked-primes.gif)
 
-Each frame fixes one rational prime. At 13 both directions give minus. At 37 both give plus. At 73 one gives minus and the other plus. The angle identifies which Gaussian prime to reduce at. [Still figure](docs/figures/direction-marked-primes.png) · [Exact reductions](archive/2026-11-20-dedekind-phase-v001/README.md)
+In each frame I rotate the conjugate generators by units so that both representatives lie in the first quadrant. Their slopes record the two prime directions. At 13 both directions give minus. At 37 both give plus. At 73 one gives minus and the other plus. The angle identifies which Gaussian prime to reduce at. [Still figure](docs/figures/direction-marked-primes.png) · [Exact reductions](archive/2026-11-20-dedekind-phase-v001/README.md)
 
 ![Two generators on the positive real ray, 1 and 73, with their distinct quartic character values.](docs/figures/direction-same-ray.png)
 
@@ -115,7 +115,7 @@ A Gaussian prime of odd rational prime norm has a primitive generator. Its direc
 
 ## 3. Phase tests at conjugate Gaussian primes
 
-At norm 73 the ideals generated by $3+8i$ and $3-8i$ give opposite signs. Reducing the quartic at the first gives no root and at the second gives two. The ordinary coefficient adds the signs to zero. Keeping the positive imaginary direction fixed by the ordered lift lets an angular coefficient distinguish which prime carried the minus. [Conductor and prime checks](archive/2026-11-20-dedekind-phase-v001/README.md) · [Angular coefficient at 73](archive/2026-11-20-gaussian-branch-spectrum-v001/README.md)
+At norm 73 I reduce the same Gaussian quadratic factor $A+2iN$ at each of the two prime ideals. At $(3+8i)$ it has no root modulo 73, giving the sign $-1$. At $(3-8i)$ it has the roots $30$ and $56$, giving $+1$. The ordinary coefficient adds the signs to zero. Keeping the positive imaginary direction fixed by the ordered lift lets an angular coefficient distinguish which prime carried the minus. [Conductor and prime checks](archive/2026-11-20-dedekind-phase-v001/README.md) · [Angular coefficient at 73](archive/2026-11-20-gaussian-branch-spectrum-v001/README.md)
 
 ![The conjugate Gaussian primes above 73 have equal length in the marked plane and opposite quartic splitting signs.](docs/figures/quartic-primes.png)
 
@@ -159,7 +159,7 @@ At base 2 the word $-+$ sends $1$ to $1/2$ and then to $\sqrt2$. Reversing the s
 
 ![The two chronological orders of the signs from norm 73, starting at one and ending at different real values.](docs/figures/quartic-sign-orders.gif)
 
-I read the two prime signs in opposite orders and apply one exponential per sign. The second stage acts on the output of the first, which is how the same two signs produce different endpoints. [Still figure](docs/figures/quartic-sign-orders.png) · [Exact stages](docs/proofs/chronological-order.md)
+I read the two prime signs in opposite orders and apply one exponential per sign. The horizontal coordinate counts completed stages. The vertical axis places their positive outputs on a base-two logarithmic scale. The connecting segments mark the order of the discrete stages. [Still figure](docs/figures/quartic-sign-orders.png) · [Exact stages](docs/proofs/chronological-order.md)
 
 <details>
 <summary>Inverting a positive real stage</summary>
@@ -202,18 +202,20 @@ The Mellin comparison gives the Riemann factor. In the symmetrized Hurwitz refer
 
 ~~~mermaid
 flowchart TB
-    A["Six coefficients"] --> B["Gaussian quadratic factor"]
-    B --> C["Conductor and three residue symbols"]
-    U["Ordered exponents U and V"] --> G["Marked lattice point at U/V = i"]
-    G --> H["Gaussian Hecke factor"]
+    A["N, D"] --> B["A + 2iN"]
+    B --> C["δ, η<sub>δ</sub>"]
+    U["U, V"] --> G["U/V = i, m + ni"]
+    G --> H["L<sub>k</sub>(w, η<sub>δ</sub>)"]
     C --> H
-    U --> D["Multiplier-one cosine determinant"]
-    D -->|"Mellin comparison, w = 2s"| Z["Riemann factor ζ(w)"]
-    R["Hurwitz derivative at π/4"] --> J["Dirichlet beta β(w)"]
-    H --> F["Quartic field zeta"]
+    U --> D["UV = 1, E(v)"]
+    D -->|"w = 2s"| Z["ζ(w)"]
+    R["∂ₐR(π/4, w−1)"] --> J["β<sub>D</sub>(w)"]
+    H --> F["ζ<sub>E</sub>(w)"]
     Z --> F
     J --> F
 ~~~
+
+The three arrows into $\zeta_E$ give its factors. The Gaussian factor uses the character $\eta_\delta$ of the quadratic branch and the generator $m+ni$ marked by $U/V=i$.
 
 At the first positive Riemann zero the derivative of zeta and both additional Dirichlet values are enclosed away from zero. This gives multiplicity one in both quadratic field zetas. In the quartic it gives one plus the order of the Gaussian factor. Liu’s unitary Hecke bound applies to that factor. Taking the Riemann and Dirichlet critical-line conclusions in Sutherland’s report on Alpöge’s submission, any off-line zero of $\zeta_E$ must come from the Gaussian factor with the same multiplicity. [First-zero replay](archive/2026-11-20-dedekind-phase-v001/first-zero.md) · [Liu, Theorem 1.1](https://hexagonmath.org/pdf/2611.00421v1#page=2) · [Sutherland’s verification report](https://math.mit.edu/~drew/grh/) · [Comparison with Masullo’s trace formula](docs/number-fields/masullo-trace-formula.md)
 
@@ -249,7 +251,7 @@ I followed the finite Gaussian sum $L_N$ around the right circle at 193 norm cut
 
 ![Distance of the finite spiral phase from 3.9 radians on the right and reflected circles as the norm cutoff changes.](docs/figures/gaussian-phase-cutoffs.gif)
 
-Here zero on the vertical scale means that the **phase equals 3.9 radians** at a nonzero complex value. In a plot of the phase itself, $-\pi/2$ and $3\pi/2$ are the same direction. An interval of allowed phases can straddle that edge even when the selected trial value lies in the middle of the plot. Measuring circular distance to $3.9$ keeps the comparison continuous across that edge. The arithmetic question is whether the terms past the cutoff could change the winding of the full boundary. [Still figure](docs/figures/gaussian-phase-cutoffs.png) · [Finite sums and omitted terms](archive/2026-11-20-gaussian-circle-phases-v001/README.md)
+The solid curve follows the right input and the dashed curve its reflected input. Each frame gives the norm cutoff $N$. Zero on the vertical scale means that the **phase equals 3.9 radians** at a nonzero complex value. In a plot of the phase itself, $-\pi/2$ and $3\pi/2$ are the same direction. An interval of allowed phases can straddle that edge even when the selected trial value lies in the middle of the plot. Measuring circular distance to $3.9$ keeps the comparison continuous across that edge. The arithmetic question is whether the terms past the cutoff could change the winding of the full boundary. [Still figure](docs/figures/gaussian-phase-cutoffs.png) · [Finite sums and omitted terms](archive/2026-11-20-gaussian-circle-phases-v001/README.md)
 
 ### The reflected disks and the weight available for an off-line pair
 
@@ -257,7 +259,7 @@ Set $T=T_D-1/512$. Reflection pairs the zeros of the closed disks centered at $3
 
 ![Right and left Gaussian measuring circles near the Dottie height and their positions relative to the critical line.](docs/figures/gaussian-reflected-circles.png)
 
-The circle diagram locates the **inputs** at which the phase was measured. Reflection keeps the height fixed and reverses the displacement from the critical line. [Disk geometry](archive/2026-11-20-gaussian-reflected-disks-v001/README.md)
+Both axes give displacement in units of $1/2048$, horizontally from $\Re w=1/2$ and vertically from $T=T_D-1/512$. The disks in the count above have radius 30 in these units. The figure shows the outer measuring circles at radius 31 around the same centers. The arrows trace $w$ and its reflection $1-\overline w$ at the same height, in opposite directions around their respective circles. [Disk geometry](archive/2026-11-20-gaussian-reflected-disks-v001/README.md) · [Outer-circle radii](archive/2026-11-20-gaussian-circle-phases-v001/README.md)
 
 <details>
 <summary>Weight bound, multiplicities and Lean verification</summary>
@@ -274,13 +276,13 @@ Lean checks the lower weight integrand and integration rule, the deduction from 
 
 The immediate question is whether cancellation in the omitted Gaussian terms preserves a gap in the phase around the entire right circle. If the full boundary stays nonzero and misses one spiral phase, its winding is zero. The argument principle would then clear the disk, and reflection would clear its partner. [Circle measurements](archive/2026-11-20-gaussian-circle-phases-v001/README.md) · [Earlier real-part test](docs/proofs/reciprocal-constructions.md#gaussian-disk-remainder)
 
-[![Three passes of the sixth Hurwitz path at the same height, with their distinct directions of travel.](archive/2026-11-19-sixth-passes-v001/preview.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/)
+[![Three passes of the sixth Hurwitz path at the same height, with their distinct directions of travel.](docs/figures/proof-sixth-passes.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/)
 
-At height $37.25$ the sixth Hurwitz path has three distinct passes. Open the figure to compare the position and derivatives at each pass. [Measured crossings](archive/2026-11-19-sixth-passes-v001/README.md)
+I follow the sixth Hurwitz path through height $37.25$ three times. In the left panel the path rises at 1, falls at 2 and rises again at 3. The two diamonds mark the crest and trough between those visits. The open square marks a separate event where the path visits the same complex point twice. In the right panel I set the clockwise angle to zero at each numbered visit. The slopes then show how quickly the height changes per radian on each pass. [Measured crossings and derivatives](archive/2026-11-19-sixth-passes-v001/README.md)
 
-[![Two independent imaginary inputs to the quartet spectrum and the diagonal on which the conjugate contributions cancel the change.](archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
+[![Two independent imaginary inputs to the quartet spectrum and the diagonal on which the conjugate contributions cancel the change.](docs/figures/proof-two-input.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
 
-Here the two axes vary independently. Moving along the dotted diagonal pairs opposite imaginary shifts. Open the map to compare that cancellation with the readings away from the diagonal. [Two-input derivation](docs/proofs/reciprocal-constructions.md#user-content-read-two-inputs)
+I change the imaginary parts $h$ and $k$ of the two spectral inputs $1+ih$ and $1+ik$ independently. The color measures how much the sum changes when I include the angles of the conjugate roots while keeping the radial phase fixed. Pale colors mean a small change and dark purple a large one. On the dotted diagonal $k=-h$, each conjugate pair contributes zero to that change. The four circles mark the choices $h,k=\pm\pi/6$. [Two-input derivation](docs/proofs/reciprocal-constructions.md#user-content-read-two-inputs) · [Color scale and sampled values](archive/2026-11-20-two-input-map-v001/README.md)
 
 <details>
 <summary><strong>Global cancellation in the quartic field and two open questions about the tower</strong></summary>

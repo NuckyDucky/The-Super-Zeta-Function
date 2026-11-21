@@ -21,53 +21,48 @@ PAPER, INK, MUTED = "#fbf8f0", "#17313c", "#48606a"
 RIGHT, LEFT, GRID = "#006b80", "#ac4826", "#d6dbd5"
 
 
-def fig_page(title, subtitle):
-    fig = plt.figure(figsize=(9.6, 5.85), facecolor=PAPER)
-    fig.text(.062, .94, title, va="top", fontsize=23, color=INK, family="DejaVu Serif")
-    fig.text(.064, .84, subtitle, va="top", fontsize=13, color=MUTED)
-    return fig
-
-
 def style_axes(ax):
     ax.set_facecolor(PAPER)
     for spine in ax.spines.values():
         spine.set_visible(False)
-    ax.tick_params(labelsize=11, colors=INK, length=0, pad=6)
+    ax.tick_params(labelsize=14, colors=INK, length=0, pad=6)
 
 
 def circle_geometry():
-    fig = fig_page("Two circles at the Dottie height", "Each input on the right has a partner at the same height on the left.")
-    ax = fig.add_axes([.10, .20, .82, .52])
+    fig = plt.figure(figsize=(9.6, 5.5), facecolor=PAPER)
+    fig.text(.095, .9, r"$w^*=1-\overline{w}$", color=INK, fontsize=22)
+    fig.text(.89, .9, r"$T_0=T_D-1/512$", ha="right", color=INK, fontsize=19)
+    ax = fig.add_axes([.105, .16, .83, .66])
     style_axes(ax)
     ax.set_aspect("equal")
     ax.set_xlim(-72, 72)
-    ax.set_ylim(-40, 40)
+    ax.set_ylim(-39, 39)
     ax.set_xticks([-64, -32, 0, 32, 64])
     ax.set_yticks([-32, 0, 32])
     ax.axhline(0, color=GRID, lw=.9)
     ax.axvline(0, color=INK, lw=1.25, ls=(0, (3, 3)))
-    ax.set_xlabel("Real displacement from ½  (units of 1/2048)", fontsize=12, color=INK)
-    ax.set_ylabel("Height above T₀\n(units of 1/2048)", fontsize=12, color=INK)
+    ax.set_xlabel(r"$2048\,(\Re w-1/2)$", fontsize=17, color=INK)
+    ax.set_ylabel(r"$2048\,(\Im w-T_0)$", fontsize=17, color=INK)
     for side, color in ((-1, LEFT), (1, RIGHT)):
         center = side * 32
-        ax.add_patch(Circle((center, 0), 31, lw=2.4, ec=color, facecolor="none",
+        ax.add_patch(Circle((center, 0), 31, lw=2.7, ec=color, facecolor="none",
                             linestyle="--" if side == -1 else "-"))
-        ax.scatter(center, 0, s=32, color=color, zorder=4)
-        ax.text(center, -7, "left" if side == -1 else "right", ha="center", fontsize=13,
-                color=color, weight="bold")
+        ax.scatter(center, 0, s=38, color=color, zorder=4)
+        ax.text(center, -8, "$c^*$" if side == -1 else "$c$", ha="center", fontsize=17,
+                color=color)
         a, b = math.pi/4, math.pi/4 + .38
         start = (center + side*31*math.cos(a), 31*math.sin(a))
         end = (center + side*31*math.cos(b), 31*math.sin(b))
-        ax.scatter(*start, s=35, color=color, marker="D" if side == -1 else "o", zorder=5)
+        ax.scatter(*start, s=55, color=color, marker="D" if side == -1 else "o", zorder=5)
+        ax.annotate("$w^*$" if side == -1 else "$w$", start, xytext=(4*side, 8),
+                    textcoords="offset points", ha="center", color=color, fontsize=17)
         ax.annotate("", end, start, arrowprops=dict(arrowstyle="-|>", color=color, lw=2.3,
                                                    connectionstyle=f"arc3,rad={-.14*side}"))
     point_x = 32+31/math.sqrt(2)
-    ax.plot([-point_x, point_x], [31/math.sqrt(2)]*2, color="#909990", lw=1, ls=":", zorder=0)
-    ax.text(0, 38, "critical line", ha="center", color=INK, fontsize=11, backgroundcolor=PAPER)
-    fig.text(.064, .07, "Both radii are 31/2048. Each inner edge lies 1/2048 from the critical line.",
-             color=INK, fontsize=13)
-    fig.text(.064, .023, "T₀ = Tᴅ − 1/512. Arrows show increasing input angle on the right and its reflection.",
-             color=MUTED, fontsize=11)
+    ax.plot([-point_x, point_x], [31/math.sqrt(2)]*2, color="#909990", lw=1.15, ls=":", zorder=0)
+    ax.plot([32, 63], [0, 0], color=RIGHT, lw=1.35)
+    ax.text(47, 2, "$31$", ha="center", color=RIGHT, fontsize=15)
+    ax.text(0, 35, r"$\Re w=1/2$", ha="center", color=INK, fontsize=14, backgroundcolor=PAPER)
     fig.savefig(OUT / "gaussian-reflected-circles.png", dpi=160)
     plt.close(fig)
 
@@ -115,34 +110,31 @@ def sampled_curves(replay, checkpoint, cutoff, count=384):
 
 
 def frame(cutoff, x, distances, roots):
-    fig = fig_page("A phase missed on the right circle",
-                   "Distance from the chosen phase of 3.9 radians, measured on both reflected circles.")
-    for pos, color, style, label in [(0.10, RIGHT, "-", "Right rim"), (.36, LEFT, "--", "Left mirror")]:
-        fig.add_artist(Line2D([pos, pos+.045], [.736, .736], transform=fig.transFigure,
-                              color=color, lw=2.7, ls=style))
-        fig.text(pos+.057, .736, label, va="center", color=color, fontsize=13, weight="bold")
-    fig.text(.93, .736, f"Finite norm cutoff  {cutoff:,}", ha="right", va="center",
-             color=INK, fontsize=13)
-    ax = fig.add_axes([.115, .225, .815, .445])
+    fig = plt.figure(figsize=(9.6, 5.5), facecolor=PAPER)
+    fig.text(.105, .905, r"$d_N(z)=\min_{k\in\mathbb{Z}}\,|\Phi_\kappa(L_N(z))-3.9+2\pi k|$",
+             va="center", fontsize=17, color=INK)
+    fig.text(.935, .905, f"$N={cutoff}$", va="center", ha="right", fontsize=16, color=INK)
+    ax = fig.add_axes([.11, .20, .825, .60])
     style_axes(ax)
     ax.set(xlim=(0, 2*math.pi), ylim=(-.10, math.pi+.10))
     ax.set_xticks([0, math.pi/2, math.pi, 3*math.pi/2, 2*math.pi], ["0", "π/2", "π", "3π/2", "2π"])
     ax.set_yticks([0, .91, math.pi/2, math.pi], ["0", "0.91", "π/2", "π"])
-    ax.grid(axis="y", color=GRID, linewidth=.65)
-    ax.axhline(.91, color="#719394", lw=1.1, ls=":")
+    ax.grid(axis="y", color=GRID, lw=.7)
+    ax.axhline(.91, color="#719394", lw=1.25, ls=":")
     ax.axhline(0, color=INK, lw=1)
-    ax.plot(x, distances[0], lw=2.6, color=RIGHT, solid_capstyle="round")
-    # Add the resolved crossings to the drawing so each cusp touches the zero-distance axis.
+    ax.plot(x, distances[0], lw=3.0, color=RIGHT, solid_capstyle="round")
+    # Insert calculated cusp positions in the drawing so each reaches the zero-distance axis.
     left_curve = sorted(list(zip(x, distances[1])) + [(root, 0) for root in roots])
     xx, yy = zip(*left_curve)
-    ax.plot(xx, yy, lw=2.2, ls="--", color=LEFT, dash_capstyle="round")
-    ax.scatter(roots, [0, 0], marker="D", color=LEFT, ec=PAPER, lw=.85, s=49, zorder=4)
-    ax.set_xlabel("Position on the right circle (radians)", fontsize=13, color=INK)
-    ax.set_ylabel("Phase distance\n(radians)", fontsize=12, color=INK)
-    fig.text(.064, .077, "The right curve stays above 0.91. The two diamonds mark left inputs reaching 3.9.",
-             color=INK, fontsize=12)
-    fig.text(.064, .030, "25 measured cutoffs shown; all 193 passed the circle test. The full Gaussian zero count remains open.",
-             color=MUTED, fontsize=10.5)
+    ax.plot(xx, yy, lw=2.5, ls="--", color=LEFT, dash_capstyle="round")
+    ax.scatter(roots, [0, 0], marker="D", color=LEFT, ec=PAPER, lw=.95, s=58, zorder=4)
+    ax.set_xlabel(r"$\theta$", fontsize=18, color=INK)
+    ax.set_ylabel(r"$d_N$", fontsize=18, color=INK, rotation=0, labelpad=17)
+    for pos, color, style, label in [(.12, RIGHT, "-", r"$d_N(w(\theta))$"),
+                                      (.50, LEFT, "--", r"$d_N(w^*(\theta))$")]:
+        fig.add_artist(Line2D([pos, pos+.062], [.055, .055], transform=fig.transFigure,
+                              color=color, lw=2.9, ls=style))
+        fig.text(pos+.080, .055, label, va="center", color=color, fontsize=16)
     return fig
 
 

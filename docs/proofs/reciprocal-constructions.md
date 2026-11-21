@@ -38,9 +38,9 @@ Clearing the denominators gave me a quadratic in $y$. Completing the square gave
 
 $`\displaystyle \begin{aligned} 0&=(N-D)y^2+(N-3D)y-N-2D,\\ Y&=2(N-D)y+N-3D,\\ f(x)&=(N-D)^2+4N^2\\ &=961000x^4-1039740x^3-1810543x^2+644010x+1813853. \end{aligned}`$
 
-[![The two signs of Y form separate real ovals. The marked upper point at x=e gives pi-hat.](../../archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)](../../archive/2026-11-18-quartic-ovals-v001/quartic-ovals.png)
+[![The two signs of Y form separate real ovals. The marked upper point at x=e gives pi-hat.](../figures/proof-quartic-ovals.png)](../figures/proof-quartic-ovals.png)
 
-Both panels show the same curve. On the left, the upper and lower heights are the two choices of sign in $Y=\pm\sqrt{f(x)}$, rescaled to fit the axes. On the right, following either branch as $x$ tends to $-\infty$ or $+\infty$ reaches the same hollow point for that branch, closing it into an oval. The marked point selects the positive square root at $x=e$ that I use to compute $\widehat\pi$. [Coordinates used in the drawing](../../archive/2026-11-18-quartic-ovals-v001/README.md)
+I drew the same curve in two coordinate systems. In the left panel the blue and ochre heights give the positive and negative signs in $Y=\pm\sqrt{f(x)}$, rescaled to fit the axes. On the right, following either branch as $x$ tends to $-\infty$ or $+\infty$ reaches the same hollow point for that branch, closing it into an oval. The magenta point selects the positive square root at $x=e$ that I use to compute $\widehat\pi$. [Coordinates used in the drawing](../../archive/2026-11-18-quartic-ovals-v001/README.md)
 
 <div><a name="what-the-right-panel-shows"></a><a name="real-ovals-and-projective-completion"></a></div>
 
@@ -71,9 +71,9 @@ My quartic has points over $\mathbb R$ and every $\mathbb Q_p$, while its ration
 
 My approximation to $\pi$ is the larger root of the original quadratic at $x=e$.
 
-![The intersection yielding pi-hat lies about 8.682 times 10 to the minus 20 below pi](../../archive/2026-11-18-research-figures-v001/pi-hat.png)
+![The intersection yielding pi-hat lies about 8.682 times 10 to the minus 20 below pi](../figures/proof-pi-hat.png)
 
-I centered the plot at $(\pi,T(\pi))$ and used units of $10^{-20}$ on both axes. The horizontal distance is $\pi-\widehat\pi\approx8.682007272725\times10^{-20}$. [Lean proof of the error bound](../../lean/SuperZeta/MemePrecision.lean)
+I centered the plot at $(\pi,T(\pi))$ and used units of $10^{-20}$ on both axes. The blue curve gives the change in $T(y)$, and the rust dashed line gives the level selected by $N(e)/D(e)$. Their intersection is the quadratic root. Its horizontal distance from $\pi$ is $\pi-\widehat\pi\approx8.682007272725\times10^{-20}$. [Lean proof of the error bound](../../lean/SuperZeta/MemePrecision.lean)
 
 <details>
 <summary>Inverting the change of ordinate at x = e</summary>
@@ -100,9 +100,9 @@ $`\displaystyle F_L(P,Q)=\bigl(e^{LQ},e^{-LP}\bigr).`$
 
 Their mean is $m=(Q-P)/2$ and their half-difference is $a=(Q+P)/2$. Thus $Q=m+a$ and $-P=m-a$, giving the next pair $(x^{m+a},x^{m-a})$. I retain the ordered exponents $U=LQ$ and $V=-LP$. My preprints write $M$ for the second phase $Q$. [*Reciprocal Tetration*, §5, “Branch-sensitive complex fixed data”](../../archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L359-L402) · [Ordered return in Lean](../../lean/SuperZeta/Reciprocal.lean)
 
-[![Paired periods reached from the cap across the complex logarithm plane, with a magnified view of the Dottie fold.](../../archive/2026-11-18-research-figures-v001/dottie-spire.png)](../../archive/2026-11-18-research-figures-v001/dottie-spire.png)
+[![Paired periods reached from the cap across the complex logarithm plane, with a magnified view of the Dottie fold.](../figures/proof-dottie-spire.png)](../figures/proof-dottie-spire.png)
 
-Each sampled $L$ starts the same pair $(1,1)$. Blue records convergence to a fixed pair, while the other period colors identify how many updates it takes the pair to repeat. The right panel samples a finer grid around the fold $L_*$, where changing $L$ by a small amount can change the detected period. A gray sample reached 8,000 updates with no period detected in the tested range of 1 through 256. [Layer 4 survey and color key](../../archive/2026-11-18-research-figures-v001/README.md#the-dottie-spire) · [Derivation of the fold](#user-content-read-dottie-spire)
+At every sampled logarithm $L$ I start the same pair $(1,1)$, using four color samples per pixel. Blue records a fixed pair, and the other period colors identify the detected periods from 2 through 256. The white rectangle on the left locates the enlargement on the right. The white dot marks the fold $L_*$, where a small change in $L$ can change the detected period. Gray marks a sample with no return detected in 8,000 updates. Dark navy marks the arithmetic limit and purple marks the phase-precision limit. [Layer 4 survey and color key](../../archive/2026-11-18-research-figures-v001/README.md#the-dottie-spire) · [Derivation of the fold](#user-content-read-dottie-spire)
 
 <div><a name="the-complex-two-base-family"></a></div>
 
@@ -129,9 +129,9 @@ A primitive scalar period $r$ takes $2r$ exponential stages along one phase. An 
 
 At base 2 the six balanced four-stage histories give six different values from the same starting cap. At a particular complex lift all six endpoint values coincide. [Lemma on unique chronological order](chronological-order.md)
 
-![A seven-stage sign word and its reversal, with a third panel marking changes in their measured periods at the same complex lift.](../../archive/2026-11-18-lean-foundations-v001/papers/foundations/figures/reversal_order_effect.png)
+![A seven-stage sign word and its reversal, with a third panel marking changes in their measured periods at the same complex lift.](../figures/proof-reversal.png)
 
-To isolate the effect of order, I kept the same starting cap and sampled the same complex logarithms in both panels. I applied the seven signs in the printed order on the left and in reverse order in the middle. The right panel marks the inputs where the finite period measurements disagree. [Sign-word survey, settings and precision replay](../../archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L433-L453)
+To isolate the effect of order, I kept the same starting cap and sampled the same complex logarithms in both panels. The left panel uses the word $++-+---$, and the middle uses its reversal up to cyclic phase, $++---+-$. Red pixels in the right panel mark the approximately 14.8% of sampled logarithms where the tuple-period classifications differ. I reproduce the three plot interiors from the preprint, which retains the measured figure. [Sign-word survey, settings and precision replay](../../archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L433-L453)
 
 <details>
 <summary>Recovering signs from endpoints and stage derivatives</summary>
@@ -325,7 +325,7 @@ Two labeled reciprocal-root sums determine which side of $-\pi/2$ the return ang
 
 [![The two spectral traces at the native period-640 angle as it turns clockwise by π/6 and back.](../figures/ordered-turn.gif)](../figures/ordered-turn.png)
 
-The two curves use the same horizontal coordinate $\theta$. At their intersection the offset measurements give equal reciprocal-root sums. On either side, the larger of $M_+$ and $M_-$ identifies which side of $-\pi/2$ the return angle occupies. The marked angle moves clockwise by $\pi/6$ and retraces the same interval on its return. [Static trace comparison](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/trace_order.png)
+I read both reciprocal-root sums at the same horizontal angle $\theta$. At their intersection the offset measurements give equal reciprocal-root sums. On either side, the larger of $M_+$ and $M_-$ identifies which side of $-\pi/2$ the return angle occupies. The marked angle moves clockwise by $\pi/6$ and retraces the same interval on its return. [Static trace comparison](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/trace_order.png)
 
 <details>
 <summary>The two trace readings and the recovered angle</summary>
@@ -380,7 +380,9 @@ $`\displaystyle \rho_1 \longrightarrow \frac{4\pi i}{\log 2} \longrightarrow \rh
 
 The fourth-zero call hit directly. The next two sweeps skipped the fifth and sixth as endpoints and as interior points of the route. [Predictions, comparison seeds and stopping rule](../../archive/2026-11-19-zero-transport-v001/README.md#how-the-cases-were-selected)
 
-![Paths from the third Riemann zero to the fourth, an elementary zero and the seventh. The dashed line marks real part one half.](../../archive/2026-11-19-zero-transport-v001/Dottie-Forward-Iteration/successor-paths.png)
+![Paths from the third Riemann zero to the fourth, an elementary zero and the seventh. The dashed line marks real part one half.](../figures/proof-successor-paths.png)
+
+I started the teal path at $\rho_3$ and followed it to $\rho_4$. The rust path from $\rho_4$ reaches the elementary address $b=8\pi i/\log 2$, and the purple path from $b$ reaches $\rho_7$. The left panel shows $w$ in the complex plane. On the right I plot its real part against the native angle $\theta$ in radians, so I can see where each trace crosses $\Re w=1/2$. [Archived paths and frozen predictions](../../archive/2026-11-19-zero-transport-v001/README.md)
 
 McPhedran, Botten and Nicorovici plotted the same Hurwitz family in 2007. Their parameter is $a=1-b$, so my clockwise sweep reads their figures from $a=5/6$ to $a=3/4$. Figures 2b, 3a, 3b and 4 give the four individual arcs from $4\pi i/\log 3$ through the first Riemann zero, the base-two address, the second zero and the third. I matched the figures by following their labeled zeros from $a=1/2$ to both anchors. Reusing the endpoints joins arcs of distinct trajectories. [Original paper, §3 and Figures 2–4](https://doi.org/10.1098/rspa.2006.1763) · [Five figure identifications and their checks](../../archive/2026-11-19-zero-transport-v001/Dottie-Transport-Reversibility/PRIOR-WORK.md)
 
@@ -420,11 +422,11 @@ On the branch from $12\pi i/\log 3$ to the sixth Riemann zero, two horizontal ta
 
 It first rises through that height left of the imaginary axis, then falls through it farther left, then rises through it to the right. From crest to trough the tangent turns from due left to due right, counterclockwise by $\pi$ radians. Over that arc the input turns clockwise by only $0.04283506$ radians.
 
-On the simple branch $H(w,b)=0$, the velocity is $dw/dh=-H_b/(\pi H_w)$ when $h$ is in radians. The graph aligns all three crossings and gives velocities and accelerations per clockwise degree. For per-radian values, multiply them by $180/\pi$ and $(180/\pi)^2$, respectively.
+On the simple branch $H(w,b)=0$, the velocity is $dw/dh=-H_b/(\pi H_w)$ when $h$ is in radians. The interactive replay tabulates velocities and accelerations per clockwise degree. To express those values per radian I multiply them by $180/\pi$ and $(180/\pi)^2$, respectively.
 
-[![The sixth path crosses the same height three times. Click to compare the derivatives.](../../archive/2026-11-19-sixth-passes-v001/preview.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/)
+[![The sixth path crosses the same height three times. Click to compare the derivatives.](../figures/proof-sixth-passes.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/)
 
-The square marks a point near $-0.14560046+37.21759523i$ that the path visits at two distinct input angles. The acute angle between its tangent lines is about $0.713809$ radians. The shift distinguishes the two visits even though their complex positions agree. [Open the interactive graph](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Derivative formulas, interval proofs and replay](../../archive/2026-11-19-sixth-passes-v001/README.md)
+I marked the three passes through $T=37.25$ in chronological order on the left (teal, rust and purple). Filled diamonds mark the height extrema. On the right I move the angle of each pass to zero and plot $T-37.25$ against the clockwise turn in radians from that pass. The middle trace crosses downward between two upward passes. The open square on the left marks a point near $-0.14560046+37.21759523i$ that the path visits at two distinct input angles. The acute angle between its tangent lines is about $0.713809$ radians. The shift distinguishes the two visits even though their complex positions agree. [Open the interactive graph](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Derivative formulas, interval proofs and replay](../../archive/2026-11-19-sixth-passes-v001/README.md)
 
 </details>
 
@@ -454,11 +456,15 @@ The trough is the last local minimum of $\Im w$ along the sixth moving zero. Fro
 
 Each path keeps its own starting value of $H(w,b)$ as the angle changes, so only the path that starts at zero is required to stay on the zero set. With equal scales on the real and imaginary axes, the distance between positions at the same angle measures how much the two paths have separated.
 
-![Sixteen nearby paths and the sixth moving zero, with starts, endpoints and arrows in the complex plane.](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/complex_turn.png)
+![Sixteen nearby paths and the sixth moving zero, with starts, endpoints and arrows in the complex plane.](../figures/proof-complex-turn.png)
+
+I drew each starting point as an open circle and its endpoint as a diamond. Color groups the paths by starting height. The dark path follows the zero of $H$ from its last trough to the sixth Riemann zero at $h=\pi/12$. [Trajectories and continuation rule](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/THESIS.md)
 
 For a closer comparison I placed a point $10^{-6}$ to the right of the zero at the trough. In units of $10^{-6}$, the displacement vector starts at $(1,0)$ and ends at $(0.247209,0.905975)$, with direction $1.304416$ radians. Its length reaches a unique maximum of $1.233768546$ at $h\approx0.249559635032$, returns to $1$ at $h\approx0.259687877153$, and ends at $0.939096964$. [Proof for this pair](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/neighbor_proof.txt) · [Interval bounds](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/neighbor_proof.json) · [Distance plotted against the turn angle](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/two_paths.png)
 
-![Magnified complex displacement from the moving zero to its neighbor, measured in millionths on equal axes.](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/complex_offset.png)
+![Magnified complex displacement from the moving zero to its neighbor, measured in millionths on equal axes.](../figures/proof-complex-offset.png)
+
+I plot the relative displacement $\Delta=10^6(w_{\rm near}-w_{\rm zero})$ on equal axes. The open circle is the initial offset $\Delta=1$, and the diamond is the final offset. Where the curve lies outside the dashed unit circle, the paths are farther apart than they were at launch. [Displacement record](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/neighbor_proof.json)
 
 </details>
 
@@ -496,7 +502,9 @@ $`\displaystyle f(w(t))=e^{t\ell}f(w_0),\qquad w(0)=w_0,\qquad \frac{dw}{dt}=\el
 
 For every $|w_0-37i|\le10^{-6}$, continuing with the principal logarithm converges to the elementary zero $8\pi i/\log 2$. The ordered logarithm leads to $\rho_6$. The two inverse branches meet at a simple critical point of $f$ near $0.235950387+36.945179676i$. The loop formed by the first lap of the two value paths at $w_0=37i$ winds once around its critical value. [Derivation and proof](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/THESIS.md) · [Whole-disk convergence](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/basin_certificate.json) · [The two branches](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/critical_branches.json)
 
-![The destinations reached by the two logarithms on the same grid of starting points.](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/basins.png)
+![The destinations reached by the two logarithms on the same grid of starting points.](../figures/proof-basins.png)
+
+I used the same starting points for both maps. Color identifies the estimated limiting zero after taking the principal angle $+\pi/4$ on the left or the ordered angle $-7\pi/4$ on the right. Gray marks undecided samples. The dots mark the common start $37i$, the white paths follow four laps, and the stars mark the two destinations inside the plotted rectangle. The whole-disk certificate covers the starts within $10^{-6}$ of $37i$. [Measurements and certificate](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/THESIS.md)
 
 </details>
 
@@ -551,9 +559,9 @@ At a simple zero, squared normalized speed is the squared modulus of $`G(z)=(3/\
 
 At one fixed real part, the two imaginary inputs let me read the radii and angles of the squared roots separately.
 
-[![Two imaginary shifts at real part one. The change in the complex sum from the quartet angles vanishes on the dotted diagonal k equals minus h. Open the interactive map.](../../archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
+[![Two imaginary shifts at real part one. The change in the complex sum from the quartet angles vanishes on the dotted diagonal k equals minus h. Open the interactive map.](../figures/proof-two-input.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
 
-Here the inputs are $x=1+ih$ and $y=1+ik$. I compare each point with the point on the dotted line that has the same $h-k$. Color gives the magnitude of the difference between their complex sums. At the two opposite-sign circles the difference is zero, and the sums are about $2.685091+1.968416i$ and its conjugate. At the two same-sign circles the sums agree and the color reads about $0.022907$. [Explore all four readings](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/) · [Full-resolution figure](../../archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png) · [Figure source and truncation bound](../../archive/2026-11-20-two-input-map-v001/README.md)
+Here the inputs are $x=1+ih$ and $y=1+ik$. I compare each point with the point on the dotted line that has the same $h-k$. The scale gives the magnitude of the difference between their complex sums, from zero in cream to the largest plotted change in dark purple. At the two opposite-sign circles the difference is zero, and the sums are about $2.685091+1.968416i$ and its conjugate. At the two same-sign circles the sums agree and the color reads about $0.022907$. [Explore all four readings](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/) · [Full-resolution figure](../../archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png) · [Figure source and truncation bound](../../archive/2026-11-20-two-input-map-v001/README.md)
 
 <details>
 <summary>The two-input identity and finite-precision reconstruction</summary>
@@ -657,7 +665,7 @@ The first matched grid window contained three critical-line zeros, compared with
 
 ![For 32 inputs, two rows of symbols identify the closer height in each of 64 comparisons with the nearest Riemann zero.](../figures/proof-proximity-controls.png)
 
-Each input contributes two comparisons. A circle means the orbit-selected height was closer to a Riemann zero, a triangle means its control was closer, and a cross means the orbit check left that comparison unresolved. Keeping every input in the figure shows why the observed 20 wins leave the majority across all 64 undecided. [32 inputs and both control distances](../../archive/2026-11-18-clock-proximity-results-v001/comparisons.csv)
+For each input $j$, I compare the selected height with its lower control $T_-$ and upper control $T_+$. A circle means the orbit-selected height was closer to a Riemann zero, a triangle means its control was closer, and a cross means the orbit check left that comparison unresolved. Keeping every input in the figure shows why the observed 20 wins leave the majority across all 64 undecided. [32 inputs and both control distances](../../archive/2026-11-18-clock-proximity-results-v001/comparisons.csv)
 
 <details>
 <summary>Matched heights and the 32-input comparison</summary>
@@ -762,9 +770,9 @@ To compute it I introduce $\mathfrak Z(s,\nu)=\sum_{n\ge1}n^{-s}C_n^\nu$ and set
 
 Multiplying the first $N$ normalized quartet factors gives a product that decays like $N^{-1/4}$.
 
-![The normalized products approach the Barnes–Dottie limit through five cutoffs up to 1,024](../../archive/2026-11-16-super-zeta-v001/figures/barnes-dottie-normalization.png)
+![The normalized products approach the Barnes–Dottie limit through five cutoffs up to 1,024](../figures/proof-barnes.png)
 
-The horizontal axis counts the quartet levels included. At each cutoff I multiply the partial product by $N^{1/4}$ to remove its leading decay. The points move toward the dashed value $1.225001707314\ldots$.
+At each plotted cutoff $N$ I multiply the product of the first $N$ quartet factors by $N^{1/4}$ to remove its leading decay. The teal points approach the rust dashed level $1.225001707314\ldots$, obtained independently from the Barnes product. [Five product measurements and exact limit](../../archive/2026-11-16-super-zeta-v001/computations/binomial-normalization-results.json)
 
 <details>
 <summary>The normalized product and its limiting constant</summary>
