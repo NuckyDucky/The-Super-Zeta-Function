@@ -1,0 +1,22 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6461,
+      "sha256": "9b6e26564e84320361e353597c86a1a4eac03a057ecb08ccccc3f7718aad2df6"
+    },
+    "plot_sector.py": {
+      "bytes": 1407,
+      "sha256": "153e53c0911832ac3885a568629a25cb79c692c283f75bdb8a0675b70215423f"
+    },
+    "sector-width.png": {
+      "bytes": 39142,
+      "sha256": "52b58e726723f9150db9df742ac718b90b6b715750fc4a834f59edf357f298c6"
+    },
+    "verify_sector.py": {
+      "bytes": 2524,
+      "sha256": "c4cc065a6735007d754e38f5bf5773ab5a201c6499bd0c6893dce4fe6dd3f283"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-gaussian-common-sector-v001"
+}
