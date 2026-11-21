@@ -71,16 +71,16 @@ My quartic has points over $\mathbb R$ and every $\mathbb Q_p$, while its ration
 
 My approximation to $\pi$ is the larger root of the original quadratic at $x=e$.
 
+![The intersection yielding pi-hat lies about 8.682 times 10 to the minus 20 below pi](../../archive/2026-11-18-research-figures-v001/pi-hat.png)
+
+I centered the plot at $(\pi,T(\pi))$ and used units of $10^{-20}$ on both axes. The horizontal distance is $\pi-\widehat\pi\approx8.682007272725\times10^{-20}$. [Lean proof of the error bound](../../lean/SuperZeta/MemePrecision.lean)
+
 <details>
 <summary>Inverting the change of ordinate at x = e</summary>
 
 I read $Y=+\sqrt{f(e)}$ on the upper oval, subtract $N(e)-3D(e)$, and divide by $2(N(e)-D(e))$. This reverses the change of ordinate and gives the following value. [Inverse coordinate and the two branches, §2](../../archive/2026-11-18-lean-foundations-v001/arithmetic/research/geometry.md#2-why-the-real-completion-is-exactly-two-circles) · [Upper-root identity in Lean](../../lean/SuperZeta/Meme.lean)
 
 $`\displaystyle \widehat\pi=\frac{3D(e)-N(e)+\sqrt{f(e)}}{2\bigl(N(e)-D(e)\bigr)} =3.14159265358979323837582331055\ldots`$
-
-I centered the plot at $(\pi,T(\pi))$ and used units of $10^{-20}$ on both axes. The horizontal distance is $\pi-\widehat\pi\approx8.682007272725\times10^{-20}$. [Lean proof of the error bound](../../lean/SuperZeta/MemePrecision.lean)
-
-![The intersection yielding pi-hat lies about 8.682 times 10 to the minus 20 below pi](../../archive/2026-11-18-research-figures-v001/pi-hat.png)
 
 I shift the ordinate to $p=2y+3$ to write the quadratic as $p-p^{-1}=4N/(N-D)$. The substitution $p\mapsto-1/p$ exchanges the two roots. On the exceptional fiber $N-D=0$, the same involution exchanges $p=0$ and $p=\infty$. [Reciprocal substitution in Lean](../../lean/SuperZeta/Meme.lean) · [Involutions of the quartic, §6](../../archive/2026-11-18-lean-foundations-v001/arithmetic/research/geometry.md#6-two-exact-involutions)
 
@@ -128,6 +128,10 @@ A primitive scalar period $r$ takes $2r$ exponential stages along one phase. An 
 ### Chronological sign words and recovery of the signed stages
 
 At base 2 the six balanced four-stage histories give six different values from the same starting cap. At a particular complex lift all six endpoint values coincide. [Lemma on unique chronological order](chronological-order.md)
+
+![A seven-stage sign word and its reversal, with a third panel marking changes in their measured periods at the same complex lift.](../../archive/2026-11-18-lean-foundations-v001/papers/foundations/figures/reversal_order_effect.png)
+
+To isolate the effect of order, I kept the same starting cap and sampled the same complex logarithms in both panels. I applied the seven signs in the printed order on the left and in reverse order in the middle. The right panel marks the inputs where the finite period measurements disagree. [Sign-word survey, settings and precision replay](../../archive/2026-11-18-lean-foundations-v001/papers/foundations/main.tex#L433-L453)
 
 <details>
 <summary>Recovering signs from endpoints and stage derivatives</summary>
@@ -319,6 +323,10 @@ With $w=2s$, the prefactor is nonzero in $0<\Re w<1$. There $\zeta(w)=\pi^w F(w/
 
 Two labeled reciprocal-root sums determine which side of $-\pi/2$ the return angle lies on.
 
+[![The two spectral traces at the native period-640 angle as it turns clockwise by π/6 and back.](../figures/ordered-turn.gif)](../figures/ordered-turn.png)
+
+The two curves use the same horizontal coordinate $\theta$. At their intersection the offset measurements give equal reciprocal-root sums. On either side, the larger of $M_+$ and $M_-$ identifies which side of $-\pi/2$ the return angle occupies. The marked angle moves clockwise by $\pi/6$ and retraces the same interval on its return. [Static trace comparison](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/trace_order.png)
+
 <details>
 <summary>The two trace readings and the recovered angle</summary>
 
@@ -334,9 +342,7 @@ $`\displaystyle M_\pm=M(\theta\pm\pi/6),\qquad S_\pm=1-2/M_\pm,\qquad \cos\theta
 
 With both probes regular, $S_\pm=\sin(\theta\pm\pi/6)$. In $-2\pi/3<\theta<-\pi/3$, $M_+>M_-$ places $\theta$ above $-\pi/2$ and $M_+<M_-$ places it below. At $-\pi/2$ the two traces are both $8-4\sqrt3$. [Proof from the complete zero set](../../lean/SuperZeta/Oriented/SpectralInverse.lean) · [Reflection of the squared determinant](../../lean/SuperZeta/Oriented/PhaseSymmetry.lean)
 
-![The two reciprocal-root sums on the centerline period-640 branch before and after a clockwise turn of π/6.](../../archive/2026-11-19-dottie-plane-atlas-v001/atlas/trace_order.png)
-
-The two curves use the same horizontal coordinate $\theta$. At their intersection the offset measurements give equal reciprocal-root sums. On either side, the larger of $M_+$ and $M_-$ identifies which side of $-\pi/2$ the return angle occupies. I tested this by turning the measured angle clockwise by $\pi/6$, solving for the parameter on the same centerline branch, and evaluating both traces again. The table gives rounded values from the interval enclosures. [Interval record](../../archive/2026-11-19-oriented-return-v001/data/quarter_probe.json)
+I tested this by turning the measured angle clockwise by $\pi/6$, solving for the parameter on the same centerline branch, and evaluating both traces again. The table gives rounded values from the interval enclosures. [Interval record](../../archive/2026-11-19-oriented-return-v001/data/quarter_probe.json)
 
 | Measurement | Return angle in radians | $M_+$ | $M_-$ |
 | --- | ---: | ---: | ---: |
@@ -545,6 +551,10 @@ At a simple zero, squared normalized speed is the squared modulus of $`G(z)=(3/\
 
 At one fixed real part, the two imaginary inputs let me read the radii and angles of the squared roots separately.
 
+[![Two imaginary shifts at real part one. The change in the complex sum from the quartet angles vanishes on the dotted diagonal k equals minus h. Open the interactive map.](../../archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
+
+Here the inputs are $x=1+ih$ and $y=1+ik$. I compare each point with the point on the dotted line that has the same $h-k$. Color gives the magnitude of the difference between their complex sums. At the two opposite-sign circles the difference is zero, and the sums are about $2.685091+1.968416i$ and its conjugate. At the two same-sign circles the sums agree and the color reads about $0.022907$. [Explore all four readings](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/) · [Full-resolution figure](../../archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png) · [Figure source and truncation bound](../../archive/2026-11-20-two-input-map-v001/README.md)
+
 <details>
 <summary>The two-input identity and finite-precision reconstruction</summary>
 
@@ -559,10 +569,6 @@ $`\displaystyle \mathrm{Sz}_E(x,y)=\sum_{E(\lambda)=0}\lambda^{-x}\overline{\lam
 $`\displaystyle 2R^{-2r}e^{-i(h-k)\log R}\cosh\!\big((h+k)\psi\big).`$
 
 As I vary $h-k$, the oscillation has frequency $\log R$. Once I isolate that frequency, varying $h+k$ gives the angles at that radius. Exact values across the whole plane at one fixed $r$ determine the squared roots and their multiplicities. Setting $y=0$ in the defining sum recovers my original one-input super zeta where its series converges. [Full-plane proof and principal logarithms](../../archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#a-plane-indexed-by-two-imaginary-displacements)
-
-[![Two imaginary shifts at real part one. The change in the complex sum from the quartet angles vanishes on the dotted diagonal k equals minus h. Open the interactive map.](../../archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png)](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/)
-
-At $r=1$ I compare each point with the point on the dotted line that has the same $h-k$. Color gives the magnitude of the difference between their complex sums. At the two opposite-sign circles the difference is zero, and the sums are about $2.685091+1.968416i$ and its conjugate. At the two same-sign circles the sums agree and the color reads about $0.022907$. [Explore all four readings](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/) · [Full-resolution figure](../../archive/2026-11-20-two-input-map-v001/two-input-dottie-map.png) · [Figure source and truncation bound](../../archive/2026-11-20-two-input-map-v001/README.md)
 
 **Recovery from five readings.** Here I set $h=k$, write $\eta=h+k$, and use five real totals. At $r=16$ I take $\eta=0,1,2$. At $r=17$ I take $\eta=0,1$. Subtracting the $\eta=0$ reading cancels the real Dottie root. A bound on the higher levels isolates the first conjugate pair. With the archived readings I obtain a modulus between 9.458388942732 and 9.458388942826 and a positive argument between 1.257969768180 and 1.257969768339 radians. The conjugate has the negative argument. Solving the original cosine equation separately gives values inside both intervals. [Five inputs, tail bound and inverse](../../archive/2026-11-20-hurwitz-speed-mean-square-v001/two-input-spectrum.md#recovering-the-first-nonreal-pair-from-five-full-readings)
 
@@ -594,6 +600,10 @@ A **simple zero** $\rho$ is a point where $\zeta(\rho)=0$ and $\zeta'(\rho)\ne0$
 | $\lvert t-T_D\rvert\le\tfrac14$ | 2 | 0 | [Count and endpoint signs](../../archive/2026-11-20-liu-angular-velocity-v002/README.md#where-the-zero-locations-are-sharper) |
 | $\lvert t-2T_D\rvert\le\tfrac12$ | 5 | 0 | [Second height](../../archive/2026-11-18-superzeta-distance-v001/README.md) |
 | $\lvert t-3T_D\rvert\le\tfrac12$ | 4 | 0 | [Third height](../../archive/2026-11-18-superzeta-distance-v001/README.md) |
+
+![The three certified height intervals on the same offset axis, with two, five and four critical-line zeros respectively.](../figures/proof-riemann-windows.png)
+
+I subtracted the center height from each zero bracket so all three windows could be drawn on the same horizontal scale. Each circle lies at the midpoint of an interval where Hardy’s function changes sign. The independent total count for its row equals the number of circles. [Bracket endpoints, signs and cumulative counts](../../archive/2026-11-20-liu-angular-velocity-v002/windows.json)
 
 I also tested whether the Dottie rule picks heights *closer* to a Riemann zero than nearby controls. Each of 32 inputs had two controls. Of the 64 comparisons, 20 favored Dottie, 16 favored a control, and 28 stayed unresolved because 14 inputs did not pass the orbit check. The preregistered majority across all 64 comparisons is still open. [Frozen rule](../../archive/2026-11-18-clock-local-controls-protocol-v001/README.md) · [All 32 inputs and their outcomes](../../archive/2026-11-18-clock-proximity-results-v001/README.md)
 
@@ -645,6 +655,10 @@ In the super zeta coordinate $w=2s$, I count the same zeros through $F(s)=\mathc
 
 The first matched grid window contained three critical-line zeros, compared with two in the Dottie window. In a two-height pilot, Dottie and the grid each gave the closer height once.
 
+![For 32 inputs, two rows of symbols identify the closer height in each of 64 comparisons with the nearest Riemann zero.](../figures/proof-proximity-controls.png)
+
+Each input contributes two comparisons. A circle means the orbit-selected height was closer to a Riemann zero, a triangle means its control was closer, and a cross means the orbit check left that comparison unresolved. Keeping every input in the figure shows why the observed 20 wins leave the majority across all 64 undecided. [32 inputs and both control distances](../../archive/2026-11-18-clock-proximity-results-v001/comparisons.csv)
+
 <details>
 <summary>Matched heights and the 32-input comparison</summary>
 
@@ -695,6 +709,10 @@ $`\displaystyle \Lambda_n=n-\frac14+o(1),\qquad \delta_n\longrightarrow\frac14 .
 
 The quartet radii change the sign of a finite-level test. At level 28 the Hurwitz value $\zeta(-1,1-\delta_n)$ is negative. At level 29 it is positive and stays positive thereafter.
 
+![Hurwitz values at the first fifty quartet and grid levels, with a second plot enlarging the quartet sign change between levels 28 and 29.](../figures/proof-hurwitz-crossing.png)
+
+The height of each dot is the Hurwitz value at that integer level. I kept the balanced sign weight fixed and replaced $R_n$ by $2\pi n$ for the open circles. Both displacements tend to the same $1/4$, yet only the measured quartet values pass from below zero to above it. [Grid formula and the two level enclosures](../../archive/2026-11-18-quartet-grid-comparison-v001/README.md)
+
 <details>
 <summary>The sign test for the quartet radii and the comparison grid</summary>
 
@@ -744,6 +762,10 @@ To compute it I introduce $\mathfrak Z(s,\nu)=\sum_{n\ge1}n^{-s}C_n^\nu$ and set
 
 Multiplying the first $N$ normalized quartet factors gives a product that decays like $N^{-1/4}$.
 
+![The normalized products approach the Barnes–Dottie limit through five cutoffs up to 1,024](../../archive/2026-11-16-super-zeta-v001/figures/barnes-dottie-normalization.png)
+
+The horizontal axis counts the quartet levels included. At each cutoff I multiply the partial product by $N^{1/4}$ to remove its leading decay. The points move toward the dashed value $1.225001707314\ldots$.
+
 <details>
 <summary>The normalized product and its limiting constant</summary>
 
@@ -751,9 +773,7 @@ In its logarithm each level contributes $-1/(4n)$ to leading order, and their su
 
 $`\displaystyle \lim_{N\to\infty} N^{1/4}\prod_{n=1}^N C_n =\frac{e^{\sin(d)/2}}{G(3/2)^2} =1.2250017073142016853\ldots .`$
 
-The product of the radial factors $R_n/(2\pi n)$ is exactly $e^{\sin(d)/2}$, where $d=\cos d$ is the Dottie number from the fold. I combine the factorial factors $D_n$ with the Barnes recurrence $G(z+1)=\Gamma(z)G(z)$ and $G(1)=1$. The asymptotic formula for $G$ as $N$ grows then gives $N^{1/4}\prod_{n=1}^N D_n\to1/G(3/2)^2$. The figure follows the rescaled product through five finite cutoffs. [Exact radial product](../../archive/2026-11-16-super-zeta-v001/sources/foundation/radial-product-trace-theorem.md#2-the-same-trace-isolates-the-convergent-radial-product) · [Barnes product, eqs. (1)–(5)](../../archive/2026-11-16-super-zeta-v001/research/binomial-normalization.md#1-the-exact-global-normalization) · [DLMF, Barnes G-function](https://dlmf.nist.gov/5.17)
-
-![The normalized products approach the Barnes–Dottie limit through five cutoffs up to 1,024](../../archive/2026-11-16-super-zeta-v001/figures/barnes-dottie-normalization.png)
+The product of the radial factors $R_n/(2\pi n)$ is exactly $e^{\sin(d)/2}$, where $d=\cos d$ is the Dottie number from the fold. I combine the factorial factors $D_n$ with the Barnes recurrence $G(z+1)=\Gamma(z)G(z)$ and $G(1)=1$. The asymptotic formula for $G$ as $N$ grows then gives $N^{1/4}\prod_{n=1}^N D_n\to1/G(3/2)^2$. [Exact radial product](../../archive/2026-11-16-super-zeta-v001/sources/foundation/radial-product-trace-theorem.md#2-the-same-trace-isolates-the-convergent-radial-product) · [Barnes product, eqs. (1)–(5)](../../archive/2026-11-16-super-zeta-v001/research/binomial-normalization.md#1-the-exact-global-normalization) · [DLMF, Barnes G-function](https://dlmf.nist.gov/5.17)
 
 </details>
 
