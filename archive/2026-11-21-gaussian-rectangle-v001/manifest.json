@@ -1,0 +1,42 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 4063,
+      "sha256": "a86bd852c994af218a9c3112bd3a10729c2e1bb5e2feb2d2a40e75d18b467ea2"
+    },
+    "bounds.md": {
+      "bytes": 8841,
+      "sha256": "16d35a959c997ff9acb44d04fa478b6911ac6ea7afda481d5beeb795cc424b60"
+    },
+    "carriers.json": {
+      "bytes": 2446,
+      "sha256": "e54da2ad6e769753770c7222efd8c447c5bce509a9574bd3644803240abd4908"
+    },
+    "certificate.json": {
+      "bytes": 11681,
+      "sha256": "1da52191dd3df90661f8363a7bacefcf3bbcc679c4344b6d159fbe1926aeba2f"
+    },
+    "plot.py": {
+      "bytes": 2346,
+      "sha256": "24dcc1741bcf0002500c9022d20b349f45f97691c9cd03db7994d38c933c9628"
+    },
+    "rectangle.png": {
+      "bytes": 110711,
+      "sha256": "e6e5a7bf3de313880b573b21c1701266ff8d4bbb6cbdeccd6690436931e5580c"
+    },
+    "replay_rectangle.py": {
+      "bytes": 8272,
+      "sha256": "08b06eea1953800ad655ff1d4e2081af37bbf20a1f65d46e345143d944c794b9"
+    },
+    "retained.py": {
+      "bytes": 4160,
+      "sha256": "c80b8f1556df026860e063468982f419f8c46643121172c4427fbb83f469f3a9"
+    },
+    "signed-blocks.json": {
+      "bytes": 164119,
+      "sha256": "d2ec499eee35504d6c4e83e3b92cf6506fedd5e65a774d31d51b8d9d7a5fc121"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-21-gaussian-rectangle-v001"
+}

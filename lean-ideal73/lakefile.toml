@@ -9,4 +9,6 @@ rev = "0df444a360eaa60ab8c11dca51a86af692955474"
 
 [[lean_lib]]
 name = "IdealCount73"
-roots = ["IdealCount73", "OriginalQuarticBranch", "PrimeDecomposition73", "PrimePowerIdealCount", "QuarticAt73", "QuarticModel", "GoodPrime", "PrimeIdealCoefficient"]
+roots = ["IdealCount73", "OriginalQuarticBranch", "PrimeDecomposition73", "PrimePowerIdealCount",
+         "QuarticAt73", "QuarticModel", "GoodPrime", "PrimeIdealCoefficient",
+         "FieldTarget", "FieldCoefficientTransfer", "StripCover", "DerivativeRectangle"]

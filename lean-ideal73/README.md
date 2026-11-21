@@ -11,11 +11,14 @@ This package constructs the field $E=\mathbb Q(i,\sqrt{-5045155+1027708i})$ and 
 | [The actual count](QuarticAt73.lean) | Mathlib’s subtype of ideals of this field with norm 73 has cardinality two. |
 | [All primes above 73](PrimeDecomposition73.lean) | The three specified primes exhaust the list. All are unramified, and their residue degrees are 1, 1 and 2. |
 | [Ideals of every power of 73](PrimePowerIdealCount.lean) | Unique factorization identifies the ideals of norm $73^n$ with triples $a+b+2c=n$. The even and odd formulas count these actual ideals. |
+| [Transfer to the field statement](FieldCoefficientTransfer.lean) | For this field, agreement of multiplicative coefficients at every prime power identifies the three-factor product under explicit holomorphy and series hypotheses. The critical-line conclusions for the Riemann and beta factors then reduce the field question to the Gaussian factor. |
+| [Slope on a rectangle](DerivativeRectangle.lean) | Reflection and a strict upper bound on the imaginary derivative locate all zeros in that rectangle on the line. Opposite-sign endpoint values give a unique simple zero. |
+| [Exhaustion by rectangles](StripCover.lean) | For a continuous Gaussian factor with reflecting zeros, positive lower bounds on each compact rectangle in the right-half-strip exhaustion imply the critical-line assertion at all heights. |
 
 Run the following commands from this directory with elan installed. The toolchain file selects Lean 4.33.1. The lockfile pins mathlib and its dependencies. The first command obtains the compiled mathlib imports. The second builds the field modules and checks the principal theorems’ transitive axiom dependencies against the three foundational axioms allowed by the project.
 
 ~~~sh
-lake exe cache get Mathlib.Tactic Mathlib.NumberTheory.NumberField.DedekindZeta Mathlib.NumberTheory.NumberField.Ideal.KummerDedekind Mathlib.RingTheory.DedekindDomain.Different Mathlib.Algebra.Polynomial.Eval.Irreducible Mathlib.RingTheory.Polynomial.GaussLemma
+lake exe cache get $(sed -n 's/^import \(Mathlib\.[[:alnum:]_.]*\)$/\1/p' *.lean | sort -u)
 lake build
 ~~~
 
