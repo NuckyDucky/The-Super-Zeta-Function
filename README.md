@@ -123,12 +123,7 @@ This is Binet’s integral for the Stirling remainder. In my construction it com
 
 Write $B_n=4^{-n}\binom{2n}{n}$ for the fraction of balanced words. With two independent words the fraction is $B_n^2$. Removing the quartet radius from $C_n=R_nB_n^2/2$ leaves the factorial factor $D_n=\pi n B_n^2$. If $\rho_n$ denotes the logarithm of the ratio of $n!$ to its leading Stirling factor, the factorials in $D_n$ give
 
-~~~math
-\begin{aligned}
-I(x)&=\int_0^\infty e^{-xt}\frac{\tanh(t/4)}{t}\,dt,\qquad x>0,\\
-\log D_n&=2\rho_{2n}-4\rho_n=-I(n).
-\end{aligned}
-~~~
+$`\displaystyle \begin{aligned} I(x)&=\int_0^\infty e^{-xt}\frac{\tanh(t/4)}{t}\,dt,\qquad x>0,\\ \log D_n&=2\rho_{2n}-4\rho_n=-I(n). \end{aligned}`$
 
 Solving for $\rho_n$ and iterating gives $\rho_n=\tfrac14\sum_{j\ge0}2^{-j}I(2^j n)$. The kernels at successive doubled indices telescope to the single integral above. After $k$ terms the omitted logarithmic correction is between zero and $4^{-k}/(12n)$. For $n=10$, twelve terms with that tail bound enclose the answer between $3{,}628{,}799.9981$ and $3{,}628{,}800.0001$. The only integer in that interval is $3{,}628{,}800$. [Kernel, recurrence and doubling proof](lean/SuperZeta/StirlingCorrection.lean#L306) · [Quartet normalization and all-order error bound](archive/2026-11-18-stirling-correction-v001/README.md#the-exact-correction)
 

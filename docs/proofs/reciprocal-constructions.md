@@ -763,20 +763,11 @@ Since $0\le I(x)\le1/(4x)$, stopping after the first $k$ terms leaves at most $4
 
 I can also evaluate the correction as one definite integral. In each $I(2^j n)$, rescale the integration variable so that the exponential becomes $e^{-nt}$. Every rescaled kernel is nonnegative, so monotone convergence allows the sum inside the integral. The identity $\tanh x=2\coth(2x)-\coth x$ cancels adjacent terms. For $t>0$ the first $k$ kernels give
 
-~~~math
-\frac14\sum_{j=0}^{k-1}2^{-j}\tanh\!\left(\frac{t}{2^{j+2}}\right)
-=\frac12\coth\!\left(\frac t2\right)
- -\frac{1}{2^{k+1}}\coth\!\left(\frac{t}{2^{k+1}}\right).
-~~~
+$`\displaystyle \frac14\sum_{j=0}^{k-1}2^{-j}\tanh\!\left(\frac{t}{2^{j+2}}\right) =\frac12\coth\!\left(\frac t2\right) -\frac{1}{2^{k+1}}\coth\!\left(\frac{t}{2^{k+1}}\right).`$
 
 Since $x\coth x\to1$ as $x\to0$, the last term on the right tends to $1/t$. This gives a formula for the factorial with no factorials in its integrand. The kernel multiplying $e^{-nt}$ tends to $1/12$ at $t=0$, and the exponential ensures convergence at infinity.
 
-~~~math
-n!=\sqrt{2\pi n}\left(\frac ne\right)^n
-\exp\!\left[\int_0^\infty e^{-nt}
-\left(\frac12\coth\frac t2-\frac1t\right)\frac{dt}{t}\right],
-\qquad n\ge1 .
-~~~
+$`\displaystyle n!=\sqrt{2\pi n}\left(\frac ne\right)^n \exp\!\left[\int_0^\infty e^{-nt} \left(\frac12\coth\frac t2-\frac1t\right)\frac{dt}{t}\right], \qquad n\ge1 .`$
 
 The Lean theorem gives the exact factorial in the doubled-index series. The cancellation above identifies that series with Binet’s single integral, using $\tfrac12\coth(t/2)=\tfrac12+1/(e^t-1)$. [Doubled-index factorial equality in Lean](../../lean/SuperZeta/StirlingCorrection.lean#L355) · [Binet’s integral](https://dlmf.nist.gov/5.9.E10_2)
 
