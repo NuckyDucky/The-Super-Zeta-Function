@@ -1,0 +1,22 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6071,
+      "sha256": "7bdd66c59b9477a8cabb078b4ce0423e45bc0a32b5d9107959a47ba4c9a76523"
+    },
+    "gaussian-block.png": {
+      "bytes": 63116,
+      "sha256": "002000f46e5cb3d24f7f8e8cc7484a1675dae0478f97dd10ae368289a6588586"
+    },
+    "plot.py": {
+      "bytes": 2113,
+      "sha256": "81aa7225c11ad95cfa75418ab5f3bbf5d15732d5e3f3ffcf4f424a8304b2393a"
+    },
+    "verify.py": {
+      "bytes": 4245,
+      "sha256": "1f7229cc55870891bf3bde5af03b3112fedd074053b2c9f09001ba23e4792200"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-20-gaussian-relative-remainder-v001"
+}
