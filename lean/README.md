@@ -1,5 +1,7 @@
 # Lean proofs for The Super Zeta Function
 
+For the actual ideals of norm 73, the [quartic ideal package](../lean-ideal73/README.md) pins the version of mathlib with the Dedekind coefficient and Kummer–Dedekind theorems used in the proof. This package uses the existing 4.19 toolchain for the [signed Euler coefficients](SuperZeta/GaussianIdealEuler.lean), the [spectral zero orders](SuperZeta/GaussianSpectralTransfer.lean), and the [local residue at a Gaussian zero](SuperZeta/GaussianPrimeResidue.lean). The [combined derivation](../docs/proofs/gaussian-ideals-and-super-zeta.md) identifies the analytic and arithmetic inputs to each theorem.
+
 For a real analytic function on a closed height interval with nonzero endpoint values, the product of the endpoint signs gives the parity of its interior zeros counted with their analytic orders. Lean constructs the finite set of zeros and proves the same rule after subtracting a real target. The accompanying Gaussian calculation encloses both endpoint values at the Dottie height. [Endpoint parity](SuperZeta/GaussianEndpointParity.lean) · [Numerical signs and unresolved case](../archive/2026-11-20-gaussian-endpoint-parity-v001/README.md)
 
 The paper develops the quadratic and its two real ovals, the ordered iteration and its Dottie fold, and the cosine determinant. [Main paper](../README.md#the-quadratic-and-the-genus-one-curve)

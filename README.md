@@ -8,6 +8,8 @@ The Dottie fold gives me a periodic return from which I select three height wind
 
 **Results in this proof**
 
+- I count exactly two ideals of norm 73 in my quartic field, both above $(3-8i)$. The single prime above $(3+8i)$ has norm $73^2$. Lean counts the field ideals of norm $73^n$ for every $n$. The corrected super zeta supplies the ordinary zeta factor of this same field. An independent maximal-order calculation agrees with the signed Gaussian construction at every ideal norm through 65,536. [Quartic ideals, spectral identity and arithmetic check](docs/proofs/gaussian-ideals-and-super-zeta.md)
+
 - From the product for $E$ I obtain exact sums over the tower spectrum. For example, $\mathcal Z(1;1)=2$ and $\mathcal Z(2;1)=10/3$. For every positive index $m$, the exponent of 2 in $\mathcal Z(m;1)$ equals the number of ones in the binary expansion of $m$. [All-index trace law](archive/2026-11-18-binary-law-v001/README.md#what-the-binary-digits-measure) · [Determinant product and first four sums](docs/proofs/quartet-spectrum.md#4-canonical-product-and-exact-rational-trace-sums)
 - Near the Dottie fold I isolate paired periods 640 and 205,440. A period-640 return sets three height windows in which all eleven Riemann zeros lie on the critical line and have multiplicity one. Such zeros are called simple. This sharpens the 7/8ths and Liu bounds in those windows. [Orbit certificate](archive/2026-11-18-dottie-mixed-cap-period-v001/README.md) · [Count in each window](#4-transferring-zero-results-one-factor-at-a-time) · [Three window counts](archive/2026-11-20-liu-angular-velocity-v002/README.md)
 - I recover the exact error in Stirling’s approximation from the balanced sign counts. Multiplying the leading factor by the exponential of that correction gives $n!$ for every $n\ge1$. The actual quartet radii determine a finite Hurwitz sign change between levels 28 and 29. [Exact factorial formula](#the-exact-factorial-from-the-balanced-sign-count) · [Factorial proof](archive/2026-11-18-stirling-correction-v001/README.md) · [Comparison with equally spaced radii](archive/2026-11-18-quartet-grid-comparison-v001/README.md)
@@ -201,6 +203,8 @@ The two points $3+8i$ and $3-8i$ both have squared length $73$. At the first, $i
 
 <a name="fig-8"></a>**Fig. 8. Opposite signs at norm 73.** The plotted points $3+8i$ and $3-8i$ are reflections across the real axis. Both have squared distance 73 from the origin. At the upper point the quadratic has no residue root and gives $-1$. At the lower point it has two and gives $+1$. Adding the signs loses their assignment. Marking the two points separately preserves it. [Prime directions and residues](docs/proofs/marked-gaussian-direction.md)
 
+At $s_*=\tfrac12+i\pi/(4\log73)$, write $X=73^{-s_*}$. Starting from $z=X^2=-i/73$, I reach $X^3$ or $-X^3$ at exponent $3/2$, according to which logarithm I used. Dividing by $z$ recovers the selected square root. Following one path out and the other back gives one full turn around zero. The same quartic signs give a zero coefficient in degree three when I multiply the two local Euler factors. [Figure and proof of midpoint recovery](docs/proofs/fractional-turn-at-73.md) · [Lean theorems](lean/SuperZeta/FractionalTurn.lean)
+
 ### Three residue symbols and the comparisons at 13, 37 and 73
 
 For a nonzero generator $z=m+ni$, the three residue symbols at the primes dividing $(\delta)$ determine its character value.
@@ -287,6 +291,8 @@ At $m=0$ every nonempty word is the constant map $1$, with derivative pair $(0,0
 <div><a name="4-strengthening-the-78ths-and-liu-bounds-in-three-height-intervals"></a><a name="a-local-strengthening-of-the-seven-eighths-theorem"></a><a name="local-zeta-result"></a><a name="a-local-strengthening-of-the-78ths-theorem"></a><a name="4-a-local-strengthening-of-the-78ths-theorem"></a><a name="read-zero-counts" id="user-content-read-zero-counts"></a><a name="how-the-iteration-gives-the-height"></a><a name="selection-of-the-test-height"></a><a name="what-the-three-windows-tell-me"></a><a name="certified-counts-in-the-three-windows"></a></div>
 
 ## 4. Transferring zero results one factor at a time
+
+At norm 73 the Gaussian signs cancel in degree one and give coefficient one in degree two. In the quartic field the corresponding counts are two and four. For the full right Dottie disk, every opposite-sign prime contributes a holomorphic, nonzero factor. I show that any Gaussian zero there would instead give a pole in a sum over the split primes whose signs agree. [Ideal counts, spectral multiplicities and the signed-prime residue](docs/proofs/gaussian-ideals-and-super-zeta.md)
 
 The first field involves ordinary Dirichlet characters. The quartic adds a character of ideals over the Gaussian integers. Write $\beta_D(w)=L(w,\chi_{-4})$ for Dirichlet beta. The three factorizations specify which extra function has to be evaluated when I carry a zero count into a new field.
 

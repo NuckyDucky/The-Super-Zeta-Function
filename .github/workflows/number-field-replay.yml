@@ -14,6 +14,8 @@ on:
       - 'archive/2026-11-20-gaussian-circle-phases-v001/**'
       - 'archive/2026-11-20-gaussian-relative-remainder-v001/**'
       - 'archive/2026-11-20-gaussian-common-sector-v001/**'
+      - 'archive/2026-11-20-gaussian-local-factor-v001/**'
+      - 'tools/check_quartic_ideal_series.py'
       - '.github/workflows/number-field-replay.yml'
   push:
     branches: [main]
@@ -28,6 +30,8 @@ on:
       - 'archive/2026-11-20-gaussian-circle-phases-v001/**'
       - 'archive/2026-11-20-gaussian-relative-remainder-v001/**'
       - 'archive/2026-11-20-gaussian-common-sector-v001/**'
+      - 'archive/2026-11-20-gaussian-local-factor-v001/**'
+      - 'tools/check_quartic_ideal_series.py'
       - '.github/workflows/number-field-replay.yml'
 
 permissions:
@@ -66,6 +70,12 @@ jobs:
               if saved != replay:
                   raise SystemExit(f"Archived results differ for {name}")
           PY
+      - name: Compare ideal counts and the corrected quartet trace with PARI
+        working-directory: .
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends pari-gp
+          python -B tools/check_quartic_ideal_series.py
       - name: Verify the directed finite bound and the two simple field zeros
         run: |
           python -B check_field_windows.py
@@ -131,3 +141,6 @@ jobs:
       - name: Enclose all 193 Gaussian readings in a common sector at each input
         working-directory: archive/2026-11-20-gaussian-common-sector-v001
         run: python -B verify_sector.py
+      - name: Remove the opposite-sign local factors on the two Dottie circles
+        working-directory: archive/2026-11-20-gaussian-local-factor-v001
+        run: python -B replay.py
