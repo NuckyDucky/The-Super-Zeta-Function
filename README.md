@@ -6,6 +6,8 @@ I construct the super zeta function from the two ordered exponents in my recipro
 
 The Dottie fold gives me a periodic return from which I select three height windows. I count eleven Riemann zeros in those windows and account for every one on the critical line. From the same cosine equation I obtain quartets whose radii, combined with counts of balanced sign histories, give an exact Stirling correction. Two spectral readings recover the orientation of a return, and derivatives at the starting point recover the signed stages in order. For my quartic field, the factorization tells me how the multiplicities of Riemann, Dirichlet beta and Gaussian zeros add. I use the quartic’s prime signs to bound how many Gaussian zeros fit in two reflected disks near the Dottie height. Their exact count remains open.
 
+The factorial correction also locates the power of a Pell unit. Among all positive powers of $6+\sqrt{35}$, only its square gives a factorial through $m^2-1$. For the Gaussian quartic, keeping the angular direction lets me identify the conjugate branch in one nonzero complex reading. Keeping the positive area of its scalar prime sum lets me rule out entire ranges of cutoffs for a proposed zero test. [Factorial, branch and prime-window results](archive/2026-11-21-quartic-projections-v001/README.md)
+
 ### Results and how to check them
 
 | Object | Result | Proof or replay |
@@ -149,6 +151,13 @@ Solving for $\rho_n$ and iterating gives $\rho_n=\tfrac14\sum_{j\ge0}2^{-j}I(2^j
 
 </details>
 
+<details>
+<summary>Which factorial gives a power of the Pell unit at squarefree part 35?</summary>
+
+In $n!+1=m^2$, writing $n!=qs^2$ gives the unit $m+s\sqrt q$. For $q=35$ the largest prime factor is $7$. A prime between $n/2$ and $n$ occurs once in the factorial and must divide $q$, so $7\le n<14$. Checking those seven integers leaves $7!=35\cdot12^2$ alone. Four balanced binomial readings put the unit index strictly between $1.99999061736726$ and $2.00000000002494$. Squaring gives $(6+\sqrt{35})^2=71+12\sqrt{35}$. The adjacent factorial $8!$ has squarefree part $70$. In that order the first target is $63{,}000$, between $8!$ and $9!$, and the second exceeds $13!$. The same prime bound excludes every power for $70$. The Stirling error gives the precision with which the readings recover its exponent. [Proof, comparison with Anand’s abstract and the adjacent factorial](archive/2026-11-21-quartic-projections-v001/stirling-pell.md)
+
+</details>
+
 ## 1. Arithmetic weights from the two logarithms
 
 At a fixed pair of my tower, the two exponents $U=LQ$ and $V=-LP$ determine the two lattice directions. I take the first direction to be $1$ and the second to be their ratio. The lattice consists of all integer combinations of those directions.
@@ -245,6 +254,8 @@ Multiplying the formula for $z$ by the one for its conjugate replaces each numer
 ### Reading the branch from the completed angular zeros
 
 Conjugating my quartic interchanges the primes above 73 and preserves the field zeta. To recover the branch I keep the positive imaginary direction fixed by $U/V=i$ and weight each marked ideal by the fourth power of its unit direction. The ordinary coefficient gives the sum of the two prime signs. The imaginary part of the angular coefficient gives their difference times a known sine. This recovers which prime received each sign.
+
+The fourth angular power gives a second way to read the branch. With $+i$ fixed, the quartic predicts the slope of a line in the complex output plane. At balanced Gaussian smoothing I summed the original signs and measured an angle of $-0.401905193375097$ radians with absolute error below $1.2\times10^{-14}$. Doubling the angular power from four to eight predicts twice the angle. An independent sum at order eight gave $-0.803810386750194$ radians with absolute error below $7.9\times10^{-12}$. The conjugate branch lies on the reflected line. The functional equation gives the branch directions, modulo $\pi$, for nonzero values of the completed angular function on the critical line. [Prediction, direct measurement and normalization](archive/2026-11-21-quartic-projections-v001/angular/README.md)
 
 <details>
 <summary>The zero sum and the two branch labels</summary>
@@ -431,6 +442,12 @@ The earlier $1/7$ is a coefficient in a different prime sum. For a cyclic subgro
 Lean checks the per-zero lower integrand and its numerical integration rule, the count deduction from the trace inequalities, and a sufficient condition for both disks to be empty. The explicit formula and the numerical bounds fed into those deductions have their own derivation and interval replay. [Fourier weight proof in Lean](lean/SuperZeta/GaussianDiskKernel.lean) · [Disk and boundary proofs in Lean](lean/SuperZeta/GaussianDiskCount.lean) · [Open question on the omitted prime terms](archive/2026-11-20-gaussian-reflected-disks-v001/README.md#what-the-circle-calculation-resolves)
 
 </details>
+
+### What the quartic’s signed prime windows can exclude
+
+Here $X$ counts Gaussian prime powers. From the quartic signs I form a real sum $H_2(X)$ by subtracting the reading at $X$ from twice the reading at $X/2$. This cancels a term proportional to $X$. The resulting transform retains a pole at every zero of the scalar Gaussian factor in the open critical strip. Alpöge’s window theorem asks for arbitrarily late intervals on which the positive part of this sum stays small after integration. [Transform, residues and exact hypotheses](archive/2026-11-21-quartic-projections-v001/fields-and-windows.md)
+
+For intervals $[Y,Y^2]$, the measured positive area rises from $1.3775398$ at $Y=2048$ to $3.4321002$ at $Y=4096$. At exponent $1/8$, the second allowance is only $2.8284272$ (rounded up). The area already measured rules out every real start from $4096$ through $19{,}252$ at that exponent. At $1/32$ it rules out all starts from $2048$ through $4{,}762{,}984$. This tells me which cutoffs to skip when looking for a passing window. A zero count in the Dottie disks requires control of the full Gaussian factor on their boundary. [Measured areas, figure and projection](archive/2026-11-21-quartic-projections-v001/windows/README.md)
 
 <div><a name="research-impact"></a><a name="conclusions"></a><a name="read-consequences" id="user-content-read-consequences"></a><a name="zero-transport-questions"></a><a name="questions-in-the-order-i-asked-them"></a><a name="read-questions" id="user-content-read-questions"></a></div>
 

@@ -1,0 +1,106 @@
+{
+  "files": {
+    "DyadicPoleFilter.lean": {
+      "bytes": 1456,
+      "sha256": "3cf89e00668c7430066f27460ee0cd3fa0165721d386f1c8e00daf8fbdee040f"
+    },
+    "QuarticDualLine.lean": {
+      "bytes": 3191,
+      "sha256": "cfb40da1240562f69e779e8b901e4de52bb2d5a92c521c1f070961602d453e08"
+    },
+    "README.md": {
+      "bytes": 6416,
+      "sha256": "6f1443402f94ef444b0cbe6b5516a5064b369a6c0e3a633546aa74cbea874ba0"
+    },
+    "ScaleAndShape.lean": {
+      "bytes": 1298,
+      "sha256": "25f1ade140c5a363a343db5a92a12a9e5f505e539ed4146afff99d6526d7f9f3"
+    },
+    "angular/README.md": {
+      "bytes": 7826,
+      "sha256": "70316b7757511700f21fe937787437ac4e718b7546594076e7b4e58e208b1e53"
+    },
+    "angular/angular_eighth_power.py": {
+      "bytes": 919,
+      "sha256": "d3f893ed076b4e5d7643891651c47429cd03386b4a988a678ce2521989425573"
+    },
+    "angular/balanced_angular_theta.py": {
+      "bytes": 3851,
+      "sha256": "7d8d8d37cc214b381f63408850ff4c2f8e265a6baf4a83468630f7fb8572d7bc"
+    },
+    "check_quartic_dual_theta.py": {
+      "bytes": 4375,
+      "sha256": "f9f4d5b607f832f515570126e48124f888587e657b108f5ffe960d787542f373"
+    },
+    "check_windows.py": {
+      "bytes": 3388,
+      "sha256": "fe786a21461dbf8059be205d6c4a06aaa7c6b744af77a80352228351f983cd9c"
+    },
+    "class_check.gp": {
+      "bytes": 5111,
+      "sha256": "4adc302ebccc695f188d461829bb9b303f9aa20fa768cb221628a43d8bf20186"
+    },
+    "class_check_results.txt": {
+      "bytes": 826,
+      "sha256": "edb14864112cfd0cace667f507e422db35877112deef386a6d391e5ae96482e8"
+    },
+    "fields-and-windows.md": {
+      "bytes": 12397,
+      "sha256": "0e71b60842305269b374b37e49f6f844401ca165f2a6e8507f29ccad6e2687cc"
+    },
+    "form_predictions.py": {
+      "bytes": 1565,
+      "sha256": "0b61d575004166e9d0c7ead8d3bf6bead3673ef8f3cc70716467209d053c792d"
+    },
+    "landau-sources.txt": {
+      "bytes": 2491,
+      "sha256": "0ffe5f3f1c740ed2573e93c18b90e59fc941a3b5a488244771fa1e5e9ee06a1b"
+    },
+    "plot_window.py": {
+      "bytes": 2469,
+      "sha256": "d5a2c8df3477ce60d48771cb4fc71b72c6594d9b171ed655ab98ac7c6700b879"
+    },
+    "quartic-dual-theta.md": {
+      "bytes": 13585,
+      "sha256": "16044f80c64e3293e0f0858b40fcce4422759141d420a603c64f46e17bbbdc6b"
+    },
+    "replay_landau_window.py": {
+      "bytes": 2418,
+      "sha256": "07c91b18298da19a9e8cdf396df9c1f2ea2f3513708e666c81296af8d45d5c68"
+    },
+    "signed-window.png": {
+      "bytes": 22052,
+      "sha256": "52a8c227dab6404691fe7150fb5dd5633359273e5fbd1924a11c46f08f8c1c82"
+    },
+    "stirling-pell.md": {
+      "bytes": 6163,
+      "sha256": "0cb7315b571aacbacd3dbacbddb1ea78567daf6beec69745e00830b61309420f"
+    },
+    "stirling_pell.py": {
+      "bytes": 2761,
+      "sha256": "0ec21f0303ced1926a55eb6aecac636f5e34f01dce3a44cff66415a1b15e00c4"
+    },
+    "windows/README.md": {
+      "bytes": 4848,
+      "sha256": "356c00dc989591cefc71e5575630d9c48d470413932c1720ed92bd5a3a2d1e27"
+    },
+    "windows/plot_prime_windows.py": {
+      "bytes": 6616,
+      "sha256": "ada654f04917358b91186561e652c881d908d41b20e43f149e4e0e09d1016f0d"
+    },
+    "windows/positive-area.png": {
+      "bytes": 63235,
+      "sha256": "df10483f9937cb048877efbf8f05fe6ddf9deb8ce7a8f42a3146a5de9df2f751"
+    },
+    "windows/prime_windows.py": {
+      "bytes": 8284,
+      "sha256": "18c2440777d451b170b17324b0078f9cc5a4a98ebd760115ba075fe78a2e2dd1"
+    },
+    "windows/prime_windows.txt": {
+      "bytes": 1381,
+      "sha256": "51918bffd5304b550388f2a27fd73afd9491ff868184e0d8b46e502686a8e0ba"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-21-quartic-projections-v001"
+}

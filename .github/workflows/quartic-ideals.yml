@@ -1,10 +1,10 @@
 name: Quartic ideals at 73
 on:
   pull_request:
-    paths: ['lean-ideal73/**', '.github/workflows/quartic-ideals.yml']
+    paths: ['lean-ideal73/**', 'archive/2026-11-21-quartic-projections-v001/*.lean', '.github/workflows/quartic-ideals.yml']
   push:
     branches: [main]
-    paths: ['lean-ideal73/**', '.github/workflows/quartic-ideals.yml']
+    paths: ['lean-ideal73/**', 'archive/2026-11-21-quartic-projections-v001/*.lean', '.github/workflows/quartic-ideals.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,5 +29,11 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Build the field model and audit the ideal count
         run: |
-          lake exe cache get $(sed -n 's/^import \(Mathlib\.[[:alnum:]_.]*\)$/\1/p' *.lean | sort -u)
+          packet=../archive/2026-11-21-quartic-projections-v001
+          lake exe cache get $(sed -n 's/^import \(Mathlib\.[[:alnum:]_.]*\)$/\1/p' *.lean "$packet"/*.lean | sort -u)
           lake build
+      - name: Verify the scale, pole-filter and quartic Fourier identities
+        run: |
+          for proof in ../archive/2026-11-21-quartic-projections-v001/*.lean; do
+            lake env lean "$proof"
+          done

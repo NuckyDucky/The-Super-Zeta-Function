@@ -1,0 +1,12 @@
+PARI [2, 20, 0, 31374, "af459b2ae5"]
+class group orders = [1111888, 2, 2]; class number = 4447552
+full bnfcertify = 1
+calibration 5: Gaussian trace 2, 2 choices remain
+calibration 29: Gaussian trace -2, 1 choices remain
+character exponent vector mod 4 = [1, 0, 2]
+holdout 13: coordinates [896540, 0, 1]~, exponent 2, predicted signed trace -2
+holdout 37: coordinates [1057852, 1, 0]~, exponent 0, predicted signed trace 2
+good primes <=997: 72 split holdouts, 2 calibrators, 91 inert
+All 4096 norms agree for both the signed Gaussian and the positive Dirichlet companion.
+Equal-norm cancellation: absolute signed mass 1791 out of 2917 positive counts remain, 232 mixed norms. First mixed norm 9 has class counts [1, 0, 2, 0].
+At 73 the class counts are [0, 0, 0, 0], and at 73^2 the inert local coefficient is +1.
