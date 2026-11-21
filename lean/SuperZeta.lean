@@ -26,6 +26,7 @@ import SuperZeta.Multiplicity
 import SuperZeta.UnitSpectrum
 import SuperZeta.DeformedZeta
 import SuperZeta.FactorialPhase
+import SuperZeta.FactorialPell
 import SuperZeta.Oriented.FirstCorrection
 import SuperZeta.Oriented.LiuConnection
 import SuperZeta.Oriented.LiuEndpointTransfer

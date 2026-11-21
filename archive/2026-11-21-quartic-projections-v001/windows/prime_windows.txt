@@ -1,0 +1,18 @@
+First positive crossing after 64 on [735461, 735473]: [735466.573417391783408872 +/- 5.42e-20]
+192-bit arithmetic, 269546 nonzero signed prime powers through 16777216, 410355 knots
+Y=1024: A(Y)=[0.185549625075335619329328 +/- 1.59e-26]
+  below Y^(1/32)=[1.24185781207348405 +/- 1.41e-18]
+  below Y^(1/8)=[2.37841423000544213 +/- 3.44e-18]
+Y=2048: A(Y)=[1.37753981385976938483331 +/- 1.38e-24]
+  exceeds Y^(1/32)=[1.26905095719173322 +/- 2.56e-18]
+  below Y^(1/8)=[2.59367910930201933 +/- 1.87e-18]
+Y=4096: A(Y)=[3.43210015207130611918399 +/- 4.63e-25]
+  exceeds Y^(1/32)=[1.29683955465100967 +/- 4.07e-18]
+  exceeds Y^(1/8)=[2.82842712474619010 +/- 2.40e-18]
+Mass added beyond 1048576 through 4194304: [1.19199018878443376550398 +/- 6.06e-25]
+  Every real start from 2048 to (strictly below) [28270.4754165250648 +/- 7.26e-15] exceeds Y^(1/32)
+Mass added beyond 4194304 through 16777216: [2.05456033821153673435068 +/- 9.16e-25]
+  Every real start from 4096 to (strictly below) [735466.573417391783 +/- 4.09e-13] exceeds Y^(1/32)
+  Every real start from 4096 to (strictly below) [19252.1669904187645 +/- 1.45e-14] exceeds Y^(1/8)
+  The measured part [Y,16777216] exceeds Y^(1/32) through Y=4762984; at Y=4762985 that part falls below the threshold.
+  The measured part [Y,16777216] exceeds Y^(1/8) through Y=19252; at Y=19253 that part falls below the threshold.
