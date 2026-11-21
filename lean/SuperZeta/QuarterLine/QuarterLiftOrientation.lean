@@ -18,6 +18,16 @@ theorem output_ratio {L P Q : ℂ} (h : step L (P,Q) = (P,Q)) :
   obtain ⟨hp,hq⟩ := (fixed_iff _ _ _).mp h
   rw [Complex.exp_sub,←hp,←hq]
 
+/-- The ordered difference is scaled by one half and rotated by minus pi/2
+to form the cosine coordinate. Using the reverse difference gives -2 i u. -/
+theorem reverse_difference (U V : ℂ) :
+    -2 * I * ((U - V) / (2 * I)) = V - U := by
+  field_simp [Complex.I_ne_zero] <;> ring
+
+theorem ratio_from_coordinate {L P Q : ℂ} (h : step L (P,Q) = (P,Q)) :
+    Q / P = exp (-2 * I * ((L * Q - (-L * P)) / (2 * I))) := by
+  rw [output_ratio h, reverse_difference]
+
 /-- Exchanging the ordered exponents negates the cosine coordinate. Squaring it
 identifies the two orientations before taking any spectral power. -/
 theorem swap_spectral_power (a s : ℂ) :

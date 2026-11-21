@@ -16,6 +16,8 @@ $$
 
 At multiplier one, $UV=1$ and the signed cosine coordinate is $u=(U-V)/(2i)$. Replacing $(L,P,Q)$ by $(-L,Q,P)$ exchanges $U$ and $V$. The output ratio $Q/P=e^{V-U}$ becomes its reciprocal, while $u$ becomes $-u$. The spectral entry is $v=u^2$, so the two ordered descriptions give exactly the same $v^{-s}$. The original pair records which stage came first. Squaring identifies that particular pair of labels. [Ordered-stage proof](../../lean/SuperZeta/QuarterLine/QuarterLiftOrientation.lean) · [Numerical reconstruction from the first upper root](../../archive/2026-11-21-quarter-line-v001/ordered-lift-audit.json)
 
+There is an exact clockwise turn in this change of coordinates. Multiplying $U-V$ by $1/(2i)=-i/2$ halves its length and rotates it by $-\pi/2$. In the opposite direction, the lifted difference for the output quotient is $V-U=-2iu$, so $Q/P=e^{-2iu}$. This quarter-turn acts on the ordered exponent difference. Fig. 3 measures a separate angle in the $w$ plane when the two functions are evaluated.
+
 Let $d=\cos d$ be the positive real root, and let $u_n$ denote the upper root of the $n$th quartet. Subtracting two copies of $(\pi n)^{-2s}$ at each level gives an absolutely convergent difference series on the quarter-line. The continued spectrum there is
 
 $$
