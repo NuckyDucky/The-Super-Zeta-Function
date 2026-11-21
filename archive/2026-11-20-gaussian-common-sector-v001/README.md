@@ -25,6 +25,10 @@ Adding these inequalities with nonnegative coefficients $\lambda_N$ whose sum is
 
 The right side is positive. In particular, turning any measured reading into any other by adding a fraction of their difference avoids zero on the whole input boundary for the whole deformation. The same holds for interpolation to any fixed convex combination of the 193 sums. Winding is constant during such a deformation. The completed finite sums are holomorphic on the disk and the first has winding zero, so the argument principle gives zero zeros, with multiplicity, for every one of these combinations. Reflection gives the same conclusion on the mirror disk. [Finite winding, completion and reflection](../2026-11-20-gaussian-circle-phases-v001/README.md#why-the-two-crossings-preserve-the-zero-count)
 
+### The same angular bound inside the disk
+
+The boundary measurement controls the angles at interior inputs as well. Fix the first cutoff as reference. Every quotient $F_j/F_{\rm ref}$ is holomorphic and nonzero on the closed disk by the finite winding calculation. Here $j$ labels a recorded cutoff. Choose its analytic logarithm on the disk to match the principal argument at one boundary point. It then matches continuously all the way around, because the measured boundary arguments avoid the cut. For every pair $j,k$ the difference of those two arguments is the imaginary part of an analytic function and is therefore harmonic. Its boundary values lie strictly between $-2.92$ and $2.92$. The maximum and minimum principles give the same inequalities at every interior input. Taking the largest and smallest arguments among the 193 readings gives the common sector there too. This extends the sector bound and the convex-combination inequality to both closed disks for the measured finite family. [Maximum principle for harmonic functions, DLMF §1.10(v)](https://dlmf.nist.gov/1.10.v)
+
 ## What an extra Gaussian zero would require
 
 Write $F$ for the full completed Gaussian factor and $F_N$ for one of the finite sums. If $F$ is nonzero on the right circumference, the argument principle gives
@@ -36,7 +40,7 @@ Write $F$ for the full completed Gaussian factor and $F_N$ for one of the finite
 
 Here zeros are counted with multiplicity, the input circle is traversed counterclockwise, and $F_N$ has zero zeros in the disk. One extra zero requires one extra net circuit about the origin in the plot of the quotient. A continuous nonzero loop with positive winding must meet every ray, including the negative real axis. Thus at some common input the full reading and the finite reference would have to point exactly opposite. One occurrence of opposition alone does not give the winding. A full reading equal to zero on the boundary is a separate possibility for which this quotient loop has no winding number. [Argument principle, DLMF Eq. 1.10.9](https://dlmf.nist.gov/1.10.E9)
 
-The recorded cutoffs end at $2^{28}$. To transfer the count to $F$ it suffices to enclose $F/F_N$ away from the closed negative real axis on the whole circle. A bound placing the full reading in the measured sector would be stronger. The available absolute estimate for the remaining residues and contour integrals establishes neither. [Cutoffs, circle coordinates and full remainder](../2026-11-20-gaussian-circle-phases-v001/README.md)
+The recorded cutoffs end at $2^{28}$. To transfer the count to $F$ it suffices to enclose $F/F_N$ away from the closed negative real axis on the whole circle. A bound placing the full reading in the nonzero part of the measured sector would be stronger. The available absolute estimate for the remaining residues and contour integrals establishes neither. [Cutoffs, circle coordinates and full remainder](../2026-11-20-gaussian-circle-phases-v001/README.md)
 
 ## Reproduction
 

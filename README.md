@@ -383,6 +383,8 @@ The Gaussian factor is where the two primes over $73$ receive opposite signs. I 
 
 ### The reflected disks and the weight available for an off-line pair
 
+The angular bound also holds **inside** both disks for the 193 finite sums. Each sum is zero-free there. For two such sums, the difference of their continuously chosen arguments is harmonic. Its largest and smallest values on the disk occur on the circumference, where I already enclosed them. This is how the boundary calculation controls inputs I did not sample in the interior. [Proof from the boundary to the interior](archive/2026-11-20-gaussian-common-sector-v001/README.md#the-same-angular-bound-inside-the-disk)
+
 I centered two disks at $31/64+iT$ and $33/64+iT$, where $T=T_D-1/512$. With radius $15/1024$, each disk clears the critical line by $1/1024$. Reflection pairs their zeros at the same height, preserving multiplicity. The Gaussian prime sum bounds the total weight of all zeros by $87.057901$, and each zero in this height band contributes more than $5.481507$. Eight in either disk would require sixteen in the band and a weight above $87.704112$. This gives at most seven per closed disk without assuming that any zero lies on the critical line. The exact count in each disk is still open. [Derivation and two numerical checks](archive/2026-11-20-gaussian-reflected-disks-v001/README.md)
 
 ![Right and left Gaussian measuring circles near the Dottie height and their positions relative to the critical line.](docs/figures/gaussian-reflected-circles.png)
