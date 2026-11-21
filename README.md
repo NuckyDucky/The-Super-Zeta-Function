@@ -449,6 +449,8 @@ Here $X$ counts Gaussian prime powers. From the quartic signs I form a real sum 
 
 For intervals $[Y,Y^2]$, the measured positive area rises from $1.3775398$ at $Y=2048$ to $3.4321002$ at $Y=4096$. At exponent $1/8$, the second allowance is only $2.8284272$ (rounded up). The area already measured rules out every real start from $4096$ through $19{,}252$ at that exponent. At $1/32$ it rules out all starts from $2048$ through $4{,}762{,}984$. This tells me which cutoffs to skip when looking for a passing window. A zero count in the Dottie disks requires control of the full Gaussian factor on their boundary. [Measured areas, figure and projection](archive/2026-11-21-quartic-projections-v001/windows/README.md)
 
+Write the original sum as $R$, so $H_2(X)=2R(X/2)-R(X)$. Then $K(X)=H_2(X)-H_2(X/2)=-R(X)+3R(X/2)-2R(X/4)$ uses only norms $X/4<n<X$. Its Mellin transform gains the factor $1-2^{-s}$, which preserves the poles in $0<\Re s<1$ and the residue signs at real poles. Crossley uses this filter for rational Dirichlet families, with the window bound on the resulting difference. [Lean proof](https://github.com/leecrossley/dirichlet-window-transfer/blob/fa94718cf9d65ee5b143ded4c91dc3873222cfdf/DelayedPole.lean#L114) and [archived result](https://doi.org/10.5281/zenodo.24410863).
+
 <div><a name="research-impact"></a><a name="conclusions"></a><a name="read-consequences" id="user-content-read-consequences"></a><a name="zero-transport-questions"></a><a name="questions-in-the-order-i-asked-them"></a><a name="read-questions" id="user-content-read-questions"></a></div>
 
 ## Proofs, figures and open questions
