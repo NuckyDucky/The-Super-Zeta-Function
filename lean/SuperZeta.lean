@@ -52,3 +52,6 @@ import SuperZeta.GaussianDiskKernel
 import SuperZeta.CapRecovery.Dominance
 import SuperZeta.CapRecovery.GeneralWeights
 import SuperZeta.CapRecovery.Coalescence
+import SuperZeta.QuarterLine.QuarterLiftOrientation
+import SuperZeta.QuarterLine.QuarterOriginalUnivalent
+import SuperZeta.QuarterLine.QuarterReflectedReadings
