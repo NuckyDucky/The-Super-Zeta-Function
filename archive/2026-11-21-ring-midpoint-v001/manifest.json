@@ -1,0 +1,14 @@
+{
+  "files": {
+    "ProofState.lean": {
+      "bytes": 828,
+      "sha256": "905ec03c0c104525ad5c68bb6edcafe1c8f1c85c9ad264bd254d2d78b1613249"
+    },
+    "README.md": {
+      "bytes": 1997,
+      "sha256": "8bbdc9c0376db1fc53c4446e993c771e6ce51d1417b7cda65987158223a5ab72"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-21-ring-midpoint-v001"
+}
