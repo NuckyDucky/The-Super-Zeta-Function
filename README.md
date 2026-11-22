@@ -461,6 +461,18 @@ Lean checks the per-zero lower integrand and its numerical integration rule, the
 
 </details>
 
+### Half the Dirichlet total at one input
+
+I fix the quartic and a point $w$ in the open right ring. Write $Z_0,Z_2$ for the two continued ideal-class sums and $D$ for their Dirichlet total. The identities $G(w)=Z_0(w)-Z_2(w)$ and $D(w)=Z_0(w)+Z_2(w)$ give an exact test. A Gaussian zero at $w$ is equivalent to both readings hitting $D(w)/2$. The ring lies strictly between real parts $1/2$ and $1$, so even one such hit by both sums would give an off-line Gaussian zero. [Class-sum and Dirichlet identities](archive/2026-11-21-quartic-projections-v001/fields-and-windows.md) · [Ring geometry and midpoint proof](lean/SuperZeta/GaussianRingMidpoint.lean)
+
+My order theorem distinguishes two different sign words $u,v$ by their cap readings $K_m=W''(1)/W'(1)$ at the same nonzero integral lift $L=m\pi i$. To obtain a contradiction, I would need the quartic to force $Z_0(w)=Z_2(w)\Rightarrow K_m(u)=K_m(v)$ at that same input. Lean checks that proving this implication throughout the ring is equivalent to clearing the ring. It also checks what a proposed zero would do to a common decoding rule: even with $w$ supplied, the rule would miss at least one ordered reading. The class-sum identities enter as hypotheses from the arithmetic derivation. Proving the implication from the quartic coefficients remains open. [Cap reading and its injectivity](lean/SuperZeta/CapRecovery/Resonant.lean) · [The conditional contradiction](lean/SuperZeta/GaussianRingMidpoint.lean) · [The exact remaining Lean goal and replay](archive/2026-11-21-ring-midpoint-v001/README.md)
+
+I can write the midpoint using rational Dirichlet functions alone. Let $S=\zeta L(AB)+L(A)L(B)$, with the characters $A,B$ from the class-sum identity above. The even groups contribute $Z_0+Z_2=S/2$. Their midpoint is therefore $S/4$. At each input $w$, Lean gives $Z_0(w)-S(w)/4=G(w)/2$ and $Z_2(w)-S(w)/4=-G(w)/2$. These are equal and opposite complex displacements. Measuring either one would determine $G(w)$.
+
+If either displacement vanished in the right ring, the product $\zeta\,\beta\,G$ would vanish at an off-line input. Once that product is identified with the continuation of my quartic's ideal-counting series, it and that input would give a counterexample to the Formal Conjectures statement for this field. Going back from a field zero to a midpoint hit also requires the Riemann and beta factors to be nonzero at the same input. [Deduction and assumptions](archive/2026-11-21-ring-midpoint-v002/README.md) · [Midpoint proof in Lean](lean-ideal73/QuarticRingMidpoint.lean) · [Identification from prime-power counts](lean-ideal73/FieldCoefficientTransfer.lean)
+
+At the Dottie height the circle calculation excludes zeros of all 193 measured finite Gaussian sums and their fixed convex combinations throughout both closed disks. For the full Gaussian factor, whether either class sum attains this midpoint in the open right ring remains unknown. [Finite disk certificate](archive/2026-11-20-gaussian-common-sector-v001/README.md)
+
 ### What the quartic’s signed prime windows can exclude
 
 Here $X$ counts Gaussian prime powers. From the quartic signs I form a real sum $H_2(X)$ by subtracting the reading at $X$ from twice the reading at $X/2$. This cancels a term proportional to $X$. The resulting transform retains a pole at every zero of the scalar Gaussian factor in the open critical strip. Alpöge’s window theorem asks for arbitrarily late intervals on which the positive part of this sum stays small after integration. [Transform, residues and exact hypotheses](archive/2026-11-21-quartic-projections-v001/fields-and-windows.md)
