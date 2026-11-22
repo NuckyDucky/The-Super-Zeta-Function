@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - 'archive/2026-11-21-gaussian-side-sign-v001/**'
       - 'archive/2026-11-21-gaussian-zero-fiber-v001/**'
       - 'archive/2026-11-18-spectral-reproduction-v001/check_complex_mellin.py'
       - 'archive/2026-11-21-gaussian-pinch-v001/**'
@@ -26,6 +27,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'archive/2026-11-21-gaussian-side-sign-v001/**'
       - 'archive/2026-11-21-gaussian-zero-fiber-v001/**'
       - 'archive/2026-11-18-spectral-reproduction-v001/check_complex_mellin.py'
       - 'archive/2026-11-21-gaussian-pinch-v001/**'
@@ -66,6 +68,8 @@ jobs:
         run: python -B archive/2026-11-21-gaussian-pinch-v001/central_detours.py
       - name: Enclose both super-zeta images and the quadratic terms at the vertex
         run: python -B archive/2026-11-21-gaussian-zero-fiber-v001/check_images.py
+      - name: Verify the Gaussian side signs across the central rectangle
+        run: python -B archive/2026-11-21-gaussian-side-sign-v001/gaussian_side_sign.py
 
   arithmetic:
     runs-on: ubuntu-24.04

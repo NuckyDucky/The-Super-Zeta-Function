@@ -55,3 +55,5 @@ import SuperZeta.CapRecovery.Coalescence
 import SuperZeta.PinchRadius
 import SuperZeta.GaussianBends
 import SuperZeta.GaussianZeroFiber
+import SuperZeta.GaussianSideSign
+import SuperZeta.GaussianSidePair
