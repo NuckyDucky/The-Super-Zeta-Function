@@ -1,0 +1,22 @@
+{
+  "files": {
+    "OrderedSignControl.lean": {
+      "bytes": 5277,
+      "sha256": "1752168a13d8de509b020213d06cbbad42ad1f32ba1239213b0c2a654584ded1"
+    },
+    "QuarticSignedOrders.lean": {
+      "bytes": 8512,
+      "sha256": "334ee632ce94331326d8bbe85c427526d834ab77338e6da9fe7922343b1894f5"
+    },
+    "README.md": {
+      "bytes": 2029,
+      "sha256": "ea1752539a1d9da8bfeacdad51ada6484ca2d6c314979a3515bf8ada577d2cd2"
+    },
+    "source-inventory.json": {
+      "bytes": 24587,
+      "sha256": "ac1553d31299cce28e4f5437e6be98c000a4936f33060d475c0b254093191bba"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-22-quartic-ordered-readings-v001"
+}

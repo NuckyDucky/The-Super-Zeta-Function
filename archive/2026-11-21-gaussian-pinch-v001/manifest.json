@@ -1,0 +1,18 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 9937,
+      "sha256": "81b011de0139c377d9304fff4577d57404c04a06b2254b4b2f2ea9276345364f"
+    },
+    "central-detours.json": {
+      "bytes": 2079,
+      "sha256": "c9ec92374244a7e22aefc770350f4b428a5989637f0d8929ae851bde7633da73"
+    },
+    "central_detours.py": {
+      "bytes": 8179,
+      "sha256": "f7e08128a921c4311eb63375885c728ea0e610e473310b6837032acd35fb4319"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-21-gaussian-pinch-v001"
+}

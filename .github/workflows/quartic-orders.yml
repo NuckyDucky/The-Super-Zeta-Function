@@ -1,0 +1,28 @@
+name: Quartic theta and quaternion orders
+on:
+  pull_request:
+    paths: ['lean-quartic-orders/**', 'lean/**', '.github/workflows/quartic-orders.yml']
+  push:
+    branches: [main]
+    paths: ['lean-quartic-orders/**', 'lean/**', '.github/workflows/quartic-orders.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955
+        with:
+          persist-credentials: false
+      - name: Install pinned elan
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --silent --show-error --location --retry 3 -o elan.tar.gz https://github.com/leanprover/elan/releases/download/v4.3.0/elan-x86_64-unknown-linux-gnu.tar.gz
+          echo '0c71472fa3ac34871dc1e2539993cca222d7656b42a1469f8f8c97c22f9adab2  elan.tar.gz' | sha256sum --check
+          tar -xzf elan.tar.gz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Compile the signed quartic and audit the theorem dependencies
+        run: python3 lean-quartic-orders/replay.py --fetch-cache

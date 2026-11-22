@@ -1,0 +1,60 @@
+{
+  "completion": "Lambda(s)=B^s Gamma(s) L_K(s,eta), with no positive external rescaling",
+  "coefficient_cutoff": 33554432,
+  "minimum_running_signed_sum": 1,
+  "last_running_signed_sum": 17505,
+  "theta_tail_relative_to_exp_minus_u_upper": "[0.09033722613873701626765136638 +/- 4.43e-30]",
+  "x_domain": [
+    0,
+    18
+  ],
+  "x_cells": 1152,
+  "x_tail_bound": "[2.283167043256480623267162779e-12 +/- 1.22e-40]",
+  "critical_point": "1/2",
+  "critical_value": [
+    "[59266.54381595645596529411251 +/- 4.37e-24]",
+    "[62905.98574100528409029411251 +/- 4.37e-24]"
+  ],
+  "second_derivative": [
+    "[3363500.809739470703666874981 +/- 8.16e-23]",
+    "[3565601.291184783203666874981 +/- 8.16e-23]"
+  ],
+  "source": "0.51",
+  "target_radius": [
+    "[168.3376246911399574756421115 +/- 3.27e-26]",
+    "[178.4522460919730873584546115 +/- 3.27e-26]"
+  ],
+  "source_disk_radius": ".02",
+  "relative_derivative_distortion_in_squared_coordinate_upper": "[0.02174040067959611257680853753 +/- 3.10e-30]",
+  "endpoint_height_bracket": [
+    ".25",
+    ".27"
+  ],
+  "value_at_lower_height": [
+    "[345.2790157768243758522947686 +/- 2.80e-26]",
+    "[2786.442284819793125852294769 +/- 4.03e-25]"
+  ],
+  "value_at_upper_height": [
+    "[-3143.484607774006517819152955 +/- 4.51e-25]",
+    "[-666.8168946087233146941529545 +/- 2.39e-26]"
+  ],
+  "lower_bound_minus_height_derivative_over_height": "[519994.9195394754381999821344 +/- 3.17e-23]",
+  "counterclockwise_arrival": "1/2 + it0",
+  "clockwise_arrival": "1/2 - it0",
+  "t0": "unique root of Lambda(1/2+it)=0 in (0,.27)",
+  "refinement": {
+    "height_bracket": [
+      ".25835",
+      ".25838"
+    ],
+    "lower_endpoint_value": [
+      "[2.229045296189474209471304461 +/- 4.80e-28]",
+      "[3.866359852356003864927847429 +/- 2.71e-28]"
+    ],
+    "upper_endpoint_value": [
+      "[-3.090963744391421556438201381 +/- 4.44e-28]",
+      "[-1.453572376464227914775603724 +/- 3.07e-28]"
+    ],
+    "gauss_error_upper": "[8.011159374865078462047086354e-6 +/- 3.83e-34]"
+  }
+}

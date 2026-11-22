@@ -1,0 +1,22 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 7615,
+      "sha256": "a3a5a217e02637a61df3997c04d5d184ccbeb306a38c1861ada3b45e655cc990"
+    },
+    "gaussian-side-sign.png": {
+      "bytes": 31822,
+      "sha256": "1b6c741a0de4aee4956991aca3d9afeb8fe26042f2493de3d84aa689f02dc15b"
+    },
+    "gaussian_side_sign.py": {
+      "bytes": 5330,
+      "sha256": "193b6aeb65fd21bbb1d3a29e9d07b9488f10278f0a57d85225405da6f570cab7"
+    },
+    "side-sign.json": {
+      "bytes": 491,
+      "sha256": "ae78e03018e9f198c5cd8687ad677b9442c338a2473789d001ddb5a0f6d1cbb4"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-21-gaussian-side-sign-v001"
+}

@@ -13,6 +13,7 @@ The factorial correction also locates the power of a Pell unit. Among all positi
 | Object | Result | Proof or replay |
 | --- | --- | --- |
 | Super zeta of the squared cosine roots | At unit coupling, the continued root sum and its Mellin correction satisfy $\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s)$. Every nontrivial Riemann zero $w$ gives a zero of this difference at $s=w/2$ with the same multiplicity, and these account for all its zeros in $0<\Re s<1/2$. | [Derivation](docs/proofs/quartet-spectrum.md#eq-24) · [Lean proof](lean/SuperZeta/UnitSpectrum.lean) · [Mellin integral replay](archive/2026-11-18-spectral-reproduction-v001/README.md#run-from-a-fresh-checkout) |
+| Original super zeta at reflected inputs | On $15/64\le\Re s\le17/64$, $\Im s\ge101$, distinct inputs give distinct complex values. At equal height the modulus decreases strictly from left to right. This band contains both Gaussian measuring disks after $s=w/2$. | [Two maps and proof](docs/proofs/reflected-quarter-line.md) · [Lean injectivity theorem](lean/SuperZeta/QuarterLine/QuarterOriginalUnivalent.lean) |
 | Signed exponential map $W$, lift $L=m\pi i$ | For any integer $m$ and finite word of signs, $W'(1)$ and $W''(1)$ determine the whole map. For a nonempty word at a nonzero lift, simultaneously negating $m$ and every sign gives the same map. An independently retained odd-stage prime reading distinguishes the two labels. | [Lean theorem](lean/SuperZeta/CapRecovery/HiddenLift.lean#L227) · [Blind recovery and replay](archive/2026-11-20-hidden-lift-v001/README.md) |
 | Spectral trace $\mathcal Z(m;1)$ | For every positive integer $m$, the exponent of 2 in this rational number is the number of ones in the binary expansion of $m$. At $m=3$, the trace is $92/15$, which contains two factors of 2. | [Determinant and first four traces](docs/proofs/quartet-spectrum.md#4-canonical-product-and-exact-rational-trace-sums) · [All-index proof and Lean replay](archive/2026-11-18-binary-law-v001/README.md) |
 | Balanced sign histories and $n!$ | Readings at $n,2n,4n,\ldots$ recover the exact logarithmic error in Stirling’s approximation. For $n\ge1$, the error left after $k$ readings is positive and smaller than $4^{-k}/(12n)$. The quartet radii separately determine the sign change between levels 28 and 29. | [Factorial proof and the $10!$ calculation](#the-exact-factorial-from-the-balanced-sign-count) · [Equal-spacing comparison](archive/2026-11-18-quartet-grid-comparison-v001/README.md) |
@@ -380,6 +381,24 @@ In each window I found that many disjoint intervals on the critical line where H
 
 </details>
 
+### Two detours from the same input reach two Gaussian zeros
+
+I started at $s=0.51$ and followed the inverse of my quartic’s completed Gaussian Hecke factor. Both paths start at the same input, turn through $\pi$ radians around the value $\Lambda(1/2)$ in opposite directions, then follow the same real output segment to zero. The counterclockwise path ends at $1/2+it_0$ and the clockwise path at $1/2-it_0$, where $0.25835<t_0<0.25838$. Both zeros are simple. This is a measurement near height zero. [Detour proof and signed coefficient replay](archive/2026-11-21-gaussian-pinch-v001/README.md)
+
+In the quadratic model $U=1-z^2$, an output circle of radius $r$ has inverse inputs separated by exactly $2\sqrt r$. For the Gaussian factor the leading coefficient is $a=\Lambda''(1/2)/2>0$. The separation divided by $\sqrt r$ tends to $2/\sqrt a$. At a finite radius the real entry is closer to $1/2$ than the imaginary exit. [Radius laws in Lean](lean/SuperZeta/PinchRadius.lean) · [Why the two lengths differ](archive/2026-11-21-gaussian-pinch-v001/README.md#the-two-radii-at-the-pinch)
+
+![The two inputs on the critical line, their common Gaussian zero and their distinct super-zeta images](archive/2026-11-21-gaussian-zero-fiber-v001/gaussian-zero-fiber.png)
+
+<a name="fig-10a"></a>**Fig. 10a. The same two inputs in the Gaussian factor and the original super zeta.** I keep the orange circle on the endpoint of the counterclockwise detour and the blue diamond on the endpoint of the clockwise detour. Both land at Gaussian value zero in the middle panel, where the vertical axis retains their input heights. The right panel uses the real and imaginary parts of the super zeta as its two axes. The orange point lies below the axis and the blue point above it. Their distance exceeds $0.94434$ for the certified root bracket. Any rule that took only the Gaussian output and returned the super-zeta output would have to assign both points to its single input $0$. [The two quadratic expansions and the contradiction](archive/2026-11-21-gaussian-zero-fiber-v001/README.md) · [Field transfer in Lean](lean-ideal73/GaussianZeroFiber.lean)
+
+### Which side of the line did I sample?
+
+I keep the height fixed and hide whether the input went left or right. For $0<t\le0.27$ and $0< a\le1/20$, the imaginary part of the completed Gaussian value is positive at $1/2+a+it$ and negative at $1/2-a+it$. At the first positive root height, the readings at real parts $0.49$ and $0.51$ are separated by more than $93$ in their imaginary parts. The quartic coefficients supply the bounds in this test. [Proof and arithmetic replay](archive/2026-11-21-gaussian-side-sign-v001/README.md) · [Theorem and hypotheses in Lean](lean/SuperZeta/GaussianSideSign.lean)
+
+![Imaginary sign of the quartic's completed Gaussian value on either side of the critical line](archive/2026-11-21-gaussian-side-sign-v001/gaussian-side-sign.png)
+
+<a name="fig-10b"></a>**Fig. 10b.** The horizontal coordinate is the real part of the input. Moving horizontally through the dashed line switches the sign of the imaginary reading at every nonzero height shown. The two dots mark the root brackets. A zero away from the line would require the right and left readings to vanish together at the same height. [The two integrals that would have to vanish](archive/2026-11-21-gaussian-side-sign-v001/README.md#what-a-reflected-pair-would-force-at-one-height)
+
 ### Two inverse branches of the Gaussian factor at the Dottie height
 
 In my quartic, two solutions of $P(z)=v$ meet and separate in a perpendicular direction as the real target $v$ passes a critical value. To test for the same event in the quartic field, I use its completed Gaussian factor $f$ and count the solutions of $f(w)=v$ in a fixed rectangle. As the real target varies continuously, suppose $f(w)-v$ stays nonzero on the boundary and encloses exactly two solutions counted with multiplicity. Integrating around the boundary then gives their signed squared separation $(w_1-w_2)^2$. A change from positive to negative takes a same-height pair through a double solution on the critical line.
@@ -443,6 +462,18 @@ Lean checks the per-zero lower integrand and its numerical integration rule, the
 
 </details>
 
+### Half the Dirichlet total at one input
+
+I fix the quartic and a point $w$ in the open right ring. Write $Z_0,Z_2$ for the two continued ideal-class sums and $D$ for their Dirichlet total. The identities $G(w)=Z_0(w)-Z_2(w)$ and $D(w)=Z_0(w)+Z_2(w)$ give an exact test. A Gaussian zero at $w$ is equivalent to both readings hitting $D(w)/2$. The ring lies strictly between real parts $1/2$ and $1$, so even one such hit by both sums would give an off-line Gaussian zero. [Class-sum and Dirichlet identities](archive/2026-11-21-quartic-projections-v001/fields-and-windows.md) · [Ring geometry and midpoint proof](lean/SuperZeta/GaussianRingMidpoint.lean)
+
+My order theorem distinguishes two different sign words $u,v$ by their cap readings $K_m=W''(1)/W'(1)$ at the same nonzero integral lift $L=m\pi i$. To obtain a contradiction, I would need the quartic to force $Z_0(w)=Z_2(w)\Rightarrow K_m(u)=K_m(v)$ at that same input. Lean checks that proving this implication throughout the ring is equivalent to clearing the ring. It also checks what a proposed zero would do to a common decoding rule: even with $w$ supplied, the rule would miss at least one ordered reading. The class-sum identities enter as hypotheses from the arithmetic derivation. Proving the implication from the quartic coefficients remains open. [Cap reading and its injectivity](lean/SuperZeta/CapRecovery/Resonant.lean) · [The conditional contradiction](lean/SuperZeta/GaussianRingMidpoint.lean) · [The exact remaining Lean goal and replay](archive/2026-11-21-ring-midpoint-v001/README.md)
+
+I can write the midpoint using rational Dirichlet functions alone. Let $S=\zeta L(AB)+L(A)L(B)$, with the characters $A,B$ from the class-sum identity above. The even groups contribute $Z_0+Z_2=S/2$. Their midpoint is therefore $S/4$. At each input $w$, Lean gives $Z_0(w)-S(w)/4=G(w)/2$ and $Z_2(w)-S(w)/4=-G(w)/2$. These are equal and opposite complex displacements. Measuring either one would determine $G(w)$.
+
+If either displacement vanished in the right ring, the product $\zeta\,\beta\,G$ would vanish at an off-line input. Once that product is identified with the continuation of my quartic's ideal-counting series, it and that input would give a counterexample to the Formal Conjectures statement for this field. Going back from a field zero to a midpoint hit also requires the Riemann and beta factors to be nonzero at the same input. [Deduction and assumptions](archive/2026-11-21-ring-midpoint-v002/README.md) · [Midpoint proof in Lean](lean-ideal73/QuarticRingMidpoint.lean) · [Identification from prime-power counts](lean-ideal73/FieldCoefficientTransfer.lean)
+
+At the Dottie height the circle calculation excludes zeros of all 193 measured finite Gaussian sums and their fixed convex combinations throughout both closed disks. For the full Gaussian factor, whether either class sum attains this midpoint in the open right ring remains unknown. [Finite disk certificate](archive/2026-11-20-gaussian-common-sector-v001/README.md)
+
 ### What the quartic’s signed prime windows can exclude
 
 Here $X$ counts Gaussian prime powers. From the quartic signs I form a real sum $H_2(X)$ by subtracting the reading at $X$ from twice the reading at $X/2$. This cancels a term proportional to $X$. The resulting transform retains a pole at every zero of the scalar Gaussian factor in the open critical strip. Alpöge’s window theorem asks for arbitrarily late intervals on which the positive part of this sum stays small after integration. [Transform, residues and exact hypotheses](archive/2026-11-21-quartic-projections-v001/fields-and-windows.md)
@@ -452,6 +483,8 @@ For intervals $[Y,Y^2]$, the measured positive area rises from $1.3775398$ at $Y
 <div><a name="research-impact"></a><a name="conclusions"></a><a name="read-consequences" id="user-content-read-consequences"></a><a name="zero-transport-questions"></a><a name="questions-in-the-order-i-asked-them"></a><a name="read-questions" id="user-content-read-questions"></a></div>
 
 ## Proofs, figures and open questions
+
+**Reading the full Gaussian at its super-zeta address.** For the quartic's real primitive character, Murphy's root-number theorem gives the positive theta reflection. At each input in the right ring, the two Hamilton orders recover the cosine and sine integrals of the signed quartic kernel. They agree precisely when both integrals vanish there. [Equations, Lean sources and replay](lean-quartic-orders/README.md)
 
 **Gaussian remainder on the measuring circle.** At a fixed cutoff $N$, can I bound the remaining signed terms tightly enough that the quotient $F(w)/F_N(w)$ avoids the closed negative real axis at every point on the right circumference? That would transfer the measured zero winding to the full Gaussian factor and clear both disks of radius $31/2048$. [Common-sector criterion](archive/2026-11-20-gaussian-common-sector-v001/README.md#what-an-extra-gaussian-zero-would-require) · [Real-part test](archive/2026-11-20-gaussian-relative-remainder-v001/README.md) · [Spiral-phase test](archive/2026-11-20-gaussian-circle-phases-v001/README.md)
 
