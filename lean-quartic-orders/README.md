@@ -4,7 +4,7 @@ The input is a point in the right Dottie annulus. Its original super-zeta addres
 
 ## Where the sign enters
 
-The conductor is $D=41\cdot457\cdot1{,}414{,}835{,}497=26{,}509{,}772{,}707{,}289$. The Lean sources construct its real primitive even character. Murphy proves that every real primitive Dirichlet character has root number $+1$. The 4.19 bridge states that theorem's type explicitly, supplies the character and its hypotheses, and converts the resulting sign into the positive Gauss amplitude and the theta reflection. [Primitive character](QuarticPrimitive.lean) · [Murphy’s sign theorem, v1.0.0](https://github.com/DrMurphyIsIn/real-dirichlet-dbn-lean/blob/v1.0.0/lean/gauss/GaussSign.lean#L281-L287) · [Specialization in Lean 4.19](QuarticMurphyBridge.lean)
+The conductor is $D=41\cdot457\cdot1{,}414{,}835{,}497=26{,}509{,}772{,}707{,}289$. The Lean sources construct its real primitive even character. Murphy proves that every real primitive Dirichlet character has root number $+1$. The Lean 4.19 port applies his theorem to this character and proves the Gauss amplitude is the positive square root of the conductor. This establishes the theta reflection at every positive scale, independently of the numerical grid. [Primitive character](QuarticPrimitive.lean) · [Murphy’s sign theorem, v1.0.0](https://github.com/DrMurphyIsIn/real-dirichlet-dbn-lean/blob/v1.0.0/lean/gauss/GaussSign.lean#L281-L287) · [Specialization in Lean 4.19](QuarticConductorSign.lean) · [Ported sign theorem](GaussSign.lean) · [Upstream notice](murphy-license/UPSTREAM-NOTICE.md) · [Source license](murphy-license/LICENSE)
 
 ## Reading the two orders
 
@@ -27,4 +27,4 @@ From the repository root, with Python 3 and elan installed, run
 python lean-quartic-orders/replay.py --fetch-cache
 ```
 
-The command uses the toolchain and package lockfile in `lean/`. It follows imports from the signed-order theorem, recompiles the repository sources in a temporary directory, and checks the transitive axiom dependencies of every theorem in those modules against `propext`, `Classical.choice`, and `Quot.sound`. The root-number hypothesis is visible in the theorem signature. A second checkout with the identical lockfile and toolchain can supply the mathlib cache through `--lake-project /path/to/checkout/lean`.
+The command uses the toolchain and package lockfile in `lean/`. It follows imports from the signed-order theorem, recompiles the repository sources in a temporary directory, and checks the transitive axiom dependencies of every theorem in those modules against `propext`, `Classical.choice`, and `Quot.sound`. The replay includes the eight adapted modules from Peter W. Murphy’s v1.0.0 release. The root number is derived in the same build as the ring equivalence. A second checkout with the identical lockfile and toolchain can supply the mathlib cache through `--lake-project /path/to/checkout/lean`.

@@ -1,5 +1,5 @@
 import QuarticOrderedTurns
-import QuarticMurphyBridge
+import QuarticConductorSign
 import QuarticMellinFold
 
 /-! The primitive character fixes the reflection sign of the quartic norm theta
@@ -34,10 +34,10 @@ theorem kernels_agree : ReflectedGaussianReading.kernel = QuarticKernel.kernel :
 def full (w : ℂ) := mellin (fun t : ℝ => (QuarticKernel.theta (t/QuarticKernel.scale) : ℂ)) w
 
 /-- The equality applies at every height in this vertical strip. -/
-theorem full_eq_completed (h : quarticCharacter.rootNumber = 1) (w : ℂ)
+theorem full_eq_completed (w : ℂ)
     (ha : |w.re - 1/2| ≤ 1/20) : full w = ReflectedGaussianReading.completed w := by
   have hK := QuarticKernel.theta_reflection_iff_kernel_even.mp
-    (fun t ht => QuarticMurphyBridge.theta_reflection (QuarticMurphyBridge.amplitude h) ht)
+    (fun _ ht => QuarticConductorSign.reflection ht)
   have hw : _root_.GaussianSideSign.point (w.re-1/2) w.im = w := by
     apply Complex.ext
     · change 1/2 + (w.re-1/2) = w.re
@@ -56,10 +56,10 @@ private theorem width (x : Input) : |x.val.re-1/2| ≤ 1/20 := by
 
 def difference (x : Input) := jk (reading (chart x)) - kj (reading (chart x))
 
-theorem order_formula (h : quarticCharacter.rootNumber = 1) (x : Input) :
+theorem order_formula (x : Input) :
     difference x = pack (2 * Complex.I * conj (full x.val)) 0 := by
   unfold difference reading
-  rw [same_reading, full_eq_completed h x.val (width x)]
+  rw [same_reading, full_eq_completed x.val (width x)]
   exact order_difference _ _
 
 /-- Both coordinates of the order difference, in terms of the arithmetic kernel. -/
@@ -109,9 +109,9 @@ theorem coordinates (x : Input) :
     _ = 2*cosineMoment a t
   simp [Complex.mul_re, Complex.mul_im, him, hreal]
 
-theorem ring_orders_iff (h : quarticCharacter.rootNumber = 1) {w : ℂ} (hw : w ∈ rightRing) :
+theorem ring_orders_iff {w : ℂ} (hw : w ∈ rightRing) :
     jk (reading (chart (inputOfRing hw))) ≠ kj (reading (chart (inputOfRing hw))) ↔ full w ≠ 0 := by
-  rw [fixed_input_test, full_eq_completed h w (width (inputOfRing hw))]
+  rw [fixed_input_test, full_eq_completed w (width (inputOfRing hw))]
   rfl
 
 /-- At a fixed input in the right annulus, both real moments have to vanish together. -/
@@ -157,12 +157,12 @@ theorem ring_moments {w : ℂ} (hw : w ∈ rightRing) :
     · exact pure.1
     · exact pure.2
 
-theorem full_zero_iff_moments (h : quarticCharacter.rootNumber = 1) {w : ℂ}
+theorem full_zero_iff_moments {w : ℂ}
     (hw : w ∈ rightRing) : full w = 0 ↔
       cosineMoment (w.re-1/2) w.im = 0 ∧
         GaussianSideIntegral.slope QuarticKernel.kernel (w.re-1/2) w.im = 0 := by
   classical
-  exact (not_iff_not.mp (ring_orders_iff h hw)).symm.trans (ring_moments hw)
+  exact (not_iff_not.mp (ring_orders_iff hw)).symm.trans (ring_moments hw)
 
 /-- The numerical certificate supplies a distinct conclusion on its own height range. -/
 theorem low_orders_of_certificate (cert : _root_.GaussianSideSign.Certificate full QuarticKernel.kernel)
