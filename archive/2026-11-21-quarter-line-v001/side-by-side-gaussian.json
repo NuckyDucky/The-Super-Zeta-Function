@@ -1,0 +1,26 @@
+{
+  "dottie_height": "[4526119322477.945393319207328856950230245 +/- 1.63e-28]",
+  "reference": "w0=1/2+i(T_D-1/512)",
+  "radius": "31/2048",
+  "centers_real": [
+    "31/64",
+    "33/64"
+  ],
+  "norm_cutoff": 268435456,
+  "measured_pairs": 3253,
+  "angular_samples_per_rim": 256,
+  "moments_sha256": "97a05d2f01f56b4495d1a4b2d84d25af3645b56417bd3d552acc9fc29569a9d7",
+  "gaussian_completion_normalization": "C(s)/(B^2 |Gamma(2+iT_D)|)",
+  "finite_gaussian_at_reference": "[2.5137904525732e-29 +/- 3.69e-43] + [+/- 3.55e-43]j",
+  "uniform_full_gaussian_remainder": "[7.55763810738067e-19 +/- 6.23e-35]",
+  "min_remainder_bound_divided_by_finite_magnitude_at_samples": 3982627301.2251563,
+  "max_radius_of_coordinate_enclosures": {
+    "spectral_ratio": 2.1118497776693644e-60,
+    "spectral_phase_rad": 2.0577973895845027e-60,
+    "gaussian_ratio": 7.94316984420191e-13,
+    "gaussian_phase_rad": 3.1143277323667146e-13
+  },
+  "spectral_relative_error_at_each_input_below": "10^-155258110290",
+  "phase": "arg(F(w)/F(w0)), in radians",
+  "rendering": "Piecewise-linear interpolation of enclosed point readings within each disk."
+}

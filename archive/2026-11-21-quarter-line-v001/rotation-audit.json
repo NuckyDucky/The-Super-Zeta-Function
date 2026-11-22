@@ -1,0 +1,53 @@
+{
+  "observable": "gradient of log modulus in the w=x+iy plane; represented by gx+i gy",
+  "direction": "positive signed rotation is counterclockwise, from ordinary zeta to original Z",
+  "functions": [
+    "zeta(w)",
+    "Z(w/2;1)"
+  ],
+  "height": "[4526119322477.9434401942073288569502302 +/- 4.52e-26]",
+  "radius_in_w": "1/64",
+  "ordinary_derivative_error_upper": "[5.061706059131961e-16 +/- 2.52e-32]",
+  "original_log_derivative_error_upper": "1e-54",
+  "readings": [
+    {
+      "location": "Left",
+      "re_w": "0.4843750000000000",
+      "gradient_ordinary": "[-16.819644777878324 +/- 8.09e-16] + [-9.505989873683080 +/- 7.70e-16]j",
+      "gradient_original": "[-1.12345103326617327 +/- 1.04e-18] + [0.628984884154602145 +/- 1.92e-19]j",
+      "angle_ordinary_rad": "[-2.627175850704764 +/- 4.56e-16]",
+      "angle_original_rad": "[2.631204417204368 +/- 3.92e-16]",
+      "signed_rotation_ordinary_to_original_rad": "[-1.024805039270455 +/- 3.72e-16]",
+      "signed_rotation_ordinary_to_original_degrees": "[-58.7170035739357 +/- 2.99e-14]",
+      "slope_ordinary": "[19.32004901475601 +/- 4.64e-15]",
+      "slope_original": "[1.287541925003536 +/- 1.89e-16]",
+      "slope_ratio_original_to_ordinary": "[0.06664278770825860 +/- 5.53e-18]"
+    },
+    {
+      "location": "Middle",
+      "re_w": "0.5000000000000000",
+      "gradient_ordinary": "[-13.65150448008258 +/- 3.24e-15] + [-9.881601581260108 +/- 7.62e-16]j",
+      "gradient_original": "[-1.12345103326617327 +/- 1.04e-18] + [0.628984884154602145 +/- 1.92e-19]j",
+      "angle_ordinary_rad": "[-2.515040582404882 +/- 9.44e-17]",
+      "angle_original_rad": "[2.631204417204368 +/- 3.92e-16]",
+      "signed_rotation_ordinary_to_original_rad": "[-1.136940307570337 +/- 2.90e-16]",
+      "signed_rotation_ordinary_to_original_degrees": "[-65.14188118208602 +/- 9.17e-15]",
+      "slope_ordinary": "[16.85258509488907 +/- 5.64e-15]",
+      "slope_original": "[1.287541925003536 +/- 1.89e-16]",
+      "slope_ratio_original_to_ordinary": "[0.07640026249705824 +/- 8.74e-18]"
+    },
+    {
+      "location": "Right",
+      "re_w": "0.5156250000000000",
+      "gradient_ordinary": "[-10.48336418228684 +/- 2.13e-15] + [-9.50598987368308 +/- 4.07e-15]j",
+      "gradient_original": "[-1.12345103326617327 +/- 1.04e-18] + [0.628984884154602145 +/- 1.92e-19]j",
+      "angle_ordinary_rad": "[-2.405050323801159 +/- 2.06e-16]",
+      "angle_original_rad": "[2.631204417204368 +/- 3.92e-16]",
+      "signed_rotation_ordinary_to_original_rad": "[-1.246930566174060 +/- 4.10e-16]",
+      "signed_rotation_ordinary_to_original_degrees": "[-71.4438587876318 +/- 4.04e-14]",
+      "slope_ordinary": "[14.15149349210252 +/- 1.25e-15]",
+      "slope_original": "[1.287541925003536 +/- 1.89e-16]",
+      "slope_ratio_original_to_ordinary": "[0.0909827592205777 +/- 1.08e-17]"
+    }
+  ]
+}

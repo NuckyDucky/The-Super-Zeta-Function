@@ -1,0 +1,31 @@
+{
+  "observable": "1 - abs(Z(w/2;1)) / abs(Z((1-conj(w))/2;1))",
+  "dottie_height": "[4526119322477.945393319207328856950230245 +/- 1.63e-28]",
+  "disk_center_height": "[4526119322477.943440194207328856950230245 +/- 1.63e-28]",
+  "right_center_real": "33/64",
+  "disk_radius": "31/2048",
+  "log10_relative_error_upper_bound": "-155258110290",
+  "log10_of_theorem_upper_estimate_across_both_disks": "[-155258110291.0 +/- 0.0532]",
+  "contrast": {
+    "west_rim": {
+      "offset": "0.0004882812500000000000000000",
+      "lower": "0.00109651853339",
+      "upper": "0.00109651853340"
+    },
+    "center": {
+      "offset": "0.01562500000000000000000000",
+      "lower": "0.03449871364032",
+      "upper": "0.03449871364033"
+    },
+    "east_rim": {
+      "offset": "0.03076171875000000000000000",
+      "lower": "0.06678397737333",
+      "upper": "0.06678397737334"
+    }
+  },
+  "whole_closed_right_disk": [
+    "0.00109651853339",
+    "0.06678397737334"
+  ],
+  "scope": "Original super zeta denominator calibration; no evaluation of the full Gaussian numerator."
+}

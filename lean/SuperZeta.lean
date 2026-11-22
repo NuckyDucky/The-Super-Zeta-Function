@@ -58,3 +58,6 @@ import SuperZeta.GaussianBends
 import SuperZeta.GaussianZeroFiber
 import SuperZeta.GaussianSideSign
 import SuperZeta.GaussianSidePair
+import SuperZeta.QuarterLine.QuarterLiftOrientation
+import SuperZeta.QuarterLine.QuarterOriginalUnivalent
+import SuperZeta.QuarterLine.QuarterReflectedReadings
