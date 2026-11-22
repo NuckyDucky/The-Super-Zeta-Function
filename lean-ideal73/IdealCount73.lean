@@ -2,6 +2,7 @@ import OriginalQuarticBranch
 import PrimeDecomposition73
 import PrimePowerIdealCount
 import FieldCoefficientTransfer
+import QuarticRingMidpoint
 import DerivativeRectangle
 import StripCover
 import Lean.Util.CollectAxioms
@@ -21,6 +22,9 @@ run_cmd do
     `FieldTarget.dedekindZetaRH_iff_third_factor,
     `FieldCoefficientTransfer.idealCounts_series,
     `FieldCoefficientTransfer.isDedekind_of_primePowerCounts,
+    `QuarticRingMidpoint.rightRing_in_right_strip, `QuarticRingMidpoint.zero_iff_either_midpoint,
+    `QuarticRingMidpoint.differences_from_quarter,
+    `QuarticRingMidpoint.midpoint_refutes_quarticRH, `QuarticRingMidpoint.field_zero_iff_either_midpoint,
     `FieldCoefficientTransfer.quarticRH_iff_gaussian, `StripCover.rightBox_exhaustion,
     `StripCover.fieldRH_iff_thirdFactorBoxMargins, `StripCover.fieldRH_of_patchBounds,
     `GaussianRectangle.real_on_line_of_reflection, `GaussianRectangle.zero_on_line,
