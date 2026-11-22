@@ -1,0 +1,22 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6076,
+      "sha256": "2ef8f630ab8dfeb7b7a3469544624769d4e81c3d45ad08452765114ec7954946"
+    },
+    "check_images.py": {
+      "bytes": 5304,
+      "sha256": "5fc81a39f7830b5f67b0fe60404258a69bc27c93ebd7fb82b4e9301122122519"
+    },
+    "gaussian-zero-fiber.png": {
+      "bytes": 118152,
+      "sha256": "ce3e1be02742092d1553552d9658969e197dc93a86cc75656eb052a921e1cb1f"
+    },
+    "plot.py": {
+      "bytes": 5066,
+      "sha256": "3c8e72d4a7f37536964aff6c0ab20658cef614074833fd786db1f415938bb1ff"
+    }
+  },
+  "format_version": 1,
+  "snapshot": "2026-11-21-gaussian-zero-fiber-v001"
+}

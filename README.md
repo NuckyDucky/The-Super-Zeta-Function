@@ -380,6 +380,24 @@ In each window I found that many disjoint intervals on the critical line where H
 
 </details>
 
+### Two detours from the same input reach two Gaussian zeros
+
+I started at $s=0.51$ and followed the inverse of my quartic’s completed Gaussian Hecke factor. Both paths start at the same input, turn through $\pi$ radians around the value $\Lambda(1/2)$ in opposite directions, then follow the same real output segment to zero. The counterclockwise path ends at $1/2+it_0$ and the clockwise path at $1/2-it_0$, where $0.25835<t_0<0.25838$. Both zeros are simple. This is a measurement near height zero. [Detour proof and signed coefficient replay](archive/2026-11-21-gaussian-pinch-v001/README.md)
+
+In the quadratic model $U=1-z^2$, an output circle of radius $r$ has inverse inputs separated by exactly $2\sqrt r$. For the Gaussian factor the leading coefficient is $a=\Lambda''(1/2)/2>0$. The separation divided by $\sqrt r$ tends to $2/\sqrt a$. At a finite radius the real entry is closer to $1/2$ than the imaginary exit. [Radius laws in Lean](lean/SuperZeta/PinchRadius.lean) · [Why the two lengths differ](archive/2026-11-21-gaussian-pinch-v001/README.md#the-two-radii-at-the-pinch)
+
+![The two inputs on the critical line, their common Gaussian zero and their distinct super-zeta images](archive/2026-11-21-gaussian-zero-fiber-v001/gaussian-zero-fiber.png)
+
+<a name="fig-10a"></a>**Fig. 10a. The same two inputs in the Gaussian factor and the original super zeta.** I keep the orange circle on the endpoint of the counterclockwise detour and the blue diamond on the endpoint of the clockwise detour. Both land at Gaussian value zero in the middle panel, where the vertical axis retains their input heights. The right panel uses the real and imaginary parts of the super zeta as its two axes. The orange point lies below the axis and the blue point above it. Their distance exceeds $0.94434$ for the certified root bracket. Any rule that took only the Gaussian output and returned the super-zeta output would have to assign both points to its single input $0$. [The two quadratic expansions and the contradiction](archive/2026-11-21-gaussian-zero-fiber-v001/README.md) · [Field transfer in Lean](lean-ideal73/GaussianZeroFiber.lean)
+
+### Which side of the line did I sample?
+
+I keep the height fixed and hide whether the input went left or right. For $0<t\le0.27$ and $0< a\le1/20$, the imaginary part of the completed Gaussian value is positive at $1/2+a+it$ and negative at $1/2-a+it$. At the first positive root height, the readings at real parts $0.49$ and $0.51$ are separated by more than $93$ in their imaginary parts. The quartic coefficients supply the bounds in this test. [Proof and arithmetic replay](archive/2026-11-21-gaussian-side-sign-v001/README.md) · [Theorem and hypotheses in Lean](lean/SuperZeta/GaussianSideSign.lean)
+
+![Imaginary sign of the quartic's completed Gaussian value on either side of the critical line](archive/2026-11-21-gaussian-side-sign-v001/gaussian-side-sign.png)
+
+<a name="fig-10b"></a>**Fig. 10b.** The horizontal coordinate is the real part of the input. Moving horizontally through the dashed line switches the sign of the imaginary reading at every nonzero height shown. The two dots mark the root brackets. A zero away from the line would require the right and left readings to vanish together at the same height. [The two integrals that would have to vanish](archive/2026-11-21-gaussian-side-sign-v001/README.md#what-a-reflected-pair-would-force-at-one-height)
+
 ### Two inverse branches of the Gaussian factor at the Dottie height
 
 In my quartic, two solutions of $P(z)=v$ meet and separate in a perpendicular direction as the real target $v$ passes a critical value. To test for the same event in the quartic field, I use its completed Gaussian factor $f$ and count the solutions of $f(w)=v$ in a fixed rectangle. As the real target varies continuously, suppose $f(w)-v$ stays nonzero on the boundary and encloses exactly two solutions counted with multiplicity. Integrating around the boundary then gives their signed squared separation $(w_1-w_2)^2$. A change from positive to negative takes a same-height pair through a double solution on the critical line.

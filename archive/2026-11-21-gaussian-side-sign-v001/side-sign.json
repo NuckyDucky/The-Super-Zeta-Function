@@ -1,0 +1,15 @@
+{
+  "coefficient_cutoff": 33554432,
+  "half_width": "0.05",
+  "height_limit": "0.27",
+  "root_height_bracket": [".25835", ".25838"],
+  "line_slope_lower": 519994,
+  "curvature_upper": 3565602,
+  "core_distortion_upper": "0.1405741397",
+  "tail_upper": "0.00000000000418418",
+  "slope_floor_lower": "18762.56",
+  "slope_floor_used_in_lean": 18000,
+  "blind_horizontal_offset": "0.01",
+  "blind_imaginary_magnitude_lower": "46.5",
+  "super_zeta_imaginary_part_upper_in_root_band": "-0.2001"
+}

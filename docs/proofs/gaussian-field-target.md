@@ -10,6 +10,12 @@ For the product $\zeta(s)\beta_D(s)G(s)$, Lean proves the following implication 
 
 The field calculation at 73 supplies the ideal counts $(r+1)^2$ at $73^{2r}$ and $(r+1)(r+2)$ at $73^{2r+1}$. The independent calculation through norm 65,536 checks more prime powers over a finite range. The all-prime-power comparison above is the hypothesis these calculations address. [Ideal counts at every power of 73](../../lean-ideal73/PrimePowerIdealCount.lean) · [Comparison with PARI](gaussian-ideals-and-super-zeta.md)
 
+### What do the two Gaussian zeros give the field?
+
+At the conjugate inputs $w_\pm=1/2\pm it_0$ with $0.25835<t_0<0.25838$, the completed Gaussian factor vanishes. Its scale and gamma factors are nonzero there, so $G(w_\pm)=0$. Once the three-factor product satisfies the ideal-series hypotheses above, every admissible continuation $Z$ satisfies $Z(w_+)=Z(w_-)=0$. This deduction uses the product at two specified points and requires no assumption about the location of its other zeros.
+
+The original super zeta $\Phi(w)=\mathcal Z(w/2;1)$ separates the two inputs by more than $0.94434$ in its output plane. If $H$ recovered these readings from the field value, then both $\Phi(w_+)$ and $\Phi(w_-)$ would equal $H(0)$. Lean gives this contradiction for **every** $Z$ satisfying the Formal Conjectures definition, under the field-identification hypotheses above. The spectral and field proofs run in separately pinned packages. The two zero measurements and the distinct readings appear explicitly at their interface. [Field theorem](../../lean-ideal73/GaussianZeroFiber.lean) · [Spectral proof and numerical enclosures](../../archive/2026-11-21-gaussian-zero-fiber-v001/README.md)
+
 ### Which rectangle would contain only critical-line zeros?
 
 For the local calculation I use the reflected completion $F$, which is real on $\Re s=1/2$. At the heights near $T_D$ the completion multiplies $G$ by a holomorphic nonvanishing factor, so they have the same zeros with the same multiplicities there. If $\Im F'(s)<0$ throughout a rectangle crossing the critical line, then $\Im F$ decreases strictly with the real coordinate at each fixed height. It vanishes at the line, so it has opposite signs on the two open sides. On the line, $\partial_t\Re F=-\Im F'>0$. Opposite signs for the real value at the bottom and top therefore give exactly one zero, with nonzero derivative. [Rectangle and simple-zero theorems](../../lean-ideal73/DerivativeRectangle.lean)
