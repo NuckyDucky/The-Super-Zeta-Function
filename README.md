@@ -453,6 +453,8 @@ For intervals $[Y,Y^2]$, the measured positive area rises from $1.3775398$ at $Y
 
 ## Proofs, figures and open questions
 
+**Reading the full Gaussian at its super-zeta address.** For the quartic's real primitive character, Murphy's root-number theorem gives the positive theta reflection. At each input in the right ring, the two Hamilton orders recover the cosine and sine integrals of the signed quartic kernel. They agree precisely when both integrals vanish there. [Equations, Lean sources and replay](lean-quartic-orders/README.md)
+
 **Gaussian remainder on the measuring circle.** At a fixed cutoff $N$, can I bound the remaining signed terms tightly enough that the quotient $F(w)/F_N(w)$ avoids the closed negative real axis at every point on the right circumference? That would transfer the measured zero winding to the full Gaussian factor and clear both disks of radius $31/2048$. [Common-sector criterion](archive/2026-11-20-gaussian-common-sector-v001/README.md#what-an-extra-gaussian-zero-would-require) · [Real-part test](archive/2026-11-20-gaussian-relative-remainder-v001/README.md) · [Spiral-phase test](archive/2026-11-20-gaussian-circle-phases-v001/README.md)
 
 **Prime signs from the ordered return.** My quartic gives the character by three residue symbols. Can a specified measurement of the tower, such as one derived from its determinant, recover those residues at a new marked prime? The measurement and its input must be fixed before the signs are calculated from the quartic. [Character calculation](archive/2026-11-20-dedekind-phase-v001/README.md) · [Open branch-prediction question](docs/proofs/reciprocal-constructions.md#user-content-read-questions)
