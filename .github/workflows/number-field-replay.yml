@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - 'archive/2026-11-21-gaussian-zero-fiber-v001/**'
+      - 'archive/2026-11-18-spectral-reproduction-v001/check_complex_mellin.py'
       - 'archive/2026-11-21-gaussian-pinch-v001/**'
       - 'tools/gaussian_moments.py'
       - 'archive/2026-11-20-hidden-lift-v001/**'
@@ -24,6 +26,8 @@ on:
   push:
     branches: [main]
     paths:
+      - 'archive/2026-11-21-gaussian-zero-fiber-v001/**'
+      - 'archive/2026-11-18-spectral-reproduction-v001/check_complex_mellin.py'
       - 'archive/2026-11-21-gaussian-pinch-v001/**'
       - 'tools/gaussian_moments.py'
       - 'archive/2026-11-20-hidden-lift-v001/**'
@@ -60,6 +64,8 @@ jobs:
           python -m pip install --only-binary=:all: numpy==2.5.5 python-flint==0.9.0
       - name: Recompute the curvature and the two critical-line endpoint signs
         run: python -B archive/2026-11-21-gaussian-pinch-v001/central_detours.py
+      - name: Enclose both super-zeta images and the quadratic terms at the vertex
+        run: python -B archive/2026-11-21-gaussian-zero-fiber-v001/check_images.py
 
   arithmetic:
     runs-on: ubuntu-24.04

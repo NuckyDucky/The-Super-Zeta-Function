@@ -53,3 +53,5 @@ import SuperZeta.CapRecovery.Dominance
 import SuperZeta.CapRecovery.GeneralWeights
 import SuperZeta.CapRecovery.Coalescence
 import SuperZeta.PinchRadius
+import SuperZeta.GaussianBends
+import SuperZeta.GaussianZeroFiber
