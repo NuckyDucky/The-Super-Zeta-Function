@@ -15,6 +15,7 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [First complete reference row](first-reference-row.txt) checked all 17 blocks and their exact sum.
 - [Paired Gaussian score](paired-reference-score.txt) checked the swapped-coordinate sum, its batch decomposition, and its positivity implication.
 - [Paired row spans](paired-row-span.txt) checked contiguous span assembly and the exact sum of the first 32 paired rows.
-- [Transitive axiom audit](transitive-audit.txt) checked 81 named declarations in the package audit.
+- [Signed Dottie budgets](signed-dottie-budgets.txt) audited the exact signed norm partition, range contour identity, retained and omitted margin implications, uniform sharp moments, Gamma ratio, and signed patch transfer.
+- [Transitive axiom audit](transitive-audit.txt) checked 103 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.

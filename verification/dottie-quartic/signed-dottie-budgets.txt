@@ -1,0 +1,35 @@
+ArchivedDottieFiniteSums on Lean 4.33.1
+'QuarticModel.dottie_omitted_norm_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_omitted_eq_finite_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_eq_finite_add_far_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_full_sum_finite_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+ArchivedDottieRangeIntegral on Lean 4.33.1
+'QuarticModel.dottie_range_integrand_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_range_side_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_omitted_eq_range_integrals' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+ArchivedDottieRetainedBudget on Lean 4.33.1
+'QuarticModel.dottieRetained_eq_smoothedPrefix_add_beyond' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedDottie_model_margin_of_uniform_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieRetained_model_of_sharp_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieRetained_model_of_split_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+ArchivedDottieOmittedBudget on Lean 4.33.1
+'QuarticModel.dottieOmitted_eq_sharp_add_middle_add_errors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieOmitted_tail_of_split_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieSharpCircleMoments on Lean 4.33.1
+'QuarticModel.dottie_sharp_prefix_eq_completed_dirichlet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_circle_offset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_moments_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_circle_completed_moments_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieGammaRatio on Lean 4.33.1
+'QuarticModel.dottie_gamma_ratio_with_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+ArchivedQuarticSignedPatchCover on Lean 4.33.1
+'StripCover.boxMargins_of_signedPatchBounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StripCover.hasSignedPatchBounds_of_axisBounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedGaussian_strip_of_signedPatchBounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticRH_of_signedPatchBounds' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -12,6 +12,11 @@ import DottieFirstReferenceBlock
 import DottieQuickScore
 import DottieSymmetricChunks
 import DottieFirstPairedRows
+import ArchivedDottieRangeIntegral
+import ArchivedDottieOmittedBudget
+import DottieSharpCircleMoments
+import DottieGammaRatio
+import ArchivedQuarticSignedPatchCover
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -100,7 +105,29 @@ run_cmd do
     `QuarticModel.dottiePairedRowSpan_one,
     `QuarticModel.dottieSymmetricScore_eq_row_span,
     `QuarticModel.dottieQuickReferenceScore_eq_row_span,
-    `QuarticModel.dottieFirstPairedRows]
+    `QuarticModel.dottieFirstPairedRows,
+    `QuarticModel.dottie_omitted_norm_iff,
+    `QuarticModel.dottie_omitted_eq_finite_sum,
+    `QuarticModel.dottie_retained_eq_finite_add_far_tail,
+    `QuarticModel.dottie_full_sum_finite_partition,
+    `QuarticModel.dottie_range_integrand_integrable,
+    `QuarticModel.dottie_range_side_eq_sum,
+    `QuarticModel.dottie_omitted_eq_range_integrals,
+    `QuarticModel.dottieRetained_eq_smoothedPrefix_add_beyond,
+    `QuarticModel.archivedDottie_model_margin_of_uniform_error,
+    `QuarticModel.dottieRetained_model_of_sharp_budget,
+    `QuarticModel.dottieRetained_model_of_split_budget,
+    `QuarticModel.dottieOmitted_eq_sharp_add_middle_add_errors,
+    `QuarticModel.dottieOmitted_tail_of_split_budget,
+    `QuarticModel.dottie_sharp_prefix_eq_completed_dirichlet,
+    `QuarticModel.dottie_sharp_circle_offset,
+    `QuarticModel.dottie_sharp_moments_error,
+    `QuarticModel.dottie_sharp_circle_completed_moments_error,
+    `QuarticModel.dottie_gamma_ratio_with_error,
+    `StripCover.boxMargins_of_signedPatchBounds,
+    `StripCover.hasSignedPatchBounds_of_axisBounds,
+    `QuarticModel.archivedGaussian_strip_of_signedPatchBounds,
+    `QuarticModel.archivedQuarticRH_of_signedPatchBounds]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

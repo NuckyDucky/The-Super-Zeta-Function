@@ -152,7 +152,14 @@ roots = [
   "DottieSymmetricScore",
   "DottieSymmetricChunks",
   "DottiePairedRows",
-  "DottieFirstPairedRows"
+  "DottieFirstPairedRows",
+  "ArchivedDottieFiniteSums",
+  "ArchivedDottieRangeIntegral",
+  "ArchivedDottieRetainedBudget",
+  "ArchivedDottieOmittedBudget",
+  "DottieSharpCircleMoments",
+  "DottieGammaRatio",
+  "ArchivedQuarticSignedPatchCover"
 ]
 
 [[lean_lib]]
