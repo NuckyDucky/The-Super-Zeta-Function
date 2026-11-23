@@ -1,0 +1,16 @@
+Lean 4.33.1. Single-process source check with -DwarningAsError=true exited 0.
+Replay after building imports from lean-ideal73 with lake env lean -DwarningAsError=true DottieModulusStrip.lean.
+The arithmetic relation uses the supplied period and winding. The archived orbit certificates establish the values used for the period-640 return.
+
+'SuperZeta.StirlingCorrection.dottie_log_modulus_eq_log_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_archived_height_from_modulus' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_height_mem_iff_modulus_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_modulus_height_zoom_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

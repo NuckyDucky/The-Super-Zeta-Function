@@ -214,6 +214,7 @@ roots = [
   "DottieBandArchivedShort3",
   "DottieSharpRelativeCircle",
   "DottieHeightCalibration",
+  "DottieModulusStrip",
   "DottieSignedHeightVariation",
   "DottieRetainedLongBandJoin",
   "DottieSharpArcCaps",
