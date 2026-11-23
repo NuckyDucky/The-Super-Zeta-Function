@@ -202,7 +202,13 @@ roots = [
   "DottieRetainedBandBounds",
   "DottieBandCoefficientChecks",
   "DottieBandPrimality",
-  "DottieBandPrimePowers"
+  "DottieBandPrimePowers",
+  "DottieBandLucasCheck",
+  "DottieBandFactorCheck",
+  "DottieBandChunkReplay",
+  "DottieBandFirstTwoChunks",
+  "DottieBandFirst256",
+  "DottieBandArchivedShort4096"
 ]
 
 [[lean_lib]]

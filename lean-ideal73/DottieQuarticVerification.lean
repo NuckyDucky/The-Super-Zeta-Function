@@ -34,6 +34,9 @@ import DottieBandVariation
 import DottieRetainedBandBounds
 import DottieBandCoefficientChecks
 import DottieBandPrimePowers
+import DottieBandFirstTwoChunks
+import DottieBandFirst256
+import DottieBandArchivedShort4096
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -259,7 +262,25 @@ run_cmd do
     `QuarticModel.dottie_band_split_prime_power,
     `QuarticModel.dottie_retained_band_first_nonzero_coeff,
     `QuarticModel.dottie_retained_band_before_first_nonzero,
-    `QuarticModel.dottie_retained_band_first_chunk]
+    `QuarticModel.dottie_retained_band_first_chunk,
+    `QuarticModel.dottie_band_lucas_check_sound,
+    `QuarticModel.dottie_band_prime_table_sound,
+    `QuarticModel.dottie_band_prime_root_ok_sound,
+    `QuarticModel.dottie_band_split_value_correct,
+    `QuarticModel.dottie_band_inert_value_correct,
+    `QuarticModel.dottie_band_factored_row_check_sound,
+    `QuarticModel.dottie_band_append_chunks,
+    `QuarticModel.dottie_band_integer_sums_of_chunk,
+    `QuarticModel.dottie_band_check_rows_sound,
+    `QuarticModel.dottie_second_nonzero_band_prime,
+    `QuarticModel.dottie_retained_band_replay_first_sixteen,
+    `QuarticModel.dottie_retained_band_replay_second_sixteen,
+    `QuarticModel.dottie_retained_band_replay_first_thirty_two,
+    `QuarticModel.dottie_retained_band_first_thirty_two_integer_bounds,
+    `QuarticModel.DottieBandWitness1854467118035498894_256.dottie_retained_band_first_256_chunk,
+    `QuarticModel.DottieBandWitness1854467118035498894_256.dottie_retained_band_first_256_integer_bounds,
+    `QuarticModel.DottieBandBlock1854467118035629966_4096.certificate,
+    `QuarticModel.DottieBandBlock1854467118035629966_4096.dottie_retained_short_band_integer_bounds]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do
