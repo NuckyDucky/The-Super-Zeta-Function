@@ -211,7 +211,12 @@ roots = [
   "DottieBandArchivedShort4096",
   "DottieBandArchivedShort2",
   "DottieBandArchivedShort3",
-  "DottieSharpRelativeCircle"
+  "DottieSharpRelativeCircle",
+  "DottieHeightCalibration",
+  "DottieSignedHeightVariation",
+  "DottieRetainedLongBandJoin",
+  "DottieSharpArcCaps",
+  "DottieSharpArchiveCaps"
 ]
 
 [[lean_lib]]

@@ -1,0 +1,28 @@
+DottieHeightCalibration on Lean 4.33.1
+'SuperZeta.StirlingCorrection.dottie_height_at_archived_flank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_flank_height_endpoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_flank_reaches_archived_window' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_flank_covers_right_rectangle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieSignedHeightVariation on Lean 4.33.1
+'QuarticModel.dottie_signed_block_height_displacement' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieRetainedLongBandJoin on Lean 4.33.1
+'QuarticModel.dottie_retained_quarter_bounds_of_long_chunk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_half_bounds_of_long_chunk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_full_bounds_of_long_chunk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_bands_bound_of_long_chunks' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieSharpArcCaps on Lean 4.33.1
+'QuarticModel.dottie_sharp_arc_cover_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_arc_pass_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_margin_of_checked_arc_caps' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieQuarterCombinedCertificate on Lean 4.33.1
+'QuarticModel.dottie_retained_quarter_integer_sums' depends on axioms: [propext, Classical.choice, Quot.sound]

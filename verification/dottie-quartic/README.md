@@ -36,3 +36,10 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Transitive axiom audit](transitive-audit.txt) checked 249 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.
+
+## Dottie flank interval and first complete retained band
+
+- [Height and variation checks](flank-window-and-first-long-band.txt) include the exact half-unit height image of the archived one-winding calibration, its disk coverage, and the signed partial-sum bound for a pure vertical shift.
+- [The directed flank replay](../../tools/dottie-compute-pilot/replay_dottie_flank_window.py) takes the archived quartet computation folder as its argument. It checks cap capture, primitive period and winding on both flanks and for both phase origins with 384-bit balls.
+- [The assembly receipt](DottieLongBand1Assembly-receipt.json) records all 32 checked blocks of the first retained long band. The [join source](../../tools/dottie-compute-pilot/DottieQuarterCombinedCertificate.lean) imports that generated assembly and proves the integer bound for 135,168 rows after adjoining its checked short band. Its axiom output is in the checks linked above.
+- [Sharp-circle scalar audit](sharp-circle-scalar-caps.txt) checks gap-free coverage of one turn and the rational inequalities on 2,077 arcs using `decide +kernel`. The margin theorem takes the actual reference projection and the model enclosures as premises.
