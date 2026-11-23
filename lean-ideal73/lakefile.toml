@@ -1,6 +1,6 @@
 name = "quartic_ideal_count"
 version = "0.1.0"
-defaultTargets = ["IdealCount73"]
+defaultTargets = ["IdealCount73", "DottieQuarticVerification"]
 
 [[require]]
 name = "mathlib"
@@ -12,3 +12,74 @@ name = "IdealCount73"
 roots = ["IdealCount73", "OriginalQuarticBranch", "PrimeDecomposition73", "PrimePowerIdealCount",
          "QuarticAt73", "QuarticModel", "GoodPrime", "PrimeIdealCoefficient",
          "FieldTarget", "FieldCoefficientTransfer", "GaussianZeroFiber", "QuarticRingMidpoint", "StripCover", "DerivativeRectangle"]
+
+[[lean_lib]]
+name = "DottieQuarticVerification"
+roots = [
+  "QuarticFiniteFourier",
+  "QuarticPrimitive",
+  "GenThetaFE",
+  "GaussQuad",
+  "GaussPrime",
+  "GaussCRT",
+  "MurphyOddStep",
+  "RelativeQuartic",
+  "RelativeGaussianBase",
+  "RelativeQuarticIntegerBasis",
+  "GaussianIntegralBasis",
+  "RelativeQuarticPrimeNorms",
+  "RelativeQuarticSplitting",
+  "RelativeQuarticNormCharacter",
+  "RelativeQuarticSplitPrimes",
+  "RelativeQuarticConductorPrimes",
+  "ArchivedGaussianIdealCharacter",
+  "QuarticDualArithmetic",
+  "QuarticPoisson",
+  "QuarticDualIndex",
+  "QuarticLatticeTransform",
+  "QuarticQuadrants",
+  "IdealPrimePowerExponents",
+  "PrimePowerExponents",
+  "PrimePowerEulerSeries",
+  "QuarticEulerTower",
+  "GaussianBaseEuler",
+  "QuarticEulerFactorization",
+  "RelativeQuarticDyadicSign",
+  "RelativeQuarticInertSign",
+  "RelativeQuarticSplitEuler",
+  "GaussianReciprocityNorm",
+  "RelativeQuarticSplitSign",
+  "QuarticArchivedEuler",
+  "QuarticArchivedPrimePowers",
+  "GaussianPrimePowerCoefficients",
+  "GaussianQuarterLattice",
+  "QuarticArchivedCoefficients",
+  "IdealNormCoprime",
+  "IdealMul",
+  "QuarticSignedMultiplicativity",
+  "ArchivedQuarticLatticeCoefficients",
+  "ArchivedGaussianSeries",
+  "ArchivedGaussianMellin",
+  "ArchivedThetaBounds",
+  "ArchivedGaussianContinuation",
+  "ArchivedThetaPoisson",
+  "QuarticConductorSign",
+  "ArchivedGaussianHalfMellin",
+  "ArchivedQuarticZeroTransport",
+  "ArchivedQuarticCertificates",
+  "ArchivedDottieHeight",
+  "ArchivedDottieRing",
+  "ArchivedQuarticTotal",
+  "ArchivedQuarticOrders",
+  "ArchivedDottieTailPartition",
+  "ArchivedDottieContourSum",
+  "ArchivedDottieContourShift",
+  "ArchivedGaussianStripBound",
+  "ArchivedDottieSmoothedIdentity",
+  "DottieLogTrapezoid",
+  "DottieGammaPhase",
+  "DottieReferencePhase",
+  "DottieReferencePhaseEnclosure",
+  "DottieReferenceMoment",
+  "DottieQuarticVerification"
+]

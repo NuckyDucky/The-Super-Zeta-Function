@@ -29,3 +29,16 @@ The [spectral library](../lean/README.md) uses its own pinned Lean 4.19 toolchai
 ~~~sh
 python -B tools/check_quartic_ideal_series.py
 ~~~
+
+## The exact Dottie quartic and the signed ring test
+
+The Lean 4.33.1 audit builds the archived Gaussian factor from the same quartic field, proves its root number is $+1$, and identifies the three-factor product with the field's Dedekind zeta. The two smoothed norm sums reproduce its normalized completion throughout $0<\Re w<1$. The remainder after removing the retained ranges is exactly the signed sum over the omitted norms.
+
+| Source | Step checked by Lean |
+|---|---|
+| [Conductor and field](QuarticConductorSign.lean) | The exact Gauss amplitude, theta reflection, and Dedekind-zeta identification. |
+| [Smoothed contour and the two Hamilton orders](ArchivedDottieSmoothedIdentity.lean) | The full sum and its partition, and the sign and order conclusions on the two Dottie rings given the signed numerical bounds. |
+| [Gamma phase](DottieReferencePhaseEnclosure.lean) | The direction at $\tfrac12+i(T_D-\tfrac1{512})$ has a phase between $4.067324$ and $4.067326$ radians modulo $2\pi$. |
+| [Exact reference projection](DottieReferenceMoment.lean) | The archived reference unit is a positive multiple of the absolute real projection of the rotated signed polynomial through norm $276{,}824{,}064$. |
+
+The ring implications take reference positivity, the retained signed margin, and the full omitted signed bound as hypotheses. The [transitive axiom audit](DottieQuarticVerification.lean) runs in `lake build` and accepts `propext`, `Classical.choice`, and `Quot.sound`. The checked source replays and their outputs are in the [verification record](../verification/dottie-quartic/README.md). The adapted Gauss-sum sources use the upstream [Apache-2.0 license](murphy-gauss/LICENSE) and [notice](murphy-gauss/UPSTREAM-NOTICE.md).

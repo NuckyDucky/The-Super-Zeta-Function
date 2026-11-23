@@ -1,0 +1,320 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Canonical checkout: 7053444979826a20e4393085454a38835602c48f
+Mathlib: 0df444a360eaa60ab8c11dca51a86af692955474
+Building QuarticFiniteFourier
+'QuarticFiniteFourier.fourier_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.primitive_fourier_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.sign_at_integer_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.quartic_off_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticPrimitive
+'QuarticFiniteFourier.quarticCharacter_primitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.actual_fourier_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.quartic_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.gaussAmplitude_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.gaussAmplitude_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building GenThetaFE
+Building GaussQuad
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Building GaussPrime
+Building GaussCRT
+Building MurphyOddStep
+Building PrimeIdealCoefficient
+'QuarticCoefficient.primeCoefficient_eq_card_ringHom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticCoefficient.primeCoefficient_eq_card_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticCoefficient.primeCoefficient_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticModel
+'QuarticModel.minpoly_theta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.theta_generates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianI_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.theta_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building GoodPrime
+'QuarticCoefficient.goodPrime73' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticAt73
+'QuarticAt73.good_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticAt73.ideal_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticAt73.residue_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticAt73.signed_residues' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeQuartic
+'QuarticModel.gaussianOrderMap_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.two_thetaHalf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativePolynomial_monic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativePolynomial_natDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativePolynomial_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianDiscriminant_squarefree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.unit_denominator_of_discriminant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianBase_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relative_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.thetaHalf_generates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativeFieldBasis_gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativeFieldBasis_dim' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeGaussianBase
+'QuarticModel.gaussian_maps_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.RelativeGaussianBase.0.QuarticModel.base_exists_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.gaussianBase_fraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relative_exists_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeQuarticIntegerBasis
+'QuarticModel.relative_discriminant_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.integral_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussian_adjoin_thetaHalf_eq_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativeIntegersBasis_gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativeIntegersBasis_dim' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.quarticResidueEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.quarticPrimeFactorEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building GaussianIntegralBasis
+'QuarticModel.gaussian_finiteQuotient' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeQuarticPrimeNorms
+'QuarticModel.relativeFactorIdeal_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.exists_relativeFactorIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativeFactorResidueEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativeFactorIdeal_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relativeFactorIdeal_inertiaDeg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relative_prime_norm_multiset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.relative_product_inertiaDeg' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeQuarticSplitting
+'QuarticModel.quartic_odd_prime_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.quartic_even_prime_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.quartic_odd_euler_denominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.quartic_even_euler_denominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeQuarticNormCharacter
+'QuarticModel.rationalNormSign_reciprocity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.discriminant_pair_sign_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.discriminant_pair_opposite' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeQuarticSplitPrimes
+'QuarticModel.split_rational_prime_factor_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianPrimeAt_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.opposite_norm_sign_factor_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeQuarticConductorPrimes
+'QuarticModel.archivedGaussianSign_eq_legendre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.conductor_prime_41_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.conductor_prime_457_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.conductor_prime_1414835497_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedGaussianIdealCharacter
+'QuarticModel.archivedGaussianSign_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedIdealCharacter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedIdealCharacter_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticDualArithmetic
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+'QuarticDualArithmetic.dual_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticDualArithmetic.dual_norm' depends on axioms: [propext, Quot.sound]
+'QuarticDualArithmetic.combined_character' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticDualArithmetic.dual_character' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticPoisson
+'QuarticFiniteFourier.character_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.twisted_gaussian' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticDualIndex
+'QuarticFiniteFourier.shiftedDualEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.gaussianDualEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.shifted_frequency_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.shifted_frequency_character' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticLatticeTransform
+'QuarticFiniteFourier.gaussian_lattice_transform' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticQuadrants
+'QuarticFiniteFourier.quadrantEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.reading_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticFiniteFourier.gaussianLattice_four_quarters' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building IdealPrimePowerExponents
+'IdealPrimePower.primePowerIdealsEquivExponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PrimePowerExponents
+'FieldCoefficientTransfer.primePowerIdealsEquivExponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building FieldTarget
+'FieldTarget.continuation_eq_off_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_third_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building FieldCoefficientTransfer
+'FieldCoefficientTransfer.idealCounts_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldCoefficientTransfer.isDedekind_of_primePowerCounts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldCoefficientTransfer.quarticRH_iff_gaussian' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PrimePowerEulerSeries
+'FieldCoefficientTransfer.idealCounts_primePower_eq_localEuler' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldCoefficientTransfer.fieldLocalEulerSeries_mul_denominator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building QuarticEulerTower
+'QuarticModel.rational_euler_denominator_via_gaussian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_gaussian_denominators' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building GaussianBaseEuler
+'QuarticModel.gaussian_base_euler_denominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticEulerFactorization
+'QuarticModel.rational_euler_denominator_factored' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_character_denominators' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building RelativeQuarticDyadicSign
+'QuarticModel.quarticDiscriminantSign_dyadic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_archived_dyadic_denominator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building RelativeQuarticInertSign
+'QuarticModel.quarticDiscriminantSign_inert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_archived_inert_denominator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building RelativeQuarticSplitEuler
+'QuarticModel.quarticDiscriminantSign_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_archived_split_denominator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_conductor_41_denominator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_conductor_457_denominator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_conductor_1414835497_denominator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building GaussianReciprocityNorm
+'QuarticModel.jacobiSym_coordinate_at_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.jacobiSym_coordinate_at_norm_factors' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building RelativeQuarticSplitSign
+'QuarticModel.archivedGaussianSign_eq_norm_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedGaussianSign_at_split_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussian_split_generator_at_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_archived_split_coprime' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building QuarticArchivedEuler
+'QuarticModel.quarticDiscriminantSign_eq_archivedIdealCharacter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_mul_archived_denominators' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building QuarticArchivedPrimePowers
+'QuarticModel.coeff_weightedGeometricAtDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.fieldLocalEulerSeries_eq_archived_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.idealCounts_primePower_eq_archived_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building GaussianPrimePowerCoefficients
+'QuarticModel.signedIdealNormSum_primePower' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building GaussianQuarterLattice
+'QuarticModel.gaussianQuarterIdealEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianQuarterIdeal_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianQuarterIdeal_signed_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticArchivedCoefficients
+'QuarticModel.signedIdealCoefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.idealCounts_primePower_eq_archived_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building IdealNormCoprime
+'IdealNormCoprime.splitEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building IdealMul
+'FieldCoefficientTransfer.idealCounts_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldCoefficientTransfer.quarticRH_iff_gaussian_of_local_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building QuarticSignedMultiplicativity
+'QuarticModel.signedIdealCoefficients_multiplicative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.idealCounts_eq_archived_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedQuarticLatticeCoefficients
+'QuarticModel.archivedLatticeCoeff_eq_signedIdealNormSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.signedIdealCoefficients_eq_archivedLatticeCoeff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.idealCounts_eq_archivedLattice_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedGaussianSeries
+'QuarticModel.hasSum_group_by_archivedNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedGaussianDirichlet_hasSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dedekindZeta_eq_archivedGaussianDirichlet' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedGaussianMellin
+'QuarticModel.archivedTheta_hasSum_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedGaussianFactor_hasSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dedekindZeta_eq_archivedGaussianFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedThetaBounds
+'QuarticModel.archivedTheta_continuous_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedTheta_exponential_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedGaussianContinuation
+'QuarticModel.archivedMellin_reflects' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedGaussianFactor_differentiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedFieldContinuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticRH_iff_gaussian' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedThetaPoisson
+'QuarticModel.gaussianLattice_eq_archivedTheta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedThetaReflects_of_gaussAmplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building QuarticConductorSign
+'QuarticConductorSign.root_number' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticConductorSign.amplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedTheta_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedMellin_functional_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedGaussianFactor_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticZeta_isDedekind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticZeta_eq_off_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticZeta_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticRH_iff_three_factors' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedGaussianHalfMellin
+'QuarticModel.archivedMellin_eq_centered_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedTheta_eq_original_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedThetaScale_eq_original' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedQuarticZeroTransport
+'QuarticModel.archivedMellin_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedMellin_mirror_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedGaussian_strip_iff_upper_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticRH_iff_upper_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedRightDisk_exclusion_of_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building DerivativeRectangle
+'GaussianRectangle.real_on_line_of_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaussianRectangle.zero_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaussianRectangle.unique_simple_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaussianRectangle.zero_on_line_of_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaussianRectangle.off_line_zero_forces_remainder_slope' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building StripCover
+'StripCover.rightBox_exhaustion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StripCover.boxMargins_of_patchBounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StripCover.strip_iff_boxMargins' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StripCover.fieldRH_iff_boxMargins' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StripCover.fieldRH_of_patchBounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StripCover.fieldRH_iff_thirdFactorBoxMargins' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedQuarticCertificates
+'QuarticModel.archivedGaussian_dottie_rectangle_of_signed_remainder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.archivedQuarticRH_iff_boxMargins' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedDottieHeight
+'SuperZeta.StirlingCorrection.dottieHeight_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedDottieRing
+'QuarticModel.archivedDottieRing_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedDottieRing_exclusion_of_normalized_remainder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.archivedDottieRing_zero_free_of_replay' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedQuarticTotal
+Building ArchivedQuarticOrders
+'SuperZeta.QuarticOrderedTurns.J_and_K_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.order_difference_after_paint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.recover_from_orders' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.dottie_ring_painted_orders_of_replay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Building ArchivedDottieTailPartition
+'QuarticModel.dottie_normalized_remainder_eq_omitted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieContourIntegrand_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_ring_zero_free_of_explicit_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedDottieContourSum
+'QuarticModel.archivedWeightedCoeff_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieWeightedContourTerm_integral_norm_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.dottieSmoothTerm_norm_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieSmoothSide_hasSum_completed_contour' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedDottieContourShift
+'QuarticModel.shift_vertical_one_of_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedGaussianStripBound
+'QuarticModel.archivedMellin_strip_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ArchivedDottieSmoothedIdentity
+'QuarticModel.dottieSmoothTerm_hasSum_normalized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_normalized_remainder_eq_signed_norm_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_ring_zero_free_of_signed_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_ring_painted_orders_of_signed_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS 68 project source modules
