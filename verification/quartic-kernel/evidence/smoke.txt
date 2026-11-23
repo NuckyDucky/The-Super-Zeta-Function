@@ -1,0 +1,4 @@
+'QuarticUseCheck.right_reading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticUseCheck.left_reading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticUseCheck.center_reading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticUseCheck.opposite_readings' depends on axioms: [propext, Classical.choice, Quot.sound]

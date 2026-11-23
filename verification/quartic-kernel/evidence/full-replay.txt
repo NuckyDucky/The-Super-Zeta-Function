@@ -1,0 +1,210 @@
+Waiting for the Lean certificate build at <workspace>\work\quartic-kernel-one-worker.
+Checked input QuarticKernel.actual_cells_kernel [Classical.choice, Quot.sound, propext]
+Checked input QuarticKernel.actual_checked_shells_kernel [Classical.choice, Quot.sound, propext]
+Checked input QuarticKernel.actual_quartic_certificate_kernel [Classical.choice, Quot.sound, propext]
+Checked input QuarticKernel.verified_quartic_direction_kernel [Classical.choice, Quot.sound, propext]
+Checked input QuarticKernel.verified_quartic_zero_on_line_kernel [Classical.choice, Quot.sound, propext]
+Main 9dd0d13acb6e1925ca8939dfad43683d55a521bd. Frozen source import closure: 7103 modules.
+Build directory: <workspace>\work\full-chain-kernel-66d1ldfh
+Checking SuperZeta.Reciprocal  sha256=7011460c6e26337d4aca728688e44a6c783185cebafe97c17324d68985d69383  from <repo>\lean\SuperZeta\Reciprocal.lean
+Checking SuperZeta.Reference  sha256=52fbb329cf4031ef3cc908c5f1d6c6a2c15a0af1521f3e47f54d3c66ee58695e  from <repo>\lean\SuperZeta\Reference.lean
+Checking SuperZeta.Stieltjes  sha256=f3f4020a9a69aef1c5a445dc1f9f1343ecc5629d6352bad27d10a15321d6f4a5  from <repo>\lean\SuperZeta\Stieltjes.lean
+Checking SuperZeta.DedekindLift  sha256=a89d5a796edbea3a3b1ee83d86a4c7382002af0c582e07d736dea4f6baaa9196  from <repo>\lean\SuperZeta\DedekindLift.lean
+Checking SuperZeta.Kernel  sha256=ec3ab68eeff90393265b2afa86f59523cf61ce271d1886d7bdcc1941e0171660  from <repo>\lean\SuperZeta\Kernel.lean
+Checking SuperZeta.TaylorKernel  sha256=619ae2b261bb76dcd21be0c2004cec103f17bca282ad3db7b3cfb897280a9a77  from <repo>\lean\SuperZeta\TaylorKernel.lean
+Checking SuperZeta.ReferenceProduct  sha256=75c8f18ed2d39efee2adfcdae09ba4e1c7dd702229c29d3fca4f108f1bc07069  from <repo>\lean\SuperZeta\ReferenceProduct.lean
+Checking SuperZeta.Barnes  sha256=dd5c4d4e51c8537121c6cc30e106b03741253619af1a8da6a8ff1c5156fa9f30  from <repo>\lean\SuperZeta\Barnes.lean
+Checking SuperZeta.MellinStep  sha256=2bf913b7b3c5784d083fb6f94343e698c05c9788e6bc32a105ed70854f67025a  from <repo>\lean\SuperZeta\MellinStep.lean
+Checking SuperZeta.ReferenceResolvent  sha256=8b364776b4fed2435828fe90c2d97097ae9fd3b052853d240831351dc5f59572  from <repo>\lean\SuperZeta\ReferenceResolvent.lean
+Checking SuperZeta.MellinContinuation  sha256=f9f3ef063b73030a81d10a592c4c53d92bd3bb255cfa91f6281cda8c4054ca51  from <repo>\lean\SuperZeta\MellinContinuation.lean
+Checking SuperZeta.Quartet  sha256=8d58dea4c363476eb92be4ef481db3798e65a86af3bd233456e71e800f1c876c  from <repo>\lean\SuperZeta\Quartet.lean
+Try this: ring_nf
+Try this: ring_nf
+Checking SuperZeta.Dottie  sha256=6ddc203edaacb9cb17d64911f62fee9b8a295f488509fc52d0d70a918ed59cd0  from <repo>\lean\SuperZeta\Dottie.lean
+Checking SuperZeta.QuartetRadius  sha256=8602fa268e119a7368d8e84503db3cef3567574f839b07c887e2a16cd630dc81  from <repo>\lean\SuperZeta\QuartetRadius.lean
+Checking SuperZeta.DiskGrowth  sha256=40bb384ae1ed3e51059c1f68d31a5fd59188b34502a1edfa5e65d0c55297c015  from <repo>\lean\SuperZeta\DiskGrowth.lean
+Checking SuperZeta.DiskProductLimit  sha256=a83073a1d500ae1b0d793396317e5f03b66af8a827fa94f0cf6c2ba2336bc5d4  from <repo>\lean\SuperZeta\DiskProductLimit.lean
+Checking SuperZeta.DiskRemoval  sha256=12fb8b88773490db450f01ddd4d8a94b690328af4d1961ae33dba51cedc84518  from <repo>\lean\SuperZeta\DiskRemoval.lean
+Checking SuperZeta.DiskLog  sha256=e57a5b8e0f457aa66a50007a6382e95bad8c31533e7d59b314f376da7e407b28  from <repo>\lean\SuperZeta\DiskLog.lean
+Checking SuperZeta.RootBounds  sha256=4f15a1f69d3cfca67fdbb3e5a6943ba0084a01990bc27a8a260f12c8c977538a  from <repo>\lean\SuperZeta\RootBounds.lean
+Checking QuarterUnivalent  sha256=330d882e0fc047a6da4183c2d27721868118a81ac49c87ca5f968969d219c1df  from <repo>\lean-quartic-orders\QuarterUnivalent.lean
+Checking SuperZeta.DiskRigidity  sha256=42cfb2aedb5578542fa1c5431a80f1590e405360bd633bfcba7bdf2014cc6b8c  from <repo>\lean\SuperZeta\DiskRigidity.lean
+Checking SuperZeta.Ray  sha256=fb518e57f6a653f2abebf49cbf4b5664acf25761fbdc1d8cceca5c26e6db4fe0  from <repo>\lean\SuperZeta\Ray.lean
+Checking SuperZeta.QuartetLevels  sha256=3852e2aec8966808f4f553bc376e49fb1ae59f31f95062c02daacbc0c33deacc  from <repo>\lean\SuperZeta\QuartetLevels.lean
+Checking QuarterGaussianContrast  sha256=3f37299fa50b00e71c57c2ea41a2d51cb343aa9feb439d235e62c0ced145e1ee  from <repo>\lean-quartic-orders\QuarterGaussianContrast.lean
+Checking SuperZeta.GaussianEndpointParity  sha256=b83a7dc397c3a162bf10481498d8ff3f19e0ca8d15ee07c037c630ecd78f1df1  from <repo>\lean\SuperZeta\GaussianEndpointParity.lean
+Checking SuperZeta.SpireDisk  sha256=88d0518b9c5b294beaa29fe59d0cdad7ef19706f1d0ec4202803e60e4dc89e69  from <repo>\lean\SuperZeta\SpireDisk.lean
+Checking SuperZeta.CoupledDeterminant  sha256=e47be62687ecf2b38103de6a816433d192db4ad9103f3ac061569470b5303847  from <repo>\lean\SuperZeta\CoupledDeterminant.lean
+Checking SuperZeta.GaussianDiskCount  sha256=fdce99c4d17dec252a10075bdfe8bc416abcbaacdabfeadd26128b8d265b7168  from <repo>\lean\SuperZeta\GaussianDiskCount.lean
+Checking SuperZeta.Oriented.OrderedStages  sha256=ae86de56cb2921e91a62a4885e7afe33f0d899634fabe1087bf107be87871203  from <repo>\lean\SuperZeta\Oriented\OrderedStages.lean
+Checking SuperZeta.CoupledProduct  sha256=2258df2196172b1cc95c590fad102739939e9a2ee8671bcb8cca9d5ac4792059  from <repo>\lean\SuperZeta\CoupledProduct.lean
+Checking SuperZeta.SignWords  sha256=8e2c6fe7fa2c895d4570619e19dfd27dcfbacd471106aa87a966f684a50821b8  from <repo>\lean\SuperZeta\SignWords.lean
+Checking SuperZeta.StirlingCorrection  sha256=fd32839e504b9d7c88d804593d190999fe1e354e924b607014c9500ce071584c  from <repo>\lean\SuperZeta\StirlingCorrection.lean
+Checking SuperZeta.DeterminantProduct  sha256=4047234c78137f4e1e783ce86eae82238f7c18e9e65097ac3f62c85df1a7379f  from <repo>\lean\SuperZeta\DeterminantProduct.lean
+Checking SuperZeta.CapRecovery.CapJets  sha256=9017f364df60c72692291bd27f63b2e0ec2cb017838e69526d67b90e8e292cdc  from <repo>\lean\SuperZeta\CapRecovery\CapJets.lean
+Checking SuperZeta.UnitSpectrum  sha256=9fa254493826efe692d7013f36f62f328adfbd12d10abe1fae4e05a78e3eff14  from <repo>\lean\SuperZeta\UnitSpectrum.lean
+Checking SuperZeta.CapRecovery.DyadicWeights  sha256=cd13029ec3b49e92fe648496eb7f1d313bdbb8b6364e41b27c02286f8cdf54a1  from <repo>\lean\SuperZeta\CapRecovery\DyadicWeights.lean
+Checking SuperZeta.FactorialPhase  sha256=64bff229425ed48d4e8af29cbb84c66a0090c952da8069761d697994733d866c  from <repo>\lean\SuperZeta\FactorialPhase.lean
+Checking QuartetShiftBounds  sha256=87cacc04007a11e69de513f27e3631390e3cd90d062e64cbe787126fd7af982c  from <repo>\lean-quartic-orders\QuartetShiftBounds.lean
+Checking QuartetLeading  sha256=93e118a0db6587b6c276fa1a416594406be008a79dfc6a45244f9bad83f5b693  from <repo>\lean-quartic-orders\QuartetLeading.lean
+Checking QuarterEuler  sha256=9d40c80c82aa07dfaed54f9bf10e1ce4c589dfa898a6d0f8cd0c2b02c4b4ab18  from <repo>\lean-quartic-orders\QuarterEuler.lean
+Checking QuartetShiftBoundsSeries  sha256=cc03d1a23c6798f00ca4e5fae5e1c2a54461792624ac4ae802fcc07f0f4e89ca  from <repo>\lean-quartic-orders\QuartetShiftBoundsSeries.lean
+Checking QuarterScalar  sha256=682899ad53ac8a409f7c8d1a2777159e5f96411afc8fa7768694e0c7a5f0730a  from <repo>\lean-quartic-orders\QuarterScalar.lean
+Checking QuartetShiftContinuation  sha256=a2a4d4d7ffb3192305249f61fcf597b96ef733f62c2a3fa79200d4d13686cdc5  from <repo>\lean-quartic-orders\QuartetShiftContinuation.lean
+Checking QuartetShiftBoundsTotal  sha256=1e1f7e1691c020125510b5832db47b07f34d9d73816a8908c57d4989c5058652  from <repo>\lean-quartic-orders\QuartetShiftBoundsTotal.lean
+Checking QuartetLeadingParts  sha256=7676ebda6e44f562a03e2959af46f146fa16d4ab4f4a9df644196c3352577fbd  from <repo>\lean-quartic-orders\QuartetLeadingParts.lean
+Checking QuartetBandCauchy  sha256=2a6b2cfd773e7655ad83e523f58f9601c92f6e08f255f20a18c18d01cedbc5d3  from <repo>\lean-quartic-orders\QuartetBandCauchy.lean
+Checking QuartetBandTail  sha256=03992ecd07838d9f7398a049e63eaeabdd9887a98e905d3e14916f5619ee0f51  from <repo>\lean-quartic-orders\QuartetBandTail.lean
+Checking QuartetBandParts  sha256=d64ef33e0c14d091cfc0c1da3b9e1a42cee31881efb49a8af1c47ab69e8414b3  from <repo>\lean-quartic-orders\QuartetBandParts.lean
+Checking QuartetSpiral  sha256=b4b0f94135359d82dfdf26a6a6b1c07c7e240141bd8588764ce0365a7d1eee1d  from <repo>\lean-quartic-orders\QuartetSpiral.lean
+Checking QuartetBandDominance  sha256=44a78acbdbb8089dd9a0fc4b5da51a4689e6d1b08116a019cc876380225e35bc  from <repo>\lean-quartic-orders\QuartetBandDominance.lean
+Checking QuartetShiftBoundsApplied  sha256=7cde74c7a36424a0a599adc50653e10c7cd85853a7f7aa168ccbb2ed7ed23ca3  from <repo>\lean-quartic-orders\QuartetShiftBoundsApplied.lean
+Checking QuarterLineTest  sha256=8c486a0bb1e4511026ee305a2d4507355b3fd1682e860e265b37fcbe193c4981  from <repo>\lean-quartic-orders\QuarterLineTest.lean
+Checking SuperZeta.CapRecovery.DyadicCap  sha256=925ae1fbeccfa7eb96417e53061059329d27531452cf8b70fcce8b16bd23504b  from <repo>\lean\SuperZeta\CapRecovery\DyadicCap.lean
+Checking QuartetActualSpiral  sha256=2b38533ef5b2b86e9375ef3a73d3f1a014b954c2bf9437e25631dc768fb6cec8  from <repo>\lean-quartic-orders\QuartetActualSpiral.lean
+Checking SuperZeta.CapRecovery.Dominance  sha256=45a09add77764add94dcb3acce73b26db31161e2fae7ee060e4e6acdccd134b5  from <repo>\lean\SuperZeta\CapRecovery\Dominance.lean
+Checking QuartetDominance  sha256=336ce87f8f18fad0598b86414fa549814642ee3c7fbcb233efb46ca3577430de  from <repo>\lean-quartic-orders\QuartetDominance.lean
+Checking QuarterOriginalUnivalent  sha256=2d0c5dedddbf583f500266276adc9c256a61a032f1f04ecd300b07a3717a7a8c  from <repo>\lean-quartic-orders\QuarterOriginalUnivalent.lean
+Checking QuarterHorizontal  sha256=24c41bdf1c43c063867f5a7ecf18caf7349a3842550c6a82af248c98c37023d5  from <repo>\lean-quartic-orders\QuarterHorizontal.lean
+Checking SuperZeta.CapRecovery.GeneralWeights  sha256=b0e40a47a2dd4437f0103141cfbbff64ab2c91f5717d95b001be258fa0ec9390  from <repo>\lean\SuperZeta\CapRecovery\GeneralWeights.lean
+Checking QuarticTurn  sha256=9e620713863b95a942c41649c2225928b7a7349099395cf477a16edc57461ca8  from <repo>\lean-quartic-orders\QuarticTurn.lean
+Checking QuarterReflectedReadings  sha256=a10afd24f18c6698f694c29133e537f9e4e866727bc4b2e5b9454ca2470b2a8a  from <repo>\lean-quartic-orders\QuarterReflectedReadings.lean
+Checking SuperZeta.CapRecovery.Resonant  sha256=d2d31f0ccdcc5e90fcbc0c05884328661fc25a12ddb021336acb7fbb1827ee37  from <repo>\lean\SuperZeta\CapRecovery\Resonant.lean
+Checking SuperZeta.GaussianSideConstants  sha256=3a9c0695a25793767810afe89e4d1dc083a831e5e7e902ec80dcfdb856cc6738  from <repo>\lean-quartic-orders\SuperZeta\GaussianSideConstants.lean
+Checking SuperZeta.GaussianRingMidpoint  sha256=62db6e3c656fe79118bd07bc5c3b2247a248f40dea1e2fc87c498d47db34a56c  from <repo>\lean-quartic-orders\SuperZeta\GaussianRingMidpoint.lean
+Checking SuperZeta.GaussianSideIntegral  sha256=36a216126d51e813d4a052b1679114087bc969bf5ff6cfc1ee605a5494212801  from <repo>\lean-quartic-orders\SuperZeta\GaussianSideIntegral.lean
+Checking SuperZeta.GaussianSideError  sha256=8eb5aa9db6895f82fbecf1b90d6667115d1dae2dc3f3bf5d3dc73dda033d2696  from <repo>\lean-quartic-orders\SuperZeta\GaussianSideError.lean
+'SuperZeta.QuarticTurn.four_jTurns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.four_turns' does not depend on any axioms
+'SuperZeta.QuarticTurn.square_turn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.marked_to_other_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.actual_sum_after_turn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.same_reading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.recover_ordered_classes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.j_commutes_with_classSwap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.gaussian_zero_set_after_j' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.orbit_at_gaussian_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking RingReversibility  sha256=2191bb907ebceae9a84a904efe1e206443ce0198fe792ae45c10ba0a4f7bcef4  from <repo>\lean-quartic-orders\RingReversibility.lean
+Checking SuperZeta.GaussianSideReal  sha256=7e8eba231c0f02d78aefc913c06dfe558a605f144c76d03125605b4a343855e7  from <repo>\lean-quartic-orders\SuperZeta\GaussianSideReal.lean
+'SuperZeta.GaussianSideError.slope_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSideError.tail_of_kernel_majorant' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking GenThetaFE  sha256=1e8c5a3b85268f79d3c7f10de311e4221cefff79e4150dcbbf5fd251029e87dc  from <repo>\lean-quartic-orders\GenThetaFE.lean
+Checking SuperZeta.GaussianSideSign  sha256=306360751c15072ecab3d9bf7f0288718a0b2e9c44b0186c951d0a50f89ca07a  from <repo>\lean-quartic-orders\SuperZeta\GaussianSideSign.lean
+'SuperZeta.RingReversibility.address_collision_iff_ring_clear' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.RingReversibility.fixed_reading_at_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.RingReversibility.rho_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.RingReversibility.mirror_rho_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.RingReversibility.control_zeros' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.RingReversibility.control_round_trip' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticMurphyBridge  sha256=c2c4b77e100ca4f8dd265658ead8a99342774c4ae39c6b420e9d2af5bd9273ff  from <repo>\lean-quartic-orders\QuarticMurphyBridge.lean
+Checking GaussQuad  sha256=113f2b93eaedef47d0461dc5a40c3f02dff42f3623ba6858cfdc5080064902b8  from <repo>\lean-quartic-orders\GaussQuad.lean
+'QuarticMurphyBridge.reflection_of_murphy' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking GenChi4  sha256=aea9e5bbae730fffc540761db4465472cf5615d9206b81d3f35dfedee691c9e5  from <repo>\lean-quartic-orders\GenChi4.lean
+'SuperZeta.GaussianSideSign.quantitative_reading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSideSign.side_reading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSideSign.zero_requires_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSideSign.bracket_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSideSign.real_axis_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSideSign.zero_requires_line_whole_rectangle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Checking SuperZeta.GaussianSidePair  sha256=52c0ddde95637fabf8e060c33f0a18258d113b603bdf37791ec7d90d16e4994a  from <repo>\lean-quartic-orders\SuperZeta\GaussianSidePair.lean
+Try this: ring_nf
+Checking GaussPrime  sha256=741fed4466e9fb02090b4bc327f0db62eddd9cd5fd4ee04bc3749650fb1bf23a  from <repo>\lean-quartic-orders\GaussPrime.lean
+Checking QuarticCheckedShell  sha256=720e3aa049c08f0fedf293e6122e1ba2133f5cdb45335c6a589dd1076a4d0c6f  from <workspace>\outputs\gaussian-quartic-lean\QuarticCheckedShell.lean
+'SuperZeta.GaussianSidePair.halfMellin_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSidePair.reflected_reading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSidePair.pair_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.GaussianSidePair.pair_distance_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking ReflectedGaussianReading  sha256=3fd4aad87b5078c8a33405841ca488f23d1a64da57d26091f00ae8b702fa7888  from <repo>\lean-quartic-orders\ReflectedGaussianReading.lean
+Try this: ring_nf
+Try this: ring_nf
+Checking GaussCRT  sha256=65b2e71b12a8348840954d5e551962c3d45400be2a0a8c0c80831e20f90022a1  from <repo>\lean-quartic-orders\GaussCRT.lean
+'QuarticKernel.actual_bin_count' does not depend on any axioms
+'QuarticKernel.actual_checked_shells' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticCheckedCells  sha256=3cefadef80781e4fb77c7fe663cb1cc8336ad49e916b8fa0413e4e5548f33786  from <workspace>\outputs\gaussian-quartic-lean\QuarticCheckedCells.lean
+Checking GaussPow  sha256=5d7d326841de56f1cb1a4519a39afd2f75e21e2acc07d12d0e5afb5e4c36ecfc  from <repo>\lean-quartic-orders\GaussPow.lean
+'QuarticKernel.actual_cells_pass' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticVerified  sha256=a488d4009a71b0c67d323193f57dbe36221bb20d70ef851fc722fc8e2463a34e  from <workspace>\outputs\gaussian-quartic-lean\QuarticVerified.lean
+'SuperZeta.ReflectedGaussianReading.completed_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.ReflectedGaussianReading.reflectedAddress_twice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.ReflectedGaussianReading.reading_and_input' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.ReflectedGaussianReading.returnsMirror_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.ReflectedGaussianReading.zero_case' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.ReflectedGaussianReading.decode_pair_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.ReflectedGaussianReading.zero_forbids_gaussian_only_inverse' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Checking HiddenQuarticQuaternion  sha256=262343d0ac8bb3ea7a1d70a50f4165f303de2429b36dd47f7e9bfab70033f9bd  from <repo>\lean-quartic-orders\HiddenQuarticQuaternion.lean
+Checking GaussTwo  sha256=80ffb327c447b4d49e30c9bf9ac9b09b2667cb43ea1081225ef525ea30c95cf4  from <repo>\lean-quartic-orders\GaussTwo.lean
+Checking GaussSign  sha256=0dd208172d89e97a84e4b37ef68c11077af286b40f74e33bc4523de3f7c5a4e1  from <repo>\lean-quartic-orders\GaussSign.lean
+'SuperZeta.HiddenQuarticQuaternion.observed_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.HiddenQuarticQuaternion.zero_at_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.HiddenQuarticQuaternion.address_decoder_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.HiddenQuarticQuaternion.magnitude_order_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.HiddenQuarticQuaternion.launch_and_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticOrderedTurns  sha256=03bc2de81c61733b79d6ed93bcf94757738bbd24c2061cb07c06c8dd68f23760  from <repo>\lean-quartic-orders\QuarticOrderedTurns.lean
+'QuarticKernel.actual_quartic_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+@verified_quartic_direction : ∀ {a t : ℝ},
+  |a| ≤ 1 / 20 →
+    |t| ≤ 27 / 100 →
+      (completedQuartic (GaussianSideSign.point a t)).im = a * t * GaussianSideIntegral.slope kernel a t ∧
+        400000 < GaussianSideIntegral.slope kernel a t
+'QuarticKernel.verified_quartic_direction' depends on axioms: [propext, Classical.choice, Quot.sound]
+@verified_quartic_zero_on_line : ∀ {a t : ℝ},
+  |a| ≤ 1 / 20 →
+    |t| ≤ 27 / 100 → completedQuartic (GaussianSideSign.point a t) = 0 → (GaussianSideSign.point a t).re = 1 / 2
+'QuarticKernel.verified_quartic_zero_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticMellinContinuation  sha256=7ae8cc08258ba962b560eeda575391b965256df945cfded703cad232fc8cd003  from <workspace>\outputs\gaussian-quartic-lean\QuarticMellinContinuation.lean
+Checking QuarticConductorSign  sha256=3653db661b017e40714f9419f0c2a11cf66a0464b5f380f191a5b29d88d74f27  from <repo>\lean-quartic-orders\QuarticConductorSign.lean
+'QuarticKernel.mellin_differentiable_from_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking SuperZeta.GaussianSpectralTransfer  sha256=779a039e3bc7bd1c108c626dfb287b5922d8859e2a3896513b9f357189e8b84b  from <repo>\lean\SuperZeta\GaussianSpectralTransfer.lean
+'SuperZeta.QuarticOrderedTurns.order_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.order_difference_after_paint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.recover_from_orders' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.zero_orders' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.order_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.fixed_input_test' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticOrderedTurns.ring_exclusion_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking SuperZeta.Recovery  sha256=ebc10bf2b31b451933b445c8002f83b9f0edd1aea3a2eca4c7cb6fdcb40858bc  from <repo>\lean\SuperZeta\Recovery.lean
+'QuarticConductorSign.root_number' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticConductorSign.amplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticConductorSign.reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticConductorSign.pairwise_residues' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticSignedOrders  sha256=334ee632ce94331326d8bbe85c427526d834ab77338e6da9fe7922343b1894f5  from <repo>\lean-quartic-orders\QuarticSignedOrders.lean
+Try this: ring_nf
+'QuarticMurphyBridge.reflection_of_murphy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticSignedOrders.kernels_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticSignedOrders.order_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticSignedOrders.coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticSignedOrders.ring_orders_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticSignedOrders.ring_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticSignedOrders.full_zero_iff_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticSignedOrders.low_orders_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticStageAxes  sha256=be95a38e4fc33714dd162898cc55b93747dee565c9e92eaf348b8d8a04710343  from <workspace>\outputs\quartic-stage-axes\QuarticStageAxes.lean
+'SuperZeta.QuarticStageAxes.launch_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.opposite_marks_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.theta_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.stage_eq_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.axes_at_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.orders_differ_iff_axis_survives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.excludes_right_and_mirror' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticStageCertificate  sha256=d29f1d3c87c478d256b4b3926cfd8c06822634c3daf64cdd9687bfd4e0a47c44  from <workspace>\outputs\quartic-stage-axes\QuarticStageCertificate.lean
+'SuperZeta.QuarticStageAxes.low_stage_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.low_k_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.low_stage_zero_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.verified_stage_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking QuarticHeightAssembly  sha256=8c38b060e380a9d81078932a72722f29f27c197645b099294fabc17a72d33a7d  from <workspace>\outputs\quartic-stage-axes\QuarticHeightAssembly.lean
+Checking QuarticCrossAnalysis  sha256=11cc2d51c0eaa31b1262e999b571c3f724553a5f84c7fa8d471bebc39544662c  from <workspace>\outputs\quartic-stage-axes\QuarticCrossAnalysis.lean
+Checking StageAudit  sha256=86a11a8dc3331daa0ca945411f4533dab7eb9b1bf1ddbd42af16ddaefa552e75  from <workspace>\outputs\quartic-stage-axes\StageAudit.lean
+Passed transitive axiom checks for 41 analytic and 13 numerical theorems.
+'QuarticKernel.actual_quartic_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticStageAxes.verified_stage_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticHeightAssembly.field_strip_rh_of_ring_localization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.QuarticCrossAnalysis.outer_circle_cross_analysis' depends on axioms: [propext, Classical.choice, Quot.sound]
+All 7103 modules in the combined import closure passed.
+Clean full-proof replay passed: 95 modules built from source using 7008 verified certificate modules.

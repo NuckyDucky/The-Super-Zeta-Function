@@ -10,6 +10,8 @@ The factorial correction also locates the power of a Pell unit. Among all positi
 
 ### Results and how to check them
 
+I replayed the local quartic sign certificate and its ordered-exponent assembly in Lean 4.19.0. The replay checks the finite arithmetic in the kernel and gives the signed Mellin reading on the low rectangle. The progress dashboard preserves how I tracked the batches, the enclosure checks, and the five milestones for the ring argument. [Quartic technique, sources and replay](verification/quartic-kernel/README.md) · [Open the archived widget](https://nuckyducky.github.io/The-Super-Zeta-Function/quartic-progress/) · [Run the widget locally](widgets/quartic-progress/README.md)
+
 | Object | Result | Proof or replay |
 | --- | --- | --- |
 | Super zeta of the squared cosine roots | At unit coupling, the continued root sum and its Mellin correction satisfy $\mathcal Z(s;1)-J(s;1)=2\pi^{-2s}(2^{2s}-1)\zeta(2s)$. Every nontrivial Riemann zero $w$ gives a zero of this difference at $s=w/2$ with the same multiplicity, and these account for all its zeros in $0<\Re s<1/2$. | [Derivation](docs/proofs/quartet-spectrum.md#eq-24) · [Lean proof](lean/SuperZeta/UnitSpectrum.lean) · [Mellin integral replay](archive/2026-11-18-spectral-reproduction-v001/README.md#run-from-a-fresh-checkout) |
