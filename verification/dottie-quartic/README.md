@@ -13,6 +13,7 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Score block replay](score-block-replay.txt) checked fixed-denominator phase reduction, exact row partition and recombination, and the first 1,024-point block.
 - [Cached log evaluator](cached-log-score.txt) checked the lookup and eight-term residual, the per-weight error, and the original positivity implication.
 - [First complete reference row](first-reference-row.txt) checked all 17 blocks and their exact sum.
-- [Transitive axiom audit](transitive-audit.txt) checked 70 named declarations in the package audit.
+- [Paired Gaussian score](paired-reference-score.txt) checked the swapped-coordinate sum, its batch decomposition, and its positivity implication.
+- [Transitive axiom audit](transitive-audit.txt) checked 76 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.

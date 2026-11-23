@@ -148,7 +148,9 @@ roots = [
   "DottieCachedLog",
   "DottieGenericScore",
   "DottieQuickWeights",
-  "DottieQuickScore"
+  "DottieQuickScore",
+  "DottieSymmetricScore",
+  "DottieSymmetricChunks"
 ]
 
 [[lean_lib]]
