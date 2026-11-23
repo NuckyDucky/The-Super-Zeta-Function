@@ -57,17 +57,16 @@ private theorem log_reference_upper :
   obtain ⟨_, hh⟩ := abs_le.mp h
   linarith
 
-/-- The exact unit Gamma value at the original reference point has a phase
-in a two-microradian-wide interval. -/
-theorem dottie_gamma_reference_phase_interval :
+/-- Stable log norm shared by the reference phase and relative contour. -/
+theorem dottie_reference_norm_log_interval :
     let t := dottieHeight - 1/512
     let z : ℂ := 1/2 + (t : ℂ) * I
-    ∃ phase : ℝ, 4.067324 < phase ∧ phase < 4.067326 ∧
-      Gamma z / (‖Gamma z‖ : ℂ) = Complex.exp ((phase : ℂ) * I) := by
+    29.14088602657451053933 < Real.log ‖z‖ ∧
+      Real.log ‖z‖ < 29.14088602657451053934 := by
   let t := dottieHeight - 1/512
   let z : ℂ := 1/2 + (t : ℂ) * I
-  change ∃ phase : ℝ, 4.067324 < phase ∧ phase < 4.067326 ∧
-    Gamma z / (‖Gamma z‖ : ℂ) = Complex.exp ((phase : ℂ) * I)
+  change 29.14088602657451053933 < Real.log ‖z‖ ∧
+    Real.log ‖z‖ < 29.14088602657451053934
   have htlo : 4526119322477.943440190398 < t := by
     dsimp [t]
     linarith [dottieHeight_enclosure.1]
@@ -91,6 +90,27 @@ theorem dottie_gamma_reference_phase_interval :
   have hlo := log_reference_lower.trans <|
     Real.log_lt_log (by norm_num) (htlo.trans_le hle)
   have hhi := (Real.log_lt_log (htpos.trans_le hle) (hnhi.trans hthi)).trans log_reference_upper
+  exact ⟨hlo,hhi⟩
+
+/-- The exact unit Gamma value at the original reference point has a phase
+in a two-microradian-wide interval. -/
+theorem dottie_gamma_reference_phase_interval :
+    let t := dottieHeight - 1/512
+    let z : ℂ := 1/2 + (t : ℂ) * I
+    ∃ phase : ℝ, 4.067324 < phase ∧ phase < 4.067326 ∧
+      Gamma z / (‖Gamma z‖ : ℂ) = Complex.exp ((phase : ℂ) * I) := by
+  let t := dottieHeight - 1/512
+  let z : ℂ := 1/2 + (t : ℂ) * I
+  change ∃ phase : ℝ, 4.067324 < phase ∧ phase < 4.067326 ∧
+    Gamma z / (‖Gamma z‖ : ℂ) = Complex.exp ((phase : ℂ) * I)
+  have htlo : 4526119322477.943440190398 < t := by
+    dsimp [t]
+    linarith [dottieHeight_enclosure.1]
+  have hthi : t + 1/10^12 < 4526119322477.943440204808 := by
+    dsimp [t]
+    linarith [dottieHeight_enclosure.2]
+  have htpos : 0 < t := by linarith
+  obtain ⟨hlo,hhi⟩ := dottie_reference_norm_log_interval
   have pl : 4526119322477.943440190398 * (29.14088602657451053933 - 1) ≤
       t * (Real.log ‖z‖ - 1) :=
     mul_le_mul htlo.le (sub_le_sub_right hlo.le 1) (by norm_num) htpos.le
@@ -114,6 +134,7 @@ theorem dottie_gamma_reference_phase_interval :
     push_cast
     ring, Complex.exp_add, Complex.exp_nat_mul_two_pi_mul_I, mul_one]
 
+#print axioms dottie_reference_norm_log_interval
 #print axioms dottie_gamma_reference_phase_interval
 
 end QuarticModel

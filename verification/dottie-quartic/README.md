@@ -43,3 +43,9 @@ The numerical signed bounds appear as explicit hypotheses of the two ring implic
 - [The directed flank replay](../../tools/dottie-compute-pilot/replay_dottie_flank_window.py) takes the archived quartet computation folder as its argument. It checks cap capture, primitive period and winding on both flanks and for both phase origins with 384-bit balls.
 - [The assembly receipt](DottieLongBand1Assembly-receipt.json) records all 32 checked blocks of the first retained long band. The [join source](../../tools/dottie-compute-pilot/DottieQuarterCombinedCertificate.lean) imports that generated assembly and proves the integer bound for 135,168 rows after adjoining its checked short band. Its axiom output is in the checks linked above.
 - [Sharp-circle scalar audit](sharp-circle-scalar-caps.txt) checks gap-free coverage of one turn and the rational inequalities on 2,077 arcs using `decide +kernel`. The margin theorem takes the actual reference projection and the model enclosures as premises.
+
+## Second retained band and moment precision
+
+- [The second assembly receipt](DottieLongBand2Assembly-receipt.json) records all 64 kernel batches covering 262,144 rows. The [join source](../../tools/dottie-compute-pilot/DottieHalfCombinedCertificate.lean) combines them with the adjacent short block to obtain the exact integer sum bound on 266,240 rows.
+- [Lean axiom output](second-long-band-and-precise-height.txt) includes the joined band, a Dottie height enclosure of width $10^{-19}$, the 96-bit logarithm enclosure through the full sharp cutoff, and the small-error affine exponent for the relative Gamma factor on both reflected addresses.
+- The same axiom report records the reflected Horner identity, signed fixed-point rectangles, high-order moment bounds from absolute mass, and rational phase reduction at the sharp cutoff.

@@ -152,11 +152,12 @@ def dottieQuickLogLowerTicks (n : ℕ) : ℕ :=
   (normLogBounds (2^96) 31 m).1 + k * logAtanhLowerTicks (2^96) 1 3 31 +
     logAtanhLowerTicks (2^96) (n-b) (n+b) 8
 
-/-- For every positive norm through the reference cutoff, the lower endpoint
-and the same endpoint plus 120 ticks enclose its logarithm. -/
-theorem dottieQuickLogLowerTicks_spec (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
+/-- The error accumulates four ticks for each binary exponent step, plus
+the fixed mantissa and residual errors. -/
+theorem dottieQuickLogLowerTicks_spec_of_exponent (n : ℕ) (hn : 0 < n) (steps : ℕ)
+    (hk : n.log2 - 5 ≤ steps) :
     (dottieQuickLogLowerTicks n : ℝ) ≤ (2:ℝ)^96 * Real.log n ∧
-      (2:ℝ)^96 * Real.log n ≤ (dottieQuickLogLowerTicks n : ℝ) + 120 := by
+      (2:ℝ)^96 * Real.log n ≤ (dottieQuickLogLowerTicks n : ℝ) + (28+4*(steps:ℝ)) := by
   let k := n.log2 - 5
   let q : ℕ := 2^k
   let m := n / q
@@ -165,15 +166,6 @@ theorem dottieQuickLogLowerTicks_spec (n : ℕ) (hn : 0 < n) (hcap : n ≤ 27682
   have hm' : 0 < m := hm
   have hq : 0 < q := by positivity
   have hb' : 0 < b := Nat.mul_pos hm' hq
-  have hk : k ≤ 23 := by
-    have hp := Nat.log2_self_le hn.ne'
-    have hlog2 : n.log2 ≤ 28 := by
-      by_contra! h
-      have hpow : (2:ℕ)^29 ≤ 2^n.log2 :=
-        (Nat.pow_le_pow_iff_right (by decide : 1 < (2:ℕ))).2 (by omega)
-      omega
-    dsimp [k]
-    omega
   let r : ℝ := ((n-b : ℕ) : ℝ) / ((n+b : ℕ) : ℝ)
   have hLogB : Real.log b = Real.log m + k * Real.log 2 := by
     change Real.log ((m*q:ℕ) : ℝ) = _
@@ -185,14 +177,14 @@ theorem dottieQuickLogLowerTicks_spec (n : ℕ) (hn : 0 < n) (hcap : n ≤ 27682
     exact h.trans (by rw [hLogB])
   have hM := mantissa_log_ticks m hm' hmhi
   have hR := residual_log_ticks (n-b) (n+b) (Nat.add_pos_left hn b) hsmall
-  have hk' : (k : ℝ) ≤ 23 := by exact_mod_cast hk
+  have hk' : (k : ℝ) ≤ (steps:ℝ) := by exact_mod_cast (show k ≤ steps from hk)
   have hTwoLower := mul_le_mul_of_nonneg_left log_two_ticks.1 (Nat.cast_nonneg k)
   have hTwoUpper := mul_le_mul_of_nonneg_left log_two_ticks.2 (Nat.cast_nonneg k)
   change (((normLogBounds (2^96) 31 m).1 + k * logAtanhLowerTicks (2^96) 1 3 31 +
       logAtanhLowerTicks (2^96) (n-b) (n+b) 8 : ℕ) : ℝ) ≤ (2:ℝ)^96 * Real.log n ∧
     (2:ℝ)^96 * Real.log n ≤ (((normLogBounds (2^96) 31 m).1 +
       k * logAtanhLowerTicks (2^96) 1 3 31 +
-      logAtanhLowerTicks (2^96) (n-b) (n+b) 8 : ℕ) : ℝ) + 120
+      logAtanhLowerTicks (2^96) (n-b) (n+b) 8 : ℕ) : ℝ) + (28+4*(steps:ℝ))
   rw [hLog]
   simp only [Nat.cast_add, Nat.cast_mul]
   have hsum : (2:ℝ)^96 * (Real.log m + k * Real.log 2 + Real.log ((1+r)/(1-r))) =
@@ -203,7 +195,31 @@ theorem dottieQuickLogLowerTicks_spec (n : ℕ) (hn : 0 < n) (hcap : n ≤ 27682
   · exact add_le_add (add_le_add hM.1 hTwoLower) hR.1
   · exact (add_le_add (add_le_add hM.2 hTwoUpper) hR.2).trans (by nlinarith only [hk'])
 
+private theorem dottie_log2_below {n k : ℕ} (hn : 0 < n) (hcap : n < 2^(k+1)) : n.log2 ≤ k := by
+  have hp := Nat.log2_self_le hn.ne'
+  by_contra! h
+  have hpow : (2:ℕ)^(k+1) ≤ 2^n.log2 :=
+    (Nat.pow_le_pow_iff_right (by decide : 1 < (2:ℕ))).2 (by omega)
+  exact (not_le_of_gt hcap) (hpow.trans hp)
+
+/-- The original 120-tick enclosure through the reference cutoff. -/
+theorem dottieQuickLogLowerTicks_spec (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
+    (dottieQuickLogLowerTicks n : ℝ) ≤ (2:ℝ)^96 * Real.log n ∧
+      (2:ℝ)^96 * Real.log n ≤ (dottieQuickLogLowerTicks n : ℝ) + 120 := by
+  have hk := dottie_log2_below (k := 28) hn (hcap.trans_lt (by decide +kernel))
+  simpa only [Nat.cast_ofNat,show 28+4*(23:ℝ)=120 by norm_num] using
+    dottieQuickLogLowerTicks_spec_of_exponent n hn 23 (by omega)
+
+/-- The same executable logarithm through the full sharp moment cutoff. -/
+theorem dottieQuickLogLowerTicks_sharp_spec (n : ℕ) (hn : 0 < n) (hcap : n ≤ 1442840576) :
+    (dottieQuickLogLowerTicks n : ℝ) ≤ (2:ℝ)^96 * Real.log n ∧
+      (2:ℝ)^96 * Real.log n ≤ (dottieQuickLogLowerTicks n : ℝ) + 128 := by
+  have hk := dottie_log2_below (k := 30) hn (hcap.trans_lt (by decide +kernel))
+  simpa only [Nat.cast_ofNat,show 28+4*(25:ℝ)=128 by norm_num] using
+    dottieQuickLogLowerTicks_spec_of_exponent n hn 25 (by omega)
+
 #print axioms residual_log_ticks
 #print axioms dottieQuickLogLowerTicks_spec
+#print axioms dottieQuickLogLowerTicks_sharp_spec
 
 end QuarticModel

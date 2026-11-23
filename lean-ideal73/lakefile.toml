@@ -216,7 +216,18 @@ roots = [
   "DottieSignedHeightVariation",
   "DottieRetainedLongBandJoin",
   "DottieSharpArcCaps",
-  "DottieSharpArchiveCaps"
+  "DottieSharpArchiveCaps",
+  "DottiePreciseHeight",
+  "DottieDividedSinh",
+  "DottieSharpAffineExponent",
+  "DottieSharpFactoredProjection",
+  "DottieSharpFactoredArcs",
+  "DottieFixedIntervals",
+  "DottieFixedMomentTail",
+  "DottiePreciseMomentHeight",
+  "DottieMomentPhase",
+  "DottieFixedTaylor",
+  "DottieFixedCircle"
 ]
 
 [[lean_lib]]
