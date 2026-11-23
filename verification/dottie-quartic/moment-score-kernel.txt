@@ -84,3 +84,14 @@ DottieMomentOuterRow1442840576
  Classical.choice,
  Quot.sound]
 
+Two degree-zero score blocks each cover 1024 paired positions and are assembled from eight kernel-checked pieces of 128 positions.
+DottieMomentJoinedBlock276824064
+'QuarticModel.DottieFixedIntervals.momentInteriorBlock_276824064_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieMomentJoinedBlock1442840576
+'QuarticModel.DottieFixedIntervals.momentInteriorBlock_1442840576_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+

@@ -277,7 +277,9 @@ roots = [
   "DottieMomentArchiveScores",
   "DottieMomentScorePilot",
   "DottieMomentOuterRow276824064",
-  "DottieMomentOuterRow1442840576"
+  "DottieMomentOuterRow1442840576",
+  "DottieMomentJoinedBlock276824064",
+  "DottieMomentJoinedBlock1442840576"
 ]
 
 [[lean_lib]]
