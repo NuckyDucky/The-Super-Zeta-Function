@@ -43,4 +43,8 @@ The Lean 4.33.1 audit builds the archived Gaussian factor from the same quartic 
 | [Signed Taylor moments](DottieSignedMoments.lean) | The 17 factorial-divided moments recover the unscaled reference polynomial with error below $3\times10^{-30}$. The proof bounds the absolute mass by counting the original signed rows. |
 | [Original Super Zeta address and the quartic](ArchivedQuarticSpectralAddress.lean) | The right and reflected addresses are distinct. The field zero test and signed ring implications use the ordered Hamilton readings at the actual spectral addresses. |
 
+| [Signed lattice mass](DottieMomentMass.lean) | The absolute weighted coefficient mass through norm $N$ is at most $2\lfloor\sqrt N\rfloor$ by grouping lattice rows by their maximum coordinate. |
+| [Completed phase and rational reference](DottieRationalProjection.lean) | A single real projection of the original signed sum at exact rational inputs implies positivity of the archived reference unit if it exceeds $1/10$. The transfer costs less than $3/50$ in the unscaled projection. |
+| [Integer logarithm enclosures](DottieNormLog.lean) | Integer arithmetic yields proved lower and upper ticks for $\log n$, with a uniform error bound for $1\le n\le 2^{29}$. |
+
 The ring implications take reference positivity, the retained signed margin, and the full omitted signed bound as hypotheses. The [transitive axiom audit](DottieQuarticVerification.lean) runs in `lake build` and accepts `propext`, `Classical.choice`, and `Quot.sound`. The checked source replays and their outputs are in the [verification record](../verification/dottie-quartic/README.md). The adapted Gauss-sum sources use the upstream [Apache-2.0 license](murphy-gauss/LICENSE) and [notice](murphy-gauss/UPSTREAM-NOTICE.md).

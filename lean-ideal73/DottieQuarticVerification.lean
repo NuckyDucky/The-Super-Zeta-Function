@@ -4,6 +4,8 @@ import ArchivedDottieSmoothedIdentity
 import DottieReferenceMoment
 import DottieSignedMoments
 import ArchivedQuarticSpectralAddress
+import DottieRationalProjection
+import DottieNormLog
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -31,7 +33,18 @@ run_cmd do
     `QuarticModel.dottie_reference_taylor_absolute_error,
     `QuarticModel.archivedDottieAddresses_separate,
     `QuarticModel.archivedFieldZero_at_chart,
-    `QuarticModel.archivedDottie_chart_painted_orders]
+    `QuarticModel.archivedDottie_chart_painted_orders,
+    `QuarticModel.archivedMomentMass_le_two_sqrt,
+    `QuarticModel.dottie_unit_phase_distance,
+    `QuarticModel.signed_dirichlet_height_bound,
+    `QuarticModel.dottie_reference_rational_height_error,
+    `QuarticModel.dottie_reference_rational_norm_bound,
+    `QuarticModel.dottieCircleReference_eq_completed_phase,
+    `QuarticModel.dottieCircleReference_pos_of_moments,
+    `QuarticModel.dottieCircleReference_pos_of_rational_projection,
+    `QuarticModel.logAtanhLowerTicks_spec,
+    `QuarticModel.normLogBounds_spec,
+    `QuarticModel.normLogBounds_width]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

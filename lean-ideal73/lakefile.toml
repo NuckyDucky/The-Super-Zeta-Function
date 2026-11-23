@@ -126,5 +126,10 @@ roots = [
   "SuperZeta.Spectrum",
   "SuperZeta.Stieltjes",
   "SuperZeta.TaylorKernel",
-  "SuperZeta.UnitSpectrum"
+  "SuperZeta.UnitSpectrum",
+  "DottieMomentMass",
+  "DottieHeightPerturbation",
+  "DottieCompletedReferencePhase",
+  "DottieRationalProjection",
+  "DottieNormLog"
 ]
