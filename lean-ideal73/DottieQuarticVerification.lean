@@ -33,6 +33,7 @@ import DottieRetainedBands
 import DottieBandVariation
 import DottieRetainedBandBounds
 import DottieBandCoefficientChecks
+import DottieBandPrimePowers
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -252,7 +253,13 @@ run_cmd do
     `QuarticModel.dottie_band_coefficient_zero_of_coprime_witness,
     `QuarticModel.archivedLatticeCoeff_eq_zero_of_rational_sign,
     `QuarticModel.dottie_band_zero_check_sound,
-    `QuarticModel.dottie_retained_band_first_eight_zero]
+    `QuarticModel.dottie_retained_band_first_eight_zero,
+    `QuarticModel.dottie_lucas_of_factor_list,
+    `QuarticModel.dottie_first_nonzero_band_prime,
+    `QuarticModel.dottie_band_split_prime_power,
+    `QuarticModel.dottie_retained_band_first_nonzero_coeff,
+    `QuarticModel.dottie_retained_band_before_first_nonzero,
+    `QuarticModel.dottie_retained_band_first_chunk]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

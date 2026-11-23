@@ -200,7 +200,9 @@ roots = [
   "DottieBandVariation",
   "DottieRetainedCore",
   "DottieRetainedBandBounds",
-  "DottieBandCoefficientChecks"
+  "DottieBandCoefficientChecks",
+  "DottieBandPrimality",
+  "DottieBandPrimePowers"
 ]
 
 [[lean_lib]]

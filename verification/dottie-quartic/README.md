@@ -30,6 +30,7 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Retained band and tail split](retained-band-tail-budget.txt) checks the exact finite bands, the absolute infinite-tail bound, and the revised sufficient finite-band budget.
 - [Signed finite-band variation](retained-band-variation.txt) checks the Abel bound, one-step bound for the original contour polynomial, and exact phase-length constants for its three intervals.
 - [Integrated retained bands](retained-band-integration.txt) checks the original core and tail integrals, the conditional ring assembly, the coefficient zero checker, and the first eight actual zero coefficients.
-- [Transitive axiom audit](transitive-audit.txt) checked 212 named declarations in the package audit.
+- [First checked band chunk](retained-band-first-chunk.txt) checks the Lucas witness, the split prime-power formula and the actual 16-slot integer sum certificate.
+- [Transitive axiom audit](transitive-audit.txt) checked 218 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.
