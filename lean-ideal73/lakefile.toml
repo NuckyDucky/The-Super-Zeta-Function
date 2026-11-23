@@ -183,7 +183,18 @@ roots = [
   "DottieHighGammaTail",
   "DottieFarGammaEnvelope",
   "DottieFarNumeric",
-  "DottieReferenceGammaLower"
+  "DottieReferenceGammaLower",
+  "DottieReferenceQuantitative",
+  "DottieRectangleResidue",
+  "DottieLowerContourData",
+  "DottieLowerContourShift",
+  "DottieLeftGammaLocal",
+  "DottieLowerLeftBound",
+  "DottieLowerGammaHorizontal",
+  "DottieLowerGammaRightTail",
+  "DottieLowerHorizontalBound",
+  "DottieLowerRightBound",
+  "DottieLowerFullBudget"
 ]
 
 [[lean_lib]]

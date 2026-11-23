@@ -27,6 +27,8 @@ import DottieWitnessPairBlocks
 import DottieSharpBlockDerivative
 import DottieJointOmittedDerivative
 import DottieRightContourShift
+import DottieReferenceQuantitative
+import DottieLowerFullBudget
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -181,7 +183,48 @@ run_cmd do
     `QuarticModel.dottie_right_side_eq_range_side,
     `QuarticModel.dottie_right_side_hasDerivAt,
     `QuarticModel.dottie_omitted_far_eq_right_contours,
-    `QuarticModel.archived_coeff_prefix_abs_le_linear]
+    `QuarticModel.archived_coeff_prefix_abs_le_linear,
+    `QuarticModel.archived_power_tail_mass_le,
+    `QuarticModel.dottie_right_seven_norm_le_of_tilted_gamma,
+    `QuarticModel.dottie_far_omitted_norm_le_of_tilted_gamma,
+    `QuarticModel.dottie_gamma_k7_local_norm_ratio,
+    `QuarticModel.dottie_gamma_k7_local_tilted_norm_ratio,
+    `QuarticModel.dottie_norm_Gamma_half_sq,
+    `QuarticModel.norm_Gamma_add_seven_le,
+    `QuarticModel.dottie_norm_Gamma_seven_le,
+    `QuarticModel.dottie_exp_neg_le_norm_Gamma_two,
+    `QuarticModel.dottie_far_gamma_envelope_integrable,
+    `QuarticModel.dottie_far_gamma_envelope_integral,
+    `QuarticModel.dottie_far_tilted_gamma_envelope,
+    `QuarticModel.dottie_far_gamma_envelope_bound_at,
+    `QuarticModel.dottie_far_omitted_norm_le_scalar,
+    `QuarticModel.dottie_theta_scale_lt_two_million,
+    `QuarticModel.dottie_far_omitted_uniform_absolute,
+    `QuarticModel.dottie_reference_gamma_norm_ratio_lower,
+    `QuarticModel.dottieCircleReference_lower_of_quick_score,
+    `QuarticModel.dottieCircleReference_lower_of_candidate_equality,
+    `QuarticModel.dottie_far_budget_of_reference_lower,
+    `QuarticModel.dottie_far_budget_of_candidate_equality,
+    `QuarticModel.rectangular_div_residue_at_zero,
+    `QuarticModel.dottie_rectangle_residue,
+    `QuarticModel.dottie_lower_smoothing_eq_two_sides,
+    `QuarticModel.dottie_lower_side_eq_finite_contour,
+    `QuarticModel.dottie_lower_smoothing_eq_finite_contours,
+    `QuarticModel.dottie_gamma_norm_recurrence,
+    `QuarticModel.dottie_gamma_left_tilted_norm_ratio,
+    `QuarticModel.dottie_theta_scale_gt_three_halves_million,
+    `QuarticModel.dottie_finite_absolute_mass_le,
+    `QuarticModel.dottie_normalized_left_segment_bound,
+    `QuarticModel.dottie_lower_gamma_horizontal,
+    `QuarticModel.dottie_lower_right_tail_gamma_envelope,
+    `QuarticModel.dottie_normalized_lower_horizontal_bound,
+    `QuarticModel.dottie_normalized_right_exterior_bound,
+    `QuarticModel.dottie_smoothing_side_uniform_absolute,
+    `QuarticModel.dottie_lower_omitted_smoothing_uniform_absolute,
+    `QuarticModel.dottie_retained_prefix_smoothing_uniform_absolute,
+    `QuarticModel.dottie_right_sphere_coordinate_bounds,
+    `QuarticModel.dottie_lower_omitted_budget_of_candidate_equality,
+    `QuarticModel.dottie_retained_prefix_budget_of_candidate_equality]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do
