@@ -31,6 +31,8 @@ import DottieReferenceQuantitative
 import DottieLowerFullBudget
 import DottieRetainedBands
 import DottieBandVariation
+import DottieRetainedBandBounds
+import DottieBandCoefficientChecks
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -236,7 +238,21 @@ run_cmd do
     `QuarticModel.dottie_band_exp_step,
     `QuarticModel.dottie_band_cpow_step,
     `QuarticModel.dottie_band_polynomial_bound,
-    `QuarticModel.dottie_retained_band_phase_lengths]
+    `QuarticModel.dottie_retained_band_phase_lengths,
+    `QuarticModel.dottie_gamma_shifted_tilted_norm_ratio,
+    `QuarticModel.dottie_normalized_right_exterior_large_bound,
+    `QuarticModel.dottie_normalized_right_core_bound,
+    `QuarticModel.dottie_range_side_bound_of_core_mass,
+    `QuarticModel.dottie_retained_band_core_of_integer_sums,
+    `QuarticModel.dottie_retained_bands_bound_of_integer_sums,
+    `QuarticModel.dottie_ring_painted_orders_of_integer_bands_and_signed_blocks,
+    `QuarticModel.archivedLatticeCoeff_eq_zero_of_mod_four,
+    `QuarticModel.archivedLatticeCoeff_mul_of_coprime,
+    `QuarticModel.archivedLatticeCoeff_two_pow_mul,
+    `QuarticModel.dottie_band_coefficient_zero_of_coprime_witness,
+    `QuarticModel.archivedLatticeCoeff_eq_zero_of_rational_sign,
+    `QuarticModel.dottie_band_zero_check_sound,
+    `QuarticModel.dottie_retained_band_first_eight_zero]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

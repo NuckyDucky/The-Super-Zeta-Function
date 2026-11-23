@@ -13,17 +13,17 @@ set_option autoImplicit false
 set_option maxRecDepth 4096
 
 private theorem right_polynomial_normalized_mass_le (S : Finset ℕ)
-    (hS : ∀ n ∈ S, 0 < n ∧ n ≤ 10^13) {s : ℂ}
+    (hS : ∀ n ∈ S, 0 < n ∧ n ≤ 10^19) {s : ℂ}
     (hs₀ : 0 ≤ s.re) (hs₁ : s.re ≤ 2) :
-    ‖dottieRangePolynomial S s‖/archivedThetaScale^2 ≤ 2*10^13 := by
+    ‖dottieRangePolynomial S s‖/archivedThetaScale^2 ≤ 2*10^19 := by
   let B := archivedThetaScale
   have hB : 0 < B := archivedThetaScale_pos
   have hB₁ : 1 ≤ B := by
     change (1 : ℝ) ≤ archivedThetaScale
     linarith only [dottie_theta_scale_gt_three_halves_million]
-  have hmass : (∑ n ∈ S, |(archivedLatticeCoeff n : ℝ)|) ≤ (2*10^13 : ℝ) := by
+  have hmass : (∑ n ∈ S, |(archivedLatticeCoeff n : ℝ)|) ≤ (2*10^19 : ℝ) := by
     simpa only [Nat.cast_pow, Nat.cast_ofNat] using
-      dottie_finite_absolute_mass_le S (L := 10^13) hS
+      dottie_finite_absolute_mass_le S (L := 10^19) hS
   apply (div_le_iff₀ (pow_pos hB 2)).2
   unfold dottieRangePolynomial
   apply (norm_sum_le _ _).trans
@@ -45,18 +45,18 @@ private theorem right_polynomial_normalized_mass_le (S : Finset ℕ)
       rw [← Finset.sum_mul]
       exact mul_le_mul_of_nonneg_right hmass (sq_nonneg B)
 
-/-- The normalized exterior of the exact original right contour is small
-for any finite norm set below the lower smoothing cutoff. -/
-theorem dottie_normalized_right_exterior_bound (S : Finset ℕ)
-    (hS : ∀ n ∈ S, 0 < n ∧ n ≤ 10^13) {w : ℂ}
+/-- Bound the normalized exterior of the original right contour for any
+finite norm set through the last retained band. -/
+theorem dottie_normalized_right_exterior_large_bound (S : Finset ℕ)
+    (hS : ∀ n ∈ S, 0 < n ∧ n ≤ 10^19) {w : ℂ}
     (hr : w.re ∈ Set.Icc (1/2-63/2048) (1/2+63/2048))
     (hi : |w.im-dottieHeight| ≤ 35/2048) :
     ‖dottieRightExterior S w / (2*(Real.pi : ℂ)*(archivedDottieCompletionScale : ℂ))‖ ≤
-      1/10^39 := by
+      1/10^79 := by
   let B := archivedThetaScale
   let G := ‖Gamma (2+(dottieHeight : ℂ)*I)‖
   let den : ℂ := 2*(Real.pi : ℂ)*(archivedDottieCompletionScale : ℂ)
-  let C : ℝ := (2*10^13)*(2/10^100)*3
+  let C : ℝ := (2*10^19)*(2/10^100)*3
   have hC : 0 ≤ C := by dsimp [C]; positivity
   have hden : ‖den‖ = 2*Real.pi*(B^2*G) := by
     have hd : den = ((2*Real.pi*archivedDottieCompletionScale : ℝ) : ℂ) := by
@@ -87,7 +87,7 @@ theorem dottie_normalized_right_exterior_bound (S : Finset ℕ)
         (2/10^100 : ℝ)*Real.exp (-(1/8 : ℝ)*u^2) := by
       rw [hs]
       exact dottie_lower_right_tail_gamma_envelope hr hi hu'
-    have hpoly : ‖dottieRangePolynomial S (w+z)‖/B^2 ≤ 2*10^13 := by
+    have hpoly : ‖dottieRangePolynomial S (w+z)‖/B^2 ≤ 2*10^19 := by
       apply right_polynomial_normalized_mass_le S hS
       · rw [add_re,hz₀]
         linarith only [hr.1]
@@ -108,7 +108,7 @@ theorem dottie_normalized_right_exterior_bound (S : Finset ℕ)
       _ = (‖dottieRangePolynomial S (w+z)‖/B^2) *
           (‖Gamma (w+z)‖*Real.exp (Real.pi*u/2-u^2)/G) *
           Real.exp 1/(‖z‖*(2*Real.pi)) := by ring
-      _ ≤ (2*10^13)*((2/10^100)*Real.exp (-(1/8 : ℝ)*u^2))*Real.exp 1/1 := by
+      _ ≤ (2*10^19)*((2/10^100)*Real.exp (-(1/8 : ℝ)*u^2))*Real.exp 1/1 := by
         apply div_le_div₀ (by positivity) ?_ (by norm_num) hprod
         exact mul_le_mul_of_nonneg_right (mul_le_mul hpoly hg (by positivity) (by positivity))
           (Real.exp_pos _).le
@@ -132,6 +132,16 @@ theorem dottie_normalized_right_exterior_bound (S : Finset ℕ)
     dsimp only [C]
     norm_num
 
+theorem dottie_normalized_right_exterior_bound (S : Finset ℕ)
+    (hS : ∀ n ∈ S, 0 < n ∧ n ≤ 10^13) {w : ℂ}
+    (hr : w.re ∈ Set.Icc (1/2-63/2048) (1/2+63/2048))
+    (hi : |w.im-dottieHeight| ≤ 35/2048) :
+    ‖dottieRightExterior S w / (2*(Real.pi : ℂ)*(archivedDottieCompletionScale : ℂ))‖ ≤
+      1/10^39 :=
+  (dottie_normalized_right_exterior_large_bound S
+    (fun n hn => ⟨(hS n hn).1, (hS n hn).2.trans (by norm_num)⟩) hr hi).trans (by norm_num)
+
+#print axioms dottie_normalized_right_exterior_large_bound
 #print axioms dottie_normalized_right_exterior_bound
 
 end QuarticModel
