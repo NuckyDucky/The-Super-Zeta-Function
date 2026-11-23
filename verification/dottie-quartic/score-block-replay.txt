@@ -1,0 +1,22 @@
+DottieAngleTicks on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieAngleTicks_eq_quarter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieAngleDenominator_pos' depends on axioms: [propext]
+'QuarticModel.dottieAngleNumerator_natAbs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieCosRescale on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.fixedCosBounds_eq_of_div_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieAngleTicks_fixedCosBounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieReferenceWeights on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.inverseSqrtTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCosineTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieScoreChunks on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieRowChunk_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieRowChunk_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieRowChunk_eq_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieReferenceScoreRows_eq_chunks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieReferenceScoreRows_eq_block_sums' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFirstReferenceBlock on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieFirstReferenceBlock' depends on axioms: [propext]

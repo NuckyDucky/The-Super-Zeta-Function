@@ -10,6 +10,7 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Spectral bridge](spectral-bridge.txt) checked the original address, zero test, and Hamilton order implications.
 - [Rational reference](rational-reference.txt) checked the sharper lattice-mass bound, the completed phase, the perturbation to a rational height, the conditional positivity test, and the integer log enclosures.
 - [Integer reference score](integer-reference-score.txt) checked the rational phase reduction, Taylor cosine enclosure, integer reciprocal square root, exact signed lattice character, and the implication from the score inequality to positivity.
-- [Transitive axiom audit](transitive-audit.txt) checked 44 named declarations in the package audit.
+- [Score block replay](score-block-replay.txt) checked fixed-denominator phase reduction, exact row partition and recombination, and the first 1,024-point block.
+- [Transitive axiom audit](transitive-audit.txt) checked 55 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.

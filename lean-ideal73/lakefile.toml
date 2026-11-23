@@ -137,5 +137,10 @@ roots = [
   "DottieReferenceWeights",
   "DottieReferenceScore",
   "DottieRowSign",
-  "DottieTriangleScore"
+  "DottieTriangleScore",
+  "DottieAngleTicks",
+  "DottieCosRescale",
+  "DottieScoreChunks",
+  "DottieScoreCandidates",
+  "DottieFirstReferenceBlock"
 ]

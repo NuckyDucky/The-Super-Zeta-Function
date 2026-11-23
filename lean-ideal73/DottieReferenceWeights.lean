@@ -1,5 +1,5 @@
 import DottieNormPhase
-import DottieFixedCos
+import DottieCosRescale
 
 /-! Integer evaluations and their error bounds for the weights of the
 archived Dottie reference sum. -/
@@ -62,8 +62,7 @@ private theorem quarticCosine_distance (x y : ℝ) (hx : |x| ≤ 2) (hy : |y| �
   linarith only [h']
 
 private def dottieCosineQuarterTicks (n : ℕ) : ℤ :=
-  let x := dottieNormAngleQuarter n
-  (fixedCosBounds x.num x.den).1
+  (fixedCosBounds (dottieAngleNumerator n) dottieAngleDenominator).1
 
 /-- Approximate phase cosine in ticks of `scale^4`. -/
 def dottieCosineTicks (n : ℕ) : ℤ :=
@@ -86,9 +85,12 @@ theorem dottieCosineTicks_spec (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
   have enclosure := fixedCosBounds_spec q.num q.den q.den_pos hab
   rw [← hcast] at enclosure
   let c : ℝ := (dottieCosineQuarterTicks n : ℝ)/fixedCosScale
-  have hlo : c ≤ Real.cos q := enclosure.1
+  have hcEq : c = ((fixedCosBounds q.num q.den).1 : ℝ)/fixedCosScale := by
+    unfold c dottieCosineQuarterTicks q
+    rw [dottieAngleTicks_fixedCosBounds]
+  have hlo : c ≤ Real.cos q := hcEq ▸ enclosure.1
   have hwidth := fixedCosBounds_width q.num q.den
-  change _ - c = _ at hwidth
+  rw [← hcEq] at hwidth
   have hd : |c-Real.cos q| ≤ 6/2^48 := by
     apply abs_le.mpr
     constructor <;> linarith only [hlo, enclosure.2, hwidth]

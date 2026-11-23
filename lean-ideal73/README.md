@@ -49,4 +49,6 @@ The Lean 4.33.1 audit builds the archived Gaussian factor from the same quartic 
 
 | [Integer reference score](DottieReferenceScore.lean) | The fixed-denominator score differs from the exact rational projection by at most $1/25$. Lean proves positivity of the original reference unit if the integer score exceeds $7/50$ of its denominator. The original signed weights are implemented by [the executable Jacobi recurrence](DottieRowSign.lean). |
 
+| [Reference score blocks](DottieScoreChunks.lean) | Disjoint blocks cover each row, including its final short block. The [first 1,024-point block](DottieFirstReferenceBlock.lean) has an exact kernel-checked score. [Integer phase reduction](DottieCosRescale.lean) preserves both cosine endpoints and leaves previously generated candidate values valid. |
+
 The ring implications take reference positivity, the retained signed margin, and the full omitted signed bound as hypotheses. The [transitive axiom audit](DottieQuarticVerification.lean) runs in `lake build` and accepts `propext`, `Classical.choice`, and `Quot.sound`. The checked source replays and their outputs are in the [verification record](../verification/dottie-quartic/README.md). The adapted Gauss-sum sources use the upstream [Apache-2.0 license](murphy-gauss/LICENSE) and [notice](murphy-gauss/UPSTREAM-NOTICE.md).
