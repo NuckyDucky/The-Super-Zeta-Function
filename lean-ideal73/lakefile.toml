@@ -175,7 +175,8 @@ roots = [
   "DottieRangeContourLocal",
   "DottieRangeDomination",
   "DottieRangeDifferentiation",
-  "DottieJointOmittedDerivative"
+  "DottieJointOmittedDerivative",
+  "DottieRightContourShift"
 ]
 
 [[lean_lib]]

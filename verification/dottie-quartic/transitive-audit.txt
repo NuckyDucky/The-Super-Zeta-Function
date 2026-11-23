@@ -1,1 +1,1 @@
-Checked the transitive axioms of 143 quartic and Dottie theorems.
+Checked the transitive axioms of 147 quartic and Dottie theorems.

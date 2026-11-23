@@ -33,6 +33,45 @@ private theorem archivedCoeff_abs_le_rows (n : ℕ) :
       · norm_num
     _ = _ := by simp
 
+/-- Each unsigned Gaussian ideal norm contributes at most once for every
+first-quadrant lattice point with positive first coordinate. -/
+theorem archived_coeff_prefix_abs_le_linear (N : ℕ) :
+    (∑ n ∈ range N, |(archivedLatticeCoeff (n+1) : ℝ)|) ≤ (N : ℝ)+(N.sqrt : ℝ) := by
+  classical
+  let source := (range N).sigma (fun n => shellRows (n+1))
+  let target := (range N.sqrt) ×ˢ (range (N.sqrt+1))
+  let point (p : Σ _ : ℕ, ℕ) : ℕ × ℕ := (p.2, (p.1+1 - (p.2+1)^2).sqrt)
+  have hnorm (p : Σ _ : ℕ, ℕ) (hp : p ∈ source) :
+      (p.2+1)^2+(point p).2^2=p.1+1 :=
+    (Finset.mem_filter.mp (Finset.mem_sigma.mp hp).2).2
+  have hin (p : Σ _ : ℕ, ℕ) (hp : p ∈ source) : point p ∈ target := by
+    have hN := Nat.succ_le_of_lt (Finset.mem_range.mp (Finset.mem_sigma.mp hp).1)
+    have h := hnorm p hp
+    have ha : p.2+1 ≤ N.sqrt := Nat.le_sqrt'.mpr (by omega)
+    have hb : (point p).2 ≤ N.sqrt := Nat.le_sqrt'.mpr (by omega)
+    exact Finset.mem_product.mpr ⟨Finset.mem_range.mpr ha,
+      Finset.mem_range.mpr (Nat.lt_succ_of_le hb)⟩
+  have hinj : Set.InjOn point ↑source := by
+    intro p hp q hq h
+    have hrow : p.2 = q.2 := congrArg Prod.fst h
+    have hcol := congrArg Prod.snd h
+    have hsum := hnorm p hp
+    rw [hrow, hcol, hnorm q hq] at hsum
+    have hn : p.1 = q.1 := by omega
+    exact Sigma.ext hn (heq_of_eq hrow)
+  have hcount : source.card ≤ N.sqrt*(N.sqrt+1) := by
+    calc
+      source.card ≤ target.card := Finset.card_le_card_of_injOn point hin hinj
+      _ = _ := by simp [target]
+  have hsq : N.sqrt*(N.sqrt+1) ≤ N+N.sqrt := by
+    rw [Nat.mul_add, Nat.mul_one, ← pow_two]
+    exact Nat.add_le_add_right (Nat.sqrt_le' N) _
+  calc
+    _ ≤ ∑ n ∈ range N, ((shellRows (n+1)).card : ℝ) :=
+      Finset.sum_le_sum fun n _ => archivedCoeff_abs_le_rows (n+1)
+    _ = (source.card : ℝ) := by simp [source, Finset.card_sigma]
+    _ ≤ _ := by exact_mod_cast hcount.trans hsq
+
 /-- The unsigned mass through norm `N` is at most twice the number of square
 shells. A shell of maximum coordinate `r` has `2r` slots, each of weight
 at most `1/r`. -/
@@ -130,6 +169,7 @@ theorem archivedMomentMass_le_two_sqrt (N : ℕ) :
       (Finset.image_subset_iff.mpr hin) (fun _ _ _ => by positivity)
     _ = _ := htotal
 
+#print axioms archived_coeff_prefix_abs_le_linear
 #print axioms archivedMomentMass_le_two_sqrt
 
 end QuarticModel

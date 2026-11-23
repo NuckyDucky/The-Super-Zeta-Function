@@ -1,0 +1,8 @@
+DottieRightContourShift on Lean 4.33.1
+'QuarticModel.dottie_right_side_eq_range_side' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_right_side_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_omitted_far_eq_right_contours' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieMomentMass on Lean 4.33.1
+'QuarticModel.archived_coeff_prefix_abs_le_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedMomentMass_le_two_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]

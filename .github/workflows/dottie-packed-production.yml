@@ -1,0 +1,99 @@
+name: Dottie packed production replay
+
+on:
+  pull_request:
+    types: [synchronize]
+    paths: ['.github/dottie-packed-production.json']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dottie-packed-production-${{ github.event.pull_request.head.sha }}
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    if: github.run_attempt == '1' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      enabled: ${{ steps.gate.outputs.enabled }}
+      proof: ${{ steps.gate.outputs.proof }}
+      matrix: ${{ steps.gate.outputs.matrix }}
+    env:
+      DOTTIE_ACTIVATION_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          ref: ${{ env.DOTTIE_ACTIVATION_SHA }}
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24.19.0'
+      - name: Check the opt-in and generate the exact matrix
+        id: gate
+        run: node tools/dottie-compute-pilot/activate-packed-production.mjs "$RUNNER_TEMP/dottie-production-plan"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: steps.gate.outputs.enabled == 'true'
+        with:
+          name: dottie-production-plan
+          path: ${{ runner.temp }}/dottie-production-plan
+          if-no-files-found: error
+          retention-days: 7
+
+  replay:
+    needs: plan
+    if: github.run_attempt == '1' && needs.plan.outputs.enabled == 'true'
+    name: Rows ${{ matrix.first }} to ${{ matrix.last }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      DOTTIE_ACTIVATION_SHA: ${{ github.event.pull_request.head.sha }}
+      DOTTIE_PROOF_SHA: ${{ needs.plan.outputs.proof }}
+    strategy:
+      fail-fast: false
+      max-parallel: 18
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          ref: ${{ env.DOTTIE_ACTIVATION_SHA }}
+          persist-credentials: false
+      - name: Check out the exact Lean source
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          ref: ${{ env.DOTTIE_PROOF_SHA }}
+          path: .dottie-source
+          sparse-checkout: lean-ideal73
+          persist-credentials: false
+      - name: Install pinned elan
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --silent --show-error --location --retry 3 -o elan.tar.gz https://github.com/leanprover/elan/releases/download/v4.3.0/elan-x86_64-unknown-linux-gnu.tar.gz
+          echo '0c71472fa3ac34871dc1e2539993cca222d7656b42a1469f8f8c97c22f9adab2  elan.tar.gz' | sha256sum --check
+          tar -xzf elan.tar.gz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24.19.0'
+      - name: Generate and check every packed row
+        timeout-minutes: 335
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+          WORK: ${{ matrix.work }}
+        run: |
+          node tools/dottie-compute-pilot/run-production-shard.mjs \
+            .dottie-source/lean-ideal73 "$DOTTIE_PROOF_SHA" \
+            "$RUNNER_TEMP/dottie-production-$FIRST" "$FIRST" "$LAST" "$WORK"
+      - name: Upload row receipts and assembly inputs
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: dottie-production-rows-${{ matrix.first }}-${{ matrix.last }}
+          path: ${{ runner.temp }}/dottie-production-${{ matrix.first }}
+          if-no-files-found: warn
+          retention-days: 7
