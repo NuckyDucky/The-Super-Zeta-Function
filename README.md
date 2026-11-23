@@ -2,11 +2,15 @@
 
 <div><a name="abstract"></a><a name="introduction"></a></div>
 
-I construct the super zeta function from the two ordered exponents in my reciprocal tower. At a fixed pair where the two-stage derivative equals one, the difference of the exponents divided by $2i$ satisfies a cosine equation. I square its roots and sum their inverse powers. Comparing this spectrum with the half-integer cosine spectrum gives an exact formula in terms of Riemann zeta. The ratio of the two exponents in the full fixed-pair family also defines a lattice. On the square lattice, one Gaussian quadratic factor of my genus-one quartic assigns opposite signs to two primes of norm 73. Choosing the conjugate factor reverses the assignment.
+My reciprocal tetrational lift retains two ordered exponents. At a fixed pair where the two-step multiplier equals one, the difference of the exponents divided by $2i$ satisfies a signed cosine equation. I define the Super Zeta by squaring the cosine roots and summing their inverse powers. Comparing this spectrum with the half-integer cosine spectrum gives an exact formula in terms of Riemann zeta. The ratio of the two exponents in the full fixed-pair family also defines a lattice. On the square lattice, one Gaussian quadratic factor of my genus-one quartic assigns opposite signs to two primes of norm 73. Choosing the conjugate factor reverses the assignment.
 
 The Dottie fold gives me a periodic return from which I select three height windows. I count eleven Riemann zeros in those windows and account for every one on the critical line. From the same cosine equation I obtain quartets whose radii, combined with counts of balanced sign histories, give an exact Stirling correction. Two spectral readings recover the orientation of a return, and derivatives at the starting point recover the signed stages in order. For my quartic field, the factorization tells me how the multiplicities of Riemann, Dirichlet beta and Gaussian zeros add. I use the quartic’s prime signs to bound how many Gaussian zeros fit in two reflected disks near the Dottie height. Their exact count remains open.
 
 The factorial correction also locates the power of a Pell unit. Among all positive powers of $6+\sqrt{35}$, only its square gives a factorial through $m^2-1$. For the Gaussian quartic, keeping the angular direction lets me identify the conjugate branch in one nonzero complex reading. Keeping the positive area of its scalar prime sum lets me rule out entire ranges of cutoffs for a proposed zero test. [Factorial, branch and prime-window results](archive/2026-11-21-quartic-projections-v001/README.md)
+
+### Extended Riemann Hypothesis proof program
+
+My proof target is the **Extended Riemann Hypothesis for Dedekind zeta functions**. I use the Super Zeta to recover ordinary Riemann zeta and connect that spectral reading to Dedekind zeta through the quartic example. Lean checks the implication for the quartic field from its stated analytic hypotheses. A proof of the general conjecture requires zero control throughout the critical strip for the full Dedekind zeta family. [Spectral reconstruction](docs/proofs/quartet-spectrum.md#5-a-two-variable-zeta-for-the-inverse-cosine-coupling-family) · [Quartic field theorem and its hypotheses](https://github.com/NuckyDucky/The-Super-Zeta-Function/blob/468ff28a5c2ee2b337f264590071e6b144489f87/lean-ideal73/ArchivedQuarticCertificates.lean#L66)
 
 ### Results and how to check them
 
@@ -43,9 +47,15 @@ The orbit fixes the height at which I test the arithmetic, while the Gaussian ch
 
 [Full derivations and preprints](docs/proofs/reciprocal-constructions.md) · [Interactive Hurwitz paths](https://nuckyducky.github.io/The-Super-Zeta-Function/) · [Two-input spectral map](https://nuckyducky.github.io/The-Super-Zeta-Function/two-input/) · [Gaussian circle measurements](archive/2026-11-20-gaussian-circle-phases-v001/README.md)
 
-### Definition from the reciprocal tower
+<a name="definition-from-the-reciprocal-tower"></a>
 
-I define the super zeta function from the fixed pairs of my reciprocal exponential tower. One update sends $(P,Q)$ to $(e^{LQ},e^{-LP})$. I keep the two exponents in order, $U=LQ$ and $V=-LP$. At a fixed pair, the derivative after two updates is $UV$ in either coordinate. I select the pairs with $UV=1$. Their difference $u=(U-V)/(2i)$ then satisfies $u=\cos u$ or $u=-\cos u$. Given $u$ and its sign in that equation, I can recover both exponents and the original parameter $L$. [Fixed pairs and their inverse, equations (1)–(3)](docs/proofs/quartet-spectrum.md#eq-1)
+### The tetrational lift
+
+My reciprocal tetrational lift is the ordered update $F_L(P,Q)=(e^{LQ},e^{-LP})$ for complex $L,P,Q$. At a fixed pair I retain the actual exponents $U=LQ$ and $V=-LP$. The two-step return has multiplier $UV$ in either coordinate. [The ordered update in Lean](lean/SuperZeta/Reciprocal.lean#L18) · [My tetration preprint](archive/2026-11-18-lean-foundations-v001/papers/foundations/main.pdf)
+
+### The Super Zeta spectrum
+
+I select the fixed pairs with $UV=1$. Their exponent difference $u=(U-V)/(2i)$ satisfies $u=\cos u$ or $u=-\cos u$. Given $u$ and its sign in that equation, I can recover both exponents and the original parameter $L$. [Fixed pairs and their inverse, equations (1)–(3)](docs/proofs/quartet-spectrum.md#eq-1)
 
 The two roots $u$ and $-u$ give one spectral value $v=u^2$. At unit coupling these values are exactly the zeros of the entire function $E$ below. I count them with multiplicity and use the principal logarithm for each inverse power. This is the defining sum, in the half-plane where it converges.
 
