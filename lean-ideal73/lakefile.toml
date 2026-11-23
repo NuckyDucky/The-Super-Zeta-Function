@@ -267,7 +267,17 @@ roots = [
   "DottieFixedArcKernel30",
   "DottieFixedArcKernel31",
   "DottieFixedArcKernel32",
-  "DottieFixedArcKernel33"
+  "DottieFixedArcKernel33",
+  "DottieFixedMomentWeights",
+  "DottieIntervalWidths",
+  "DottieMomentWidthConstants",
+  "DottieNormalizedMomentScore",
+  "DottieUniformPhaseWidth",
+  "DottieUniformMomentWidth",
+  "DottieMomentArchiveScores",
+  "DottieMomentScorePilot",
+  "DottieMomentOuterRow276824064",
+  "DottieMomentOuterRow1442840576"
 ]
 
 [[lean_lib]]
