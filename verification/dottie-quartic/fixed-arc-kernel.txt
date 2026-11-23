@@ -1,0 +1,57 @@
+Lean 4.33.1. The 34 arithmetic modules, archive assembly and analytic model all built with exit code 0.
+The arithmetic replays use decide +kernel. The archive theorem takes the 17 actual moment enclosures as premises.
+Reproduce from lean-ideal73 with lake build DottieQuarticVerification.
+Audit the assembled declarations with lake env lean DottieFixedSharpArchive.lean.
+
+'QuarticModel.DottieFixedIntervals.fixedArcBlock0_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock1_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock2_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock3_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock4_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock5_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock6_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock7_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock8_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock9_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock10_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock11_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock12_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock13_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock14_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock15_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock16_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock17_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock18_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock19_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock20_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock21_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock22_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock23_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock24_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock25_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock26_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock27_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock28_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock29_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock30_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock31_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock32_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcBlock33_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.referenceProjectionBox_sound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedFactoredReading_sound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedArcPass_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.sharp_margin_of_fixed_moment_rectangles' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedReferenceTicks_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedCheckedArcs_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedCheckedArcs_scalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedCheckedArcs_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.fixedCheckedArcs_pass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_margin_of_fixed_archive_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
