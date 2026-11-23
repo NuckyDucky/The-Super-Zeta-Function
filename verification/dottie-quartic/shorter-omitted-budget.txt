@@ -12,6 +12,9 @@ DottieShorterOmittedBudget.lean
 'QuarticModel.dottie_middle_add_far_eq_shorter_split' depends on axioms: [propext, Classical.choice, Quot.sound]
 'QuarticModel.dottie_earlier_far_budget_of_reference_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
 'QuarticModel.dottie_omitted_budget_of_shorter_signed_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_right_field_nonzero_of_shorter_signed_block' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 
 Reference-score shard 6519 through 6966. 443 archived rows and five local kernel replays.
 GitHub Actions source checkpoint: run 45210378405, artifact 14863584660.

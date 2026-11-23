@@ -1,5 +1,6 @@
 import DottieReferenceQuantitative
 import DottieLowerFullBudget
+import ArchivedQuarticSpectralAddress
 
 /-! Place the earlier absolute cutoff in the signed budget of the same
 archived circle. The signed terms retain both reflected Gaussian sheets. -/
@@ -75,8 +76,43 @@ theorem dottie_omitted_budget_of_shorter_signed_block
   rw [hsplit, Complex.add_im, Complex.add_im]
   linarith only [hsigned w hw, hl, hf, hscale]
 
+open SuperZeta in
+open private archivedRightInput_val from ArchivedQuarticSpectralAddress in
+/-- Keep the putative field zero at the recovered input. With the ordinary
+and rational-character factors excluded there, the Gaussian order test
+would have to vanish at the same point. The two signed bounds exclude it. -/
+theorem dottie_right_field_nonzero_of_shorter_signed_block
+    (hscore : dottiePairedRowSpan 276824064 dottieQuickWeightTicks 0 16638 =
+      dottiePairedCandidateTicks)
+    (hretained : ∀ z ∈ Metric.sphere (archivedRightCenter dottieHeight) (31/2048),
+      (dottieRetained z).im ≤ -(190*((z.re-1/2)*dottieCircleReference)))
+    (hsigned : ∀ z ∈ Metric.sphere (archivedRightCenter dottieHeight) (31/2048),
+      (dottieOmittedSharpBlock z + dottieShorterMiddleSmooth z).im ≤
+        188*((z.re-1/2)*dottieCircleReference))
+    {w : ℂ} (hw : w ∈ archivedDottieRightRing) (ink : ℂ → ℂ)
+    (hR : riemannZeta w ≠ 0) (hB : FieldCoefficientTransfer.chi4.LFunction w ≠ 0) :
+    archivedQuarticZeta w ≠ 0 := by
+  let x := archivedRightInput hw
+  have hx : x.val = w := archivedRightInput_val hw
+  have hS := dottieCircleReference_lower_of_candidate_equality hscore
+  have hpos : 0 < dottieCircleReference := by linarith only [hS]
+  have hchart := archivedDottie_chart_painted_orders hpos hretained
+    (fun _ hz => dottie_omitted_budget_of_shorter_signed_block hscore hsigned hz) hw ink
+  rcases hchart with ⟨_,_,_,_,_,hordered,_⟩
+  intro hz
+  rcases (archivedFieldZero_at_chart x ink).mp (by rwa [hx]) with hRzero | hBzero | horderedZero
+  · have hs₀ : 0 < (x.val/2).re := by linarith only [x.property.1.1]
+    have hs₁ : (x.val/2).re < 1/2 := by linarith only [x.property.1.2]
+    have he := (UnitSpectrum.equality_iff_riemann_zero hs₀ hs₁).2.mp
+      (show UnitSpectrum.continuation (x.val/2) = _ from hRzero)
+    rw [show 2*(x.val/2) = x.val by ring, hx] at he
+    exact hR he
+  · exact hB (hx ▸ hBzero)
+  · exact hordered horderedZero
+
 #print axioms dottie_middle_add_far_eq_shorter_split
 #print axioms dottie_earlier_far_budget_of_reference_lower
 #print axioms dottie_omitted_budget_of_shorter_signed_block
+#print axioms dottie_right_field_nonzero_of_shorter_signed_block
 
 end QuarticModel
