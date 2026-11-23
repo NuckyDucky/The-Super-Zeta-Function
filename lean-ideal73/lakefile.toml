@@ -183,6 +183,7 @@ roots = [
   "DottieHighGammaTail",
   "DottieFarGammaEnvelope",
   "DottieFarNumeric",
+  "DottieShorterOmittedBudget",
   "DottieReferenceGammaLower",
   "DottieReferenceQuantitative",
   "DottieRectangleResidue",

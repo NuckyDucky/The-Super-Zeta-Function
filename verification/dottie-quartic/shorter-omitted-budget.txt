@@ -1,0 +1,20 @@
+Lean 4.33.1 local source replay. Both module commands completed with exit code 0.
+The fixed Dottie box and reflected sum retain the archived normalization.
+Every finite subset of norms above 8 * 10^24 is covered by the existing absolute budget.
+The remaining signed inequality in dottie_omitted_budget_of_shorter_signed_block is an explicit premise.
+
+DottieFarNumeric.lean
+'QuarticModel.dottie_theta_scale_lt_two_million' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_smooth_subset_uniform_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_far_omitted_uniform_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieShorterOmittedBudget.lean
+'QuarticModel.dottie_middle_add_far_eq_shorter_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_earlier_far_budget_of_reference_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_omitted_budget_of_shorter_signed_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Reference-score shard 6519 through 6966. 443 archived rows and five local kernel replays.
+GitHub Actions source checkpoint: run 45210378405, artifact 14863584660.
+Checkpoint SHA-256: 709fc86f1d3083ea1eafa2a539a05547e6a25dea59f357d5108de6cd5fb843f9.
+The local span assembly completed with exit code 0.
+'QuarticModel.dottieProductionRows_6519_6966' depends on axioms: [propext, Classical.choice, Quot.sound]
