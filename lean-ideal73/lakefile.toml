@@ -168,7 +168,10 @@ roots = [
   "DottiePairedRow11000",
   "DottieStructuralJacobi",
   "DottieStructuralPairBlocks",
-  "DottieOmittedHorizontalSlope"
+  "DottieOmittedHorizontalSlope",
+  "DottieLargeSignWitness",
+  "DottieWitnessPairBlocks",
+  "DottieSharpBlockDerivative"
 ]
 
 [[lean_lib]]

@@ -55,6 +55,35 @@ theorem dottie_omitted_sharp_eq_norm_block (w : ℂ) :
 noncomputable def dottieBlockLogWidth (h len : ℕ) : ℝ :=
   Real.log (↑(h + len) : ℝ) - Real.log (h : ℝ)
 
+private theorem dottie_block_log_width_succ_monotone (h : ℕ) :
+    Monotone (fun i => dottieBlockLogWidth h (i+1)) := by
+  intro i j hij
+  apply sub_le_sub_right
+  exact Real.log_le_log (by positivity) (by exact_mod_cast (show h+(i+1) ≤ h+(j+1) by omega))
+
+private theorem dottie_block_log_width_one_nonneg {h : ℕ} (hh : 0 < h) :
+    0 ≤ dottieBlockLogWidth h 1 := by
+  apply sub_nonneg.mpr
+  exact Real.log_le_log (by exact_mod_cast hh) (by exact_mod_cast (Nat.le_succ h))
+
+private theorem dottie_signed_term_anchor {h : ℕ} (hh : 0 < h) (s z : ℂ) (i : ℕ) :
+    signedTerm archivedLatticeCoeff (s+z) (h+i) =
+      (h : ℂ)^(-z) * (Complex.exp ((-z)*(dottieBlockLogWidth h (i+1) : ℂ)) *
+        signedTerm archivedLatticeCoeff s (h+i)) := by
+  have hh' : (h : ℂ) ≠ 0 := by exact_mod_cast hh.ne'
+  rw [signedTerm_shift, Complex.cpow_def_of_ne_zero hh', ← Complex.natCast_log, ← mul_assoc,
+    ← Complex.exp_add]
+  have hp : (Real.log (h : ℝ) : ℂ) * (-z) + (-z) * (dottieBlockLogWidth h (i+1) : ℂ) =
+      z * ((-Real.log (↑(h+i+1) : ℝ) : ℝ) : ℂ) := by
+    unfold dottieBlockLogWidth
+    rw [show h+(i+1) = h+i+1 by omega]
+    push_cast
+    ring
+  rw [hp]
+  simpa only [Nat.cast_add, Nat.cast_one] using
+    mul_comm (signedTerm archivedLatticeCoeff s (h+i))
+      (Complex.exp (z * ((-Real.log (↑(h+i+1) : ℝ) : ℝ) : ℂ)))
+
 theorem dottie_norm_block_shift_error {h : ℕ} (hh : 0 < h) (last : ℕ) (s z : ℂ) (A : ℝ)
     (hprefix : ∀ k ≤ last+1, ‖dottieNormBlock h k s‖ ≤ A) :
     let L := dottieBlockLogWidth h (last+1)
@@ -64,28 +93,10 @@ theorem dottie_norm_block_shift_error {h : ℕ} (hh : 0 < h) (last : ℕ) (s z :
   let u := fun i => dottieBlockLogWidth h (i+1)
   let L := dottieBlockLogWidth h (last+1)
   change ‖_‖ ≤ ‖_‖ * (2*A*‖z‖*L*Real.exp (‖z‖*L))
-  have hu : Monotone u := by
-    intro i j hij
-    apply sub_le_sub_right
-    exact Real.log_le_log (by positivity) (by exact_mod_cast (show h+(i+1) ≤ h+(j+1) by omega))
-  have hu₀ : 0 ≤ u 0 := by
-    apply sub_nonneg.mpr
-    exact Real.log_le_log (by exact_mod_cast hh) (by exact_mod_cast (show h ≤ h+(0+1) by omega))
   have hnest (i : ℕ) :
       signedTerm archivedLatticeCoeff (s+z) (h+i) =
-        (h : ℂ)^(-z) * (Complex.exp ((-z)*(u i : ℂ))*c i) := by
-    have hh' : (h : ℂ) ≠ 0 := by exact_mod_cast hh.ne'
-    rw [signedTerm_shift, Complex.cpow_def_of_ne_zero hh', ← Complex.natCast_log, ← mul_assoc,
-      ← Complex.exp_add]
-    have hp : (Real.log (h : ℝ) : ℂ) * (-z) + (-z) * (u i : ℂ) =
-        z * ((-Real.log (↑(h+i+1) : ℝ) : ℝ) : ℂ) := by
-      dsimp [u, dottieBlockLogWidth]
-      rw [show h+(i+1) = h+i+1 by omega]
-      push_cast
-      ring
-    rw [hp]
-    simpa only [Nat.cast_add, Nat.cast_one] using
-      mul_comm (c i) (Complex.exp (z * ((-Real.log (↑(h+i+1) : ℝ) : ℝ) : ℂ)))
+        (h : ℂ)^(-z) * (Complex.exp ((-z)*(u i : ℂ))*c i) :=
+    dottie_signed_term_anchor hh s z i
   have heq :
       dottieNormBlock h (last+1) (s+z) - (h : ℂ)^(-z)*dottieNormBlock h (last+1) s =
         (h : ℂ)^(-z) * ∑ i ∈ range (last+1), (Complex.exp ((-z)*(u i : ℂ))-1)*c i := by
@@ -98,7 +109,8 @@ theorem dottie_norm_block_shift_error {h : ℕ} (hh : 0 < h) (last : ℕ) (s z :
   rw [heq, norm_mul]
   apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
   simpa only [norm_neg] using
-    dottie_signed_block_exp_displacement c u last A L (-z) hu hu₀ le_rfl hprefix
+    dottie_signed_block_exp_displacement c u last A L (-z) (dottie_block_log_width_succ_monotone h)
+      (dottie_block_log_width_one_nonneg hh) le_rfl hprefix
 
 /-- The frozen norm polynomial with its exact completion factor and the
 coarse phase from the first excluded norm h. -/

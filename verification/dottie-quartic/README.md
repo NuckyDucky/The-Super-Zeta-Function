@@ -21,6 +21,8 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Candidate checkpoint receipt](full-paired-checkpoint-receipt.json) records the ordered coverage, SHA-256, and integer total for all 16,638 rows. The equality of the complete candidate to the Lean row-span sum remains an explicit input.
 - [Lookup and horizontal slope](lookup-and-horizontal-slope.txt) checked the exact sign equivalences, the original block score, and the derivative implication for the exact Dottie ring.
 - [Paired sign timings](paired-sign-timing.txt) record a same-process 256-position profile and the replay of row 11,000 using the original and lookup evaluators.
-- [Transitive axiom audit](transitive-audit.txt) checked 126 named declarations in the package audit.
+- [Packed witnesses and sharp derivative](packed-witness-and-sharp-derivative.txt) checked modular sign witnesses, exact packed block certification and the derivative estimate for the original sharp block.
+- [Packed witness timings](packed-witness-timing.txt) record the same 256 positions, the rejection of a corrupted root, and the full row 11,000 replay.
+- [Transitive axiom audit](transitive-audit.txt) checked 133 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.
