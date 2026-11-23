@@ -57,8 +57,11 @@ private theorem log_scale_enclosure :
 
 /-- Express the same reference unit using the unscaled signed Dirichlet sum.
 The phase of the original Gamma and conductor prefactors is certified. -/
-theorem dottieCircleReference_eq_completed_phase :
+theorem dottieCircleReference_eq_completed_phase_and_unit :
     ∃ phase : ℝ, 3.92292369 < phase ∧ phase < 3.92292670 ∧
+      ((archivedThetaScale : ℂ)^dottieReferencePoint * Gamma dottieReferencePoint) /
+        (‖(archivedThetaScale : ℂ)^dottieReferencePoint * Gamma dottieReferencePoint‖ : ℂ) =
+          Complex.exp ((phase : ℂ)*I) ∧
       dottieCircleReference =
         (2 * ‖Gamma dottieReferencePoint‖ / archivedDottieCompletionScale *
           ‖(archivedThetaScale : ℂ)^dottieReferencePoint‖) *
@@ -99,10 +102,8 @@ theorem dottieCircleReference_eq_completed_phase :
       push_cast
       ring
     rw [hp, Complex.exp_add, Complex.exp_nat_mul_two_pi_mul_I, mul_one]
-  obtain ⟨φ, hφ₀, hφ₁, hS⟩ := dottieCircleReference_eq_phase_projection
+  obtain ⟨φ, hφ₀, hφ₁, hunit, hS⟩ := dottieCircleReference_eq_gamma_phase_projection
   let phase := φ+θ-2*Real.pi
-  refine ⟨phase, by dsimp [phase]; linarith [Real.pi_lt_d20],
-    by dsimp [phase]; linarith [Real.pi_gt_d20], ?_⟩
   have hE : Complex.exp ((φ : ℂ)*I) * b = (‖b‖ : ℂ) * Complex.exp ((phase : ℂ)*I) := by
     have hbe := (div_eq_iff (Complex.ofReal_ne_zero.mpr (norm_ne_zero_iff.mpr hb))).mp hbphase
     conv_lhs => rw [hbe, ← mul_assoc, ← Complex.exp_add]
@@ -111,6 +112,16 @@ theorem dottieCircleReference_eq_completed_phase :
       push_cast
       ring
     rw [h, Complex.exp_add, Complex.exp_two_pi_mul_I, mul_one, mul_comm]
+  refine ⟨phase, by dsimp [phase]; linarith [Real.pi_lt_d20],
+    by dsimp [phase]; linarith [Real.pi_gt_d20], ?_, ?_⟩
+  · change b * Gamma z / (‖b * Gamma z‖ : ℂ) = _
+    rw [norm_mul,Complex.ofReal_mul]
+    calc
+      _ = (Gamma z/(‖Gamma z‖ : ℂ))*(b/(‖b‖ : ℂ)) := by ring
+      _ = _ := by
+        rw [hunit,← mul_div_assoc]
+        exact (div_eq_iff (Complex.ofReal_ne_zero.mpr (norm_ne_zero_iff.mpr hb))).2
+          (hE.trans (mul_comm _ _))
   rw [hS, dottieReferencePolynomial_eq_scaled_dirichlet, ← mul_assoc]
   change (2 * ‖Gamma z‖ / archivedDottieCompletionScale) *
       |((Complex.exp ((φ : ℂ)*I) * b) * signedDirichletPolynomial archivedLatticeCoeff 276824064 z).re| =
@@ -119,6 +130,16 @@ theorem dottieCircleReference_eq_completed_phase :
   rw [hE, mul_assoc, Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero,
     abs_mul, abs_of_nonneg (norm_nonneg _)]
   ring
+
+theorem dottieCircleReference_eq_completed_phase :
+    ∃ phase : ℝ, 3.92292369 < phase ∧ phase < 3.92292670 ∧
+      dottieCircleReference =
+        (2 * ‖Gamma dottieReferencePoint‖ / archivedDottieCompletionScale *
+          ‖(archivedThetaScale : ℂ)^dottieReferencePoint‖) *
+        |(Complex.exp ((phase : ℂ)*I) *
+          signedDirichletPolynomial archivedLatticeCoeff 276824064 dottieReferencePoint).re| := by
+  obtain ⟨φ,hlo,hhi,_,he⟩ := dottieCircleReference_eq_completed_phase_and_unit
+  exact ⟨φ,hlo,hhi,he⟩
 
 /-- The reference Taylor polynomial in the exact factorial-divided moments
 at `1/2+iT_D`, evaluated at displacement `−i/512`. -/
@@ -209,6 +230,7 @@ theorem dottieCircleReference_pos_of_moments
   positive_of_phase_projection dottieCircleReference_eq_completed_phase
     completed_projection_scale_pos dottie_reference_taylor_error hre him
 
+#print axioms dottieCircleReference_eq_completed_phase_and_unit
 #print axioms dottieCircleReference_eq_completed_phase
 #print axioms dottieCircleReference_pos_of_moments
 

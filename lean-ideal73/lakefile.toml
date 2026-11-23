@@ -208,7 +208,10 @@ roots = [
   "DottieBandChunkReplay",
   "DottieBandFirstTwoChunks",
   "DottieBandFirst256",
-  "DottieBandArchivedShort4096"
+  "DottieBandArchivedShort4096",
+  "DottieBandArchivedShort2",
+  "DottieBandArchivedShort3",
+  "DottieSharpRelativeCircle"
 ]
 
 [[lean_lib]]

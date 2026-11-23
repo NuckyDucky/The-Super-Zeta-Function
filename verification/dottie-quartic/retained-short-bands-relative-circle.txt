@@ -1,0 +1,37 @@
+DottieReferenceMoment on Lean 4.33.1
+'QuarticModel.dottieCircleReference_eq_gamma_phase_projection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.dottieCircleReference_eq_phase_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieCompletedReferencePhase on Lean 4.33.1
+'QuarticModel.dottieCircleReference_eq_completed_phase_and_unit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.dottieCircleReference_eq_completed_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCircleReference_pos_of_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieBandArchivedShort2 on Lean 4.33.1
+'QuarticModel.DottieBandBlock3708934236071264028_4096.certificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieBandBlock3708934236071264028_4096.dottie_retained_short_band_integer_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieBandArchivedShort3 on Lean 4.33.1
+'QuarticModel.DottieBandBlock7417868472142532151_4096.certificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieBandBlock7417868472142532151_4096.dottie_retained_short_band_integer_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieSharpRelativeCircle on Lean 4.33.1
+'QuarticModel.dottie_circle_reference_eq_relative_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_reference_unit_phase_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_relative_factor_with_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_stirling_relative_linearization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_relative_factor_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_margin_of_relative_model' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_sphere_margin_of_angle_model' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -37,6 +37,9 @@ import DottieBandPrimePowers
 import DottieBandFirstTwoChunks
 import DottieBandFirst256
 import DottieBandArchivedShort4096
+import DottieBandArchivedShort2
+import DottieBandArchivedShort3
+import DottieSharpRelativeCircle
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -280,7 +283,20 @@ run_cmd do
     `QuarticModel.DottieBandWitness1854467118035498894_256.dottie_retained_band_first_256_chunk,
     `QuarticModel.DottieBandWitness1854467118035498894_256.dottie_retained_band_first_256_integer_bounds,
     `QuarticModel.DottieBandBlock1854467118035629966_4096.certificate,
-    `QuarticModel.DottieBandBlock1854467118035629966_4096.dottie_retained_short_band_integer_bounds]
+    `QuarticModel.DottieBandBlock1854467118035629966_4096.dottie_retained_short_band_integer_bounds,
+    `QuarticModel.DottieBandBlock3708934236071264028_4096.certificate,
+    `QuarticModel.DottieBandBlock3708934236071264028_4096.dottie_retained_short_band_integer_bounds,
+    `QuarticModel.DottieBandBlock7417868472142532151_4096.certificate,
+    `QuarticModel.DottieBandBlock7417868472142532151_4096.dottie_retained_short_band_integer_bounds,
+    `QuarticModel.dottieCircleReference_eq_gamma_phase_projection,
+    `QuarticModel.dottieCircleReference_eq_completed_phase_and_unit,
+    `QuarticModel.dottie_circle_reference_eq_relative_projection,
+    `QuarticModel.dottie_sharp_reference_unit_phase_interval,
+    `QuarticModel.dottie_sharp_relative_factor_with_error,
+    `QuarticModel.dottie_stirling_relative_linearization,
+    `QuarticModel.dottie_sharp_relative_factor_stable,
+    `QuarticModel.dottie_sharp_margin_of_relative_model,
+    `QuarticModel.dottie_sharp_sphere_margin_of_angle_model]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

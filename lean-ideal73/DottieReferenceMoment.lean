@@ -25,8 +25,10 @@ noncomputable def dottieReferencePolynomial : ℂ :=
 
 /-- The archived normalization is the absolute real projection of its signed
 polynomial at the same point, with the Gamma direction enclosed in Lean. -/
-theorem dottieCircleReference_eq_phase_projection :
+theorem dottieCircleReference_eq_gamma_phase_projection :
     ∃ phase : ℝ, 4.067324 < phase ∧ phase < 4.067326 ∧
+      Gamma dottieReferencePoint / (‖Gamma dottieReferencePoint‖ : ℂ) =
+        Complex.exp ((phase : ℂ)*I) ∧
       dottieCircleReference = (2 * ‖Gamma dottieReferencePoint‖ / archivedDottieCompletionScale) *
         |(Complex.exp ((phase : ℂ)*I) * dottieReferencePolynomial).re| := by
   let z := dottieReferencePoint
@@ -53,7 +55,7 @@ theorem dottieCircleReference_eq_phase_projection :
     · simp [dottieSharpSide, referenceTerm, h]
     · simp only [dottieSharpSide, referenceTerm, h, if_false, z, g, A]
       ring
-  refine ⟨φ, hφ₁, hφ₂, ?_⟩
+  refine ⟨φ, hφ₁, hφ₂, hφ, ?_⟩
   change dottieCircleReference = (2 * ‖Gamma z‖ / A) *
     |(Complex.exp ((φ : ℂ)*I) * P).re|
   rw [dottieCircleReference, hpoint, hmirror]
@@ -67,6 +69,14 @@ theorem dottieCircleReference_eq_phase_projection :
   rw [abs_of_pos (show (0 : ℝ) < 2 by norm_num), abs_of_nonneg (by positivity : 0 ≤ ‖Gamma z‖ / A)]
   ring
 
+theorem dottieCircleReference_eq_phase_projection :
+    ∃ phase : ℝ, 4.067324 < phase ∧ phase < 4.067326 ∧
+      dottieCircleReference = (2 * ‖Gamma dottieReferencePoint‖ / archivedDottieCompletionScale) *
+        |(Complex.exp ((phase : ℂ)*I) * dottieReferencePolynomial).re| := by
+  obtain ⟨phase,hlo,hhi,_,hprojection⟩ := dottieCircleReference_eq_gamma_phase_projection
+  exact ⟨phase,hlo,hhi,hprojection⟩
+
+#print axioms dottieCircleReference_eq_gamma_phase_projection
 #print axioms dottieCircleReference_eq_phase_projection
 
 end QuarticModel

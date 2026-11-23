@@ -32,6 +32,7 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Integrated retained bands](retained-band-integration.txt) checks the original core and tail integrals, the conditional ring assembly, the coefficient zero checker, and the first eight actual zero coefficients.
 - [First checked band chunk](retained-band-first-chunk.txt) checks the Lucas witness, the split prime-power formula and the actual 16-slot integer sum certificate.
 - [Retained band batch replay](retained-band-chunk-replay.txt) checks the generic factor and prefix replay, the first 32 and 256 norms, and all 4,096 norms of the first archived short band. The single-worker short-band build took 44.003 seconds and peaked at 6,826.5 MiB of sampled private memory.
-- [Transitive axiom audit](transitive-audit.txt) checked 236 named declarations in the package audit.
+- [All short bands and the relative circle](retained-short-bands-relative-circle.txt) gives the remaining short-band certificates and the exact relative Gamma and sharp-circle transport. The second and third short bands took 40.702 and 45.412 seconds on one worker.
+- [Transitive axiom audit](transitive-audit.txt) checked 249 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.
