@@ -1,0 +1,81 @@
+name: Dottie packed proof assembly
+
+on:
+  pull_request:
+    types: [synchronize]
+    paths: ['.github/dottie-packed-assembly.json']
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: dottie-packed-assembly-${{ github.event.pull_request.head.sha }}
+  cancel-in-progress: false
+
+jobs:
+  assembly:
+    if: github.run_attempt == '1' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      DOTTIE_ASSEMBLY_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          ref: ${{ env.DOTTIE_ASSEMBLY_SHA }}
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24.19.0'
+      - name: Check assembly opt-in and exact successful production run
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node tools/dottie-compute-pilot/activate-packed-assembly.mjs
+      - name: Check out the exact Lean proof source
+        if: steps.gate.outputs.enabled == 'true'
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          ref: ${{ steps.gate.outputs.proof }}
+          path: .dottie-source
+          sparse-checkout: lean-ideal73
+          persist-credentials: false
+      - name: Download plan and row receipts from the selected run
+        if: steps.gate.outputs.enabled == 'true'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.gate.outputs.run_id }}
+          pattern: dottie-production-*
+          path: ${{ runner.temp }}/dottie-production-downloads
+      - name: Install pinned elan
+        if: steps.gate.outputs.enabled == 'true'
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --silent --show-error --location --retry 3 -o elan.tar.gz https://github.com/leanprover/elan/releases/download/v4.3.0/elan-x86_64-unknown-linux-gnu.tar.gz
+          echo '0c71472fa3ac34871dc1e2539993cca222d7656b42a1469f8f8c97c22f9adab2  elan.tar.gz' | sha256sum --check
+          tar -xzf elan.tar.gz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Rebuild proof dependencies and prefix, then audit final assembly
+        if: steps.gate.outputs.enabled == 'true'
+        timeout-minutes: 335
+        env:
+          PROOF_SHA: ${{ steps.gate.outputs.proof }}
+          ACTIVATION_SHA: ${{ steps.gate.outputs.activation }}
+          PRODUCTION_RUN: ${{ steps.gate.outputs.run_id }}
+        run: |
+          node tools/dottie-compute-pilot/run-packed-assembly.mjs \
+            .dottie-source/lean-ideal73 "$RUNNER_TEMP/dottie-production-downloads" \
+            "$RUNNER_TEMP/dottie-packed-assembly" "$PRODUCTION_RUN" "$PROOF_SHA" "$ACTIVATION_SHA"
+      - name: Upload the compact proof receipt and audits
+        if: ${{ !cancelled() && steps.gate.outputs.enabled == 'true' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: dottie-packed-proof-receipt
+          path: ${{ runner.temp }}/dottie-packed-assembly/receipt
+          if-no-files-found: warn
+          retention-days: 7

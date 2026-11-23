@@ -176,7 +176,14 @@ roots = [
   "DottieRangeDomination",
   "DottieRangeDifferentiation",
   "DottieJointOmittedDerivative",
-  "DottieRightContourShift"
+  "DottieRightContourShift",
+  "DottiePowerTailMass",
+  "DottieFarScalarBound",
+  "DottieHighGammaLocal",
+  "DottieHighGammaTail",
+  "DottieFarGammaEnvelope",
+  "DottieFarNumeric",
+  "DottieReferenceGammaLower"
 ]
 
 [[lean_lib]]

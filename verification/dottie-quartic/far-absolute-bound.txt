@@ -1,0 +1,30 @@
+DottiePowerTailMass on Lean 4.33.1
+'QuarticModel.archived_power_tail_mass_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFarScalarBound on Lean 4.33.1
+'QuarticModel.dottie_right_seven_norm_le_of_tilted_gamma' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_far_omitted_norm_le_of_tilted_gamma' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieHighGammaLocal on Lean 4.33.1
+'QuarticModel.dottie_gamma_k7_local_norm_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_k7_local_tilted_norm_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieHighGammaTail on Lean 4.33.1
+'QuarticModel.dottie_norm_Gamma_half_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.norm_Gamma_add_seven_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_norm_Gamma_seven_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_exp_neg_le_norm_Gamma_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFarGammaEnvelope on Lean 4.33.1
+'QuarticModel.dottie_far_gamma_envelope_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_far_gamma_envelope_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_far_tilted_gamma_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_far_gamma_envelope_bound_at' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_far_omitted_norm_le_scalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFarNumeric on Lean 4.33.1
+'QuarticModel.dottie_theta_scale_lt_two_million' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_far_omitted_uniform_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieReferenceGammaLower on Lean 4.33.1
+'QuarticModel.dottie_reference_gamma_norm_ratio_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
