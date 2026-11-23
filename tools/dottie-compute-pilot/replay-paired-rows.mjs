@@ -49,21 +49,31 @@ function selectedRows(checkpoint, first, last, width) {
   return selected;
 }
 
-function renderRow({ a, width, full, remainder, contributions }, useLookup) {
+function renderRow({ a, width, full, remainder, contributions }, mode, witness) {
   const index = a - 1;
   const name = `DottiePairedRow${a}`;
   const declaration = `dottiePairedRow${a}`;
+  const entry = mode === 'witness' ? 'DottieWitnessPairBlocks' :
+    mode === 'lookup' ? 'DottieStructuralPairBlocks' : 'DottiePairedRows';
   const lines = [
-    useLookup ? 'import DottieStructuralPairBlocks' : 'import DottiePairedRows',
+    'import ' + entry,
     '', 'open Finset', '', 'namespace QuarticModel', '',
-    'set_option maxHeartbeats 30000000', '',
+    'set_option maxHeartbeats 30000000',
+    ...(mode === 'witness' ? ['set_option maxRecDepth 12000'] : []), '',
     `private theorem firstTerms : dottiePairRowHead ${cutoff} dottieQuickWeightTicks ${index} =`,
     `    (${contributions.get('0,0')} : ℤ) := by decide +kernel`, '',
   ];
   function blockProof(lo, size) {
-    if (!useLookup) return 'by decide +kernel';
-    return '\n  (dottie_pair_row_block_with_sign_eq dottieLookupRowSign dottieLookupRowSign_eq ' +
-      `dottieQuickWeightTicks ${index} ${lo} ${size}).symm.trans (by decide +kernel)`;
+    if (mode === 'lookup') {
+      return '\n  (dottie_pair_row_block_with_sign_eq dottieLookupRowSign dottieLookupRowSign_eq ' +
+        `dottieQuickWeightTicks ${index} ${lo} ${size}).symm.trans (by decide +kernel)`;
+    }
+    if (mode === 'witness' && size > 0) {
+      const packed = witness.formatLeanPacked(witness.makeWitnessPairs(a, lo + 1, size));
+      return '\n  dottie_pair_block_of_packed_witness (packed := ' + packed + ')\n' +
+        '    (by decide +kernel)';
+    }
+    return 'by decide +kernel';
   }
   const parts = [];
   for (let k = 0; k < full; k++) {
@@ -95,11 +105,15 @@ function renderRow({ a, width, full, remainder, contributions }, useLookup) {
     lines.push('  simp only [Finset.sum_range_zero, Nat.zero_mul, lastTerms]');
   }
   lines.push('  decide +kernel', '', `#print axioms ${declaration}`, '', 'end QuarticModel', '');
-  return { name, declaration, source: lines.join('\n') };
+  const source = lines.join('\n').replace(/\b(firstTerms|lastTerms|block\d+)\b/g, part => `row${a}_${part}`);
+  return { name, declaration, source };
 }
 
-async function compileRow(lean, directory, row, useLookup) {
-  const { name, declaration, source } = renderRow(row, useLookup);
+async function compileBatch(lean, directory, rows, mode, witness) {
+  const proofs = rows.map(row => renderRow(row, mode, witness));
+  const name = rows.length === 1 ? proofs[0].name : `DottiePairedRows${rows[0].a}Through${rows.at(-1).a}`;
+  const source = proofs[0].source + proofs.slice(1)
+    .map(proof => proof.source.slice(proof.source.indexOf('\n'))).join('\n');
   await writeFile(resolve(directory, `${name}.lean`), source, 'utf8');
   const result = await new Promise((done, fail) => {
     const process = spawn(lean, ['-j', '1', '-s', '65536', '-DwarningAsError=true', '-o',
@@ -111,17 +125,20 @@ async function compileRow(lean, directory, row, useLookup) {
     process.on('close', status => done({ status, output }));
   });
   await writeFile(resolve(directory, `${name}.log`), result.output, 'utf8');
-  const axiomLine = result.output.match(new RegExp(`'QuarticModel\\.${declaration}' depends on axioms: \\[([^\\]]*)\\]`));
-  if (result.status !== 0 || !axiomLine ||
-      axiomLine[1].split(/,\s*/).some(axiom => !acceptedAxioms.has(axiom))) {
-    throw new Error(`Lean rejected row ${row.a}. See ${name}.log`);
+  if (result.status !== 0) throw new Error(`Lean rejected ${name}. See ${name}.log`);
+  for (const { declaration } of proofs) {
+    const axiomLine = result.output.match(new RegExp(`'QuarticModel\\.${declaration}' depends on axioms: \\[([^\\]]*)\\]`));
+    if (!axiomLine || axiomLine[1].split(/,\s*/).some(axiom => !acceptedAxioms.has(axiom))) {
+      throw new Error(`Unexpected axioms for ${declaration}. See ${name}.log`);
+    }
+    console.log(axiomLine[0]);
   }
-  console.log(axiomLine[0]);
 }
 
-const [checkpoint, output, lean, firstArg, lastArg, widthArg, option, ...rest] = process.argv.slice(2);
-if (!widthArg || rest.length > 0 || (option !== undefined && option !== '--lookup')) {
-  throw new Error('Usage: node replay-paired-rows.mjs CHECKPOINT OUTPUT LEAN FIRST LAST WIDTH [--lookup]');
+const [checkpoint, output, lean, firstArg, lastArg, widthArg, ...flags] = process.argv.slice(2);
+if (!widthArg || flags.some(flag => !['--lookup', '--witness', '--bundle'].includes(flag)) ||
+    new Set(flags).size !== flags.length || (flags.includes('--lookup') && flags.includes('--witness'))) {
+  throw new Error('Usage: node replay-paired-rows.mjs CHECKPOINT OUTPUT LEAN FIRST LAST WIDTH [--lookup | --witness] [--bundle]');
 }
 const first = positiveInteger(firstArg, 'first row');
 const last = positiveInteger(lastArg, 'last row');
@@ -130,4 +147,19 @@ if (first > last || last > rowCount) throw new Error('Invalid row bounds');
 const directory = resolve(output);
 const rows = selectedRows(await readFile(checkpoint, 'utf8'), first, last, width);
 await mkdir(directory, { recursive: true });
-for (const row of rows) await compileRow(resolve(lean), directory, row, option === '--lookup');
+const mode = flags.includes('--witness') ? 'witness' : flags.includes('--lookup') ? 'lookup' : 'original';
+const witness = mode === 'witness' ? await import('./score-profile/make-large-sign-witnesses.mjs') : undefined;
+const maxRows = flags.includes('--bundle') ? 16 : 1;
+const maxWork = mode === 'witness' ? 12000 : 60000;
+for (let start = 0; start < rows.length;) {
+  let end = start + 1;
+  let work = rows[start].full * width + rows[start].remainder;
+  while (end < rows.length && end - start < maxRows) {
+    const nextWork = rows[end].full * width + rows[end].remainder;
+    if (work + nextWork > maxWork) break;
+    work += nextWork;
+    end++;
+  }
+  await compileBatch(resolve(lean), directory, rows.slice(start, end), mode, witness);
+  start = end;
+}

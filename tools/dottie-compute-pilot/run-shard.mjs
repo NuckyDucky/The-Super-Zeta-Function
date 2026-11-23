@@ -7,9 +7,16 @@ import { fileURLToPath } from 'node:url';
 const mathlibCommit = '0df444a360eaa60ab8c11dca51a86af692955474';
 const leanToolchain = 'leanprover/lean4:v4.33.1';
 const cutoff = 276824064;
-const width = 128;
+const width = 1024;
+const shardStride = 128;
 const replay = fileURLToPath(new URL('./replay-paired-rows.mjs', import.meta.url));
 const pinFiles = ['lean-toolchain', 'lakefile.toml', 'lake-manifest.json'];
+const proofSources = [
+  'DottiePairedRows.lean',
+  'DottieScoreCandidates.lean',
+  'DottieWitnessPairBlocks.lean',
+  'DottieLargeSignWitness.lean',
+];
 
 function run(command, args, cwd, { visible = false, env = process.env } = {}) {
   return execFileSync(command, args, {
@@ -49,12 +56,14 @@ async function pinnedSources(project, commit) {
       }
     }
   }
-  for (const file of [...pinFiles, 'DottiePairedRows.lean', 'DottieScoreCandidates.lean']) {
+  for (const file of [...pinFiles, ...proofSources]) {
     if (!paths.has(`lean-ideal73/${file}`)) throw new Error(`Missing pinned source ${file}`);
   }
   if (imports.size === 0) throw new Error('No Mathlib imports in the pinned source');
-  for (const [name, path] of [['run-shard.mjs', fileURLToPath(import.meta.url)],
-    ['replay-paired-rows.mjs', replay]]) {
+  for (const name of [
+    'run-shard.mjs', 'replay-paired-rows.mjs', 'score-profile/make-large-sign-witnesses.mjs',
+  ]) {
+    const path = fileURLToPath(new URL(name, import.meta.url));
     hashes.push(`${sha256(await readFile(path))}  tools/dottie-compute-pilot/${name}`);
   }
   return { hashes, imports: [...imports].sort() };
@@ -66,12 +75,12 @@ if (process.argv.length !== 7) {
 }
 if (!/^[a-f0-9]{40}$/.test(commit)) throw new Error('Use a full Git source commit SHA');
 const lowerFirst = Number(firstArg);
-if (!/^[1-9][0-9]{2}$/.test(firstArg) || lowerFirst < 129 || lowerFirst > 896) {
-  throw new Error('LOWER_FIRST must be an integer from 129 through 896');
+if (!/^[1-9][0-9]{0,4}$/.test(firstArg) || lowerFirst > 16509) {
+  throw new Error('LOWER_FIRST must be an integer from 1 through 16509');
 }
 if (shardArg !== '0' && shardArg !== '1') throw new Error('SHARD must be 0 or 1');
 const shard = Number(shardArg);
-const first = lowerFirst + shard * width;
+const first = lowerFirst + shard * shardStride;
 const last = first + 1;
 const project = resolve(projectArg);
 const output = resolve(outputArg);
@@ -98,8 +107,8 @@ run('lake', ['exe', 'cache', 'get', ...imports], project, { env, visible: true }
 const mathlibDir = join(project, '.lake', 'packages', 'mathlib');
 const mathlib = run('git', ['rev-parse', 'HEAD'], mathlibDir).trim();
 if (mathlib !== mathlibCommit) throw new Error(`Unexpected Mathlib revision: ${mathlib}`);
-run('lake', ['build', '+DottiePairedRows:olean', '+DottieScoreCandidates:olean'],
-  project, { env, visible: true });
+run('lake', ['build', '+DottiePairedRows:olean', '+DottieScoreCandidates:olean',
+  '+DottieWitnessPairBlocks:olean'], project, { env, visible: true });
 const leanPrefix = run('lake', ['env', 'lean', '--print-prefix'], project, { env }).trim();
 const lean = join(leanPrefix, 'bin', process.platform === 'win32' ? 'lean.exe' : 'lean');
 
@@ -108,7 +117,7 @@ run('lake', ['env', lean, '-j', '1', '-s', '65536', '-DwarningAsError=true', '--
   project, { env, visible: true });
 
 const axioms = run('lake', ['env', process.execPath, replay, checkpoint, kernel, lean,
-  String(first), String(last), String(width)], project, { env });
+  String(first), String(last), String(width), '--witness'], project, { env });
 process.stdout.write(axioms);
 await writeFile(join(output, 'kernel-axioms.txt'), axioms);
 const captured = ['candidates.csv', 'kernel-axioms.txt', 'sources.sha256', 'receipt.json'];
@@ -127,6 +136,7 @@ await writeFile(join(output, 'receipt.json'), `${JSON.stringify({
   firstRow: first,
   lastRow: last,
   blockWidth: width,
+  replayMode: 'packed-witness',
   theorems,
 }, null, 2)}\n`);
 const artifactHashes = [];

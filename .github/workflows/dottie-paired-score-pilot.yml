@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
     inputs:
       first_row:
-        description: First row of the lower shard, from 129 through 896
+        description: First row of the lower shard, from 1 through 16509
         required: true
-        default: 129
+        default: 11000
         type: number
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
-      DOTTIE_SOURCE: ae1552ae1b5c1317e45b98bf5c2a805b85f39f50
+      DOTTIE_SOURCE: 163f2bc23c88d7bb7c5862cdd2132fe900f9231f
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -54,12 +54,12 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24.19.0'
-      - name: Generate candidates and replay every row in Lean
+      - name: Generate candidates and replay packed witnesses in Lean
         env:
           REQUESTED_FIRST_ROW: ${{ inputs.first_row }}
           SHARD: ${{ matrix.shard }}
         run: |
-          first=129
+          first=11000
           if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
             first="$REQUESTED_FIRST_ROW"
           fi

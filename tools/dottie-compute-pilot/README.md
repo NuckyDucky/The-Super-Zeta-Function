@@ -1,35 +1,22 @@
-# Dottie paired-score pilot
+# Dottie packed-witness pilot
 
-The pilot generates the exact candidate contributions for four Dottie paired-score rows and gives each row a Lean kernel proof. Each shard covers two rows under the squared norm cutoff 276,824,064. The published row numbers start at 1. In Lean, the corresponding span starts at the row number minus 1.
+The two Ubuntu jobs each check two complete rows of the original paired Gaussian score. The default rows are 11,000–11,001 and 11,128–11,129. Both jobs use 1,024 positions per block and a single Lean worker. Manual dispatch accepts a lower starting row from 1 through 16,509.
 
-| Shard | Inclusive rows at the default setting | Width | Candidate records |
-| --- | --- | ---: | ---: |
-| 0 | 129–130 | 128 | 5 |
-| 1 | 257–258 | 128 | 7 |
+The candidate producer emits the original exact integer targets. The Node generator supplies modular roots in both orientations, using two 32-bit words per position. Lean unpacks the words, checks each needed modular square, and proves the same row equalities as the original evaluator.
 
-Each candidate CSV includes one head record per row, each full-width block, and any remainder. At the default setting, rows 130 and 258 end with one-term remainders. The replay checks the coverage, uses `decide +kernel` on each block and row assembly, and audits the resulting row theorem with `#print axioms`. The allowed axioms are `propext`, `Classical.choice`, and `Quot.sound`.
+The workflow pins the [Lean sources](https://github.com/NuckyDucky/The-Super-Zeta-Function/tree/163f2bc23c88d7bb7c5862cdd2132fe900f9231f/lean-ideal73), Lean 4.33.1, and the Mathlib commit in the Lake manifest. Successful artifacts contain the generated sources, candidate CSV, axiom logs, and SHA-256 manifests. The expected axiom list is `propext, Classical.choice, Quot.sound`.
 
-## GitHub Actions
-
-The workflow runs two jobs on `ubuntu-24.04`. A pull request touching the workflow or runner uses the default rows. After the workflow is on the default branch, manual dispatch accepts a lower shard's first row from 129 through 896. The upper shard starts 128 rows later. Each job generates and checks its own candidates against the exact `lean-ideal73` source commit below.
-
-The workflow uses the repository's checksum-verified elan install and Mathlib cache setup. It pins Lean 4.33.1 and Mathlib at `0df444a360eaa60ab8c11dca51a86af692955474`. Each successful artifact contains the candidate CSV, generated Lean source and axiom logs, SHA-256 manifests for the source and output bytes, and a receipt with the shard's row bounds, toolchain, and theorem names. A failed job can upload its partial logs for diagnosis. The runner writes the successful receipt after both row proofs pass their audits.
-
-## Local replay
-
-Install Git, Node 24.19.0 and elan. From the checkout containing these tools, run the same two shards with fresh output directories.
+To replay a pilot job, run the following from the checkout containing this runner. Set the first argument to the pinned Lean package directory and use a fresh output path.
 
 ```sh
-git clone --depth=1 --filter=blob:none --no-checkout https://github.com/NuckyDucky/The-Super-Zeta-Function.git dottie-pinned-source
-git -C dottie-pinned-source sparse-checkout set lean-ideal73
-git -C dottie-pinned-source fetch --depth=1 --filter=blob:none origin ae1552ae1b5c1317e45b98bf5c2a805b85f39f50
-git -C dottie-pinned-source -c core.autocrlf=false checkout --detach ae1552ae1b5c1317e45b98bf5c2a805b85f39f50
-node tools/dottie-compute-pilot/run-shard.mjs dottie-pinned-source/lean-ideal73 ae1552ae1b5c1317e45b98bf5c2a805b85f39f50 dottie-receipts/shard-0 129 0
-node tools/dottie-compute-pilot/run-shard.mjs dottie-pinned-source/lean-ideal73 ae1552ae1b5c1317e45b98bf5c2a805b85f39f50 dottie-receipts/shard-1 129 1
+node tools/dottie-compute-pilot/run-shard.mjs .dottie-source/lean-ideal73 163f2bc23c88d7bb7c5862cdd2132fe900f9231f dottie-receipts/shard-0 11000 0
 ```
 
-The runner verifies the raw source bytes against the requested Git tree, fetches the corresponding Mathlib cache, and builds the two Lean targets. The larger source manifest lists paths relative to the source checkout and, for the two `tools/` entries, the runner checkout. Run `sha256sum --check receipts.sha256` from an extracted shard to check its staged outputs.
+With the Lean modules built and the pinned environment loaded, the existing candidate CSV can be replayed directly.
 
-To replay an existing CSV with the paired modules already built, use the original `node replay-paired-rows.mjs CHECKPOINT OUTPUT LEAN FIRST LAST WIDTH` interface inside `lake env`. `LEAN` is the absolute path to the compiler binary, `FIRST` and `LAST` are inclusive, and `WIDTH` must match the CSV's original block layout.
+```sh
+node tools/dottie-compute-pilot/replay-paired-rows.mjs CHECKPOINT OUTPUT LEAN FIRST LAST WIDTH --witness
+```
 
-With the current `DottieStructuralPairBlocks` built, append `--lookup` to the replay command to use the exact faster sign evaluator. The pinned pilot currently uses the baseline path. Both paths prove the same row equalities. Run `lake env lean ../tools/dottie-compute-pilot/SignBenchmark.lean` from `lean-ideal73` to time the 256-position check.
+Use the archived block width when reusing a checkpoint. The optional `--bundle` flag checks several consecutive rows in one Lean module. The pilot emits separate row modules and receipts. The packaged benchmark source checks both exact scores and a deliberately corrupted root.
+
