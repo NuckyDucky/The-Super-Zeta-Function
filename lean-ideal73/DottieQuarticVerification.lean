@@ -2,6 +2,8 @@ import ArchivedGaussianHalfMellin
 import ArchivedQuarticCertificates
 import ArchivedDottieSmoothedIdentity
 import DottieReferenceMoment
+import DottieSignedMoments
+import ArchivedQuarticSpectralAddress
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -21,7 +23,15 @@ run_cmd do
     `QuarticModel.dottie_ring_zero_free_of_signed_bounds,
     `QuarticModel.dottie_ring_painted_orders_of_signed_bounds,
     `QuarticModel.dottie_gamma_reference_phase_interval,
-    `QuarticModel.dottieCircleReference_eq_phase_projection]
+    `QuarticModel.dottieCircleReference_eq_phase_projection,
+    `QuarticModel.signed_dirichlet_taylor_bound,
+    `QuarticModel.dottieReferencePolynomial_eq_scaled_dirichlet,
+    `QuarticModel.dottie_reference_taylor_bound,
+    `QuarticModel.archivedMomentMass_le_cutoff,
+    `QuarticModel.dottie_reference_taylor_absolute_error,
+    `QuarticModel.archivedDottieAddresses_separate,
+    `QuarticModel.archivedFieldZero_at_chart,
+    `QuarticModel.archivedDottie_chart_painted_orders]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

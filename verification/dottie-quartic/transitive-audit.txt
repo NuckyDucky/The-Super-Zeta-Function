@@ -1,1 +1,1 @@
-Checked the transitive axioms of 12 quartic and Dottie theorems.
+Checked the transitive axioms of 20 quartic and Dottie theorems.

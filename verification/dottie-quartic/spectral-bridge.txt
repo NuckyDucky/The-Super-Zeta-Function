@@ -1,0 +1,3 @@
+'QuarticModel.archivedDottieAddresses_separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedFieldZero_at_chart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedDottie_chart_painted_orders' depends on axioms: [propext, Classical.choice, Quot.sound]
