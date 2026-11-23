@@ -49,29 +49,35 @@ function selectedRows(checkpoint, first, last, width) {
   return selected;
 }
 
-function renderRow({ a, width, full, remainder, contributions }) {
+function renderRow({ a, width, full, remainder, contributions }, useLookup) {
   const index = a - 1;
   const name = `DottiePairedRow${a}`;
   const declaration = `dottiePairedRow${a}`;
   const lines = [
-    'import DottiePairedRows', '', 'open Finset', '', 'namespace QuarticModel', '',
+    useLookup ? 'import DottieStructuralPairBlocks' : 'import DottiePairedRows',
+    '', 'open Finset', '', 'namespace QuarticModel', '',
     'set_option maxHeartbeats 30000000', '',
     `private theorem firstTerms : dottiePairRowHead ${cutoff} dottieQuickWeightTicks ${index} =`,
     `    (${contributions.get('0,0')} : ℤ) := by decide +kernel`, '',
   ];
+  function blockProof(lo, size) {
+    if (!useLookup) return 'by decide +kernel';
+    return '\n  (dottie_pair_row_block_with_sign_eq dottieLookupRowSign dottieLookupRowSign_eq ' +
+      `dottieQuickWeightTicks ${index} ${lo} ${size}).symm.trans (by decide +kernel)`;
+  }
   const parts = [];
   for (let k = 0; k < full; k++) {
     const lo = k * width;
     const part = `block${k}`;
     lines.push(`private theorem ${part} : dottiePairRowBlock dottieQuickWeightTicks ${index} ${lo} ${width} =`,
-      `    (${contributions.get(`${lo},${width}`)} : ℤ) := by decide +kernel`, '');
+      `    (${contributions.get(`${lo},${width}`)} : ℤ) := ${blockProof(lo, width)}`, '');
     parts.push(part);
   }
   const tailStart = full * width;
   const tail = contributions.get(`${tailStart},${remainder}`);
   lines.push(
     `private theorem lastTerms : dottiePairRowBlock dottieQuickWeightTicks ${index} ${tailStart} ${remainder} =`,
-    `    (${remainder > 0 ? tail : 0n} : ℤ) := by decide +kernel`, '',
+    `    (${remainder > 0 ? tail : 0n} : ℤ) := ${blockProof(tailStart, remainder)}`, '',
   );
   let total = 0n;
   for (const value of contributions.values()) total += value;
@@ -92,8 +98,8 @@ function renderRow({ a, width, full, remainder, contributions }) {
   return { name, declaration, source: lines.join('\n') };
 }
 
-async function compileRow(lean, directory, row) {
-  const { name, declaration, source } = renderRow(row);
+async function compileRow(lean, directory, row, useLookup) {
+  const { name, declaration, source } = renderRow(row, useLookup);
   await writeFile(resolve(directory, `${name}.lean`), source, 'utf8');
   const result = await new Promise((done, fail) => {
     const process = spawn(lean, ['-j', '1', '-s', '65536', '-DwarningAsError=true', '-o',
@@ -113,9 +119,9 @@ async function compileRow(lean, directory, row) {
   console.log(axiomLine[0]);
 }
 
-const [checkpoint, output, lean, firstArg, lastArg, widthArg] = process.argv.slice(2);
-if (process.argv.length !== 8) {
-  throw new Error('Usage: node replay-paired-rows.mjs CHECKPOINT OUTPUT LEAN FIRST LAST WIDTH');
+const [checkpoint, output, lean, firstArg, lastArg, widthArg, option, ...rest] = process.argv.slice(2);
+if (!widthArg || rest.length > 0 || (option !== undefined && option !== '--lookup')) {
+  throw new Error('Usage: node replay-paired-rows.mjs CHECKPOINT OUTPUT LEAN FIRST LAST WIDTH [--lookup]');
 }
 const first = positiveInteger(firstArg, 'first row');
 const last = positiveInteger(lastArg, 'last row');
@@ -124,4 +130,4 @@ if (first > last || last > rowCount) throw new Error('Invalid row bounds');
 const directory = resolve(output);
 const rows = selectedRows(await readFile(checkpoint, 'utf8'), first, last, width);
 await mkdir(directory, { recursive: true });
-for (const row of rows) await compileRow(resolve(lean), directory, row);
+for (const row of rows) await compileRow(resolve(lean), directory, row, option === '--lookup');

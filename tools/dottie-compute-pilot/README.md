@@ -31,3 +31,5 @@ node tools/dottie-compute-pilot/run-shard.mjs dottie-pinned-source/lean-ideal73 
 The runner verifies the raw source bytes against the requested Git tree, fetches the corresponding Mathlib cache, and builds the two Lean targets. The larger source manifest lists paths relative to the source checkout and, for the two `tools/` entries, the runner checkout. Run `sha256sum --check receipts.sha256` from an extracted shard to check its staged outputs.
 
 To replay an existing CSV with the paired modules already built, use the original `node replay-paired-rows.mjs CHECKPOINT OUTPUT LEAN FIRST LAST WIDTH` interface inside `lake env`. `LEAN` is the absolute path to the compiler binary, `FIRST` and `LAST` are inclusive, and `WIDTH` must match the CSV's original block layout.
+
+With the current `DottieStructuralPairBlocks` built, append `--lookup` to the replay command to use the exact faster sign evaluator. The pinned pilot currently uses the baseline path. Both paths prove the same row equalities. Run `lake env lean ../tools/dottie-compute-pilot/SignBenchmark.lean` from `lean-ideal73` to time the 256-position check.

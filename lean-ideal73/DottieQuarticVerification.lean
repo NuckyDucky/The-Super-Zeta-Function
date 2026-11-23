@@ -21,6 +21,8 @@ import DottieSignedBlockVariation
 import DottieDyadicNormBlocks
 import DottieReferenceCandidate
 import DottiePairedRow11000
+import DottieStructuralPairBlocks
+import DottieOmittedHorizontalSlope
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -148,7 +150,13 @@ run_cmd do
     `QuarticModel.dottie_first_omitted_dyadic,
     `QuarticModel.dottie_paired_candidate_clears_reference_threshold,
     `QuarticModel.dottieCircleReference_pos_of_candidate_equality,
-    `QuarticModel.dottiePairedRow11000]
+    `QuarticModel.dottiePairedRow11000,
+    `QuarticModel.dottieStructuralRowSign_eq,
+    `QuarticModel.dottieLookupRowSign_eq,
+    `QuarticModel.dottie_pair_row_block_with_sign_eq,
+    `QuarticModel.dottie_joint_omitted_eq_two_sides,
+    `QuarticModel.dottie_joint_omitted_im_le_of_horizontal_slope,
+    `QuarticModel.dottie_joint_ring_budget_of_horizontal_slope]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

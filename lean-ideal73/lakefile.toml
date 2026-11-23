@@ -165,7 +165,10 @@ roots = [
   "DottieDyadicCoefficient",
   "DottieDyadicNormBlocks",
   "DottieReferenceCandidate",
-  "DottiePairedRow11000"
+  "DottiePairedRow11000",
+  "DottieStructuralJacobi",
+  "DottieStructuralPairBlocks",
+  "DottieOmittedHorizontalSlope"
 ]
 
 [[lean_lib]]
