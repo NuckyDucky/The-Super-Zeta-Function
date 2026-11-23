@@ -11,6 +11,7 @@ import DottieRowSign
 import DottieFirstReferenceBlock
 import DottieQuickScore
 import DottieSymmetricChunks
+import DottieFirstPairedRows
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -94,7 +95,12 @@ run_cmd do
     `QuarticModel.dottiePairRowBlock_eq_blocks,
     `QuarticModel.dottieSymmetricScore_eq_blocks,
     `QuarticModel.dottieQuickReferenceScore_eq_symmetric,
-    `QuarticModel.dottieCircleReference_pos_of_symmetric_score]
+    `QuarticModel.dottieCircleReference_pos_of_symmetric_score,
+    `QuarticModel.dottiePairedRowSpan_add,
+    `QuarticModel.dottiePairedRowSpan_one,
+    `QuarticModel.dottieSymmetricScore_eq_row_span,
+    `QuarticModel.dottieQuickReferenceScore_eq_row_span,
+    `QuarticModel.dottieFirstPairedRows]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

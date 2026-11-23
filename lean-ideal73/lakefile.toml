@@ -150,7 +150,9 @@ roots = [
   "DottieQuickWeights",
   "DottieQuickScore",
   "DottieSymmetricScore",
-  "DottieSymmetricChunks"
+  "DottieSymmetricChunks",
+  "DottiePairedRows",
+  "DottieFirstPairedRows"
 ]
 
 [[lean_lib]]

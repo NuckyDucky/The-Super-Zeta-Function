@@ -1,0 +1,8 @@
+DottiePairedRows on Lean 4.33.1
+'QuarticModel.dottiePairedRowSpan_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottiePairedRowSpan_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieSymmetricScore_eq_row_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieQuickReferenceScore_eq_row_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFirstPairedRows on Lean 4.33.1
+'QuarticModel.dottieFirstPairedRows' depends on axioms: [propext]

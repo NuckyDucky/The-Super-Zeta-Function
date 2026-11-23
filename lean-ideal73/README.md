@@ -53,6 +53,7 @@ The Lean 4.33.1 audit builds the archived Gaussian factor from the same quartic 
 
 | [Cached integer log](DottieQuickScore.lean) | Six leading bits index a kernel-verified table. Eight residual Horner terms preserve the 120-tick log enclosure and the original score error budget. |
 | [Paired Gaussian score](DottieSymmetricChunks.lean) | Swapping positive coordinates preserves the norm. The sum evaluates each off-diagonal pair once and skips the cosine when its two signs cancel. Lean checks the block partition and its connection to reference positivity. |
+| [First 32 paired rows](DottieFirstPairedRows.lean) | The score for the first 32 paired rows is kernel-checked. Whole spans add to the exact 16,638-row sum by the [span assembly theorem](DottiePairedRows.lean). |
 | [First complete reference row](DottieFirstReferenceRow.lean) | All 16,639 points with real coordinate 1 were checked in 17 kernel blocks and assembled into one exact integer. |
 
 
