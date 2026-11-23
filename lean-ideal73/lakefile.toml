@@ -131,5 +131,11 @@ roots = [
   "DottieHeightPerturbation",
   "DottieCompletedReferencePhase",
   "DottieRationalProjection",
-  "DottieNormLog"
+  "DottieNormLog",
+  "DottieNormPhase",
+  "DottieFixedCos",
+  "DottieReferenceWeights",
+  "DottieReferenceScore",
+  "DottieRowSign",
+  "DottieTriangleScore"
 ]

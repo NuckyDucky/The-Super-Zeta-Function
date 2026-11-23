@@ -1,0 +1,26 @@
+DottieNormPhase on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieNormAngleQuarter_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_norm_angle_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFixedCos on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.fixedCosBounds_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.fixedCosBounds_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieReferenceWeights on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.inverseSqrtTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCosineTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieReferenceScore on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieRationalReferenceProjection_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieReferenceScoreRows_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_reference_score_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCircleReference_pos_of_score' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCircleReference_pos_of_row_score' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieRowSign on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieRowSign' depends on axioms: [propext]
+'QuarticModel.dottieRowSign_eq_archivedGaussianSign' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieTriangleScore on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieTriangleScore' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieTriangleScore_eq_archivedLatticeCoeff' depends on axioms: [propext, Classical.choice, Quot.sound]
