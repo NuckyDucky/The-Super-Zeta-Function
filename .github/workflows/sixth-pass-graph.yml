@@ -11,6 +11,7 @@ on:
       - 'archive/2026-11-20-hurwitz-speed-mean-square-v001/**'
       - 'tools/build_sixth_passes.py'
       - 'tools/package_two_input_map.mjs'
+      - 'widgets/quartic-progress/**'
       - '.github/workflows/sixth-pass-graph.yml'
   push:
     branches: [main]
@@ -22,6 +23,7 @@ on:
       - 'archive/2026-11-20-hurwitz-speed-mean-square-v001/**'
       - 'tools/build_sixth_passes.py'
       - 'tools/package_two_input_map.mjs'
+      - 'widgets/quartic-progress/**'
       - '.github/workflows/sixth-pass-graph.yml'
 
 permissions:
@@ -56,7 +58,11 @@ jobs:
           python -B archive/2026-11-20-two-input-map-v001/make_map.py --output "$RUNNER_TEMP/two-input-map"
       - name: Verify the signed readings in the generated page and link both graphs
         run: node tools/package_two_input_map.mjs "$RUNNER_TEMP/sixth-site" "$RUNNER_TEMP/two-input-map"
-      - name: Package both graphs for Pages
+      - name: Stage the archived verification widget
+        run: |
+          mkdir -p "$RUNNER_TEMP/sixth-site/quartic-progress"
+          cp widgets/quartic-progress/{index.html,style.css,progress.js,progress.json} "$RUNNER_TEMP/sixth-site/quartic-progress/"
+      - name: Package the graphs and widget for Pages
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
@@ -64,7 +70,7 @@ jobs:
           retention-days: 1
 
   publish:
-    name: Publish both graphs
+    name: Publish the graphs and widget
     needs: graph
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04

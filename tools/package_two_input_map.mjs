@@ -14,7 +14,8 @@ const reportPath = new URL(
 const mapBasename = 'two-input-dottie-map';
 const pairField = 'determinant_pair_at_real_part_1';
 const rootPage = join(site, 'index.html');
-const rootNav = '<nav aria-label="Graph navigation"><a href="./two-input/">Two-input spectral map</a></nav>';
+const rootNav = '<nav aria-label="Graph navigation"><a href="./two-input/">Two-input spectral map</a> · ' +
+  '<a href="./quartic-progress/">Quartic verification widget</a></nav>';
 const [root, map, png, reportJSON] = await Promise.all([
   readFile(rootPage, 'utf8'),
   readFile(join(generatedMap, mapBasename + '.html'), 'utf8'),

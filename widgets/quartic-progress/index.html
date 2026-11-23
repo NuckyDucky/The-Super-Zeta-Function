@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Super Zeta Research</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./progress.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <div class="holiday-lights" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <header class="heading">
+      <div>
+        <p class="eyebrow">Lean 4.19.0 <span>·</span> <span id="view-mode">Verification</span></p>
+        <h1>Super Zeta Research</h1>
+      </div>
+      <p id="state" class="state" data-state="waiting" role="status">Connecting</p>
+    </header>
+
+    <section class="stage-two" aria-labelledby="stage-two-title">
+      <div class="stage-two-copy">
+        <p class="eyebrow">Stage 2 <span>·</span> Gaussian rings</p>
+        <h2 id="stage-two-title">From height to ring test</h2>
+        <p class="stage-purpose">Choose a height, place the mirrored rings, and track the two Hamilton readings at the original address. The next check is whether at every point in the right ring at least one reading is nonzero.</p>
+        <p class="stage-progress" role="status">
+          <strong id="stage-progress-percent">—</strong>
+          <span id="stage-progress-count">Checking milestones</span>
+        </p>
+        <div class="galaxy-focus stage-two-focus" aria-live="polite">
+          <p><span id="star-evidence"></span><strong id="star-milestone"></strong></p>
+          <p id="star-description"></p>
+        </div>
+        <p class="stage-star-help">Select a star point to see its evidence.</p>
+      </div>
+      <div class="stage-star" id="stage-star" role="group" aria-label="Five Stage 2 milestones">
+        <svg viewBox="0 0 400 300" aria-hidden="true" class="stage-star-shape">
+          <defs>
+            <linearGradient id="star-outline" x1="0%" y1="0%" x2="95%" y2="89%">
+              <stop offset="0%" stop-color="#ffc13b"/>
+              <stop offset="48%" stop-color="#16d5fb"/>
+              <stop offset="100%" stop-color="#bd54ff"/>
+            </linearGradient>
+            <radialGradient id="star-fill">
+              <stop offset="0%" stop-color="#4968ff" stop-opacity=".18"/>
+              <stop offset="100%" stop-color="#100d1b" stop-opacity=".25"/>
+            </radialGradient>
+          </defs>
+          <path class="stage-star-outline" d="M200 31 227 113 316 113 245 163 272 247 200 195 128 247 155 163 84 113 173 113Z"/>
+          <g id="stage-arms">
+            <path d="M200 150 173 113 200 31 227 113Z"/>
+            <path d="M200 150 227 113 316 113 245 163Z"/>
+            <path d="M200 150 245 163 272 247 200 195Z"/>
+            <path d="M200 150 200 195 128 247 155 163Z"/>
+            <path d="M200 150 155 163 84 113 173 113Z"/>
+          </g>
+          <path class="stage-star-inner" d="M200 83 217 133 268 133 227 163 243 212 200 182 157 212 173 163 132 133 183 133Z"/>
+        </svg>
+      </div>
+      <div class="broadcast" aria-label="Carl's bulletin">
+        <p class="broadcast-name"><i aria-hidden="true"></i> Carl’s bulletin</p>
+        <p class="broadcast-message" id="broadcast-message" role="status">Loading the verification record.</p>
+      </div>
+    </section>
+
+    <details class="stage-one-history" id="stage-one-history">
+      <summary><span>Stage 1 and research galaxy</span><strong id="stage-one-status">Connecting</strong></summary>
+    <section class="galaxy" aria-labelledby="galaxy-title">
+      <canvas class="galaxy-sky" id="galaxy-sky" width="512" height="180" aria-hidden="true"></canvas>
+      <header class="galaxy-heading">
+        <h2 id="galaxy-title">Research galaxy</h2>
+        <p>Pick a light to see the milestone it tracks.</p>
+      </header>
+      <div class="galaxy-routes" id="galaxy-routes"></div>
+      <div class="galaxy-focus" id="galaxy-focus" aria-live="polite">
+        <p><span id="galaxy-evidence"></span><strong id="galaxy-milestone"></strong></p>
+        <p id="galaxy-description"></p>
+      </div>
+      <p class="galaxy-compute"><i aria-hidden="true"></i><strong>GPU triage</strong> · Benchmarked and tested in dry runs</p>
+    </section>
+
+    <section class="panel" aria-labelledby="progress-title">
+      <div class="progress-header">
+        <div>
+          <h2 id="progress-title">Numerical batches</h2>
+          <p class="percentage"><span id="percent">—</span><span class="percent-unit">%</span></p>
+        </div>
+        <div class="count">
+          <p><strong id="batch-count">—</strong> <span id="batch-total">/ —</span></p>
+          <p id="rate">Saved kernel checks</p>
+        </div>
+      </div>
+      <div class="surface">
+        <canvas id="grid" role="img" aria-label="Numerical batches are loading"></canvas>
+      </div>
+      <div class="panel-foot">
+        <p class="legend">
+          <span><i class="swatch passed" aria-hidden="true"></i>Passed</span>
+          <span><i class="swatch recent" aria-hidden="true"></i>Just passed</span>
+          <span><i class="swatch pending" aria-hidden="true"></i>Processing</span>
+          <span><i class="swatch failed" aria-hidden="true"></i>Failed</span>
+          <span id="twinkle-rate"></span>
+        </p>
+        <p id="cell-detail" class="cell-detail"></p>
+      </div>
+    </section>
+
+    <section class="enclosure-strip" id="enclosure-strip" aria-labelledby="enclosure-title" hidden>
+      <div>
+        <h2 id="enclosure-title">Enclosure replay</h2>
+        <p><strong id="enclosure-count">0</strong> <span id="enclosure-total"></span></p>
+      </div>
+      <div id="enclosure-lights" role="img" aria-label="Enclosure checks are queued"></div>
+      <section class="enclosure-explainer" aria-labelledby="enclosure-step-title">
+        <h3 id="enclosure-step-title">What Lean is checking</h3>
+        <p>Each interval is 1/64 wide. Lean bounds the exponentials and the theta sum with rational arithmetic, then checks the lower and upper bounds for the kernel on that interval.</p>
+        <div class="enclosure-readout" role="status">
+          <code id="enclosure-event">Waiting for the first module</code>
+          <p id="enclosure-detail"></p>
+        </div>
+      </section>
+    </section>
+
+    <section class="milestones" aria-label="Proof milestones">
+      <div>
+        <span class="lamp" id="block-lamp" aria-hidden="true"></span>
+        <p>Prefix blocks <strong id="block-count">—</strong></p>
+      </div>
+      <div>
+        <span class="lamp" id="kernel-lamp" aria-hidden="true"></span>
+        <p>Kernel certificate <strong id="kernel-status">Pending</strong></p>
+      </div>
+      <div>
+        <span class="lamp" id="replay-lamp" aria-hidden="true"></span>
+        <p>Full-proof audit <strong id="replay-status">Queued</strong></p>
+      </div>
+    </section>
+    <p class="axioms" id="axioms" hidden></p>
+    <details class="field-guide">
+      <summary>How to read the lights</summary>
+      <div class="guide-content">
+        <dl class="light-key">
+          <div><dt>Colored</dt><dd>Lean saved a verified check. A new light bursts, then settles into its twinkle.</dd></div>
+          <div><dt>Dark grey</dt><dd>The check is queued or processing.</dd></div>
+          <div><dt>Black</dt><dd>The run recorded a failure for that check.</dd></div>
+          <div><dt>Whole-board shimmer</dt><dd>The full proof passed its axiom audit.</dd></div>
+        </dl>
+        <div class="guide-facts">
+          <div>
+            <h3>Did you know?</h3>
+            <p>Lean joins the batch results into 181 prefix blocks to check the signs of the running sums through coefficient index 33,554,432.</p>
+          </div>
+          <div>
+            <h3>Look at what one light can cover</h3>
+            <p>Each enclosure light represents a compiled Lean module. The modules prove bounds over real intervals. The certificate combines them to control the sign across the rectangle.</p>
+          </div>
+          <div>
+            <h3>Where to look for Kernel magic</h3>
+            <p><code>#print axioms</code> traces the finished theorem's dependencies. The audit checks for the three standard axioms <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+    </details>
+    <footer><time id="updated"></time></footer>
+  </main>
+</body>
+</html>

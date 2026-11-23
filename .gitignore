@@ -7,3 +7,4 @@ __pycache__/
 /lean/.lake/
 /lean-ideal73/.lake/
 /.lean-tools/
+/verification/quartic-kernel/.replay/
