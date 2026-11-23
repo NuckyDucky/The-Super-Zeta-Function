@@ -25,6 +25,7 @@ import DottieStructuralPairBlocks
 import DottieOmittedHorizontalSlope
 import DottieWitnessPairBlocks
 import DottieSharpBlockDerivative
+import DottieJointOmittedDerivative
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -165,7 +166,17 @@ run_cmd do
     `QuarticModel.dottie_norm_block_hasDerivAt,
     `QuarticModel.dottie_completed_norm_block_hasDerivAt,
     `QuarticModel.dottie_centered_log_block_bound,
-    `QuarticModel.dottie_completed_derivative_anchor_error]
+    `QuarticModel.dottie_completed_derivative_anchor_error,
+    `QuarticModel.dottie_range_integrand_hasDerivAt,
+    `QuarticModel.dottie_range_integrand_differentiableAt,
+    `QuarticModel.dottie_range_integrand_continuous,
+    `QuarticModel.dottie_range_integrand_deriv_continuous,
+    `QuarticModel.dottie_range_contour_uniform_value_bound,
+    `QuarticModel.dottie_range_contour_derivative_bound,
+    `QuarticModel.dottie_range_side_hasDerivAt,
+    `QuarticModel.dottie_joint_omitted_hasDerivAt,
+    `QuarticModel.dottie_omitted_horizontal_hasDerivAt,
+    `QuarticModel.dottie_joint_ring_budget_of_signed_derivative]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

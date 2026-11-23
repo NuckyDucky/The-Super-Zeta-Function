@@ -171,7 +171,11 @@ roots = [
   "DottieOmittedHorizontalSlope",
   "DottieLargeSignWitness",
   "DottieWitnessPairBlocks",
-  "DottieSharpBlockDerivative"
+  "DottieSharpBlockDerivative",
+  "DottieRangeContourLocal",
+  "DottieRangeDomination",
+  "DottieRangeDifferentiation",
+  "DottieJointOmittedDerivative"
 ]
 
 [[lean_lib]]

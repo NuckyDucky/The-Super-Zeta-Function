@@ -23,6 +23,7 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Paired sign timings](paired-sign-timing.txt) record a same-process 256-position profile and the replay of row 11,000 using the original and lookup evaluators.
 - [Packed witnesses and sharp derivative](packed-witness-and-sharp-derivative.txt) checked modular sign witnesses, exact packed block certification and the derivative estimate for the original sharp block.
 - [Packed witness timings](packed-witness-timing.txt) record the same 256 positions, the rejection of a corrupted root, and the full row 11,000 replay.
-- [Transitive axiom audit](transitive-audit.txt) checked 133 named declarations in the package audit.
+- [Horizontal derivative](horizontal-derivative.txt) checks the pointwise contour derivative, a uniform integrable majorant, differentiation under the integral, and the exact signed-derivative implication for the ring.
+- [Transitive axiom audit](transitive-audit.txt) checked 143 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.
