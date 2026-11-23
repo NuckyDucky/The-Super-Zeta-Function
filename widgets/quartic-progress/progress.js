@@ -450,6 +450,48 @@ function bulletinFor(next) {
   return "Lean is checking the coefficient batches that supply the signed running sums for the quartic certificate.";
 }
 
+function updateSegment(next) {
+  const publication = next.publicationReplay;
+  const stopped = next.state === "interrupted" || publication?.failed;
+  let label, count, total, units, passed;
+  if (publication) {
+    ({ count, total, passed } = publication);
+    label = "Publication replay";
+    units = "modules";
+  } else if (next.kernelPass) {
+    label = "Full-proof replay";
+    count = next.replayCount;
+    total = next.replayTotal ?? 95;
+    passed = next.replayPass;
+    units = "modules";
+  } else if (next.state === "enclosures" || next.enclosures) {
+    label = "Theta enclosures";
+    count = next.enclosures;
+    total = next.enclosureTotal;
+    units = "modules";
+  } else if (next.state === "assembly" || next.count === next.total) {
+    label = "Signed prefix assembly";
+    count = next.blocks;
+    total = next.blockTotal;
+    units = "blocks";
+  } else {
+    label = "Numerical certificate";
+    count = next.count;
+    total = next.total;
+    units = "batches";
+  }
+  if (!total) return;
+  const bar = elements["segment-bar"];
+  bar.max = total;
+  bar.value = count;
+  elements["segment-label"].textContent = label;
+  const percent = Math.floor(100 * count / total);
+  const suffix = stopped ? " · Paused" : passed ? " · Audit passed"
+    : count === total ? " · Assembling and auditing" : count === 0 && next.state === "ready" ? " · Queued" : "";
+  elements["segment-readout"].textContent =
+    `${percent}% · ${numbers.format(count)} / ${numbers.format(total)} ${units} checked${suffix}`;
+}
+
 function createStageTwo() {
   const milestones = [
     { label: "Quartic handoff", x: 200, y: 31, color: "gold", status: "waiting",
@@ -519,6 +561,7 @@ function createStageTwo() {
   render();
   return {
     update(next) {
+      updateSegment(next);
       const handoff = milestones[0];
       handoff.status = next.replayPass ? "kernel" : next.state === "interrupted" ? "failed" : "waiting";
       handoff.evidence = next.replayPass ? "Kernel magic" : next.state === "interrupted" ? "Interrupted" :

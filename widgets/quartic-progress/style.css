@@ -374,6 +374,37 @@ h1 {
   animation: galaxy-twinkle 4.4s ease-in-out infinite;
 }
 .broadcast-message { color: #eae0ee; font-size: 13px; line-height: 1.45; }
+.segment-meter { grid-column: 1 / -1; min-width: 0; margin-top: 4px; }
+.segment-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  margin-bottom: 6px;
+  color: #ddd7eb;
+  font: 600 11px/1.45 var(--mono);
+}
+.segment-caption strong { color: var(--warm); }
+.segment-meter progress {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 15px;
+  padding: 2px;
+  border: 1px solid #84758f;
+  border-radius: 3px;
+  background: #0c0b14;
+  box-shadow: inset 0 1px 2px #08070e, 0 1px 0 #201429;
+}
+.segment-meter progress::-webkit-progress-bar { background: #211a30; }
+.segment-meter progress::-webkit-progress-value {
+  background: repeating-linear-gradient(90deg, transparent 0 8px, #190f30 8px 10px),
+    linear-gradient(#fff089, #ea9a32 52%, #b9456a);
+}
+.segment-meter progress::-moz-progress-bar {
+  background: repeating-linear-gradient(90deg, transparent 0 8px, #190f30 8px 10px),
+    linear-gradient(#fff089, #ea9a32 52%, #b9456a);
+}
 .stage-one-history > summary {
   display: flex;
   flex-wrap: wrap;
