@@ -1,5 +1,7 @@
 import DottieFixedSharpArchive
 import DottieUniformMomentWidth
+import DottieRetainedBandBounds
+import DottieShorterOmittedBudget
 
 /-! Reduce the seventeen moment hypotheses of the original circle to
 exact integer-score comparisons. The analytic rounding allowance is
@@ -27,6 +29,30 @@ theorem dottie_sharp_margin_of_archive_score_checks
   · intro k hk
     exact archivedMomentBox_of_uniform_scores (N := 276824064) (by decide +kernel) rfl rfl (href k hk)
 
+/-- State the retained side of the same-input contradiction using its
+actual score checks and band sums. -/
+theorem dottie_right_field_nonzero_of_archive_score_checks
+    (hscore : dottiePairedRowSpan 276824064 dottieQuickWeightTicks 0 16638 = dottiePairedCandidateTicks)
+    (h₄ : DottieBandIntegerSums 1854467118035498894 1854467118035634061 438 12)
+    (h₂ : DottieBandIntegerSums 3708934236071001884 3708934236071268123 998 482)
+    (h₁ : DottieBandIntegerSums 7417868472142007863 7417868472142536246 1550 1338)
+    (hsharp : ∀ k < 11, (archivedScoredMomentBox dottiePrefixEnd k).fits (fixedSharpInput k) = true)
+    (href : ∀ k < 6, (archivedScoredMomentBox 276824064 k).fits (fixedReferenceInput k) = true)
+    (hsigned : ∀ z ∈ Metric.sphere (archivedRightCenter dottieHeight) (31/2048),
+      (dottieOmittedSharpBlock z + dottieShorterMiddleSmooth z).im ≤
+        188*((z.re-1/2)*dottieCircleReference))
+    {w : ℂ} (hw : w ∈ archivedDottieRightRing) (ink : ℂ → ℂ)
+    (hR : riemannZeta w ≠ 0) (hB : FieldCoefficientTransfer.chi4.LFunction w ≠ 0) :
+    archivedQuarticZeta w ≠ 0 := by
+  apply dottie_right_field_nonzero_of_shorter_signed_block hscore _ hsigned hw ink hR hB
+  apply dottie_retained_margin_of_finite_band_bound
+    (dottieCircleReference_lower_of_candidate_equality hscore)
+    (dottie_sharp_margin_of_archive_score_checks hsharp href)
+  intro z hz
+  obtain ⟨hr,hi⟩ := dottie_right_sphere_coordinate_bounds hz
+  exact dottie_retained_bands_bound_of_integer_sums h₄ h₂ h₁ hr hi
+
 #print axioms dottie_sharp_margin_of_archive_score_checks
+#print axioms dottie_right_field_nonzero_of_archive_score_checks
 
 end QuarticModel.DottieFixedIntervals
