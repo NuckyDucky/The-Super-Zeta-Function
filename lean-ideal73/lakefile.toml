@@ -160,7 +160,12 @@ roots = [
   "DottieSharpCircleMoments",
   "DottieGammaRatio",
   "ArchivedQuarticSignedPatchCover",
-  "DottieSignedBlockVariation"
+  "DottieSignedBlockVariation",
+  "DottieOmittedSharpVariation",
+  "DottieDyadicCoefficient",
+  "DottieDyadicNormBlocks",
+  "DottieReferenceCandidate",
+  "DottiePairedRow11000"
 ]
 
 [[lean_lib]]

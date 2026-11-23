@@ -17,6 +17,8 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Paired row spans](paired-row-span.txt) checked contiguous span assembly and the exact sum of the first 32 paired rows.
 - [Signed Dottie budgets](signed-dottie-budgets.txt) audited the exact signed norm partition, range contour identity, retained and omitted margin implications, uniform sharp moments, Gamma ratio, and signed patch transfer.
 - [Signed block variation](signed-block-variation.txt) checked both Gaussian signed partial-summation transfer estimates for complex displacement and the log-weighted derivative.
-- [Transitive axiom audit](transitive-audit.txt) checked 107 named declarations in the package audit.
+- [Omitted sharp block and reference candidate](omitted-sharp-and-candidate.txt) checked the exact block, the whole-circle anchor error, even norm reuse, the candidate integer margin, and row 11,000 of the actual certificate.
+- [Candidate checkpoint receipt](full-paired-checkpoint-receipt.json) records the ordered coverage, SHA-256, and integer total for all 16,638 rows. The equality of the complete candidate to the Lean row-span sum remains an explicit input.
+- [Transitive axiom audit](transitive-audit.txt) checked 120 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.

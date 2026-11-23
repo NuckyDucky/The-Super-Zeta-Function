@@ -18,6 +18,9 @@ import DottieSharpCircleMoments
 import DottieGammaRatio
 import ArchivedQuarticSignedPatchCover
 import DottieSignedBlockVariation
+import DottieDyadicNormBlocks
+import DottieReferenceCandidate
+import DottiePairedRow11000
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -132,7 +135,20 @@ run_cmd do
     `QuarticModel.dottie_signed_block_variation,
     `QuarticModel.dottie_signed_block_lipschitz,
     `QuarticModel.dottie_signed_block_exp_displacement,
-    `QuarticModel.dottie_signed_block_log_weight]
+    `QuarticModel.dottie_signed_block_log_weight,
+    `QuarticModel.dottie_norm_block_eq_Ioc,
+    `QuarticModel.dottie_omitted_sharp_eq_norm_block,
+    `QuarticModel.dottie_norm_block_shift_error,
+    `QuarticModel.dottie_norm_block_completed_shift_error,
+    `QuarticModel.dottie_omitted_sharp_circle_anchored_error,
+    `QuarticModel.archivedLatticeCoeff_two_mul,
+    `QuarticModel.dottie_norm_block_eq_prefix_sub,
+    `QuarticModel.dottie_even_norm_weighted,
+    `QuarticModel.dottie_norm_block_dyadic,
+    `QuarticModel.dottie_first_omitted_dyadic,
+    `QuarticModel.dottie_paired_candidate_clears_reference_threshold,
+    `QuarticModel.dottieCircleReference_pos_of_candidate_equality,
+    `QuarticModel.dottiePairedRow11000]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do
