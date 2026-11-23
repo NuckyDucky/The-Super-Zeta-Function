@@ -17,6 +17,7 @@ import ArchivedDottieOmittedBudget
 import DottieSharpCircleMoments
 import DottieGammaRatio
 import ArchivedQuarticSignedPatchCover
+import DottieSignedBlockVariation
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -127,7 +128,11 @@ run_cmd do
     `StripCover.boxMargins_of_signedPatchBounds,
     `StripCover.hasSignedPatchBounds_of_axisBounds,
     `QuarticModel.archivedGaussian_strip_of_signedPatchBounds,
-    `QuarticModel.archivedQuarticRH_of_signedPatchBounds]
+    `QuarticModel.archivedQuarticRH_of_signedPatchBounds,
+    `QuarticModel.dottie_signed_block_variation,
+    `QuarticModel.dottie_signed_block_lipschitz,
+    `QuarticModel.dottie_signed_block_exp_displacement,
+    `QuarticModel.dottie_signed_block_log_weight]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do

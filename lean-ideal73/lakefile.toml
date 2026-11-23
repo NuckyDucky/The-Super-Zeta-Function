@@ -159,7 +159,8 @@ roots = [
   "ArchivedDottieOmittedBudget",
   "DottieSharpCircleMoments",
   "DottieGammaRatio",
-  "ArchivedQuarticSignedPatchCover"
+  "ArchivedQuarticSignedPatchCover",
+  "DottieSignedBlockVariation"
 ]
 
 [[lean_lib]]

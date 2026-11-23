@@ -56,6 +56,7 @@ The Lean 4.33.1 audit builds the archived Gaussian factor from the same quartic 
 | [Exact signed norm ranges](ArchivedDottieRangeIntegral.lean) | The omitted part is four finite intervals. Its contribution is the sum of two contour integrals with the exact signed Gaussian Dirichlet polynomials. |
 | [Circle budgets](ArchivedDottieRetainedBudget.lean) | The retained and [omitted](ArchivedDottieOmittedBudget.lean) implications expose the sharper finite-prefix margin and the lower, middle, and far error budgets. |
 | [Sharp moments](DottieSharpCircleMoments.lean) | Seventeen factorial-divided moments approximate the retained sharp polynomial uniformly on the right circle and its reflection. [The Gamma ratio](DottieGammaRatio.lean) gives a separate complex relative enclosure. |
+| [Signed block variation](DottieSignedBlockVariation.lean) | Summation by parts gives uniform complex-weight and log-weighted bounds conditional on a signed partial-sum bound for the block. |
 | [Signed patch cover](ArchivedQuarticSignedPatchCover.lean) | A strictly positive rotated real part on each member of a finite box cover implies the existing box-margin criterion. |
 | [First 32 paired rows](DottieFirstPairedRows.lean) | The score for the first 32 paired rows is kernel-checked. Whole spans add to the exact 16,638-row sum by the [span assembly theorem](DottiePairedRows.lean). |
 | [First complete reference row](DottieFirstReferenceRow.lean) | All 16,639 points with real coordinate 1 were checked in 17 kernel blocks and assembled into one exact integer. |
