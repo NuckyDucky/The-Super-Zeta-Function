@@ -28,6 +28,7 @@ These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692
 - [Absolute far bound](far-absolute-bound.txt) checks the weighted Gaussian coefficient count, the central and outer Gamma bounds, the scalar norm bound, and the lower bound for the reference Gamma ratio.
 - [Lower smoothing and reference](lower-smoothing-budgets.txt) checks the exact rectangle, its four edge bounds, the prefix and lower omitted smoothing budgets, and the relative far budget from the exact row equality.
 - [Retained band and tail split](retained-band-tail-budget.txt) checks the exact finite bands, the absolute infinite-tail bound, and the revised sufficient finite-band budget.
-- [Transitive axiom audit](transitive-audit.txt) checked 193 named declarations in the package audit.
+- [Signed finite-band variation](retained-band-variation.txt) checks the Abel bound, one-step bound for the original contour polynomial, and exact phase-length constants for its three intervals.
+- [Transitive axiom audit](transitive-audit.txt) checked 198 named declarations in the package audit.
 
 The numerical signed bounds appear as explicit hypotheses of the two ring implications. The clean transcripts capture the original module-by-module runs. The packaged sources preserve the Lean declarations and place the five adapted Murphy files alongside a copy of their upstream license and notice.

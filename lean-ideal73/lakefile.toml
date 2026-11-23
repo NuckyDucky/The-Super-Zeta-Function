@@ -196,7 +196,8 @@ roots = [
   "DottieLowerRightBound",
   "DottieLowerFullBudget",
   "DottieRetainedFarTail",
-  "DottieRetainedBands"
+  "DottieRetainedBands",
+  "DottieBandVariation"
 ]
 
 [[lean_lib]]
