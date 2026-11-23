@@ -29,6 +29,7 @@ import DottieJointOmittedDerivative
 import DottieRightContourShift
 import DottieReferenceQuantitative
 import DottieLowerFullBudget
+import DottieRetainedBands
 import Lean.Util.CollectAxioms
 
 /-! Check the transitive axioms of the exact quartic, the Dottie sum, and its
@@ -224,7 +225,12 @@ run_cmd do
     `QuarticModel.dottie_retained_prefix_smoothing_uniform_absolute,
     `QuarticModel.dottie_right_sphere_coordinate_bounds,
     `QuarticModel.dottie_lower_omitted_budget_of_candidate_equality,
-    `QuarticModel.dottie_retained_prefix_budget_of_candidate_equality]
+    `QuarticModel.dottie_retained_prefix_budget_of_candidate_equality,
+    `QuarticModel.dottie_finite_smoothed_late_norm_bound,
+    `QuarticModel.dottie_retained_far_tail_uniform_absolute,
+    `QuarticModel.dottie_retained_beyond_prefix_eq_bands_add_tail,
+    `QuarticModel.dottie_retained_beyond_prefix_norm_le_band_bound,
+    `QuarticModel.dottie_retained_margin_of_finite_band_bound]
   let allowed := #[`propext, `Classical.choice, `Quot.sound]
   let env ← getEnv
   for name in targets do
