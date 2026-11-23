@@ -1,0 +1,21 @@
+DottieQuickLog on Lean 4.33.1
+'_private.DottieQuickLog.0.QuarticModel.residual_log_ticks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieQuickLogLowerTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLogMantissaTicks on Lean 4.33.1
+'QuarticModel.dottieLogMantissaTicks_eq' depends on axioms: [propext]
+
+DottieCachedLog on Lean 4.33.1
+'QuarticModel.dottieCachedLogLowerTicks_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCachedLogLowerTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieGenericScore on Lean 4.33.1
+'QuarticModel.dottie_generic_score_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCircleReference_pos_of_generic_score' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieQuickWeights on Lean 4.33.1
+'QuarticModel.dottieQuickWeightTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieQuickScore on Lean 4.33.1
+'QuarticModel.dottie_quick_reference_score_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCircleReference_pos_of_quick_score' depends on axioms: [propext, Classical.choice, Quot.sound]

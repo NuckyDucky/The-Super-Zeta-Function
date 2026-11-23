@@ -47,11 +47,13 @@ theorem dottieRationalReferenceProjection_eq_sum :
 def dottieWeightTicks (n : ℕ) : ℤ :=
   (inverseSqrtTicks fixedCosScale n : ℤ)*dottieCosineTicks n
 
-private theorem reference_weight_error (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
-    |(dottieWeightTicks n : ℝ)/(fixedCosScale : ℝ)^5 -
+private theorem reference_weight_error_of (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064)
+    (cosineTicks : ℤ)
+    (hby : |(cosineTicks : ℝ)/(fixedCosScale : ℝ)^4 - Real.cos (referenceCosArgument n)| ≤ 1/1000000) :
+    |(((inverseSqrtTicks fixedCosScale n : ℤ)*cosineTicks : ℤ) : ℝ)/(fixedCosScale : ℝ)^5 -
       (1/Real.sqrt n)*Real.cos (referenceCosArgument n)| ≤ (1/900000)/Real.sqrt n := by
   let x : ℝ := (inverseSqrtTicks fixedCosScale n : ℝ)/fixedCosScale
-  let y : ℝ := (dottieCosineTicks n : ℝ)/(fixedCosScale : ℝ)^4
+  let y : ℝ := (cosineTicks : ℝ)/(fixedCosScale : ℝ)^4
   let a : ℝ := 1/Real.sqrt n
   let b : ℝ := Real.cos (referenceCosArgument n)
   have hS : 0 < (fixedCosScale:ℝ) := by norm_num [fixedCosScale]
@@ -61,7 +63,7 @@ private theorem reference_weight_error (n : ℕ) (hn : 0 < n) (hcap : n ≤ 2768
   change a < x + 1/(fixedCosScale:ℝ) at hxa'
   have hxp : 0 ≤ x := by positivity
   have hbx : |b| ≤ 1 := Real.abs_cos_le_one _
-  have hby : |y-b| ≤ 1/1000000 := dottieCosineTicks_spec n hn hcap
+  change |y-b| ≤ 1/1000000 at hby
   have habs : |x-a| ≤ 1/(fixedCosScale:ℝ) := by
     rw [abs_of_nonpos (sub_nonpos.mpr hxa)]
     linarith only [hxa']
@@ -81,13 +83,18 @@ private theorem reference_weight_error (n : ℕ) (hn : 0 < n) (hcap : n ≤ 2768
   have herror₂ : |(x-a)*b| ≤ (1/1000000000)*a := by
     rw [abs_mul]
     exact ((mul_le_mul_of_nonneg_left hbx (abs_nonneg _)).trans_eq (mul_one _)).trans (habs.trans hsmall)
-  have hre : (dottieWeightTicks n : ℝ)/(fixedCosScale : ℝ)^5 = x*y := by
-    simp only [dottieWeightTicks, Int.cast_mul, Int.cast_natCast, x, y, div_mul_div_comm, pow_succ']
+  have hre : (((inverseSqrtTicks fixedCosScale n : ℤ)*cosineTicks : ℤ) : ℝ)/(fixedCosScale : ℝ)^5 = x*y := by
+    simp only [Int.cast_mul, Int.cast_natCast, x, y, div_mul_div_comm, pow_succ']
   rw [hre]
   change |x*y-a*b| ≤ _
   rw [show x*y-a*b = x*(y-b)+(x-a)*b by ring]
   rw [show (1:ℝ)/900000/Real.sqrt n = (1/900000)*a by dsimp only [a]; ring]
   exact (abs_add_le _ _).trans ((add_le_add herror₁ herror₂).trans (by linarith only [show 0 ≤ a by positivity]))
+
+private theorem reference_weight_error (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
+    |(dottieWeightTicks n : ℝ)/(fixedCosScale : ℝ)^5 -
+      (1/Real.sqrt n)*Real.cos (referenceCosArgument n)| ≤ (1/900000)/Real.sqrt n :=
+  reference_weight_error_of n hn hcap (dottieCosineTicks n) (dottieCosineTicks_spec n hn hcap)
 
 /-- The score weighted by the original signed coefficients. Its exact
 integer evaluation is a separate certificate. -/

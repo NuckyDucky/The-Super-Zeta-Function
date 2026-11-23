@@ -1,12 +1,17 @@
-import DottieScoreChunks
+import DottieQuickScore
 
 open QuarticModel
 
 /-- Emit proposed exact block values for subsequent kernel certificate
 generation. Each completed block gets its own newline-delimited record. -/
 def main (args : List String) : IO Unit := do
-  let [path, startArg, stopArg, widthArg] := args
-    | throw (IO.userError "expected output path, first row, row limit, block width")
+  let options := if args.length = 4 then "standard" :: args else args
+  let [scheme, path, startArg, stopArg, widthArg] := options
+    | throw (IO.userError "expected standard or quick, output path, first row, row limit, block width")
+  let weight ← match scheme with
+    | "standard" => pure dottieWeightTicks
+    | "quick" => pure dottieQuickWeightTicks
+    | _ => throw (IO.userError "unknown weight method")
   let some start := startArg.toNat? | throw (IO.userError "invalid first row")
   let some stop := stopArg.toNat? | throw (IO.userError "invalid row limit")
   let some width := widthArg.toNat? | throw (IO.userError "invalid block width")
@@ -19,11 +24,11 @@ def main (args : List String) : IO Unit := do
       let full := len/width
       for k in [:full] do
         let lo := k*width
-        let value := dottieRowChunk dottieWeightTicks a lo width
+        let value := dottieRowChunk weight a lo width
         output.putStrLn s!"{a},{lo},{width},{value}"
       let rem := len%width
       if rem > 0 then
         let lo := full*width
-        let value := dottieRowChunk dottieWeightTicks a lo rem
+        let value := dottieRowChunk weight a lo rem
         output.putStrLn s!"{a},{lo},{rem},{value}"
       output.flush

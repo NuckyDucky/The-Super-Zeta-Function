@@ -75,10 +75,24 @@ theorem dottieReferenceScoreRows_eq_block_sums (width : ℕ) :
   rw [dottieReferenceScoreRows_eq_chunks]
   exact sum_congr rfl (fun r _ => dottieRowChunk_eq_blocks dottieWeightTicks (r+1) _ width)
 
+/-- The same exact partition works with any certified integer weight. -/
+theorem dottieTriangleScore_eq_reference_blocks (f : ℕ → ℤ) (width : ℕ) :
+    dottieTriangleScore 276824064 f = ∑ r ∈ range (Nat.sqrt 276824064),
+      ((∑ k ∈ range (dottieReferenceRowSize (r+1)/width),
+        dottieRowChunk f (r+1) (k*width) width) +
+        dottieRowChunk f (r+1) ((dottieReferenceRowSize (r+1)/width)*width)
+          (dottieReferenceRowSize (r+1)%width)) := by
+  unfold dottieTriangleScore
+  apply sum_congr rfl
+  intro r _
+  rw [← dottieRowChunk_eq_blocks]
+  simp only [dottieRowChunk_eq_sum, Nat.zero_add, Nat.cast_add, Nat.cast_one, dottieReferenceRowSize]
+
 #print axioms dottieRowChunk_eq_sum
 #print axioms dottieRowChunk_add
 #print axioms dottieRowChunk_eq_blocks
 #print axioms dottieReferenceScoreRows_eq_chunks
 #print axioms dottieReferenceScoreRows_eq_block_sums
+#print axioms dottieTriangleScore_eq_reference_blocks
 
 end QuarticModel

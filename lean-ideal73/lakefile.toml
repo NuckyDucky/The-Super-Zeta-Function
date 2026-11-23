@@ -142,5 +142,34 @@ roots = [
   "DottieCosRescale",
   "DottieScoreChunks",
   "DottieScoreCandidates",
-  "DottieFirstReferenceBlock"
+  "DottieFirstReferenceBlock",
+  "DottieQuickLog",
+  "DottieLogMantissaTicks",
+  "DottieCachedLog",
+  "DottieGenericScore",
+  "DottieQuickWeights",
+  "DottieQuickScore"
+]
+
+[[lean_lib]]
+name = "DottieFirstReferenceRow"
+roots = [
+  "DottieReferenceRowOneBlock0",
+  "DottieReferenceRowOneBlock1",
+  "DottieReferenceRowOneBlock2",
+  "DottieReferenceRowOneBlock3",
+  "DottieReferenceRowOneBlock4",
+  "DottieReferenceRowOneBlock5",
+  "DottieReferenceRowOneBlock6",
+  "DottieReferenceRowOneBlock7",
+  "DottieReferenceRowOneBlock8",
+  "DottieReferenceRowOneBlock9",
+  "DottieReferenceRowOneBlock10",
+  "DottieReferenceRowOneBlock11",
+  "DottieReferenceRowOneBlock12",
+  "DottieReferenceRowOneBlock13",
+  "DottieReferenceRowOneBlock14",
+  "DottieReferenceRowOneBlock15",
+  "DottieReferenceRowOneBlock16",
+  "DottieFirstReferenceRow"
 ]

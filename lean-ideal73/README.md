@@ -51,4 +51,10 @@ The Lean 4.33.1 audit builds the archived Gaussian factor from the same quartic 
 
 | [Reference score blocks](DottieScoreChunks.lean) | Disjoint blocks cover each row, including its final short block. The [first 1,024-point block](DottieFirstReferenceBlock.lean) has an exact kernel-checked score. [Integer phase reduction](DottieCosRescale.lean) preserves both cosine endpoints and leaves previously generated candidate values valid. |
 
+| [Cached integer log](DottieQuickScore.lean) | Six leading bits index a kernel-verified table. Eight residual Horner terms preserve the 120-tick log enclosure and the original score error budget. |
+| [First complete reference row](DottieFirstReferenceRow.lean) | All 16,639 points with real coordinate 1 were checked in 17 kernel blocks and assembled into one exact integer. |
+
+
+To replay the complete first row, run `lake build DottieFirstReferenceRow`.
+
 The ring implications take reference positivity, the retained signed margin, and the full omitted signed bound as hypotheses. The [transitive axiom audit](DottieQuarticVerification.lean) runs in `lake build` and accepts `propext`, `Classical.choice`, and `Quot.sound`. The checked source replays and their outputs are in the [verification record](../verification/dottie-quartic/README.md). The adapted Gauss-sum sources use the upstream [Apache-2.0 license](murphy-gauss/LICENSE) and [notice](murphy-gauss/UPSTREAM-NOTICE.md).

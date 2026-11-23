@@ -1,5 +1,6 @@
 import DottieNormLog
 import DottieRationalProjection
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 import Mathlib.Data.Rat.Floor
 
 /-! Compute a small rational angle for each norm in the signed reference
@@ -14,14 +15,21 @@ private def referenceHeightRat : ℚ := 4526119322477.943440197603
 
 private def referenceAngleRat : ℚ := 3.9229252
 
-private def normAngle (n : ℕ) : ℚ :=
-  referenceAngleRat - referenceHeightRat * ((normLogBounds (2^96) 31 n).1 : ℚ) / 2^96
+private def normAngleOf (ticks : ℕ) : ℚ :=
+  referenceAngleRat - referenceHeightRat * (ticks : ℚ) / 2^96
 
-private def periodCount (n : ℕ) : ℤ := ⌊(normAngle n+piLower)/(2*piLower)⌋
+/-- The integer period subtracted to center the phase formed from log ticks at scale `2^96`. -/
+def dottieNormPeriodCountOf (ticks : ℕ) : ℤ := ⌊(normAngleOf ticks + piLower) / (2 * piLower)⌋
+
+private def periodCount (n : ℕ) : ℤ := dottieNormPeriodCountOf (normLogBounds (2^96) 31 n).1
+
+/-- The centered quarter angle for log ticks at scale `2^96`. -/
+def dottieNormAngleQuarterOf (ticks : ℕ) : ℚ :=
+  (normAngleOf ticks - dottieNormPeriodCountOf ticks * (2 * piLower)) / 4
 
 /-- Bounded argument at which to evaluate a cosine and then use the
 quadruple-angle formula. Norms run through the exact reference cutoff. -/
-def dottieNormAngleQuarter (n : ℕ) : ℚ := (normAngle n-periodCount n*(2*piLower))/4
+def dottieNormAngleQuarter (n : ℕ) : ℚ := dottieNormAngleQuarterOf (normLogBounds (2^96) 31 n).1
 
 private theorem lower_log_accurate (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
     0 ≤ Real.log n - ((normLogBounds (2^96) 31 n).1 : ℝ)/2^96 ∧
@@ -47,45 +55,51 @@ private theorem log_lt_twenty (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
   exact (Real.log_lt_iff_lt_exp (by exact_mod_cast hn)).mpr
     (h.trans_lt ((by norm_num : (276824064:ℝ) < 2.7^20).trans_le hp))
 
-private theorem periodCount_bounds (n : ℕ) :
-    (periodCount n : ℝ) ≤ ((normAngle n : ℝ)+piLower)/(2*(piLower : ℝ)) ∧
-    ((normAngle n : ℝ)+piLower)/(2*(piLower : ℝ)) < (periodCount n : ℝ)+1 := by
-  have h := Int.floor_le ((normAngle n+piLower)/(2*piLower))
-  have h' := Int.lt_floor_add_one ((normAngle n+piLower)/(2*piLower))
+private theorem periodCountOf_bounds (ticks : ℕ) :
+    (dottieNormPeriodCountOf ticks : ℝ) ≤ ((normAngleOf ticks : ℝ)+piLower)/(2*(piLower : ℝ)) ∧
+    ((normAngleOf ticks : ℝ)+piLower)/(2*(piLower : ℝ)) < (dottieNormPeriodCountOf ticks : ℝ)+1 := by
+  have h := Int.floor_le ((normAngleOf ticks+piLower)/(2*piLower))
+  have h' := Int.lt_floor_add_one ((normAngleOf ticks+piLower)/(2*piLower))
   constructor
   · exact_mod_cast h
   · exact_mod_cast h'
 
-theorem dottieNormAngleQuarter_abs_le (n : ℕ) : |(dottieNormAngleQuarter n : ℝ)| ≤ 1 := by
-  obtain ⟨hl,hu⟩ := periodCount_bounds n
+theorem dottieNormAngleQuarterOf_abs_le (ticks : ℕ) :
+    |(dottieNormAngleQuarterOf ticks : ℝ)| ≤ 1 := by
+  obtain ⟨hl,hu⟩ := periodCountOf_bounds ticks
   have hp : (0:ℝ) < 2*(piLower : ℝ) := by norm_num [piLower]
   have hl' := (le_div_iff₀ hp).mp hl
   have hu' := (div_lt_iff₀ hp).mp hu
   have hpi : (piLower : ℝ) < 4 := by norm_num [piLower]
-  push_cast [dottieNormAngleQuarter]
+  push_cast [dottieNormAngleQuarterOf]
   apply abs_le.mpr
   constructor <;> nlinarith only [hl',hu',hpi]
+
+theorem dottieNormAngleQuarter_abs_le (n : ℕ) : |(dottieNormAngleQuarter n : ℝ)| ≤ 1 :=
+  dottieNormAngleQuarterOf_abs_le (normLogBounds (2^96) 31 n).1
 
 /-- Absolute error from using the rational angle and reducing by approximate
 periods. The angle is subtracted from the exact phase after matching its
 integer number of true periods. -/
-theorem dottie_norm_angle_reduction (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
+theorem dottie_norm_angle_reduction_of (n ticks : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064)
+    (hlog₀ : 0 ≤ Real.log n - (ticks : ℝ)/2^96)
+    (hlog₁ : Real.log n - (ticks : ℝ)/2^96 ≤ (120:ℝ)/2^96) :
     |3.9229252 - 4526119322477.943440197603 * Real.log n -
-      (periodCount n : ℝ)*(2*Real.pi) - 4*(dottieNormAngleQuarter n : ℝ)| ≤ 1/2000000 := by
-  obtain ⟨hlog₀,hlog₁⟩ := lower_log_accurate n hn hcap
-  let l : ℝ := ((normLogBounds (2^96) 31 n).1 : ℝ)/2^96
-  let u : ℝ := (normAngle n : ℝ)
-  let k : ℝ := (periodCount n : ℝ)
+      (dottieNormPeriodCountOf ticks : ℝ)*(2*Real.pi) -
+        4*(dottieNormAngleQuarterOf ticks : ℝ)| ≤ 1/2000000 := by
+  let l : ℝ := (ticks : ℝ)/2^96
+  let u : ℝ := (normAngleOf ticks : ℝ)
+  let k : ℝ := (dottieNormPeriodCountOf ticks : ℝ)
   change 0 ≤ Real.log n-l at hlog₀
   change Real.log n-l ≤ (120:ℝ)/2^96 at hlog₁
   have hu : u = 3.9229252 - 4526119322477.943440197603 * l := by
-    dsimp only [u, normAngle, l, referenceHeightRat, referenceAngleRat]
+    dsimp only [u, normAngleOf, l, referenceHeightRat, referenceAngleRat]
     push_cast
     norm_num1
     ring
   have hl₀ : 0 ≤ l := by positivity
   have hl₁ : l ≤ 20 := by linarith only [hlog₀, log_lt_twenty n hn hcap]
-  obtain ⟨hk₀,hk₁⟩ := periodCount_bounds n
+  obtain ⟨hk₀,hk₁⟩ := periodCountOf_bounds ticks
   have hp₀ : (0:ℝ) < 2*(piLower : ℝ) := by norm_num [piLower]
   have hk₀' := (le_div_iff₀ hp₀).mp hk₀
   have hk₁' := (div_lt_iff₀ hp₀).mp hk₁
@@ -107,8 +121,8 @@ theorem dottie_norm_angle_reduction (n : ℕ) (hn : 0 < n) (hcap : n ≤ 2768240
     rw [abs_mul, abs_mul, abs_of_pos (by norm_num : (0:ℝ) < 2)]
     exact (mul_le_mul (mul_le_mul_of_nonneg_left hk (by norm_num)) hperiod
       (abs_nonneg _) (by norm_num)).trans (by norm_num)
-  have e : (4:ℝ)*(dottieNormAngleQuarter n : ℝ) = u-k*(2*(piLower : ℝ)) := by
-    push_cast [dottieNormAngleQuarter]
+  have e : (4:ℝ)*(dottieNormAngleQuarterOf ticks : ℝ) = u-k*(2*(piLower : ℝ)) := by
+    push_cast [dottieNormAngleQuarterOf]
     dsimp only [u,k]
     ring
   rw [e, hu]
@@ -119,7 +133,33 @@ theorem dottie_norm_angle_reduction (n : ℕ) (hn : 0 < n) (hcap : n ≤ 2768240
     4526119322477.943440197603*(l-Real.log n)+2*k*((piLower : ℝ)-Real.pi) by ring]
   exact (abs_add_le _ _).trans ((add_le_add ht hperiod').trans (by norm_num))
 
+/-- The same bound after applying cosine, which removes the integer period. -/
+theorem dottie_norm_angle_cosine_error_of (n ticks : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064)
+    (hlog₀ : 0 ≤ Real.log n - (ticks : ℝ)/2^96)
+    (hlog₁ : Real.log n - (ticks : ℝ)/2^96 ≤ (120:ℝ)/2^96) :
+    |Real.cos (4*(dottieNormAngleQuarterOf ticks : ℝ)) -
+      Real.cos (3.9229252 - 4526119322477.943440197603 * Real.log n)| ≤ 1/2000000 := by
+  let θ : ℝ := 3.9229252 - 4526119322477.943440197603 * Real.log n
+  let p : ℝ := (dottieNormPeriodCountOf ticks : ℝ)*(2*Real.pi)
+  change |Real.cos (4*(dottieNormAngleQuarterOf ticks : ℝ)) - Real.cos θ| ≤ _
+  have hcos : Real.cos (θ-p) = Real.cos θ := by
+    have h := Real.cos_add_int_mul_two_pi (θ-p) (dottieNormPeriodCountOf ticks)
+    change Real.cos (θ-p+p) = Real.cos (θ-p) at h
+    rwa [sub_add_cancel, eq_comm] at h
+  rw [← hcos, abs_sub_comm]
+  exact (Real.abs_cos_sub_cos_le _ _).trans (dottie_norm_angle_reduction_of n ticks hn hcap hlog₀ hlog₁)
+
+/-- The reduction bound for the original log evaluation. -/
+theorem dottie_norm_angle_reduction (n : ℕ) (hn : 0 < n) (hcap : n ≤ 276824064) :
+    |3.9229252 - 4526119322477.943440197603 * Real.log n -
+      (periodCount n : ℝ)*(2*Real.pi) - 4*(dottieNormAngleQuarter n : ℝ)| ≤ 1/2000000 :=
+  let hlog := lower_log_accurate n hn hcap
+  dottie_norm_angle_reduction_of n (normLogBounds (2^96) 31 n).1 hn hcap hlog.1 hlog.2
+
+#print axioms dottieNormAngleQuarterOf_abs_le
 #print axioms dottieNormAngleQuarter_abs_le
+#print axioms dottie_norm_angle_reduction_of
+#print axioms dottie_norm_angle_cosine_error_of
 #print axioms dottie_norm_angle_reduction
 
 end QuarticModel
