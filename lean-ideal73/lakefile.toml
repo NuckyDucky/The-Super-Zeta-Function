@@ -275,6 +275,7 @@ roots = [
   "DottieUniformPhaseWidth",
   "DottieUniformMomentWidth",
   "DottieMomentArchiveScores",
+  "DottieShorterRemainderSlope",
   "DottieMomentScorePilot",
   "DottieMomentOuterRow276824064",
   "DottieMomentOuterRow1442840576",
