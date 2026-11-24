@@ -1,0 +1,74 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+
+[SpectralBridge]
+SpectralBridge
+'AlpogeSuperZeta.normalized_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.continuation_residue_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.corrected_residue_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.corrected_zero_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.corrected_eq_triv_char_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.normalized_reflect_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.normalized_mirror_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.corrected_logDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+[AlpogeAdapters and GaussianEndpoint]
+AlpogeAdapters
+'Formalism.VW.rh_of_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.rh_iff_right_spectral_nonvanishing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.cofactors_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_chart_of_dirichlet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_gaussian_logDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianEndpoint
+'AlpogeSuperZeta.quartic_cofactor_product_at_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_gaussian_one_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+[OrdinaryInteractions]
+'AlpogeSuperZeta.coincidence_iff_mod_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.zeta_at_imaginary_address_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.boundary_coincidence_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.spectral_prime_powers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.compact_coincidences_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+[ContactOrders]
+'AlpogeSuperZeta.all_readings_zero_at_neg_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.boundary_contact_slope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.normalized_floor_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+[SpectralMellin]
+'Deduction.mellin_Gchi_modOne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Deduction.mellin_Gchi_of_ne_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.spectral_mellin_mod_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.spectral_mellin_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+[SignedContact]
+'Deduction.logDeriv_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.signed_slope_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+[GaussianPolePort]
+'Deduction.poleData_abstract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussian_regularized_transform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussian_pole_data_of_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+[GaussianWindowPort]
+@Deduction.landau_window : ∀ {g : ℝ → ℝ} {Φ : ℂ → ℂ} {Z : Set ℂ},
+  Deduction.PoleData g Φ Z → ∀ {θ δ : ℝ}, 0 < θ → θ < 1 → 0 < δ → Deduction.WindowHypU g θ δ → ∀ ρ ∈ Z, ρ.re ≤ θ
+def AlpogeSuperZeta.GaussianWindows : (ℝ → ℝ) → Prop :=
+fun g => ∀ (θ : ℝ), 1 / 2 < θ → θ < 1 → ∃ δ > 0, Deduction.WindowHypU g θ δ
+quartic_rh_of_gaussian_ramp : DirichletLZerosOnLine →
+  ∀ (g : ℝ → ℝ),
+    Measurable g →
+      (∃ C, ∀ (u : ℝ), 0 ≤ u → |g u| ≤ C * Real.exp (2 * u)) →
+        (∀ (w : ℂ), 2 < w.re → gaussianPoleFormula w = ∫ (u : ℝ) in Ioi 0, ↑(g u) * cexp (-w * ↑u)) →
+          (∀ ρ ∈ gaussianPoles, ρ.im = 0 → ρ.re < 1) → GaussianWindows g → DedekindZetaRH K
+'Deduction.landau_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_ramp' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

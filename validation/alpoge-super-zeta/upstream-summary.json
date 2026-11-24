@@ -1,0 +1,141 @@
+{
+  "commit": "ba2a065656ec7c638baa601994de3e0245ff6665",
+  "depth_from_each_root": 2,
+  "lanes": {
+    "headline": {
+      "roots": [
+        "Main",
+        "Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion"
+      ],
+      "modules_read": 424,
+      "root_imports": {
+        "Main": [
+          "Statements",
+          "Supplements.Kernels.MainTheoremsAll"
+        ],
+        "Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion": [
+          "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument.ThresholdArguments.DenseThresholdCases.VwinOfRow",
+          "Development.AutomorphicArithmetic.CharacterBoxes.RiemannHypothesisOfEveryCharacter",
+          "Development.AutomorphicArithmetic.Foundations.GaloisRepresentations.IntegralStructures.RowSrc",
+          "Development.AutomorphicArithmetic.Foundations.LocalLanglands.LocalCentralUnits.RecTExists",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.EveryCharacterOfLiteratureOfVWin"
+        ]
+      }
+    },
+    "reflection": {
+      "roots": [
+        "Formalism.GammaFactorNonvanishing.RhOfRight",
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LFunctionConj"
+      ],
+      "modules_read": 4,
+      "root_imports": {
+        "Formalism.GammaFactorNonvanishing.RhOfRight": [
+          "Mathlib"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LFunctionConj": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ]
+      }
+    },
+    "characters": {
+      "roots": [
+        "Statements",
+        "Development.AutomorphicArithmetic.CharacterBoxes.ClaimStrip"
+      ],
+      "modules_read": 3,
+      "root_imports": {
+        "Statements": [
+          "Mathlib"
+        ],
+        "Development.AutomorphicArithmetic.CharacterBoxes.ClaimStrip": [
+          "Development.AutomorphicArithmetic.CharacterBoxes.HalfPlane"
+        ]
+      }
+    },
+    "continuation_and_residues": {
+      "roots": [
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.poleData",
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LogDerivLocal"
+      ],
+      "modules_read": 12,
+      "root_imports": {
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.poleData": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.CharFamilyLFunctionNeZeroOfOneLeRe",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.GchiConj",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.GchiGrowth",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LFunctionConj",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LogDerivLocal",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.measurableGchi",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiModOne",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiOfNeOne",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LogDerivLocal": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ]
+      }
+    },
+    "prime_powers_and_smoothing": {
+      "roots": [
+        "Formalism.StatementOC",
+        "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily",
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiOfNeOne",
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiModOne"
+      ],
+      "modules_read": 7,
+      "root_imports": {
+        "Formalism.StatementOC": [
+          "Formalism.Statement"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily": [
+          "Mathlib"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiOfNeOne": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.MellinRamp",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiModOne": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.MellinRamp",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ]
+      }
+    },
+    "signed_windows": {
+      "roots": [
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindow",
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.ZeroFreeOfRpowWindow",
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.WindowHypUOfWindowHyp",
+        "Formalism.SharpRestriction.RamificationFrobenius.TotientGaloisClasses.TopWin"
+      ],
+      "modules_read": 29,
+      "root_imports": {
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindow": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCauchy",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCoeff",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauDichotomy",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauFinite",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauGrowthContra",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauKernelMax",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauNearest",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauPoleAsym",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauPoleReLe",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauTails",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindowIneq",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.ZeroFreeOfRpowWindow": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.WindowHypOfRpow",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.lemmaL",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.WindowHypUOfWindowHyp": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Formalism.SharpRestriction.RamificationFrobenius.TotientGaloisClasses.TopWin": [
+          "Formalism.SharpRestriction.RamificationFrobenius.TotientGaloisClasses.TopDefs",
+          "Formalism.SharpRestriction.RamificationFrobenius.TotientGaloisClasses.Window"
+        ]
+      }
+    }
+  }
+}
