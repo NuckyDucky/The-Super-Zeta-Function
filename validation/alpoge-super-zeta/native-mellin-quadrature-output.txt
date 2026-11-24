@@ -1,0 +1,11 @@
+Arb bits 192. Panels 1201. Nodes per panel 25.
+Rational node rule verified to degree 24 with positive weights of sum 2.
+Finite coefficient 0 [-1.15700495898241e-6 +/- 7.08e-21] + [-2.7416880189252e-7 +/- 8.00e-21]j
+    Cauchy quadrature error [4.96489176758e-21 +/- 2.52e-33]
+Finite coefficient 1 [2.4616885647128e-6 +/- 4.85e-20] + [-1.7950967282894e-6 +/- 2.30e-20]j
+    Cauchy quadrature error [1.14477650041e-20 +/- 4.51e-32]
+Finite coefficient 2 [-2.053307212352e-7 +/- 5.91e-20] + [3.9348118116510e-6 +/- 5.77e-20]j
+    Cauchy quadrature error [2.81778543185e-20 +/- 7.71e-33]
+Finite coefficient 3 [-2.638991121927e-6 +/- 1.44e-19] + [-2.242864857630e-6 +/- 4.04e-19]j
+    Cauchy quadrature error [8.89384494263e-20 +/- 3.57e-32]
+All eight finite inputs for firstDisk_correctionGap_lower_of_finite pass.

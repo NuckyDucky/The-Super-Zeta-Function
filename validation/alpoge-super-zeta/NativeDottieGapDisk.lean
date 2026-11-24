@@ -40,8 +40,11 @@ theorem logGap_on_ray (x : ℝ) :
 
 def normalizedGap (s : ℂ) : ℂ := ∫ u, gapRay s u
 
+def centerCoefficientDensity (k : ℕ) (u : ℝ) : ℂ :=
+  ((-2:ℂ)*(u:ℂ))^k/(k.factorial:ℂ) * gapRay firstCenter u
+
 def centerCoefficient (k : ℕ) : ℂ :=
-  ∫ u : ℝ, ((-2:ℂ)*(u:ℂ))^k/(k.factorial:ℂ) * gapRay firstCenter u
+  ∫ u : ℝ, centerCoefficientDensity k u
 
 private def prefactor (s : ℂ) : ℂ :=
   2*s*Complex.sin ((Real.pi:ℂ)*s)/(Real.pi:ℂ)
@@ -180,25 +183,28 @@ private theorem logRay_int (b : Bool) {s : ℂ} (hs : ‖s-firstCenter‖ ≤ fi
       unfold envelope
       exact mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr (by linarith [abs_nonneg u])) (by norm_num)
 
-private theorem coefficient_int (k : ℕ) :
-    Integrable (fun u : ℝ => ((-2:ℂ)*(u:ℂ))^k/(k.factorial:ℂ)*gapRay firstCenter u) := by
+private theorem norm_coefficientWeight (k : ℕ) (u : ℝ) :
+    ‖((-2:ℂ)*(u:ℂ))^k/(k.factorial:ℂ)‖ ≤ 4^k*Real.exp (|u|/2) := by
+  rw [norm_div, norm_pow, norm_mul, norm_neg, Complex.norm_ofNat, Complex.norm_real,
+    Real.norm_eq_abs, Complex.norm_natCast]
+  have hp := Real.pow_div_factorial_le_exp (|u|/2) (by positivity) k
+  calc
+    _ = 4^k * ((|u|/2)^k/(k.factorial:ℝ)) := by
+      rw [← mul_div_assoc, ← mul_pow, show (4:ℝ)*(|u|/2) = 2*|u| by ring]
+    _ ≤ _ := mul_le_mul_of_nonneg_left hp (by positivity)
+
+theorem centerCoefficientDensity_integrable (k : ℕ) :
+    Integrable (centerCoefficientDensity k) := by
+  unfold centerCoefficientDensity
   have hcont : Continuous (fun u => gapRay firstCenter u) :=
     (logRay_continuous false firstCenter).sub (logRay_continuous true firstCenter)
   have hp : Continuous (fun u : ℝ => ((-2:ℂ)*(u:ℂ))^k/(k.factorial:ℂ)) := by fun_prop
   apply (envelope_int.const_mul ((4:ℝ)^k*32)).mono' (hp.mul hcont).aestronglyMeasurable
   filter_upwards with u
-  have hp := Real.pow_div_factorial_le_exp (|u|/2) (by positivity) k
-  have hh : (2*|u|)^k / (k.factorial:ℝ) ≤ 4^k * Real.exp (|u|/2) := by
-    calc
-      _ = 4^k * ((|u|/2)^k/(k.factorial:ℝ)) := by
-        rw [← mul_div_assoc, ← mul_pow]
-        rw [show (4:ℝ)*(|u|/2) = 2*|u| by ring]
-      _ ≤ _ := mul_le_mul_of_nonneg_left hp (by positivity)
-  rw [norm_mul, norm_div, norm_pow, norm_mul, norm_neg, Complex.norm_ofNat,
-    Complex.norm_real, Real.norm_eq_abs, Complex.norm_natCast]
+  rw [norm_mul]
   calc
     _ ≤ (4^k*Real.exp (|u|/2)) * (32*Real.exp (-|u|)) :=
-      mul_le_mul hh (gapSeed_bound _) (norm_nonneg _) (by positivity)
+      mul_le_mul (norm_coefficientWeight k u) (gapSeed_bound _) (norm_nonneg _) (by positivity)
     _ = 4^k*32*Real.exp (-|u|/2) := by
       rw [show (4:ℝ)^k*Real.exp (|u|/2)*(32*Real.exp (-|u|)) =
         4^k*32*(Real.exp (|u|/2)*Real.exp (-|u|)) by ring, ← Real.exp_add]
@@ -207,6 +213,56 @@ private theorem coefficient_int (k : ℕ) :
     _ ≤ 4^k*32*envelope u := by
       unfold envelope
       exact mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr (by linarith [abs_nonneg u])) (by positivity)
+
+theorem centerCoefficientDensity_expLog (k : ℕ) (u : ℝ) :
+    centerCoefficientDensity k u =
+      ((-2:ℂ)*(u:ℂ))^k/(k.factorial:ℂ) * Complex.exp (-(2*firstCenter)*(u:ℂ)) *
+        (Real.log ((3+4*(Real.sinh (Real.exp u)^2+(Real.exp u)^2)-4*Real.exp u*Real.sinh (Real.exp u)) /
+          (3+4*(Real.sinh (Real.exp u)^2+(Real.exp u)^2)+4*Real.exp u*Real.sinh (Real.exp u))) : ℂ) := by
+  rw [centerCoefficientDensity, gapRay, logRay, logRay, ← mul_sub, logGap_on_ray]
+  simp only [mul_assoc]
+
+private theorem norm_gapRay (u : ℝ) :
+    ‖gapRay firstCenter u‖ = Real.exp (-u/2) *
+      ‖kernel false (Real.exp u) - kernel true (Real.exp u)‖ := by
+  rw [gapRay, logRay, logRay, ← mul_sub, norm_mul, Complex.norm_exp]
+  congr 2
+  norm_num [firstCenter, Complex.mul_re, Complex.add_re]
+  ring
+
+theorem centerCoefficientDensity_negMajorant (k : ℕ) {u : ℝ} (hu : u ≤ 0) :
+    ‖centerCoefficientDensity k u‖ ≤ ((32:ℝ)/3)*4^k*Real.exp u := by
+  have hb (b : Bool) := kernel_small_bound b (Real.exp_pos u).le (Real.exp_le_one_iff.mpr hu)
+  have hg : ‖kernel false (Real.exp u) - kernel true (Real.exp u)‖ ≤
+      ((32:ℝ)/3)*(Real.exp u)^2 :=
+    (norm_sub_le _ _).trans (by linarith only [hb false, hb true])
+  rw [centerCoefficientDensity, norm_mul, norm_gapRay]
+  calc
+    _ ≤ (4^k*Real.exp (|u|/2))*(Real.exp (-u/2)*((32/3)*(Real.exp u)^2)) :=
+      mul_le_mul (norm_coefficientWeight k u)
+        (mul_le_mul_of_nonneg_left hg (Real.exp_pos _).le) (by positivity) (by positivity)
+    _ = _ := by
+      rw [abs_of_nonpos hu, pow_two, ← Real.exp_add]
+      rw [show (4:ℝ)^k*Real.exp (-u/2)*(Real.exp (-u/2)*(32/3*Real.exp (u+u))) =
+        (32/3)*4^k*((Real.exp (-u/2)*Real.exp (-u/2))*Real.exp (u+u)) by ring,
+        ← Real.exp_add, ← Real.exp_add, show -u/2 + -u/2 + (u+u) = u by ring]
+
+theorem centerCoefficientDensity_posMajorant (k : ℕ) {u : ℝ} (hu : 0 ≤ u) :
+    ‖centerCoefficientDensity k u‖ ≤ ((256:ℝ)/9)*4^k*Real.exp (-Real.exp u/2) := by
+  have hb (b : Bool) := kernel_tail_bound b (Real.exp_pos u).le
+  have hg : ‖kernel false (Real.exp u) - kernel true (Real.exp u)‖ ≤
+      ((256:ℝ)/9)*Real.exp (-Real.exp u/2) :=
+    (norm_sub_le _ _).trans (by linarith only [hb false, hb true])
+  rw [centerCoefficientDensity, norm_mul, norm_gapRay]
+  calc
+    _ ≤ (4^k*Real.exp (|u|/2))*(Real.exp (-u/2)*((256/9)*Real.exp (-Real.exp u/2))) :=
+      mul_le_mul (norm_coefficientWeight k u)
+        (mul_le_mul_of_nonneg_left hg (Real.exp_pos _).le) (by positivity) (by positivity)
+    _ = _ := by
+      rw [abs_of_nonneg hu]
+      rw [show (4:ℝ)^k*Real.exp (u/2)*(Real.exp (-u/2)*(256/9*Real.exp (-Real.exp u/2))) =
+        (256/9)*4^k*((Real.exp (u/2)*Real.exp (-u/2))*Real.exp (-Real.exp u/2)) by ring,
+        ← Real.exp_add, show u/2 + -u/2 = 0 by ring, Real.exp_zero, one_mul]
 
 private theorem gap_factor {s : ℂ} (hs : s ∈ closedBall firstCenter firstRadius) :
     correctionGap s = prefactor s * normalizedGap s := by
@@ -223,15 +279,15 @@ private theorem gap_factor {s : ℂ} (hs : s ∈ closedBall firstCenter firstRad
 private def polynomial (h : ℂ) : ℂ := ∑ k ∈ Finset.range 4, h^k * centerCoefficient k
 
 private def polynomialRay (h : ℂ) (u : ℝ) : ℂ :=
-  ∑ k ∈ Finset.range 4, h^k * (((-2:ℂ)*(u:ℂ))^k/(k.factorial:ℂ)*gapRay firstCenter u)
+  ∑ k ∈ Finset.range 4, h^k * centerCoefficientDensity k u
 
 private theorem polyInt (h : ℂ) : Integrable (polynomialRay h) := by
   unfold polynomialRay
-  exact integrable_finset_sum _ fun k _ => (coefficient_int k).const_mul _
+  exact integrable_finset_sum _ fun k _ => (centerCoefficientDensity_integrable k).const_mul _
 
 private theorem polyIntegral (h : ℂ) : (∫ u, polynomialRay h u) = polynomial h := by
   unfold polynomialRay polynomial centerCoefficient
-  rw [integral_finset_sum _ (fun k _ => (coefficient_int k).const_mul (h^k))]
+  rw [integral_finset_sum _ (fun k _ => (centerCoefficientDensity_integrable k).const_mul (h^k))]
   simp_rw [integral_const_mul]
 
 private theorem remainder_bound {s : ℂ} (hs : ‖s-firstCenter‖ ≤ firstRadius) (u : ℝ) :
@@ -244,7 +300,7 @@ private theorem remainder_bound {s : ℂ} (hs : ‖s-firstCenter‖ ≤ firstRad
     rw [polynomialRay, Finset.sum_mul]
     apply Finset.sum_congr rfl
     intro k _
-    simp only [z, mul_pow]
+    simp only [centerCoefficientDensity, z, mul_pow]
     ring
   have hq : ‖z‖ ≤ |u|/4 := exponent_quarter hs u
   have hnorm : ‖z‖ ≤ (2*firstRadius)*|u| := exponent_bound hs u

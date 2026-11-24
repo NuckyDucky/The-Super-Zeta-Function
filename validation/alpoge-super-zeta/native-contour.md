@@ -46,7 +46,7 @@ Reflection sends $s$ to $1/2-\bar s$, keeping the disk fixed. Lean combines the 
 
 The 256-bit contour integral encloses $7.067362570867346895228625<\Im\rho<7.067362570867346895228627$. The height is about $4.29132653\times10^{-7}$ below the chosen center. It matches the earlier first-zero enclosure at the same spectral input. [Contour output](native-contour-output.txt) · [Earlier first-zero record](native-zero-output.txt)
 
-Lean checks the analytic error bound on the whole disk, uniqueness and simplicity from the contraction inequalities, and the weighted contour identity. The inequalities for the four center coefficients and the cross-product contraction are explicit Lean inputs supplied by the directed Arb replay. The decimal enclosure of the first moment is also an Arb result. The nine-module Lean 4.19.0 audit lists only the three standard axioms for each declaration checked. [Build, axioms and theorem types](native-factor-contours-audit.txt)
+Lean checks the analytic error bound on the whole disk, uniqueness and simplicity from the contraction inequalities, and the weighted contour identity. The inequalities for the four center coefficients and the cross-product contraction are explicit Lean inputs supplied by the directed Arb replay. The decimal enclosure of the first moment is also an Arb result. The Lean 4.19.0 audit lists only the three standard axioms for each declaration checked. Lean now also proves the infinite-tail and quadrature error bounds for the four central coefficients. Arb supplies the finite node and complex panel enclosures. [Build, axioms and theorem types](native-factor-contours-audit.txt) · [Mellin bounds and current replay](native-mellin-quadrature.md)
 
 ## Removing correction zeros from the count
 

@@ -30,7 +30,8 @@ try {
     $env:LEAN_NUM_THREADS = '1'
     $modules = @('NativeDottieRay', 'NativeDottieMellin', 'NativeDottieContact', 'NativeDottieOrigin',
         'NativeDottieContour', 'NativeDottieGapDisk', 'WeightedContourTransfer',
-        'NativeDottieFactorContours', 'NativeDottieFirstLine')
+        'NativeDottieFactorContours', 'NativeDottieFirstLine', 'NativeDottieMellinExpression',
+        'NativeDottieMellinFinite', 'CauchyPanelQuadrature', 'MellinQuadratureRule')
     foreach ($module in $modules) {
         $module
         & $lean -j1 '-DwarningAsError=true' "--root=$packet" -o "$out/$module.olean" "$packet/$module.lean"
