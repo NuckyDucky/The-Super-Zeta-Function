@@ -53,6 +53,12 @@ $$
 
 Lean identifies this with Mathlib's continuation of the weighted periodic Dirichlet series at $w=2s$. Taking the trivial character mod two recovers the original corrected spectrum with the known nonzero scale factor above. At $s=1/2$, the residue of $H_c$ is $\frac1{2N}\sum_a c_a$. If $\sum_a c_a=0$, the common Hurwitz pole cancels and $H_c$ is entire. This applies to every nontrivial Dirichlet character, whose weights sum to zero. If Alpöge's Dirichlet zero theorem is supplied, then the character-weighted reading's zeros in $0<\Re s<1/2$ lie on $\Re s=1/4$. The input in Lean is the exact published statement. [Archived unweighted grid](https://github.com/NuckyDucky/The-Super-Zeta-Function/blob/eaa526828cf700a2f43aeeb1c81de4309be5afee/archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/ResidueAnchors.lean#L69) · [Pinned periodic continuation](https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/NumberTheory/LSeries/ZMod.lean#L78) · [Lean port](ResidueGridPort.lean)
 
+## What the two native Dottie words keep
+
+If I compare the two rooted words at the archived absolute marks $-\pi/6$ and $+\pi/6$, I get two entire corrections with $J_-(1)=0$ and $J_+(1)=8/3$. Both continued spectra are $Z_\pm=R+J_\pm$ with the same $R(s)=\pi^{-2s}(3^{2s}-1)\zeta(2s)$. If I subtract the raw readings, I keep the difference of corrections. If I compare $J_-Z_+-J_+Z_-$, I get $(J_--J_+)R$ and keep the zero order wherever the corrections differ. The first-zero intervals give that separation at the same spectral input for both words. [Derivation and exact scope](native-contact.md) · [Lean replay](native-lean-audit.txt) · [Saved values and derivatives](native-zero-output.txt)
+
+The second pass through Alpöge adds the weighted contour count, a good-height and prime-power window comparison, and the Artin-to-Hecke entry point for the Gaussian factor. [Exact declarations and inputs](alpoge-second-pass.md)
+
 ## Connections through the upstream proofs
 
 The [import summary](upstream-summary.json) covers two import edges from each named root. The [analytic import closure](upstream-analytic-closures.json) gives the dependencies for the selected pole and window modules. These traces cover import headers. The entries below refer to declarations inspected in the pinned source.
