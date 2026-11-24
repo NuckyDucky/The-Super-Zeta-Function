@@ -1,0 +1,13 @@
+DottieLargeSignWitness on Lean 4.33.1
+'QuarticModel.dottie_large_sign_of_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieWitnessPairBlocks on Lean 4.33.1
+'QuarticModel.dottie_pair_block_of_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_pair_block_of_packed_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieSharpBlockDerivative on Lean 4.33.1
+'QuarticModel.dottieCenteredLogBlock' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_norm_block_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_completed_norm_block_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_centered_log_block_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_completed_derivative_anchor_error' depends on axioms: [propext, Classical.choice, Quot.sound]

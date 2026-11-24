@@ -1,0 +1,97 @@
+Lean 4.33.1 local replay. Listed analytic and numerical modules exited successfully.
+The weight theorem covers every positive norm up to 1442840576, at every degree.
+The sharp bound takes seventeen score-fit comparisons on the two original prefixes.
+The numerical examples check N=2, degree zero, plus both coordinates of the final row at each archived cutoff.
+
+DottieFixedMomentWeights
+'QuarticModel.DottieFixedIntervals.normalizedMomentWeightBox_sound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.normalizedMoment_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieIntervalWidths
+'QuarticModel.DottieFixedIntervals.Interval.mul_width_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Interval.mul_magnitude_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.mul_width_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.pure_imaginary_mul_caps' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.Interval.rational_width_lt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.pad_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Interval.rational_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.absTicks_le_of_contains' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieMomentWidthConstants
+'QuarticModel.DottieFixedIntervals.phaseWidthCap_le' depends on axioms: [propext]
+'QuarticModel.DottieFixedIntervals.inverseRootTickLower_sq_le' depends on axioms: [propext]
+'QuarticModel.DottieFixedIntervals.phaseWidth_budget_scalar' depends on axioms: [propext]
+
+DottieNormalizedMomentScore
+'QuarticModel.DottieFixedIntervals.dottie_paired_row_score_eq_archived' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.momentWeight_relative_error_of_ticks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.normalizedExactMomentScore_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.momentScoreRect_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.archivedMomentBox_of_scores' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieUniformPhaseWidth
+'QuarticModel.DottieFixedIntervals.dottie_uniform_phase_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_uniform_phase_magnitude' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieUniformMomentWidth
+'QuarticModel.DottieFixedIntervals.dottie_uniform_moment_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.archivedMomentBox_of_uniform_scores' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieMomentArchiveScores
+'QuarticModel.DottieFixedIntervals.dottie_sharp_margin_of_archive_score_checks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_right_field_nonzero_of_archive_score_checks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieMomentScorePilot
+'QuarticModel.DottieFixedIntervals.momentPilot_at_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieMomentOuterRow276824064
+'QuarticModel.DottieFixedIntervals.momentOuterRow_276824064_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieMomentOuterRow1442840576
+'QuarticModel.DottieFixedIntervals.momentOuterRow_1442840576_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+Two degree-zero score blocks each cover 1024 paired positions and are assembled from eight kernel-checked pieces of 128 positions.
+DottieMomentJoinedBlock276824064
+'QuarticModel.DottieFixedIntervals.momentInteriorBlock_276824064_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieMomentJoinedBlock1442840576
+'QuarticModel.DottieFixedIntervals.momentInteriorBlock_1442840576_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+

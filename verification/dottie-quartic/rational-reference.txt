@@ -1,0 +1,23 @@
+DottieMomentMass on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.archivedMomentMass_le_two_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieHeightPerturbation on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.archivedMomentMass_le_two_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_unit_phase_distance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.signed_dirichlet_height_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_reference_rational_height_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_reference_rational_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieCompletedReferencePhase on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieCircleReference_eq_completed_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCircleReference_pos_of_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieRationalProjection on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.dottieCircleReference_pos_of_rational_projection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieNormLog on Lean 4.33.1, one worker, warnings as errors
+'QuarticModel.logAtanhLowerTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.normLogBounds_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.normLogBounds_width' depends on axioms: [propext, Classical.choice, Quot.sound]

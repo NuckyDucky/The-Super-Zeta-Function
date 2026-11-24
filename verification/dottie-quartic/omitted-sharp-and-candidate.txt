@@ -1,0 +1,24 @@
+DottieOmittedSharpVariation on Lean 4.33.1
+'QuarticModel.dottie_norm_block_eq_Ioc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_omitted_sharp_eq_norm_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_norm_block_shift_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_norm_block_completed_shift_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_omitted_sharp_circle_anchored_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieDyadicCoefficient on Lean 4.33.1
+'QuarticModel.archivedLatticeCoeff_two_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieDyadicNormBlocks on Lean 4.33.1
+'QuarticModel.dottie_norm_block_eq_prefix_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_even_norm_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_norm_block_dyadic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_first_omitted_dyadic' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieReferenceCandidate on Lean 4.33.1
+'QuarticModel.dottie_paired_candidate_clears_reference_threshold' depends on axioms: [propext]
+'QuarticModel.dottieCircleReference_pos_of_candidate_equality' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottiePairedRow11000 on Lean 4.33.1
+'QuarticModel.dottiePairedRow11000' depends on axioms: [propext, Classical.choice, Quot.sound]

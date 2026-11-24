@@ -1,0 +1,11 @@
+DottieStructuralJacobi on Lean 4.33.1
+'QuarticModel.dottieStructuralRowSign_eq' depends on axioms: [propext, Quot.sound]
+'QuarticModel.dottieLookupRowSign_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieStructuralPairBlocks on Lean 4.33.1
+'QuarticModel.dottie_pair_row_block_with_sign_eq' depends on axioms: [propext, Quot.sound]
+
+DottieOmittedHorizontalSlope on Lean 4.33.1
+'QuarticModel.dottie_joint_omitted_eq_two_sides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_joint_omitted_im_le_of_horizontal_slope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_joint_ring_budget_of_horizontal_slope' depends on axioms: [propext, Classical.choice, Quot.sound]

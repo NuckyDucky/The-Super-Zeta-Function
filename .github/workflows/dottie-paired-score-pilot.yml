@@ -1,0 +1,82 @@
+name: Dottie paired-score pilot
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/dottie-paired-score-pilot.yml'
+      - 'tools/dottie-compute-pilot/**'
+  workflow_dispatch:
+    inputs:
+      first_row:
+        description: First row of the lower shard, from 1 through 16509
+        required: true
+        default: 11000
+        type: number
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dottie-paired-score-pilot-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  paired-score:
+    name: Paired score, shard ${{ matrix.shard }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      DOTTIE_SOURCE: 163f2bc23c88d7bb7c5862cdd2132fe900f9231f
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        shard: [0, 1]
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
+      - name: Check out the exact Lean source
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          ref: ${{ env.DOTTIE_SOURCE }}
+          path: .dottie-source
+          sparse-checkout: lean-ideal73
+          persist-credentials: false
+      - name: Install pinned elan
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --silent --show-error --location --retry 3 -o elan.tar.gz https://github.com/leanprover/elan/releases/download/v4.3.0/elan-x86_64-unknown-linux-gnu.tar.gz
+          echo '0c71472fa3ac34871dc1e2539993cca222d7656b42a1469f8f8c97c22f9adab2  elan.tar.gz' | sha256sum --check
+          tar -xzf elan.tar.gz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24.19.0'
+      - name: Generate candidates and replay packed witnesses in Lean
+        env:
+          REQUESTED_FIRST_ROW: ${{ inputs.first_row }}
+          SHARD: ${{ matrix.shard }}
+        run: |
+          first=11000
+          if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
+            first="$REQUESTED_FIRST_ROW"
+          fi
+          node tools/dottie-compute-pilot/run-shard.mjs \
+            .dottie-source/lean-ideal73 "$DOTTIE_SOURCE" \
+            "$RUNNER_TEMP/dottie-paired-score-$SHARD" "$first" "$SHARD"
+      - name: Upload candidate and kernel logs
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: dottie-paired-score-shard-${{ matrix.shard }}
+          path: |
+            ${{ runner.temp }}/dottie-paired-score-${{ matrix.shard }}/*.csv
+            ${{ runner.temp }}/dottie-paired-score-${{ matrix.shard }}/*.json
+            ${{ runner.temp }}/dottie-paired-score-${{ matrix.shard }}/*.sha256
+            ${{ runner.temp }}/dottie-paired-score-${{ matrix.shard }}/*.txt
+            ${{ runner.temp }}/dottie-paired-score-${{ matrix.shard }}/kernel/*.lean
+            ${{ runner.temp }}/dottie-paired-score-${{ matrix.shard }}/kernel/*.log
+          if-no-files-found: warn
+          retention-days: 7

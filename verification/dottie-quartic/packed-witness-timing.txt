@@ -1,0 +1,14 @@
+Windows, Lean 4.33.1, one worker, same 256-position sample of row 11000.
+
+lookup: 2191.405000 ms
+witness: 786.662100 ms
+'DottieWitnessBenchmark.lookup_same_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieWitnessBenchmark.witness_same_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieWitnessBenchmark.corrupted_root_rejected' depends on axioms: [propext]
+packed: 778.761600 ms
+'DottieWitnessBenchmark.packed_same_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieWitnessBenchmark.corrupted_packed_root_rejected' depends on axioms: [propext]
+
+Full row 11000, widths of 1024. Baseline 202.8733882 s, lookup 113.8425128 s, witnesses as a list 58.0777593 s, packed witnesses 51.9001127 s.
+Compiled row size in bytes, witness list 4704800, packed 149680.
+'QuarticModel.dottiePairedRow11000' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,68 @@
+DottiePreciseHeight on Lean 4.33.1
+'SuperZeta.StirlingCorrection.dottieHeight_precise_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieQuickLog on Lean 4.33.1
+'_private.DottieQuickLog.0.QuarticModel.residual_log_ticks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieQuickLogLowerTicks_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieQuickLogLowerTicks_sharp_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieReferencePhaseEnclosure on Lean 4.33.1
+'QuarticModel.dottie_reference_norm_log_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_reference_phase_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieDividedSinh on Lean 4.33.1
+'QuarticModel.dottie_divided_sinh_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_cosh_taylor_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieSharpAffineExponent on Lean 4.33.1
+'QuarticModel.dottie_sharp_exponent_slope_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_relative_factor_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_relative_factor_norm_le_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_relative_factor_sub_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_affine_domain_on_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_pair_norm_le_eighteen' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieSharpFactoredProjection on Lean 4.33.1
+'QuarticModel.dottie_reflected_horner_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_sharp_divided_sinh_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.DottieSharpFactoredProjection.0.QuarticModel.dottie_factored_projection_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.dottie_sharp_margin_of_factored_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieSharpFactoredArcs on Lean 4.33.1
+'QuarticModel.dottie_sharp_margin_of_factored_arc_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFixedIntervals on Lean 4.33.1
+'QuarticModel.DottieFixedIntervals.Interval.mul_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Interval.inv_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.mul_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.pad_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFixedMomentTail on Lean 4.33.1
+'QuarticModel.DottieFixedIntervals.sharpTailMomentBox_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.referenceTailMomentBox_sound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottiePreciseMomentHeight on Lean 4.33.1
+'QuarticModel.signed_moment_height_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_moment_exact_height_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieMomentPhase on Lean 4.33.1
+'QuarticModel.dottie_moment_reduced_angle_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_moment_rational_phase_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFixedTaylor on Lean 4.33.1
+'QuarticModel.DottieFixedIntervals.Rect.horner_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.expBox_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.coshBox_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.Rect.dividedSinhBox_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieFixedCircle on Lean 4.33.1
+'QuarticModel.DottieFixedIntervals.circleUnitBox_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.circleTrigBox_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.circleXYBox_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieHalfCombinedCertificate on Lean 4.33.1
+'QuarticModel.dottie_retained_half_integer_sums' depends on axioms: [propext, Classical.choice, Quot.sound]

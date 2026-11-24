@@ -1,0 +1,19 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib: 0df444a360eaa60ab8c11dca51a86af692955474
+Building ArchivedDottieHeight
+'SuperZeta.StirlingCorrection.dottieHeight_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building DottieLogTrapezoid
+'QuarticModel.log_trapezoid_one_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_log_trapezoid' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building DottieGammaPhase
+'QuarticModel.dottie_gammaSeq_eq_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_phase_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_endpoint_phase_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_log_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_phase_with_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building DottieReferencePhase
+'QuarticModel.dottie_gamma_phase_near_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_reference_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building DottieReferencePhaseEnclosure
+'QuarticModel.dottie_gamma_reference_phase_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS 5 project source modules

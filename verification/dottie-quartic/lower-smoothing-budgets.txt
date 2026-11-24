@@ -1,0 +1,55 @@
+DottieReferenceQuantitative on Lean 4.33.1
+'QuarticModel.dottieCircleReference_lower_of_quick_score' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCircleReference_lower_of_candidate_equality' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.dottie_far_budget_of_reference_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_far_budget_of_candidate_equality' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieRectangleResidue on Lean 4.33.1
+'QuarticModel.rectangular_div_residue_at_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_rectangle_residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerContourData on Lean 4.33.1
+'QuarticModel.dottie_lower_smoothing_eq_two_sides' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerContourShift on Lean 4.33.1
+'QuarticModel.dottie_lower_side_eq_finite_contour' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_lower_smoothing_eq_finite_contours' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLeftGammaLocal on Lean 4.33.1
+'QuarticModel.dottie_gamma_norm_recurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_left_tilted_norm_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerLeftBound on Lean 4.33.1
+'QuarticModel.dottie_theta_scale_gt_three_halves_million' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_finite_absolute_mass_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_normalized_left_segment_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerGammaHorizontal on Lean 4.33.1
+'QuarticModel.dottie_lower_gamma_horizontal' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerGammaRightTail on Lean 4.33.1
+'QuarticModel.dottie_lower_right_tail_gamma_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerHorizontalBound on Lean 4.33.1
+'QuarticModel.dottie_normalized_lower_horizontal_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerRightBound on Lean 4.33.1
+'QuarticModel.dottie_normalized_right_exterior_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerFullBudget on Lean 4.33.1
+'QuarticModel.dottie_smoothing_side_uniform_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_lower_omitted_smoothing_uniform_absolute' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.dottie_retained_prefix_smoothing_uniform_absolute' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.dottie_right_sphere_coordinate_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_lower_omitted_budget_of_candidate_equality' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.dottie_retained_prefix_budget_of_candidate_equality' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

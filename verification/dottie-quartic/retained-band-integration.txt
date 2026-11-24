@@ -1,0 +1,30 @@
+DottieLeftGammaLocal on Lean 4.33.1
+'QuarticModel.dottie_gamma_norm_recurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_shifted_tilted_norm_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_gamma_left_tilted_norm_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieLowerRightBound on Lean 4.33.1
+'QuarticModel.dottie_normalized_right_exterior_large_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_normalized_right_exterior_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieRetainedCore on Lean 4.33.1
+'QuarticModel.dottie_normalized_right_core_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_range_side_bound_of_core_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieRetainedBandBounds on Lean 4.33.1
+'QuarticModel.dottie_retained_band_core_of_integer_sums' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_bands_bound_of_integer_sums' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_ring_painted_orders_of_integer_bands_and_signed_blocks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieBandCoefficientChecks on Lean 4.33.1
+'QuarticModel.archivedLatticeCoeff_eq_zero_of_mod_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedLatticeCoeff_mul_of_coprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedLatticeCoeff_two_pow_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_coefficient_zero_of_coprime_witness' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.archivedLatticeCoeff_eq_zero_of_rational_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_zero_check_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_band_first_eight_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

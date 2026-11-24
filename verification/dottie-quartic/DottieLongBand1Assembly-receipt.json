@@ -1,0 +1,56 @@
+{
+  "version": "Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "lean_sha256": "af49bacfabaa1fea71332ca0feae0fa1a60912219d5902291adc79f905bffb8d",
+  "proof_import_sha256": {
+    "DottieBandLucasCheck.olean": "9dea143a323aa39924bc8601527ce2d8cddc89ea22e30575124506bbac38d499",
+    "DottieBandChunkReplay.olean": "caf7cae113549450026630a06529cbe038906a503c882f763de86da121fe3de4"
+  },
+  "module": "DottieLongBand1Assembly",
+  "range": [
+    "1854467118035498894",
+    "1854467118035629965"
+  ],
+  "theorem": "QuarticModel.DottieLongBand1Assembly.certificate",
+  "source_sha256": "30acdabc6cd9a59e796ea451e3a3cf7d385a14644e662a73e03842d2e26678e8",
+  "block_olean_sha256": {
+    "DottieLongBand1Block000001": "8da37858d60983050d997ba75adf51c82ab7e9398711757fcbd9830537f8c39a",
+    "DottieLongBand1Block000002": "9d9dafefa1adb04f90e8634a7f9d457f054c363da923e2261ef4fe6029db3ede",
+    "DottieLongBand1Block000003": "91e9ff4240d3e678991b0fe59c6412765f2750bdbd5e5b565d490070a09ade33",
+    "DottieLongBand1Block000004": "108532491dc1b6dbed3212bdab93620b906f14a0cfefcabe86e72947f9e38e0a",
+    "DottieLongBand1Block000005": "ec2ad355b37b97a67365360cdb2642cacff4ebc7dc0c86f457d620c88508ded7",
+    "DottieLongBand1Block000006": "3788f482340d7b9b8282660230d88ed9e1d1ef56f20da05411605a081f96bac2",
+    "DottieLongBand1Block000007": "35e61fd3bf5947b91b29026918d5c4768e859fe0f3e66188ac542bf832f8e358",
+    "DottieLongBand1Block000008": "a96ce5d44d599cbc018f45f2e28fa05fe4c1b58770807c9157b660f1c61d405b",
+    "DottieLongBand1Block000009": "bb1dc683cb89da98600d73cce2b9e40be0a20e4ec34ab916b24db1e54cbeafc7",
+    "DottieLongBand1Block000010": "9b4116f2b50224082d638f8db7d64bfb814afcb44b781e9a44b937fbe0d74e2c",
+    "DottieLongBand1Block000011": "3c54a304423ba7cc7eb18b7eadec66c37e3b6612b6c4cac3aae5332f15795976",
+    "DottieLongBand1Block000012": "65a786ef371aa0dbd688e67e382fbc1a86d04398c5569938bd3f6009f2d9b209",
+    "DottieLongBand1Block000013": "caf7b3e0464b5ae64bb8a8dbdc7d8b8f8eb3d1ee2247f0423e93fc7a02c1afbe",
+    "DottieLongBand1Block000014": "90c762f53415c3cd9967b51b894992e0298167ad5bac09d131cf04c67f4417b5",
+    "DottieLongBand1Block000015": "e8a89c0f76ac5c18923f2e43d60ab6e667c72071b2e7730627659e841c48218a",
+    "DottieLongBand1Block000016": "33ee8ab1c096dba056bbc0a35985b7341d6bbf22f76c2cfe35b3d847e26893bc",
+    "DottieLongBand1Block000017": "6a43e56da646a686ccebe88f5e7aebe009b7701e5162d37c88b3ecc118d133e3",
+    "DottieLongBand1Block000018": "e4487a5754f13fa0f4ac315470f881a833ac8b4955e37c61292a6b2f1b4fbadd",
+    "DottieLongBand1Block000019": "66896618970c88a725079353d142efdd613c0e64c5a63413f472755614c57bd1",
+    "DottieLongBand1Block000020": "aa9d01f3de69fbbf047aa5597c165a67b4934e1ef219463274bb1860f312828f",
+    "DottieLongBand1Block000021": "0b6bb177cb4ad95f69c6b0a427af3d034238b5b18d4d48a6bc0fd5ee147e8835",
+    "DottieLongBand1Block000022": "84e41ec0fa6b950804c086989913acdcb19b95bd64c79245a34062977040019f",
+    "DottieLongBand1Block000023": "10ea08daab253bd592e37c131648f1d73b8d27719bdd18e38b3281fceb9811d0",
+    "DottieLongBand1Block000024": "97dbe2de77c981cb50f7a6b397a1c9e79825f6107db95292f0c4f4ad57b17097",
+    "DottieLongBand1Block000025": "ecfb2b10239538f23d95952b4dcd59c1b10a9de7837f9cf09b1e48778b4295dc",
+    "DottieLongBand1Block000026": "993a5d4020ed88e8b713ddedc46e13c700361ede4482111e166f8e84ff221b38",
+    "DottieLongBand1Block000027": "994725313c7eb67c213a84d3131ba5cb51730eb952a74e908be875fde8276bac",
+    "DottieLongBand1Block000028": "1b8e2a2d05a282d327a37bbd0a697d193f4b208982c77758cf9822a61e751d2e",
+    "DottieLongBand1Block000029": "9f58772af5f059e22879eb8fedfe2ac848aca44e04bddfd3738667837a7b81e4",
+    "DottieLongBand1Block000030": "9535b86154b3c86aa3e38b5a0136287ef9e918f90216ea41b9dcb8c9a3021438",
+    "DottieLongBand1Block000031": "f4eb50ef6fd9447eff28f9afc86bbe6bdd95a6347ac62926217b7f071b6ca76c",
+    "DottieLongBand1Block000032": "f69a13635cc2b0d4e3b81e98d1bee73552f9e32bce89c2e2aeb97dddb3485be4"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "olean_sha256": "61ef43d597702718f81223e475886da3859a3c6fd234fd0f0d2ceeac1747d8dd",
+  "seconds": 10.48794839999755
+}

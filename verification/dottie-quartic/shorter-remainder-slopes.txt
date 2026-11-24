@@ -1,0 +1,10 @@
+Lean 4.33.1. Single-process source check with -DwarningAsError=true exited 0.
+Replay after building imports from lean-ideal73 with lake env lean -DwarningAsError=true DottieShorterRemainderSlope.lean.
+The archived field product theorem takes the score and band checks, signed cell estimates, and factor nonvanishing as premises.
+
+'QuarticModel.reflected_im_le_of_partition_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_shorter_omitted_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_shorter_omitted_eq_two_sides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_shorter_ring_budget_of_partition_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_shorter_ring_budget_of_uniform_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_right_field_nonzero_of_uniform_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]

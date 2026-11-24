@@ -1,0 +1,10 @@
+DottieSymmetricScore on Lean 4.33.1
+'QuarticModel.dottieSymmetricScore' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieSymmetricScore_eq_dottieTriangleScore' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieSymmetricChunks on Lean 4.33.1
+'QuarticModel.dottiePairRowBlock_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottiePairRowBlock_eq_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieSymmetricScore_eq_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieQuickReferenceScore_eq_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieCircleReference_pos_of_symmetric_score' depends on axioms: [propext, Classical.choice, Quot.sound]

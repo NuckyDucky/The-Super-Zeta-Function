@@ -1,0 +1,55 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release) / Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Reuse SuperZeta.Spectrum
+Reuse SuperZeta.Reference
+Reuse SuperZeta.Kernel
+Reuse SuperZeta.MellinStep
+Reuse SuperZeta.TaylorKernel
+Reuse SuperZeta.MellinContinuation
+Reuse SuperZeta.Stieltjes
+Reuse SuperZeta.ReferenceProduct
+Reuse SuperZeta.ReferenceResolvent
+Reuse SuperZeta.Barnes
+Reuse SuperZeta.Reciprocal
+Reuse SuperZeta.Quartet
+Reuse SuperZeta.QuartetRadius
+Reuse SuperZeta.RootBounds
+Reuse SuperZeta.Ray
+Reuse SuperZeta.Dottie
+Reuse SuperZeta.QuartetLevels
+Reuse SuperZeta.CoupledDeterminant
+Reuse SuperZeta.CoupledProduct
+Reuse SuperZeta.DiskGrowth
+Reuse SuperZeta.DiskProductLimit
+Reuse SuperZeta.DiskRemoval
+Reuse SuperZeta.DiskLog
+Reuse SuperZeta.DiskRigidity
+Reuse SuperZeta.DeterminantProduct
+Reuse SuperZeta.Multiplicity
+Reuse SuperZeta.UnitSpectrum
+Reuse SuperZeta.QuarterLine.QuartetShiftBounds
+Reuse SuperZeta.QuarterLine.QuartetShiftBoundsSeries
+Reuse SuperZeta.QuarterLine.QuartetShiftContinuation
+Reuse SuperZeta.QuarterLine.QuartetLeading
+Reuse SuperZeta.QuarterLine.QuartetBandCauchy
+Reuse SuperZeta.QuarterLine.QuartetLeadingParts
+Reuse SuperZeta.QuarterLine.QuarterEuler
+Reuse SuperZeta.QuarterLine.QuartetBandParts
+Reuse SuperZeta.QuarterLine.QuartetBandTail
+Reuse SuperZeta.QuarterLine.QuarterScalar
+Reuse SuperZeta.QuarterLine.QuartetBandDominance
+Reuse SuperZeta.QuarterLine.QuartetActualSpiral
+Reuse SuperZeta.QuarterLine.QuarterUnivalent
+Reuse SuperZeta.QuarterLine.QuartetSpiral
+Reuse SuperZeta.QuarterLine.QuarterOriginalUnivalent
+Building SuperZeta.QuarterLine.QuarticTurn
+'SuperZeta.QuarticTurn.four_jTurns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.four_turns' does not depend on any axioms
+'SuperZeta.QuarticTurn.square_turn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.marked_to_other_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.actual_sum_after_turn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.same_reading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.recover_ordered_classes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.j_commutes_with_classSwap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.gaussian_zero_set_after_j' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.QuarticTurn.orbit_at_gaussian_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS 43 Super Zeta source modules

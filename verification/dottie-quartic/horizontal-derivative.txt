@@ -1,0 +1,18 @@
+DottieRangeContourLocal on Lean 4.33.1
+'QuarticModel.dottieRangeLogPolynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_range_integrand_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_range_integrand_differentiableAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_range_integrand_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_range_integrand_deriv_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieRangeDomination on Lean 4.33.1
+'QuarticModel.dottie_range_contour_uniform_value_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_range_contour_derivative_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieRangeDifferentiation on Lean 4.33.1
+'QuarticModel.dottie_range_side_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieJointOmittedDerivative on Lean 4.33.1
+'QuarticModel.dottie_joint_omitted_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_omitted_horizontal_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_joint_ring_budget_of_signed_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]

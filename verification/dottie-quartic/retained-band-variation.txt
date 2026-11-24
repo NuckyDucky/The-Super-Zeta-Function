@@ -1,0 +1,6 @@
+DottieBandVariation on Lean 4.33.1
+'QuarticModel.dottie_band_abel_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_exp_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_cpow_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_polynomial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_band_phase_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]

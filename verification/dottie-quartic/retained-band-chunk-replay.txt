@@ -1,0 +1,39 @@
+DottieBandLucasCheck on Lean 4.33.1
+'QuarticModel.dottie_band_lucas_check_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_prime_table_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_prime_root_ok_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieBandFactorCheck on Lean 4.33.1
+'QuarticModel.dottie_band_split_value_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_inert_value_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_factored_row_check_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieBandChunkReplay on Lean 4.33.1
+'QuarticModel.dottie_band_append_chunks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_integer_sums_of_chunk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_band_check_rows_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DottieBandFirstTwoChunks on Lean 4.33.1
+'QuarticModel.dottie_second_nonzero_band_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_band_replay_first_sixteen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_band_replay_second_sixteen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_band_replay_first_thirty_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_retained_band_first_thirty_two_integer_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieBandFirst256 on Lean 4.33.1
+'QuarticModel.DottieBandWitness1854467118035498894_256.dottie_retained_band_first_256_chunk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieBandWitness1854467118035498894_256.dottie_retained_band_first_256_integer_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DottieBandArchivedShort4096 on Lean 4.33.1
+'QuarticModel.DottieBandBlock1854467118035629966_4096.certificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieBandBlock1854467118035629966_4096.dottie_retained_short_band_integer_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,20 @@
+Windows, Lean 4.33.1, single worker, synchronous kernel checks on b=5121..5376 of row 11000.
+Every score uses the same integer target.
+
+old_signs: 3216.474300 ms
+'DottieStructuralProfile.old_signs' depends on axioms: [propext]
+structural_signs: 2012.288700 ms
+'DottieStructuralProfile.structural_signs' depends on axioms: [propext]
+lookup_signs: 1497.479800 ms
+'DottieStructuralProfile.lookup_signs' depends on axioms: [propext]
+old_score: 3843.902700 ms
+'DottieStructuralProfile.old_score' depends on axioms: [propext]
+matched_score: 3790.395200 ms
+'DottieStructuralProfile.matched_score' depends on axioms: [propext]
+structural_score: 2615.185900 ms
+'DottieStructuralProfile.structural_score' depends on axioms: [propext]
+lookup_score: 2089.271800 ms
+'DottieStructuralProfile.lookup_score' depends on axioms: [propext]
+
+Full row 11000, width 1024. Original replay 202.8733882 s. Lookup replay 113.8425128 s.
+'QuarticModel.dottiePairedRow11000Lookup' depends on axioms: [propext, Classical.choice, Quot.sound]
