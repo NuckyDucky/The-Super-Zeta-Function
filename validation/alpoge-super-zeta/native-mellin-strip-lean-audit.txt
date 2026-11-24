@@ -1,0 +1,151 @@
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+NativeDottieRay
+'DottieOriented.TraceRecovery.firstCorrection_pi_div_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.TraceRecovery.firstCorrection_neg_pi_div_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.determinant_contrast_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.determinant_zeros_disjoint_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.reference_ray_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.determinant_ray_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.kernel_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieMellin
+'DottieOriented.NativeSpectrum.kernel_tail_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.kernel_small_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.correction_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.correction_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.archived_first_corrections' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieContact
+'DottieOriented.NativeSpectrum.arithmetic_hurwitz_shifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.reference_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.corrected_slopes_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.contrast_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.values_at_reference_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.same_input_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.native_cross_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.native_cross_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.native_ratio_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.native_cross_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.raw_signed_slope_regular' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieOrigin
+'DottieOriented.NativeSpectrum.origin_return_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.crossed_origin_angles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.first_reading_from_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieContour
+'DottieOriented.NativeSpectrum.weightedCircle_of_simple_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.unique_simple_zero_of_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstDisk_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstContour_read' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstContour_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieGapDisk
+Try this: ring_nf
+'DottieOriented.NativeSpectrum.logGap_on_ray' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstGap_taylor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.normalized_gap_on_first_disk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstDisk_correctionGap_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.gap_ne_zero_from_center_coefficients' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.firstContour_taylor_certificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieOriented.NativeSpectrum.firstContour_taylor_certificate (hzero : 1188 / 10 ^ 9 ≤ ‖centerCoefficient 0‖)
+  (hhigh : ∀ (k : ℕ), 0 < k → k < 4 → ‖centerCoefficient k‖ ≤ 5 / 10 ^ 6)
+  (hcenter : ‖nativeCross firstCenter / firstDirection‖ ≤ 1 / 10 ^ 6)
+  (hdefect : ∀ s ∈ closedBall firstCenter firstRadius, ‖1 - deriv nativeCross s / firstDirection‖ ≤ 1 / 4) :
+  (∀ s ∈ closedBall firstCenter firstRadius, 118 / 10 ^ 8 < ‖normalizedGap s‖) ∧
+    (weightedCircle firstCenter firstRadius nativeCross fun x => 1) = 1 ∧
+      firstContourPoint ∈ ball firstCenter firstRadius ∧
+        nativeCross firstContourPoint = 0 ∧
+          deriv nativeCross firstContourPoint ≠ 0 ∧
+            riemannZeta (2 * firstContourPoint) = 0 ∧
+              ∀ s ∈ closedBall firstCenter firstRadius, nativeCross s = 0 → s = firstContourPoint
+exit=0
+WeightedContourTransfer
+'SuperZeta.WeightedContour.moment_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.moment_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.moment_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.moment_local_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.isolate_third_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.moment_from_signed_detector' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieFactorContours
+'DottieOriented.NativeSpectrum.native_contour_subtract_factors' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.native_contour_subtract_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.origin_contour_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieFirstLine
+'DottieOriented.NativeSpectrum.firstDisk_reflects' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstContour_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieOriented.NativeSpectrum.firstContour_on_line (hzero : 1188 / 10 ^ 9 ≤ ‖centerCoefficient 0‖)
+  (hhigh : ∀ (k : ℕ), 0 < k → k < 4 → ‖centerCoefficient k‖ ≤ 5 / 10 ^ 6)
+  (hcenter : ‖nativeCross firstCenter / firstDirection‖ ≤ 1 / 10 ^ 6)
+  (hdefect : ∀ s ∈ closedBall firstCenter firstRadius, ‖1 - deriv nativeCross s / firstDirection‖ ≤ 1 / 4) :
+  firstContourPoint.re = 1 / 4 ∧
+    (weightedCircle firstCenter firstRadius nativeCross fun x => 1) = 1 ∧
+      riemannZeta (2 * firstContourPoint) = 0 ∧
+        ∀ s ∈ closedBall firstCenter firstRadius, riemannZeta (2 * s) = 0 ↔ s = firstContourPoint
+exit=0
+NativeDottieMellinExpression
+exit=0
+NativeDottieMellinFinite
+'DottieOriented.NativeSpectrum.centerCoefficient_truncation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.centerCoefficient_truncation_first' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.finiteLogGap_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.finiteCoefficientDensity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.finiteCoefficient_integral_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.centerCoefficients_of_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstDisk_correctionGap_lower_of_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+CauchyPanelQuadrature
+'SuperZeta.CauchyPanelQuadrature.error_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+MellinQuadratureRule
+'SuperZeta.CauchyPanelQuadrature.rule_certified' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.CauchyPanelQuadrature.error_25_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.CauchyPanelQuadrature.error_25_panel' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+MellinStripBound
+'DottieOriented.NativeSpectrum.determinantRatio_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.norm_stripLogGap_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.holomorphicMellinDensity_ofReal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.holomorphicMellinDensity_differentiableAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.norm_holomorphicMellinDensity_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinStripQuadrature
+'DottieOriented.NativeSpectrum.mellinQuadrature_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.mellinQuadratureComponent_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.mellinQuadratureComponent_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.firstDisk_correctionGap_lower_of_quadrature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinOriginSample
+'DottieOriented.NativeSpectrum.mellinOriginSample' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+MellinRationalSum
+'DottieOriented.NativeSpectrum.mellinRationalSum_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstDisk_correctionGap_lower_of_rational_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0

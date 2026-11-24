@@ -31,7 +31,8 @@ try {
     $modules = @('NativeDottieRay', 'NativeDottieMellin', 'NativeDottieContact', 'NativeDottieOrigin',
         'NativeDottieContour', 'NativeDottieGapDisk', 'WeightedContourTransfer',
         'NativeDottieFactorContours', 'NativeDottieFirstLine', 'NativeDottieMellinExpression',
-        'NativeDottieMellinFinite', 'CauchyPanelQuadrature', 'MellinQuadratureRule')
+        'NativeDottieMellinFinite', 'CauchyPanelQuadrature', 'MellinQuadratureRule',
+        'MellinStripBound', 'MellinStripQuadrature', 'MellinOriginSample', 'MellinRationalSum')
     foreach ($module in $modules) {
         $module
         & $lean -j1 '-DwarningAsError=true' "--root=$packet" -o "$out/$module.olean" "$packet/$module.lean"

@@ -82,7 +82,7 @@ From the repository's `lean` directory, build the imports and run the packet wit
 
 ```powershell
 lake exe cache get
-lake build +SuperZeta.Oriented.SpectralInverse:olean +SuperZeta.Oriented.FirstCorrection:olean +SuperZeta.Oriented.LiuConnection:olean +SuperZeta.MellinContinuation:olean +SuperZeta.Multiplicity:olean
+lake build +SuperZeta.Oriented.SpectralInverse:olean +SuperZeta.Oriented.FirstCorrection:olean +SuperZeta.Oriented.LiuConnection:olean +SuperZeta.MellinContinuation:olean +SuperZeta.Multiplicity:olean +SuperZeta.MemePrecision:olean
 $lean419 = (elan which lean).Trim()
 & ../validation/alpoge-super-zeta/replay-native.ps1 -LeanExecutable $lean419 -SuperZetaLibrary .lake/build/lib/lean -MathlibPackages .lake/packages
 ```

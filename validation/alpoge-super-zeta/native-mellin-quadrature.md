@@ -43,4 +43,25 @@ $$
 
 The 192-bit Arb replay uses 1,201 panels. It checks that the two determinant values stay in the right half-plane on each enlarged panel, bounds the complex integrand there, and evaluates the 25 nodes of each panel. All eight inequalities pass. The largest summed quadrature error bound is below $9\cdot10^{-20}$, before adding the infinite-tail allowance. The finite node enclosures and the bounds on the enlarged panels come from Arb in this replay. [Lean Cauchy estimate](CauchyPanelQuadrature.lean) · [Exact panel rule](MellinQuadratureRule.lean) · [Arb replay](check_native_mellin_quadrature.py) · [Recorded enclosures](native-mellin-quadrature-output.txt)
 
-The 13-module replay uses Lean 4.19.0. Run [replay-native.ps1](replay-native.ps1) with the [pinned toolchain and library paths](native-contact.md). For the finite numerical check, use Python with python-flint 0.9.0 and run `python check_native_mellin_quadrature.py`. [Lean build and axiom audit](native-mellin-lean-audit.txt)
+## One complex strip for every panel
+
+I put $z=e^u$, $A=3+4(\sinh^2z+z^2)$, and $q=4z\sinh z/A$. On the entire strip $|\Im u|\le1/16$, Lean proves $A\ne0$ and $|q|\le2/3$. For $\Re z\le4$ I bound the arguments of $z$ and $\sinh z$ through their real and imaginary parts. For $\Re z\ge4$ I multiply both determinants by $e^{-2z}$ and bound the terms around $1$. The two expressions give the same $q$.
+
+If $|q|\le2/3$, the logarithms $\log(1-q)$ and $\log(1+q)$ are holomorphic there and their difference has norm at most $8/3$. Lean checks that the resulting complex integrand agrees with the exact Mellin integrand at every real $u$. [Complex strip proof](MellinStripBound.lean)
+
+I divide $[-32,5]$ into 2,368 panels of width $1/64$. The radius-$1/16$ Cauchy circles all fit in the proved strip. The whole integral then differs from the weighted sum by at most $10^{-12}$ for $k=0$ and $10^{-8}$ for $k=1,2,3$. Let $Q_k$ be that sum. If
+
+$$
+\Re Q_0\le-\frac{11566}{10^{10}},\qquad
+\Im Q_0\le-\frac{2741}{10^{10}},\qquad
+|\Re Q_k|\le\frac{270}{10^8},\qquad
+|\Im Q_k|\le\frac{404}{10^8}\quad (1\le k\le3),
+$$
+
+then Lean gives $|W(s)|>11600$ across the original closed disk. The 192-bit Arb replay supplies the eight weighted-sum inputs. Use `python check_native_mellin_quadrature.py --uniform-strip` for that partition. [Partition and disk theorem](MellinStripQuadrature.lean) · [Directed replay output](native-mellin-strip-output.txt)
+
+At the node $u=0$, my earlier $\widehat\pi$ calculation supplies the Lean bound on $e$. The real Mellin reading is between $-0.789230109860795$ and $-0.789230109860793$, and the imaginary reading is $0$. Lean reduces the log comparison to two exact rational Taylor checks with `decide +kernel`. [Origin sample theorem](MellinOriginSample.lean)
+
+If I replace each real and imaginary node reading of the zeroth density by a rational within $10^{-14}$, the contribution to the error in the $k$th weighted sum is at most $37(64^k/k!)10^{-14}$. The same pair of node readings feeds all four moments. Lean carries eight exact rational comparisons and those node enclosures to the closed-disk gap. The replay checks the proposed node errors with Arb and checks the rational sums with Python's Fraction. [Rational sum theorem](MellinRationalSum.lean) · [Recorded checks](native-mellin-strip-output.txt)
+
+The 17-module replay uses Lean 4.19.0. Run [replay-native.ps1](replay-native.ps1) with the [pinned toolchain and library paths](native-contact.md). Both numerical replays use python-flint 0.9.0. [Current Lean build and axiom audit](native-mellin-strip-lean-audit.txt)
