@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { sealCheckpoint } from './checkpoint-results.mjs';
 
 const cutoff = 276824064;
 const rowCount = 16638;
@@ -132,6 +133,11 @@ async function compileBatch(lean, directory, rows, mode, witness) {
       throw new Error(`Unexpected axioms for ${declaration}. See ${name}.log`);
     }
     console.log(axiomLine[0]);
+  }
+  if (process.env.DOTTIE_CHECKPOINT_SPOOL) {
+    const files = ['lean', 'olean', 'log'].map(extension => resolve(directory, `${name}.${extension}`));
+    const checkpoint = await sealCheckpoint(process.env.DOTTIE_CHECKPOINT_SPOOL, files);
+    console.log(`Saved proof checkpoint ${checkpoint}`);
   }
 }
 

@@ -1,0 +1,5 @@
+import DottieProductionJoined
+
+#print axioms QuarticModel.dottieProductionFullSpan_eq_candidate
+#print axioms QuarticModel.dottieProductionQuickReferenceScore_eq_candidate
+#print axioms QuarticModel.dottieProductionCircleReference_pos
