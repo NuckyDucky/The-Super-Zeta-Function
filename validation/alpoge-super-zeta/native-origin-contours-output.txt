@@ -1,0 +1,9 @@
+Arb bits 256 Mellin Taylor order 18 zeta Taylor order 32
+Center 0; radius 1/128
+Normalized gap norm on disk > [1.771453360095620 +/- 1.56e-16]
+Ordinary zeta norm on disk > [0.4844523812644184 +/- 3.65e-17]
+cross-product [3.0000000000000000000 +/- 5.95e-22] + [+/- 5.93e-22]j
+correction gap [2.0000000000000000000 +/- 2.17e-21] + [+/- 2.17e-21]j
+arithmetic prefactor [1.0000000000000000000 +/- 1.73e-23] + [+/- 1.71e-23]j
+ordinary zeta [+/- 3.91e-20] + [+/- 3.91e-20]j
+Cross minus gap minus prefactor [+/- 2.78e-21] + [+/- 2.78e-21]j

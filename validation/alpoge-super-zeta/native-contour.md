@@ -27,7 +27,7 @@ $$
 
 The bound on the exponential Taylor remainder is $|z|^4 e^{|z|}$ with $z=-2(s-c)u$. I use $|z|\le|u|/4$ and $|u|^4\le384e^{|u|/2}$. That leaves the integrable majorant $12288(2r)^4e^{-|u|/4}$, with integral $98304(2r)^4$. If $|m_0|\ge1188/10^9$ and $|m_1|,|m_2|,|m_3|\le5/10^6$, then $|M(s)|>118/10^8$ on the disk. Since $P(s)\ne0$ there, the two corrections are different throughout. [Lean tail and local kernel bounds](NativeDottieMellin.lean) · [Lean Taylor bound and exact center inputs](NativeDottieGapDisk.lean)
 
-The 256-bit Arb replay supplies the four center enclosures. The same replay independently bounds $|W|>11708$ and $|W'|<25255$ on the disk. There is also a direct variation theorem in Lean. If $|W(c)|\ge11700$ and $|W'(s)|\le30000$ on the disk, then $|W(s)|>11690$ there. [Interval output](native-contour-output.txt) · [Lean variation theorem](NativeDottieContour.lean)
+From the same four enclosures Lean now gives $|W(s)|>11600$ on the closed disk. Here $\Im s>7.0671$ and $\pi\Im s>22.2$. The reverse triangle inequality on the two exponentials in $\sin(\pi s)$ gives $|\sin(\pi s)|>2186500000$. Multiplying the resulting bound on $|P(s)|$ by $118/10^8$ gives the bound on the original correction difference. The 256-bit Arb replay supplies the four center enclosures and also gives $|W|>11708$ directly on the disk. [Lean bound](NativeDottieGapDisk.lean) · [Interval output](native-contour-output.txt)
 
 ## Reading the count and location
 
@@ -42,19 +42,28 @@ The proof is the one-simple-root case of Alpöge's argument. It uses the removab
 
 ## Recovered point and verification scope
 
-The contour integral encloses
+Reflection sends $s$ to $1/2-\bar s$, keeping the disk fixed. Lean combines the zeta functional equation and conjugation to show that the reflected zero is another zero of $\zeta(2s)$ in the disk. The nonzero gap transfers that zero to $C$. Uniqueness forces the two points to agree, so $\Re\rho=1/4$ exactly. [Lean reflection and uniqueness](NativeDottieFirstLine.lean)
+
+The 256-bit contour integral encloses $7.067362570867346895228625<\Im\rho<7.067362570867346895228627$. The height is about $4.29132653\times10^{-7}$ below the chosen center. It matches the earlier first-zero enclosure at the same spectral input. [Contour output](native-contour-output.txt) · [Earlier first-zero record](native-zero-output.txt)
+
+Lean checks the analytic error bound on the whole disk, uniqueness and simplicity from the contraction inequalities, and the weighted contour identity. The inequalities for the four center coefficients and the cross-product contraction are explicit Lean inputs supplied by the directed Arb replay. The decimal enclosure of the first moment is also an Arb result. The nine-module Lean 4.19.0 audit lists only the three standard axioms for each declaration checked. [Build, axioms and theorem types](native-factor-contours-audit.txt)
+
+## Removing correction zeros from the count
+
+Let $M_p(f)=(2\pi i)^{-1}\oint p(s)f'(s)/f(s)\,ds$, with $p$ holomorphic on a neighborhood of the disk. If $C=W A\zeta(2s)$ and all three factors are nonzero on the circumference, then the weighted contour reads
 
 $$
-\rho=[0.250000000000000000000000\ \pm 6.73\cdot10^{-25}]
-+i[7.067362570867346895228626\ \pm 6.81\cdot10^{-25}].
+M_p(\zeta(2\,\cdot))=M_p(C)-M_p(W)-M_p(A),
+\qquad A(s)=\pi^{-2s}(3^{2s}-1).
 $$
 
-In particular $7.067362570867346895228625<\Im\rho<7.067362570867346895228627$. The height is about $4.29132653\times10^{-7}$ below the chosen center. It matches the earlier first-zero enclosure at the same spectral input. [Contour output](native-contour-output.txt) · [Earlier first-zero record](native-zero-output.txt)
+This applies even if factors share an interior zero. The logarithmic derivatives add pointwise on the circle, so each factor contributes its own order. Inside $0<\Re s<1/2$, $A$ is nonzero throughout the disk and its weighted contribution is zero. [Lean factor subtraction](NativeDottieFactorContours.lean)
 
-Lean checks the analytic error bound on the whole disk, uniqueness and simplicity from the contraction inequalities, and the weighted contour identity with the exact location on its right-hand side. The concrete inequalities for the four center coefficients and the cross-product contraction, and the decimal enclosure of the moment, come from the directed Arb replay. They are numeric inputs to the Lean result. [Build, axioms and theorem type](native-contour-lean-audit.txt)
+At $s=0$ the Mellin gap is strictly negative before multiplying by $2s\sin(\pi s)/\pi$. This makes $W$ vanish to order two. The factor $3^{2s}-1$ is simple there and $\zeta(0)=-1/2$. Lean proves that for every sufficiently small positive radius the weighted contributions of $C,W,A,\zeta(2\,\cdot)$ are respectively $3p(0),2p(0),p(0),0$. A directed replay checks the concrete radius $1/128$ at 256 bits. For count weight $p=1$, subtraction reads $3-2-1=0$. [Exact origin theorem](NativeDottieFactorContours.lean) · [Directed origin check](check_native_origin_contours.py) · [Origin output](native-origin-contours-output.txt)
 
 Run the pinned Lean 4.19.0 proof with [replay-native.ps1](replay-native.ps1) using the [existing toolchain instructions](native-contact.md). With python-flint 0.9.0, run:
 
 ~~~text
 python check_native_dottie_contour.py
+python check_native_origin_contours.py
 ~~~

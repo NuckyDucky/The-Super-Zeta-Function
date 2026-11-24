@@ -59,7 +59,11 @@ If I compare the two rooted words at the archived absolute marks $-\pi/6$ and $+
 
 The second pass through Alpöge adds the weighted contour count, a good-height and prime-power window comparison, and the Artin-to-Hecke entry point for the Gaussian factor. [Exact declarations and inputs](alpoge-second-pass.md)
 
-I used the weighted circle proof on $C=J_-Z_+-J_+Z_-$ around the same first zero. If the four central Mellin coefficients meet their enclosures, Lean carries the correction separation across the disk. If the cross-product meets the residual and derivative bounds, Lean gives a single simple zero with count $1$ and location $c+(2\pi i)^{-1}\oint (s-c)C'(s)/C(s)\,ds$. The 256-bit replay supplies the numerical inputs and recovers the height in an interval of width $2\times10^{-24}$ on the spectral scale. [Proof and conventions](native-contour.md) · [Clean Lean audit](native-contour-lean-audit.txt) · [Interval output](native-contour-output.txt)
+I used the weighted circle proof on $C=J_-Z_+-J_+Z_-$ around the same first zero. If the four central Mellin coefficients meet their enclosures, Lean gives $|J_--J_+|>11600$ on the closed disk. If the cross-product meets the residual and derivative bounds, Lean gives one simple zero with count $1$ and location $c+(2\pi i)^{-1}\oint (s-c)C'(s)/C(s)\,ds$. Reflection gives $\Re s=1/4$ exactly. The 256-bit replay supplies the numerical inputs and encloses the height in an interval of width $2\times10^{-24}$ on the spectral scale. [Proof and conventions](native-contour.md) · [Clean Lean audit](native-factor-contours-audit.txt) · [Interval output](native-contour-output.txt)
+
+If the factors are nonzero on the circumference, I can subtract each factor's weighted contribution even when they share an interior zero. At the origin, Lean counts three for the cross-product, two for the corrections and one for the arithmetic prefactor. This leaves zero ordinary zeta zeros. The fixed-radius check uses $r=1/128$. [Exact subtraction and origin check](native-contour.md#removing-correction-zeros-from-the-count)
+
+For the quartic, I used Alpöge's full weighted circle theorem on the continued equal-sign detector. If the detector identity and boundary nonvanishing hold and the detector is within $e<1024/31$ of a holomorphic approximation on the right circumference, Lean excludes Gaussian zeros throughout that disk and its same-height mirror. [Quartic contour theorem and exact inputs](quartic-contour.md)
 
 ## Connections through the upstream proofs
 

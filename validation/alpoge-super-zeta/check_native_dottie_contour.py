@@ -31,6 +31,9 @@ def integral_coefficients(center, order):
     left, right = -90, 6
     tol = arb(2) ** -167
     upper_x = arb(right).exp()
+    twice_real = 2*center.real
+    small_rate = 2-twice_real
+    large_decaying_power = upper_x**(1+twice_real)
     coefficients = []
     for k in range(order):
         factorial_k = factorial(k)
@@ -41,8 +44,8 @@ def integral_coefficients(center, order):
 
         # |log_gap(x)| <= (32/3)*x^2 for x <= 1, and
         # |log_gap(x)| <= (256/9)*exp(-x/2) for x >= 0.
-        small = (arb(32) / 3) * tail_moment(arb(3) / 2, arb(-left), k)
-        large = (arb(256) / 9) * tail_moment(arb(1) / 2, upper_x, k) / (upper_x * upper_x.sqrt())
+        small = (arb(32) / 3) * tail_moment(small_rate, arb(-left), k)
+        large = (arb(256) / 9) * tail_moment(arb(1) / 2, upper_x, k) / large_decaying_power
         endpoint_error = (small + large) * 2**k / factorial_k
         pieces = [acb.integral(integrand, u, u+3, abs_tol=tol, rel_tol=tol)
                   for u in range(left, right, 3)]
@@ -58,20 +61,27 @@ def poly(coefficients, h):
     return value
 
 
-def gap_and_deriv(s, h, coefficients, pi):
-    """Enclose W(s) and W'(s), where W=J_- - J_+."""
+def unscaled_and_deriv(h, coefficients, twice_real):
+    """Enclose the normalized Mellin gap and its slope, relative to its center."""
     order = len(coefficients)
     radius = abs(h).abs_upper()
-    if not radius < arb(1) / 8:
-        return acb("nan"), acb("nan")
     x = 2 * radius
-    # For u <= 0, the weighted kernel is bounded by (32/3)*exp(3u/2).
-    # For u >= 0, exp(u) >= u gives (256/9)*exp(-u).
+    lower, upper = 2-twice_real-x, twice_real+arb(1)/2-x
+    if not (radius < arb(1) / 8 and lower > 0 and upper > 0):
+        return acb("nan"), acb("nan")
+    # For u <= 0 the bound uses exp((2-twice_real)*u).
+    # For u >= 0, exp(u) >= u gives exp(-(twice_real+1/2)*u).
     # Integrating the exponential Taylor remainder gives these two bounds.
-    tail = (arb(32)/3)/(arb(3)/2-x)**(order+1) + (arb(256)/9)/(1-x)**(order+1)
+    tail = (arb(32)/3)/lower**(order+1) + (arb(256)/9)/upper**(order+1)
     mellin = poly(coefficients, h) + complex_error(x**order * tail)
     derivative = [k * coefficients[k] for k in range(1, order)]
     mellin_prime = poly(derivative, h) + complex_error(2*order*x**(order-1)*tail)
+    return mellin, mellin_prime
+
+
+def gap_and_deriv(s, h, coefficients, pi, twice_real):
+    """Enclose W(s) and W'(s), where W=J_- - J_+."""
+    mellin, mellin_prime = unscaled_and_deriv(h, coefficients, twice_real)
     sin, cos = (pi*s).sin_cos()
     factor = 2 * s * sin / pi
     factor_prime = 2 * sin / pi + 2 * s * cos
@@ -96,9 +106,10 @@ def main():
         radius = arb(1)/4096
         pi = arb.pi()
         coefficients = integral_coefficients(center, 14)
+        twice_real = 2*center.real
         direction = acb(15069, -24342)
         square = acb(arb(0, radius), arb(0, radius))
-        gap, gap_prime = gap_and_deriv(center+square, square, coefficients, pi)
+        gap, gap_prime = gap_and_deriv(center+square, square, coefficients, pi, twice_real)
         assert abs(gap).abs_lower() > 11708
         assert abs(gap_prime).abs_upper() < 25255
         assert abs(coefficients[0]).abs_lower() > arb(1188)/10**9
@@ -111,13 +122,13 @@ def main():
         for j in range(tiles):
             for k in range(tiles):
                 h = acb(arb((2*j+1-tiles)*step, step), arb((2*k+1-tiles)*step, step))
-                g, dg = gap_and_deriv(center+h, h, coefficients, pi)
+                g, dg = gap_and_deriv(center+h, h, coefficients, pi, twice_real)
                 ref, dr = common_and_deriv(center+h, pi)
                 upper = abs(1-(dg*ref+g*dr)/direction).abs_upper()
                 assert upper < arb(1)/4
                 defect = defect.max(upper)
         assert defect.abs_upper() < arb(35)/1000
-        g0, _ = gap_and_deriv(center, acb(0), coefficients, pi)
+        g0, _ = gap_and_deriv(center, acb(0), coefficients, pi, twice_real)
         assert abs(g0).abs_lower() > 11700
         r0, _ = common_and_deriv(center, pi)
         center_residual = abs(g0*r0/direction)
@@ -137,7 +148,7 @@ def main():
         def moment(t, analytic, power):
             h = radius * (acb(0, 2) * pi * t).exp()
             s = center+h
-            gap, dg = gap_and_deriv(s, h, coefficients, pi)
+            gap, dg = gap_and_deriv(s, h, coefficients, pi, twice_real)
             if not gap.is_finite() or gap.contains(0):
                 return acb("nan")
             ref, dr = common_and_deriv(s, pi)

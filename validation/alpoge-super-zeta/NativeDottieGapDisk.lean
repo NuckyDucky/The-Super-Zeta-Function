@@ -1,5 +1,7 @@
 import NativeDottieContour
 import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+import Mathlib.Data.Complex.ExponentialBounds
+import Mathlib.Data.Real.Pi.Bounds
 import Mathlib.MeasureTheory.Function.Jacobian
 
 /-! Enclose the normalized correction gap on the whole disk from four
@@ -315,28 +317,72 @@ theorem normalized_gap_on_first_disk
   norm_num [firstRadius] at hp ht
   linarith only [hzero, hp, ht, hh, hn]
 
+private theorem firstDisk_im_lower {s : ℂ} (hs : s ∈ closedBall firstCenter firstRadius) :
+    (70671:ℝ)/10000 < s.im := by
+  have h := (Complex.abs_im_le_norm (s-firstCenter)).trans
+    (by simpa only [mem_closedBall, dist_eq_norm] using hs)
+  change |s.im-7067363/1000000| ≤ firstRadius at h
+  have h := (abs_le.mp h).1
+  norm_num [firstRadius] at h
+  linarith
+
+private theorem exp_lower_at_disk_height : (4373000001:ℝ) < Real.exp (111/5) := by
+  have h := pow_le_pow_left₀ (by norm_num : (0:ℝ) ≤ 2.7182818283) Real.exp_one_gt_d9.le 22
+  have hq := Real.quadratic_le_exp_of_nonneg (by norm_num : (0:ℝ) ≤ 1/5)
+  have hp := mul_le_mul h hq (by norm_num) (by positivity)
+  rw [← Real.exp_nat_mul, ← Real.exp_add] at hp
+  norm_num at hp
+  linarith only [hp]
+
+private theorem firstDisk_sine_lower {s : ℂ} (hs : s ∈ closedBall firstCenter firstRadius) :
+    (2186500000:ℝ) < ‖Complex.sin ((Real.pi:ℂ)*s)‖ := by
+  let z := (Real.pi:ℂ)*s
+  have hheight : (111:ℝ)/5 < z.im := by
+    simp only [z, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, add_zero]
+    have h := mul_lt_mul Real.pi_gt_d4 (firstDisk_im_lower hs).le (by norm_num) Real.pi_pos.le
+    calc
+      _ < (3.1415:ℝ)*((70671:ℝ)/10000) := by norm_num
+      _ < _ := h
+  have hpos := exp_lower_at_disk_height.trans (Real.exp_lt_exp.mpr hheight)
+  have hneg : Real.exp (-z.im) ≤ 1 := by
+    have h := Real.exp_le_exp.mpr (show -z.im ≤ 0 by linarith only [hheight])
+    rwa [Real.exp_zero] at h
+  have h := norm_sub_norm_le (Complex.exp (-z*I)) (Complex.exp (z*I))
+  simp only [Complex.norm_exp, Complex.mul_re, Complex.neg_im, Complex.I_re, Complex.I_im,
+    mul_zero, mul_one, zero_sub, neg_neg] at h
+  change (2186500000:ℝ) < ‖Complex.sin z‖
+  rw [Complex.sin, norm_div, norm_mul, Complex.norm_I, mul_one, Complex.norm_ofNat]
+  linarith only [h, hpos, hneg]
+
+/-- A quantitative bound for the actual difference of corrections, obtained
+from the same four center-coefficient enclosures as the normalized gap. -/
+theorem firstDisk_correctionGap_lower
+    (hzero : (1188:ℝ)/10^9 ≤ ‖centerCoefficient 0‖)
+    (hhigh : ∀ k : ℕ, 0 < k → k < 4 → ‖centerCoefficient k‖ ≤ (5:ℝ)/10^6)
+    {s : ℂ} (hs : s ∈ closedBall firstCenter firstRadius) :
+    (11600:ℝ) < ‖correctionGap s‖ := by
+  have hnorm : (70671:ℝ)/10000 ≤ ‖s‖ :=
+    (firstDisk_im_lower hs).le.trans ((le_abs_self _).trans (Complex.abs_im_le_norm _))
+  have hsin := (firstDisk_sine_lower hs).le
+  have hp : 2*((70671:ℝ)/10000)*2186500000/3.1416 ≤ ‖prefactor s‖ := by
+    rw [prefactor, norm_div, norm_mul, norm_mul, Complex.norm_ofNat, Complex.norm_real,
+      Real.norm_eq_abs, abs_of_pos Real.pi_pos]
+    gcongr
+    exact Real.pi_lt_d4.le
+  rw [gap_factor hs, norm_mul]
+  calc
+    _ < (2*((70671:ℝ)/10000)*2186500000/3.1416)*((118:ℝ)/10^8) := by norm_num
+    _ ≤ _ := mul_le_mul hp (normalized_gap_on_first_disk hzero hhigh hs).le
+      (by norm_num) (norm_nonneg _)
+
 theorem gap_ne_zero_from_center_coefficients
     (hzero : (1188:ℝ)/10^9 ≤ ‖centerCoefficient 0‖)
     (hhigh : ∀ k : ℕ, 0 < k → k < 4 → ‖centerCoefficient k‖ ≤ (5:ℝ)/10^6)
     {s : ℂ} (hs : s ∈ closedBall firstCenter firstRadius) :
     correctionGap s ≠ 0 := by
-  have hnorm := normalized_gap_on_first_disk hzero hhigh hs
-  have hm : normalizedGap s ≠ 0 := by intro he; norm_num [he] at hnorm
-  have him : 0 < s.im := by
-    have h := (Complex.abs_im_le_norm (s-firstCenter)).trans
-      (by simpa only [mem_closedBall, dist_eq_norm] using hs)
-    change |s.im-7067363/1000000| ≤ firstRadius at h
-    have h := (abs_le.mp h).1
-    norm_num [firstRadius] at h
-    linarith
-  have hsin : Complex.sin ((Real.pi:ℂ)*s) ≠ 0 := by
-    intro he
-    obtain ⟨k,hk⟩ := Complex.sin_eq_zero_iff.mp he
-    have hi := congrArg Complex.im hk
-    simp [Complex.mul_im, Real.pi_ne_zero, him.ne'] at hi
-  rw [gap_factor hs]
-  exact mul_ne_zero (div_ne_zero (mul_ne_zero (mul_ne_zero (by norm_num)
-    (by intro he; simp [he] at him)) hsin) (Complex.ofReal_ne_zero.mpr Real.pi_ne_zero)) hm
+  intro he
+  have h := firstDisk_correctionGap_lower hzero hhigh hs
+  norm_num [he] at h
 
 def firstContourPoint : ℂ := firstCenter +
   weightedCircle firstCenter firstRadius nativeCross (fun s => s-firstCenter)
@@ -364,6 +410,7 @@ theorem firstContour_taylor_certificate
 #print axioms logGap_on_ray
 #print axioms firstGap_taylor
 #print axioms normalized_gap_on_first_disk
+#print axioms firstDisk_correctionGap_lower
 #print axioms gap_ne_zero_from_center_coefficients
 #print axioms firstContour_taylor_certificate
 #check firstContour_taylor_certificate
