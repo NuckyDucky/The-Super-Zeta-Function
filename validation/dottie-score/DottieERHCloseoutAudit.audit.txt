@@ -1,0 +1,85 @@
+QuarticModel.dottieProductionRightNonzero_of_tight_signed : (∀ k < 11,
+    (QuarticModel.DottieFixedIntervals.archivedScoredMomentBox QuarticModel.dottiePrefixEnd k).fits
+        (QuarticModel.DottieFixedIntervals.fixedSharpInput k) =
+      true) →
+  (∀ k < 6,
+      (QuarticModel.DottieFixedIntervals.archivedScoredMomentBox 276824064 k).fits
+          (QuarticModel.DottieFixedIntervals.fixedReferenceInput k) =
+        true) →
+    (∀ z ∈ Metric.sphere (QuarticModel.archivedRightCenter SuperZeta.StirlingCorrection.dottieHeight) (31 / 2048),
+        (QuarticModel.dottieOmittedSharpBlock z + QuarticModel.dottieShorterMiddleSmooth z).im ≤
+          188889 / 1000 * ((z.re - 1 / 2) * QuarticModel.dottieCircleReference)) →
+      ∀ {w : ℂ},
+        w ∈ QuarticModel.archivedDottieRightRing →
+          ∀ (ink : ℂ → ℂ),
+            riemannZeta w ≠ 0 →
+              DirichletCharacter.LFunction FieldCoefficientTransfer.chi4 w ≠ 0 → QuarticModel.archivedQuarticZeta w ≠ 0
+@SuperZeta.StirlingCorrection.dottie_band_selects_marked_returns : ∀ {w : ℂ},
+  w.re ∈ Set.Icc (1 / 2 + 1 / 2048) (1 / 2 + 63 / 2048) →
+    w.im + 1 / 512 ∈
+        Set.Icc (SuperZeta.StirlingCorrection.dottieHeight - 10 ^ 8)
+          (SuperZeta.StirlingCorrection.dottieHeight + 10 ^ 8) →
+      (∀
+          x ∈
+            Set.Icc (SuperZeta.StirlingCorrection.archivedDottieFlank - SuperZeta.StirlingCorrection.dottieFlankWidth)
+              (SuperZeta.StirlingCorrection.archivedDottieFlank + SuperZeta.StirlingCorrection.dottieFlankWidth),
+          ∀ (right : Bool),
+            ∃ P Q,
+              SuperZeta.StirlingCorrection.MarkedDottiePair (SuperZeta.StirlingCorrection.dottieWitnessLift right x) P Q
+                (SuperZeta.StirlingCorrection.dottieWitnessWinding right)) →
+        ∃ x,
+          SuperZeta.StirlingCorrection.dottieHeightAtFlank x = w.im + 1 / 512 ∧
+            w ∈
+                Metric.closedBall
+                  (QuarticModel.archivedRightCenter (SuperZeta.StirlingCorrection.dottieHeightAtFlank x)) (31 / 2048) ∧
+              ∀ (right : Bool),
+                ∃ P Q,
+                  SuperZeta.StirlingCorrection.MarkedDottiePair (SuperZeta.StirlingCorrection.dottieWitnessLift right x)
+                      P Q (SuperZeta.StirlingCorrection.dottieWitnessWinding right) ∧
+                    Function.minimalPeriod
+                        (SuperZeta.Reciprocal.step (SuperZeta.StirlingCorrection.dottieWitnessLift right x)) (P, Q) =
+                      640
+QuarticModel.archivedQuarticZeta_isDedekind : ArtinPrimitiveRootsConjecture.IsDedekindZeta QuarticModel.K
+  QuarticModel.archivedQuarticZeta
+QuarticModel.archivedQuarticRH_iff_upper_right : ArtinPrimitiveRootsConjecture.DedekindZetaRH QuarticModel.K ↔
+  FieldTarget.StripZerosOnLine riemannZeta ∧
+    FieldTarget.StripZerosOnLine (DirichletCharacter.LFunction FieldCoefficientTransfer.chi4) ∧
+      ∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → 0 ≤ w.im → QuarticModel.archivedMellin w ≠ 0
+StripCover.rightBox_exhaustion : ∀ (s : ℂ), 1 / 2 < s.re → s.re < 1 → ∃ n, s ∈ StripCover.rightBox n
+def StripCover.BoxMargins : (ℂ → ℂ) → Prop :=
+fun F => ∀ (n : ℕ), ∃ ε, 0 < ε ∧ ∀ s ∈ StripCover.rightBox n, ε ≤ ‖F s‖
+def StripCover.HasSignedPatchBounds : (ℂ → ℂ) → Prop :=
+fun F =>
+  ∀ (n : ℕ),
+    ∃ k patches,
+      (∀ w ∈ StripCover.rightBox n, ∃ i, w ∈ (patches i).points n) ∧
+        ∀ (i : Fin k), ∃ d, ‖d‖ = 1 ∧ ∀ w ∈ (patches i).points n, (patches i).margin ≤ ((starRingEnd ℂ) d * F w).re
+QuarticModel.archivedQuarticRH_of_signedPatchBounds : FieldTarget.StripZerosOnLine riemannZeta →
+  FieldTarget.StripZerosOnLine (DirichletCharacter.LFunction FieldCoefficientTransfer.chi4) →
+    StripCover.HasSignedPatchBounds QuarticModel.archivedMellin →
+      ArtinPrimitiveRootsConjecture.DedekindZetaRH QuarticModel.K
+def ArtinPrimitiveRootsConjecture.IsDedekindZeta.{u_1} : (K : Type u_1) →
+  [inst : Field K] → [NumberField K] → (ℂ → ℂ) → Prop :=
+fun K [Field K] [NumberField K] Z =>
+  DifferentiableOn ℂ Z {1}ᶜ ∧ ∀ (s : ℂ), 1 < s.re → Z s = NumberField.dedekindZeta K s
+def ArtinPrimitiveRootsConjecture.DedekindZetaRH.{u_1} : (K : Type u_1) → [inst : Field K] → [NumberField K] → Prop :=
+fun K [Field K] [NumberField K] =>
+  ∀ (Z : ℂ → ℂ),
+    ArtinPrimitiveRootsConjecture.IsDedekindZeta K Z → ∀ (s : ℂ), 0 < s.re → s.re < 1 → Z s = 0 → s.re = 1 / 2
+∀ (K : Type u) [inst : Field K] [inst_1 : NumberField K], ArtinPrimitiveRootsConjecture.DedekindZetaRH K : Prop
+@FieldTarget.dedekindZetaRH_of_same_input_signed_gap : ∀ {K : Type u_1} [inst : Field K] [inst_1 : NumberField K]
+  {Orbit : Type u_2} {Z U V : ℂ → ℂ},
+  ArtinPrimitiveRootsConjecture.IsDedekindZeta K Z →
+    ∀ (region : Orbit → Set ℂ) (axis : Orbit → ℂ) (retained : Orbit → ℂ → ℂ) (main tail : Orbit → ℂ → ℝ),
+      (∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → U w = V w) →
+        (∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → Z (1 - (starRingEnd ℂ) w) = 0) →
+          (∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → Z w = 0 → ∃ a, w ∈ region a) →
+            (∀ (a : Orbit), ∀ w ∈ region a, tail a w < main a w) →
+              (∀ (a : Orbit), ∀ w ∈ region a, (retained a w).im ≤ -main a w) →
+                (∀ (a : Orbit), ∀ w ∈ region a, (axis a * (U w - V w) - retained a w).im ≤ tail a w) →
+                  ArtinPrimitiveRootsConjecture.DedekindZetaRH K
+Transitive axiom check passed for all 7 declarations.
+'QuarticModel.dottieProductionRightNonzero_of_tight_signed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticRH_iff_upper_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedQuarticRH_of_signedPatchBounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_gap' depends on axioms: [propext, Classical.choice, Quot.sound]

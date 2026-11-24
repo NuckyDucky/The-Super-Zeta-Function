@@ -10,6 +10,8 @@ I use the exact reference score and the three retained-band certificates in the 
 
 To replay the assembly, use the pins above. Put the built `lean-ideal73` modules, the checked `DottieProductionJoined` score, and the compiled retained-band certificates on `LEAN_PATH`. Generate the long-band sources with `prepare_dottie_long_band.py` and check them with `verify_dottie_long_band.py`. Build the quarter and half join sources after their long and short block imports. The third band supplies `DottieLongBand3Assembly`. Then build `DottieProductionBounds.lean`, `DottieProductionReferenceTight.lean`, and `DottieProductionField.lean` in that order with `lean -j1 -DwarningAsError=true -o MODULE.olean MODULE.lean`, using the output directory on `LEAN_PATH`. The field source prints both theorem audits. [Band source generator](../../tools/dottie-compute-pilot/prepare_dottie_long_band.py) · [Band kernel replay](../../tools/dottie-compute-pilot/verify_dottie_long_band.py) · [Retained-band certificates](../../verification/dottie-quartic/README.md)
 
+The [ERH breakdown](ERH-breakdown.md) keeps the exact premises for the fixed ring, the full quartic strip, and arbitrary number fields alongside the [actual Lean output](DottieERHCloseoutAudit.audit.txt).
+
 ## Save a running worker’s results
 
 Set `DOTTIE_CHECKPOINT_SPOOL` to a writable folder in the worker’s environment. `replay-paired-rows.mjs` adds the Lean source, compiled object, and axiom log to that folder after each successful batch. One uploader can share the spool with the workers on its machine. It checks every three minutes and verifies GitHub’s SHA-256 before clearing a queued archive. A failed upload leaves the archive queued.
