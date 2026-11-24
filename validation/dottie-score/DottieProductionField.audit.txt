@@ -1,0 +1,2 @@
+'QuarticModel.dottieProductionRightNonzero_of_tight_signed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottieProductionRightNonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
