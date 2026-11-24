@@ -55,3 +55,9 @@ The numerical signed bounds appear as explicit hypotheses of the two ring implic
 - My local Lean 4.33.1 replay checked `dottie_completed_derivative_transport_error`, which uses both signed anchor sums, and `dottie_shorter_derivative_im_le_of_sharp_anchor`, which combines the sharp transport estimate with the signed smooth derivative. `dottie_grid_centered_log_error_ratio` bounds the centered-log error coefficient on each of the 64 cells by less than $1/150$ of its previous value. The source and matching replay transcript are verified locally. All six audited declarations use only `propext`, `Classical.choice`, and `Quot.sound`.
 - At this checkpoint I checked eight consecutive 4,096-norm blocks of the third retained long band locally, covering 32,768 of its 524,288 norms.
 - The signed omitted budget through $8\times10^{24}$ still needs the numerical signed sharp-anchor and smooth-derivative enclosures, together with bounds on the signed prefix sums used in the transport error.
+
+## Affine derivative bounds and the next third-band checkpoint
+
+- My local Lean replay uses Cauchy’s estimate on radius $1/125$ inside the checked radius-$1/25$ disk. `dottie_sharp_relative_derivative_sub_affine` bounds the derivative error by $2250/10^{12}$ for $|w-z_0|\le 1/32$. `dottie_sharp_logarithmic_slope_error_on_segment` bounds the slope error after subtracting $\log h$ by $28/10^9$ on the reflected horizontal segment. `dottie_sharp_signed_anchor_sub_affine` gives error at most $(2250/10^{12})|B|+(18/10^{12})|\log(h)B+C|$ in relative units. The source and transcript were verified locally. All five declarations use only `propext`, `Classical.choice`, and `Quot.sound`.
+- The next local checkpoint covers the first 16 consecutive blocks of the third retained long band, or 65,536 of its 524,288 norms. The source and compiled-object hashes match all 16 receipts.
+- The numerical signed anchor and smooth derivative enclosures remain inputs to the omitted bound.
