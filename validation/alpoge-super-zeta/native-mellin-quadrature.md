@@ -65,3 +65,29 @@ At the node $u=0$, my earlier $\widehat\pi$ calculation supplies the Lean bound 
 If I replace each real and imaginary node reading of the zeroth density by a rational within $10^{-14}$, the contribution to the error in the $k$th weighted sum is at most $37(64^k/k!)10^{-14}$. The same pair of node readings feeds all four moments. Lean carries eight exact rational comparisons and those node enclosures to the closed-disk gap. The replay checks the proposed node errors with Arb and checks the rational sums with Python's Fraction. [Rational sum theorem](MellinRationalSum.lean) · [Recorded checks](native-mellin-strip-output.txt)
 
 The 17-module replay uses Lean 4.19.0. Run [replay-native.ps1](replay-native.ps1) with the [pinned toolchain and library paths](native-contact.md). Both numerical replays use python-flint 0.9.0. [Current Lean build and axiom audit](native-mellin-strip-lean-audit.txt)
+
+## The weighted sums reduce in the kernel
+
+I round each reading on the fixed partition to an integer multiple of $10^{-14}$. If $u_{ij}=n_{ij}/524288$, $a_{bij}$ is the rounded integer for component $b$, and $w_j=W_j/D_w$ is a quadrature weight, the rational sum for moment $k$ is exactly
+
+$$
+\widehat Q_k(b)=
+\frac{\sum_{i,j}W_j(-2n_{ij})^k a_{bij}}
+     {128\,D_w\,524288^k\,k!\,10^{14}}.
+$$
+
+I divide the 2,368 panels into 37 blocks of 64. At each fixed node index $j$, Lean checks the unweighted integer sums of the 64 contributions before applying $W_j$. It checks the final eight comparisons against the original rational moments, for both components of each of the four moments. [Integer normalization](MellinIntegerMoment.lean) · [All eight comparisons](MellinIntegerCertificate.lean) · [Lean audit](native-mellin-integer-audit.txt)
+
+At real $u\le-23$ and $u\ge4$, both readings are within $10^{-14}$ of zero. Lean checks that the rational table has zero at the corresponding 16,000 panel-node positions. The disk theorem then takes just the middle sample enclosures, for $576\le i<2304$ with $0\le j<25$. Arb supplies those enclosures in the current replay. [Outer estimates](MellinOuterSamples.lean) · [Remaining premise](MellinIntegerCertificate.lean) · [Arb bounds](native-mellin-strip-output.txt)
+
+For the integer replay, use the same Lean 4.19.0 executable and python-flint 0.9.0. Give `-NativeBuildDirectory` the output directory produced by `replay-native.ps1 -OutputDirectory`. From this packet, run the following in PowerShell.
+
+```powershell
+$leanRoot = (Resolve-Path '../../lean').Path
+$library = Join-Path $leanRoot '.lake/build/lib/lean'
+$packages = Join-Path $leanRoot '.lake/packages'
+./replay-mellin-integer.ps1 -LeanExecutable $lean419 -SuperZetaLibrary $library `
+    -MathlibPackages $packages -NativeBuildDirectory $nativeOutput
+```
+
+This regenerates the 37 block source files and their index in the output directory and compiles them in one worker. The generated-source hashes are recorded separately from the proof audit. [Replay script](replay-mellin-integer.ps1) · [Source hashes](native-mellin-integer-digests.txt)
