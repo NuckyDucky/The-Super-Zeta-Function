@@ -47,7 +47,7 @@ foreach ($module in $order) {
 }
 
 foreach ($module in @('SpectralBridge', 'AlpogeAdapters', 'GaussianEndpoint',
-    'OrdinaryInteractions', 'ContactOrders', 'SpectralMellin', 'SignedContact',
+    'OrdinaryInteractions', 'ContactOrders', 'ResidueGridPort', 'SpectralMellin', 'SignedContact',
     'GaussianPolePort', 'GaussianWindowPort')) {
     Build-Module $packet $module '-DwarningAsError=true'
 }
