@@ -1,4 +1,16 @@
-# Dottie quartic verification
+# From the Dottie spire to a Dedekind zero test
+
+I start with two exponentials that take turns. Their orbits give me the Dottie spire, and the spire gives me a place to look for a zero off the critical line. This is my approach to the **Extended Riemann Hypothesis for Dedekind zeta functions**. The idea is to suppose a zero is there, then follow that **same complex point** through each step and see what it would have to do.
+
+My tetrational lift is the ordered update $(P,Q)\mapsto(e^{LQ},e^{-LP})$. I use a marked orbit in the spire as a clock. Its return and winding give me a height for the search. The measuring circle can be placed at any reference height $T\ge 203$. For the archived test I used a return with 640 exponential stages, which gave a height of about $4.526\times10^{12}$. [How I pick the height](../../archive/2026-11-17-dottie-grid-match-v001/README.md#nomination-before-forecasting)
+
+The **Super Zeta** comes from summing inverse powers of squared cosine roots. After subtracting the Mellin correction, the resulting function has the same zeros as ordinary Riemann zeta in the critical strip, with $w=2s$. A zero at $w$ shows up at $s=w/2$, and on the address chart I can recover the exact point I started with. In the first Dottie window, I counted two zeros in the rectangle and found two on the critical line. An extra off-line zero would have to fit into a count that was already full. [Exact zero correspondence](../../lean/SuperZeta/UnitSpectrum.lean#L56) · [The address chart](../../lean-ideal73/SuperZeta/QuarterLine/QuarticTurn.lean#L79) · [The Dottie window](../../archive/2026-11-17-dottie-local-strip-v001/README.md#full-strip-corollary)
+
+For the quartic I take that same input and read it in two reflected Gaussian rings. I put the completed Gaussian value $a$ into the quaternion $Q_{\rm H}=a+bj$. The difference $iQ_{\rm H}j-jQ_{\rm H}i$ reads $\Im b$ and $\Re a$. The difference $jQ_{\rm H}k-kQ_{\rm H}j$ reads both coordinates of $a$. I call changing the $j,k$ slot **painting**. Lean checks that the second difference survives the painting, so I can add the mark and still recover the Gaussian reading. Murphy’s primitive Gauss-sum work gives the $+1$ sign that relates the two mirrors. [What the paint preserves](../../lean-ideal73/ArchivedQuarticOrders.lean#L36) · [Gauss sign and reflection](../../lean-ideal73/QuarticConductorSign.lean#L34)
+
+Here’s the contradiction I’m after. A Gaussian zero would turn both Gaussian readings off. A signed bound that keeps even one axis nonzero rules it out at that very point. Lean checks that the same test works in both rings once the signed bounds are in place. In my low-height certificate, every Gaussian zero in $0.45\le\Re w\le0.55$, $|\Im w|\le0.27$ lies on the critical line. I’m using the high Dottie rings to work out how far the same argument can reach. [The same-input ring test](../../lean-ideal73/ArchivedQuarticSpectralAddress.lean#L80) · [Low-height certificate](../quartic-kernel/source/QuarticVerifiedKernel.lean#L23)
+
+## Lean verification records
 
 These records use Lean 4.33.1 and mathlib at `0df444a360eaa60ab8c11dca51a86af692955474`. The [Lean package](../../lean-ideal73/README.md#the-exact-dottie-quartic-and-the-signed-ring-test) contains the sources and reproduction commands.
 
