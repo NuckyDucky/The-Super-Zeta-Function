@@ -78,7 +78,9 @@ private theorem dottie_right_after_eight_cutoffs {X : ℕ}
       mul_le_mul_of_nonneg_right (dottie_far_scalar_le_of_cutoff hX hw.le) hg₀
     _ = (dottieFarScalar dottieOmittedFarCut w*dottieFarEnvelopeMass w)*((8 : ℝ)^6)⁻¹ := by ring
     _ ≤ (1/(5*10^33) : ℝ)*((8 : ℝ)^6)⁻¹ :=
-      mul_le_mul_of_nonneg_right (dottie_far_one_side_numeric hw.le hi) (by positivity)
+      mul_le_mul_of_nonneg_right
+        (dottie_far_one_side_numeric (N := dottieOmittedFarCut)
+          (by decide +kernel) hw.le hi) (by positivity)
     _ ≤ _ := by norm_num
 
 theorem dottie_finite_smoothed_late_norm_bound {X : ℕ} (hX : 8*dottieOmittedFarCut ≤ X)
