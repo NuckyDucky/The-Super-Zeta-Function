@@ -28,7 +28,8 @@ $previousThreads = $env:LEAN_NUM_THREADS
 try {
     $env:LEAN_PATH = (@($out, $lib) + $packages) -join [IO.Path]::PathSeparator
     $env:LEAN_NUM_THREADS = '1'
-    $modules = @('NativeDottieRay', 'NativeDottieMellin', 'NativeDottieContact', 'NativeDottieOrigin')
+    $modules = @('NativeDottieRay', 'NativeDottieMellin', 'NativeDottieContact', 'NativeDottieOrigin',
+        'NativeDottieContour', 'NativeDottieGapDisk')
     foreach ($module in $modules) {
         $module
         & $lean -j1 '-DwarningAsError=true' "--root=$packet" -o "$out/$module.olean" "$packet/$module.lean"

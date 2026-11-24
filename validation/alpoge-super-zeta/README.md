@@ -59,6 +59,8 @@ If I compare the two rooted words at the archived absolute marks $-\pi/6$ and $+
 
 The second pass through Alpöge adds the weighted contour count, a good-height and prime-power window comparison, and the Artin-to-Hecke entry point for the Gaussian factor. [Exact declarations and inputs](alpoge-second-pass.md)
 
+I used the weighted circle proof on $C=J_-Z_+-J_+Z_-$ around the same first zero. If the four central Mellin coefficients meet their enclosures, Lean carries the correction separation across the disk. If the cross-product meets the residual and derivative bounds, Lean gives a single simple zero with count $1$ and location $c+(2\pi i)^{-1}\oint (s-c)C'(s)/C(s)\,ds$. The 256-bit replay supplies the numerical inputs and recovers the height in an interval of width $2\times10^{-24}$ on the spectral scale. [Proof and conventions](native-contour.md) · [Clean Lean audit](native-contour-lean-audit.txt) · [Interval output](native-contour-output.txt)
+
 ## Connections through the upstream proofs
 
 The [import summary](upstream-summary.json) covers two import edges from each named root. The [analytic import closure](upstream-analytic-closures.json) gives the dependencies for the selected pole and window modules. These traces cover import headers. The entries below refer to declarations inspected in the pinned source.

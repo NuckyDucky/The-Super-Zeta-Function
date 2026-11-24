@@ -1,0 +1,16 @@
+Arb bits 256 Mellin Taylor order 14
+Center (1/4) + (7067363/1000000)i; radius 1/4096
+Normalized Mellin center coefficient 0 [-1.15700495898241215557172e-6 +/- 1.43e-30] + [-2.74168801892517236326145e-7 +/- 1.60e-31]j
+Normalized Mellin center coefficient 1 [2.46168856471275985971601e-6 +/- 4.14e-31] + [-1.79509672828940537279172e-6 +/- 3.75e-31]j
+Normalized Mellin center coefficient 2 [-2.05330721235328669688484e-7 +/- 1.26e-31] + [3.93481181165043147134991e-6 +/- 2.24e-30]j
+Normalized Mellin center coefficient 3 [-2.63899112192911599798775e-6 +/- 6.58e-31] + [-2.24286485764182081478114e-6 +/- 4.96e-30]j
+Correction gap norm at the center > [11752.23534093797 +/- 1.63e-12]
+Correction gap norm on disk > [11708.91307067871 +/- 9.38e-13]
+Correction gap derivative norm on disk < [25254.48175048828 +/- 1.25e-12]
+Cross-product normalized center residual < [4.291319399751608e-7 +/- 7.53e-24]
+Normalized derivative defect on disk < [0.03426104900427163 +/- 3.53e-18] (256 covering boxes)
+Count integral [1.000000000000000000000 +/- 2.00e-23] + [+/- 2.00e-23]j
+Centered first moment [+/- 6.73e-25] + [-4.29132653104771374e-7 +/- 6.81e-25]j
+Recovered location [0.250000000000000000000000 +/- 6.73e-25] + [7.067362570867346895228626 +/- 6.81e-25]j
+Certified imaginary interval (7.067362570867346895228625, 7.067362570867346895228627)
+The count and the location come from the contour of C=J_- Z_+ - J_+ Z_-.

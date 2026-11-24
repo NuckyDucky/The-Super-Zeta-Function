@@ -1,6 +1,8 @@
 import NativeDottieRay
 import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
+import Mathlib.Analysis.Calculus.MeanValue
 import Mathlib.Analysis.SpecialFunctions.Complex.Analytic
+import Mathlib.Data.Complex.ExponentialBounds
 
 /-! Mellin continuation of the actual relative logarithms at the two
 native Dottie angles. The scale change supplies the existing exponential
@@ -113,6 +115,42 @@ theorem kernel_tail_bound (b : Bool) {x : ℝ} (hx : 0 ≤ x) :
     _ ≤ (4/3)*((8/3)*(x/Real.cosh x)) := by gcongr
     _ ≤ (4/3)*((8/3)*(4*Real.exp (-x/2))) := by gcongr
     _ = _ := by ring
+
+theorem kernel_small_bound (b : Bool) {x : ℝ} (hx : 0 ≤ x) (hx₁ : x ≤ 1) :
+    ‖kernel b x‖ ≤ (16/3)*x^2 := by
+  have hc (t : ℝ) (ht : t ∈ Icc (0:ℝ) 1) : ‖deriv Real.sinh t‖ ≤ 2 := by
+    rw [Real.deriv_sinh, Real.norm_eq_abs, abs_of_pos (Real.cosh_pos _), Real.cosh_eq]
+    have h₁ := Real.exp_le_exp.mpr ht.2
+    have h₀ := Real.exp_le_one_iff.mpr (neg_nonpos.mpr ht.1)
+    linarith [Real.exp_one_lt_d9]
+  have hs := Convex.norm_image_sub_le_of_norm_deriv_le
+    (fun t _ => Real.differentiable_sinh t) hc (convex_Icc (0:ℝ) 1)
+    (show (0:ℝ) ∈ Icc 0 1 by norm_num) (show x ∈ Icc (0:ℝ) 1 from ⟨hx,hx₁⟩)
+  have hsn : 0 ≤ Real.sinh x := Real.sinh_nonneg_iff.mpr hx
+  simp only [Real.sinh_zero, sub_zero, Real.norm_eq_abs, abs_of_nonneg hx,
+    abs_of_nonneg hsn] at hs
+  have hsg : |sineSign b| = 1 := by cases b <;> norm_num [sineSign]
+  have href : 1 ≤ referenceRay x := by
+    unfold referenceRay
+    linarith [mul_nonneg (by norm_num : (0:ℝ) ≤ 4/3) (sq_nonneg (Real.sinh x))]
+  have hoff : |relativeOffset b x| ≤ 4*x^2 := by
+    unfold relativeOffset
+    rw [abs_div, abs_of_pos (reference_ray_pos x), rayOffset, abs_mul,
+      abs_of_pos (by norm_num : (0:ℝ) < 4/3)]
+    calc
+      _ ≤ (4/3) * |x^2-sineSign b*(x*Real.sinh x)| := by
+        exact div_le_self (by positivity) href
+      _ ≤ (4/3) * (x^2+x*Real.sinh x) := by
+        apply mul_le_mul_of_nonneg_left _ (by norm_num)
+        have h := abs_sub (x^2) (sineSign b*(x*Real.sinh x))
+        rwa [abs_of_nonneg (pow_nonneg hx 2), abs_mul, hsg, one_mul,
+          abs_of_nonneg (mul_nonneg hx hsn)] at h
+      _ ≤ _ := by nlinarith only [mul_le_mul_of_nonneg_left hs hx]
+  rw [kernel, Complex.norm_real, Real.norm_eq_abs, realKernel]
+  have he : determinantRay b x / referenceRay x - 1 = relativeOffset b x := by
+    unfold determinantRay relativeOffset
+    rw [add_div, div_self (reference_ray_pos x).ne', add_sub_cancel_left]
+  exact (log_bound (ray_ratio_lower b x)).trans (by rw [he]; linarith only [hoff])
 
 private theorem analyticAt_dslope {f : ℝ → ℝ} {x : ℝ} (h : AnalyticAt ℝ f x) :
     AnalyticAt ℝ (dslope f x) x := by
@@ -320,6 +358,7 @@ theorem archived_first_corrections : correction false 1 = 0 ∧ correction true 
   constructor <;> rw [correction_one] <;> norm_num [sineSign]
 
 #print axioms kernel_tail_bound
+#print axioms kernel_small_bound
 #print axioms data
 #print axioms correction_entire
 #print axioms correction_integral
