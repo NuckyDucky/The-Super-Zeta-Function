@@ -81,3 +81,17 @@ exit=0
 'AlpogeSuperZeta.nontrivial_character_read_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
 'AlpogeSuperZeta.character_read_zero_on_quarter_line' depends on axioms: [propext, Classical.choice, Quot.sound]
 exit=0
+
+[OrderedContact]
+'AlpogeSuperZeta.weightedSlope_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.weighted_slope_residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.cap_readings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.positive_cap_readings_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.imaginary_cap_readings_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.swapped_weights_read_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.cap_recovers_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.ordered_cap_recovers_canceled_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.mod_two_orders_match' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.ordinary_order_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.mod_two_cancellation_read_at_imaginary_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
