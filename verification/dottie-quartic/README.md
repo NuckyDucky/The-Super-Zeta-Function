@@ -49,3 +49,9 @@ The numerical signed bounds appear as explicit hypotheses of the two ring implic
 - [The second assembly receipt](DottieLongBand2Assembly-receipt.json) records all 64 kernel batches covering 262,144 rows. The [join source](../../tools/dottie-compute-pilot/DottieHalfCombinedCertificate.lean) combines them with the adjacent short block to obtain the exact integer sum bound on 266,240 rows.
 - [Lean axiom output](second-long-band-and-precise-height.txt) includes the joined band, a Dottie height enclosure of width $10^{-19}$, the 96-bit logarithm enclosure through the full sharp cutoff, and the small-error affine exponent for the relative Gamma factor on both reflected addresses.
 - The same axiom report records the reflected Horner identity, signed fixed-point rectangles, high-order moment bounds from absolute mass, and rational phase reduction at the sharp cutoff.
+
+## Sharp derivative transport and third retained band
+
+- My local Lean 4.33.1 replay checked `dottie_completed_derivative_transport_error`, which uses both signed anchor sums, and `dottie_shorter_derivative_im_le_of_sharp_anchor`, which combines the sharp transport estimate with the signed smooth derivative. `dottie_grid_centered_log_error_ratio` bounds the centered-log error coefficient on each of the 64 cells by less than $1/150$ of its previous value. The source and matching replay transcript are verified locally. All six audited declarations use only `propext`, `Classical.choice`, and `Quot.sound`.
+- At this checkpoint I checked eight consecutive 4,096-norm blocks of the third retained long band locally, covering 32,768 of its 524,288 norms.
+- The signed omitted budget through $8\times10^{24}$ still needs the numerical signed sharp-anchor and smooth-derivative enclosures, together with bounds on the signed prefix sums used in the transport error.
