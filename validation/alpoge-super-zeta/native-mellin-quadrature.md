@@ -91,3 +91,19 @@ $packages = Join-Path $leanRoot '.lake/packages'
 ```
 
 This regenerates the 37 block source files and their index in the output directory and compiles them in one worker. The generated-source hashes are recorded separately from the proof audit. [Replay script](replay-mellin-integer.ps1) · [Source hashes](native-mellin-integer-digests.txt)
+
+## Checking the middle samples in Lean
+
+I enclose each reading with integer endpoints in units of $10^{-24}$. Lean checks outward rounding and the Taylor remainders for the exponentials, sine, cosine, and the log ratio. If the computed intervals fit the archived reading within $10^{-14}$, the theorem gives that error bound for both components of the original integrand at the original node. [Arithmetic](MellinFixedIntervalSound.lean) · [Taylor bounds](MellinFixedElementary.lean) · [Logarithm](MellinFixedLog.lean) · [Exact density](MellinFixedTableSound.lean)
+
+The kernel checks all 25 nodes in each of panels 576, 2048, 2141, and 2272 against the table used by the weighted sums. The first four consecutive batches also pass, covering panels 576–591. Together these cover 475 distinct middle positions, including both components at each position. The executable preflight of all 43,200 middle positions found zero failures. The kernel replay is split into 432 batches of four consecutive panels. Each batch has its own proof and axiom output. [Four panels](MellinFixedTable.lean) · [Executable preflight](MellinFixedPreflight.lean) · [Build and axioms](native-mellin-fixed-audit.txt)
+
+If all the batches pass, Lean joins their intervals and proves $|J_--J_+|>11600$ everywhere on the original disk. If the cross-product also meets the center residual bound and disk derivative bound, the weighted circle reads its single simple zero and its location. [Range assembly](MellinFixedRanges.lean) · [Exact disk and contour statements](MellinFixedAssembly.lean)
+
+Add `-CheckFixedSamples` to the integer replay above and assign its output directory to `$integerOutput`. Then run a four-panel batch. The script reuses a saved batch when the inputs and the compiled proof match its recorded hashes.
+
+```powershell
+./replay-mellin-middle.ps1 -LeanExecutable $lean419 -IntegerBuildDirectory $integerOutput
+```
+
+Use `-FirstBatch` and `-BatchCount` to select batches in a resumed run. When all 432 are present the replay builds the theorem `middle_samples_checked`. [Batch replay](replay-mellin-middle.ps1)

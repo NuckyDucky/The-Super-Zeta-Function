@@ -4,7 +4,8 @@ param(
     [Parameter(Mandatory)] [string] $MathlibPackages,
     [Parameter(Mandatory)] [string] $NativeBuildDirectory,
     [string] $PythonExecutable = 'python',
-    [string] $OutputDirectory
+    [string] $OutputDirectory,
+    [switch] $CheckFixedSamples
 )
 
 $ErrorActionPreference = 'Stop'
@@ -51,10 +52,24 @@ try {
         Build-LeanModule ('MellinIntegerBlock{0:00}' -f $block) $out
     }
     Build-LeanModule 'MellinIntegerTable' $out
+    if ($CheckFixedSamples) {
+        Build-LeanModule 'MellinFixedInterval' $packet
+        Build-LeanModule 'MellinFixedFunctions' $packet
+        Build-LeanModule 'MellinFixedTable' $packet
+        Build-LeanModule 'MellinFixedRanges' $packet
+    }
     $env:LEAN_PATH = (@($out, $native, $library) + $packages) -join [IO.Path]::PathSeparator
     Build-LeanModule 'MellinIntegerMoment' $packet
     Build-LeanModule 'MellinOuterSamples' $packet
     Build-LeanModule 'MellinIntegerCertificate' $packet
+    if ($CheckFixedSamples) {
+        Build-LeanModule 'MellinFixedIntervalSound' $packet
+        Build-LeanModule 'MellinFixedElementary' $packet
+        Build-LeanModule 'MellinFixedLog' $packet
+        Build-LeanModule 'MellinFixedDensity' $packet
+        Build-LeanModule 'MellinFixedTableSound' $packet
+        Build-LeanModule 'MellinFixedAssembly' $packet
+    }
 }
 finally {
     $env:LEAN_PATH = $previousLeanPath

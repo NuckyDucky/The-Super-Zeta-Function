@@ -20,7 +20,7 @@ private theorem integerRule : ∀ j : Fin 25,
     weight j = (weightNumerator j.val : ℚ)/weightDenominator := by
   decide +kernel
 
-private theorem coordinate_eq (i : ℕ) (j : Fin 25) :
+theorem coordinate_eq (i : ℕ) (j : Fin 25) :
     mellinPanelNode i j = (coordinateNumerator i j.val : ℚ)/524288 := by
   rw [mellinPanelNode, mellinPanelCenter, (integerRule j).1, coordinateNumerator]
   push_cast
