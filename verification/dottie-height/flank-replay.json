@@ -1,0 +1,69 @@
+{
+  "python_flint": "0.9.0",
+  "precision_bits": 384,
+  "flank_x": "4.749479070945369e-8",
+  "midpoint_y": "0.509892982511772",
+  "flank_half_width": "1e-12",
+  "trapping_radius": "1e-5",
+  "cap": 1,
+  "cap_cycles": 48,
+  "scalar_period": 320,
+  "ordered_period": 640,
+  "height_center": "[4526119322477.945393319207328856950230245163 +/- 3.43e-31]",
+  "height_endpoint_offsets": [
+    "[-190588328.24077549743661 +/- 3.08e-16]",
+    "[190600367.09881411345485 +/- 1.11e-15]"
+  ],
+  "witnesses_by_height": [
+    {
+      "shift": "-100000000.00000000000",
+      "flank": "[4.749531539267955929757612069575e-8 +/- 1.76e-39]"
+    },
+    {
+      "shift": "0",
+      "flank": "[4.749479070945369000000000000000e-8 +/- 3e-43]"
+    },
+    {
+      "shift": "100000000.00000000000",
+      "flank": "[4.749426604361604539563805195768e-8 +/- 4.85e-39]"
+    }
+  ],
+  "flank_phases": [
+    {
+      "flank": -1,
+      "phase": "P",
+      "capture_error": "[4.929578924691122e-6 +/- 4.23e-22]",
+      "return_residual": "[3.786470398646140e-6 +/- 1.82e-22]",
+      "derivative_upper": "[0.231922595020595887 +/- 1.14e-19]",
+      "shifted_argument": "[-1.276 +/- 6.53e-4]",
+      "winding": 1
+    },
+    {
+      "flank": -1,
+      "phase": "Q",
+      "capture_error": "[2.512641180218593e-6 +/- 4.22e-22]",
+      "return_residual": "[1.929990131808685e-6 +/- 3.46e-22]",
+      "derivative_upper": "[0.231965865478381793 +/- 3.85e-20]",
+      "shifted_argument": "[-1.276 +/- 6.53e-4]",
+      "winding": 1
+    },
+    {
+      "flank": 1,
+      "phase": "P",
+      "capture_error": "[2.512641180218593e-6 +/- 4.22e-22]",
+      "return_residual": "[1.929990131808685e-6 +/- 3.46e-22]",
+      "derivative_upper": "[0.231965865478381793 +/- 3.85e-20]",
+      "shifted_argument": "[1.276 +/- 6.53e-4]",
+      "winding": -1
+    },
+    {
+      "flank": 1,
+      "phase": "Q",
+      "capture_error": "[4.929578924691122e-6 +/- 4.23e-22]",
+      "return_residual": "[3.786470398646140e-6 +/- 1.82e-22]",
+      "derivative_upper": "[0.231922595020595887 +/- 1.14e-19]",
+      "shifted_argument": "[1.276 +/- 6.53e-4]",
+      "winding": -1
+    }
+  ]
+}

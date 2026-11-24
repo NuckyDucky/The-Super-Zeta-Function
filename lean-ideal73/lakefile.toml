@@ -1,6 +1,6 @@
 name = "quartic_ideal_count"
 version = "0.1.0"
-defaultTargets = ["IdealCount73", "DottieQuarticVerification"]
+defaultTargets = ["IdealCount73", "DottieQuarticVerification", "DottieHeightVerification"]
 
 [[require]]
 name = "mathlib"
@@ -306,3 +306,9 @@ roots = [
   "DottieReferenceRowOneBlock16",
   "DottieFirstReferenceRow"
 ]
+
+[[lean_lib]]
+name = "DottieHeightVerification"
+roots = ["DottieHeightVerification", "DottieHeightTransport", "DottieMarkedHeight",
+         "CrossleyQuarterWindow", "CrossleySignedTail", "DedekindDottieSetup"]
+moreLeanArgs = ["-DwarningAsError=true"]
