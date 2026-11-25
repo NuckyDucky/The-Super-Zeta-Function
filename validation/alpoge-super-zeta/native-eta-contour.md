@@ -22,16 +22,21 @@ Lean collects this into 128 powers of $(j+1)^{-2s}$. The coefficient at index $j
 
 Lean proves $|H-P|\le 10^{-14}$ on $|s-c|\le 1/32$. It uses Gamma reflection for this bound and the Cauchy derivative estimate to get $|H'-P'|\le 10^{-12}$ on the original disk. Lean bounds the variation of $P'$ there by $2304/4096$. [Gamma bounds](EtaGammaBound.lean) · [Uniform errors](EtaEulerDisk.lean) · [Derivative variation](EtaEulerContourBounds.lean)
 
-## The two remaining eta checks
+## The kernel certificate for the center and the disk
 
-If $|P(c)|\le 3\cdot 10^{-6}$ and $|P'(c)-(15/4-i/4)|\le 1/20$, then Lean gives the eta residual bound $10^{-6}$ and relative derivative bound $1/4$ on the disk. The 160-bit Arb evaluation gave $|P(c)|\approx 1.6158533\cdot 10^{-6}$ and $|P'(c)-(15/4-i/4)|\approx 0.022840711$. The Lean assembly takes those two finite comparisons and the full Mellin replay as inputs. [Exact hypotheses](EtaEulerContourBounds.lean) · [Lean 4.19.0 output](native-eta-contour-audit.txt)
+The 128 columns give separate enclosures for the real and imaginary parts of $P(c)$ and $P'(c)$. I evaluate the logarithm, exponential, and phase with outward-rounded integer intervals. Lean checks the finite comparison by `decide +kernel`. Its Boolean theorem has no axiom dependencies.
+
+The soundness proof gives $\lvert P(c)\rvert\le 3\cdot10^{-6}$ and $\lvert P'(c)-(15/4-i/4)\rvert\le 1/20$. The estimates above then give the eta residual bound $10^{-6}$ and relative derivative bound $1/4$ on the disk. [Integer comparison](EtaCenterFixed.lean) · [Basis enclosures](EtaCenterBasisSound.lean) · [Exact complex bounds](EtaCenterCertificate.lean)
+
+Lean proves that the closed disk contains a single simple zero $\rho$ of $\zeta(2s)$, that $\Re \rho=1/4$, and that $\lvert \rho-c\rvert\le 4/(3\cdot10^6)$. If the saved Mellin table passes `checkTableRange 576 1728`, Lean gives one simple zero of the original Dottie cross-product at that same $\rho$. The weighted count is $1$ and the weighted address is $\rho$. [Disk theorems](EtaFirstDisk.lean) · [Lean 4.19.0 build and axioms](native-eta-contour-audit.txt)
 
 To replay the eta modules, set `LEAN_PATH` to the integer and native replay output directories followed by the pinned Super Zeta and Mathlib library directories from the [integer replay](native-mellin-quadrature.md#the-weighted-sums-reduce-in-the-kernel). With the packet as the current directory, compile these modules in order. Put the generated objects in the integer replay directory.
 
 ```powershell
 $packet = (Get-Location).Path
 $modules = @('NativeDottieEtaContour', 'EtaMellin', 'EtaEulerRemainder',
-    'EtaGammaBound', 'EtaEulerSum', 'EtaEulerColumns', 'EtaEulerDisk', 'EtaEulerContourBounds')
+    'EtaGammaBound', 'EtaEulerSum', 'EtaEulerColumns', 'EtaEulerDisk', 'EtaEulerContourBounds',
+    'EtaCenterFixed', 'EtaCenterBasisSound', 'EtaCenterCertificate', 'EtaFirstDisk')
 foreach ($module in $modules) {
     & $lean419 -j1 '-DwarningAsError=true' "--root=$packet" `
         -o "$integerOutput/$module.olean" "$packet/$module.lean"

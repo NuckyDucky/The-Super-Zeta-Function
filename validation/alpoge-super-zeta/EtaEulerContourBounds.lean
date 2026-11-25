@@ -13,7 +13,7 @@ def exponentScale (j : ℕ) : ℂ := ↑(-2 * Real.log ((j:ℝ)+1))
 
 def exponentialTerm (j : ℕ) (s : ℂ) : ℂ := Complex.exp (exponentScale j * s)
 
-private theorem power_as_exp (j : ℕ) (s : ℂ) :
+theorem power_as_exp (j : ℕ) (s : ℂ) :
     ((j:ℂ)+1)^(-(2*s)) = exponentialTerm j s := by
   have hp : 0 < (j:ℝ)+1 := by positivity
   have h0 : ((((j:ℝ)+1:ℝ):ℂ)) ≠ 0 := Complex.ofReal_ne_zero.mpr hp.ne'

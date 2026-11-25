@@ -54,3 +54,25 @@ EtaEulerContourBounds
  Classical.choice,
  Quot.sound]
 exit=0
+
+EtaCenterFixed
+'DottieOriented.NativeSpectrum.MellinFixed.etaCenterCheck_passes' does not depend on any axioms
+exit=0
+
+EtaCenterBasisSound
+'DottieOriented.NativeSpectrum.MellinFixed.etaBasis_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+EtaCenterCertificate
+'DottieOriented.NativeSpectrum.MellinFixed.eta_center_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.firstContour_read_of_kernel_eta' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+
+EtaFirstDisk
+'DottieOriented.NativeSpectrum.eta_first_disk_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstCross_root_certificate_of_replay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
