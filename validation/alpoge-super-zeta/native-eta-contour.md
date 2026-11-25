@@ -28,7 +28,7 @@ The 128 columns give separate enclosures for the real and imaginary parts of $P(
 
 The soundness proof gives $\lvert P(c)\rvert\le 3\cdot10^{-6}$ and $\lvert P'(c)-(15/4-i/4)\rvert\le 1/20$. The estimates above then give the eta residual bound $10^{-6}$ and relative derivative bound $1/4$ on the disk. [Integer comparison](EtaCenterFixed.lean) · [Basis enclosures](EtaCenterBasisSound.lean) · [Exact complex bounds](EtaCenterCertificate.lean)
 
-Lean proves that the closed disk contains a single simple zero $\rho$ of $\zeta(2s)$, that $\Re \rho=1/4$, and that $\lvert \rho-c\rvert\le 4/(3\cdot10^6)$. If the saved Mellin table passes `checkTableRange 576 1728`, Lean gives one simple zero of the original Dottie cross-product at that same $\rho$. The weighted count is $1$ and the weighted address is $\rho$. [Disk theorems](EtaFirstDisk.lean) · [Lean 4.19.0 build and axioms](native-eta-contour-audit.txt)
+Lean proves that $|W(s)|>11600$ throughout the closed disk. The original cross-product has exactly one simple zero $\rho$ in that disk, with $\Re \rho=1/4$ and $|\rho-c|\le 4/(3\cdot10^6)$. Its weighted circle reads $p(\rho)$ for every entire $p$. In particular the count is $1$ and the weighted address is exactly $\rho$. [Closed disk certificate](FirstDottieCrossCertificate.lean) · [Lean 4.19.0 build and axioms](native-dottie-cross-audit.txt)
 
 To replay the eta modules, set `LEAN_PATH` to the integer and native replay output directories followed by the pinned Super Zeta and Mathlib library directories from the [integer replay](native-mellin-quadrature.md#the-weighted-sums-reduce-in-the-kernel). With the packet as the current directory, compile these modules in order. Put the generated objects in the integer replay directory.
 
@@ -43,3 +43,13 @@ foreach ($module in $modules) {
     if ($LASTEXITCODE -ne 0) { throw "Lean failed for $module" }
 }
 ```
+
+Run the [full middle replay](native-mellin-quadrature.md#checking-the-middle-samples-in-lean) to build `MellinMiddleAll.olean`. Add `$integerOutput/middle-batches` to the same `LEAN_PATH` and run the closed certificate.
+
+~~~powershell
+$middleOutput = Join-Path $integerOutput 'middle-batches'
+$env:LEAN_PATH = (@($middleOutput, $env:LEAN_PATH) -join [IO.Path]::PathSeparator)
+& $lean419 -j1 '-DwarningAsError=true' "--root=$packet" `
+    -o "$integerOutput/FirstDottieCrossCertificate.olean" "$packet/FirstDottieCrossCertificate.lean"
+if ($LASTEXITCODE -ne 0) { throw "Lean failed for FirstDottieCrossCertificate" }
+~~~

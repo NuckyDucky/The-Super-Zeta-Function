@@ -78,7 +78,7 @@ $$
 
 I divide the 2,368 panels into 37 blocks of 64. At each fixed node index $j$, Lean checks the unweighted integer sums of the 64 contributions before applying $W_j$. It checks the final eight comparisons against the original rational moments, for both components of each of the four moments. [Integer normalization](MellinIntegerMoment.lean) · [All eight comparisons](MellinIntegerCertificate.lean) · [Lean audit](native-mellin-integer-audit.txt)
 
-At real $u\le-23$ and $u\ge4$, both readings are within $10^{-14}$ of zero. Lean checks that the rational table has zero at the corresponding 16,000 panel-node positions. The disk theorem then takes just the middle sample enclosures, for $576\le i<2304$ with $0\le j<25$. Arb supplies those enclosures in the current replay. [Outer estimates](MellinOuterSamples.lean) · [Remaining premise](MellinIntegerCertificate.lean) · [Arb bounds](native-mellin-strip-output.txt)
+At real $u\le-23$ and $u\ge4$, both readings are within $10^{-14}$ of zero. Lean checks that the rational table has zero at the corresponding 16,000 panel-node positions. The fixed-point replay checks the other 43,200 positions, for $576\le i<2304$ with $0\le j<25$. [Outer estimates](MellinOuterSamples.lean) · [Original Arb comparison](native-mellin-strip-output.txt)
 
 For the integer replay, use the same Lean 4.19.0 executable and python-flint 0.9.0. Give `-NativeBuildDirectory` the output directory produced by `replay-native.ps1 -OutputDirectory`. From this packet, run the following in PowerShell.
 
@@ -96,14 +96,15 @@ This regenerates the 37 block source files and their index in the output directo
 
 I enclose each reading with integer endpoints in units of $10^{-24}$. Lean checks outward rounding and the Taylor remainders for the exponentials, sine, cosine, and the log ratio. If the computed intervals fit the archived reading within $10^{-14}$, the theorem gives that error bound for both components of the original integrand at the original node. [Arithmetic](MellinFixedIntervalSound.lean) · [Taylor bounds](MellinFixedElementary.lean) · [Logarithm](MellinFixedLog.lean) · [Exact density](MellinFixedTableSound.lean)
 
-The kernel checks all 25 nodes in each of panels 576, 2048, 2141, and 2272 against the table used by the weighted sums. The first four consecutive batches also pass, covering panels 576–591. Together these cover 475 distinct middle positions, including both components at each position. The executable preflight of all 43,200 middle positions found zero failures. The kernel replay is split into 432 batches of four consecutive panels. Each batch has its own proof and axiom output. [Four panels](MellinFixedTable.lean) · [Executable preflight](MellinFixedPreflight.lean) · [Build and axioms](native-mellin-fixed-audit.txt)
+All 432 four-panel batches pass with `decide +kernel`. Each checks both readings at 100 positions and has no axiom dependencies. Lean joins them into `middle_samples_checked` for all 43,200 positions. [Fixed-point checks](MellinFixedTable.lean) · [Range assembly](MellinFixedRanges.lean) · [Replay and axiom output](native-dottie-cross-audit.txt)
 
-If all the batches pass, Lean joins their intervals and proves $|J_--J_+|>11600$ everywhere on the original disk. The eta center checks already give one simple zero on the quarter line. If the full table check passes, Lean reads that same count and location on the original cross-product. [Range assembly](MellinFixedRanges.lean) · [Correction gap](MellinFixedAssembly.lean) · [Disk and contour statements](EtaFirstDisk.lean)
+With the full table checked, Lean proves $|J_--J_+|>11600$ on the closed disk. The eta bounds give the single simple zero on the quarter line. Lean reads its count and location through the original cross-product. [Correction gap](MellinFixedAssembly.lean) · [Closed disk certificate](FirstDottieCrossCertificate.lean)
 
-Add `-CheckFixedSamples` to the integer replay above and assign its output directory to `$integerOutput`. Then run a four-panel batch. The script reuses a saved batch when the inputs and the compiled proof match its recorded hashes.
+Add `-CheckFixedSamples` to the integer replay above and assign its output directory to `$integerOutput`. Then run the 432 batches. The script reuses a saved batch when its inputs, source and compiled proof match.
 
 ```powershell
-./replay-mellin-middle.ps1 -LeanExecutable $lean419 -IntegerBuildDirectory $integerOutput
+./replay-mellin-middle.ps1 -LeanExecutable $lean419 -IntegerBuildDirectory $integerOutput `
+    -FirstBatch 0 -BatchCount 432
 ```
 
 Use `-FirstBatch` and `-BatchCount` to select batches in a resumed run. Use `-Workers` to check independent batches concurrently. Each worker runs one Lean process at a time, and the runner saves a checksum after a clean axiom audit. When all 432 are present the replay builds the theorem `middle_samples_checked`. [Batch replay](replay-mellin-middle.ps1)
