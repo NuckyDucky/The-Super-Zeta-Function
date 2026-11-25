@@ -3,7 +3,8 @@ param(
     [Parameter(Mandatory)] [string] $IntegerBuildDirectory,
     [string] $OutputDirectory,
     [ValidateRange(0, 431)] [int] $FirstBatch = 0,
-    [ValidateRange(1, 432)] [int] $BatchCount = 1
+    [ValidateRange(1, 432)] [int] $BatchCount = 1,
+    [ValidateRange(1, 432)] [int] $Workers = 1
 )
 
 $ErrorActionPreference = 'Stop'
@@ -37,16 +38,24 @@ if (Test-Path -LiteralPath $fingerprint) {
     Set-Content -LiteralPath $fingerprint -Value $inputs -Encoding utf8NoBOM
 }
 
-function Build-MiddleModule([string] $name) {
-    $source = Join-Path $out "$name.lean"
-    $object = Join-Path $out "$name.olean"
+$compile = {
+    param([string] $name, [string] $compiler, [string] $directory)
+    $source = Join-Path $directory "$name.lean"
+    $object = Join-Path $directory "$name.olean"
     $timer = [Diagnostics.Stopwatch]::StartNew()
-    & $lean -j1 '-DwarningAsError=true' "--root=$out" -o $object $source 2>&1 |
+    $lines = @(& $compiler -j1 '-DwarningAsError=true' "--root=$directory" -o $object $source 2>&1)
+    [pscustomobject]@{
+        Name = $name
+        Status = $LASTEXITCODE
+        Lines = $lines
+        Seconds = [math]::Round($timer.Elapsed.TotalSeconds, 2)
+    }
+}
+
+function Write-MiddleResult($result) {
+    $result.Lines | Tee-Object -FilePath $audit -Append
+    "$($result.Name) exit=$($result.Status) ($($result.Seconds) s)" |
         Tee-Object -FilePath $audit -Append
-    $status = $LASTEXITCODE
-    "$name exit=$status ($([math]::Round($timer.Elapsed.TotalSeconds, 2)) s)" |
-        Tee-Object -FilePath $audit -Append
-    if ($status -ne 0) { throw "Lean failed for $name" }
 }
 
 function Test-BatchObject([string] $name) {
@@ -64,11 +73,11 @@ try {
     $env:LEAN_NUM_THREADS = '1'
     $env:LEAN_PATH = (@($out, $integer)) -join [IO.Path]::PathSeparator
     $version | Tee-Object -FilePath $audit -Append
+    $pending = [Collections.Generic.List[string]]::new()
     for ($batch = $FirstBatch; $batch -lt $FirstBatch + $BatchCount; $batch++) {
         $name = 'MellinMiddleBatch{0:000}' -f $batch
         $start = 576 + 4 * $batch
         $source = Join-Path $out "$name.lean"
-        $object = Join-Path $out "$name.olean"
         $sourceText = @"
 import MellinFixedRanges
 
@@ -90,11 +99,25 @@ end DottieOriented.NativeSpectrum.MellinFixed
             continue
         }
         [IO.File]::WriteAllText($source, $sourceText)
-        Build-MiddleModule $name
-        $stamp = Join-Path $out "$name.sha256"
-        (Get-FileHash -LiteralPath $object -Algorithm SHA256).Hash |
-            Set-Content -LiteralPath $stamp -Encoding utf8NoBOM
+        $pending.Add($name)
     }
+    $failed = [Collections.Generic.List[string]]::new()
+    $compileSource = $compile.ToString()
+    $pending | ForEach-Object -Parallel {
+        & ([scriptblock]::Create($using:compileSource)) $_ $using:lean $using:out
+    } -ThrottleLimit $Workers | ForEach-Object {
+        $result = $_
+        Write-MiddleResult $result
+        if ($result.Status -ne 0 -or ($result.Lines -join " ") -notmatch 'does not depend on any axioms') {
+            $failed.Add($result.Name)
+        } else {
+            $object = Join-Path $out "$($result.Name).olean"
+            $stamp = Join-Path $out "$($result.Name).sha256"
+            (Get-FileHash -LiteralPath $object -Algorithm SHA256).Hash |
+                Set-Content -LiteralPath $stamp -Encoding utf8NoBOM
+        }
+    }
+    if ($failed.Count -gt 0) { throw "Lean failed for $($failed -join ', ')" }
     $batchNames = @(0..431 | ForEach-Object { 'MellinMiddleBatch{0:000}' -f $_ })
     if (@($batchNames | Where-Object { !(Test-BatchObject $_) }).Count -eq 0) {
         $assembly = @($batchNames | ForEach-Object { "import $_" })
@@ -111,7 +134,9 @@ end DottieOriented.NativeSpectrum.MellinFixed
         $assembly += 'theorem middle_samples_checked : checkTableRange 576 1728 = true := through431',
             '', '#print axioms middle_samples_checked', '', 'end DottieOriented.NativeSpectrum.MellinFixed'
         Set-Content -LiteralPath (Join-Path $out 'MellinMiddleAll.lean') -Value $assembly -Encoding utf8NoBOM
-        Build-MiddleModule 'MellinMiddleAll'
+        $result = & $compile 'MellinMiddleAll' $lean $out
+        Write-MiddleResult $result
+        if ($result.Status -ne 0) { throw 'Lean failed to assemble the full middle replay.' }
     }
 }
 finally {

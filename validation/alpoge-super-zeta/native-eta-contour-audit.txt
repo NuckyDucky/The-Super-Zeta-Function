@@ -1,0 +1,56 @@
+Lean 4.19.0, 6caaee842e94, -j1 -DwarningAsError=true
+
+NativeDottieEtaContour
+'DottieOriented.NativeSpectrum.doubledEta_diff_on_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstContour_read_of_eta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstContour_read_of_checked_range_and_eta' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+
+EtaMellin
+'DottieOriented.NativeSpectrum.EtaMellin.mellin_fermi_eq_gamma_eta' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+
+EtaEulerRemainder
+'DottieOriented.NativeSpectrum.EtaMellin.mellin_fermi_remainder_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.EtaMellin.eta_remainder_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+EtaGammaBound
+'DottieOriented.NativeSpectrum.EtaMellin.gamma_real_le_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.EtaMellin.gamma_inv_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+EtaEulerSum
+'DottieOriented.NativeSpectrum.EtaMellin.etaPartial_eq_eulerSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.EtaMellin.eta_eulerSum_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+EtaEulerColumns
+'DottieOriented.NativeSpectrum.EtaMellin.columnWeight_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.EtaMellin.euler_sum_by_columns' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+
+EtaEulerDisk
+'DottieOriented.NativeSpectrum.etaDiskApprox_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.etaDiskApprox_deriv_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+
+EtaEulerContourBounds
+'DottieOriented.NativeSpectrum.etaDiskApprox_deriv_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.eta_contour_inputs_of_finite_center' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.firstContour_read_of_finite_center' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0

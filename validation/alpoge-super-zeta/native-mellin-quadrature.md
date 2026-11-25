@@ -106,4 +106,4 @@ Add `-CheckFixedSamples` to the integer replay above and assign its output direc
 ./replay-mellin-middle.ps1 -LeanExecutable $lean419 -IntegerBuildDirectory $integerOutput
 ```
 
-Use `-FirstBatch` and `-BatchCount` to select batches in a resumed run. When all 432 are present the replay builds the theorem `middle_samples_checked`. [Batch replay](replay-mellin-middle.ps1)
+Use `-FirstBatch` and `-BatchCount` to select batches in a resumed run. Use `-Workers` to check independent batches concurrently. Each worker runs one Lean process at a time, and the runner saves a checksum after a clean axiom audit. When all 432 are present the replay builds the theorem `middle_samples_checked`. [Batch replay](replay-mellin-middle.ps1)
