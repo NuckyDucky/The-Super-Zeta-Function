@@ -275,6 +275,22 @@ the opposite sign after centering. So an upper bound for $W$ on
 arbitrarily late windows of the required width supplies the original
 lower bound for $R_1$, and conversely. [Window theorem and quartic implication](GaussianPrimitiveIndexWindow.lean) · [Lean replay and axiom audit](index-window-replay-audit.txt)
 
+## Gaussian poles at the quarter-line address
+
+I use the Mellin transform of $W(x)$ on $x>1$, with weight $x^{-w-1}$.
+In its convergence region $\Re w>2$, Lean identifies it with
+$-\Phi_G(w)+M_E(w)$, where $\Phi_G$ is the regularized transform of the
+full signed Gaussian prime ramp and $E(x)$ is the sum of that ramp and
+$W(x)$. The full-ramp error is $O(x^\theta)$ for every
+$1/2<\theta<1$. Lean proves $M_E$ analytic on $\Re w>1/2$. This carries
+each right-hand Gaussian zero to a simple pole of the new transform
+at the same $w$. [Mellin identity and pole theorem](GaussianPrimitiveIndexMellin.lean)
+
+For the squared cutoff $X=x^2$, the transform is $2\Psi(2s)$.
+If $\Psi(w)=c/(w-\rho)+a(w)$ locally at a pole, then the new principal
+part is $c/(s-\rho/2)$. Lean checks the half-address and the unchanged
+nonzero residue. [Half-address theorem](GaussianPrimitiveIndexMellin.lean#L228) · [Lean replay and axiom audit](index-window-replay-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism

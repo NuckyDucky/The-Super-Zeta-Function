@@ -61,7 +61,8 @@ $modules = @(
     'GaussianIndexRamp',
     'GaussianIndexWeights',
     'GaussianIndexMoebiusWeights',
-    'GaussianPrimitiveIndexWindow'
+    'GaussianPrimitiveIndexWindow',
+    'GaussianPrimitiveIndexMellin'
 )
 
 $savedPath = $env:LEAN_PATH

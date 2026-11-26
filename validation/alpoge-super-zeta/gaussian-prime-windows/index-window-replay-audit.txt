@@ -277,3 +277,21 @@ AlpogeSuperZeta.quartic_rh_of_primitive_index_windows (hD : DirichletLZerosOnLin
   DedekindZetaRH K
 'AlpogeSuperZeta.quartic_rh_of_primitive_index_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
 exit=0
+GaussianPrimitiveIndexMellin
+'AlpogeSuperZeta.archivedGaussianPrimitiveIndexRamp_full_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimitiveIndexMellin_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimitiveIndexMellin_same_pole' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.archivedGaussianPrimitiveIndexMellin_half_address :
+  ∃ Ψ,
+    (∀ (s : ℂ), 1 < s.re → Ψ s = 2 * archivedGaussianPrimitiveIndexMellin (2 * s)) ∧
+      ∀ ρ ∈ gaussianPoles,
+        1 / 2 < ρ.re →
+          ∃ c, c ≠ 0 ∧ ∃ a, AnalyticAt ℂ a (ρ / 2) ∧ ∀ᶠ (s : ℂ) in 𝓝[≠] (ρ / 2), Ψ s = c / (s - ρ / 2) + a s
+'AlpogeSuperZeta.archivedGaussianPrimitiveIndexMellin_half_address' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
