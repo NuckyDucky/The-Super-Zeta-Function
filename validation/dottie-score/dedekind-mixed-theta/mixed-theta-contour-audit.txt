@@ -1,0 +1,14 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaSignedRings source f12d251417d0f34c243142cdb8b3d06274a90f31
+dedekindZetaRH_of_mixedTheta_signed_rings : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (w : ℂ), 31 / 32 < w.re → w.re < 1 → mixedThetaContinuation K w ≠ 0) →
+    (∀ (N : ℕ), HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaSignedReading K) (-↑N) ↑N) →
+      DedekindZetaRH K
+'FieldTarget.mixedThetaContinuation_isDedekind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaContinuation_reflects' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaSignedReading_eq_mellin_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaSignedReading_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaSignedReading_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_mixedTheta_signed_rings' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaSignedRings exit=0

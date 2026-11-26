@@ -1,4 +1,5 @@
-import DottieDyadicRings
+import DottieDyadicGeometry
+import FieldTarget
 import Mathlib.Analysis.Analytic.Order
 
 /-! On bounded height bands, isolated zeros leave a positive clearance from

@@ -17,7 +17,7 @@ open scoped NNReal Topology
 private theorem exp_small_le_two : Real.exp (2/125) ≤ 2 :=
   (Real.exp_bound_div_one_sub_of_interval (by norm_num) (by norm_num)).trans (by norm_num)
 
-private theorem exp_neg_seven_lt : Real.exp (-7) < 1/1000 := by
+theorem exp_neg_seven_lt : Real.exp (-7) < 1/1000 := by
   have he : (27/10 : ℝ) < Real.exp 1 := by linarith [Real.exp_one_gt_d9]
   have hpow := pow_lt_pow_left₀ he (by norm_num : (0:ℝ) ≤ 27/10) (by decide : 7 ≠ 0)
   have h7 : 1000 < Real.exp 7 := by
@@ -65,11 +65,41 @@ private theorem capOrbit_add_updates (L : ℂ) (N n : ℕ) :
   | succ n ih =>
     rw [Nat.add_succ, capOrbit, ih, Function.iterate_succ_apply']
 
-/-- A bound on the exponent fed by the first positive phase forces the
-original cap to converge to a fixed pair. The two trapping radii are
-`1/20` about `P = 1` and `1/1000` about `Q = 0`. -/
-theorem cap_tendsto_fixed_of_first_phase {L : ℂ} (hre : 8 ≤ L.re) (hn : ‖L‖ ≤ 16)
-    (hfirst : (-L * exp L).re ≤ -8) :
+private theorem neg_phase_re_le {L p : ℂ} (hre : 8 ≤ L.re) (hn : ‖L‖ ≤ 16)
+    (hp : ‖p-1‖ ≤ 1/20) : (-L*p).re ≤ -7 := by
+  rw [show -L*p = -L + -L*(p-1) by ring, add_re, neg_re]
+  have hmul : (-L*(p-1)).re ≤ 4/5 := by
+    calc
+      _ ≤ ‖-L*(p-1)‖ := Complex.re_le_norm _
+      _ = ‖L‖ * ‖p-1‖ := by rw [norm_mul, norm_neg]
+      _ ≤ 16 * (1/20 : ℝ) := mul_le_mul hn hp (norm_nonneg _) (by norm_num)
+      _ = _ := by norm_num
+  linarith
+
+private theorem neg_phase_small {L p : ℂ} (hre : 8 ≤ L.re) (hn : ‖L‖ ≤ 16)
+    (hp : ‖p-1‖ ≤ 1/20) : ‖exp (-L*p)‖ ≤ 1/1000 := by
+  rw [Complex.norm_exp]
+  exact (Real.exp_le_exp.mpr (neg_phase_re_le hre hn hp)).trans exp_neg_seven_lt.le
+
+theorem pos_phase_near_one {L q : ℂ} (hn : ‖L‖ ≤ 16)
+    (hq : ‖q‖ ≤ 1/1000) : ‖exp (L*q)-1‖ ≤ 1/20 := by
+  have ha : ‖L*q‖ ≤ 2/125 := by
+    rw [norm_mul]
+    exact (mul_le_mul hn hq (norm_nonneg _) (by norm_num)).trans (by norm_num)
+  have ht := Complex.norm_exp_sub_one_sub_id_le (ha.trans (by norm_num))
+  have htel : exp (L*q)-1 = (exp (L*q)-1-L*q) + L*q := by ring
+  have hsq := pow_le_pow_left₀ (norm_nonneg (L*q)) ha 2
+  calc
+    ‖exp (L*q)-1‖ = ‖(exp (L*q)-1-L*q) + L*q‖ := congrArg norm htel
+    _ ≤ ‖exp (L*q)-1-L*q‖ + ‖L*q‖ := norm_add_le _ _
+    _ ≤ ‖L*q‖^2 + ‖L*q‖ := add_le_add ht le_rfl
+    _ ≤ 1/20 := by linarith
+
+/-- Entry at any finite update into the two trapping disks forces the
+whole cap orbit to converge to a fixed pair. -/
+theorem cap_tendsto_fixed_of_box_entry {L : ℂ} (hre : 8 ≤ L.re) (hn : ‖L‖ ≤ 16)
+    {N : ℕ} (hpentry : ‖(capOrbit L N).1-1‖ ≤ 1/20)
+    (hqentry : ‖(capOrbit L N).2‖ ≤ 1/1000) :
     ∃ z : ℂ × ℂ, step L z = z ∧ ‖z.1-1‖ ≤ 1/20 ∧ ‖z.2‖ ≤ 1/1000 ∧
       Tendsto (capOrbit L) atTop (𝓝 z) := by
   let P := Metric.closedBall (1:ℂ) (1/20)
@@ -86,16 +116,8 @@ theorem cap_tendsto_fixed_of_first_phase {L : ℂ} (hre : 8 ≤ L.re) (hn : ‖L
       _ = ‖L/50‖ * ‖q‖ := norm_mul _ _
       _ ≤ (8/25 : ℝ) * (1/20) := mul_le_mul hn' (hQ q hq) (norm_nonneg _) (by norm_num)
       _ = _ := by norm_num
-  have hneg (p : ℂ) (hp : p ∈ P) : (-L*p).re ≤ -7 := by
-    have hrew : -L*p = -L + -L*(p-1) := by ring
-    rw [hrew, add_re, neg_re]
-    have hmul : (-L*(p-1)).re ≤ 4/5 := by
-      calc
-        _ ≤ ‖-L*(p-1)‖ := Complex.re_le_norm _
-        _ = ‖L‖ * ‖p-1‖ := by rw [norm_mul, norm_neg]
-        _ ≤ 16 * (1/20 : ℝ) := mul_le_mul hn (hP p hp) (norm_nonneg _) (by norm_num)
-        _ = _ := by norm_num
-    linarith
+  have hneg (p : ℂ) (hp : p ∈ P) : (-L*p).re ≤ -7 :=
+    neg_phase_re_le hre hn (hP p hp)
   have hplus {u v : ℂ} (hu : u ∈ Q) (hv : v ∈ Q) :
       ‖exp ((L/50)*v) - exp ((L/50)*u)‖ ≤ (16/25) * ‖v-u‖ := by
     refine (exp_mul_difference (convex_closedBall _ _) hpos hu hv).trans ?_
@@ -130,21 +152,12 @@ theorem cap_tendsto_fixed_of_first_phase {L : ℂ} (hre : 8 ≤ L.re) (hn : ‖L
   have hmap : MapsTo (scaledStep L) D D := fun _ h =>
     ⟨hplus_maps h.2, hminus_maps h.1⟩
   have hclosed : IsClosed D := Metric.isClosed_closedBall.prod Metric.isClosed_closedBall
-  have hcapture : scaledPair (capOrbit L 2) ∈ D := by
-    have hq1 : (50:ℂ)*exp (-L) ∈ Q := by
-      have h := hminus_maps (p := 1) (by simp [P])
-      simpa only [mul_one] using h
-    have hp2 := hplus_maps hq1
-    have heq : (L/50)*((50:ℂ)*exp (-L)) = L*exp (-L) := by ring
-    rw [heq] at hp2
-    have hq2 : (50:ℂ)*exp (-L*exp L) ∈ Q := by
-      change (50:ℂ)*exp (-L*exp L) ∈ Metric.closedBall (0:ℂ) (1/20)
-      rw [Metric.mem_closedBall, dist_zero_right, norm_mul, Complex.norm_exp,
-        show ‖(50:ℂ)‖ = 50 by norm_num]
-      have h := (Real.exp_le_exp.mpr (hfirst.trans (by norm_num))).trans exp_neg_seven_lt.le
+  have hcapture : scaledPair (capOrbit L N) ∈ D := by
+    refine ⟨?_, ?_⟩
+    · simpa only [P, scaledPair, Metric.mem_closedBall, dist_eq_norm] using hpentry
+    · change (50:ℂ)*(capOrbit L N).2 ∈ Metric.closedBall (0:ℂ) (1/20)
+      rw [Metric.mem_closedBall, dist_zero_right, norm_mul, show ‖(50:ℂ)‖ = 50 by norm_num]
       linarith
-    exact ⟨by simpa [scaledPair, capOrbit, step] using hp2,
-      by simpa [scaledPair, capOrbit, step] using hq2⟩
   have hcontract : ContractingWith (4/5 : ℝ≥0) (hmap.restrict (scaledStep L) D D) := by
     refine ⟨by norm_num, LipschitzWith.of_dist_le_mul fun p q => ?_⟩
     change dist (scaledStep L p.val) (scaledStep L q.val) ≤ (4/5 : ℝ) * dist p.val q.val
@@ -170,12 +183,36 @@ theorem cap_tendsto_fixed_of_first_phase {L : ℂ} (hre : 8 ≤ L.re) (hn : ‖L
   · have hcont : Continuous unscalePair :=
       continuous_fst.prodMk (continuous_snd.div_const _)
     have hlim' := hcont.continuousAt.tendsto.comp hlim
-    apply (tendsto_add_atTop_iff_nat 2).mp
+    apply (tendsto_add_atTop_iff_nat N).mp
     have hsem : Semiconj unscalePair (scaledStep L) (step L) := unscale_step L
     apply hlim'.congr
     intro n
-    change unscalePair ((scaledStep L)^[n] (scaledPair (capOrbit L 2))) = capOrbit L (n+2)
-    rw [hsem.iterate_right, unscale_scale, Nat.add_comm n 2, capOrbit_add_updates]
+    change unscalePair ((scaledStep L)^[n] (scaledPair (capOrbit L N))) = capOrbit L (n+N)
+    rw [hsem.iterate_right, unscale_scale, Nat.add_comm n N, capOrbit_add_updates]
+
+/-- A bound on the exponent fed by the first positive phase forces the
+original cap to converge to a fixed pair. -/
+theorem cap_tendsto_fixed_of_first_phase {L : ℂ} (hre : 8 ≤ L.re) (hn : ‖L‖ ≤ 16)
+    (hfirst : (-L * exp L).re ≤ -8) :
+    ∃ z : ℂ × ℂ, step L z = z ∧ ‖z.1-1‖ ≤ 1/20 ∧ ‖z.2‖ ≤ 1/1000 ∧
+      Tendsto (capOrbit L) atTop (𝓝 z) := by
+  apply cap_tendsto_fixed_of_box_entry hre hn (N := 2)
+  · have hq1 : ‖exp (-L)‖ ≤ 1/1000 := by
+      simpa only [mul_one] using neg_phase_small hre hn (p := 1) (by norm_num)
+    simpa [capOrbit, step] using pos_phase_near_one hn hq1
+  · simp only [capOrbit, step, mul_one, Complex.norm_exp]
+    exact (Real.exp_le_exp.mpr (hfirst.trans (by norm_num))).trans exp_neg_seven_lt.le
+
+/-- The even first phase stays in its small disk regardless of the size
+of the interleaved second-phase orbit. -/
+theorem cap_even_first_near_one {L : ℂ} (hre : 8 ≤ L.re) (hn : ‖L‖ ≤ 16)
+    (n : ℕ) : ‖(capOrbit L (2*n)).1-1‖ ≤ 1/20 := by
+  induction n with
+  | zero => norm_num [capOrbit]
+  | succ n ih =>
+    rw [Nat.mul_succ]
+    change ‖exp (L*exp (-L*(capOrbit L (2*n)).1))-1‖ ≤ 1/20
+    exact pos_phase_near_one hn (neg_phase_small hre hn ih)
 
 /-- The exponent in the capture test is determined by the real and imaginary
 parts of the lift after the first positive update. -/
@@ -259,6 +296,8 @@ theorem cap_tendsto_fixed_in_outer_bands {L : ℂ} (hre : 8 ≤ |L.re|) (hmax : 
       intro n
       simp only [Function.comp_apply, cap_neg, Prod.swap_swap]
 
+#print axioms cap_tendsto_fixed_of_box_entry
+#print axioms cap_even_first_near_one
 #print axioms cap_tendsto_fixed_of_first_phase
 #print axioms first_phase_exponent_re
 #print axioms cap_tendsto_fixed_near_even_pi
