@@ -526,6 +526,40 @@ bound in either form, with a change in the constant allowed.
 The arithmetic input is now the signed upper bound on $A_{\ge k}(x)$
 throughout arbitrarily late windows. [Corrected cutoff and theorem premises](GaussianLogCutTriangleWindow.lean) · [Clean build and axioms](gaussian-log-cut-triangle-audit.txt) · [Kominers's divisibility step](https://hexagonmath.org/pdf/2610.00451v1#page=3)
 
+## The square-root scale and derivative factorials
+
+If $1\le k\le2\sqrt x$, I keep the triangle terms at $p\ge k$ and
+replace each term at $p<k$ by its signed linear part $b(p)x/(3p)$.
+For every $\theta>1/2$, Lean bounds the difference from the squared
+prime reading by $D_\theta x^\theta$ for $x\ge2$. The same
+$\theta$ and window width work in the quartic theorem.
+[Cutoff and exact premises](GaussianSqrtTriangleWindow.lean)
+
+If $J=\lceil 2x/k\rceil$, then all jet orders $0\le j<J$ are below a
+fixed prime $p$ exactly when $2x\le kp$. The exact test using only
+$p\in\mathbb N$ and $p\ge k$ is $2x\le k\lceil k\rceil$.
+The simpler inequality $k\ge\sqrt{2x}$ suffices. I use $k=2\sqrt x$,
+so the triangle has no row $Y^p$ for any retained prime. The ordinary
+matrix is the coefficient matrix with column $j$ multiplied by $j!$.
+Over a characteristic-zero domain the same minors are nonzero. At $p>j$ for every column, Lean proves both determinants
+belong to exactly the same powers of any ideal containing $p$.
+[Order and row threshold](GaussianSqrtFrobeniusBudget.lean) · [Determinant and ideal powers](GaussianFrobeniusFactorial.lean)
+
+If a full-triangle minor $\Delta$ is nonzero at an embedding, the node
+bound is $H\ge1$, and $\log H\le C_H\log x$, then Lean gives
+$
+\frac{2k}{x^2}\log|\Delta|
+ \le \frac{x}{3}\log H+(40+14C_H)\sqrt{x}\log x
+ \qquad (k=2\sqrt{x}).
+$
+The full row array with $J=\lceil\sqrt{x}\rceil$ jets per node needs
+at least $x/8$ nodes. For one Frobenius class, the determinant size
+still uses the full node height. The weighted prime mass in the
+retained range has leading term proportional to $\log(x/k)$.
+For the signed quartic bound I need a comparison that controls the
+shared height cost and the excess valuations in the determinant.
+[Full-triangle size and capacity](GaussianSqrtFrobeniusBudget.lean) · [Kominers's height and prime weight bounds](https://hexagonmath.org/pdf/2610.00451v1) · [Independent replay](gaussian-sqrt-frobenius-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism
