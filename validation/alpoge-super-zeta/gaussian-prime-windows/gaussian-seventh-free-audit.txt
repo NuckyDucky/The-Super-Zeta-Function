@@ -1,0 +1,29 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true --root=<source directory>, LEAN_NUM_THREADS=1
+Imported checkpoint: prior independently rebuilt Hermite certificate and its pinned dependencies.
+Running GaussianHermiteCoefficientBound (SHA256 90FCA47F2D453356E543ACE02719BDB0C5ABD29B365FD307A8DEF939D64C5E71)
+'AlpogeSuperZeta.monomialReductions_coefficient_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.hermitePrimePolynomial_coefficient_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianHermiteCoefficientBound exit=0 11.817s
+Running GaussianSeventhFreeEuler (SHA256 285DD8B8ED9E07958AEA23ED00B61AB1A54DCFB4EE2B32DDC76871AC69086604)
+'AlpogeSuperZeta.archivedIdealCharacter_pow_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.signedLocalEulerSeries_mul_seventhFreeNumerator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianSeventhFreeEuler exit=0 19.893s
+Running GaussianSeventhFreeMellin (SHA256 A32AEC4A11E785E22D15275A21BAF8FA2682E230A65751E43344EF1FAD9E9BA1)
+'AlpogeSuperZeta.archivedGaussianSeventhFreeKernel_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSeventhFreeKernel_upperTail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSeventhFreeKernel_lowerTail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussian_seventhFree_numerator_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussian_seventhFree_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.archivedQuarticRH_iff_seventhFree_analytic (hD : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0) :
+  DedekindZetaRH K ↔ ∀ (s : ℂ), 1 / 14 < s.re → AnalyticAt ℂ archivedGaussianSeventhFreeMellin s
+'AlpogeSuperZeta.archivedQuarticRH_iff_seventhFree_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianSeventhFreeMellin exit=0 37.612s
+Three fresh modules passed in 69.332s.
+Axiom reports: 10 / 10
+Unexpected axioms:

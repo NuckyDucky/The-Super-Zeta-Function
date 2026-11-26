@@ -119,7 +119,10 @@ $modules = @(
     'GaussianDyadicFrobeniusWindow',
     'GaussianHermitePrimePolynomial',
     'GaussianHermiteFrobeniusIdeal',
-    'ArchivedGaussianHermiteNorm'
+    'ArchivedGaussianHermiteNorm',
+    'GaussianHermiteCoefficientBound',
+    'GaussianSeventhFreeEuler',
+    'GaussianSeventhFreeMellin'
 )
 
 $savedPath = $env:LEAN_PATH
