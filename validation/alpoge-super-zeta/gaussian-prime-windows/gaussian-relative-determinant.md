@@ -587,6 +587,33 @@ difference of the centered readings throughout arbitrarily late windows.
 The field application uses the residue action of the chosen unramified
 place as an input to the Lean theorem.
 
+## The integer-node minor for the identity reading
+
+I take the column at node $r$ and Hasse order $s$ for each row
+$(r,s)$ of the triangle. In the identity reading, the two coordinates
+of the node are both $r$. The row change $X^rY^s\mapsto X^r(Y-X)^s$
+stays in the triangle for $k\ge1$ and has determinant $1$. At a
+node $a$, the Taylor reading of the new row is the coefficient of
+$T^j$ in $(a+T)^r(-T)^s$. This vanishes for $j<s$. At $j=s$
+the reading is $(-1)^s a^r$, so each diagonal block is a signed
+Vandermonde matrix. Lean gives the determinant
+$
+\prod_{r+ks<x}(-1)^s r!.
+$
+
+At $k=2\sqrt{x}$ and any prime $p\ge k$, every factorial index $r$
+is below $p^2$. Legendre's formula gives $\lfloor r/p\rfloor$ factors
+of $p$ in $r!$. The same minor therefore has exponent $V_p(x,k)$
+at every retained prime. At $x=9$ and $k=6$, the two block widths
+are $9$ and $3$. For $p=7$, only $7!$ and $8!$ contribute to the
+exponent, one each. [Determinant, ideal membership, and valuation](GaussianFrobeniusIdentityMinor.lean) · [Build and axioms](gaussian-frobenius-identity-minor-audit.txt)
+
+The factorial product belongs to the common identity ideal over
+any commutative coefficient ring. The Lean valuation statement is over
+the integers. If $p$ is a uniformizer in the local ring at $P$, the
+same exponent bounds the common ideal from above. To prove equality
+there, I also need every generator to lie in $P^{V_p(x,k)}$.
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism
