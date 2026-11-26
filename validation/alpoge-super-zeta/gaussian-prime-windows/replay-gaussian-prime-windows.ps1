@@ -132,7 +132,8 @@ $modules = @(
     'GaussianPrimeCenter',
     'GaussianPrimeCenterWindow',
     'GaussianVaughanWindow',
-    'GaussianVaughanLargestPrime'
+    'GaussianVaughanLargestPrime',
+    'GaussianVaughanLogWindow'
 )
 
 $savedPath = $env:LEAN_PATH
