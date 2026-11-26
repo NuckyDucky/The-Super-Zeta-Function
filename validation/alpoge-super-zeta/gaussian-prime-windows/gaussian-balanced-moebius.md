@@ -54,3 +54,5 @@ A(m)A(n)K(mn/Y)
 $$
 
 Each variable in this sum is at least $YL^{-15}/Z\gg\sqrt Y/(\log Y)^{31/14}$ and at most $O(\sqrt Y(\log Y)^{1/14})$. The diagonal and any fixed polylogarithmic band $|m-n|\le(\log Y)^b$ already contribute $O_{\varepsilon,b}(Y^{1/2+\varepsilon})$ by boundedness of $K$ and $|A(n)|\le d(n)\ll_\eta n^\eta$. The missing estimate is cancellation in the other pairs. An $O_\varepsilon(Y^{1/2+\varepsilon})$ bound there gives the original square-root estimate. With ordinary RH and the Gaussian zero-free input from the earlier split, the same quadratic sum represents the large-primitive-norm part up to $O(Y^{1997/4000})$. [Original square-root criterion](gaussian-seventh-free.md#why-seven-works) · [Bound below the primitive cutoff](gaussian-moebius-content.md)
+
+If I take two scale differences, I can also bound the signed block with $\max(m,n)/\gcd(m,n)\le Y^{3/14}$ at the square-root scale. The differences leave the Mellin reading nonzero as a multiplier throughout $\Re z>1/2$. [Common-divisor and scale calculation](gaussian-moebius-common-divisor.md)
