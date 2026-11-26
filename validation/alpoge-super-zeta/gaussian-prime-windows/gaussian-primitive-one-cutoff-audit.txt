@@ -1,0 +1,16 @@
+Independent source replay of GaussianPrimitiveOneCutoff.lean
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true, LEAN_NUM_THREADS=1
+Dependency checkpoint: independent GaussianMoebiusPairContent replay
+Running GaussianPrimitiveOneCutoff (SHA256 921E747E5113054EDED7932D66FBA7B936B423B930FA37802A05A059E62A186C)
+'AlpogeSuperZeta.gaussianPrimitive_cutoff_identity' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimitive_euler_correction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianPrimitive_mixed_correction' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimitive_scalarFactor_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianPrimitive_oneCutoff_exponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianPrimitiveOneCutoff exit=0 40.299s
+Axiom reports: 5 / 5
+Unexpected axioms:

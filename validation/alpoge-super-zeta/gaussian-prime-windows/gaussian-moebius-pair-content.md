@@ -68,3 +68,5 @@ $$
 $$
 
 The power of $Y$ is $69977449/140000000$. For $B_0=R$ the analogous exponent is $13991/28000$, approximately $0.499679$. Both apply to the corresponding smoothly cut portion of the six-scale sum. With rational Dirichlet GRH for the small-ratio result and Liu's Gaussian bound, the remaining square-root obligation has the extra restriction $kl>R^{1001/1000}$. On its support the two square parts satisfy $hj\le 2\lambda^{-1}R^{999/2000}$. [Original square-root criterion](gaussian-seventh-free.md#why-seven-works)
+
+If both reduced norms have no square part and the common divisor is $1$, the [one-cutoff calculation](gaussian-primitive-one-cutoff.md) separates that coprime squarefree contribution into a square-root error and one explicit signed sum.
