@@ -1,0 +1,63 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true --root=<source directory>, LEAN_NUM_THREADS=1
+Imported checkpoint: prior independently rebuilt dyadic certificate and its pinned dependencies.
+Running GaussianDyadicFrobeniusWindow (SHA256 44C442252E9D40865A3DA4E42CC20870819BE788CA1293D7B8B80D1C1216D1C9)
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianDyadicPrimeWindow_eq_frobenius' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.closurePrimeLabel_arithmetic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicFrobeniusLogMass_pair_eq_rational' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_central_prime_windows
+  (hD : DirichletLZerosOnLine)
+  (hMass :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 →
+          ∃ C ≥ 0,
+            ∀ x ≥ 1, x / 8 - C * x ^ θ ≤ dyadicFrobeniusLogMass gaussianCentralElement x + dyadicFrobeniusLogMass 1 x)
+  (hCentral : GaussianCutoffWindowBound archivedGaussianCentralPrimeExcess) : DedekindZetaRH K
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_central_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDyadicFrobeniusWindow exit=0 35.615s
+Running GaussianHermitePrimePolynomial (SHA256 C62FEDD391B33E5B22C33A6689CF5749A41A19437EAB08EB78456DDFC1519550)
+'AlpogeSuperZeta.hermitePrimePolynomial_at_node' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.hermitePrimePolynomial_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.hermitePrimePolynomial_mod_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.hermitePrimePolynomial_X_sq_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianHermitePrimePolynomial exit=0 13.129s
+Running GaussianHermiteFrobeniusIdeal (SHA256 41B40BF794D947013584F3F60B8D51F7FD3CA9557F38DE9BA426B91CDA2832F5)
+'_private.GaussianHermiteFrobeniusIdeal.0.AlpogeSuperZeta.hermiteFrobeniusValue_residue' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianHermiteFrobeniusIdeal.0.AlpogeSuperZeta.hermiteFrobeniusIdeal_not_le_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.hermiteFrobeniusIdeal_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianHermiteFrobeniusIdeal exit=0 36.561s
+Running ArchivedGaussianHermiteNorm (SHA256 306C3120092EB434799B84F418D127D703C57D8BC1233B179870D7DFC808895A)
+'_private.ArchivedGaussianHermiteNorm.0.AlpogeSuperZeta.GaussianQuarticClosure.arithmetic_reading_iff_chosen_central' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.hermiteShellPart_factorization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.hermiteShellPart_log_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianHermiteNormWindow_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_hermite_norm_windows (hD : DirichletLZerosOnLine)
+  (hWindow : GaussianCutoffWindowBound archivedGaussianHermiteNormWindow) : DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_hermite_norm_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ArchivedGaussianHermiteNorm exit=0 37.281s
+Four fresh modules passed in 122.597s.
+Axiom reports: 16 / 16
+Unexpected axioms:

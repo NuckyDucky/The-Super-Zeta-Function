@@ -116,7 +116,10 @@ $modules = @(
     'GaussianAveragedPrimeWindow',
     'GaussianThreeHalvesPrimeWindow',
     'GaussianDyadicPrimeWindow',
-    'GaussianDyadicFrobeniusWindow'
+    'GaussianDyadicFrobeniusWindow',
+    'GaussianHermitePrimePolynomial',
+    'GaussianHermiteFrobeniusIdeal',
+    'ArchivedGaussianHermiteNorm'
 )
 
 $savedPath = $env:LEAN_PATH

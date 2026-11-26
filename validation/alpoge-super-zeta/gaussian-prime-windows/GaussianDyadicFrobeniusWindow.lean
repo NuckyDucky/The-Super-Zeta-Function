@@ -18,8 +18,14 @@ private theorem closurePrimeLabel_exists {p : ℕ} (hp : p.Prime) :
   obtain ⟨σ, hσ⟩ := closurePrimeFiber_exists_frobenius hp hP
   exact ⟨closureGaloisEquiv σ, P, σ, hP, hσ, rfl⟩
 
-private def closurePrimeLabel (p : ℕ) : GaussianClosureGroup :=
+/-- A chosen arithmetic Frobenius label at a prime above the given rational prime. -/
+def closurePrimeLabel (p : ℕ) : GaussianClosureGroup :=
   if hp : p.Prime then (closurePrimeLabel_exists hp).choose else 1
+
+theorem closurePrimeLabel_arithmetic {p : ℕ} (hp : p.Prime) :
+    ∃ (P : Ideal (𝓞 L)) (σ : ClosureAut), P ∈ closurePrimeFiber p ∧ IsArithFrobAt ℤ σ P ∧
+      closurePrimeLabel p = closureGaloisEquiv σ := by
+  simpa only [closurePrimeLabel, dif_pos hp] using (closurePrimeLabel_exists hp).choose_spec
 
 private theorem closurePrimeLabel_weight {p : ℕ} (hp : p.Prime)
     (hbig : 26509772707289 < p) :
@@ -30,13 +36,12 @@ private theorem closurePrimeLabel_weight {p : ℕ} (hp : p.Prime)
   have hB : ¬p ∣ 1027708 := fun hd =>
     (lt_of_le_of_lt (by decide : (1027708 : ℕ) ≤ 26509772707289) hbig).not_ge
       (Nat.le_of_dvd (by decide) hd)
-  unfold closurePrimeLabel
-  rw [dif_pos hp]
-  obtain ⟨P, σ, hP, hσ, hg⟩ := (closurePrimeLabel_exists hp).choose_spec
+  obtain ⟨P, σ, hP, hσ, hg⟩ := closurePrimeLabel_arithmetic hp
   rw [hg]
   exact archivedGaussianPrimeWeight_eq_arithmeticFrobenius hp h₂ hD hB hP hσ
 
-private def dyadicPrimes (x : ℝ) : Finset ℕ :=
+/-- The rational primes in the half-open interval `[x/2,x)`. -/
+def dyadicPrimes (x : ℝ) : Finset ℕ :=
   (range (⌊x⌋₊ + 1)).filter (fun p : ℕ => p.Prime ∧ x / 2 ≤ (p : ℝ) ∧ (p : ℝ) < x)
 
 private theorem dyadicPrime_gt_conductor {x : ℝ}
@@ -126,6 +131,7 @@ theorem quartic_rh_of_archived_gaussian_central_prime_windows (hD : DirichletLZe
   linarith
 
 #print axioms archivedGaussianDyadicPrimeWindow_eq_frobenius
+#print axioms closurePrimeLabel_arithmetic
 #print axioms dyadicFrobeniusLogMass_pair_eq_rational
 #check quartic_rh_of_archived_gaussian_central_prime_windows
 #print axioms quartic_rh_of_archived_gaussian_central_prime_windows
