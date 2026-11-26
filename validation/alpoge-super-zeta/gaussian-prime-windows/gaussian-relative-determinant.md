@@ -509,10 +509,22 @@ $[Y,Y^{1+\delta}]$. Lean uses that transfer to make the upper bound
 on $A(x)$ an explicit premise of the quartic theorem, alongside the
 rational Dirichlet result and real-axis positivity. [Signed comparison](ArchivedGaussianTriangleWindow.lean) · [Exact theorem premises](GaussianTriangleScopeAudit.lean) · [Source replay and axioms](prime-squared-triangle-replay-audit.txt)
 
-The signed triangle includes all primes up to $x$. Kominers's row
-divisibility applies at $p\ge\log x$. Using a determinant estimate
-for that shorter sum requires matching its centering and bounding
-the signed contribution. [Kominers's divisibility step](https://hexagonmath.org/pdf/2610.00451v1#page=3)
+Set $k=\log x$. Kominers's row divisibility applies at $p\ge k$.
+I keep that range and replace the linear term $x c/3$ by
+$x(c-\sum_{p<k}b(p)/p)/3$, where the sum is over the omitted primes.
+For a single prime, the squared-ramp sum over its positive multiples
+is between $x/(3p)-1$ and $x/(3p)$. The rounding bound and the earlier
+triangle estimate give
+$
+|A_{\ge k}(x)-A(x)|\le
+M(2k+2+2k/x)k^{1/4}\le18M\sqrt{x},
+\qquad
+M=\sum_p\frac{|b(p)|}{p^{5/4}}.
+$
+Lean proves that the same $\theta$ and $\delta$ work for the upper
+bound in either form, with a change in the constant allowed.
+The arithmetic input is now the signed upper bound on $A_{\ge k}(x)$
+throughout arbitrarily late windows. [Corrected cutoff and theorem premises](GaussianLogCutTriangleWindow.lean) · [Clean build and axioms](gaussian-log-cut-triangle-audit.txt) · [Kominers's divisibility step](https://hexagonmath.org/pdf/2610.00451v1#page=3)
 
 ## What the fixed CM place data can distinguish
 

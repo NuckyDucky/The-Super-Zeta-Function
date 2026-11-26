@@ -86,7 +86,8 @@ $modules = @(
     'GaussianSquaredSmoothing',
     'GaussianPrimeSquaredWindow',
     'ArchivedGaussianTriangleWindow',
-    'GaussianTriangleScopeAudit'
+    'GaussianTriangleScopeAudit',
+    'GaussianLogCutTriangleWindow'
 )
 
 $savedPath = $env:LEAN_PATH
