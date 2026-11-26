@@ -110,6 +110,18 @@ v_{\mathfrak q}(\mathfrak g_n)
  \sum_{j\ge0}\mathbf 1_{(Q+1)\ell^j\mid n}.
 $$
 
+Lean proves the equivalent containment statement for every $k\ge1$.
+
+$$
+\mathfrak g_n\subseteq\mathfrak q^k
+\quad\Longleftrightarrow\quad
+\eta(\mathfrak q)=-1\ \text{ and }\ (Q+1)\ell^{k-1}\mid n .
+$$
+
+The theorem uses the original archived character of $\mathfrak q$.
+It covers both residue degrees of Gaussian primes away from $2D$.
+[Exact Lean valuation criterion](GaussianCommonDivisorPowers.lean)
+
 If the relative sign is $+1$, I choose $h$ to equal a nonzero root $u$
 in the residue field. Then $b_n(h)=(2u)^{n-1}$ there, so the common
 divisor has valuation zero. If the sign is $-1$, the function
@@ -117,16 +129,22 @@ $h\mapsto (h+u)/(h-u)$ on $\mathbb F_Q$ is injective and takes values
 in the group of norm-one elements of $\mathbb F_{Q^2}^{\times}$.
 It misses $1$ and the group has order $Q+1$. Thus its image contains
 an element of order $Q+1$, giving valuation zero for some $h$ unless
-$Q+1$ divides $n$.
+$Q+1$ divides $n$. [Lean residue-field criterion](GaussianCommonDivisor.lean) · [Application to the actual prime ideals](GaussianIdealCommonDivisor.lean)
 
-If $Q+1\mid n$, all starting values give at least
-$1+v_\ell(n)$ by the local power calculation above. To get equality,
-lift any residue value of $h$. The derivative in $h$ of
-$((h+u)/(h-u))^{Q+1}-1$ is a unit, since the derivative of the ratio
-is $-2u/(h-u)^2$ and $Q+1$ is prime to $\ell$. The two lifts $h$ and
-$h+\pi$, with $\pi$ a generator of $\mathfrak q$, cannot both give
-zero modulo $\mathfrak q^2$ by their first-order difference. Apply
-the local power formula to the lift with valuation one.
+At an even index $m$ prime to $\ell$, let $h=\pi$ be a generator of
+$\mathfrak q$. Modulo $\pi^2$, the coefficient is
+$b_m(\pi)=\pi m\delta^{m/2-1}$. If $Q+1\mid m$, every starting value
+gives the first prime factor and this one has exactly one. When the
+index is multiplied by $\ell$, the geometric sum relating the two
+coefficients gives the next factor. Its real coordinate, modulo
+$\mathfrak q^2$, is $\ell$ times a power of the real coordinate of
+$(h+u)^m$. The latter is a unit at the negative sign. This yields
+exactly one additional factor at each step. [Lean first-order expansion](GaussianCommonDivisorLift.lean) · [Lean powers and exactness](GaussianCommonDivisorPowers.lean)
+
+At index $72$ the single start $h=1+i$ gave a factor above $5$.
+For the common divisor, Lean checks that $h=1$ avoids the prime at
+$r=2$, while $h=2$ avoids the prime at $r=-2$. Neither prime above
+$5$ survives taking all starting values. [Lean example](GaussianIdealCommonDivisor.lean)
 
 For $n\ge1$, form the Möbius product of ideals
 
@@ -136,7 +154,9 @@ $$
 
 Then $v_{\mathfrak q}(\mathfrak c_n)$ is exactly the indicator of
 $n=(Q+1)\ell^j$ for some $j\ge0$ and $\eta(\mathfrak q)=-1$. In
-particular $\mathfrak c_n$ is integral. At $n=p+1$ for a rational prime
+particular $\mathfrak c_n$ is integral. Lean checks the Möbius transform
+of the containment counts for any finite cutoff. Taking $\ell^B>n$
+covers every contributing power $j<B$. At $n=p+1$ for a rational prime
 $p$, the $j=0$ term only counts the degree-one inert Gaussian primes
 above $p$. For $j\ge1$, the contributing rational primes satisfy
 $\ell^2\le x+1$ when $p\le x$. For each $\ell$ there are at most two
@@ -151,7 +171,7 @@ $$
 With the same cutoff factor $(1/p-1/x)$, the $e(p)$ add a constant and
 an $O(x^{-1/2}\log x)$ error. This gives the same one-sided window
 criterion for the centered sum of $\log N\mathfrak c_{p+1}$. The bound
-on that centered sum is still the arithmetic input.
+on that centered sum is still the arithmetic input. [Lean Möbius transform](GaussianCommonDivisorMoebius.lean)
 
 The ideal $\mathfrak g_n$ can be calculated by a finite gcd. The
 polynomial $b_n(a+bi)$ in $a,b$ has total degree at most $n-1$. Its
@@ -160,10 +180,72 @@ Each uses only values on the grid $a,b\ge0$, $a+b\le n-1$, and every
 value at integer $a,b$ is an integral combination of the coefficients
 by the binomial expansion. An exact Gaussian gcd on these grids
 gives norms $1,169,73$ for $\mathfrak g_6,\mathfrak g_{14},
-\mathfrak g_{74}$ respectively. The fixed-divisor, lifting and
-Möbius calculations in this section are written arguments. The
-build below covers the fixed-starting-value recurrence and the
-local tests in Lean.
+\mathfrak g_{74}$ respectively. The finite gcd calculations and
+the summed cutoff comparison use the written arguments above.
+[Common divisor build and axiom audit](common-divisor-replay-audit.txt)
+
+## The Dirichlet series of the primitive ideal norms
+
+I can sum over every index $n$ rather than preselect $n=p+1$. Put
+$c(n)=\log N\mathfrak c_n$ and
+$P(w)=\sum_{n\ge1}c(n)n^{-w}$. For $\Re w>1$, the exact local
+exponents give
+
+$$
+P(w)=
+\sum_{\substack{\mathfrak q\text{ good}\\\eta(\mathfrak q)=-1}}
+\frac{\log Q}{(Q+1)^w(1-\ell^{-w})},
+\qquad
+\sum_{n\ge1}\frac{\log N\mathfrak g_n}{n^w}=\zeta(w)P(w).
+$$
+
+In the first formula a marked prime contributes at the sequence
+$(Q+1)\ell^j$. In the second, it contributes at every multiple
+of those indices. Both rearrangements are absolutely convergent
+in this half-plane.
+
+If I keep only $Q=\ell$ and $j=0$, the smoothed sum of $c(n)$ is
+the original inert-prime sum with each index moved from $\ell$
+to $\ell+1$. In the omitted terms, $Q=\ell^2$ or $j\ge1$ implies
+$\ell^2\le n$. For $n\le x$ the total omitted log weight is
+$O(\sqrt x\log x)$. Moving the first terms back from $\ell+1$
+to $\ell$ in the weight $(1/n-1/x)$ changes the sum by a constant
+plus $O(\log x/x)$, since
+$|1/(\ell+1)-1/\ell|\le1/\ell^2$. Thus, after adjusting the
+centering constant, the all-index sum still has the same
+one-sided window criterion.
+
+The archived Euler factors imply the identity
+
+$$
+P(w)=\frac12\left(-\frac{\zeta_k'(w)}{\zeta_k(w)}
+                    +\frac{G'(w)}{G(w)}\right)+E(w),
+\qquad k=\mathbb Q(i),
+$$
+
+where $E$ is holomorphic on $\Re w>1/2$. Indeed the expression
+inside the sum for a good negative prime, after the factor
+$1/2$, has weight $(\log Q)Q^{-w}/(1-Q^{-2w})$. The positive
+signs cancel, and the finitely many bad factors contribute
+holomorphic terms on $\Re w>0$. On a compact set with
+$\Re w\ge\sigma>1/2$, the difference per negative prime is bounded
+by a constant times
+
+$$
+(\log Q)\left(Q^{-1-\sigma}+Q^{-\sigma}\ell^{-\sigma}
+                   +Q^{-3\sigma}\right).
+$$
+
+The series of these bounds converges, since $\ell\le Q\le\ell^2$
+and there are at most two Gaussian primes over $\ell$. With the
+rational Dirichlet result supplied, $\zeta_k=\zeta\beta$ has no
+zeros to the right of the half line. An upper-right zero of $G$
+of order $m$ then gives a pole of $P$ of residue $m/2$ at the
+same $w$. In the Super Zeta coordinate, $P(2s)$ has the pole at
+$s=w/2$ with residue $m/4$. These are written analytic
+consequences of the local exponents. The estimate to prove is
+the upper bound on the centered all-index sum on cofinal windows.
+[Archived logarithmic derivative](ArchivedGaussianLogDerivative.lean) · [Existing window implication](GaussianLowerPrimeWindow.lean)
 
 ## What the fixed CM place data can distinguish
 

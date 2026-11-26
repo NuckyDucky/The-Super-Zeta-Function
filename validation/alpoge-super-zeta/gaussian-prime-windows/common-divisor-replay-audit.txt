@@ -1,0 +1,35 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+GaussianCommonDivisor
+'AlpogeSuperZeta.quadratic_coefficient_all_values_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianIdealCommonDivisor
+'AlpogeSuperZeta.gaussianPowerCoefficient_map' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussian_natCast_mem_prime_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_le_prime_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_no_prime_above_five_at_72' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+GaussianCommonDivisorLift
+'AlpogeSuperZeta.gaussianPowerCoefficient_even_mod_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_not_le_prime_sq_of_even' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+GaussianCommonDivisorPowers
+'_private.GaussianCommonDivisorPowers.0.AlpogeSuperZeta.quadratic_factor_mod_prime_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianCommonDivisorPowers.0.AlpogeSuperZeta.gaussianPowerCoefficient_mul_index' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianPowerCoefficient_mul_prime_pow_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_exact_prime_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_le_prime_pow_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianCommonDivisorMoebius
+'AlpogeSuperZeta.gaussianCommonDivisor_moebius_prime_powers' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

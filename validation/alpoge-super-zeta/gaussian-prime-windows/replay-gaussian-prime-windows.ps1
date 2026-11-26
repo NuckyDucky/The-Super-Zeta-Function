@@ -52,7 +52,12 @@ $modules = @(
     'GaussianBiquadraticInertWeights',
     'GaussianRelativeFrobenius',
     'GaussianRelativeDeterminant',
-    'GaussianCMPrimeBarrier'
+    'GaussianCMPrimeBarrier',
+    'GaussianCommonDivisor',
+    'GaussianIdealCommonDivisor',
+    'GaussianCommonDivisorLift',
+    'GaussianCommonDivisorPowers',
+    'GaussianCommonDivisorMoebius'
 )
 
 $savedPath = $env:LEAN_PATH
