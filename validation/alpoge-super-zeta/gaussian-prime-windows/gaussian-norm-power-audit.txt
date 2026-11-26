@@ -1,0 +1,23 @@
+Lean source replay of both new modules against the preceding arithmetic Frobenius checkpoint.
+Command options: -j1 -DwarningAsError=true.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Running GaussianSquaredRoundingResidual (SHA256 8EF63DEEFB4A6044B27ADD50E8A348FE965A6B80889FCE9A3678F91DF70E0DF5)
+GaussianSquaredRoundingResidual exit=0 38.366s
+Running ArchivedGaussianNormPowerBound (SHA256 DFF5806F6B775150DD83F435D7C84611E9B2E8B7C36CB445084490E52C5AC574)
+'AlpogeSuperZeta.squaredRoundingResidual_monotoneOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.squaredRoundingResidual_le_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeSquaredWindow_le_of_prefix_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianNorm_le_of_prime_bounds {θ : ℝ} (hθ : 1 / 2 < θ) {A B : ℝ}
+  (hA : 0 ≤ A) (hB : 0 ≤ B) (hprefix : ∀ (n : ℕ), archivedGaussianSignedPrimePrefix n ≤ A * ↑n ^ θ)
+  (hcenter : ∀ x ≥ 1, archivedGaussianReciprocalCenterError x ≤ B * x ^ (θ - 1)) :
+  ∃ X C, 1 ≤ X ∧ 0 ≤ C ∧ ∀ x ≥ X, GaussianQuarticClosure.archivedGaussianRetainedNormWindow x ≤ C * x ^ θ
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianNorm_le_of_prime_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ArchivedGaussianNormPowerBound exit=0 36.075s
+Both fresh modules passed.
+Axiom reports: 4
+Unexpected axioms: 

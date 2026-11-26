@@ -105,7 +105,9 @@ $modules = @(
     'GaussianClosureUnramified',
     'GaussianClosureFrobenius',
     'GaussianClosurePrimeTrace',
-    'ArchivedGaussianNormCriterion'
+    'ArchivedGaussianNormCriterion',
+    'GaussianSquaredRoundingResidual',
+    'ArchivedGaussianNormPowerBound'
 )
 
 $savedPath = $env:LEAN_PATH
