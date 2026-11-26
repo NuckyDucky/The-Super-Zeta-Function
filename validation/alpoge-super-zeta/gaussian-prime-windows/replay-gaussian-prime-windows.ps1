@@ -77,7 +77,11 @@ $modules = @(
     'GaussianFrobeniusFixedMinor',
     'GaussianFrobeniusJetScaffold',
     'GaussianFrobeniusJetMinors',
-    'GaussianFrobeniusOrdinaryJet'
+    'GaussianFrobeniusOrdinaryJet',
+    'GaussianSquaredRamp',
+    'GaussianDivisorSquaredWindow',
+    'GaussianFrobeniusTriangle',
+    'SpectralThermometer'
 )
 
 $savedPath = $env:LEAN_PATH

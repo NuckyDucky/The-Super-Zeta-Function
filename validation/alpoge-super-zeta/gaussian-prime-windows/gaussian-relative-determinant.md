@@ -462,6 +462,36 @@ distinguishes $X^p$ and $Y^p$, and it also breaks the Frobenius agreement
 $X^p=Y$ in that order. The coefficient derivatives below order $p$
 preserve the Frobenius agreement. [Ordinary and coefficient derivative theorems](GaussianFrobeniusOrdinaryJet.lean) · [Source replay and axioms](frobenius-jet-replay-audit.txt)
 
+## Squared weights from triangular row counts
+
+Let $T_k(t)$ count the nonnegative integer pairs $(r,s)$ with $r+ks<t$.
+If $V_p(X,k)$ adds $\lfloor r/p\rfloor$ over that triangle, then writing
+$r=mp+u$ counts the smaller triangle at $t=X-mp$ once for each positive
+multiple $mp<X$. Lean checks the reindexing, the area $t^2/(2k)$, and
+the error between the area and the integer count. [Triangle and floor count](GaussianFrobeniusTriangle.lean) · [Kominers's row divisibility](https://hexagonmath.org/pdf/2610.00451v1#page=3)
+
+If $X\ge1$, $k>0$, and $p>0$, then the exact per-prime comparison is
+
+$$
+0\le \frac{2k}{X^2}V_p(X,k)-\sum_{m\ge1,\ mp<X}(1-mp/X)^2
+\le \frac{2k}{X^2}(X+X/k+1)(\lceil X/p\rceil-1).
+$$
+
+If I give each repeated divisor address $n<X$ the weight $(1-n/X)^2$,
+the full-prefix Mellin transform is multiplied by $2/((w+1)(w+2))$.
+Lean obtains it from three shifts of the same prefix transform. That
+factor is analytic and nonzero on the right half-strip needed by the
+pole test. The half-window, full prefix, and squared cutoff therefore
+share one window theorem for this quartic. [Three shifted transforms](GaussianSquaredRamp.lean) · [Quartic declarations](GaussianDivisorSquaredWindow.lean) · [Source replay and axioms](gaussian-squared-cutoff-replay-audit.txt)
+
+The squared quartic declaration takes the rational Dirichlet result,
+real-axis positivity for the completed Gaussian factor, and an upper
+bound on the archived squared divisor reading. If $1/2<\theta<1$,
+the upper bound $Cx^\theta$ must hold on arbitrarily late intervals
+$[Y,Y^{1+\delta}]$, with $\delta>0$ fixed for that exponent. The next
+arithmetic step is to transfer a bound on the centered, signed prime
+sum to that archived squared reading. [Exact window premise](GaussianRawWindowCriterion.lean)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism
