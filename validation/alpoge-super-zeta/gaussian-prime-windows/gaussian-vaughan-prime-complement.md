@@ -8,7 +8,7 @@ $$
  M(z)\bigl(-G'(z)-G(z)\Pi(z)\bigr).
 $$
 
-If $U$ is analytic on a strip joining the original and new contours and agrees with $M\Pi$ where $\Re z>1$, then $M(-G')-GU$ continues the completed prime transform to that strip. This is where the full Gaussian log derivative clears against $G$. The contour shift still needs the continuation and vertical bounds for $U$. [Prime completion and continuation](GaussianVaughanConvolvedKernel.lean)
+If $U$ is analytic on a strip joining the original and new contours and agrees with $M\Pi$ where $\Re z>1$, then $M(-G')-GU$ continues the completed prime transform to that strip. This is where the full Gaussian log derivative clears against $G$. Lean supplies the continuation under the rational Dirichlet critical-line input. The contour shift still needs vertical bounds for $U$. [Prime completion](GaussianVaughanConvolvedKernel.lean) · [Higher-power continuation](GaussianVaughanHigherContinuation.lean)
 
 ## The sign of the discarded terms
 

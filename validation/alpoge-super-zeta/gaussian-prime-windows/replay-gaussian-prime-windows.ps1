@@ -138,7 +138,11 @@ $modules = @(
     'GaussianVaughanKernelBounds',
     'GaussianVaughanMellinSeries',
     'GaussianVaughanConvolvedKernel',
-    'GaussianVaughanPrimeComplement'
+    'GaussianVaughanPrimeComplement',
+    'GaussianVaughanPrimePowers',
+    'GaussianVaughanRationalSquares',
+    'GaussianVaughanFilteredDirichlet',
+    'GaussianVaughanHigherContinuation'
 )
 
 $savedPath = $env:LEAN_PATH

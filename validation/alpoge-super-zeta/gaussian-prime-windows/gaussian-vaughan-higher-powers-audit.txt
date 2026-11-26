@@ -1,0 +1,61 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true (LEAN_NUM_THREADS=1)
+Dependency checkpoint: previously checked Gaussian prime complement replay at commit 53d570327efdf100e61f09da3760fb0491d2f416.
+Earlier criterion and kernel objects were supplied by the isolated shelf from the prime complement replay.
+Pinned certificates have no cached objects on the dependency path.
+Running GaussianVaughanPrimePowers (SHA256 0BD71B8CE8DC9E80DAEB4122FFF2D140AEF50D728665C8043AAA46FD3BA9768E)
+'AlpogeSuperZeta.primePowerTail_at_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.primePowerTail_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMangoldt_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigher_eq_square_add_tail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanTail_analyticAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanTail_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanPrimePowers exit=0 46.693s
+Running GaussianVaughanRationalSquares (SHA256 C04CC07ED3DE15EC70C26045DA541090FB383DCF3A71890E8FDD7D44F72A5360)
+'AlpogeSuperZeta.archivedGaussianNormCharacter_apply_of_coprime' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianRationalChi4_apply_of_coprime' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSquareWeight_eq_rational' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianRationalMangoldt_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.squareDilation_LSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.primePart_add_tail_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSquareCoefficients_eq_dilation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSquare_LSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanRationalSquares exit=0 47.37s
+Running GaussianVaughanFilteredDirichlet (SHA256 D22DFDBE4AAD781AFCF3C65BA9713B3B6F87907A3770569F11554CFD59F81C22)
+'AlpogeSuperZeta.archivedGaussianFilteredDirichletLog_analyticAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianFilteredDirichletLog_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanFilteredDirichlet exit=0 46.041s
+Running GaussianVaughanHigherContinuation (SHA256 C94F0FB72264827D6A0FFD455AC754E27486CFA0323ECA1DA36AC744D68EA374)
+'AlpogeSuperZeta.archivedGaussianVaughanHigherCorrection_uniform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigherMellin_analyticAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigherMellin_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_continues (hDir : DirichletLZerosOnLine) :
+  (∀ (z : ℂ),
+      1 / 3 < z.re → AnalyticAt ℂ (archivedGaussianVaughanPrimeContinuation archivedGaussianVaughanHigherMellin) z) ∧
+    ∀ (z : ℂ),
+      1 < z.re →
+        HasMellin archivedGaussianVaughanCompletedPrimeKernel z
+          (archivedGaussianVaughanPrimeContinuation archivedGaussianVaughanHigherMellin z)
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_continues' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanHigherContinuation exit=0 45.946s
+4 fresh module(s) passed in 186.077s.
+Axiom reports: 20 / 20
+Unexpected axioms: none.
