@@ -1,0 +1,28 @@
+Independent replay of DedekindFieldUniverses.
+The local audit path was removed for publication.
+
+A field isomorphism transports the ideals of each absolute norm. Therefore the
+same continuing function and any fixed predicate on that function transfer
+from fields in universe zero to an arbitrary number-field type.
+
+Replay from lean-ideal73 using the pinned project dependencies:
+  lake build DottieHeightVerification
+  lake env lean -j1 -M3000 -DwarningAsError=true DedekindFieldUniverses.lean
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib HEAD: 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -M3000 -DwarningAsError=true; LEAN_NUM_THREADS=1
+FieldTarget source Git blob 2d736feec6079b6aa96df2bfa9ab20eac0f5c859
+DedekindFieldUniverses source SHA256 CB048F5B0CCF552F2316C646F134A962A18F8CE6A10B0D23236C022EAE758F54
+Running FieldTarget
+'FieldTarget.continuation_eq_off_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_third_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+FieldTarget exit=0 15.58s
+FieldTarget axiom reports: 2 / 2; unexpected: 
+Running DedekindFieldUniverses
+'FieldTarget.dedekindZeta_eq_of_ringEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.isDedekindZeta_iff_of_ringEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dedekind_continuation_of_small_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFieldUniverses exit=0 15.714s
+DedekindFieldUniverses axiom reports: 3 / 3; unexpected: 
+Both source builds and all five axiom reports passed.
