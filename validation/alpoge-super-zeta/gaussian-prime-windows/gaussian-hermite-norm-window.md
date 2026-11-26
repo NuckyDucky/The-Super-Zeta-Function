@@ -83,3 +83,27 @@ I need it on arbitrarily late windows for each $\eta>0$. In the original variabl
 If I supply the rational Dirichlet result, the combined prime count and the higher prime powers cost at most $B x^\theta$. Lean bounds the full signed Mangoldt reading on the dyadic interval by $4E(x)+Bx^\theta$. After weighting at $\theta$, that correction contributes at most $B\delta U$ to the majorant integral. I use the area bound with $\eta/2$ so the constant factor and the linear term fit inside $e^{\eta U}$ on the late windows. [Signed comparison](GaussianHermiteIntegratedWindow.lean#L13)
 
 If I then apply Alpöge's Landau window theorem to the Mellin transform of the full signed reading, the real part of every Gaussian zero is at most $\theta$. The dyadic factor $1-2^{-w}$ preserves the poles with $\Re w>1/2$. Gaussian reflection and the rational cofactors give the band $1-\theta\le\Re w\le\theta$ for the actual quartic's nontrivial zeros. Taking the area bound for every $\theta>1/2$ below $1$ gives the quartic RH implication with the area condition still explicit. [Alpöge's window theorem](https://github.com/leanprover-community/riemann-hypothesis/blob/ba2a065656ec7c638baa601994de3e0245ff6665/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindow.lean#L83) · [Dyadic pole theorem](GaussianDyadicPrimeWindow.lean) · [Quartic band and critical line](GaussianHermiteIntegratedWindow.lean#L196) · [Replay and axioms](gaussian-hermite-integrated-replay-audit.txt)
+
+## The dyadic prime-pair second moment
+
+Write $S(x)$ for the signed prime reading on $[x/2,x)$ and $c_p$ for its signed $\log p$ coefficient. At $u=\log x$ a prime contributes over $I_p=(\log p,\log(2p)]$. If I square the reading and integrate over $[U,V]$, Lean checks the exact finite pair sum
+
+$$
+M_\theta(U,V)=
+\int_U^V S(e^u)^2 e^{-2\theta u}\,du
+=\sum_{p,q}c_p c_q K_\theta(p,q),\qquad
+K_\theta(p,q)=\int_{[U,V]\cap I_p\cap I_q} e^{-2\theta u}\,du.
+$$
+
+I take $p,q\le e^V$ and the signed coefficient is zero at nonprimes. For $q\ge 2p$ the overlap is empty. For $p<q\le 2p$ the kernel is at most $\frac{2p-q}{q}q^{-2\theta}$. If $q=p$, it is at most $(\log 2)p^{-2\theta}$. [Exact pair expansion and overlap bounds](GaussianDyadicPairMoment.lean)
+
+For $2p-\lfloor\sqrt p\rfloor\le q<2p$, there are at most $\lfloor\sqrt p\rfloor$ possible integers $q$ and the ratio in the kernel is at most $\lfloor\sqrt p\rfloor/p$. The product of the two allowances is at most one. Since $|c_pc_q|\le 8(\log p)^2$ there, the outer-band row contributes at most $8(\log p)^2p^{-2\theta}$. Adding both orientations and the diagonal gives
+
+$$
+M_\theta(U,V)\le 2 I_\theta(U,V)+
+(4\log 2+16)\sum_{n\ge1}(\log n)^2 n^{-2\theta},
+$$
+
+where $I_\theta$ is the signed sum with $p<q<2p-\lfloor\sqrt p\rfloor$. The last series converges for every $\theta>1/2$ and is independent of the window. [Diagonal and outer-band proof](GaussianDyadicPairBounds.lean)
+
+If I supply the rational Dirichlet result, the combined prime count contributes a term proportional to $V-U$ in the positive Hermite area estimate. Lean uses $v\le1+v^2$ for the weighted signed reading and gives $4\int_U^V\max(0,E(e^u))e^{-\theta u}\,du\le M_\theta(U,V)+B(V-U)$ on late windows. Thus the arithmetic input on this route is an upper bound $I_\theta(U,(1+\delta)U)\le e^{\eta U}$ on arbitrarily late windows for each $\eta>0$. One fixed $\delta>0$ works for each chosen $\theta$. With the rational Dirichlet result this supplies the band $[1-\theta,\theta]$. For every $1/2<\theta<1$ it supplies Dedekind RH for the quartic. [Area and field theorems](GaussianDyadicPairCriterion.lean) · [Replay and axioms](gaussian-dyadic-pair-replay-audit.txt)

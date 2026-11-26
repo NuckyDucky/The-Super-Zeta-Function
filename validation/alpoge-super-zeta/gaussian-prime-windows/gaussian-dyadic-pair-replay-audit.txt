@@ -1,0 +1,80 @@
+Independent replay of the dyadic prime-pair criterion
+Lean 4.33.1 at 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+Mathlib at 0df444a360eaa60ab8c11dca51a86af692955474
+Alpöge at ba2a065656ec7c638baa601994de3e0245ff6665
+
+Three certificate modules were built from source in dependency order using
+the pinned imports. All 13 axiom reports contain propext, Classical.choice,
+and Quot.sound. The printed field theorems retain the rational Dirichlet
+result and the cofinal signed-pair bound as inputs. Local paths are omitted.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true ; LEAN_NUM_THREADS=1
+Running GaussianDyadicPairMoment (SHA256 A56603123CB6106F2120DA90B401998E4F61FF279B0EEA7CD0B2AF02383D5E56)
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicPrimePairKernel_eq_zero_of_twice_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicPrimePairKernel_le_log_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicPrimePairKernel_le_outer_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianDyadicSecondMoment_integrableOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianDyadicSecondMoment_eq_pairs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDyadicPairMoment exit=0 33.649s
+1 fresh module(s) passed in 33.664s.
+Axiom reports: 5 / 5
+Unexpected axioms:
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true ; LEAN_NUM_THREADS=1
+Running GaussianDyadicPairBounds (SHA256 1C04E01E49B2E9CFCCB1B21BDBC2EBC1E65FE31BE7DD1241FBBAC09DC318660C)
+'_private.GaussianDyadicPairBounds.0.AlpogeSuperZeta.GaussianQuarticClosure.logSquaredPower_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianDyadicPairBounds.0.AlpogeSuperZeta.GaussianQuarticClosure.pairDiagonal_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianDyadicPairBounds.0.AlpogeSuperZeta.GaussianQuarticClosure.pairOuterRow_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianDyadicSecondMoment_le_interior_add' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDyadicPairBounds exit=0 61.851s
+1 fresh module(s) passed in 61.868s.
+Axiom reports: 4 / 4
+Unexpected axioms:
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true ; LEAN_NUM_THREADS=1
+Running GaussianDyadicPairCriterion (SHA256 67A52654A6E01D9EEA355BADD679A149368FC4DFA4F9CD1934F951010F476541)
+def AlpogeSuperZeta.GaussianQuarticClosure.ArchivedGaussianDyadicInteriorMomentBound : ℝ → ℝ → Prop :=
+fun θ δ =>
+  ∀ (η : ℝ), 0 < η → ∀ (U₀ : ℝ), ∃ U ≥ U₀, archivedGaussianDyadicInteriorMoment θ U ((1 + δ) * U) ≤ Real.exp (η * U)
+AlpogeSuperZeta.GaussianQuarticClosure.archivedQuarticZeta_strip_of_dyadicInteriorMoment (hDir : DirichletLZerosOnLine)
+  {θ δ : ℝ} (hθ : 1 / 2 < θ) (hθ₁ : θ < 1) (hδ : 0 < δ) (hPairs : ArchivedGaussianDyadicInteriorMomentBound θ δ) {w : ℂ}
+  (hw₀ : 0 < w.re) (hw₁ : w.re < 1) (hw : archivedQuarticZeta w = 0) : 1 - θ ≤ w.re ∧ w.re ≤ θ
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_dyadicInteriorMoment (hDir : DirichletLZerosOnLine)
+  (hPairs : ∀ (θ : ℝ), 1 / 2 < θ → θ < 1 → ∃ δ > 0, ArchivedGaussianDyadicInteriorMomentBound θ δ) : DedekindZetaRH K
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianHermitePositiveArea_le_secondMoment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianHermiteAreaBound_of_dyadicInteriorMoment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedQuarticZeta_strip_of_dyadicInteriorMoment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_dyadicInteriorMoment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDyadicPairCriterion exit=0 35.667s
+1 fresh module(s) passed in 35.681s.
+Axiom reports: 4 / 4
+Unexpected axioms:
