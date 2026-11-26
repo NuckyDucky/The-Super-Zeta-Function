@@ -1,0 +1,62 @@
+Gaussian quartic prime band and inert-excess window
+
+Independent source replays with the preceding compiled dependencies.
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Alpoge ba2a065656ec7c638baa601994de3e0245ff6665
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-upper-error-20261126-115852-208
+Running GaussianVaughanPrimeBand (SHA256 046CBBC600A35831B064815CE8FEDD5B18D61F6E82C293DFB5CDB3BF01896A34)
+AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_approx (hDir : DirichletLZerosOnLine) :
+  ∃ C ≥ 0, ∀ᶠ (X : ℝ) in atTop, |archivedGaussianVaughanSum X - archivedGaussianVaughanPrimeBand X| ≤ C * X ^ (3 / 8)
+AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_window_iff (hDir : DirichletLZerosOnLine) (W : ℝ → ℝ)
+  (hW : ∀ u ≥ 0, |W u| ≤ 1) (hUnit : ∀ (u : ℝ), 0 ≤ u → u ≤ 1 → W u = 1) (hSupport : ∀ u ≥ 2, W u = 0) :
+  GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W) ↔
+    GaussianCutoffWindowBound archivedGaussianVaughanPrimeBand
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_prime_band (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hBand : GaussianCutoffWindowBound archivedGaussianVaughanPrimeBand) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_approx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_window_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_prime_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanPrimeBand exit=0 65.731s
+Running GaussianVaughanNegativeWindow (SHA256 CA2EBE6CD3F6879ACEE131A958E4FF120B02E24408EF55355B0DD46860723237)
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_negative_sum_windows (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound fun X => -archivedGaussianVaughanSum X) : DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_negative_sum_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanNegativeWindow exit=0 50.915s
+2 fresh module(s) passed in 116.664s.
+Axiom reports: 5 / 5
+Unexpected axioms: 
+
+
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-negative-window-20261126-121504-543
+Pinned inert-weight dependency: GaussianBiquadraticInertWeights.olean (SHA256 8B42B8579E8D3662D90FF23A6832D0C49A8B21DCFDBA5136201DE14AF80598B0)
+Running GaussianVaughanInertExcess (SHA256 F60E700B6BE2DE47228425EC0FDB7595852A443A277FA43F103D7FDBF02857FB)
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_inert_excess_windows (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianVaughanInertExcess) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughanInertExcess_eq_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanInertExcess_eventually_eq_neg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_inert_excess_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanInertExcess exit=0 51.792s
+1 fresh module(s) passed in 51.801s.
+Axiom reports: 3 / 3
+Unexpected axioms:
+
+Three modules exited 0. All eight theorem audits list propext, Classical.choice, and Quot.sound.
