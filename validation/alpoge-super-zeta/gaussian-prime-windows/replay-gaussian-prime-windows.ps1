@@ -123,7 +123,8 @@ $modules = @(
     'GaussianHermiteCoefficientBound',
     'GaussianSeventhFreeEuler',
     'GaussianSeventhFreeMellin',
-    'GaussianMoebiusContent'
+    'GaussianMoebiusContent',
+    'GaussianBalancedMoebius'
 )
 
 $savedPath = $env:LEAN_PATH
