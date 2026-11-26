@@ -1,0 +1,20 @@
+Independent source replay of GaussianPrimeMesh.lean
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true, LEAN_NUM_THREADS=1
+Dependency checkpoint: independent GaussianPrimitiveOneCutoff replay
+Running GaussianPrimeMesh (SHA256 FFB484E429CC71AFAC93D00ACE9ED9639EAF138772FE98E0849CDC97F055A8DA)
+'AlpogeSuperZeta.gaussianPrimeCellChord_hinge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianPrimeCellTent_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeSlope_at_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeCellChord_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeCellChord_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeIntegerCellError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeMillionCellBudget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeCellBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_mesh (hD : DirichletLZerosOnLine)
+  (hmesh : ArchivedGaussianPrimeMeshBound) : DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_mesh' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianPrimeMesh exit=0 44.244s
+Axiom reports: 9 / 9
+Unexpected axioms:
