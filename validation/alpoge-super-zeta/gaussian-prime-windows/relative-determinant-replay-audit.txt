@@ -1,0 +1,36 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+GaussianRelativeFrobenius
+'AlpogeSuperZeta.quadratic_frobenius_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.relativeRotation_cayley' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.relativeRotation_mul_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_relative_rotation_frobenius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_relative_rotation_at_5_and_13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_relative_rotation_at_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_rotation_exact_orders_at_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_rotation_exact_orders_at_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianRelativeDeterminant
+'AlpogeSuperZeta.gaussianMarkedCoefficient_recurrence' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedCoefficient_residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedCoefficient_residue_before_prime' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedCoefficient_mem_prime_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedCoefficient_before_mem_prime_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedDeterminant_mem_prime_sq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedDeterminant_before_mem_prime_sq_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussian_marked_determinant_norm_at_73' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussian_marked_determinant_cross_contribution_at_5' depends on axioms: [propext, Quot.sound]
+exit=0
+GaussianCMPrimeBarrier
+'AlpogeSuperZeta.gaussianCentralElement_eq_commutator' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussianCentralElement_eq_one_in_cm_quotient' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.centralPairMajorant_invariant' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.centralPairMajorant_le' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussian_inert_central_pair_totals' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

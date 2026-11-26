@@ -49,7 +49,10 @@ $modules = @(
     'GaussianLowerPrimeWindow',
     'GaussianInertPrimeWeights',
     'GaussianConductorResidue',
-    'GaussianBiquadraticInertWeights'
+    'GaussianBiquadraticInertWeights',
+    'GaussianRelativeFrobenius',
+    'GaussianRelativeDeterminant',
+    'GaussianCMPrimeBarrier'
 )
 
 $savedPath = $env:LEAN_PATH

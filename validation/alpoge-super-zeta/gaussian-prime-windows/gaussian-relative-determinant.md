@@ -1,0 +1,207 @@
+# Relative Frobenius and a common Gaussian determinant
+
+I keep the original quartic $K=\mathbb Q(i,u)$ with $u^2=\delta=-5045155+1027708i$.
+At an odd split rational prime $p$, I keep the marked root $r^2=-1$ in
+$\mathbb F_p$ and the Gaussian prime $\mathfrak p$ it specifies. Write $\eta$ for
+the archived relative character at $\mathfrak p$. [Conductor and field identification](gaussian-biquadratic-class-character.md)
+
+## The same recurrence at every marked prime
+
+Let $h=1+i$, $\alpha=h+u$, $\beta=h-u$ and $q=h^2-\delta$. I chose $h$ so
+the rotation below is defined at both primes over each of $5,13,73$.
+Define $b_n$ and $\Delta_n$ over the Gaussian integers by
+
+$$
+b_n=\frac{\alpha^n-\beta^n}{2u},\qquad
+b_0=0,\quad b_1=1,\quad b_{n+2}=2h b_{n+1}-q b_n,\qquad
+\Delta_n=-\delta b_n^2.
+$$
+
+$\Delta_n$ is the determinant for multiplication by $b_n u$ in the basis
+$(1,u)$. The quadratic reduction $\rho_r$ sends $i$ to $r$ and keeps
+the two roots of $u^2=\delta$ as the two branches of the quadratic
+algebra. In that algebra Frobenius sends $u$ to $\eta u$. So
+$(h+u)^{p+1}=(h+\eta u)(h+u)$ after reduction. The coefficient of $u$
+gives the first formula below. Multiplying $(h+u)^{p-1}$ by
+$(h+u)(h-u)=q$ gives the second.
+
+$$
+\rho_r(b_{p+1})=(1+r)(1+\eta),\qquad
+\rho_r(q)\rho_r(b_{p-1})=(1+r)(\eta-1).
+$$
+
+If $\eta=-1$, then $b_{p+1}\in\mathfrak p$ and
+$\Delta_{p+1}\in\mathfrak p^2$. If $\rho_r(\delta)\ne0$, the determinant
+test is an equivalence. For the complementary test $b_{p-1}\in\mathfrak p$
+means $\eta=+1$ when $\rho_r(q)\ne0$. [Lean recurrence, residue identities and ideal divisibility](GaussianRelativeDeterminant.lean)
+
+The norm-one rotation $U=\alpha/\beta$ uses the same two entries at every
+prime. Where $q\delta$ is a unit, it gives $U^p=U^{-1}$ at $\eta=-1$ and
+$U^p=U$ at $\eta=+1$. For an odd power of Frobenius the first case swaps
+the two readings. Even powers fix them. At $73$, the same formula gives
+order $74$ at $3+8i$ and order $72$ at $3-8i$. Lean checks both exact
+orders. At $5$ both order checks give $4$. At $13$ both readings invert
+under the first Frobenius. [Lean rotation and order check](GaussianRelativeFrobenius.lean)
+
+## What changes when I divide the two determinants
+
+Choose the complex root $u$ so $|\alpha|>|\beta|$. Equality would force
+$\Re u+\Im u=0$ and hence $\Re\delta=0$. I have $|\alpha|>1$ and
+$\lambda=|\beta/\alpha|<1$. For the rational norm,
+
+$$
+\log N_{k/\mathbb Q}(\Delta_n)
+=4n\log|\alpha|-\log16+
+  4\log\left|1-(\beta/\alpha)^n\right|,\qquad k=\mathbb Q(i).
+$$
+
+Adding the raw log sizes for $n=p+1$ through $p\le x$ costs order
+$x^2/\log x$. The forced valuations at the matching primes account for
+at least $2\sum_{p\le x} I(p)\log p$, on scale $x$. If I use the ratio
+$\Delta_{p+1}/\Delta_{p-1}$ instead, the terms linear in $p$ cancel.
+The log norm of each ratio is $8\log|\alpha|+O(\lambda^{p-1})$ and the
+errors have bounded sum over all $p$. This addresses the size of the
+ratio at the complex embedding. The primes dividing it still need to
+be counted.
+
+The calculation at index $p=73$ shows why. The numerator and denominator
+norms have remainders $56\cdot73^2$ and $21\cdot73^2$ modulo $73^3$.
+At the matching primes this gives $+2$ at $3+8i$ and $-2$ at $3-8i$ for
+the valuations of the ratio. At the rational prime $5$, the same norm
+ratio has valuation $-8$, entirely from the denominator. Lean checks
+these norm remainders. [Lean numerical checks](GaussianRelativeDeterminant.lean)
+
+For an odd Gaussian prime $\mathfrak q\nmid 2\delta q$, let $\ell$ be the
+underlying rational prime, $m_{\mathfrak q}$ the order of $U$ in the
+quadratic residue algebra and $c_{\mathfrak q}=v(U^{m_{\mathfrak q}}-1)$,
+using the unramified local valuation with $v(\ell)=1$. If the quadratic
+algebra splits either component gives the same answers, since the two
+values of $U$ are inverses. Then
+
+$$
+v_{\mathfrak q}(\Delta_n)
+=2\,\mathbf 1_{m_{\mathfrak q}\mid n}
+  \bigl(c_{\mathfrak q}+v_\ell(n)\bigr).
+$$
+
+Indeed $\alpha,\beta,2u$ are units at $\mathfrak q$ and $\Delta_n$
+has valuation twice that of $U^n-1$. Raising an element congruent to
+$1$ to a power prime to $\ell$ preserves its valuation of the difference
+from $1$. Raising it to $\ell$ increases that valuation by one by the
+binomial expansion in this unramified ring. Thus each off-diagonal
+contribution to the ratio is an explicit difference of two divisibility
+counts with $n=p+1$ and $n=p-1$. To turn the ratio into a window bound I
+need an estimate for their sum, with the window weight, after accounting
+for the matching primes and the finitely many excluded local primes.
+The valuation formula and log-size calculation here are written arguments.
+
+## The common divisor over all starting values
+
+I can remove the dependence on the order of the one chosen rotation. Let
+$b_n(h)=((h+u)^n-(h-u)^n)/(2u)$ and let $\mathfrak g_n$ be the ideal
+generated by the values $b_n(h)$ for $h\in\mathbb Z[i]$, with all prime
+factors above $2D$ removed. Use $n\ge1$. At a good Gaussian prime
+$\mathfrak q$, write $Q=N\mathfrak q$ and let $\ell$ be its rational prime.
+The exact local formula is
+
+$$
+v_{\mathfrak q}(\mathfrak g_n)
+=\mathbf 1_{\eta(\mathfrak q)=-1}
+ \sum_{j\ge0}\mathbf 1_{(Q+1)\ell^j\mid n}.
+$$
+
+If the relative sign is $+1$, I choose $h$ to equal a nonzero root $u$
+in the residue field. Then $b_n(h)=(2u)^{n-1}$ there, so the common
+divisor has valuation zero. If the sign is $-1$, the function
+$h\mapsto (h+u)/(h-u)$ on $\mathbb F_Q$ is injective and takes values
+in the group of norm-one elements of $\mathbb F_{Q^2}^{\times}$.
+It misses $1$ and the group has order $Q+1$. Thus its image contains
+an element of order $Q+1$, giving valuation zero for some $h$ unless
+$Q+1$ divides $n$.
+
+If $Q+1\mid n$, all starting values give at least
+$1+v_\ell(n)$ by the local power calculation above. To get equality,
+lift any residue value of $h$. The derivative in $h$ of
+$((h+u)/(h-u))^{Q+1}-1$ is a unit, since the derivative of the ratio
+is $-2u/(h-u)^2$ and $Q+1$ is prime to $\ell$. The two lifts $h$ and
+$h+\pi$, with $\pi$ a generator of $\mathfrak q$, cannot both give
+zero modulo $\mathfrak q^2$ by their first-order difference. Apply
+the local power formula to the lift with valuation one.
+
+For $n\ge1$, form the Möbius product of ideals
+
+$$
+\mathfrak c_n=\prod_{d\mid n}\mathfrak g_d^{\,\mu(n/d)}.
+$$
+
+Then $v_{\mathfrak q}(\mathfrak c_n)$ is exactly the indicator of
+$n=(Q+1)\ell^j$ for some $j\ge0$ and $\eta(\mathfrak q)=-1$. In
+particular $\mathfrak c_n$ is integral. At $n=p+1$ for a rational prime
+$p$, the $j=0$ term only counts the degree-one inert Gaussian primes
+above $p$. For $j\ge1$, the contributing rational primes satisfy
+$\ell^2\le x+1$ when $p\le x$. For each $\ell$ there are at most two
+Gaussian primes and at most $\log(x+1)/\log\ell$ powers. It follows
+that
+
+$$
+\log N\mathfrak c_{p+1}=I(p)\log p+e(p),\qquad
+e(p)\ge0,\quad\sum_{p\le x}e(p)=O(\sqrt x\log x).
+$$
+
+With the same cutoff factor $(1/p-1/x)$, the $e(p)$ add a constant and
+an $O(x^{-1/2}\log x)$ error. This gives the same one-sided window
+criterion for the centered sum of $\log N\mathfrak c_{p+1}$. The bound
+on that centered sum is still the arithmetic input.
+
+The ideal $\mathfrak g_n$ can be calculated by a finite gcd. The
+polynomial $b_n(a+bi)$ in $a,b$ has total degree at most $n-1$. Its
+Newton coefficients are the mixed forward differences at $(0,0)$.
+Each uses only values on the grid $a,b\ge0$, $a+b\le n-1$, and every
+value at integer $a,b$ is an integral combination of the coefficients
+by the binomial expansion. An exact Gaussian gcd on these grids
+gives norms $1,169,73$ for $\mathfrak g_6,\mathfrak g_{14},
+\mathfrak g_{74}$ respectively. The fixed-divisor, lifting and
+Möbius calculations in this section are written arguments. The
+build below covers the fixed-starting-value recurrence and the
+local tests in Lean.
+
+## What the fixed CM place data can distinguish
+
+In the normal closure $L/\mathbb Q$, write $z$ for the automorphism
+negating both roots and $c$ for complex conjugation. With the order-four
+rotation $\gamma$ used in the field proof, $z=[\gamma,c]$. Every Galois
+CM field $H/\mathbb Q$ has central complex conjugation in its Galois
+group. In the common quotient on $H\cap L$, the commutator $z$ therefore
+acts trivially. In the Galois group of $HL/\mathbb Q$, multiplying by
+$(z,1)$ exchanges two Frobenius labels with identical restriction to $H$.
+
+For the original Gaussian count $I(p)$, the weights on $1,z$ are $0,2$.
+The two single-root flips each give $1$ and the other four elements
+give $0$. For the count over $A=\mathbb Q(i,\sqrt D)$ the weights on
+$1,z$ are $0,4$ and all others give $0$. If a pointwise upper bound
+depends only on Frobenius in $H$, it must bound the higher value on
+both members of each pair. Lean checks that the smallest paired
+majorants have group totals $6$ and $8$, where both original totals
+are $4$ and $|\operatorname{Gal}(L/\mathbb Q)|=8$.
+[Lean commutator and paired weights](GaussianCMPrimeBarrier.lean)
+
+The projections of $\operatorname{Gal}(HL/\mathbb Q)$ to
+$\operatorname{Gal}(L/\mathbb Q)$ have equal-size fibers. By Chebotarev,
+a fixed CM Frobenius majorant has mean at least $3/4$ for $I$ and $1$
+for the count over $A$, against the true mean $1/2$ in each case.
+With the original cutoff weight $\log p(1/p-1/x)$, partial summation
+gives a logarithmic excess of at least $(1/4+o(1))\log x$ and
+$(1/2+o(1))\log x$ respectively. The upper comparison retains that
+excess when centered at the target mean. The field and density
+steps here use the written Galois argument and Chebotarev.
+[Field and centering conventions](gaussian-biquadratic-class-character.md) · [Effective Chebotarev, Theorem 1.1](https://aareyanmanzoor.github.io/assets/articles/lagarias-odlyzko.pdf#page=3)
+
+Sernau's local pairing uses Frobenius to recover complex conjugation
+at a non-split prime. For the remaining count over $A$, Frobenius is
+the relative swap $z$ on the negative class. The recurrence and norm
+ratio retain that sign. A reuse of the theta-lift argument would need
+a local valuation bound responding to $z$ and the corresponding total
+size and index bounds.
+[Frobenius role](https://github.com/lsernau/grh-lean/blob/72fead102f663d5c7a407964a13dc0cf9d977207/grh-compact/src/New/Data/WeilDataOfE.lean#L119) · [Local valuation theorem](https://github.com/lsernau/grh-lean/blob/72fead102f663d5c7a407964a13dc0cf9d977207/grh-compact/src/New/Columns/LocalStatement.lean#L285) · [Covolume comparison](https://github.com/lsernau/grh-lean/blob/72fead102f663d5c7a407964a13dc0cf9d977207/grh-compact/src/New/Main.lean#L121)
+
+[Lean replay and axiom audit](relative-determinant-replay-audit.txt)
