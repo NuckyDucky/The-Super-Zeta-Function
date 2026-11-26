@@ -1,0 +1,18 @@
+Independent source replay of GaussianVaughanLargestPrime.lean
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib commit 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true, LEAN_NUM_THREADS=1
+
+Running GaussianVaughanLargestPrime (SHA256 330ACD7DE118DCE6E23273A606CEB9998C731685749BA50A140598D9578537BE)
+'AlpogeSuperZeta.archivedGaussianMangoldt_marked_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLargePrime_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLargePrime_marks_card_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianLargePrime_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLargePrime_asymmetric_addresses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLargePrime_cutoff_exponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLargePrime_cofactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianLargePrime_65' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanLargestPrime exit=0 43.911s
+1 fresh module(s) passed in 43.928s.
+Axiom reports: 8 / 8
+Unexpected axioms: 
