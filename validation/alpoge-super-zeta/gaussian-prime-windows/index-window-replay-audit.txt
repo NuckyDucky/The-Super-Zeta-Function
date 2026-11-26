@@ -1,0 +1,279 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+GaussianPrimeRamp
+AlpogeSuperZeta.quartic_rh_of_gaussian_prime_norm_windows (hD : DirichletLZerosOnLine) (a : ℕ → ℝ)
+  (hweights : ∀ (n : ℕ), |a n| ≤ 2)
+  (hcoeff :
+    ∀ (w : ℂ),
+      2 < w.re → LSeries (fun n => ↑(a n) * ↑(ArithmeticFunction.vonMangoldt n)) w = -logDeriv archivedGaussianFactor w)
+  (hwindows : GaussianWindows (gaussianLogCutoffRamp a)) : DedekindZetaRH K
+AlpogeSuperZeta.quartic_rh_of_pointwise_gaussian_prime_norm_windows (hD : DirichletLZerosOnLine) (a : ℕ → ℝ)
+  (hweights : ∀ (n : ℕ), |a n| ≤ 2)
+  (hcoeff :
+    ∀ (w : ℂ),
+      2 < w.re → LSeries (fun n => ↑(a n) * ↑(ArithmeticFunction.vonMangoldt n)) w = -logDeriv archivedGaussianFactor w)
+  (hcut :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 →
+          ∃ δ,
+            0 < δ ∧ ∃ C ≥ 0, ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)), gaussianPrimeNormRamp a y ≤ C * y ^ θ) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.gaussian_logDeriv_one_isReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLogCutoffRamp_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLogCutoffRamp_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_prime_norm_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.logWindow_of_pointwise_norm_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLogWindow_of_pointwise_norm_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_pointwise_gaussian_prime_norm_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+ArchivedGaussianPrimeWeights
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_windows (hD : DirichletLZerosOnLine)
+  (hcoeff :
+    ∀ (w : ℂ),
+      2 < w.re →
+        LSeries (fun n => ↑(archivedGaussianPrimeWeight n) * ↑(ArithmeticFunction.vonMangoldt n)) w =
+          -logDeriv archivedGaussianFactor w)
+  (hcut :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 →
+          ∃ δ,
+            0 < δ ∧
+              ∃ C ≥ 0,
+                ∀ (Y₀ : ℝ),
+                  ∃ Y ≥ Y₀,
+                    ∀ y ∈ Set.Icc Y (Y ^ (1 + δ)), gaussianPrimeNormRamp archivedGaussianPrimeWeight y ≤ C * y ^ θ) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_prime_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_abs_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeights_at_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+ArchivedGaussianEulerDerivative
+'AlpogeSuperZeta.signedLocalEulerSeries_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianEulerLogSeries_coeff_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianEulerLogSeries_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+ArchivedGaussianLogDerivative
+'AlpogeSuperZeta.archivedGaussianMangoldt_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianFactor_deriv_eq_mangoldt_mul' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianFactor_ne_zero_of_re_gt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMangoldt_eq_neg_logDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_window_bound (hD : DirichletLZerosOnLine)
+  (hcut : ArchivedGaussianPrimeWindowBound) : DedekindZetaRH K
+def AlpogeSuperZeta.ArchivedGaussianPrimeWindowBound : Prop :=
+∀ (θ : ℝ),
+  1 / 2 < θ →
+    θ < 1 →
+      ∃ δ,
+        0 < δ ∧
+          ∃ C ≥ 0,
+            ∀ (Y₀ : ℝ),
+              ∃ Y ≥ Y₀, ∀ y ∈ Set.Icc Y (Y ^ (1 + δ)), gaussianPrimeNormRamp archivedGaussianPrimeWeight y ≤ C * y ^ θ
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_window_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+GaussianPrimeWindowKnots
+'AlpogeSuperZeta.gaussianPrimeWindowBound_iff_knots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWindowBound_iff_knots' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_knot_bound (hD : DirichletLZerosOnLine)
+  (hcut : ArchivedGaussianPrimeKnotBound) : DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_knot_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianHigherPrimePowers
+'AlpogeSuperZeta.gaussianHigherPrime_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianPrimeOnlyWindow
+'AlpogeSuperZeta.archivedGaussianPrimeOnlyRamp_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeOnlyRamp_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWindowBound_iff_prime_only' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_only_windows (hD : DirichletLZerosOnLine)
+  (hcut : ArchivedGaussianPrimeOnlyWindowBound) : DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_only_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeError_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_error (hD : DirichletLZerosOnLine)
+  (hcut : ∀ (θ : ℝ), 1 / 2 < θ → θ < 1 → ∃ C ≥ 0, ∀ᶠ (x : ℝ) in atTop, archivedGaussianPrimeError x ≤ C * x ^ (θ - 1)) :
+  DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianPrimeSupport
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_ne_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_at_5_and_13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.no_prime_weight_from_two_rational_characters' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_even_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianNormOrientation
+'QuarticModel.archivedGaussianSigns_at_norm_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.exists_opposite_archived_signs_coprime_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+QuarticModel.archivedGaussianSign_not_of_norm (M : ℕ) (hM : M ≠ 0) :
+  ¬∃ F, ∀ (z : GaussianInt), (Zsqrtd.norm z).natAbs.Coprime M → archivedGaussianSign z = F (Zsqrtd.norm z).natAbs
+'QuarticModel.archivedGaussianSign_not_of_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+QuarticRealFormula
+exit=0
+GaussianLowerPrimeWindow
+AlpogeSuperZeta.quartic_rh_of_lower_windows_and_real_positivity (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (hcut : ArchivedGaussianPrimeOnlyLowerWindowBound) :
+  DedekindZetaRH K
+def AlpogeSuperZeta.ArchivedGaussianPrimeOnlyLowerWindowBound : Prop :=
+∀ (θ : ℝ),
+  1 / 2 < θ →
+    θ < 1 →
+      ∃ δ,
+        0 < δ ∧ ∃ C ≥ 0, ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)), -archivedGaussianPrimeOnlyRamp y ≤ C * y ^ θ
+'_private.GaussianLowerPrimeWindow.0.AlpogeSuperZeta.negate_pole_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussian_poles_nonreal_of_mellin_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_only_lower_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_only_lower_windows_of_mellin_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedMellin_eq_quartic_real_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_lower_windows_and_real_positivity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+GaussianInertPrimeWeights
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_eq_unramified_sub_twice_inert' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedUnramifiedDegreeOneWeight_eq_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedInertDegreeOneWeight_of_good_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianConductorResidue
+'QuarticModel.gaussianConductorResidue_ker' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianConductorQuotientEquiv_mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianConductorResidue_mul_star' depends on axioms: [propext, Quot.sound]
+'QuarticModel.archivedIdealCharacter_eq_conductorResidue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.conductor_residues_at_norm_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.twice_inert_weight_eq_conductor_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.half_power_add_one_mem_gaussian_prime_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.forced_gaussian_factor_at_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianBiquadraticInertWeights
+'QuarticModel.gaussian_discriminant_coprime_star' depends on axioms: [propext]
+'QuarticModel.gaussian_discriminant_norm_mod_eight' does not depend on any axioms
+'QuarticModel.prime_dvd_gaussian_discriminant_norm_mod_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.biquadraticInertDegreeOneWeight_add_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.cyclic_class_prime_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.biquadraticInertDegreeOneWeight_eq_if' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.biquadratic_inert_weighted_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.biquadratic_inert_weights_at_5_13_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianRelativeFrobenius
+'AlpogeSuperZeta.quadratic_frobenius_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.relativeRotation_cayley' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.relativeRotation_mul_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_relative_rotation_frobenius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_relative_rotation_at_5_and_13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_relative_rotation_at_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_rotation_exact_orders_at_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archived_rotation_exact_orders_at_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianRelativeDeterminant
+'AlpogeSuperZeta.gaussianMarkedCoefficient_recurrence' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedCoefficient_residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedCoefficient_residue_before_prime' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedCoefficient_mem_prime_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedCoefficient_before_mem_prime_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedDeterminant_mem_prime_sq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMarkedDeterminant_before_mem_prime_sq_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussian_marked_determinant_norm_at_73' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussian_marked_determinant_cross_contribution_at_5' depends on axioms: [propext, Quot.sound]
+exit=0
+GaussianCMPrimeBarrier
+'AlpogeSuperZeta.gaussianCentralElement_eq_commutator' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussianCentralElement_eq_one_in_cm_quotient' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.centralPairMajorant_invariant' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.centralPairMajorant_le' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussian_inert_central_pair_totals' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianCommonDivisor
+'AlpogeSuperZeta.quadratic_coefficient_all_values_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianIdealCommonDivisor
+'AlpogeSuperZeta.gaussianPowerCoefficient_map' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.gaussian_natCast_mem_prime_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_le_prime_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_no_prime_above_five_at_72' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+GaussianCommonDivisorLift
+'AlpogeSuperZeta.gaussianPowerCoefficient_even_mod_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_not_le_prime_sq_of_even' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+GaussianCommonDivisorPowers
+'_private.GaussianCommonDivisorPowers.0.AlpogeSuperZeta.quadratic_factor_mod_prime_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianCommonDivisorPowers.0.AlpogeSuperZeta.gaussianPowerCoefficient_mul_index' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianPowerCoefficient_mul_prime_pow_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_exact_prime_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianCommonDivisor_le_prime_pow_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianCommonDivisorMoebius
+'AlpogeSuperZeta.gaussianCommonDivisor_moebius_prime_powers' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianIndexRamp
+'AlpogeSuperZeta.centered_index_ramp_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.centered_index_shift_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianIndexWeights
+'AlpogeSuperZeta.archivedIndexWeight_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedInertIndexWeight_one_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedInertTail_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianIndexMoebiusWeights
+'AlpogeSuperZeta.gaussianIndex_weighted_moebius_at_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianPrimitiveIndexWindow
+'AlpogeSuperZeta.archivedGaussianPrimitiveIndexRamp_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimitiveIndexWindowBound_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+def AlpogeSuperZeta.ArchivedGaussianPrimitiveIndexWindowBound : Prop :=
+∀ (θ : ℝ),
+  1 / 2 < θ →
+    θ < 1 →
+      ∃ δ,
+        0 < δ ∧
+          ∃ C ≥ 0, ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Set.Icc Y (Y ^ (1 + δ)), archivedGaussianPrimitiveIndexRamp y ≤ C * y ^ θ
+AlpogeSuperZeta.quartic_rh_of_primitive_index_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (hcut : ArchivedGaussianPrimitiveIndexWindowBound) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_primitive_index_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

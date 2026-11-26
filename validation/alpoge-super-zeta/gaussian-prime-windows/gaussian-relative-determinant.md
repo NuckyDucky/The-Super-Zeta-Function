@@ -247,6 +247,34 @@ consequences of the local exponents. The estimate to prove is
 the upper bound on the centered all-index sum on cofinal windows.
 [Archived logarithmic derivative](ArchivedGaussianLogDerivative.lean) · [Existing window implication](GaussianLowerPrimeWindow.lean)
 
+## The centered common-divisor window in Lean
+
+For a good rational prime $p$, I write $b_f(p)$ for the number of
+negative Gaussian ideals over $p$ of residue degree $f$, multiplied by
+$f\log p$. The two possible degrees are $1$ and $2$. The weighted
+Möbius theorem gives each occurrence at $(p^f+1)p^j$ precisely this
+weight. At the excluded primes I keep the original signed coefficient
+in the reference ramp. [Weighted Möbius identity](GaussianIndexMoebiusWeights.lean) · [Base coefficient](GaussianIndexWeights.lean)
+
+Let $A(x)$ be the sum of $b_f(p)\max(x/((p^f+1)p^j)-1,0)$ over these
+occurrences. Write $B(x)$ for the ramp on the unshifted Gaussian base
+coefficients with the finite corrections above, and put
+$
+C_{\rm shift}=\sum_p\frac{b_1(p)}{p(p+1)},\qquad
+C_{\rm tail}=\sum_{(f,j)\ne(1,0)}\sum_p\frac{b_f(p)}{(p^f+1)p^j}.
+$
+With $R_1(x)$ the original prime-only ramp and $c$ its linear
+coefficient, the new centered reading is
+$
+W(x)=2A(x)-B(x)-cx+2x(C_{\rm shift}-C_{\rm tail}).
+$
+Lean proves $|W(x)+R_1(x)|\le D_\theta x^\theta$ for $x\ge1$ and
+$1/2<\theta\le1$. The constants come from summable weights. The
+unit-shift loss is nonnegative and the sparse terms contribute with
+the opposite sign after centering. So an upper bound for $W$ on
+arbitrarily late windows of the required width supplies the original
+lower bound for $R_1$, and conversely. [Window theorem and quartic implication](GaussianPrimitiveIndexWindow.lean) · [Lean replay and axiom audit](index-window-replay-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism

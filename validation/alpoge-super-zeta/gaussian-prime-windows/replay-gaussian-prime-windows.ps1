@@ -57,7 +57,11 @@ $modules = @(
     'GaussianIdealCommonDivisor',
     'GaussianCommonDivisorLift',
     'GaussianCommonDivisorPowers',
-    'GaussianCommonDivisorMoebius'
+    'GaussianCommonDivisorMoebius',
+    'GaussianIndexRamp',
+    'GaussianIndexWeights',
+    'GaussianIndexMoebiusWeights',
+    'GaussianPrimitiveIndexWindow'
 )
 
 $savedPath = $env:LEAN_PATH
