@@ -1,0 +1,100 @@
+Gaussian quartic upper-prime error and signed-window theorem
+
+Independent source replays. Each stage used the preceding compiled dependencies and a fresh output directory.
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Alpoge ba2a065656ec7c638baa601994de3e0245ff6665
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-below-window-bound-20261126-112309-238
+Running GaussianVaughanHigherKernel (SHA256 CDE46DA035D10B1268EE9DFFC48D7964C935A0736F4A2D6EFBDD288F6C48A554)
+'AlpogeSuperZeta.archivedGaussianVaughanHigherKernel_hasMellin' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigherKernel_eq_leftMellinInv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigherKernel_left_powerBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanHigherKernel exit=0 49.771s
+Running GaussianVaughanKernelEndpoints (SHA256 3C1DD46ECC8DCEE2A079245FEAC1275269AD29C71327E598EF8F792AC31FC25F)
+'AlpogeSuperZeta.archivedGaussianVaughanKernel_small_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanKernel_large_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedKernel_large_exp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanKernelEndpoints exit=0 56.775s
+2 fresh module(s) passed in 106.572s.
+Axiom reports: 6 / 6
+Unexpected axioms: 
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-kernel-endpoints-20261126-114307-554
+Running GaussianVaughanUpperIdentity (SHA256 C6430ED19AF5D069CF9F056EF9E183344B51ABA428CA0E7A64B9126468906211)
+'AlpogeSuperZeta.archivedGaussianVaughanPrime_window_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanUpperPrimeSum_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanUpperIdentity exit=0 49.185s
+1 fresh module(s) passed in 49.202s.
+Axiom reports: 2 / 2
+Unexpected axioms: 
+
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-upper-identity-20261126-114738-290
+Running GaussianVaughanUpperShortPrime (SHA256 7602CE4C67406BF8B82683D055AB204E88C2213A4C07CAA95B928B43003DE7BD)
+'AlpogeSuperZeta.gaussian_exp_log_power_eventually_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanShortPrimeReading_inv_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanUpperShortPrime exit=0 53.307s
+1 fresh module(s) passed in 53.324s.
+Axiom reports: 2 / 2
+Unexpected axioms: 
+
+
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-upper-short-prime-20261126-115515-007
+Running GaussianVaughanUpperCofactor (SHA256 3D366E305A230D76C417067A83A589F2518A556CD707586E43A213D9021DE874)
+'AlpogeSuperZeta.archivedGaussianVaughanUpperCofactorTail_inv_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanUpperCofactor exit=0 55.892s
+1 fresh module(s) passed in 55.91s.
+Axiom reports: 1 / 1
+Unexpected axioms: 
+
+
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-upper-cofactor-20261126-115722-031
+Running GaussianVaughanUpperError (SHA256 5D569A18EB7E60381063764D8BFB8BB25FFE1E1B7DF9945E29EC9A0CEF62B322)
+AlpogeSuperZeta.archivedGaussianVaughanUpperPrimeSum_error (hDir : DirichletLZerosOnLine) (W : ℝ → ℝ)
+  (hW : ∀ u ≥ 0, |W u| ≤ 1) (hUnit : ∀ (u : ℝ), 0 ≤ u → u ≤ 1 → W u = 1) (hSupport : ∀ u ≥ 2, W u = 0) :
+  ∃ C ≥ 0,
+    ∀ᶠ (X : ℝ) in atTop, |archivedGaussianVaughanSum X - archivedGaussianVaughanUpperPrimeSum W X| ≤ C * X ^ (3 / 8)
+AlpogeSuperZeta.archivedGaussianVaughanLowerPrimeSum_error (hDir : DirichletLZerosOnLine) (W : ℝ → ℝ)
+  (hW : ∀ u ≥ 0, |W u| ≤ 1) (hUnit : ∀ (u : ℝ), 0 ≤ u → u ≤ 1 → W u = 1) (hSupport : ∀ u ≥ 2, W u = 0) :
+  ∃ C ≥ 0,
+    ∀ᶠ (X : ℝ) in atTop,
+      |archivedGaussianVaughanSum X - archivedGaussianVaughanLowerSum W X| ≤ C * (X ^ (3 / 8) * Real.log X ^ (8 / 3))
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_signed_windows (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (W : ℝ → ℝ) (hW : ∀ u ≥ 0, |W u| ≤ 1)
+  (hUnit : ∀ (u : ℝ), 0 ≤ u → u ≤ 1 → W u = 1) (hSupport : ∀ u ≥ 2, W u = 0)
+  (hcut : GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W)) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughanUpperPrimeSum_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanLowerPrimeSum_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_signed_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanUpperError exit=0 51.022s
+1 fresh module(s) passed in 51.038s.
+Axiom reports: 3 / 3
+Unexpected axioms:
+
+Six modules exited 0. All 14 theorem audits list propext, Classical.choice, and Quot.sound.
