@@ -42,3 +42,5 @@ For a numerical check on the interpolation formula, I enumerated the 70,435 prim
 The gap is piecewise affine, so I evaluated it at the nonzero-weight primes in each cell and both endpoints. The largest observed value of $F-\ell$ was about $1.167851$ at $x=1064477$ in the cell $[1060000,1070000]$. The numerical value of that cell's negative-mass allowance was about $6.713178$. These two numbers use floating-point logarithms. The Lean theorem gives the exact inequality and the separate 1,050 allowance.
 
 The cofinal arithmetic task is to bound the signed values at the chosen samples for each $\theta$. The interpolation theorem supplies the entire interval once it has those readings and the error budget.
+
+I supplied the actual center and all 101 readings for this test interval in the [centered ramp replay](gaussian-prime-center.md).

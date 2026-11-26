@@ -128,7 +128,9 @@ $modules = @(
     'GaussianMoebiusCommonDivisor',
     'GaussianMoebiusPairContent',
     'GaussianPrimitiveOneCutoff',
-    'GaussianPrimeMesh'
+    'GaussianPrimeMesh',
+    'GaussianPrimeCenter',
+    'GaussianPrimeCenterWindow'
 )
 
 $savedPath = $env:LEAN_PATH
