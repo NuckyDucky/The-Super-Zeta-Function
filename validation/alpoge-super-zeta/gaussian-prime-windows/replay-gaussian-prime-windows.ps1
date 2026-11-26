@@ -90,7 +90,10 @@ $modules = @(
     'GaussianLogCutTriangleWindow',
     'GaussianSqrtTriangleWindow',
     'GaussianFrobeniusFactorial',
-    'GaussianSqrtFrobeniusBudget'
+    'GaussianSqrtFrobeniusBudget',
+    'GaussianFrobeniusJetSeparation',
+    'GaussianFrobeniusMinorIdeal',
+    'GaussianD4MinorSupport'
 )
 
 $savedPath = $env:LEAN_PATH
