@@ -120,7 +120,7 @@ private theorem gaussianLogCutoff_growth {A : ℝ → ℝ}
     _ = _ := by rw [Real.rpow_def_of_pos (Real.exp_pos _), Real.log_exp, mul_comm u 2]
 
 private theorem gaussianLogCutoff_laplace {A : ℝ → ℝ} {M Ψ : ℂ → ℂ}
-    (hTransform : ∀ w : ℂ, 1 < w.re →
+    (hTransform : ∀ w : ℂ, 2 < w.re →
       ∫ x in Ioi (1 : ℝ), (A x : ℂ) * (x : ℂ) ^ (-w - 1) =
         M w * ((w - 1) * riemannZeta w) *
           (archivedGaussianPrimitiveIndexMellin w - (archivedGaussianPrimitiveIndexRamp 1 : ℂ) / w))
@@ -134,7 +134,7 @@ private theorem gaussianLogCutoff_laplace {A : ℝ → ℝ} {M Ψ : ℂ → ℂ}
   have h0 : w ≠ 0 := fun h => by rw [h, zero_re] at hw; linarith
   change gaussianCutoffContinuation M Ψ w = _
   rw [gaussianCutoffContinuation, hΨ w hw, gaussianCutoffMultiplier,
-    gaussianWindowZetaFactor_eq h0 h1, ← hTransform w (show 1 < w.re by linarith),
+    gaussianWindowZetaFactor_eq h0 h1, ← hTransform w hw,
     ← Deduction.poleData_change (fun x => (A x : ℂ))]
   apply setIntegral_congr_fun measurableSet_Ioi
   intro u _
@@ -158,8 +158,8 @@ private theorem gaussianLogCutoff_hasPoleData (hD : DirichletLZerosOnLine)
     {A : ℝ → ℝ} {M : ℂ → ℂ} (hA : Measurable A)
     (hGrowth : ∃ C ≥ (0 : ℝ), ∀ x ≥ (1 : ℝ), |A x| ≤ C * x ^ (2 : ℝ))
     (hAnalytic : ∀ w : ℂ, 1 / 2 < w.re → AnalyticAt ℂ M w)
-    (hNonzero : ∀ w : ℂ, 1 / 2 < w.re → M w ≠ 0)
-    (hTransform : ∀ w : ℂ, 1 < w.re →
+    (hNonzero : ∀ w ∈ gaussianPoles, 1 / 2 < w.re → M w ≠ 0)
+    (hTransform : ∀ w : ℂ, 2 < w.re →
       ∫ x in Ioi (1 : ℝ), (A x : ℂ) * (x : ℂ) ^ (-w - 1) =
         M w * ((w - 1) * riemannZeta w) *
           (archivedGaussianPrimitiveIndexMellin w - (archivedGaussianPrimitiveIndexRamp 1 : ℂ) / w))
@@ -190,7 +190,7 @@ private theorem gaussianLogCutoff_hasPoleData (hD : DirichletLZerosOnLine)
     have hhalf := hs hz.1
     obtain ⟨c, hc, b, hb, hp⟩ := hPole _ hz.2 hhalf
     obtain ⟨d, hd, b', hb', hp'⟩ :=
-      gaussianCutoffContinuation_pole hD hhalf (hAnalytic _ hhalf) (hNonzero _ hhalf) hc hb hp
+      gaussianCutoffContinuation_pole hD hhalf (hAnalytic _ hhalf) (hNonzero _ hz.2 hhalf) hc hb hp
     have hshift : AnalyticAt ℂ (fun v : ℂ => v + (a : ℂ)) z := analyticAt_id.add analyticAt_const
     refine ⟨d, hd, fun him => (hReal _ hz.2 (by simpa only [add_im, ofReal_im, add_zero] using him)).elim,
       fun w => b' (w + (a : ℂ)), hb'.comp (f := fun v => v + (a : ℂ)) (x := z) hshift, ?_⟩
@@ -204,14 +204,15 @@ def GaussianCutoffWindowBound (A : ℝ → ℝ) : Prop :=
     ∃ δ : ℝ, 0 < δ ∧ ∃ C : ℝ, 0 ≤ C ∧ ∀ Y₀ : ℝ, ∃ Y ≥ Y₀,
       ∀ y ∈ Icc Y (Y ^ (1 + δ)), A y ≤ C * y ^ θ
 
-/-- A cutoff with the same Gaussian poles can use the same one-sided window test. -/
-theorem quartic_rh_of_gaussian_cutoff_windows (hD : DirichletLZerosOnLine)
+/-- The window test needs a multiplier that survives at the Gaussian poles and a
+Mellin identity on the initial half-plane of the shifted Laplace transform. -/
+theorem quartic_rh_of_gaussian_cutoff_windows_of_nonzero_at_poles (hD : DirichletLZerosOnLine)
     (hpos : ∀ σ : ℝ, 0 < (QuarticRealFormula.completed (σ : ℂ)).re)
     {A : ℝ → ℝ} {M : ℂ → ℂ} (hA : Measurable A)
     (hGrowth : ∃ C ≥ (0 : ℝ), ∀ x ≥ (1 : ℝ), |A x| ≤ C * x ^ (2 : ℝ))
     (hAnalytic : ∀ w : ℂ, 1 / 2 < w.re → AnalyticAt ℂ M w)
-    (hNonzero : ∀ w : ℂ, 1 / 2 < w.re → M w ≠ 0)
-    (hTransform : ∀ w : ℂ, 1 < w.re →
+    (hNonzero : ∀ w ∈ gaussianPoles, 1 / 2 < w.re → M w ≠ 0)
+    (hTransform : ∀ w : ℂ, 2 < w.re →
       ∫ x in Ioi (1 : ℝ), (A x : ℂ) * (x : ℂ) ^ (-w - 1) =
         M w * ((w - 1) * riemannZeta w) *
           (archivedGaussianPrimitiveIndexMellin w - (archivedGaussianPrimitiveIndexRamp 1 : ℂ) / w))
@@ -260,6 +261,21 @@ theorem quartic_rh_of_gaussian_cutoff_windows (hD : DirichletLZerosOnLine)
   simp only [sub_re, ofReal_re] at hle
   linarith
 
+/-- A cutoff with a nonvanishing multiplier on the half-plane can use the window test. -/
+theorem quartic_rh_of_gaussian_cutoff_windows (hD : DirichletLZerosOnLine)
+    (hpos : ∀ σ : ℝ, 0 < (QuarticRealFormula.completed (σ : ℂ)).re)
+    {A : ℝ → ℝ} {M : ℂ → ℂ} (hA : Measurable A)
+    (hGrowth : ∃ C ≥ (0 : ℝ), ∀ x ≥ (1 : ℝ), |A x| ≤ C * x ^ (2 : ℝ))
+    (hAnalytic : ∀ w : ℂ, 1 / 2 < w.re → AnalyticAt ℂ M w)
+    (hNonzero : ∀ w : ℂ, 1 / 2 < w.re → M w ≠ 0)
+    (hTransform : ∀ w : ℂ, 1 < w.re →
+      ∫ x in Ioi (1 : ℝ), (A x : ℂ) * (x : ℂ) ^ (-w - 1) =
+        M w * ((w - 1) * riemannZeta w) *
+          (archivedGaussianPrimitiveIndexMellin w - (archivedGaussianPrimitiveIndexRamp 1 : ℂ) / w))
+    (hcut : GaussianCutoffWindowBound A) : DedekindZetaRH QuarticModel.K :=
+  quartic_rh_of_gaussian_cutoff_windows_of_nonzero_at_poles hD hpos hA hGrowth hAnalytic
+    (fun w _ hw => hNonzero w hw) (fun w hw => hTransform w (one_lt_two.trans hw)) hcut
+
 /-- The direct determinant window bound in the original norm variable. -/
 def ArchivedGaussianRawWindowBound : Prop :=
   GaussianCutoffWindowBound archivedGaussianRawWindow
@@ -289,6 +305,7 @@ theorem quartic_rh_of_archived_gaussian_large_address_windows (hD : DirichletLZe
 
 #print axioms gaussianWindowZetaFactor_analytic
 #print axioms gaussianLogCutoff_hasPoleData
+#print axioms quartic_rh_of_gaussian_cutoff_windows_of_nonzero_at_poles
 #print axioms quartic_rh_of_gaussian_cutoff_windows
 #print GaussianCutoffWindowBound
 #print ArchivedGaussianRawWindowBound

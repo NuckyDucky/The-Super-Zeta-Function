@@ -1,0 +1,93 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true --root=<source>; LEAN_NUM_THREADS=1
+Independent local-prefix dependencies: see gaussian-local-prime-window-audit.txt
+Running GaussianRawWindowCriterion (SHA256 CC5434447A0084FC12B2440076C1CC8DED7F8E1357DD8926B9E6CF8FEFABE5C2)
+'_private.GaussianRawWindowCriterion.0.AlpogeSuperZeta.gaussianWindowZetaFactor_analytic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianRawWindowCriterion.0.AlpogeSuperZeta.gaussianLogCutoff_hasPoleData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_cutoff_windows_of_nonzero_at_poles' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_cutoff_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+def AlpogeSuperZeta.GaussianCutoffWindowBound : (ℝ → ℝ) → Prop :=
+fun A =>
+  ∀ (θ : ℝ),
+    1 / 2 < θ → θ < 1 → ∃ δ, 0 < δ ∧ ∃ C, 0 ≤ C ∧ ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)), A y ≤ C * y ^ θ
+def AlpogeSuperZeta.ArchivedGaussianRawWindowBound : Prop :=
+GaussianCutoffWindowBound archivedGaussianRawWindow
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_raw_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (hcut : ArchivedGaussianRawWindowBound) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_raw_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_large_address_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 →
+          ∃ δ,
+            0 < δ ∧
+              ∃ C,
+                0 ≤ C ∧
+                  ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)), archivedGaussianLargeAddressWindow y ≤ C * y ^ θ) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_large_address_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianRawWindowCriterion exit=0 38.737s
+Running GaussianDivisorSquaredWindow (SHA256 A815E6857835CD6484954D9944B9C16DA61ECF4274269EBC1FA6B4DA02637A60)
+'AlpogeSuperZeta.archivedGaussianSquaredWindow_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSquaredWindow_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSquaredWindow_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prefix_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianRawPrefix) : DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prefix_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_squared_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianSquaredWindow) : DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_squared_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDivisorSquaredWindow exit=0 36.935s
+Running GaussianAveragedRoundingResidual (SHA256 5B824E3F623B014FA517D8F50566A592CEF8CA59AB7F6F28760D264A8C121B66)
+'AlpogeSuperZeta.averagedRoundingResidual_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.averagedRoundingResidual_monotoneOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.averagedRoundingResidual_le_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.averagedRoundingResidual_sub_le_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianAveragedRoundingResidual exit=0 36.987s
+Running GaussianCutoffAverageMellin (SHA256 CBF8EE0829AD68D9BA834A856628988B9D614B0BD193C516C9376764FA74DC00)
+'AlpogeSuperZeta.averagedCutoff_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_averaged_squared_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianCutoffAverageMellin exit=0 35.868s
+Running GaussianAveragedPrimeWindow (SHA256 C43068E6FB290FD94EF4D7758920D169672CE0643D6EEB4189322A96160D9E95)
+'AlpogeSuperZeta.averagedPrimeSquaredWindow_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.GaussianAveragedPrimeWindow.0.AlpogeSuperZeta.averagedPrimeSquaredWindow_eq_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.averagedPrimeSquaredWindow_le_of_local_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianAveragedPrimeWindow exit=0 37.018s
+Running GaussianThreeHalvesPrimeWindow (SHA256 7495E8B0C774A5AA5A2359504926E415310B5D00B0A37CF040C8096D75239D9E)
+'_private.GaussianThreeHalvesPrimeWindow.0.AlpogeSuperZeta.averagedSquaredWindow_prime_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.averagedPrimeSquaredWindowBound_of_three_halves_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_three_halves_prime_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) {B : ℝ} (hB : 0 ≤ B)
+  (hglobal : ∀ (n : ℕ), archivedGaussianSignedPrimePrefix n ≤ B * ↑n ^ (7 / 8))
+  (hWindows : ∀ (θ : ℝ), 1 / 2 < θ → θ ≤ 3 / 4 → ArchivedGaussianThreeHalvesPrimeWindows θ) :
+  DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_three_halves_prime_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianThreeHalvesPrimeWindow exit=0 34.856s
+Six fresh modules passed.
+Axiom reports: 23 / 23
+Unexpected axioms: 

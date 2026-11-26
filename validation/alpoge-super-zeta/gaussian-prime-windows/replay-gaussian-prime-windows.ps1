@@ -110,7 +110,11 @@ $modules = @(
     'ArchivedGaussianNormPowerBound',
     'GaussianPrimePrefixKernel',
     'GaussianLocalPrimeWindow',
-    'GaussianFifthPowerPrimeWindow'
+    'GaussianFifthPowerPrimeWindow',
+    'GaussianAveragedRoundingResidual',
+    'GaussianCutoffAverageMellin',
+    'GaussianAveragedPrimeWindow',
+    'GaussianThreeHalvesPrimeWindow'
 )
 
 $savedPath = $env:LEAN_PATH
