@@ -57,7 +57,7 @@ structure RetainedPrimeData (x : ℝ) (frob : ℕ → GaussianClosureGroup) : Pr
   traceWeight : ∀ p ∈ retainedPrimes x,
     archivedGaussianPrimeWeight p = (closurePrimeTrace (frob p) : ℝ)
 
-private theorem closurePrimeFiber_product {p : ℕ} (hp : p.Prime)
+theorem closurePrimeFiber_product {p : ℕ} (hp : p.Prime)
     (hUnr : ∀ P ∈ closurePrimeFiber p, (p : 𝓞 L) ∉ P ^ 2) :
     (∏ P ∈ closurePrimeFiber p, P) = principalPrime p := by
   classical

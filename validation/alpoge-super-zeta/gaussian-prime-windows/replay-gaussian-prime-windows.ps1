@@ -102,7 +102,10 @@ $modules = @(
     'GaussianQuarticClosure',
     'GaussianQuarticD4',
     'ArchivedGaussianRetainedNormWindow',
-    'GaussianClosureUnramified'
+    'GaussianClosureUnramified',
+    'GaussianClosureFrobenius',
+    'GaussianClosurePrimeTrace',
+    'ArchivedGaussianNormCriterion'
 )
 
 $savedPath = $env:LEAN_PATH
