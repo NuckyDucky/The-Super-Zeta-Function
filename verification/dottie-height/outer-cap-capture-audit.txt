@@ -1,0 +1,7 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+DottieOuterCapture source 09fff954f8a4438af8bf561d7dce22b91872c55c
+'SuperZeta.Reciprocal.cap_tendsto_fixed_of_first_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.first_phase_exponent_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_tendsto_fixed_near_even_pi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_tendsto_fixed_in_outer_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieOuterCapture exit=0
