@@ -35,6 +35,11 @@ AlpogeSuperZeta.quartic_rh_of_lower_windows_and_real_positivity
 
 The 4.19.0 replay proves `hpos` for the shared formula. The 4.33.1 replay identifies that formula with the field's Mellin transform and gives the implication with `hpos` as an explicit argument. [Shared formula](QuarticRealFormula.lean) · [4.19.0 positivity audit](quartic-real-positivity-audit.txt) · [4.33.1 window audit](replay-audit.txt)
 
+## Conductor residues and the unramified character
+
+- If an odd rational prime $p$ splits in $\mathbb Q(i)$, then the sign at a marked prime $\mathfrak p$ above $p$ is $-1$ exactly when $\delta^{(p-1)/2}+1\in\mathfrak p$, where $\delta=-5045155+1027708i$. At $73$, Lean checks this at both conjugate primes and finds exactly one factor of $73$ in the norm. [Conductor and divisibility proofs](GaussianConductorResidue.lean)
+- The written field calculation gives $G(w)=L_B(w,\psi)$ for an unramified order-four ideal class character of $B=\mathbb Q(\sqrt{-D})$. It also gives $G(w)^2=L_A(w,\eta_A)$ for an unramified quadratic character of $A=\mathbb Q(i,\sqrt D)$. Lean checks the conductor arithmetic and the change in prime weights. With the rational Dirichlet input, the centered inert count over $A$ has the same window criterion as the original count. [Field calculation](gaussian-biquadratic-class-character.md) · [Lean weight transfer](GaussianBiquadraticInertWeights.lean)
+
 ## Replay
 
 Use Lean 4.33.1 and Mathlib `0df444a360eaa60ab8c11dca51a86af692955474`. Build the quartic package and run the [parent bridge replay](../README.md#replay) to prepare its library and the pinned Alpöge modules. Then, from this directory, run the following with the same Lean binary and compiled libraries.
@@ -43,7 +48,7 @@ Use Lean 4.33.1 and Mathlib `0df444a360eaa60ab8c11dca51a86af692955474`. Build th
 .\replay-gaussian-prime-windows.ps1 -LeanExecutable $leanBinary -SuperZetaLibrary $superZetaLibrary -MathlibPackages $mathlibPackages
 ```
 
-The script builds the twelve modules in dependency order, uses one Lean worker, and prints their theorem types and transitive axiom audits. Its output directory defaults to a fresh temporary directory. The checked build records only `propext`, `Classical.choice`, and `Quot.sound`. [Replay script](replay-gaussian-prime-windows.ps1) · [Replay output](replay-audit.txt)
+The script builds fourteen modules in dependency order with one Lean worker. Its output directory defaults to a fresh temporary directory. The axiom audits together list only `propext`, `Classical.choice`, and `Quot.sound`. [Replay script](replay-gaussian-prime-windows.ps1) · [First twelve modules](replay-audit.txt) · [Conductor and weight transfer replay](conductor-residue-replay-audit.txt)
 
 For the real-axis positivity proof, use Lean 4.19.0 and first prepare the compiled [quartic kernel checkpoint](../../../verification/quartic-kernel/README.md#run-the-replay). Pass its directory and the Lean 4.19.0 Mathlib packages to this replay. The two drivers use their matching Lean and Mathlib pins.
 

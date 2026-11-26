@@ -47,7 +47,9 @@ $modules = @(
     'GaussianNormOrientation',
     'QuarticRealFormula',
     'GaussianLowerPrimeWindow',
-    'GaussianInertPrimeWeights'
+    'GaussianInertPrimeWeights',
+    'GaussianConductorResidue',
+    'GaussianBiquadraticInertWeights'
 )
 
 $savedPath = $env:LEAN_PATH
