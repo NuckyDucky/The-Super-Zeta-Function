@@ -655,6 +655,37 @@ weights for the log norms. The next arithmetic estimate compares the
 centered signed norm sums throughout arbitrarily late windows.
 [Exact D4 statement](GaussianD4MinorExponents.lean) · [Build and axiom output](gaussian-frobenius-exponents-audit.txt)
 
+## The two retained norms in the quartic's splitting field
+
+If $\alpha$ is the archived quartic root, let $L=K(\gamma)$ with
+$\gamma^2=D=26509772707289$ and put $\beta=\gamma/\alpha$. At $73$,
+a degree-one residue map sends $D$ to $53$ in $\mathbb F_{73}$.
+A square root in $K$ would be integral, but $53$ has no square root
+in that residue field. Lean gives $[L:\mathbb Q]=8$, checks that
+$\alpha,\beta,-\alpha,-\beta$ split the quartic and generate $L$, and
+identifies the induced action on them with $D_4$. The central label
+$z$ negates both $\alpha$ and $\beta$. [Splitting field](GaussianQuarticClosure.lean) · [Action on the ring of integers](GaussianQuarticD4.lean)
+
+Keep the prime ideal factors of each minor ideal over rational primes
+$k\le p\le x$, where $k=2\sqrt{x}$. Write the two resulting ideals
+as $I_1^{\rm ret}(x)$ and $I_z^{\rm ret}(x)$. If $p$ is unramified
+and the local exponent is $V_p(x,k)$ at the matching label and $0$
+at the other label, the matching norm contributes $p^{8V_p(x,k)}$.
+The archived Gaussian coefficient must agree with the trace
+$2(\mathbf 1_{g_p=1}-\mathbf 1_{g_p=z})$ at that same prime.
+With $b(p)=-a(p)\log p$ at primes and $c$ the original center,
+Lean checks the exact triangle reading
+$$
+\frac{k}{2x^2}
+\left(\log N I_z^{\rm ret}(x)-\log N I_1^{\rm ret}(x)\right)
+-\frac{x}{3}\left(c-\sum_{\substack{p\le x\\p<k}}\frac{b(p)}p\right).
+$$
+If the named prime data hold above one fixed threshold, the norm
+and triangle readings have equivalent late-window bounds. The input
+`hcut` bounds this signed expression above throughout arbitrarily
+late $[Y,Y^{1+\delta}]$ for every exponent $1/2<\theta<1$.
+[Named premises and quartic theorem](ArchivedGaussianRetainedNormWindow.lean) · [Source replay](gaussian-quartic-closure-norm-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism

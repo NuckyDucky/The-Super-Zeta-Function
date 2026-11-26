@@ -98,7 +98,10 @@ $modules = @(
     'GaussianFrobeniusMinorPowers',
     'GaussianFrobeniusIdentityIdeal',
     'GaussianFrobeniusCentralIdeal',
-    'GaussianD4MinorExponents'
+    'GaussianD4MinorExponents',
+    'GaussianQuarticClosure',
+    'GaussianQuarticD4',
+    'ArchivedGaussianRetainedNormWindow'
 )
 
 $savedPath = $env:LEAN_PATH
