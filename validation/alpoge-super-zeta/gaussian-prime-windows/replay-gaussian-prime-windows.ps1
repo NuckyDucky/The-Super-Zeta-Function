@@ -212,7 +212,10 @@ if ($AlpogeGrowthCheckout) {
         'GaussianVaughanUpperError',
         'GaussianVaughanPrimeBand',
         'GaussianVaughanNegativeWindow',
-        'GaussianVaughanInertExcess'
+        'GaussianVaughanInertExcess',
+        'GaussianVaughanReflectionDescent',
+        'GaussianVaughanDetectedPoles',
+        'GaussianVaughanBoundaryFree'
     )
 }
 
@@ -266,7 +269,8 @@ try {
                 'GaussianVaughanUpperIdentity', 'GaussianVaughanUpperShortPrime',
                 'GaussianVaughanUpperCofactor', 'GaussianVaughanUpperError',
                 'GaussianVaughanPrimeBand', 'GaussianVaughanNegativeWindow',
-                'GaussianVaughanInertExcess')) {
+                'GaussianVaughanInertExcess', 'GaussianVaughanReflectionDescent',
+                'GaussianVaughanDetectedPoles', 'GaussianVaughanBoundaryFree')) {
             $leanArgs += '-M4000'
         }
         & $lean @leanArgs -o "$out/$module.olean" "$PSScriptRoot/$module.lean"

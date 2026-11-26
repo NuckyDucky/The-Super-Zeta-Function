@@ -1,0 +1,70 @@
+Gaussian quartic reflection descent and the detected-pole window
+
+Independent source replays with the preceding compiled dependencies.
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Alpoge ba2a065656ec7c638baa601994de3e0245ff6665
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-inert-excess-20261126-121728-262
+Running GaussianVaughanReflectionDescent (SHA256 308DDC407EE099AB415F3702DFB8FC91E00E7CB3753D6B6E9B1F87102A4343AE)
+AlpogeSuperZeta.archivedGaussianVaughan_detects_some_zero_of_real_pos
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) {w : ℂ} (hleft : 1 / 2 < w.re) (hright : w.re < 1)
+  (hw : archivedGaussianFactor w = 0) :
+  ∃ z, 1 / 2 < z.re ∧ z.re < 1 ∧ archivedGaussianFactor z = 0 ∧ archivedGaussianVaughanMultiplier z ≠ 0
+'AlpogeSuperZeta.archivedGaussianVaughan_detects_some_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughan_detects_some_zero_of_real_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanReflectionDescent exit=0 54.135s
+1 fresh module(s) passed in 54.152s.
+Axiom reports: 2 / 2
+Unexpected axioms: 
+
+
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-reflection-descent-20261126-122804-187
+Running GaussianVaughanDetectedPoles (SHA256 82C68A03B6AD1A9DAEE77D1509D315F4044345AE594523A8F1A698BFEE2A3D95)
+'AlpogeSuperZeta.archivedGaussianVaughanMellinNormal_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanMellinNormal_analytic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanMellinNormal_pole' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanDetectedPoles exit=0 54.842s
+1 fresh module(s) passed in 54.858s.
+Axiom reports: 3 / 3
+Unexpected axioms: 
+
+
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-detected-poles-20261126-123021-945
+Running GaussianVaughanBoundaryFree (SHA256 235B96B08CC3452BCBD5A4302534236DFF52DA08C09CBA60017844937B4F491B)
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_signed_windows_by_reflection (hDir : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (W : ℝ → ℝ) (hW : ∀ u ≥ 0, |W u| ≤ 1)
+  (hUnit : ∀ (u : ℝ), 0 ≤ u → u ≤ 1 → W u = 1) (hSupport : ∀ u ≥ 2, W u = 0)
+  (hcut : GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W)) : DedekindZetaRH K
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_inert_windows_by_reflection (hDir : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianVaughanInertExcess) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughan_no_detected_pole_of_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_scaled_windows_by_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_signed_windows_by_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_inert_windows_by_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanBoundaryFree exit=0 54.375s
+1 fresh module(s) passed in 54.389s.
+Axiom reports: 4 / 4
+Unexpected axioms:
+
+Three modules exited 0. All nine theorem audits list propext, Classical.choice, and Quot.sound.
