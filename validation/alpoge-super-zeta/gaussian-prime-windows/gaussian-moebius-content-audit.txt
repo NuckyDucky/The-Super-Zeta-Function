@@ -1,0 +1,15 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true --root=<source directory> ; LEAN_NUM_THREADS=1
+Independent analytic-limits replay: crosscheck-analytic-limits-20261126-050932-545
+Running GaussianMoebiusContent (SHA256 D31DAA2D4CFDB02F40E1A4147173805F548B7FF4CCE435206C5C2DA833244913)
+'AlpogeSuperZeta.archivedGaussianContentEulerFactor_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianContentEulerFactor_sub_product' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianContentEulerFactor_sub_product_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianContent_contour_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianMoebiusContent exit=0 36.909s
+Axiom reports: 4 / 4
+Unexpected axioms:
