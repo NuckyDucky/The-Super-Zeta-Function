@@ -146,7 +146,9 @@ $modules = @(
     'GaussianVaughanHigherContinuation',
     'GaussianLogDerivativeDisk',
     'GaussianVaughanGammaStrip',
-    'GaussianVaughanGaussianStrip'
+    'GaussianVaughanGaussianStrip',
+    'MellinContourShift',
+    'GaussianVaughanCofactorBound'
 )
 
 if ($AlpogeGrowthCheckout) {
@@ -186,7 +188,13 @@ if ($AlpogeGrowthCheckout) {
     if ($LASTEXITCODE -ne 0) { throw 'The pinned Alpöge source files must be unmodified.' }
     $growthBuild = (New-Item -ItemType Directory -Force -Path (Join-Path $out 'growth')).FullName
     $growthSource = Join-Path $growthRepo 'src'
-    $modules += @('GaussianDirichletVerticalGrowth', 'GaussianVaughanFilteredGrowth', 'GaussianVaughanContourDecay')
+    $modules += @(
+        'GaussianDirichletVerticalGrowth',
+        'GaussianVaughanFilteredGrowth',
+        'GaussianVaughanContourDecay',
+        'GaussianVaughanPrimeInversion',
+        'GaussianVaughanCompletedPrimeBound'
+    )
 }
 
 $savedPath = $env:LEAN_PATH
@@ -228,7 +236,9 @@ try {
         $module
         $leanArgs = @('-j1', '-DwarningAsError=true', "--root=$PSScriptRoot")
         if ($module -in @('GaussianVaughanGaussianStrip', 'GaussianDirichletVerticalGrowth',
-                'GaussianVaughanFilteredGrowth', 'GaussianVaughanContourDecay')) {
+                'GaussianVaughanFilteredGrowth', 'GaussianVaughanContourDecay', 'MellinContourShift',
+                'GaussianVaughanCofactorBound', 'GaussianVaughanPrimeInversion',
+                'GaussianVaughanCompletedPrimeBound')) {
             $leanArgs += '-M4000'
         }
         & $lean @leanArgs -o "$out/$module.olean" "$PSScriptRoot/$module.lean"

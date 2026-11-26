@@ -1,0 +1,61 @@
+Independent source replays for the Gaussian Vaughan completed-prime estimate
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+The second pass imports the first pass output. Local machine paths omitted.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-contour-decay-20261126-101836-143
+Running MellinContourShift (SHA256 3D36A845BEAEEFCE46F0900F5A3FA3107223D672D610731640DCDD1D91F3D041)
+'AlpogeSuperZeta.verticalIntegrable_of_square_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.verticalIntegral_eq_of_square_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.mellinInv_eq_of_square_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.norm_mellinInv_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+MellinContourShift exit=0 22.53s
+Running GaussianVaughanPrimeInversion (SHA256 76B73DC12DB41BEA5B22CBF4394764AA93DC8FDF6019076A59D2C03ED441EAA7)
+AlpogeSuperZeta.archivedGaussianVaughanCompletedPrimeKernel_left_powerBound (hDir : DirichletLZerosOnLine) :
+  ∃ C ≥ 0, ∀ v > 0, ‖archivedGaussianVaughanCompletedPrimeKernel v‖ ≤ C * v ^ (-(3 / 8))
+'AlpogeSuperZeta.dirichletKernelSum_continuousAt_of_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrimeKernel_continuousAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrimeKernel_eq_leftMellinInv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrimeKernel_left_powerBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanPrimeInversion exit=0 46.74s
+2 fresh module(s) passed in 69.29s.
+Axiom reports: 8 / 8
+Unexpected axioms:
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-prime-inversion-20261126-103236-244
+Running GaussianVaughanCofactorBound (SHA256 EFE6D801207B82E24135BFBC6E9D6463DEFE57F12AFF29750C2EA0B77DC5CA09)
+AlpogeSuperZeta.archivedGaussianMoebius_three_eighths_bound {n : ℕ} (hn : n ≠ 0) :
+  ‖archivedGaussianMoebiusCoefficients n‖ ≤ 8 * ↑n ^ (3 / 8)
+'AlpogeSuperZeta.archivedGaussianMoebius_multiplicative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMoebius_three_eighths_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanCofactorBound exit=0 47.552s
+Running GaussianVaughanCompletedPrimeBound (SHA256 3EBB13B9E99C4D9F14A9E370C3B26E16423118F096DED2CBC7E8DED122F372CA)
+AlpogeSuperZeta.archivedGaussianVaughanCompletedPrimeSum_log_bound (hDir : DirichletLZerosOnLine) :
+  ∃ C ≥ 0, ∀ X > 1, |archivedGaussianVaughanCompletedPrimeSum X| ≤ C * (X ^ (3 / 8) * Real.log X ^ (8 / 3))
+AlpogeSuperZeta.archivedGaussianVaughan_complement_error_with_prime_bound (hDir : DirichletLZerosOnLine) :
+  ∃ C ≥ 0,
+    ∀ (W : ℝ → ℝ),
+      (∀ u ≥ 2, W u = 0) →
+        ∀ X > 1,
+          |archivedGaussianVaughanSum X - archivedGaussianVaughanLowerSum W X| ≤
+            |archivedGaussianVaughanSum X - archivedGaussianVaughanUpperPrimeSum W X| +
+                C * (X ^ (3 / 8) * Real.log X ^ (8 / 3)) +
+              |archivedGaussianVaughanBelowWindowSum W X|
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrimeSum_log_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughan_complement_error_with_prime_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanCompletedPrimeBound exit=0 51.038s
+2 fresh module(s) passed in 98.611s.
+Axiom reports: 4 / 4
+Unexpected axioms:
