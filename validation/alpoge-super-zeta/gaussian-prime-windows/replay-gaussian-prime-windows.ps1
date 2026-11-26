@@ -218,7 +218,12 @@ if ($AlpogeGrowthCheckout) {
         'GaussianVaughanBoundaryFree',
         'GaussianVaughanRationalSplit',
         'GaussianVaughanRationalMainTerm',
-        'GaussianVaughanCentralExcess'
+        'GaussianVaughanCentralExcess',
+        'GaussianShortPerron',
+        'GaussianShortPerronBounds',
+        'GaussianSharpRationalMainTerm',
+        'GaussianSharpRationalPrefix',
+        'GaussianDyadicCentralPrimeCriterion'
     )
 }
 
@@ -275,7 +280,8 @@ try {
                 'GaussianVaughanInertExcess', 'GaussianVaughanReflectionDescent',
                 'GaussianVaughanDetectedPoles', 'GaussianVaughanBoundaryFree',
                 'GaussianVaughanRationalSplit', 'GaussianVaughanRationalMainTerm',
-                'GaussianVaughanCentralExcess')) {
+                'GaussianVaughanCentralExcess', 'GaussianShortPerron', 'GaussianShortPerronBounds',
+                'GaussianSharpRationalMainTerm', 'GaussianSharpRationalPrefix', 'GaussianDyadicCentralPrimeCriterion')) {
             $leanArgs += '-M4000'
         }
         & $lean @leanArgs -o "$out/$module.olean" "$PSScriptRoot/$module.lean"

@@ -1,4 +1,3 @@
-import GaussianDirichletVerticalGrowth
 import GaussianVaughanRationalSplit
 import GaussianVaughanConvolvedLeftLine
 import GaussianVaughanPrimeInversion
@@ -14,10 +13,7 @@ open scoped Topology
 noncomputable section
 
 private abbrev M := archivedGaussianVaughanMultiplier
-private abbrev χ₀ : DirichletCharacter ℂ archivedGaussianRationalLevel := 1
-private abbrev χ₁ := archivedGaussianRationalChi4
-private abbrev χ₂ := archivedGaussianNormCharacter
-private abbrev χ₃ := χ₁ * χ₂
+private abbrev S := archivedGaussianSplitRegularSum
 
 def archivedGaussianSplitKernel (v : ℝ) : ℂ :=
   dirichletKernelSum archivedGaussianSplitMangoldt (fun u => (archivedGaussianVaughanKernel u : ℂ)) v
@@ -35,14 +31,10 @@ private theorem reference_hasMellin {z : ℂ} (hz : 1 < z.re) :
   change mellin (fun v : ℝ => (v : ℂ) ^ (-1 : ℂ) • (Real.exp (-v) : ℂ)) z = _
   rw [mellin_cpow_smul, ← sub_eq_add_neg, Gamma_eq_integral hpos, GammaIntegral_eq_mellin]
 
-private def regularSum (z : ℂ) : ℂ :=
-  -logDeriv (regularDirichlet χ₀) z + -logDeriv (regularDirichlet χ₁) z +
-    -logDeriv (regularDirichlet χ₂) z + -logDeriv (regularDirichlet χ₃) z
-
 private def principalNumerator (z : ℂ) : ℂ := M z - M 1 * Gamma z
 
 private def residualMellin (z : ℂ) : ℂ :=
-  M z * regularSum z + dslope principalNumerator 1 z
+  M z * S z + dslope principalNumerator 1 z
 
 private theorem principalNumerator_one : principalNumerator 1 = 0 := by
   simp [principalNumerator, Gamma_one]
@@ -74,13 +66,8 @@ private theorem principalRemainder_analytic {z : ℂ} (hz : 0 < z.re) :
 
 private theorem residualMellin_analytic (hDir : DirichletLZerosOnLine)
     {z : ℂ} (hz : 1 / 2 < z.re) : AnalyticAt ℂ residualMellin z := by
-  have hReg (χ : DirichletCharacter ℂ archivedGaussianRationalLevel) :
-      AnalyticAt ℂ (fun w => -logDeriv (regularDirichlet χ) w) z := by
-    have h := (regularDirichlet_differentiable χ).analyticAt z
-    exact (h.deriv.div h (regularDirichlet_ne_zero hDir χ hz)).neg
-  have hS : AnalyticAt ℂ regularSum z := (((hReg χ₀).add (hReg χ₁)).add
-    (hReg χ₂)).add (hReg χ₃)
-  exact ((archivedGaussianVaughanMultiplier_entire.analyticAt z).mul hS).add
+  exact ((archivedGaussianVaughanMultiplier_entire.analyticAt z).mul
+    (archivedGaussianSplitRegularSum_analytic hDir hz)).add
     (principalRemainder_analytic (by linarith))
 
 private theorem residual_hasMellin {z : ℂ} (hz : 1 < z.re) :
@@ -96,10 +83,7 @@ private theorem residual_hasMellin {z : ℂ} (hz : 1 < z.re) :
   rw [show (fun v => archivedGaussianSplitKernel v - M 1 * reference v) =
     (fun v => archivedGaussianSplitKernel v - M 1 • reference v) from rfl, hf.2, he.2, hR.2, hE.2]
   simp only [smul_eq_mul]
-  obtain ⟨h₁, h₂, h₃⟩ := archivedGaussianSplitCharacters_ne_one
-  rw [archivedGaussianSplitMangoldt_LSeries hz]
-  simp only [dirichlet_neg_logDeriv_eq_regular _ hz, if_neg h₁, if_neg h₂, if_neg h₃,
-    if_true, add_zero]
+  rw [archivedGaussianSplitMangoldt_LSeries_eq_regular hz]
   have hz₁ : z ≠ 1 := by rintro rfl; norm_num at hz
   have hΓ := Gamma_add_one (z - 1) (sub_ne_zero.mpr hz₁)
   rw [sub_add_cancel] at hΓ
@@ -107,7 +91,6 @@ private theorem residual_hasMellin {z : ℂ} (hz : 1 < z.re) :
     rw [hΓ, mul_comm, mul_div_cancel_right₀ _ (sub_ne_zero.mpr hz₁)]
   rw [residualMellin, dslope_of_ne _ hz₁, slope_def_field, principalNumerator_one,
     sub_zero, principalNumerator, hE', div_eq_mul_inv]
-  unfold regularSum
   ring
 
 private theorem multiplier_weighted (k : ℕ) :
@@ -174,36 +157,22 @@ private theorem residual_square_decay (hDir : DirichletLZerosOnLine) {a : ℝ}
     (ha : 1 / 2 < a) (ha₁ : a ≤ 1) :
     ∃ C ≥ 0, ∀ z : ℂ, a ≤ z.re → z.re ≤ 3 / 2 →
       ‖residualMellin z‖ ≤ C / (1 + |z.im|) ^ (2 : ℕ) := by
-  obtain ⟨A, hA, hR⟩ := rationalDirichlet_logDeriv_critical_strip hDir
-    archivedGaussianRationalLevel ha ha₁
+  obtain ⟨A, hA, hR⟩ := archivedGaussianSplitRegularSum_logBound hDir ha ha₁
   obtain ⟨B, hB, hM⟩ := multiplier_weighted 3
   obtain ⟨D, hD, hRem⟩ := principalRemainder_weighted ha ha₁
-  refine ⟨4 * A * B + D, by positivity, fun z hl hr => ?_⟩
+  refine ⟨A * B + D, by positivity, fun z hl hr => ?_⟩
   let T := 1 + |z.im|
   have hT : 0 < T := by dsimp [T]; positivity
   have hLog : 1 + Real.log T ≤ T := by linarith [Real.log_le_sub_one_of_pos hT]
-  let C := A * T
-  have hChar (χ : DirichletCharacter ℂ archivedGaussianRationalLevel) :
-      ‖-logDeriv (regularDirichlet χ) z‖ ≤ C := by
-    rw [norm_neg]
-    exact (hR χ z hl (by linarith)).trans (mul_le_mul_of_nonneg_left hLog hA.le)
-  have hSum : ‖regularSum z‖ ≤ 4 * C := by
-    unfold regularSum
-    calc
-      _ ≤ ‖-logDeriv (regularDirichlet χ₀) z‖ + ‖-logDeriv (regularDirichlet χ₁) z‖ +
-          ‖-logDeriv (regularDirichlet χ₂) z‖ + ‖-logDeriv (regularDirichlet χ₃) z‖ :=
-        (norm_add_le _ _).trans (add_le_add_left ((norm_add_le _ _).trans
-          (add_le_add_left (norm_add_le _ _) _)) _)
-      _ ≤ _ := by linarith [hChar χ₀, hChar χ₁, hChar χ₂, hChar χ₃]
+  have hSum : ‖S z‖ ≤ A * T :=
+    (hR z hl hr).trans (mul_le_mul_of_nonneg_left hLog hA.le)
   apply (le_div_iff₀ (pow_pos hT 2)).mpr
   calc
-    _ ≤ (‖M z‖ * (4 * C) + ‖dslope principalNumerator 1 z‖) * T ^ (2 : ℕ) := by
+    _ ≤ (‖M z‖ * (A * T) + ‖dslope principalNumerator 1 z‖) * T ^ (2 : ℕ) := by
       refine mul_le_mul_of_nonneg_right ((norm_add_le _ _).trans ?_) (by positivity)
       rw [norm_mul]
       exact add_le_add_left (mul_le_mul_of_nonneg_left hSum (norm_nonneg _)) _
-    _ = 4 * A * (T ^ (3 : ℕ) * ‖M z‖) + T ^ (2 : ℕ) * ‖dslope principalNumerator 1 z‖ := by
-      dsimp [C]
-      ring
+    _ = A * (T ^ (3 : ℕ) * ‖M z‖) + T ^ (2 : ℕ) * ‖dslope principalNumerator 1 z‖ := by ring
     _ ≤ _ := add_le_add (mul_le_mul_of_nonneg_left (hM z (by linarith) hr) (by positivity))
       (hRem z hl hr)
 

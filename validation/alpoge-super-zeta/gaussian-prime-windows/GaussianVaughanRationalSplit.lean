@@ -1,4 +1,5 @@
 import GaussianVaughanRationalSquares
+import GaussianDirichletVerticalGrowth
 
 /-! The fully split primes of the biquadratic base use the sum of the
 four rational characters at the conductor level. -/
@@ -127,11 +128,54 @@ theorem archivedGaussianSplitMangoldt_LSeries {z : ℂ} (hz : 1 < z.re) :
     LSeries_add (twist_summable χ₀ hz) (twist_summable χ₁ hz)]
   simp only [twist_series _ hz]
 
+/-- The split-prime Dirichlet series with its single principal pole removed. -/
+def archivedGaussianSplitRegularSum (z : ℂ) : ℂ :=
+  -logDeriv (regularDirichlet χ₀) z + -logDeriv (regularDirichlet χ₁) z +
+    -logDeriv (regularDirichlet χ₂) z + -logDeriv (regularDirichlet χ₃) z
+
+theorem archivedGaussianSplitMangoldt_LSeries_eq_regular {z : ℂ} (hz : 1 < z.re) :
+    LSeries archivedGaussianSplitMangoldt z = archivedGaussianSplitRegularSum z + 1 / (z - 1) := by
+  obtain ⟨h₁, h₂, h₃⟩ := archivedGaussianSplitCharacters_ne_one
+  rw [archivedGaussianSplitMangoldt_LSeries hz]
+  simp only [dirichlet_neg_logDeriv_eq_regular _ hz, if_neg h₁, if_neg h₂, if_neg h₃,
+    if_true, add_zero, archivedGaussianSplitRegularSum]
+  ring
+
+theorem archivedGaussianSplitRegularSum_analytic (hDir : DirichletLZerosOnLine)
+    {z : ℂ} (hz : 1 / 2 < z.re) : AnalyticAt ℂ archivedGaussianSplitRegularSum z := by
+  have hReg (χ : DirichletCharacter ℂ archivedGaussianRationalLevel) :
+      AnalyticAt ℂ (fun w => -logDeriv (regularDirichlet χ) w) z := by
+    have h := (regularDirichlet_differentiable χ).analyticAt z
+    exact (h.deriv.div h (regularDirichlet_ne_zero hDir χ hz)).neg
+  exact (((hReg χ₀).add (hReg χ₁)).add (hReg χ₂)).add (hReg χ₃)
+
+theorem archivedGaussianSplitRegularSum_logBound (hDir : DirichletLZerosOnLine) {a : ℝ}
+    (ha : 1 / 2 < a) (ha₁ : a ≤ 1) :
+    ∃ C > 0, ∀ z : ℂ, a ≤ z.re → z.re ≤ 3 / 2 →
+      ‖archivedGaussianSplitRegularSum z‖ ≤ C * (1 + Real.log (1 + |z.im|)) := by
+  obtain ⟨A, hA, hR⟩ := rationalDirichlet_logDeriv_critical_strip hDir
+    archivedGaussianRationalLevel ha ha₁
+  refine ⟨4 * A, by positivity, fun z hl hr => ?_⟩
+  have hChar (χ : DirichletCharacter ℂ archivedGaussianRationalLevel) :
+      ‖-logDeriv (regularDirichlet χ) z‖ ≤ A * (1 + Real.log (1 + |z.im|)) := by
+    rw [norm_neg]
+    exact hR χ z hl (by linarith)
+  unfold archivedGaussianSplitRegularSum
+  calc
+    _ ≤ ‖-logDeriv (regularDirichlet χ₀) z‖ + ‖-logDeriv (regularDirichlet χ₁) z‖ +
+        ‖-logDeriv (regularDirichlet χ₂) z‖ + ‖-logDeriv (regularDirichlet χ₃) z‖ :=
+      (norm_add_le _ _).trans (add_le_add_left ((norm_add_le _ _).trans
+        (add_le_add_left (norm_add_le _ _) _)) _)
+    _ ≤ _ := by linarith [hChar χ₀, hChar χ₁, hChar χ₂, hChar χ₃]
+
 #print axioms archivedGaussianSplitCharacters_ne_one
 #print axioms archivedGaussianSplitMangoldt_at_prime
 #print axioms archivedGaussianSplitMangoldt_norm_le
 #print axioms archivedGaussianSplitMangoldt_summable
 #print axioms archivedGaussianSplitMangoldt_LSeries
+#print axioms archivedGaussianSplitMangoldt_LSeries_eq_regular
+#print axioms archivedGaussianSplitRegularSum_analytic
+#print axioms archivedGaussianSplitRegularSum_logBound
 
 end
 end AlpogeSuperZeta

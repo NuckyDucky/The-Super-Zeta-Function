@@ -2,7 +2,7 @@ import Mathlib.Analysis.Complex.CauchyIntegral
 import Mathlib.Analysis.MellinInversion
 import Mathlib.Analysis.SpecialFunctions.JapaneseBracket
 
-/-! Square-integrable height decay on a closed strip permits a shift of the
+/-! Integrable power decay on a closed strip permits a shift of the
 Mellin inversion line. The rectangle identity and its limit use the same
 vertical integrals as Mathlib's Mellin inverse. -/
 
@@ -13,19 +13,19 @@ open scoped Topology Interval
 
 noncomputable section
 
-private theorem integrable_inverse_add_abs_sq :
-    Integrable (fun y : ℝ => ((1 + |y|) ^ (2 : ℕ))⁻¹) := by
-  have hi := integrable_one_add_norm (μ := (volume : Measure ℝ)) (r := 2) (by norm_num)
+theorem integrable_inverse_add_abs_rpow {r : ℝ} (hr : 1 < r) :
+    Integrable (fun y : ℝ => ((1 + |y|) ^ r)⁻¹) := by
+  have hi := integrable_one_add_norm (μ := (volume : Measure ℝ)) (r := r) (by simpa using hr)
   convert hi using 1
   ext y
-  rw [Real.norm_eq_abs, Real.rpow_neg (by positivity), Real.rpow_two]
+  rw [Real.norm_eq_abs, Real.rpow_neg (by positivity)]
 
-/-- A continuous vertical reading dominated by the square of the reciprocal
-linear envelope is integrable on that line. -/
-theorem verticalIntegrable_of_square_decay {f : ℂ → ℂ} {σ a b C : ℝ}
+/-- Any reciprocal power of the linear envelope with exponent above one
+is integrable on a vertical line. -/
+theorem verticalIntegrable_of_power_decay {f : ℂ → ℂ} {σ a b C r : ℝ} (hr : 1 < r)
     (hσa : a ≤ σ) (hσb : σ ≤ b)
     (hd : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → DifferentiableAt ℂ f z)
-    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖f z‖ ≤ C / (1 + |z.im|) ^ 2) :
+    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖f z‖ ≤ C / (1 + |z.im|) ^ r) :
     VerticalIntegrable f σ := by
   let line (y : ℝ) : ℂ := (σ : ℂ) + (y : ℂ) * I
   let reading := f ∘ line
@@ -38,22 +38,22 @@ theorem verticalIntegrable_of_square_decay {f : ℂ → ℂ} {σ a b C : ℝ}
     have hf := (hd (line y) (by rw [hre]; exact hσa) (by rw [hre]; exact hσb)).continuousAt
     exact hf.comp hl
   change Integrable reading
-  refine (integrable_inverse_add_abs_sq.const_mul C).mono'
+  refine ((integrable_inverse_add_abs_rpow hr).const_mul C).mono'
     hcont.aestronglyMeasurable (Eventually.of_forall fun y => ?_)
   simpa only [reading, Function.comp_apply, him, div_eq_mul_inv] using
     hbound (line y) (by rw [hre]; exact hσa) (by rw [hre]; exact hσb)
 
 /-- If a strip is free of singularities and the horizontal edges vanish,
 the two full vertical integrals agree. -/
-theorem verticalIntegral_eq_of_square_decay {f : ℂ → ℂ} {a b C : ℝ}
+theorem verticalIntegral_eq_of_power_decay {f : ℂ → ℂ} {a b C r : ℝ} (hr : 1 < r)
     (hab : a ≤ b)
     (hd : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → DifferentiableAt ℂ f z)
-    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖f z‖ ≤ C / (1 + |z.im|) ^ 2) :
+    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖f z‖ ≤ C / (1 + |z.im|) ^ r) :
     (∫ y : ℝ, f ((a : ℂ) + (y : ℂ) * I)) =
       ∫ y : ℝ, f ((b : ℂ) + (y : ℂ) * I) := by
   let H (t : ℝ) := ∫ x in a..b, f ((x : ℂ) + (t : ℂ) * I)
   let V (σ T : ℝ) := ∫ y in -T..T, f ((σ : ℂ) + (y : ℂ) * I)
-  have hH (t : ℝ) : ‖H t‖ ≤ (C / (1 + |t|) ^ 2) * |b - a| := by
+  have hH (t : ℝ) : ‖H t‖ ≤ (C / (1 + |t|) ^ r) * |b - a| := by
     apply intervalIntegral.norm_integral_le_of_norm_le_const
     intro x hx
     rw [uIoc_of_le hab] at hx
@@ -62,17 +62,17 @@ theorem verticalIntegral_eq_of_square_decay {f : ℂ → ℂ} {a b C : ℝ}
         (by simpa [mul_re] using hx.2)
   have hq : Tendsto (fun T : ℝ => 1 + |T|) atTop atTop :=
     tendsto_atTop_mono (fun T => (le_abs_self T).trans (by linarith)) tendsto_id
-  have hs : Tendsto (fun T : ℝ => (1 + |T|) ^ (2 : ℕ)) atTop atTop :=
-    (tendsto_pow_atTop (by decide : (2 : ℕ) ≠ 0)).comp hq
-  have hi : Tendsto (fun T : ℝ => ((1 + |T|) ^ (2 : ℕ))⁻¹) atTop (𝓝 0) :=
+  have hs : Tendsto (fun T : ℝ => (1 + |T|) ^ r) atTop atTop :=
+    (tendsto_rpow_atTop (one_pos.trans hr)).comp hq
+  have hi : Tendsto (fun T : ℝ => ((1 + |T|) ^ r)⁻¹) atTop (𝓝 0) :=
     hs.inv_tendsto_atTop
-  have hE : Tendsto (fun T : ℝ => (C / (1 + |T|) ^ (2 : ℕ)) * |b - a|) atTop (𝓝 0) := by
+  have hE : Tendsto (fun T : ℝ => (C / (1 + |T|) ^ r) * |b - a|) atTop (𝓝 0) := by
     simpa only [div_eq_mul_inv, mul_zero, zero_mul] using (hi.const_mul C).mul_const |b - a|
   have hpos : Tendsto H atTop (𝓝 0) := squeeze_zero_norm hH hE
   have hneg : Tendsto (fun T : ℝ => H (-T)) atTop (𝓝 0) :=
     squeeze_zero_norm (fun T => by simpa only [abs_neg] using hH (-T)) hE
-  have ha := verticalIntegrable_of_square_decay le_rfl hab hd hbound
-  have hb := verticalIntegrable_of_square_decay hab le_rfl hd hbound
+  have ha := verticalIntegrable_of_power_decay hr le_rfl hab hd hbound
+  have hb := verticalIntegrable_of_power_decay hr hab le_rfl hd hbound
   have htneg : Tendsto (fun T : ℝ => -T) atTop atBot := tendsto_neg_atTop_atBot
   have hta : Tendsto (V a) atTop (𝓝 (∫ y : ℝ, f ((a : ℂ) + (y : ℂ) * I))) :=
     intervalIntegral_tendsto_integral ha htneg tendsto_id
@@ -91,12 +91,12 @@ theorem verticalIntegral_eq_of_square_decay {f : ℂ → ℂ} {a b C : ℝ}
   simp only [sub_self, zero_add, smul_eq_mul, ← mul_sub] at he
   exact (sub_eq_zero.mp ((mul_eq_zero.mp he).resolve_left Complex.I_ne_zero)).symm
 
-/-- The Mellin inverse of a pole-free, square-decaying continuation is the
+/-- The Mellin inverse of a pole-free, power-decaying continuation is the
 same on either edge of the strip. -/
-theorem mellinInv_eq_of_square_decay {g : ℂ → ℂ} {a b C v : ℝ} (hv : 0 < v)
+theorem mellinInv_eq_of_power_decay {g : ℂ → ℂ} {a b C v r : ℝ} (hr : 1 < r) (hv : 0 < v)
     (hab : a ≤ b)
     (hd : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → DifferentiableAt ℂ g z)
-    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖g z‖ ≤ C / (1 + |z.im|) ^ 2) :
+    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖g z‖ ≤ C / (1 + |z.im|) ^ r) :
     mellinInv a g v = mellinInv b g v := by
   let f (z : ℂ) := (v : ℂ) ^ (-z) * g z
   let P := max (v ^ (-a)) (v ^ (-b))
@@ -105,7 +105,7 @@ theorem mellinInv_eq_of_square_decay {g : ℂ → ℂ} {a b C v : ℝ} (hv : 0 <
   have hD (z : ℂ) (ha : a ≤ z.re) (hb : z.re ≤ b) : DifferentiableAt ℂ f z :=
     (differentiableAt_id.neg.const_cpow (Or.inl hvC)).mul (hd z ha hb)
   have hB (z : ℂ) (ha : a ≤ z.re) (hb : z.re ≤ b) :
-      ‖f z‖ ≤ (P * C) / (1 + |z.im|) ^ 2 := by
+      ‖f z‖ ≤ (P * C) / (1 + |z.im|) ^ r := by
     have hPower : ‖(v : ℂ) ^ (-z)‖ ≤ P := by
       rw [norm_cpow_eq_rpow_re_of_pos hv, neg_re]
       by_cases h : 1 ≤ v
@@ -118,7 +118,32 @@ theorem mellinInv_eq_of_square_decay {g : ℂ → ℂ} {a b C v : ℝ} (hv : 0 <
   rw [mellinInv, mellinInv]
   simp only [smul_eq_mul]
   exact congrArg (fun w : ℂ => (1 / (2 * Real.pi)) • w)
-    (verticalIntegral_eq_of_square_decay hab hD hB)
+    (verticalIntegral_eq_of_power_decay hr hab hD hB)
+
+theorem verticalIntegrable_of_square_decay {f : ℂ → ℂ} {σ a b C : ℝ}
+    (hσa : a ≤ σ) (hσb : σ ≤ b)
+    (hd : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → DifferentiableAt ℂ f z)
+    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖f z‖ ≤ C / (1 + |z.im|) ^ 2) :
+    VerticalIntegrable f σ :=
+  verticalIntegrable_of_power_decay (r := 2) (by norm_num) hσa hσb hd
+    (by simpa only [Real.rpow_two] using hbound)
+
+theorem verticalIntegral_eq_of_square_decay {f : ℂ → ℂ} {a b C : ℝ}
+    (hab : a ≤ b)
+    (hd : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → DifferentiableAt ℂ f z)
+    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖f z‖ ≤ C / (1 + |z.im|) ^ 2) :
+    (∫ y : ℝ, f ((a : ℂ) + (y : ℂ) * I)) =
+      ∫ y : ℝ, f ((b : ℂ) + (y : ℂ) * I) :=
+  verticalIntegral_eq_of_power_decay (r := 2) (by norm_num) hab hd
+    (by simpa only [Real.rpow_two] using hbound)
+
+theorem mellinInv_eq_of_square_decay {g : ℂ → ℂ} {a b C v : ℝ} (hv : 0 < v)
+    (hab : a ≤ b)
+    (hd : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → DifferentiableAt ℂ g z)
+    (hbound : ∀ z : ℂ, a ≤ z.re → z.re ≤ b → ‖g z‖ ≤ C / (1 + |z.im|) ^ 2) :
+    mellinInv a g v = mellinInv b g v :=
+  mellinInv_eq_of_power_decay (r := 2) (by norm_num) hv hab hd
+    (by simpa only [Real.rpow_two] using hbound)
 
 /-- The norm of the inverse on an integrable line keeps the real exponent
 of that line. -/
@@ -143,6 +168,10 @@ theorem norm_mellinInv_le {g : ℂ → ℂ} {a v : ℝ}
 #print axioms verticalIntegral_eq_of_square_decay
 #print axioms mellinInv_eq_of_square_decay
 #print axioms norm_mellinInv_le
+#print axioms integrable_inverse_add_abs_rpow
+#print axioms verticalIntegrable_of_power_decay
+#print axioms verticalIntegral_eq_of_power_decay
+#print axioms mellinInv_eq_of_power_decay
 
 end
 end AlpogeSuperZeta
