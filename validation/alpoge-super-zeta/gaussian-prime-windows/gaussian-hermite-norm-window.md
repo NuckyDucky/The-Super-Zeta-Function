@@ -49,3 +49,23 @@ $$
 This applies both to the original Hermite polynomial and to the distinct monomial degrees $(p-1)/2$ in the written centered form. For $m=7$ and $p=13$, the leading coefficient $-924$ is divisible by $7\cdot11=77$.
 
 If I restrict $S$ to the two rationally identified Frobenius classes, the log of the prime product is $x/8+O(\sqrt x\log^2 x)$ before dropping $p$, using the written Dirichlet-GRH estimate for the combined classes. The target upper bound on the central class alone is $x/16+O_\theta(x^\theta)$. A common coefficient-height bound still has to accommodate the larger product. A bound using the value at the actual Gaussian radicand would need to control cancellations or discarded prime factors. [Lean coefficient bound](GaussianHermiteCoefficientBound.lean) · [Combined class count](gaussian-dyadic-prime-window.md)
+
+## The exact gcds and the sum coordinate
+
+Take $m=\lceil x/2\rceil$ and $c=\lfloor(m-1)/2\rfloor$. From $W_m(c+T)$ I take the odd coefficients and set $A_{m,c}(S)=\sum_{k<m}[T^{2k+1}]W_m(c+T)S^k$. This works for even and odd $m$. Modulo an odd prime $m\le p<2m$, the only odd term of $D_m(c+T)^p$ is $D_mT^p$. Hence $A_{m,c}(S)\equiv D_mS^{(p-1)/2}\pmod p$. [Odd coefficients and the two reductions](GaussianHermiteOddValue.lean)
+
+Let $M$ be the product of the primes $p$ in $[x/2,x)$ with $p\equiv1\bmod4$ and rational norm sign $+1$. On those primes the two Gaussian reductions give the same sign, so the real coordinate $R=\operatorname{Re}A_{m,c}(\delta)$ is $-D_m$ at the central involution and $+D_m$ at the identity. If $x\ge 2(26509772707289+1)$, Lean gives the exact products of those two classes.
+
+$$
+P_z=\gcd(M,|R+D_m|),\qquad P_1=\gcd(M,|R-D_m|).
+$$
+
+If $a,b\in\mathbb Z$, the same congruence now reads
+
+$$
+M\mid D_m a-Rb \quad\Longleftrightarrow\quad P_z\mid a+b\ \text{ and }\ P_1\mid a-b.
+$$
+
+The sum $a+b$ can be zero. Its least nonzero magnitude is $P_z$, attained with $a=(P_z+P_1)/2$ and $b=(P_z-P_1)/2$. Both products are odd, so these are integers. The remaining estimate asks me to find such a pair at each $x$ in arbitrarily late windows $[Y,Y^{1+\delta_\theta}]$ with $\log|a+b|\le x/16+C_\theta x^\theta$ for each $1/2<\theta<1$. Lean checks that the pointwise inequality for a pair is equivalent to the upper bound on the exact central excess. The quartic RH theorem takes the late-window bound and the rational Dirichlet result. [Exact class products and quartic theorem](GaussianHermiteSharpCount.lean#L149) · [Sum inequality](GaussianHermiteResidueLattice.lean#L130) · [Replay and axioms](gaussian-hermite-value-replay-audit.txt)
+
+For a separate small integer check, take $x=38$. The comparison primes are $29$ and $37$, so $M=1073$. Evaluating the odd polynomial modulo $M$ gives $R\equiv-1$ and $D_{19}\equiv813$. The gcds of $812$ and $814$ with $1073$ give $29$ and $37$, respectively. The pair $(33,-4)$ has sum $29$ and difference $37$, and $813\cdot33-4=25\cdot1073$. This example uses the individual prime signs in that small window.

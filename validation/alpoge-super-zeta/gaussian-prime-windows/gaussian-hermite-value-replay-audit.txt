@@ -1,0 +1,120 @@
+Independent Hermite value and residue lattice replay
+Lean 4.33.1 at 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+Mathlib at 0df444a360eaa60ab8c11dca51a86af692955474
+Alpöge growth sources at ba2a065656ec7c638baa601994de3e0245ff6665
+
+The replay builds the five listed sources in dependency order against the earlier
+pinned imports. The dyadic central criterion is replayed unchanged. Source
+hashes and build exits appear below. All 24 axiom reports contain propext,
+Classical.choice, and Quot.sound. Local machine paths are omitted.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true ; LEAN_NUM_THREADS=1
+Running GaussianHermiteOddValue (SHA256 BE5F55C91C29ACE1EEC9211554D2E8A5969BA8728EE01F88A58669F17AE8B75B)
+'AlpogeSuperZeta.hermiteOddPolynomial_mod_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.hermitePrimeScale_cast_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedHermiteOddValue_mod_comparison_prime' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianHermiteOddValue exit=0 60.139s
+Running GaussianDyadicFrobeniusWindow (SHA256 BD485C6611027EDA2AF182DAD1D979DA64319DF5F9B66D86B9F37E9A2E4B4CC2)
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianDyadicPrimeWindow_eq_frobenius' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.closurePrimeLabel_arithmetic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.closurePrimeLabel_weight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicPrime_gt_conductor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicFrobeniusLogMass_pair_eq_rational' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_central_prime_windows
+  (hD : DirichletLZerosOnLine)
+  (hMass :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 →
+          ∃ C ≥ 0,
+            ∀ x ≥ 1, x / 8 - C * x ^ θ ≤ dyadicFrobeniusLogMass gaussianCentralElement x + dyadicFrobeniusLogMass 1 x)
+  (hCentral : GaussianCutoffWindowBound archivedGaussianCentralPrimeExcess) : DedekindZetaRH K
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_central_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDyadicFrobeniusWindow exit=0 59.028s
+2 fresh module(s) passed in 119.184s.
+Axiom reports: 9 / 9
+Unexpected axioms:
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true ; LEAN_NUM_THREADS=1
+Running GaussianDyadicCentralPrimeCriterion (SHA256 0D88775F826C84B97F5ED1FC63FB5DFBCE31C34B69CBB57B7F50851EC5D331D3)
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_sharp_central_windows
+  (hDir : DirichletLZerosOnLine) (hcut : GaussianCutoffWindowBound archivedGaussianCentralPrimeExcess) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicFrobeniusLogMass_pair_main_term' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicFrobeniusLogMass_pair_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_sharp_central_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDyadicCentralPrimeCriterion exit=0 61.983s
+Running GaussianHermiteSharpCount (SHA256 3A94F4EAC708F40DBB3AEE44E8F3007D7E28A75AD557E8C325E1D762D9CA4ECA)
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_hermite_value_windows
+  (hDir : DirichletLZerosOnLine) (hcut : GaussianCutoffWindowBound archivedGaussianHermiteValueExcess) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicComparisonPrime_read' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicComparisonPrimes_filter_eq_class' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicComparisonPrime_dvd_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicComparisonProduct_gcd_eq_class' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.log_hermiteShellClassProduct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianHermiteValueExcess_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianHermiteValueExcess_window_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_hermite_value_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianHermiteSharpCount exit=0 58.305s
+2 fresh module(s) passed in 120.314s.
+Axiom reports: 11 / 11
+Unexpected axioms:
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true ; LEAN_NUM_THREADS=1
+Running GaussianHermiteResidueLattice (SHA256 9DF77D5CAA275EFC52F736F056257C0AA4C9C7E7C5AC20D7B22FED3C2040ABF9)
+'AlpogeSuperZeta.GaussianQuarticClosure.hermiteResidueLattice_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.hermiteResidueLattice_sum_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.hermiteResidueLattice_attains_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.hermiteResidueLattice_signed_bound_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianHermiteResidueLattice exit=0 58.521s
+1 fresh module(s) passed in 58.538s.
+Axiom reports: 4 / 4
+Unexpected axioms:

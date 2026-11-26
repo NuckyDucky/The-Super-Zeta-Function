@@ -27,7 +27,7 @@ theorem closurePrimeLabel_arithmetic {p : ℕ} (hp : p.Prime) :
       closurePrimeLabel p = closureGaloisEquiv σ := by
   simpa only [closurePrimeLabel, dif_pos hp] using (closurePrimeLabel_exists hp).choose_spec
 
-private theorem closurePrimeLabel_weight {p : ℕ} (hp : p.Prime)
+theorem closurePrimeLabel_weight {p : ℕ} (hp : p.Prime)
     (hbig : 26509772707289 < p) :
     archivedGaussianPrimeWeight p = (closurePrimeTrace (closurePrimeLabel p) : ℝ) := by
   have h₂ : p ≠ 2 := ne_of_gt ((by decide : (2 : ℕ) ≤ 26509772707289).trans_lt hbig)
@@ -44,7 +44,7 @@ private theorem closurePrimeLabel_weight {p : ℕ} (hp : p.Prime)
 def dyadicPrimes (x : ℝ) : Finset ℕ :=
   (range (⌊x⌋₊ + 1)).filter (fun p : ℕ => p.Prime ∧ x / 2 ≤ (p : ℝ) ∧ (p : ℝ) < x)
 
-private theorem dyadicPrime_gt_conductor {x : ℝ}
+theorem dyadicPrime_gt_conductor {x : ℝ}
     (hx : 2 * (26509772707289 + 1 : ℝ) ≤ x) {p : ℕ} (hp : p ∈ dyadicPrimes x) :
     26509772707289 < p := by
   have hl : x / 2 ≤ (p : ℝ) := (mem_filter.mp hp).2.2.1
@@ -132,6 +132,8 @@ theorem quartic_rh_of_archived_gaussian_central_prime_windows (hD : DirichletLZe
 
 #print axioms archivedGaussianDyadicPrimeWindow_eq_frobenius
 #print axioms closurePrimeLabel_arithmetic
+#print axioms closurePrimeLabel_weight
+#print axioms dyadicPrime_gt_conductor
 #print axioms dyadicFrobeniusLogMass_pair_eq_rational
 #check quartic_rh_of_archived_gaussian_central_prime_windows
 #print axioms quartic_rh_of_archived_gaussian_central_prime_windows
