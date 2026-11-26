@@ -370,6 +370,34 @@ width and an adjustment to the constant. The quartic theorem takes
 the latter bound together with the rational Dirichlet and real-axis
 positivity inputs. [Coefficient and bound in Lean](GaussianRawPrimeWindow.lean) · [Source replay and axioms](prime-half-window-replay-audit.txt)
 
+## The same prime weights over a real quadratic base
+
+Put $a=-5045155$, $b=1027708$, $D=a^2+b^2$ and $F=\mathbb Q(\sqrt D)$.
+In the original normal closure choose $\alpha^2=a+bi$ and
+$\beta=\overline{\alpha}$. Since $\alpha\beta=\sqrt D$, the extension
+$F(\alpha+\beta)$ has radicand $2(a+\sqrt D)$. This radicand is positive
+at one real embedding of $F$ and negative at the other. The resulting
+quartic has two real embeddings and one complex pair. Lean checks the
+two inequalities in the actual radicands.
+[Archimedean signs](GaussianRealQuadraticWeights.lean)
+
+At a good rational prime, write $r^2=-1$ and $s^2=D$ whenever these
+roots exist in the residue field. If both exist, then
+$(a+br+s)^2=(a+br)\,2(a+s)$, so the two readings agree whenever the
+factors are nonzero. If $b$ is nonzero on reduction and only one base splits,
+the product of its two radicands is a nonsquare and their signs sum to zero. When
+$2(a+s)$ vanishes on reduction, I use $2(s-a)$. Their product at the
+norm root is $4b^2$, so they give the same square class over $F$.
+This second reading also handles primes dividing $b$.
+
+Lean proves the finite-field identity and specializes it to the
+original Euler coefficient for every odd rational prime away from
+$D$. The real-quadratic readings at $5,11,13,73$ are respectively
+$2,0,-2,0$, with $11$ exercising the second radicand. The exceptional
+primes keep the original coefficient, so the finite sum $P(x)$ is
+exactly the same in both descriptions at every cutoff.
+[Prime coefficient and window equality](GaussianRealQuadraticWeights.lean) · [Source replay and axioms](real-quadratic-replay-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism

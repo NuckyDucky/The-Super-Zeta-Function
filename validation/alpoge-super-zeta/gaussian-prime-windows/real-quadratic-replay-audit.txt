@@ -1,0 +1,13 @@
+Real quadratic reading of the quartic prime weights
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Fresh source build with -j1 -DwarningAsError=true, against the 37-module recorded replay.
+
+'AlpogeSuperZeta.quadraticRootSum_gaussian_real_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_real_quadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedRealQuadratic_radicands_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedRealQuadratic_readings' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeHalfWindow_real_quadratic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianRealQuadraticWeights exit=0 (20.35 s)
