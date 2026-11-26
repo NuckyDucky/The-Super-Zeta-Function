@@ -462,6 +462,254 @@ distinguishes $X^p$ and $Y^p$, and it also breaks the Frobenius agreement
 $X^p=Y$ in that order. The coefficient derivatives below order $p$
 preserve the Frobenius agreement. [Ordinary and coefficient derivative theorems](GaussianFrobeniusOrdinaryJet.lean) · [Source replay and axioms](frobenius-jet-replay-audit.txt)
 
+## Squared weights from triangular row counts
+
+Let $T_k(t)$ count the nonnegative integer pairs $(r,s)$ with $r+ks<t$.
+If $V_p(X,k)$ adds $\lfloor r/p\rfloor$ over that triangle, then writing
+$r=mp+u$ counts the smaller triangle at $t=X-mp$ once for each positive
+multiple $mp<X$. Lean checks the reindexing, the area $t^2/(2k)$, and
+the error between the area and the integer count. [Triangle and floor count](GaussianFrobeniusTriangle.lean) · [Kominers's row divisibility](https://hexagonmath.org/pdf/2610.00451v1#page=3)
+
+If $X\ge1$, $k>0$, and $p>0$, then the exact per-prime comparison is
+
+$$
+0\le \frac{2k}{X^2}V_p(X,k)-\sum_{m\ge1,\ mp<X}(1-mp/X)^2
+\le \frac{2k}{X^2}(X+X/k+1)(\lceil X/p\rceil-1).
+$$
+
+If I give each repeated divisor address $n<X$ the weight $(1-n/X)^2$,
+the full-prefix Mellin transform is multiplied by $2/((w+1)(w+2))$.
+Lean obtains it from three shifts of the same prefix transform. That
+factor is analytic and nonzero on the right half-strip needed by the
+pole test. The half-window, full prefix, and squared cutoff therefore
+share one window theorem for this quartic. [Three shifted transforms](GaussianSquaredRamp.lean) · [Quartic declarations](GaussianDivisorSquaredWindow.lean) · [Source replay and axioms](gaussian-squared-cutoff-replay-audit.txt)
+
+## The centered signed prime triangle
+
+I use the same signed prime coefficient $b(p)=-a(p)\log p$ and let $c$
+be the linear coefficient of the full-prefix centering. The half-window
+is exactly the difference of the full prefixes at $x$ and $x/2$. Adding
+the errors over successive halvings preserves the bound $D x^\theta$.
+The squared cutoff is the integral of the full prefix against the
+nonnegative weight $2(x-t)/x^2$ on $0<t\le x$. That integral sends the
+linear term $tc$ to $xc/3$ and preserves the error bound. [Prefix error](GaussianPrimePrefix.lean) · [Weighted integral](GaussianSquaredSmoothing.lean) · [Prime-only squared window](GaussianPrimeSquaredWindow.lean)
+
+If $x\ge2$, the resulting signed triangle is
+
+$$
+A(x)=\frac{2\log x}{x^2}\sum_{p\le x} b(p)V_p(x,\log x)-\frac{x c}{3}.
+$$
+
+Lean bounds the difference between $A(x)$ and the centered squared
+prime sum by $C\sqrt x$. The proof sums the per-prime errors using the
+checked finite constant $\sum_p|b(p)|/p^{5/4}$. For each $1/2<\theta<1$,
+this error fits the bound $Cx^\theta$ in either direction, with the same
+fixed positive width $\delta$ for the arbitrarily late intervals
+$[Y,Y^{1+\delta}]$. Lean uses that transfer to make the upper bound
+on $A(x)$ an explicit premise of the quartic theorem, alongside the
+rational Dirichlet result and real-axis positivity. [Signed comparison](ArchivedGaussianTriangleWindow.lean) · [Exact theorem premises](GaussianTriangleScopeAudit.lean) · [Source replay and axioms](prime-squared-triangle-replay-audit.txt)
+
+Set $k=\log x$. Kominers's row divisibility applies at $p\ge k$.
+I keep that range and replace the linear term $x c/3$ by
+$x(c-\sum_{p<k}b(p)/p)/3$, where the sum is over the omitted primes.
+For a single prime, the squared-ramp sum over its positive multiples
+is between $x/(3p)-1$ and $x/(3p)$. The rounding bound and the earlier
+triangle estimate give
+$
+|A_{\ge k}(x)-A(x)|\le
+M(2k+2+2k/x)k^{1/4}\le18M\sqrt{x},
+\qquad
+M=\sum_p\frac{|b(p)|}{p^{5/4}}.
+$
+Lean proves that the same $\theta$ and $\delta$ work for the upper
+bound in either form, with a change in the constant allowed.
+The arithmetic input is now the signed upper bound on $A_{\ge k}(x)$
+throughout arbitrarily late windows. [Corrected cutoff and theorem premises](GaussianLogCutTriangleWindow.lean) · [Clean build and axioms](gaussian-log-cut-triangle-audit.txt) · [Kominers's divisibility step](https://hexagonmath.org/pdf/2610.00451v1#page=3)
+
+## The square-root scale and derivative factorials
+
+If $1\le k\le2\sqrt x$, I keep the triangle terms at $p\ge k$ and
+replace each term at $p<k$ by its signed linear part $b(p)x/(3p)$.
+For every $\theta>1/2$, Lean bounds the difference from the squared
+prime reading by $D_\theta x^\theta$ for $x\ge2$. The same
+$\theta$ and window width work in the quartic theorem.
+[Cutoff and exact premises](GaussianSqrtTriangleWindow.lean)
+
+If $J=\lceil 2x/k\rceil$, then all jet orders $0\le j<J$ are below a
+fixed prime $p$ exactly when $2x\le kp$. The exact test using only
+$p\in\mathbb N$ and $p\ge k$ is $2x\le k\lceil k\rceil$.
+The simpler inequality $k\ge\sqrt{2x}$ suffices. I use $k=2\sqrt x$,
+so the triangle has no row $Y^p$ for any retained prime. The ordinary
+matrix is the coefficient matrix with column $j$ multiplied by $j!$.
+Over a characteristic-zero domain the same minors are nonzero. At $p>j$ for every column, Lean proves both determinants
+belong to exactly the same powers of any ideal containing $p$.
+[Order and row threshold](GaussianSqrtFrobeniusBudget.lean) · [Determinant and ideal powers](GaussianFrobeniusFactorial.lean)
+
+If a full-triangle minor $\Delta$ is nonzero at an embedding, the node
+bound is $H\ge1$, and $\log H\le C_H\log x$, then Lean gives
+$
+\frac{2k}{x^2}\log|\Delta|
+ \le \frac{x}{3}\log H+(40+14C_H)\sqrt{x}\log x
+ \qquad (k=2\sqrt{x}).
+$
+The full row array with $J=\lceil\sqrt{x}\rceil$ jets per node needs
+at least $x/8$ nodes. For one Frobenius class, the determinant size
+still uses the full node height. The weighted prime mass in the
+retained range has leading term proportional to $\log(x/k)$.
+For the signed quartic bound I need a comparison that controls the
+shared height cost and the excess valuations in the determinant.
+[Full-triangle size and capacity](GaussianSqrtFrobeniusBudget.lean) · [Kominers's height and prime weight bounds](https://hexagonmath.org/pdf/2610.00451v1) · [Independent replay](gaussian-sqrt-frobenius-audit.txt)
+
+## Which retained primes divide the common minor ideal
+
+At $k=2\sqrt{x}$, I take the ideal $I_\sigma(x)$ generated by all full-row
+coefficient-derivative minors of the triangle $r+ks<x$. The columns use
+integral nodes and orders $0\le j<\lceil\sqrt{x}\rceil$. I use $\sigma=1$
+for the identity reading and $\sigma=z$ for the central reading.
+
+Let $P$ lie over a rational prime $p\ge k$. If the residue field has
+$p^{\operatorname{ord}(g)}$ elements, the stabilizer of $P$ is generated
+by $g$, and $g$ acts on residues by $a\mapsto a^p$, then Lean checks
+$
+I_\sigma(x)\subseteq P\quad\Longleftrightarrow\quad p<x\ \text{and}\ g=\sigma.
+$
+If the label matches and $p<x$, the rows $X^p$ and $Y$ agree in every
+column modulo $P$. If the label differs, I can find a full minor that
+survives modulo $P$. Separate prime ideals give a full grid by the
+Chinese remainder theorem. A fixed prime gives a diagonal or a power
+graph, where the finite-field degree bounds separate the rows.
+At $p\ge x$, the same degree bounds separate the rows even at a matching
+label. [Finite-field separation](GaussianFrobeniusJetSeparation.lean) · [Common ideal](GaussianFrobeniusMinorIdeal.lean) · [Exact $D_4$ statement](GaussianD4MinorSupport.lean) · [Build and axiom output](gaussian-frobenius-minor-support-audit.txt)
+
+The surviving minor can depend on $P$. For the signed window inequality I
+still need the sizes of the positive valuations and an estimate for the
+difference of the centered readings throughout arbitrarily late windows.
+The field application uses the residue action of the chosen unramified
+place as an input to the Lean theorem.
+
+## The integer-node minor for the identity reading
+
+I take the column at node $r$ and Hasse order $s$ for each row
+$(r,s)$ of the triangle. In the identity reading, the two coordinates
+of the node are both $r$. The row change $X^rY^s\mapsto X^r(Y-X)^s$
+stays in the triangle for $k\ge1$ and has determinant $1$. At a
+node $a$, the Taylor reading of the new row is the coefficient of
+$T^j$ in $(a+T)^r(-T)^s$. This vanishes for $j<s$. At $j=s$
+the reading is $(-1)^s a^r$, so each diagonal block is a signed
+Vandermonde matrix. Lean gives the determinant
+$
+\prod_{r+ks<x}(-1)^s r!.
+$
+
+At $k=2\sqrt{x}$ and any prime $p\ge k$, every factorial index $r$
+is below $p^2$. Legendre's formula gives $\lfloor r/p\rfloor$ factors
+of $p$ in $r!$. The same minor therefore has exponent $V_p(x,k)$
+at every retained prime. At $x=9$ and $k=6$, the two block widths
+are $9$ and $3$. For $p=7$, only $7!$ and $8!$ contribute to the
+exponent, one each. [Determinant, ideal membership, and valuation](GaussianFrobeniusIdentityMinor.lean) · [Build and axioms](gaussian-frobenius-identity-minor-audit.txt)
+
+The factorial product belongs to the common identity ideal over
+any commutative coefficient ring. The Lean valuation statement is over
+the integers. If $p$ is a uniformizer in the local ring at $P$, the
+same exponent bounds the common ideal from above. To prove equality
+there, I also need every generator to lie in $P^{V_p(x,k)}$.
+
+## The exact exponents at the two Frobenius labels
+
+Write $r=ph+u$ with $0\le u<p$ in each row. If $p\ge k$, the
+change from $X^rY^s$ to $X^uY^s(X^p-Y)^h$ stays inside the
+triangle and has determinant $1$. At a matching prime ideal $P$,
+the first $p$ Taylor coefficients of $(a+T)^p-\sigma(a)$ lie in $P$.
+Every jet used here has order less than $p$. The transformed row
+therefore contributes $P^h$ across every column. Lean proves that
+every eligible determinant lies in $P^{V_p(x,k)}$.
+[All-minor divisibility](GaussianFrobeniusMinorPowers.lean)
+
+If the label is the identity, the integer-node factorial minor
+gives the reverse bound on the exponent at an unramified prime.
+For the central label, I use the quotient of $a^p-\sigma(a)$ by $p$.
+The congruence at one prime extends to all conjugate primes because
+the label is central. If $(p)$ is their intersection, that quotient
+is integral. Adding $pb$ to $a$ holds its first residue fixed and
+subtracts the residue of $\sigma(b)$ from the quotient. I can choose
+the two residues independently. The distinct exponent pairs
+$(u+ps,h)$ separate the rows over the residue field, so an order-zero
+minor has a normalized determinant that survives modulo $P$.
+[Identity ideal](GaussianFrobeniusIdentityIdeal.lean) · [Central ideal](GaussianFrobeniusCentralIdeal.lean)
+
+For $x\ge2$ and $p\ge2\sqrt{x}$, the assembled Lean theorem gives
+$
+v_P(I_\sigma(x))=
+\begin{cases}
+V_p(x,2\sqrt{x}),&g=\sigma,\\
+0,&g\ne\sigma.
+\end{cases}
+$
+Here $\sigma$ is the identity or the central label. The declaration
+takes the $D_4$ action, the residue size, the stabilizer and
+Frobenius action, and the two unramified inputs $p\notin P^2$ and
+$(p)=\bigcap_\gamma\gamma^{-1}P$. It states the exponent as the
+count of $P$ in the normalized ideal factors. If I instantiate these
+data in the quartic's normal closure, the residue degrees give the
+weights for the log norms. The next arithmetic estimate compares the
+centered signed norm sums throughout arbitrarily late windows.
+[Exact D4 statement](GaussianD4MinorExponents.lean) · [Build and axiom output](gaussian-frobenius-exponents-audit.txt)
+
+## The two retained norms in the quartic's splitting field
+
+If $\alpha$ is the archived quartic root, let $L=K(\gamma)$ with
+$\gamma^2=D=26509772707289$ and put $\beta=\gamma/\alpha$. At $73$,
+a degree-one residue map sends $D$ to $53$ in $\mathbb F_{73}$.
+A square root in $K$ would be integral, but $53$ has no square root
+in that residue field. Lean gives $[L:\mathbb Q]=8$, checks that
+$\alpha,\beta,-\alpha,-\beta$ split the quartic and generate $L$, and
+identifies the induced action on them with $D_4$. The central label
+$z$ negates both $\alpha$ and $\beta$. [Splitting field](GaussianQuarticClosure.lean) · [Action on the ring of integers](GaussianQuarticD4.lean)
+
+Keep the prime ideal factors of each minor ideal over rational primes
+$k\le p\le x$, where $k=2\sqrt{x}$. Write the two resulting ideals
+as $I_1^{\rm ret}(x)$ and $I_z^{\rm ret}(x)$. If $p$ is unramified
+and the local exponent is $V_p(x,k)$ at the matching label and $0$
+at the other label, the matching norm contributes $p^{8V_p(x,k)}$.
+The archived Gaussian coefficient must agree with the trace
+$2(\mathbf 1_{g_p=1}-\mathbf 1_{g_p=z})$ at that same prime.
+With $b(p)=-a(p)\log p$ at primes and $c$ the original center,
+Lean checks the exact triangle reading
+$$
+\frac{k}{2x^2}
+\left(\log N I_z^{\rm ret}(x)-\log N I_1^{\rm ret}(x)\right)
+-\frac{x}{3}\left(c-\sum_{\substack{p\le x\\p<k}}\frac{b(p)}p\right).
+$$
+If the named prime data hold above one fixed threshold, the norm
+and triangle readings have equivalent late-window bounds. The input
+`hcut` bounds this signed expression above throughout arbitrarily
+late $[Y,Y^{1+\delta}]$ for every exponent $1/2<\theta<1$.
+[Named premises and quartic theorem](ArchivedGaussianRetainedNormWindow.lean) · [Source replay](gaussian-quartic-closure-norm-audit.txt)
+
+At an unramified rational prime $p$ I choose a prime $P$ of $L$ above
+$p$ and take its arithmetic Frobenius. Its marked label $g_p$ acts
+on the residue field by raising to the $p$th power. The stabilizer is
+generated by that Frobenius, and the residue field has
+$p^{\operatorname{ord}(g_p)}$ elements. If I choose another prime above
+$p$, the label is conjugated. Both labels in the norm comparison are
+central, so the exponents agree across the whole fiber.
+[Local data and exact exponents](GaussianClosureFrobenius.lean)
+
+If $p$ splits in the Gaussian base, the two quadratic characters are
+the signs of the actions on $\alpha$ and $\beta$. If both signs are
+positive, the label is $1$. If both are negative, the label is $z$.
+Opposite signs give sum zero. If $p$ is inert in the Gaussian base,
+Frobenius exchanges the two pairs, and the coefficient is zero. Lean
+compares these actions in the residue field of the actual splitting
+field. [Trace comparison](GaussianClosurePrimeTrace.lean)
+
+If $x\ge (M+1)^2$ with $M=\max(|\operatorname{disc}L|,D)$, all retained
+primes are larger than $M$. Lean supplies all the prime data in the
+norm formula above at every such $x$. With the rational Dirichlet and
+real-axis positivity inputs, the final quartic deduction takes the
+one-sided bound on the recentered signed norm difference as its
+remaining window input. [Exact theorem](ArchivedGaussianNormCriterion.lean) · [Source replay](gaussian-closure-frobenius-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism

@@ -1,0 +1,14 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true --root=<source directory> ; LEAN_NUM_THREADS=1
+Independent Möbius content replay: crosscheck-moebius-content-20261126-052653-450
+Running GaussianBalancedMoebius (SHA256 EA5A3B0A66E0C7CF4A5A0239561D3C8A6D2013995D641D136284BF10D8A08774)
+'AlpogeSuperZeta.archivedGaussianMoebius_mul_signed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMoebius_prime_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMoebius_square_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMoebius_square_cutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianBalancedMellin_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianBalancedMellin_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianBalanced_exponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianBalancedMoebius exit=0 37.104s
+Axiom reports: 7 / 7
+Unexpected axioms:

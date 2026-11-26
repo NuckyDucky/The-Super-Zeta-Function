@@ -1,0 +1,18 @@
+Independent source replay of GaussianVaughanWindow.lean
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib commit 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true, LEAN_NUM_THREADS=1
+
+Running GaussianVaughanWindow (SHA256 56775D2A990B69F16B3251119DCD23A475DE387C9CCE77EE08F0CBBF2870C5F0)
+'AlpogeSuperZeta.gaussianVaughan_identity' depends on axioms: [propext, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMangoldt_vaughan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianOddIteration_inverts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWeight_odd_iteration_15' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianVaughan_balanced_addresses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianVaughan_error_exponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanWindow exit=0 42.786s
+1 fresh module(s) passed in 42.804s.
+Axiom reports: 6 / 6
+Unexpected axioms: 

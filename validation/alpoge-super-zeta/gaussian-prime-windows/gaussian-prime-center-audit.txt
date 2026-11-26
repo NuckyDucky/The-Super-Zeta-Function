@@ -1,0 +1,25 @@
+Independent source replay of GaussianPrimeCenter.lean and GaussianPrimeCenterWindow.lean
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true, LEAN_NUM_THREADS=1
+Dependency checkpoint: independent GaussianPrimeMesh replay
+Running GaussianPrimeCenter (SHA256 119739E61B5CC5418BA1A80465E2C52853DB2089022A9E78CC2DF05B91454C9C)
+'QuarticModel.archivedMellin_one_folded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedMellin_deriv_one_folded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedGaussian_logDeriv_one_folded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeLinearCenter_folded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeOnlyRamp_eq_centered_finite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianPrimeCenter exit=0 42.639s
+Running GaussianPrimeCenterWindow (SHA256 851B7D8FF6C8AD2BDBCF8AFAE9C6FD2441FE3DD7560F1BCDBFE97B5D32F8D10F)
+AlpogeSuperZeta.archivedGaussianPrimeMesh_million_window (h : ArchivedPrimeMeshEnclosures) {x : ℝ}
+  (hx : x ∈ Set.Icc 1000000 2000000) :
+  152 < archivedGaussianPrimeOnlyRamp x ∧
+    archivedGaussianPrimeOnlyRamp x < 954 ∧ archivedGaussianPrimeOnlyRamp x < 933 / 1000 * √x
+'AlpogeSuperZeta.archivedPrimeMesh_integer_checks' depends on axioms: [propext]
+'AlpogeSuperZeta.archivedGaussianPrimeMesh_million_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianPrimeCenterWindow exit=0 44.686s
+2 fresh module(s) passed in 87.347s.
+Axiom reports: 7 / 7
+Unexpected axioms:

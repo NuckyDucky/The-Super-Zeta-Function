@@ -1,0 +1,58 @@
+Lean source replay of the local prime-window certificate with one worker.
+Command options: -j1 -DwarningAsError=true.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Running GaussianSquaredRoundingResidual (SHA256 4C4FD701EF71190005502486E7E4673011EC4B47C6595EDFCA92C0BB8FBFB8C8)
+GaussianSquaredRoundingResidual exit=0 39.006s
+Running ArchivedGaussianNormPowerBound (SHA256 7E033A2ADED4FA11A5765605056F37EA0A76B3294C1CA2CCB3BEBA2C44C8AAA8)
+'AlpogeSuperZeta.squaredRoundingResidual_monotoneOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.squaredRoundingResidual_le_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeSquaredWindow_le_of_prefix_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianNorm_le_of_prime_bounds {θ : ℝ} (hθ : 1 / 2 < θ) {A B : ℝ}
+  (hA : 0 ≤ A) (hB : 0 ≤ B) (hprefix : ∀ (n : ℕ), archivedGaussianSignedPrimePrefix n ≤ A * ↑n ^ θ)
+  (hcenter : ∀ x ≥ 1, archivedGaussianReciprocalCenterError x ≤ B * x ^ (θ - 1)) :
+  ∃ X C, 1 ≤ X ∧ 0 ≤ C ∧ ∀ x ≥ X, GaussianQuarticClosure.archivedGaussianRetainedNormWindow x ≤ C * x ^ θ
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianNorm_le_of_prime_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ArchivedGaussianNormPowerBound exit=0 35.249s
+Running GaussianPrimePrefixKernel (SHA256 68BB98472EF1BE6C0B4CA43A753E8E00832C11EADD1EE92D4591D8C8737A18A9)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+'AlpogeSuperZeta.squaredRoundingResidual_sub_le_reciprocal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.squaredRoundingWeightStep_mul_rpow_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeSquaredWindow_prefixLimit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianPrimePrefixKernel exit=0 36.692s
+Running GaussianLocalPrimeWindow (SHA256 FA350E66CD77D61ADCDFEC0296EB42B9060A2CBAB03D48C44870C2C58B8163D4)
+'AlpogeSuperZeta.archivedGaussianPrimeSquaredWindow_le_of_local_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianLocalPrimeWindow exit=0 36.848s
+Running GaussianFifthPowerPrimeWindow (SHA256 3CD9C9DA22B3C8B797C5D042F665B0CF9C42A75A2940DB61ACF5A5ECB5D1C2E9)
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_fifth_power_prime_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) {B : ℝ} (hB : 0 ≤ B)
+  (hcenter : ArchivedGaussianPrimeCenterLimit)
+  (hglobal : ∀ (n : ℕ), |archivedGaussianSignedPrimePrefix n| ≤ B * ↑n ^ (7 / 8))
+  (hwindows : ∀ (θ : ℝ), 1 / 2 < θ → θ ≤ 3 / 4 → ArchivedGaussianFifthPowerPrimeWindows θ) :
+  DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.archivedGaussianPrimeSquaredWindow_le_in_fifth_power_window' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianActualNormBound_of_fifth_power_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_fifth_power_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianFifthPowerPrimeWindow exit=0 37.223s
+Five fresh modules passed.
+Axiom reports: 11 / 11
+Unexpected axioms: 

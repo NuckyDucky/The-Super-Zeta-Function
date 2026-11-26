@@ -1,0 +1,56 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true (LEAN_NUM_THREADS=1)
+Dependency checkpoint: previously built prerequisites including the independent GaussianVaughanLogWindow replay at commit 38b2a8116d04c16e35a594606a4a1898ef1dd3b7.
+Pinned certificates have no cached objects on the dependency path.
+Running GaussianVaughanWindowCriterion (SHA256 8B265DC3D14891B4AB2165D5D2297F5D85E91A4560A91A3624B8C633FE5BC85D)
+'AlpogeSuperZeta.gaussianNegLogDeriv_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanMultiplier_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanMultiplier_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanMellin_eq_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanMellin_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanMellin_pole' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSum_measurable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLogWindow_error_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_lower_windows (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (W : ℝ → ℝ) (E : ℂ → ℂ) (hEntire : Differentiable ℂ E)
+  (hGrowth : ∃ C ≥ 0, ∀ x ≥ 1, |archivedGaussianVaughanSum x| ≤ C * x ^ 2)
+  (hTransform :
+    ∀ (z : ℂ),
+      2 < z.re →
+        ∫ (x : ℝ) in Ioi 1, ↑(archivedGaussianVaughanSum x) * ↑x ^ (-z - 1) = archivedGaussianVaughanMellin z - E z)
+  {C : ℝ} (hC : 0 ≤ C)
+  (hError :
+    ∀ᶠ (x : ℝ) in atTop,
+      |archivedGaussianVaughanSum x - archivedGaussianVaughanLowerSum W x| ≤ C * (x ^ (3 / 8) * Real.log x ^ (8 / 3)))
+  (hcut : GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W)) : DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_lower_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanWindowCriterion exit=0 45.136s
+Running GaussianVaughanKernelBounds (SHA256 84A2ACBF17DD54B0E5C0C6640A601321DA35D9BD9C83D21D2CB6750B430B7411)
+'AlpogeSuperZeta.archivedGaussianVaughanKernel_continuousOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanKernel_powerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSum_powerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSum_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanKernel_hasMellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanEndpoint_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanEndpoint_eq_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanKernelBounds exit=0 45.669s
+Running GaussianVaughanMellinSeries (SHA256 0CC1673F02CD49FC998A2B7F5217523A9C690ECD5566049B626EF820311C5114)
+'AlpogeSuperZeta.archivedGaussianVaughanSum_hasMellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSum_mellin_above_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_prime_windows (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (W : ℝ → ℝ) {C : ℝ} (hC : 0 ≤ C)
+  (hError :
+    ∀ᶠ (x : ℝ) in atTop,
+      |archivedGaussianVaughanSum x - archivedGaussianVaughanLowerSum W x| ≤ C * (x ^ (3 / 8) * Real.log x ^ (8 / 3)))
+  (hcut : GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W)) : DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanMellinSeries exit=0 44.465s
+3 fresh module(s) passed in 135.3s.
+Axiom reports: 19 / 19
+Unexpected axioms: none.

@@ -1,0 +1,12 @@
+Independent replay of the integer-node identity-minor certificate.
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true
+Output directory: fresh. This source was rebuilt against the independently replayed common-minor support modules.
+
+Running GaussianFrobeniusIdentityMinor (SHA256 F115D89EC90EAB2F40BA0AF5D2376A96E39B2BC77DD736CFF4EB1CDDA0F7D919)
+'AlpogeSuperZeta.frobeniusTriangleIdentityMinor_factorial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusIdentityMinor_factorial_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusIdentityMinor_valuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianFrobeniusIdentityMinor exit=0 37.045s
+Axiom reports: 3

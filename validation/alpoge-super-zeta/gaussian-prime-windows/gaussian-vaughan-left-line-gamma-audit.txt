@@ -1,0 +1,15 @@
+Independent source replay for the left-contour Gamma product
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Alpöge source ba2a065656ec7c638baa601994de3e0245ff6665
+Local machine paths omitted.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: upstream-growth-433
+Running GaussianVaughanLeftLineGamma (SHA256 4BCF0B8892C0DDDBF36BAF22835B77364A2BFA66220E6AEF88D2C6434ABED87F)
+'AlpogeSuperZeta.gaussianGamma_nat_line_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianGamma_leftLine_product_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanLeftLineGamma exit=0 49.551s
+1 fresh module(s) passed in 49.568s.
+Axiom reports: 2 / 2
+Unexpected axioms:

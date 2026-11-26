@@ -1,0 +1,49 @@
+Independent source replay of the three new modules.
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Lean arguments: -j1 -DwarningAsError=true
+Dependencies: prior Gaussian prime-window modules and the published QuarticAt73 replay.
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Running GaussianQuarticClosure (SHA256 E6B2FB56A793363F9040282EC6C988236C3142507DEF381BAC6EE9A34957E35B)
+'AlpogeSuperZeta.GaussianQuarticClosure.exists_residueMap73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.normParameter_not_square' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quadratic_irreducible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.degree_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.mapped_quartic_factor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.adjoin_marked_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.isSplittingField' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.isGalois' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianQuarticClosure exit=0 21.528s
+Running GaussianQuarticD4 (SHA256 5E91ED2680369E59A024279FD9ADD07F5DBB4AE6CBCFA7DF4449CBF8A784F7BC)
+'AlpogeSuperZeta.GaussianQuarticClosure.rootIndexEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.closureGaloisEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.central_negates_marked_roots' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.integerAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianQuarticD4 exit=0 20.446s
+Running ArchivedGaussianRetainedNormWindow (SHA256 E0E126C52F51E368DFEAA9B5F98E2803DFE93719DA4079DB4343005CCA044E27)
+'AlpogeSuperZeta.GaussianQuarticClosure.closurePrimeTrace_eq_fixed_root_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.retainedMinorNorm_factorization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianRetainedNormWindow_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianRetainedNormWindow_bound_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_retained_norm_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ArchivedGaussianRetainedNormWindow exit=0 35.653s
+Three fresh modules passed.
+Axiom reports: 17
+Unexpected axioms: 

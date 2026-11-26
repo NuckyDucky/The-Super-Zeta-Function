@@ -1,0 +1,152 @@
+Gaussian Vaughan central-class cutoff
+
+Independent source replay in dependency order with pinned Lean 4.33.1, Mathlib
+0df444a360eaa60ab8c11dca51a86af692955474, and Alpöge
+ba2a065656ec7c638baa601994de3e0245ff6665. The existing compiled dependencies
+were reused. Each group had a fresh output directory. Personal paths omitted.
+
+Support modules and the four-character comparison
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<source> ; LEAN_NUM_THREADS=1
+Running GaussianLogDerivativeDisk (SHA256 0063B92CEE97A4679212C7F39904201286E8591F6E7DA6C431722E8F5C2D218D)
+'AlpogeSuperZeta.logDeriv_le_disk_buffer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.logDeriv_le_disk' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianLogDerivativeDisk exit=0 25.586s
+Running GaussianDirichletVerticalGrowth (SHA256 FE1585CB4BF85B6E00DE8B4BB2B770011B51B25C86FE49AA80BC40AC444C1073)
+AlpogeSuperZeta.rationalDirichlet_logDeriv_strip (hDir : DirichletLZerosOnLine) (N : ℕ) [NeZero N] :
+  ∃ C > 0,
+    ∀ (χ : DirichletCharacter ℂ N) (w : ℂ),
+      3 / 4 ≤ w.re → w.re ≤ 13 / 4 → ‖logDeriv (regularDirichlet χ) w‖ ≤ C * (1 + Real.log (1 + |w.im|))
+'AlpogeSuperZeta.regularDirichlet_differentiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.regularDirichlet_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.rationalDirichlet_logDeriv_critical_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.rationalDirichlet_logDeriv_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.dirichlet_neg_logDeriv_eq_regular' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianDirichletVerticalGrowth exit=0 59.402s
+Running GaussianVaughanPrimeBand (SHA256 29B9C46F4F39C0303D0CA123ED34B289C491930C144D9778FA952EB8A23CD084)
+AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_approx (hDir : DirichletLZerosOnLine) :
+  ∃ C ≥ 0, ∀ᶠ (X : ℝ) in atTop, |archivedGaussianVaughanSum X - archivedGaussianVaughanPrimeBand X| ≤ C * X ^ (3 / 8)
+AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_window_iff (hDir : DirichletLZerosOnLine) (W : ℝ → ℝ)
+  (hW : ∀ u ≥ 0, |W u| ≤ 1) (hUnit : ∀ (u : ℝ), 0 ≤ u → u ≤ 1 → W u = 1) (hSupport : ∀ u ≥ 2, W u = 0) :
+  GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W) ↔
+    GaussianCutoffWindowBound archivedGaussianVaughanPrimeBand
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_prime_band (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hBand : GaussianCutoffWindowBound archivedGaussianVaughanPrimeBand) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianVaughan_prime_restriction_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_approx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanPrimeBand_window_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_prime_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanPrimeBand exit=0 67.141s
+Running GaussianVaughanRationalSplit (SHA256 286A88E8B7DF97C2BF422BA0B94F1785C780B95F78D8594521A30AB06C976395)
+'AlpogeSuperZeta.archivedGaussianSplitCharacters_ne_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_at_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_LSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanRationalSplit exit=0 58.431s
+4 fresh module(s) passed in 210.599s.
+Axiom reports: 17 / 17
+Unexpected axioms:
+Exact standard-axiom reports: 17 / 17
+
+Mellin main term
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<source> ; LEAN_NUM_THREADS=1
+Running GaussianVaughanRationalMainTerm (SHA256 A24551C7E8D5C1DFE74B407B9A0D6D20308F01934E26029F4AF9F3E5B44FA1C4)
+AlpogeSuperZeta.archivedGaussianSplitKernel_scaled (hDir : DirichletLZerosOnLine) {a : ℝ} (ha : 1 / 2 < a)
+  (ha₁ : a ≤ 1) : ∃ C ≥ 0, ∀ X ≥ 1, ‖archivedGaussianSplitKernel X⁻¹ - ↑X * M 1‖ ≤ C * X ^ a
+'AlpogeSuperZeta.archivedGaussianSplitKernel_main_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitKernel_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanRationalMainTerm exit=0 60.292s
+1 fresh module(s) passed in 60.308s.
+Axiom reports: 2 / 2
+Unexpected axioms:
+
+Regression replay and exact central-class condition
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<source> ; LEAN_NUM_THREADS=1
+Running GaussianVaughanFilteredGrowth (SHA256 5DA299B7A6C4F27EBFC47655313BD59F6A256760335C4482A53592D203C2375E)
+AlpogeSuperZeta.filteredDirichletLog_strip (hDir : DirichletLZerosOnLine) (N : ℕ) [NeZero N] :
+  ∃ C > 0,
+    ∀ (χ : DirichletCharacter ℂ N) (z : ℂ),
+      3 / 8 ≤ z.re → z.re ≤ 13 / 8 → ‖archivedGaussianFilteredDirichletLog χ z‖ ≤ C * (1 + Real.log (1 + 2 * |z.im|))
+'AlpogeSuperZeta.filteredDirichletLog_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.archivedGaussianVaughanHigherMellin_strip (hDir : DirichletLZerosOnLine) :
+  ∃ C > 0,
+    ∀ (z : ℂ),
+      3 / 8 ≤ z.re →
+        z.re ≤ 13 / 8 →
+          ‖archivedGaussianVaughanHigherMellin z‖ ≤
+            C * (1 + Real.log (1 + 2 * |z.im|)) * ‖QuarticModel.archivedMellin (z / 7) / 7‖
+'AlpogeSuperZeta.archivedGaussianVaughanHigherMellin_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_strip_envelope (hDir : DirichletLZerosOnLine) :
+  ∃ C > 0,
+    ∀ (z : ℂ),
+      3 / 8 ≤ z.re →
+        z.re ≤ 13 / 8 →
+          ‖archivedGaussianVaughanPrimeContinuation archivedGaussianVaughanHigherMellin z‖ ≤
+            ‖QuarticModel.archivedMellin (z / 7) / 7‖ *
+              (3 * ‖deriv QuarticModel.archivedGaussianFactor z‖ +
+                C * (1 + Real.log (1 + 2 * |z.im|)) * ‖QuarticModel.archivedGaussianFactor z‖)
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_strip_envelope' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanFilteredGrowth exit=0 57.364s
+Running GaussianVaughanInertExcess (SHA256 F60E700B6BE2DE47228425EC0FDB7595852A443A277FA43F103D7FDBF02857FB)
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_inert_excess_windows (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianVaughanInertExcess) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughanInertExcess_eq_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanInertExcess_eventually_eq_neg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_inert_excess_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanInertExcess exit=0 54.825s
+Running GaussianVaughanBoundaryFree (SHA256 235B96B08CC3452BCBD5A4302534236DFF52DA08C09CBA60017844937B4F491B)
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_signed_windows_by_reflection (hDir : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (W : ℝ → ℝ) (hW : ∀ u ≥ 0, |W u| ≤ 1)
+  (hUnit : ∀ (u : ℝ), 0 ≤ u → u ≤ 1 → W u = 1) (hSupport : ∀ u ≥ 2, W u = 0)
+  (hcut : GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W)) : DedekindZetaRH K
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_inert_windows_by_reflection (hDir : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianVaughanInertExcess) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughan_no_detected_pole_of_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_scaled_windows_by_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_signed_windows_by_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_inert_windows_by_reflection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanBoundaryFree exit=0 57.086s
+Running GaussianVaughanCentralExcess (SHA256 ED193A5D7DACF44EBE16E8834AD79C0570CA06B6DFF24D77562C55BD6C209D3A)
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_central_class_windows (hDir : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianVaughanCentralExcess) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughanCentralExcess_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanCentralExcess_window_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_central_class_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanCentralExcess exit=0 56.545s
+4 fresh module(s) passed in 225.866s.
+Axiom reports: 13 / 13
+Unexpected axioms:
+
+Nine source modules passed, including three regression modules.
+All 32 axiom reports list only propext, Classical.choice, and Quot.sound.

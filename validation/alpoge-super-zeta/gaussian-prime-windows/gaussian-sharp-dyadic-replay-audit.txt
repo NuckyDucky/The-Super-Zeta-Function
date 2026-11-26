@@ -1,0 +1,123 @@
+Sharp dyadic prime count and quartic cutoff
+
+Independent source replay using Lean 4.33.1, Mathlib
+0df444a360eaa60ab8c11dca51a86af692955474, and Alpöge
+ba2a065656ec7c638baa601994de3e0245ff6665. Each group used a fresh output
+directory and reused the pinned compiled dependencies. Personal paths omitted.
+
+Contour shift and four-character data
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<source> ; LEAN_NUM_THREADS=1
+Running MellinContourShift (SHA256 5AA76750A986012B1846FA3BEBDD1B79DF11447451AD33530B28B84F6A8D5D97)
+'AlpogeSuperZeta.verticalIntegrable_of_square_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.verticalIntegral_eq_of_square_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.mellinInv_eq_of_square_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.norm_mellinInv_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.integrable_inverse_add_abs_rpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.verticalIntegrable_of_power_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.verticalIntegral_eq_of_power_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.mellinInv_eq_of_power_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+MellinContourShift exit=0 26.586s
+Running GaussianShortPerron (SHA256 B8F2244F0B5F354AD5CD01B567DD2B722AEDDB41C90004CA1DE7BBDD2FAF29DD)
+'AlpogeSuperZeta.shortPerronKernel_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.shortPerronKernel_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.shortPerronKernel_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.shortPerronKernel_norm_le_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.perronTent_hasMellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.shortPerronKernel_hasMellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.shortPerronMultiplier_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.shortPerronMultiplier_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianShortPerron exit=0 25.475s
+Running GaussianVaughanRationalSplit (SHA256 D8F4B4E789C1A50E07CD841C0AEFDDBE8B6BB1C37B18699B2ED90C8F5ED88C63)
+'AlpogeSuperZeta.archivedGaussianSplitCharacters_ne_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_at_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_LSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_LSeries_eq_regular' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitRegularSum_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitRegularSum_logBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanRationalSplit exit=0 56.267s
+Running GaussianVaughanRationalMainTerm (SHA256 14EB4E8AC3DBA3A1C8A9F7DA08C13D4FBBBC098454D4F064886454E07E5BAD10)
+AlpogeSuperZeta.archivedGaussianSplitKernel_scaled (hDir : DirichletLZerosOnLine) {a : ℝ} (ha : 1 / 2 < a)
+  (ha₁ : a ≤ 1) : ∃ C ≥ 0, ∀ X ≥ 1, ‖archivedGaussianSplitKernel X⁻¹ - ↑X * M 1‖ ≤ C * X ^ a
+'AlpogeSuperZeta.archivedGaussianSplitKernel_main_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitKernel_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanRationalMainTerm exit=0 61.719s
+4 fresh module(s) passed in 170.079s.
+Axiom reports: 26 / 26
+Unexpected axioms:
+
+Short-cutoff growth and contour inversion
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<source> ; LEAN_NUM_THREADS=1
+Running GaussianShortPerronBounds (SHA256 9B8C8723EEECF6FAB4A2614C358CEEE108EBF74CA65B3E3FFDFB5CE6A3D1A532)
+'AlpogeSuperZeta.one_add_abs_im_le_three_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.shortPerronMultiplier_two_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.shortPerronMultiplier_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.one_add_log_le_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianShortPerronBounds exit=0 26.265s
+Running GaussianSharpRationalMainTerm (SHA256 4F99C53E9E9BD5140D42467A28F37F1F0D46D977C53B2B68D7C3761954552FFB)
+'AlpogeSuperZeta.archivedGaussianSharpPerron_main_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSharpPerron_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianSharpRationalMainTerm exit=0 63.353s
+2 fresh module(s) passed in 89.635s.
+Axiom reports: 6 / 6
+Unexpected axioms:
+
+Exact prime prefix and weighted comparison regression
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<source> ; LEAN_NUM_THREADS=1
+Running GaussianSharpRationalPrefix (SHA256 7F35CDFB9E51D5866D91F92DD249F060C7AA6072FC03995578A3E8A7EF45CB05)
+'AlpogeSuperZeta.perron_eq_rationalStrictPrefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitMangoldt_prefix_main_term' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSplitPrime_prefix_main_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianSharpRationalPrefix exit=0 60.567s
+Running GaussianVaughanCentralExcess (SHA256 ED193A5D7DACF44EBE16E8834AD79C0570CA06B6DFF24D77562C55BD6C209D3A)
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_central_class_windows (hDir : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianVaughanCentralExcess) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughanCentralExcess_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanCentralExcess_window_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_central_class_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanCentralExcess exit=0 63.255s
+2 fresh module(s) passed in 123.843s.
+Axiom reports: 6 / 6
+Unexpected axioms:
+
+Sharp dyadic comparison and quartic theorem
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<source> ; LEAN_NUM_THREADS=1
+Running GaussianDyadicCentralPrimeCriterion (SHA256 0D88775F826C84B97F5ED1FC63FB5DFBCE31C34B69CBB57B7F50851EC5D331D3)
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_sharp_central_windows
+  (hDir : DirichletLZerosOnLine) (hcut : GaussianCutoffWindowBound archivedGaussianCentralPrimeExcess) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicFrobeniusLogMass_pair_main_term' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.dyadicFrobeniusLogMass_pair_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_sharp_central_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDyadicCentralPrimeCriterion exit=0 58.064s
+1 fresh module(s) passed in 58.088s.
+Axiom reports: 3 / 3
+Unexpected axioms:
+
+Nine source modules exited successfully, including the weighted-excess
+regression. All 41 axiom reports list only propext, Classical.choice,
+and Quot.sound.

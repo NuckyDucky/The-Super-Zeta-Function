@@ -1,0 +1,16 @@
+Independent source replay of GaussianVaughanLogWindow.lean
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib commit 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true, LEAN_NUM_THREADS=1
+
+Running GaussianVaughanLogWindow (SHA256 18711EF336869B81A00AE68E6F9AB4EAA4D8457E91757A3C89FE60E556EF1BFA)
+'AlpogeSuperZeta.gaussianGamma_left_ratio_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianHalfScale_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianHalfScale_zero_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLogWindow_exponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianLogWindow_addresses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianPrime_abel_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanLogWindow exit=0 43.991s
+1 fresh module(s) passed in 44.011s.
+Axiom reports: 6 / 6
+Unexpected axioms: 

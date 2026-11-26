@@ -1,0 +1,19 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true --root=<source directory>; LEAN_NUM_THREADS=1
+Independent balanced Möbius replay: crosscheck-balanced-moebius-20261126-054331-077
+Running GaussianMoebiusCommonDivisor (SHA256 5C8E9A0CE5770BC1D349A958B436F97E8C3AA25132850627F16FEC7DFC10CEA4)
+'AlpogeSuperZeta.archivedGaussianMoebius_ratio_prime_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMoebius_pair_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMoebiusPairFactor_forget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMoebiusSecondFactor_correction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMoebiusSecondFactor_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMoebius_commonDivisor_exponent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianPairDiagonalFilter_zeros' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianPairDiagonalFilter_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianScaleDifference_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMoebius_smallRay_exponent' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianMoebiusCommonDivisor exit=0 38.842s
+Axiom reports: 10 / 10
+Unexpected axioms:

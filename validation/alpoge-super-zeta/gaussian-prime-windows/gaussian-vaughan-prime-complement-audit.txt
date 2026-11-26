@@ -1,0 +1,61 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true (LEAN_NUM_THREADS=1)
+Dependency checkpoint: previously built prerequisites.
+Prior GaussianVaughanWindowCriterion and GaussianVaughanKernelBounds objects were isolated from the initial Mellin series build at commit deb0aa29b5adb9888fa4211da0c1e0bcfce4bbb8.
+Shelf object: GaussianVaughanKernelBounds.olean (SHA256 BC9EDE06ED10938C4EB68F144176193788D42B421275B02718CFF490A1C65386)
+Shelf object: GaussianVaughanWindowCriterion.olean (SHA256 65C022BAEA48BC283C64FE020AC112E5ADBE4ABBD901F979FB7888E4F7E01C97)
+Pinned certificates have no cached objects on the dependency path.
+Running GaussianVaughanMellinSeries (SHA256 F6B2FE0A85250DF22A14B2D8269D120BAA50539350D1A8C2B6FDB12C410100B1)
+'AlpogeSuperZeta.dirichletKernelSum_hasMellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSum_hasMellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanSum_mellin_above_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_prime_windows (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (W : ℝ → ℝ) {C : ℝ} (hC : 0 ≤ C)
+  (hError :
+    ∀ᶠ (x : ℝ) in atTop,
+      |archivedGaussianVaughanSum x - archivedGaussianVaughanLowerSum W x| ≤ C * (x ^ (3 / 8) * Real.log x ^ (8 / 3)))
+  (hcut : GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W)) : DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanMellinSeries exit=0 45.597s
+Running GaussianVaughanConvolvedKernel (SHA256 BA03E718DC8F20392EBC5EDD80B5BBA7D59A2D928D06AC57458EABBCF61AACBC)
+'AlpogeSuperZeta.dirichletKernelSum_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.dirichletKernelSum_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.dirichletKernelSum_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanPrime_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigher_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigher_supported' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedKernel_hasMellin' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedKernel_powerBound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrimeKernel_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrimeKernel_hasMellin' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanPrimeContinuation_analyticAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanPrimeContinuation_hasMellin' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanConvolvedKernel exit=0 44.904s
+Running GaussianVaughanPrimeComplement (SHA256 D924F9C1E5C6F1DC34C97A73E256E38FABD6D9835AC86E75DC9736895A779B8D)
+AlpogeSuperZeta.archivedGaussianVaughanLowerSum_eq_complement (W : ℝ → ℝ) {X : ℝ} (hX : 1 < X) (hW : ∀ u ≥ 2, W u = 0) :
+  archivedGaussianVaughanLowerSum W X =
+    archivedGaussianVaughanUpperPrimeSum W X - archivedGaussianVaughanCompletedPrimeSum X +
+      archivedGaussianVaughanBelowWindowSum W X
+'AlpogeSuperZeta.archivedGaussianVaughanLowerSum_eq_complement' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughan_complement_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanPrimeComplement exit=0 44.501s
+3 fresh module(s) passed in 135.029s.
+Axiom reports: 18 / 18
+Unexpected axioms: none.

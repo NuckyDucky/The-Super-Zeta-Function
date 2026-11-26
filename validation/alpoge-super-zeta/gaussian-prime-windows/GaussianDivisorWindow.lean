@@ -69,21 +69,40 @@ def archivedGaussianRawWindow (x : ℝ) : ℝ :=
   indexedCutoffSum .window (fun p : GaussianIndexFamily × ℕ => gaussianIndexCoefficient p.1)
     (divisorWindowIndex gaussianIndexAddress) x
 
+/-- Sum the same determinant readings at every integer index strictly below x. -/
+def archivedGaussianRawPrefix (x : ℝ) : ℝ :=
+  indexedCutoffSum .prefix (fun p : GaussianIndexFamily × ℕ => gaussianIndexCoefficient p.1)
+    (divisorWindowIndex gaussianIndexAddress) x
+
 theorem archivedGaussianRawWindow_measurable : Measurable archivedGaussianRawWindow :=
   indexedCutoffSum_measurable _ _ _
 
-theorem archivedGaussianRawWindow_growth :
-    ∃ C ≥ (0 : ℝ), ∀ x ≥ (1 : ℝ), |archivedGaussianRawWindow x| ≤ C * x ^ (2 : ℝ) := by
+theorem archivedGaussianRawPrefix_measurable : Measurable archivedGaussianRawPrefix :=
+  indexedCutoffSum_measurable _ _ _
+
+private theorem archivedGaussianDivisorCutoff_growth (kind : IndexedCutoff)
+    (hkind : ∀ x : ℝ, kind.maxWeight x = 1) :
+    ∃ C ≥ (0 : ℝ), ∀ x ≥ (1 : ℝ),
+      |indexedCutoffSum kind (fun p : GaussianIndexFamily × ℕ => gaussianIndexCoefficient p.1)
+        (divisorWindowIndex gaussianIndexAddress) x| ≤ C * x ^ (2 : ℝ) := by
   let T := ∑' p : GaussianIndexFamily × ℕ, |gaussianIndexCoefficient p.1| /
     (divisorWindowIndex gaussianIndexAddress p : ℝ) ^ (2 : ℝ)
   refine ⟨T, tsum_nonneg (fun _ => by positivity), fun x hx => ?_⟩
-  have ht := indexedCutoffSum_abs_le .window
+  have ht := indexedCutoffSum_abs_le kind
     (fun p : GaussianIndexFamily × ℕ => gaussianIndexCoefficient p.1)
     (divisorWindowIndex gaussianIndexAddress) (divisorWindowIndex_pos gaussianIndexAddress_pos)
     (a := 2) (by norm_num) hx
     (divisorWindow_summable gaussianIndexCoefficient gaussianIndexAddress (by norm_num)
       (gaussianIndexFamily_summable (by norm_num)))
-  simpa only [archivedGaussianRawWindow, IndexedCutoff.maxWeight, one_mul, mul_comm, T] using ht
+  simpa only [hkind, one_mul, mul_comm, T] using ht
+
+theorem archivedGaussianRawWindow_growth :
+    ∃ C ≥ (0 : ℝ), ∀ x ≥ (1 : ℝ), |archivedGaussianRawWindow x| ≤ C * x ^ (2 : ℝ) :=
+  archivedGaussianDivisorCutoff_growth .window (fun _ => rfl)
+
+theorem archivedGaussianRawPrefix_growth :
+    ∃ C ≥ (0 : ℝ), ∀ x ≥ (1 : ℝ), |archivedGaussianRawPrefix x| ≤ C * x ^ (2 : ℝ) :=
+  archivedGaussianDivisorCutoff_growth .prefix (fun _ => rfl)
 
 private theorem archivedIndexMellin_integral (w : ℂ) :
     archivedGaussianPrimitiveIndexMellin w =
@@ -141,6 +160,15 @@ private theorem gaussianIndexFamily_dirichlet {w : ℂ} (hw : 1 < w.re) :
   rw [heq, add_sub_cancel_right, mul_div_cancel₀]
   exact mul_ne_zero h0 h'
 
+theorem archivedGaussianDivisorSeries {w : ℂ} (hw : 1 < w.re) :
+    indexedDirichletSum (fun p : GaussianIndexFamily × ℕ => gaussianIndexCoefficient p.1)
+        (divisorWindowIndex gaussianIndexAddress) w =
+      w * ((w - 1) * riemannZeta w) *
+        (archivedGaussianPrimitiveIndexMellin w - (archivedGaussianPrimitiveIndexRamp 1 : ℂ) / w) := by
+  rw [divisorWindow_dirichlet _ _ gaussianIndexAddress_pos hw (gaussianIndexFamily_summable hw),
+    gaussianIndexFamily_dirichlet hw]
+  ring
+
 /-- The transform of the un-inverted window contains ordinary zeta
 times the primitive transform. One factor of (w-1) cancels at one. -/
 theorem archivedGaussianRawWindow_mellin {w : ℂ} (hw : 1 < w.re) :
@@ -153,12 +181,27 @@ theorem archivedGaussianRawWindow_mellin {w : ℂ} (hw : 1 < w.re) :
     (divisorWindowIndex gaussianIndexAddress) (divisorWindowIndex_pos gaussianIndexAddress_pos) hw
     (divisorWindow_summable gaussianIndexCoefficient gaussianIndexAddress hw
       (gaussianIndexFamily_summable hw))).2,
-    divisorWindow_dirichlet _ _ gaussianIndexAddress_pos hw (gaussianIndexFamily_summable hw),
-    gaussianIndexFamily_dirichlet hw, IndexedCutoff.mellinNumerator, IndexedCutoff.mellinDenominator]
+    archivedGaussianDivisorSeries hw, IndexedCutoff.mellinNumerator, IndexedCutoff.mellinDenominator]
+  field_simp [(Deduction.mellin_Gchi_of_ne_one_ne hw).1]
+
+theorem archivedGaussianRawPrefix_mellin {w : ℂ} (hw : 1 < w.re) :
+    ∫ x in Ioi (1 : ℝ), (archivedGaussianRawPrefix x : ℂ) * (x : ℂ) ^ (-w - 1) =
+      ((w - 1) * riemannZeta w) *
+        (archivedGaussianPrimitiveIndexMellin w - (archivedGaussianPrimitiveIndexRamp 1 : ℂ) / w) := by
+  unfold archivedGaussianRawPrefix
+  rw [(indexedCutoffSum_mellin .prefix
+    (fun p : GaussianIndexFamily × ℕ => gaussianIndexCoefficient p.1)
+    (divisorWindowIndex gaussianIndexAddress) (divisorWindowIndex_pos gaussianIndexAddress_pos) hw
+    (divisorWindow_summable gaussianIndexCoefficient gaussianIndexAddress hw
+      (gaussianIndexFamily_summable hw))).2,
+    archivedGaussianDivisorSeries hw, IndexedCutoff.mellinNumerator, IndexedCutoff.mellinDenominator]
   field_simp [(Deduction.mellin_Gchi_of_ne_one_ne hw).1]
 
 #print axioms archivedGaussianRawWindow_growth
 #print axioms archivedGaussianRawWindow_mellin
+#print axioms archivedGaussianRawPrefix_growth
+#print axioms archivedGaussianDivisorSeries
+#print axioms archivedGaussianRawPrefix_mellin
 
 end
 end AlpogeSuperZeta

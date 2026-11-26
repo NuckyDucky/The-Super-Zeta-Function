@@ -1,0 +1,45 @@
+Independent Lean source replay with one worker and warnings treated as errors.
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Import: GaussianLogCutTriangleWindow.olean (SHA256 83A3337B3881C2011CBCF67C0C2A7834FA319299BEB50B236990E957C985D0FC)
+Import: GaussianFrobeniusOrdinaryJet.olean (SHA256 C3466DC77AC0E8AD742EEF4BB849A4B1A33D1C482D84E748D0D66172533F1972)
+Running GaussianSqrtTriangleWindow (SHA256 C1FD94072DA3FA03AEA0F852F20E496DB52C942840887FE306850E02AF38B66F)
+'AlpogeSuperZeta.archivedGaussianTriangleAtScale_eq_recentered' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.frobeniusTriangleDivisibility_error_le_scale' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianTriangleAtScale_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianSqrtTriangleWindowBound_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_sqrt_triangle_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianSqrtTriangleWindow) : DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_sqrt_triangle_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianSqrtTriangleWindow exit=0 36.417s
+Running GaussianFrobeniusFactorial (SHA256 35BA17F33A962C00C78D458EC1C8F08169A5DF88035BA57DA49F907CD91939FE)
+'AlpogeSuperZeta.ordinaryMonomialJet_eq_factorial_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.ordinaryFrobeniusMinor_eq_factorial_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.ordinaryFrobeniusMinor_ne_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.ordinaryFrobeniusMinor_mem_idealPow_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianFrobeniusFactorial exit=0 10.49s
+Running GaussianSqrtFrobeniusBudget (SHA256 7673F8F0623A25C0A2E4D8CE17E2160AF0DCFE5BB00F4E1A30ED5376854D8C20)
+'AlpogeSuperZeta.gaussianSqrtJetCount_eq_triangleOrder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.frobeniusJet_orders_lt_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.frobeniusTriangle_retainedSupport_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianSqrtJet_order_lt_retainedPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianSqrtTriangle_no_Yp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianSqrtTriangle_scaledRowCount_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianSqrtTriangle_nodes_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianSqrtTriangle_scaledFirstDegree_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.sqrtHasseMinor_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtHasseMinor_normalizedLog_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.frobeniusTriangleRow_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.frobeniusTriangleRow_firstDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtHasseTriangle_normalizedLog_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianSqrtFrobeniusBudget exit=0 41.56s
+Three fresh modules passed.
+Axiom reports: 22

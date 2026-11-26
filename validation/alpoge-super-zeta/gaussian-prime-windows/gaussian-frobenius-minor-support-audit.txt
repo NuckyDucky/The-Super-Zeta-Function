@@ -1,0 +1,37 @@
+Independent replay of the three common-minor support certificates.
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true
+Output directory: fresh. The three sources were rebuilt in the order below.
+Inputs: the certified square-root cutoff modules and the D4 group definitions.
+
+Running GaussianFrobeniusJetSeparation (SHA256 C969ED909B211EA6D07EAD6D4F9E7EC5C33BB1EA2FBE77402A83B43A49014B92)
+'AlpogeSuperZeta.frobeniusJets_grid_separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.frobeniusJets_diagonal_separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.frobeniusValues_powerGraph_separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianFrobeniusJetSeparation exit=0 12.297s
+Running GaussianFrobeniusMinorIdeal (SHA256 0DCD73050403071E0A84161DA48793FE6369A51CFF7AB6134EF5D6945875A500)
+'AlpogeSuperZeta.frobeniusTriangleDegree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusScale_prime_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_le_of_frobenius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.frobeniusPowerGraph_degree_injective' depends on axioms: [propext]
+'AlpogeSuperZeta.quotient_pair_surjective_of_comap_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_not_le_of_comap_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_not_le_of_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_not_le_of_powerGraph' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_not_le_of_powerGraph_at_upper_cutoff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianFrobeniusMinorIdeal exit=0 35.942s
+Running GaussianD4MinorSupport (SHA256 51DE92461982B0FC5E3458429F0E25F3A42556544AAE148C35299EE2287A153C)
+'AlpogeSuperZeta.gaussianD4_pow_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_le_iff_matching_window' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianCentral_frobenius_power_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_only_matching_label' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianD4MinorSupport exit=0 34.085s
+Three fresh modules passed.
+Axiom reports: 16

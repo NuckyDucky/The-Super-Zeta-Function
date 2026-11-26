@@ -1,0 +1,24 @@
+Independent Lean source replay with one worker and warnings treated as errors.
+Source: GaussianLogCutTriangleWindow.lean
+SHA256: AFFA97F5EFCE1DBE19B7C374FCE1CD18A32CB29359CEFADEF9B66188B1CC7378
+Independent input: ArchivedGaussianTriangleWindow.olean
+Input SHA256: 9F7C8C46CDF7A2A73C6692D2AB1CEB27F3FB760106173E6AE2AA6C15C98B6D17
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+'AlpogeSuperZeta.squaredRampMultiples_rounding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianLogCutTriangleWindow_sub_eq_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianLogCutTriangleWindow_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianLogCutTriangleWindow_error_sqrt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianLogCutTriangleWindowBound_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_log_cut_triangle_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut : GaussianCutoffWindowBound archivedGaussianLogCutTriangleWindow) : DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_log_cut_triangle_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianLogCutTriangleWindow exit=0 36.7s

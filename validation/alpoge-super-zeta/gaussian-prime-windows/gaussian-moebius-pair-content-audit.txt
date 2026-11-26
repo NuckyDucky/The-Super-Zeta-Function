@@ -1,0 +1,13 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -DwarningAsError=true --root=<source directory>; LEAN_NUM_THREADS=1
+Independent common-divisor replay: crosscheck-common-divisor-20261126-060050-736
+Running GaussianMoebiusPairContent (SHA256 954DB4BD2D1E96530EC1E543E5AB8DEC35A8676318F32C2CD30C33F1F72FDB6F)
+'AlpogeSuperZeta.gaussianMoebiusPairContent_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianMoebius_pair_content' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianContentSign_cube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMoebius_rational_square_correction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMoebius_pair_content_correction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianMoebius_pair_content_exponents' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianMoebiusPairContent exit=0 37.696s
+Axiom reports: 6 / 6
+Unexpected axioms:
