@@ -73,7 +73,8 @@ $modules = @(
     'GaussianHalfWindowShift',
     'GaussianCenteredHalfWindowShift',
     'GaussianRawPrimeWindow',
-    'GaussianRealQuadraticWeights'
+    'GaussianRealQuadraticWeights',
+    'GaussianFrobeniusFixedMinor'
 )
 
 $savedPath = $env:LEAN_PATH

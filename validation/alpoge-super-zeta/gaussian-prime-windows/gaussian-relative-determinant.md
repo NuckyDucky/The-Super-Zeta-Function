@@ -398,6 +398,25 @@ primes keep the original coefficient, so the finite sum $P(x)$ is
 exactly the same in both descriptions at every cutoff.
 [Prime coefficient and window equality](GaussianRealQuadraticWeights.lean) · [Source replay and axioms](real-quadratic-replay-audit.txt)
 
+## A fixed minor for the identity and central Frobenius labels
+
+I used Kominers's interpolation matrix to choose the rows $1,XY$ and
+the points $1,4+\beta$ with $\beta^2=2(a+\sqrt D)$. The second coordinate
+uses either the identity or the central element $z$, which sends
+$\beta$ to $-\beta$. Thus the two determinants are $(4+\beta)^2-1$
+and $15-\beta^2$. The rows and points stay fixed across primes.
+Kominers's larger construction uses a triangular row change that
+accumulates forced divisibility for each chosen Frobenius class.
+[Source theorem and row change](https://hexagonmath.org/pdf/2610.00451v1)
+
+Lean computes these two norms in the successive quadratic algebras
+and checks the exact divisibilities. At $5$ the norm valuations are
+$(1,0)$, at $13$ they are $(0,2)$, and at $73$ both are zero.
+The first norm also has valuation $2$ at $7$, whose archived prime
+weight is zero. The second has valuation $2$ at $61$, whose archived
+prime weight is $+2$. These extra factors matter to a one-sided bound
+on the whole window. [Exact minor and off-class divisors](GaussianFrobeniusFixedMinor.lean) · [Source replay and axioms](fixed-frobenius-minor-replay-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism
