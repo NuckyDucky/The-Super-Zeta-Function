@@ -1,0 +1,56 @@
+Independent Lean scope audit of GaussianTriangleScopeAudit.lean.
+AlpogeSuperZeta.archivedMellin_eq_quartic_real_formula : QuarticModel.archivedMellin = QuarticRealFormula.completed
+AlpogeSuperZeta.cofactors_on_line (hD : DirichletLZerosOnLine) :
+  StripZerosOnLine riemannZeta ∧ StripZerosOnLine (DirichletCharacter.LFunction FieldCoefficientTransfer.chi4)
+AlpogeSuperZeta.archivedGaussianSquaredWindow_mellin {w : ℂ} (hw : 1 < w.re) :
+  ∫ (x : ℝ) in Set.Ioi 1, ↑(archivedGaussianSquaredWindow x) * ↑x ^ (-w - 1) =
+    2 / ((w + 1) * (w + 2)) * ((w - 1) * riemannZeta w) *
+      (archivedGaussianPrimitiveIndexMellin w - ↑(archivedGaussianPrimitiveIndexRamp 1) / w)
+AlpogeSuperZeta.quartic_rh_of_gaussian_cutoff_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) {A : ℝ → ℝ} {M : ℂ → ℂ} (hA : Measurable A)
+  (hGrowth : ∃ C ≥ 0, ∀ x ≥ 1, |A x| ≤ C * x ^ 2) (hAnalytic : ∀ (w : ℂ), 1 / 2 < w.re → AnalyticAt ℂ M w)
+  (hNonzero : ∀ (w : ℂ), 1 / 2 < w.re → M w ≠ 0)
+  (hTransform :
+    ∀ (w : ℂ),
+      1 < w.re →
+        ∫ (x : ℝ) in Set.Ioi 1, ↑(A x) * ↑x ^ (-w - 1) =
+          M w * ((w - 1) * riemannZeta w) *
+            (archivedGaussianPrimitiveIndexMellin w - ↑(archivedGaussianPrimitiveIndexRamp 1) / w))
+  (hcut : GaussianCutoffWindowBound A) : DedekindZetaRH QuarticModel.K
+AlpogeSuperZeta.archivedGaussianRawWindow_eq_prefix_sub (x : ℝ) :
+  archivedGaussianRawWindow x = archivedGaussianRawPrefix x - archivedGaussianRawPrefix (x / 2)
+AlpogeSuperZeta.archivedGaussianPrimeHalfWindow_eq_prefix_sub {x : ℝ} (hx : 0 < x) :
+  archivedGaussianPrimeHalfWindow x = archivedGaussianPrimePrefix x - archivedGaussianPrimePrefix (x / 2)
+AlpogeSuperZeta.archivedGaussianTriangleWindow_error :
+  ∃ C ≥ 0, ∀ x ≥ 2, |archivedGaussianTriangleWindow x - archivedGaussianPrimeSquaredWindow x| ≤ C * x ^ (1 / 2)
+AlpogeSuperZeta.frobeniusTriangleDivisibility_error {X k : ℝ} (hX : 1 ≤ X) (hk : 0 < k) {p : ℕ} (hp : 0 < p) :
+  have D :=
+    2 * k / X ^ 2 * ↑(frobeniusTriangleDivisibility X k p) - ∑ m ∈ Finset.range ⌈X⌉₊, squaredRampWeight X ((m + 1) * p);
+  0 ≤ D ∧ D ≤ 2 * k / X ^ 2 * (X + X / k + 1) * ↑(⌈X / ↑p⌉₊ - 1)
+GaussianTriangleScopeAudit.actualQuarticContract
+  (hD :
+    ∀ (N : ℕ) [inst : NeZero N] (χ : DirichletCharacter ℂ N) (w : ℂ),
+      0 < w.re → w.re < 1 → DirichletCharacter.LFunction χ w = 0 → w.re = 1 / 2)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 →
+          ∃ δ,
+            0 < δ ∧
+              ∃ C,
+                0 ≤ C ∧
+                  ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ x ∈ Set.Icc Y (Y ^ (1 + δ)), archivedGaussianTriangleWindow x ≤ C * x ^ θ)
+  (Z : ℂ → ℂ) : IsDedekindZeta QuarticModel.K Z → ∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → w.re = 1 / 2
+'AlpogeSuperZeta.cofactors_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedMellin_eq_quartic_real_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_cutoff_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_squared_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_triangle_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'GaussianTriangleScopeAudit.sameLateWindowCondition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GaussianTriangleScopeAudit.actualQuarticContract' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianTriangleScopeAudit exit=0 30.657s

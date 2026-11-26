@@ -484,13 +484,35 @@ factor is analytic and nonzero on the right half-strip needed by the
 pole test. The half-window, full prefix, and squared cutoff therefore
 share one window theorem for this quartic. [Three shifted transforms](GaussianSquaredRamp.lean) · [Quartic declarations](GaussianDivisorSquaredWindow.lean) · [Source replay and axioms](gaussian-squared-cutoff-replay-audit.txt)
 
-The squared quartic declaration takes the rational Dirichlet result,
-real-axis positivity for the completed Gaussian factor, and an upper
-bound on the archived squared divisor reading. If $1/2<\theta<1$,
-the upper bound $Cx^\theta$ must hold on arbitrarily late intervals
-$[Y,Y^{1+\delta}]$, with $\delta>0$ fixed for that exponent. The next
-arithmetic step is to transfer a bound on the centered, signed prime
-sum to that archived squared reading. [Exact window premise](GaussianRawWindowCriterion.lean)
+## The centered signed prime triangle
+
+I use the same signed prime coefficient $b(p)=-a(p)\log p$ and let $c$
+be the linear coefficient of the full-prefix centering. The half-window
+is exactly the difference of the full prefixes at $x$ and $x/2$. Adding
+the errors over successive halvings preserves the bound $D x^\theta$.
+The squared cutoff is the integral of the full prefix against the
+nonnegative weight $2(x-t)/x^2$ on $0<t\le x$. That integral sends the
+linear term $tc$ to $xc/3$ and preserves the error bound. [Prefix error](GaussianPrimePrefix.lean) · [Weighted integral](GaussianSquaredSmoothing.lean) · [Prime-only squared window](GaussianPrimeSquaredWindow.lean)
+
+If $x\ge2$, the resulting signed triangle is
+
+$$
+A(x)=\frac{2\log x}{x^2}\sum_{p\le x} b(p)V_p(x,\log x)-\frac{x c}{3}.
+$$
+
+Lean bounds the difference between $A(x)$ and the centered squared
+prime sum by $C\sqrt x$. The proof sums the per-prime errors using the
+checked finite constant $\sum_p|b(p)|/p^{5/4}$. For each $1/2<\theta<1$,
+this error fits the bound $Cx^\theta$ in either direction, with the same
+fixed positive width $\delta$ for the arbitrarily late intervals
+$[Y,Y^{1+\delta}]$. Lean uses that transfer to make the upper bound
+on $A(x)$ an explicit premise of the quartic theorem, alongside the
+rational Dirichlet result and real-axis positivity. [Signed comparison](ArchivedGaussianTriangleWindow.lean) · [Exact theorem premises](GaussianTriangleScopeAudit.lean) · [Source replay and axioms](prime-squared-triangle-replay-audit.txt)
+
+The signed triangle includes all primes up to $x$. Kominers's row
+divisibility applies at $p\ge\log x$. Using a determinant estimate
+for that shorter sum requires matching its centering and bounding
+the signed contribution. [Kominers's divisibility step](https://hexagonmath.org/pdf/2610.00451v1#page=3)
 
 ## What the fixed CM place data can distinguish
 

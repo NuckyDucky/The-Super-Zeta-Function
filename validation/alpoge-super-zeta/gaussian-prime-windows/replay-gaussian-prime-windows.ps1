@@ -81,7 +81,12 @@ $modules = @(
     'GaussianSquaredRamp',
     'GaussianDivisorSquaredWindow',
     'GaussianFrobeniusTriangle',
-    'SpectralThermometer'
+    'SpectralThermometer',
+    'GaussianPrimePrefix',
+    'GaussianSquaredSmoothing',
+    'GaussianPrimeSquaredWindow',
+    'ArchivedGaussianTriangleWindow',
+    'GaussianTriangleScopeAudit'
 )
 
 $savedPath = $env:LEAN_PATH
