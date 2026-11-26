@@ -335,6 +335,41 @@ larger addresses and the length term from the smaller ones. An upper
 bound for that reading on the same late intervals supplies the raw
 window bound. [Exact counts and error](GaussianRawWindowRounding.lean) · [Resulting criterion](GaussianRawWindowCriterion.lean)
 
+## A prime-only sum on the same half-window
+
+The count of multiples of $d$ in $[x/2,x)$ equals the count of odd
+multiples of $d$ below $x$. Primes above $\sqrt{x}$ can lose a term
+when I move $p$ to $p+1$ only if the odd multiplier $m<\sqrt{x}$
+satisfies $mp<x\le m(p+1)$. Each $m$ admits at most one such $p$.
+At $x=100$, the shift from $19$ to $20$ loses the term with $m=5$.
+For addresses at most $\sqrt{x}$ I use the previous rounding bound.
+After accounting for $x/(2p(p+1))$ per unit of weight, the total
+shift error is bounded by $D_\theta x^\theta$ for $1/2<\theta<1$.
+[Odd multiple count](GaussianHalfWindowMultiplicity.lean) · [Endpoint count](GaussianHalfWindowShift.lean) · [Centered shift](GaussianCenteredHalfWindowShift.lean)
+
+Each sparse address also satisfies
+$
+\left|M_x(d)-\frac{x}{2d}\right|\le \left(\frac{x}{d}\right)^\theta,
+\qquad 0\le\theta\le1,
+$
+where $M_x(d)$ is the exact count. The existing summability of the
+higher addresses gives a linear contribution and an error at the
+same exponent. With the centering terms collected, I get the
+finite sum
+$
+P(x)=-\sum_{p\ {\rm prime}} a(p)\log p\,
+     \#\{m\ge1:\ m\ {\rm odd},\ mp<x\}
+     -\frac{x}{2}\bigl(\Re(G'(1)/G(1))+\kappa_{\rm powers}\bigr).
+$
+Here $a(p)$ is the original Gaussian Euler coefficient and
+$\kappa_{\rm powers}$ is the existing higher-prime-power linear
+coefficient. Lean proves $|A(x)-P(x)|\le D_\theta x^\theta$ for
+$x\ge1$. So the original raw window bound and the prime-only
+window bound are equivalent, with the same exponent and window
+width and an adjustment to the constant. The quartic theorem takes
+the latter bound together with the rational Dirichlet and real-axis
+positivity inputs. [Coefficient and bound in Lean](GaussianRawPrimeWindow.lean) · [Source replay and axioms](prime-half-window-replay-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism

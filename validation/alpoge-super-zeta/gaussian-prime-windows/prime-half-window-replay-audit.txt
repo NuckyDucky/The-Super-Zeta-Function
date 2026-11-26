@@ -1,0 +1,42 @@
+Gaussian prime-only half-window source replay
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Each of the four modules below compiled from source with -j1 -DwarningAsError=true.
+Prerequisites: the 33 modules recorded in index-window-replay-audit.txt and raw-window-replay-audit.txt.
+
+Building GaussianHalfWindowMultiplicity
+'AlpogeSuperZeta.divisorWindowMultiplicity_eq_odd_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.mem_halfWindowOddPrefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.divisorWindow_sparse_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianHalfWindowMultiplicity exit=0 (19.53 s)
+
+Building GaussianHalfWindowShift
+'AlpogeSuperZeta.divisorWindow_shift_large' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianHalfWindowShift exit=0 (24.66 s)
+
+Building GaussianCenteredHalfWindowShift
+'AlpogeSuperZeta.divisorWindow_shift_centered_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianCenteredHalfWindowShift exit=0 (34.85 s)
+
+Building GaussianRawPrimeWindow
+'AlpogeSuperZeta.archivedGaussianPrimeHalfWindow_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianRawWindowBound_iff_prime_half_window' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+def AlpogeSuperZeta.ArchivedGaussianPrimeHalfWindowBound : Prop :=
+∀ (θ : ℝ),
+  1 / 2 < θ →
+    θ < 1 →
+      ∃ δ,
+        0 < δ ∧
+          ∃ C,
+            0 ≤ C ∧ ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Set.Icc Y (Y ^ (1 + δ)), archivedGaussianPrimeHalfWindow y ≤ C * y ^ θ
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_half_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (hcut : ArchivedGaussianPrimeHalfWindowBound) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_half_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianRawPrimeWindow exit=0 (34.95 s)
+
+All four modules passed.
