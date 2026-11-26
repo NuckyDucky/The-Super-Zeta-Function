@@ -1,0 +1,83 @@
+Pinned mixed theta source replay. The excerpt omits the upstream build warnings.
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Super Zeta source FieldTarget 2d736feec6079b6aa96df2bfa9ab20eac0f5c859
+Super Zeta source DedekindDottieSetup f3f1929adb407339f0473a322ffb208b94f33053
+Super Zeta source DedekindFieldInputs cccd630c12934edafa2943819adbaf35fd52b9e6
+Super Zeta source DedekindFieldUniverses fb339e0849ee4e882211f731e04a2b51599efe86
+Super Zeta source DedekindMixedTheta e95a2b1ab06738f7aa69a5155631e217d732aa13
+Super Zeta source DedekindMixedThetaTail 4cb30a02ae63c5a35a53ab618c493adbdab783f8
+
+AxiomMath mixed theta imports exit=0
+'FieldTarget.continuation_eq_off_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_third_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+FieldTarget exit=0
+@dedekindZetaRH_of_same_input_signed_regions : ∀ {K : Type u_1} [inst : Field K] [inst_1 : NumberField K]
+  {Orbit : Type u_2} {Z U V : ℂ → ℂ},
+  IsDedekindZeta K Z →
+    ∀ (region : Orbit → Set ℂ) (axis : Orbit → ℂ) (retained : Orbit → ℂ → ℂ) (margin : Orbit → ℂ → ℝ),
+      (∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → U w = V w) →
+        (∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → Z (1 - (starRingEnd ℂ) w) = 0) →
+          (∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → Z w = 0 → ∃ a, w ∈ region a) →
+            (∀ (a : Orbit), ∀ w ∈ region a, 0 < margin a w) →
+              (∀ (a : Orbit), ∀ w ∈ region a, (retained a w).im ≤ -(2 * margin a w)) →
+                (∀ (a : Orbit), ∀ w ∈ region a, (axis a * (U w - V w) - retained a w).im ≤ margin a w) →
+                  DedekindZetaRH K
+'FieldTarget.readings_ne_of_signed_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_regions' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDottieSetup exit=0
+FieldTarget.continuation_reflects_zeros_of_completion.{u_1} {K : Type u_1} [Field K] [NumberField K] {Z A Λ : ℂ → ℂ}
+  (hZ : IsDedekindZeta K Z) (hcomplete : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Λ w = A w * Z w)
+  (hscale : ∀ (w : ℂ), 0 < w.re → w.re < 1 → A w ≠ 0) (hfe : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Λ (1 - w) = Λ w) (w : ℂ)
+  (hw₀ : 0 < w.re) (hw₁ : w.re < 1) (hz : Z w = 0) : Z (1 - (starRingEnd ℂ) w) = 0
+FieldTarget.continuation_reflects_zeros_of_functionalEquation.{u_1} {K : Type u_1} [Field K] [NumberField K] {Z : ℂ → ℂ}
+  (hZ : IsDedekindZeta K Z)
+  (hfe : ∀ (w : ℂ), 0 < w.re → w.re < 1 → dedekindGammaFactor K (1 - w) * Z (1 - w) = dedekindGammaFactor K w * Z w)
+  (w : ℂ) (hw₀ : 0 < w.re) (hw₁ : w.re < 1) (hz : Z w = 0) : Z (1 - (starRingEnd ℂ) w) = 0
+FieldTarget.dedekindZetaRH_of_same_input_signed_gap_below.{u_1, u_2} {K : Type u_1} [Field K] [NumberField K]
+  {Orbit : Type u_2} {Z U V : ℂ → ℂ} {b : ℝ} (hZ : IsDedekindZeta K Z)
+  (hfree : ∃ W, IsDedekindZeta K W ∧ ∀ (w : ℂ), b < w.re → w ≠ 1 → W w ≠ 0) (region : Orbit → Set ℂ) (axis : Orbit → ℂ)
+  (retained : Orbit → ℂ → ℂ) (main tail : Orbit → ℂ → ℝ) (hzero : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → U w = V w)
+  (hreflect : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → Z (1 - (starRingEnd ℂ) w) = 0)
+  (hlocate : ∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → w.re ≤ b → Z w = 0 → ∃ a, w ∈ region a)
+  (hgap : ∀ (a : Orbit), ∀ w ∈ region a, tail a w < main a w)
+  (hmodel : ∀ (a : Orbit), ∀ w ∈ region a, (retained a w).im ≤ -main a w)
+  (htail : ∀ (a : Orbit), ∀ w ∈ region a, (axis a * (U w - V w) - retained a w).im ≤ tail a w) : DedekindZetaRH K
+'FieldTarget.dedekindZeta_conj_argument' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_conj_argument' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_reflects_zeros_of_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindGammaFactor_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_reflects_zeros_of_functionalEquation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.continuation_ne_zero_above' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_gap_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFieldInputs exit=0
+'FieldTarget.dedekindZeta_eq_of_ringEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.isDedekindZeta_iff_of_ringEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dedekind_continuation_of_small_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFieldUniverses exit=0
+'FieldTarget.exists_dedekind_continuation_with_mixedTheta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dedekind_continuation_with_functionalEquation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.mixedTheta_completion_eq_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_reading_eq_iff_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dedekind_continuation_with_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedTheta exit=0
+'FieldTarget.mixedTheta_mellin_eq_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_mellin_tail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_signed_truncation_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_ne_zero_of_signed_truncation' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaTail exit=0
+
+Independent cross-check of the same universe adapter
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib HEAD: 0df444a360eaa60ab8c11dca51a86af692955474
+DedekindFieldUniverses source SHA256: 6B3CD7C1350A6F444833B8F7959C6E33D93F48058027FE1105FD87B3EED9686F
+'FieldTarget.dedekindZeta_eq_of_ringEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.isDedekindZeta_iff_of_ringEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dedekind_continuation_of_small_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFieldUniverses exit=0 15.911s

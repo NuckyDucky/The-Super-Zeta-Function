@@ -1,5 +1,5 @@
 import FieldTarget
-import Mathlib.Algebra.Algebra.Shrink
+import Mathlib.Algebra.Algebra.Hom.Rat
 import Mathlib.Algebra.Field.Shrink
 import Mathlib.LinearAlgebra.Dimension.Finite
 import Mathlib.RingTheory.Ideal.Quotient.Operations
@@ -41,14 +41,15 @@ theorem exists_dedekind_continuation_of_small_fields
     (h : ∀ (F : Type) [Field F] [NumberField F], ∃ Z, IsDedekindZeta F Z ∧ P Z) :
     ∃ Z, IsDedekindZeta K Z ∧ P Z := by
   let : Small.{0} K := small_of_injective (Module.finBasis ℚ K).repr.injective
-  let e : Shrink.{0} K ≃ₐ[ℚ] K := Shrink.algEquiv ℚ K
-  let : CharZero (Shrink.{0} K) :=
-    charZero_of_injective_algebraMap (algebraMap ℚ (Shrink.{0} K)).injective
-  let : FiniteDimensional ℚ (Shrink.{0} K) :=
-    Module.Finite.of_surjective e.symm.toLinearMap e.symm.surjective
-  let : NumberField (Shrink.{0} K) := ⟨⟩
+  let e : Shrink.{0} K ≃+* K := Shrink.ringEquiv K
+  let hChar : CharZero (Shrink.{0} K) :=
+    (RingHom.charZero_iff e.toRingHom.injective).mpr inferInstance
+  let eQ := e.toRatAlgEquiv
+  let hFinite : FiniteDimensional ℚ (Shrink.{0} K) :=
+    Module.Finite.of_surjective eQ.symm.toLinearMap eQ.symm.surjective
+  let : NumberField (Shrink.{0} K) := { to_charZero := hChar, to_finiteDimensional := hFinite }
   obtain ⟨Z, hZ, hP⟩ := h (Shrink.{0} K)
-  exact ⟨Z, (isDedekindZeta_iff_of_ringEquiv e.toRingEquiv Z).mp hZ, hP⟩
+  exact ⟨Z, (isDedekindZeta_iff_of_ringEquiv e Z).mp hZ, hP⟩
 
 #print axioms dedekindZeta_eq_of_ringEquiv
 #print axioms isDedekindZeta_iff_of_ringEquiv
