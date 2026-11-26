@@ -1,0 +1,7 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+'QuarticModel.archivedGaussianSigns_at_norm_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.exists_opposite_archived_signs_coprime_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+QuarticModel.archivedGaussianSign_not_of_norm (M : ℕ) (hM : M ≠ 0) :
+  ¬∃ F, ∀ (z : GaussianInt), (Zsqrtd.norm z).natAbs.Coprime M → archivedGaussianSign z = F (Zsqrtd.norm z).natAbs
+'QuarticModel.archivedGaussianSign_not_of_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

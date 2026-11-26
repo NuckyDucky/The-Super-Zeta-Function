@@ -123,6 +123,10 @@ At $\Re w>0$, $w\ne1$ and away from all factor zeros, the Gaussian logarithmic d
 - Mathlib `0df444a360eaa60ab8c11dca51a86af692955474`. Lean 4.33.1, `819816b2e0a3bf405af45ae5c7af2491d8f5bee6`. [Mathlib pin](https://github.com/leanprover-community/mathlib4/tree/0df444a360eaa60ab8c11dca51a86af692955474)
 - [Local Lean output](lean-audit.txt) includes exit codes and transitive axioms for the new adapters. [Upstream replay](upstream-replay.txt) records the unchanged local import closure. The listed axiom set is `[propext, Classical.choice, Quot.sound]`.
 
+## Gaussian prime-window verification
+
+If I use the original Euler weights, Lean identifies the logarithmic derivative of the Gaussian factor. If `hD` and the prime-only `hcut` hold, Lean gives `DedekindZetaRH QuarticModel.K`. The recorded arithmetic now includes the odd and even prime powers, the finite window checks, and the exact cutoff condition for the quartic. [Lean proofs, replay and remaining bound](gaussian-prime-windows/README.md)
+
 ## Replay
 
 Build the original `lean-ideal73` package at the Super Zeta pin, and make sure the pinned Mathlib packages have their compiled libraries. From this packet's directory, stage the 28 required upstream files directly from the Alpöge Git objects, then replay the adapters with your local toolchain and library paths.
