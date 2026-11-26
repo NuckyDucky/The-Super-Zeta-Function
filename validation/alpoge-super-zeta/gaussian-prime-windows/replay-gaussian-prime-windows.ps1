@@ -101,7 +101,8 @@ $modules = @(
     'GaussianD4MinorExponents',
     'GaussianQuarticClosure',
     'GaussianQuarticD4',
-    'ArchivedGaussianRetainedNormWindow'
+    'ArchivedGaussianRetainedNormWindow',
+    'GaussianClosureUnramified'
 )
 
 $savedPath = $env:LEAN_PATH
