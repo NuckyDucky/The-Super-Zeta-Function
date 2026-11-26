@@ -26,7 +26,7 @@ theorem archivedGaussianPrimeWeight_prime_power {p j : ℕ} (hp : p.Prime) (hj :
   have h : IsPrimePow (p ^ j) := ⟨p, j, hp.prime, Nat.pos_of_ne_zero hj, rfl⟩
   rw [archivedGaussianPrimeWeight, if_pos h, hp.pow_minFac hj, Nat.factorization_pow_self hp]
 
-private theorem archivedIdealCharacter_abs_le_one (I : Ideal GaussianInt) :
+theorem archivedIdealCharacter_abs_le_one (I : Ideal GaussianInt) :
     |(archivedIdealCharacter I : ℝ)| ≤ 1 := by
   obtain ⟨z, rfl⟩ : Submodule.IsPrincipal I := inferInstance
   rw [archivedIdealCharacter_span]

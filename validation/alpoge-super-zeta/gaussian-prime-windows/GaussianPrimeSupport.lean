@@ -21,7 +21,7 @@ theorem archivedGaussianPrimeWeight_inert {p : ℕ} [Fact p.Prime] (hp : p % 4 =
     Finset.sum_singleton, inert_gaussian_prime_degree hp]
   norm_num
 
-private theorem archivedIdealCharacter_at_root {p : ℕ} [Fact p.Prime] (hp : p ≠ 2)
+theorem archivedIdealCharacter_at_root {p : ℕ} [Fact p.Prime] (hp : p ≠ 2)
     (r : ZMod p) (hr : r ^ 2 = -1) (hI : gaussianPrimeAt r hr ∈ gaussianPrimesAbove p) :
     archivedIdealCharacter (gaussianPrimeAt r hr) =
       quadraticChar (ZMod p) ((-5045155 : ZMod p) + 1027708 * r) := by
@@ -57,7 +57,7 @@ theorem archivedGaussianPrimeWeight_split {p : ℕ} [Fact p.Prime] (hp : p ≠ 2
   rw [primeWeight_first Fact.out]
   simpa only [pow_one] using archivedGaussianPrimePowerWeight_split hp r hr 1
 
-private theorem norm_discriminant_ne_zero {p : ℕ} [Fact p.Prime]
+theorem norm_discriminant_ne_zero {p : ℕ} [Fact p.Prime]
     (hc : p.Coprime 26509772707289) : (26509772707289 : ZMod p) ≠ 0 := by
   have hp : p.Prime := Fact.out
   have h := hp.coprime_iff_not_dvd.mp hc

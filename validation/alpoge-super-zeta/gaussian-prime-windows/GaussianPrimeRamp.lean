@@ -165,13 +165,13 @@ theorem quartic_rh_of_gaussian_prime_norm_windows (hD : DirichletLZerosOnLine)
     (gaussianLogCutoffRamp_measurable a) (gaussianLogCutoffRamp_growth a hweights)
     (fun w hw => gaussianLogCutoffRamp_laplace a hweights hw (hcoeff w hw)) hwindows
 
-/-- The pointwise norm-window premise from the reconstructed criterion
-implies the integrated log-window premise of the formal theorem. -/
-theorem gaussianLogWindow_of_pointwise_norm_windows (a : ℕ → ℝ) {θ δ C : ℝ}
+/-- A pointwise bound on norm windows gives the integrated bound on the
+corresponding logarithmic windows. -/
+theorem logWindow_of_pointwise_norm_windows (f : ℝ → ℝ) {θ δ C : ℝ}
     (hδ : 0 < δ) (hC : 0 ≤ C)
     (hcut : ∀ Y₀ : ℝ, ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)),
-      gaussianPrimeNormRamp a y ≤ C * y ^ θ) :
-    Deduction.WindowHypU (gaussianLogCutoffRamp a) θ δ := by
+      f y ≤ C * y ^ θ) :
+    Deduction.WindowHypU (fun u => f (Real.exp u)) θ δ := by
   intro η hη U₀
   let start := max U₀ (max 0 (4 * C * δ / η ^ 2))
   obtain ⟨Y, hY, hW⟩ := hcut (Real.exp start)
@@ -194,7 +194,7 @@ theorem gaussianLogWindow_of_pointwise_norm_windows (a : ℕ → ℝ) {θ δ C :
       rw [Real.rpow_def_of_pos hYpos, mul_comm]
     have hymem : Real.exp u ∈ Icc Y (Y ^ (1 + δ)) :=
       ⟨hYexp ▸ Real.exp_le_exp.mpr hu.1, hub ▸ Real.exp_le_exp.mpr hu.2⟩
-    simpa [gaussianLogCutoffRamp, Real.rpow_def_of_pos (Real.exp_pos u),
+    simpa [Real.rpow_def_of_pos (Real.exp_pos u),
       Real.log_exp, mul_comm u θ] using hW _ hymem
   · have hwidth : U ≤ (1 + δ) * U := by nlinarith
     simp_rw [hkernel]
@@ -209,6 +209,13 @@ theorem gaussianLogWindow_of_pointwise_norm_windows (a : ℕ → ℝ) {θ δ C :
       _ ≤ Real.exp (η * U / 2) ^ 2 :=
         (sq_le_sq₀ hx (Real.exp_nonneg _)).mpr hb
       _ = _ := by rw [pow_two, ← Real.exp_add]; congr 1; ring
+
+theorem gaussianLogWindow_of_pointwise_norm_windows (a : ℕ → ℝ) {θ δ C : ℝ}
+    (hδ : 0 < δ) (hC : 0 ≤ C)
+    (hcut : ∀ Y₀ : ℝ, ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)),
+      gaussianPrimeNormRamp a y ≤ C * y ^ θ) :
+    Deduction.WindowHypU (gaussianLogCutoffRamp a) θ δ :=
+  logWindow_of_pointwise_norm_windows (gaussianPrimeNormRamp a) hδ hC hcut
 
 theorem quartic_rh_of_pointwise_gaussian_prime_norm_windows (hD : DirichletLZerosOnLine)
     (a : ℕ → ℝ) (hweights : ∀ n, |a n| ≤ 2)
@@ -230,6 +237,7 @@ theorem quartic_rh_of_pointwise_gaussian_prime_norm_windows (hD : DirichletLZero
 #print axioms gaussianLogCutoffRamp_growth
 #print axioms gaussianLogCutoffRamp_laplace
 #print axioms quartic_rh_of_gaussian_prime_norm_windows
+#print axioms logWindow_of_pointwise_norm_windows
 #print axioms gaussianLogWindow_of_pointwise_norm_windows
 #print axioms quartic_rh_of_pointwise_gaussian_prime_norm_windows
 

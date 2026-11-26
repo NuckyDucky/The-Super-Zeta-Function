@@ -1,0 +1,10 @@
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+Mathlib c44e0c8ee63ca166450922a373c7409c5d26b00b
+QuarticRealFormula
+exit=0
+QuarticPositiveReal
+QuarticKernel.certified_quartic_real_pos (σ : ℝ) : 0 < (mellin (fun t => ↑(theta (t / scale))) ↑σ).re
+'QuarticKernel.certified_kernel_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticKernel.certified_quartic_real_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticKernel.certified_quartic_real_formula_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
