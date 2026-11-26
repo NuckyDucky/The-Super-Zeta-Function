@@ -125,7 +125,8 @@ $modules = @(
     'GaussianSeventhFreeMellin',
     'GaussianMoebiusContent',
     'GaussianBalancedMoebius',
-    'GaussianMoebiusCommonDivisor'
+    'GaussianMoebiusCommonDivisor',
+    'GaussianMoebiusPairContent'
 )
 
 $savedPath = $env:LEAN_PATH
