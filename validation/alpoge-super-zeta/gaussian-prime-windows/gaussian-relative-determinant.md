@@ -414,8 +414,53 @@ and checks the exact divisibilities. At $5$ the norm valuations are
 $(1,0)$, at $13$ they are $(0,2)$, and at $73$ both are zero.
 The first norm also has valuation $2$ at $7$, whose archived prime
 weight is zero. The second has valuation $2$ at $61$, whose archived
-prime weight is $+2$. These extra factors matter to a one-sided bound
-on the whole window. [Exact minor and off-class divisors](GaussianFrobeniusFixedMinor.lean) · [Source replay and axioms](fixed-frobenius-minor-replay-audit.txt)
+prime weight is $+2$. These extra factors defeat exact classification by
+the two norms. At any fixed finite set of primes, changing the weights
+and adjusting the linear centering changes the window by a bounded
+amount. If the set grows with the interpolation matrix, the bound needs
+to hold as the matrix grows. [Exact minor and off-class divisors](GaussianFrobeniusFixedMinor.lean) · [Source replay and axioms](fixed-frobenius-minor-replay-audit.txt) · [Checked rounding bound](GaussianRawWindowRounding.lean#L17)
+
+## A larger matrix at the same primes
+
+I used the rows $1,X,\ldots,X^{13},Y$, the scalar nodes $0,\ldots,13$,
+and the two marked nodes $\beta,i$. Both labels fix $i$. The central
+label sends $\beta$ to $-\beta$. I used orders $0,1,2$ for the
+coefficients of the corresponding powers in the first-coordinate
+Taylor expansion. These orders have invertible factorials at the five
+tested primes, so the same modular rank tests hold with ordinary
+derivatives.
+
+| Prime | Identity label | Central label |
+| --- | --- | --- |
+| $5$ | Every full-row minor is zero | A unit minor exists |
+| $7$ | A unit minor exists | A unit minor exists |
+| $13$ | A unit minor exists | Every full-row minor is zero |
+| $61$ | A unit minor exists | A unit minor exists |
+| $73$ | A unit minor exists | A unit minor exists |
+
+The determinants are read in the successive quadratic algebras over
+$\mathbb Z/p\mathbb Z$. At $5$ or $13$ the repeated rows are $Y$ and
+$X^p$ for the corresponding label. At $7$, the node $i$ gives
+$i-i^7=2i$, a unit in the residue algebra. At $61$ and $73$, the
+scalar Vandermonde block and the extra first derivative at $0$ give
+a unit determinant. The test gives a modular unit or vanishing for
+this fixed set of rows. [Scalar blocks](GaussianFrobeniusJetScaffold.lean) · [Five prime tests](GaussianFrobeniusJetMinors.lean)
+
+## When every ordinary-derivative minor vanishes
+
+If the identity graph has both $X^p$ and $Y^p$ as rows, their values agree
+at every sampled point on $Y=X$. Every positive-order ordinary partial
+derivative of either row is zero in characteristic $p$. Therefore every
+minor that uses all rows has determinant zero modulo $p$. For Kominers's
+row triangle $r+ks<X$, the two rows are present once $p<X$ and $kp<X$.
+
+Lean also checks this for an arbitrary polynomial relation $F$ over a
+domain of characteristic $p$. If $F$ vanishes at the sampled points and
+the row span contains the nonzero $F^p$, all ordinary-derivative minors
+using the full row set vanish. The coefficient derivative of order $p$
+distinguishes $X^p$ and $Y^p$, and it also breaks the Frobenius agreement
+$X^p=Y$ in that order. The coefficient derivatives below order $p$
+preserve the Frobenius agreement. [Ordinary and coefficient derivative theorems](GaussianFrobeniusOrdinaryJet.lean) · [Source replay and axioms](frobenius-jet-replay-audit.txt)
 
 ## What the fixed CM place data can distinguish
 
