@@ -291,6 +291,50 @@ If $\Psi(w)=c/(w-\rho)+a(w)$ locally at a pole, then the new principal
 part is $c/(s-\rho/2)$. Lean checks the half-address and the unchanged
 nonzero residue. [Half-address theorem](GaussianPrimitiveIndexMellin.lean#L228) · [Lean replay and axiom audit](index-window-replay-audit.txt)
 
+## A half-window at the original determinant indices
+
+I write $N_i$ for the address of a marked occurrence and $b_i$ for its
+signed weight, including the Gaussian base comparison and the centering
+weight at $N_i=1$. Its contribution to the reading at the original
+integer $n$ is $b_i$ if $N_i\mid n$. At each good rational prime, the
+weighted containment theorem gives its contribution from the common
+divisor of the determinant coefficients. It keeps the two marked
+Gaussian primes above a split $p$ separate. [Original-index accounting](GaussianRawWindowCounts.lean)
+
+I sum these readings for $x/2\le n<x$. Write $A(x)$ for that sum,
+$W(x)$ for the centered primitive ramp and $\Psi$ for its Mellin
+transform. The family ramp is exactly $W(x)-W(1)$ for $x\ge1$. Summing
+over the multiples gives ordinary zeta and using the half-window gives
+the elementary factor $1-2^{-w}$. For $\Re w>1$ the exact identity is
+$
+\int_1^\infty A(x)x^{-w-1}\,dx =
+(1-2^{-w})\,((w-1)\zeta(w))\,\bigl(\Psi(w)-W(1)/w\bigr).
+$
+[Lean transform](GaussianDivisorWindow.lean)
+
+At $w=1$, Lean uses the analytic version of $(w-1)\zeta(w)$, with
+value one. With the rational Dirichlet input, the two factors before
+the parentheses are nonzero on $\Re w>1/2$. If the Gaussian factor
+has a zero there, its primitive Mellin pole survives at the same
+address. Supplying the real-axis positivity and the one-sided bound
+for $A$ on arbitrarily late $[Y,Y^{1+\delta}]$ gives the quartic
+critical-line result. [Lean criterion and exact inputs](GaussianRawWindowCriterion.lean)
+
+## The square-root split of the half-window
+
+The number of multiples of $N_i$ in $[x/2,x)$ is exactly
+$\lceil x/N_i\rceil-\lceil x/(2N_i)\rceil$. It differs from
+$x/(2N_i)$ by less than one. I use this length only for addresses
+$N_i\le\sqrt{x}$. The weighted total of the discarded rounding terms
+is at most
+$
+x^\theta \sum_i |b_i|/N_i^{2\theta}\qquad(\theta>1/2).
+$
+Lean proves the series summable. This leaves the exact counts at
+larger addresses and the length term from the smaller ones. An upper
+bound for that reading on the same late intervals supplies the raw
+window bound. [Exact counts and error](GaussianRawWindowRounding.lean) · [Resulting criterion](GaussianRawWindowCriterion.lean)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism
