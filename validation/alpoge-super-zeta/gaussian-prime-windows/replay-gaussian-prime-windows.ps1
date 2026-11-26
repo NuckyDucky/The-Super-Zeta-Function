@@ -114,7 +114,9 @@ $modules = @(
     'GaussianAveragedRoundingResidual',
     'GaussianCutoffAverageMellin',
     'GaussianAveragedPrimeWindow',
-    'GaussianThreeHalvesPrimeWindow'
+    'GaussianThreeHalvesPrimeWindow',
+    'GaussianDyadicPrimeWindow',
+    'GaussianDyadicFrobeniusWindow'
 )
 
 $savedPath = $env:LEAN_PATH
