@@ -136,7 +136,9 @@ $modules = @(
     'GaussianVaughanLogWindow',
     'GaussianVaughanWindowCriterion',
     'GaussianVaughanKernelBounds',
-    'GaussianVaughanMellinSeries'
+    'GaussianVaughanMellinSeries',
+    'GaussianVaughanConvolvedKernel',
+    'GaussianVaughanPrimeComplement'
 )
 
 $savedPath = $env:LEAN_PATH

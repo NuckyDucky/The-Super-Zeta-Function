@@ -50,36 +50,32 @@ private theorem mellin_div_input_norm (g : ℝ → ℂ) (z : ℂ) {a : ℝ} (ha 
     ofReal_cpow ha.le, ofReal_neg,
     mellin_integral_norm_cast]
 
-private theorem archivedGaussianMangoldt_ofReal_re (n : ℕ) :
-    ((archivedGaussianMangoldt n).re : ℂ) = archivedGaussianMangoldt n := by
-  simp [archivedGaussianMangoldt, ← Complex.ofReal_mul]
+def dirichletKernelSum (a : ArithmeticFunction ℂ) (H : ℝ → ℂ) (v : ℝ) : ℂ :=
+  ∑' n : ℕ, a n * H (n * v)
 
-/-- Absolute convergence justifies interchanging the actual norm sum and
-its Mellin integral. The term at zero vanishes. -/
-theorem archivedGaussianVaughanSum_hasMellin {z : ℂ} (hz : 1 < z.re) :
-    HasMellin (fun x => (archivedGaussianVaughanSum x : ℂ)) (-z)
-      (archivedGaussianVaughanMellin z) := by
-  let H : ℝ → ℂ := fun v => archivedGaussianVaughanKernel v
+private theorem dirichletKernelSum_div_hasMellin (a : ArithmeticFunction ℂ)
+    {H : ℝ → ℂ} {z m : ℂ} (hH : HasMellin H z m)
+    (ha : LSeriesSummable a (z.re : ℂ)) :
+    HasMellin (fun x : ℝ => ∑' n : ℕ, a n * H (n / x)) (-z)
+      (m * LSeries a z) := by
   let μ := (volume : Measure ℝ).restrict (Ioi 0)
   let F (n : ℕ) (x : ℝ) : ℂ :=
-    archivedGaussianMangoldt n * ((x : ℂ) ^ (-z - 1) * H (n / x))
-  have hH : HasMellin H z (archivedGaussianVaughanMultiplier z) :=
-    archivedGaussianVaughanKernel_hasMellin (zero_lt_one.trans hz)
+    a n * ((x : ℂ) ^ (-z - 1) * H (n / x))
   have hInt (n : ℕ) : Integrable (F n) μ := by
     by_cases hn : n = 0
     · subst n
       simp [F]
     have hn₀ : 0 < (n : ℝ) := Nat.cast_pos.mpr (Nat.pos_of_ne_zero hn)
     simpa only [F, μ, IntegrableOn, MellinConvergent, smul_eq_mul, mul_left_comm] using
-      (mellinConvergent_div_input hH.1 hn₀).const_smul (archivedGaussianMangoldt n)
+      (mellinConvergent_div_input hH.1 hn₀).const_smul (a n)
   let I := ∫ x in Ioi (0 : ℝ), ‖(x : ℂ) ^ (z - 1) * H x‖
   have hNorm (n : ℕ) : (∫ x, ‖F n x‖ ∂μ) =
-      ‖LSeries.term archivedGaussianMangoldt (z.re : ℂ) n‖ * I := by
+      ‖LSeries.term a (z.re : ℂ) n‖ * I := by
     by_cases hn : n = 0
     · subst n
       simp [F]
     have hn₀ : 0 < (n : ℝ) := Nat.cast_pos.mpr (Nat.pos_of_ne_zero hn)
-    simp only [F, μ, norm_mul (archivedGaussianMangoldt n), integral_const_mul]
+    simp only [F, μ, norm_mul (a n), integral_const_mul]
     rw [mellin_div_input_norm H z hn₀, LSeries.term_of_ne_zero hn, norm_div,
       ← Complex.ofReal_natCast, norm_cpow_eq_rpow_re_of_pos hn₀, ofReal_re,
       Real.rpow_neg hn₀.le, div_eq_mul_inv]
@@ -87,7 +83,7 @@ theorem archivedGaussianVaughanSum_hasMellin {z : ℂ} (hz : 1 < z.re) :
     ring
   have hNormSum : Summable (fun n => ∫ x, ‖F n x‖ ∂μ) := by
     simp_rw [hNorm]
-    exact (archivedGaussianMangoldt_summable (by simpa using hz)).norm.mul_right I
+    exact ha.norm.mul_right I
   have hENorm (n : ℕ) :
       (∫⁻ x, ‖F n x‖ₑ ∂μ) = ‖(∫ x, ‖F n x‖ ∂μ)‖ₑ := by
     dsimp [enorm]
@@ -104,37 +100,74 @@ theorem archivedGaussianVaughanSum_hasMellin {z : ℂ} (hz : 1 < z.re) :
     rw [lintegral_tsum (fun n => (hInt n).1.aemeasurable.enorm)]
     exact lt_top_iff_ne_top.mpr hSummableLIntegral
   have hPoint : EqOn (fun x => ∑' n, F n x)
-      (fun x => (x : ℂ) ^ (-z - 1) • (archivedGaussianVaughanSum x : ℂ)) (Ioi 0) := by
-    intro x hx
-    change 0 < x at hx
-    simp only [archivedGaussianVaughanSum, if_pos hx, Complex.ofReal_tsum,
-      smul_eq_mul, ← tsum_mul_left, F, H, ofReal_mul, archivedGaussianMangoldt_ofReal_re]
-    congr 1
-    funext n
-    exact mul_left_comm _ _ _
+      (fun x : ℝ => (x : ℂ) ^ (-z - 1) • (∑' n : ℕ, a n * H (n / x))) (Ioi 0) := by
+    intro x _
+    simp only [smul_eq_mul, ← tsum_mul_left, F, mul_left_comm]
   refine ⟨(show IntegrableOn (fun x => ∑' n, F n x) (Ioi (0 : ℝ)) volume from hIntSum).congr_fun
     hPoint measurableSet_Ioi, ?_⟩
   have hterm (n : ℕ) :
       (∫ x, F n x ∂μ) =
-        archivedGaussianVaughanMultiplier z * LSeries.term archivedGaussianMangoldt z n := by
+        m * LSeries.term a z n := by
     by_cases hn : n = 0
     · subst n
       simp [F]
     have hn₀ : 0 < (n : ℝ) := Nat.cast_pos.mpr (Nat.pos_of_ne_zero hn)
-    change (∫ x in Ioi (0 : ℝ), archivedGaussianMangoldt n *
+    change (∫ x in Ioi (0 : ℝ), a n *
       ((x : ℂ) ^ (-z - 1) * H (n / x))) = _
     rw [integral_const_mul]
-    change archivedGaussianMangoldt n * mellin (fun x => H ((n : ℝ) / x)) (-z) = _
+    change a n * mellin (fun x => H ((n : ℝ) / x)) (-z) = _
     rw [mellin_div_input H z hn₀, hH.2, LSeries.term_of_ne_zero hn, Complex.ofReal_natCast,
       Complex.cpow_neg, div_eq_mul_inv]
     ring
   calc
-    mellin (fun x => (archivedGaussianVaughanSum x : ℂ)) (-z) =
+    mellin (fun x : ℝ => ∑' n : ℕ, a n * H (n / x)) (-z) =
         ∫ x, (∑' n, F n x) ∂μ :=
       setIntegral_congr_fun measurableSet_Ioi hPoint.symm
     _ = ∑' n, ∫ x, F n x ∂μ := (integral_tsum_of_summable_integral_norm hInt hNormSum).symm
-    _ = archivedGaussianVaughanMellin z := by
-      simp only [hterm, tsum_mul_left, archivedGaussianVaughanMellin_eq_series hz, LSeries]
+    _ = m * LSeries a z := by simp only [hterm, tsum_mul_left, LSeries]
+
+/-- Absolute convergence lets the Mellin transform of a dilated kernel
+sum read the full Dirichlet coefficient sequence. -/
+theorem dirichletKernelSum_hasMellin (a : ArithmeticFunction ℂ)
+    {H : ℝ → ℂ} {z m : ℂ} (hH : HasMellin H z m)
+    (ha : LSeriesSummable a (z.re : ℂ)) :
+    HasMellin (dirichletKernelSum a H) z (m * LSeries a z) := by
+  let f (x : ℝ) := ∑' n : ℕ, a n * H (n / x)
+  have hf : HasMellin f (-z) (m * LSeries a z) :=
+    dirichletKernelSum_div_hasMellin a hH ha
+  have hinv : HasMellin (fun x => f x⁻¹) (-(-z)) (m * LSeries a z) := by
+    refine ⟨?_, ?_⟩
+    · simpa only [one_div] using mellinConvergent_div_input hf.1 (a := 1) one_pos
+    · rw [mellin_comp_inv, neg_neg]
+      exact hf.2
+  change HasMellin (fun x : ℝ => ∑' n : ℕ, a n * H (n * x)) z (m * LSeries a z)
+  simpa only [f, div_inv_eq_mul, neg_neg] using hinv
+
+private theorem archivedGaussianMangoldt_ofReal_re (n : ℕ) :
+    ((archivedGaussianMangoldt n).re : ℂ) = archivedGaussianMangoldt n := by
+  simp [archivedGaussianMangoldt, ← Complex.ofReal_mul]
+
+theorem archivedGaussianVaughanSum_hasMellin {z : ℂ} (hz : 1 < z.re) :
+    HasMellin (fun x => (archivedGaussianVaughanSum x : ℂ)) (-z)
+      (archivedGaussianVaughanMellin z) := by
+  let H (v : ℝ) : ℂ := archivedGaussianVaughanKernel v
+  have hH : HasMellin H z (archivedGaussianVaughanMultiplier z) :=
+    archivedGaussianVaughanKernel_hasMellin (zero_lt_one.trans hz)
+  have h := dirichletKernelSum_div_hasMellin archivedGaussianMangoldt hH
+    (archivedGaussianMangoldt_summable (by simpa using hz))
+  have hEq : EqOn (fun x : ℝ => ∑' n : ℕ, archivedGaussianMangoldt n * H (n / x))
+      (fun x => (archivedGaussianVaughanSum x : ℂ)) (Ioi 0) := by
+    intro x hx
+    change 0 < x at hx
+    simp only [archivedGaussianVaughanSum, if_pos hx, Complex.ofReal_tsum, H,
+      ofReal_mul, archivedGaussianMangoldt_ofReal_re]
+  have hWeight : EqOn
+      (fun x : ℝ => (x : ℂ) ^ (-z - 1) • (∑' n : ℕ, archivedGaussianMangoldt n * H (n / x)))
+      (fun x : ℝ => (x : ℂ) ^ (-z - 1) • (archivedGaussianVaughanSum x : ℂ)) (Ioi 0) :=
+    fun x hx => congrArg ((x : ℂ) ^ (-z - 1) • ·) (hEq hx)
+  refine ⟨h.1.congr_fun hWeight measurableSet_Ioi, ?_⟩
+  rw [archivedGaussianVaughanMellin_eq_series hz, ← h.2]
+  exact setIntegral_congr_fun measurableSet_Ioi hWeight.symm
 
 /-- Moving the lower endpoint to one subtracts the explicit entire
 endpoint integral. -/
@@ -176,6 +209,7 @@ theorem quartic_rh_of_archived_vaughan_prime_windows
     (fun _ hz => archivedGaussianVaughanSum_mellin_above_one (by linarith))
     hC hError hcut
 
+#print axioms dirichletKernelSum_hasMellin
 #print axioms archivedGaussianVaughanSum_hasMellin
 #print axioms archivedGaussianVaughanSum_mellin_above_one
 #check quartic_rh_of_archived_vaughan_prime_windows
