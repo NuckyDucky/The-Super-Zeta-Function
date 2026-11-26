@@ -1,0 +1,25 @@
+QuarticContourResidual
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+'SuperZeta.WeightedContour.sphere_nonzero_of_relative_residual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.archivedRightDisk_exclusion_of_relative_residual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.archivedQuartic_disk_exclusion_of_relative_residual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+
+GaussianRealPoles
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+'AlpogeSuperZeta.dedekindZeta_positive_of_one_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussian_real_poles_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_ramp_checked_real_poles' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_gaussian_ramp_checked_real_poles (hD : DirichletLZerosOnLine) (g : ℝ → ℝ)
+  (hMeas : Measurable g) (hGrowth : ∃ C, ∀ (u : ℝ), 0 ≤ u → |g u| ≤ C * Real.exp (2 * u))
+  (hLaplace : ∀ (w : ℂ), 2 < w.re → gaussianPoleFormula w = ∫ (u : ℝ) in Set.Ioi 0, ↑(g u) * cexp (-w * ↑u))
+  (hWindows : GaussianWindows g) : DedekindZetaRH K
+exit=0

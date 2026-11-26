@@ -1,0 +1,64 @@
+Gaussian determinant window source replay
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Each of the six modules below compiled from source with -j1 -DwarningAsError=true.
+Prerequisites: the 27-module source replay recorded in index-window-replay-audit.txt.
+
+Building GaussianIndexedCutoff
+'AlpogeSuperZeta.indexedCutoffSum_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianIndexedCutoff exit=0 (32.33 s)
+
+Building GaussianIndexFamily
+'AlpogeSuperZeta.gaussianIndexFamily_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianIndexFamily_ramp' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianIndexFamily exit=0 (31.80 s)
+
+Building GaussianDivisorWindow
+'AlpogeSuperZeta.archivedGaussianRawWindow_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianRawWindow_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianDivisorWindow exit=0 (30.44 s)
+
+Building GaussianRawWindowCounts
+'AlpogeSuperZeta.archivedGaussianRawWindow_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianIndex_weighted_containment_at_prime' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianRawWindowCounts exit=0 (31.22 s)
+
+Building GaussianRawWindowRounding
+'AlpogeSuperZeta.archivedGaussianRawWindow_by_multiplicity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianLargeAddressWindow_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianRawWindowRounding exit=0 (30.82 s)
+
+Building GaussianRawWindowCriterion
+'_private.GaussianRawWindowCriterion.0.AlpogeSuperZeta.gaussianWindowZetaFactor_analytic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianRawWindowCriterion.0.AlpogeSuperZeta.rawLogWindow_hasPoleData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+def AlpogeSuperZeta.ArchivedGaussianRawWindowBound : Prop :=
+∀ (θ : ℝ),
+  1 / 2 < θ →
+    θ < 1 →
+      ∃ δ, 0 < δ ∧ ∃ C, 0 ≤ C ∧ ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)), archivedGaussianRawWindow y ≤ C * y ^ θ
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_raw_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (hcut : ArchivedGaussianRawWindowBound) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_raw_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_large_address_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 →
+          ∃ δ,
+            0 < δ ∧
+              ∃ C,
+                0 ≤ C ∧
+                  ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)), archivedGaussianLargeAddressWindow y ≤ C * y ^ θ) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_large_address_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianRawWindowCriterion exit=0 (31.80 s)
+
+All six modules passed.

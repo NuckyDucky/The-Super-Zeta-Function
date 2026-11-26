@@ -1,0 +1,31 @@
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+Lean flags -j1 -DwarningAsError=true
+
+Mellin replay
+Batches 000–431, 432 compiled and checked sources
+Each batch uses decide +kernel and prints "does not depend on any axioms"
+All 432 object SHA-256 stamps match
+Panel indices 576 ≤ i < 2304, 25 nodes per panel
+43200 panel-node positions, both readings per position
+'DottieOriented.NativeSpectrum.MellinFixed.middle_samples_checked' depends on axioms: [propext]
+MellinMiddleAll exit=0 (2.71 s)
+
+Eta center
+'DottieOriented.NativeSpectrum.MellinFixed.etaCenterCheck_passes' does not depend on any axioms
+exit=0
+
+FirstDottieCrossCertificate
+DottieOriented.NativeSpectrum.firstCross_disk_certificate :
+  ∃ ρ ∈ Metric.ball firstCenter firstRadius,
+    ρ.re = 1 / 4 ∧
+      riemannZeta (2 * ρ) = 0 ∧
+        ‖ρ - firstCenter‖ ≤ 4 / (3 * 10 ^ 6) ∧
+          nativeCross ρ = 0 ∧
+            deriv nativeCross ρ ≠ 0 ∧
+              (weightedCircle firstCenter firstRadius nativeCross fun x => 1) = 1 ∧
+                firstContourPoint = ρ ∧
+                  (∀ s ∈ Metric.closedBall firstCenter firstRadius, nativeCross s = 0 ↔ s = ρ) ∧
+                    ∀ (p : ℂ → ℂ), Differentiable ℂ p → weightedCircle firstCenter firstRadius nativeCross p = p ρ
+'DottieOriented.NativeSpectrum.firstCross_disk_correctionGap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.firstCross_disk_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

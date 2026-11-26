@@ -1,0 +1,111 @@
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+52 source modules exited 0 with -j1 and -DwarningAsError=true.
+All 38 generated-source hashes matched the integer replay record.
+
+Fixed-point source modules and mathematical declarations
+MellinFixedInterval
+exit=0
+MellinFixedFunctions
+exit=0
+MellinFixedTable
+'DottieOriented.NativeSpectrum.MellinFixed.audited_panels_checked' does not depend on any axioms
+exit=0
+MellinIntegerMoment
+'_private.MellinIntegerMoment.0.DottieOriented.NativeSpectrum.MellinInteger.integerRule' depends on axioms: [propext]
+'DottieOriented.NativeSpectrum.MellinInteger.sample_moment_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.sample_moment_from_blocks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinOuterSamples
+Try this: ring_nf
+'DottieOriented.NativeSpectrum.left_zeroDensity_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.right_zeroDensity_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.left_node_zero_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.right_node_zero_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+MellinIntegerCertificate
+'_private.MellinIntegerCertificate.0.DottieOriented.NativeSpectrum.MellinInteger.total_caps' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.rational_sample_sums_checked' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.firstDisk_correctionGap_from_checked_sums' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.outer_sample_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.firstDisk_correctionGap_from_middle_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinFixedIntervalSound
+'DottieOriented.NativeSpectrum.MellinFixed.mul_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.divPositive_contains' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.horner_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.fitsSample_correct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinFixedElementary
+'DottieOriented.NativeSpectrum.MellinFixed.expFixed_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.cosSinFixed_contains' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinFixedLog
+'DottieOriented.NativeSpectrum.MellinFixed.logGapFixed_contains' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinFixedDensity
+'DottieOriented.NativeSpectrum.MellinFixed.checkDensity_correct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinFixedTableSound
+'DottieOriented.NativeSpectrum.MellinFixed.checkTablePanel_correct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.audited_panel_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinFixedRanges
+'DottieOriented.NativeSpectrum.MellinFixed.joinTableRanges' depends on axioms: [propext]
+exit=0
+MellinFixedAssembly
+'DottieOriented.NativeSpectrum.MellinFixed.firstDisk_correctionGap_of_checked_range' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.firstContour_read_of_checked_range' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+
+Middle replay, joined proof and resume check
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+'DottieOriented.NativeSpectrum.MellinFixed.MellinMiddleBatch000_checked' does not depend on any axioms
+MellinMiddleBatch000 exit=0 (31.11 s)
+'DottieOriented.NativeSpectrum.MellinFixed.MellinMiddleBatch001_checked' does not depend on any axioms
+MellinMiddleBatch001 exit=0 (28.38 s)
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+MellinMiddleBatch000 already checked against these inputs
+MellinBatchJoinProbe
+'DottieOriented.NativeSpectrum.MellinFixed.first_eight_panels_checked' depends on axioms: [propext]
+exit=0
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+'DottieOriented.NativeSpectrum.MellinFixed.MellinMiddleBatch002_checked' does not depend on any axioms
+MellinMiddleBatch002 exit=0 (29.37 s)
+'DottieOriented.NativeSpectrum.MellinFixed.MellinMiddleBatch003_checked' does not depend on any axioms
+MellinMiddleBatch003 exit=0 (28.89 s)
+
+MellinFixedPreflight (#eval, 1728 panels, 43200 node positions)
+[]
+exit=0 (elapsed 95.17 s)

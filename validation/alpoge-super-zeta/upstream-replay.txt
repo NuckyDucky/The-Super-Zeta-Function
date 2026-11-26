@@ -1,0 +1,102 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Formalism/GammaFactorNonvanishing/RhOfRight
+exit=0
+Statements
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/CharFamily
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauZeroFreeCriterion
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/CharFamilyLFunctionNeZeroOfOneLeRe
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LFunctionConj
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/GchiConj
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/GchiGrowth
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LogDerivLocal
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/measurableGchi
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/MellinRamp
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/mellinGchiModOne
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/mellinGchiOfNeOne
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData.lean:152:15: warning: This simp argument is unused:
+  Function.update_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [g, hw]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData.lean:373:8: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauCauchy
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/IteratedDerivLaplace
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauCoeff
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauFinite
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauDichotomy
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauDichotomy.lean:51:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauDichotomy.lean:76:51: warning: `Set.diff_subset` has been deprecated: Use `Set.sdiff_subset` instead
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauDichotomy.lean:25:5: warning: Variable name `hle` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hle
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauDichotomy.lean:25:44: warning: Variable name `hθσ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hθσ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauGrowthContra
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauKernelMax
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauNearest
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauNearest.lean:57:87: warning: `Set.Infinite.diff` has been deprecated: Use `Set.Infinite.sdiff` instead
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauNearest.lean:96:19: warning: `Set.diff_subset` has been deprecated: Use `Set.sdiff_subset` instead
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauPoleAsym
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauPoleAsym.lean:19:61: warning: Variable name `hρ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hρ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/LandauPoleReLe
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/kernelIntegral
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauTails
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindowIneq
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindowIneq.lean:77:17: warning: `MeasureTheory.integral_inter_add_diff` has been deprecated: Use `MeasureTheory.integral_inter_add_sdiff` instead
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindowIneq.lean:104:45: warning: `Set.diff_subset` has been deprecated: Use `Set.sdiff_subset` instead
+[packet]/upstream/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindowIneq.lean:104:73: warning: `Set.diff_subset` has been deprecated: Use `Set.sdiff_subset` instead
+exit=0
+Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindow
+exit=0

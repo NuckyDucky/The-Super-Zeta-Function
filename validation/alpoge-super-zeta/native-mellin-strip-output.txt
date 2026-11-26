@@ -1,0 +1,22 @@
+Arb bits 192. Panels 2368. Nodes per panel 25.
+Rational node rule verified to degree 24 with positive weights of sum 2.
+Fixed-partition weighted sum 0 [-1.157004958982412106696e-6 +/- 3.28e-28] + [-2.741688018925169734604e-7 +/- 3.56e-29]j
+Fixed-partition weighted sum 1 [2.461688564712762951729e-6 +/- 3.90e-28] + [-1.795096728289388538640e-6 +/- 1.17e-28]j
+Fixed-partition weighted sum 2 [-2.053307212352308810637e-7 +/- 4.04e-29] + [3.934811811650970503064e-6 +/- 1.03e-28]j
+Fixed-partition weighted sum 3 [-2.638991121927054540096e-6 +/- 4.95e-28] + [-2.242864857630314347214e-6 +/- 3.53e-28]j
+All eight inputs for firstDisk_correctionGap_lower_of_quadrature pass.
+Rational weighted sum 0 [-1.157004958975470604778e-6 +/- 1.52e-28] + [-2.741688019927648978324e-7 +/- 6.65e-30]j
+Rational weighted sum 1 [2.461688566499131333563e-6 +/- 3.85e-28] + [-1.795096723921314007060e-6 +/- 3.32e-29]j
+Rational weighted sum 2 [-2.053306538144983593829e-7 +/- 2.21e-29] + [3.934812015938413956164e-6 +/- 3.99e-28]j
+Rational weighted sum 3 [-2.638989901013878335564e-6 +/- 7.64e-29] + [-2.242861090859172653443e-6 +/- 2.49e-28]j
+All node-to-rational distances are below 10^-14 (directed Arb).
+All eight rational sum inequalities pass (exact Python fractions).
+Finite coefficient 0 [-1.157005e-6 +/- 2.17e-13] + [-2.74169e-7 +/- 3.74e-13]j
+    Cauchy quadrature error [1.75629926386e-13 +/- 2.95e-25]
+Finite coefficient 1 [2.4617e-6 +/- 2.31e-11] + [-1.7951e-6 +/- 1.49e-11]j
+    Cauchy quadrature error [1.15915751415e-11 +/- 4.35e-23]
+Finite coefficient 2 [-2.05e-7 +/- 7.14e-10] + [3.935e-6 +/- 5.71e-10]j
+    Cauchy quadrature error [3.82521979668e-10 +/- 6.68e-23]
+Finite coefficient 3 [-2.6e-6 +/- 4.75e-8] + [-2.2e-6 +/- 5.13e-8]j
+    Cauchy quadrature error [8.41548355270e-9 +/- 2.54e-21]
+All eight finite inputs for firstDisk_correctionGap_lower_of_finite pass.

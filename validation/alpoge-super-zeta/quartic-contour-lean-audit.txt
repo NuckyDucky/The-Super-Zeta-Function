@@ -1,0 +1,31 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Alpöge ba2a065656ec7c638baa601994de3e0245ff6665
+GroundTheory/HeightsAndTheta/Heights/ComplexAnalyticSets/StCircleArgumentPrinciple c303bad8f759717cf715c7df2fce0fbb42d4c097
+exit=0
+GroundTheory/HeightsAndTheta/Heights/ComplexAnalyticSets/PCircleArgumentPrinciple de0a5f366be5928d656a80fd7305e648b9627452
+exit=0
+WeightedContourTransfer
+'SuperZeta.WeightedContour.moment_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.moment_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.moment_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.moment_local_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.isolate_third_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.WeightedContour.moment_from_signed_detector' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+QuarticContourError
+'GroundTheory.Heights₂.Heights.IndefiniteRowSideFullHecke.ComplexSets.CircleArgumentPrinciple.proof' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.WeightedContour.zero_free_of_detector_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.archivedRightDisk_exclusion_of_detector_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+QuarticModel.archivedRightDisk_exclusion_of_detector_error {T : ℝ} {H S P : ℂ → ℂ}
+  (hh : DifferentiableOn ℂ H {w | 1 / 2 < w.re}) (hp : Differentiable ℂ P)
+  (hn : ∀ w ∈ sphere (archivedRightCenter T) (31 / 2048), archivedGaussianFactor w ≠ 0)
+  (identity :
+    ∀ w ∈ sphere (archivedRightCenter T) (31 / 2048),
+      2 * S w * archivedGaussianFactor w = deriv H w * archivedGaussianFactor w - deriv archivedGaussianFactor w)
+  {e : ℝ} (error : ∀ w ∈ sphere (archivedRightCenter T) (31 / 2048), ‖S w - P w‖ ≤ e) (small : e < 1024 / 31) {w : ℂ}
+  (hw : w ∈ closedBall (archivedRightCenter T) (31 / 2048)) :
+  archivedGaussianFactor w ≠ 0 ∧ archivedGaussianFactor (1 - (starRingEnd ℂ) w) ≠ 0
+exit=0

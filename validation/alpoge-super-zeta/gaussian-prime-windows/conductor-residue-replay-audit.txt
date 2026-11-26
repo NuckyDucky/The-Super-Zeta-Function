@@ -1,0 +1,22 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+GaussianConductorResidue
+'QuarticModel.gaussianConductorResidue_ker' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianConductorQuotientEquiv_mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.gaussianConductorResidue_mul_star' depends on axioms: [propext, Quot.sound]
+'QuarticModel.archivedIdealCharacter_eq_conductorResidue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.conductor_residues_at_norm_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.twice_inert_weight_eq_conductor_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.half_power_add_one_mem_gaussian_prime_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.forced_gaussian_factor_at_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+GaussianBiquadraticInertWeights
+'QuarticModel.gaussian_discriminant_coprime_star' depends on axioms: [propext]
+'QuarticModel.gaussian_discriminant_norm_mod_eight' does not depend on any axioms
+'QuarticModel.prime_dvd_gaussian_discriminant_norm_mod_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.biquadraticInertDegreeOneWeight_add_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.cyclic_class_prime_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.biquadraticInertDegreeOneWeight_eq_if' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.biquadratic_inert_weighted_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.biquadratic_inert_weights_at_5_13_73' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

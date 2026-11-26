@@ -1,0 +1,504 @@
+# Relative Frobenius and a common Gaussian determinant
+
+I keep the original quartic $K=\mathbb Q(i,u)$ with $u^2=\delta=-5045155+1027708i$.
+At an odd split rational prime $p$, I keep the marked root $r^2=-1$ in
+$\mathbb F_p$ and the Gaussian prime $\mathfrak p$ it specifies. Write $\eta$ for
+the archived relative character at $\mathfrak p$. [Conductor and field identification](gaussian-biquadratic-class-character.md)
+
+## The same recurrence at every marked prime
+
+Let $h=1+i$, $\alpha=h+u$, $\beta=h-u$ and $q=h^2-\delta$. I chose $h$ so
+the rotation below is defined at both primes over each of $5,13,73$.
+Define $b_n$ and $\Delta_n$ over the Gaussian integers by
+
+$$
+b_n=\frac{\alpha^n-\beta^n}{2u},\qquad
+b_0=0,\quad b_1=1,\quad b_{n+2}=2h b_{n+1}-q b_n,\qquad
+\Delta_n=-\delta b_n^2.
+$$
+
+$\Delta_n$ is the determinant for multiplication by $b_n u$ in the basis
+$(1,u)$. The quadratic reduction $\rho_r$ sends $i$ to $r$ and keeps
+the two roots of $u^2=\delta$ as the two branches of the quadratic
+algebra. In that algebra Frobenius sends $u$ to $\eta u$. So
+$(h+u)^{p+1}=(h+\eta u)(h+u)$ after reduction. The coefficient of $u$
+gives the first formula below. Multiplying $(h+u)^{p-1}$ by
+$(h+u)(h-u)=q$ gives the second.
+
+$$
+\rho_r(b_{p+1})=(1+r)(1+\eta),\qquad
+\rho_r(q)\rho_r(b_{p-1})=(1+r)(\eta-1).
+$$
+
+If $\eta=-1$, then $b_{p+1}\in\mathfrak p$ and
+$\Delta_{p+1}\in\mathfrak p^2$. If $\rho_r(\delta)\ne0$, the determinant
+test is an equivalence. For the complementary test $b_{p-1}\in\mathfrak p$
+means $\eta=+1$ when $\rho_r(q)\ne0$. [Lean recurrence, residue identities and ideal divisibility](GaussianRelativeDeterminant.lean)
+
+The norm-one rotation $U=\alpha/\beta$ uses the same two entries at every
+prime. Where $q\delta$ is a unit, it gives $U^p=U^{-1}$ at $\eta=-1$ and
+$U^p=U$ at $\eta=+1$. For an odd power of Frobenius the first case swaps
+the two readings. Even powers fix them. At $73$, the same formula gives
+order $74$ at $3+8i$ and order $72$ at $3-8i$. Lean checks both exact
+orders. At $5$ both order checks give $4$. At $13$ both readings invert
+under the first Frobenius. [Lean rotation and order check](GaussianRelativeFrobenius.lean)
+
+## What changes when I divide the two determinants
+
+Choose the complex root $u$ so $|\alpha|>|\beta|$. Equality would force
+$\Re u+\Im u=0$ and hence $\Re\delta=0$. I have $|\alpha|>1$ and
+$\lambda=|\beta/\alpha|<1$. For the rational norm,
+
+$$
+\log N_{k/\mathbb Q}(\Delta_n)
+=4n\log|\alpha|-\log16+
+  4\log\left|1-(\beta/\alpha)^n\right|,\qquad k=\mathbb Q(i).
+$$
+
+Adding the raw log sizes for $n=p+1$ through $p\le x$ costs order
+$x^2/\log x$. The forced valuations at the matching primes account for
+at least $2\sum_{p\le x} I(p)\log p$, on scale $x$. If I use the ratio
+$\Delta_{p+1}/\Delta_{p-1}$ instead, the terms linear in $p$ cancel.
+The log norm of each ratio is $8\log|\alpha|+O(\lambda^{p-1})$ and the
+errors have bounded sum over all $p$. This addresses the size of the
+ratio at the complex embedding. The primes dividing it still need to
+be counted.
+
+The calculation at index $p=73$ shows why. The numerator and denominator
+norms have remainders $56\cdot73^2$ and $21\cdot73^2$ modulo $73^3$.
+At the matching primes this gives $+2$ at $3+8i$ and $-2$ at $3-8i$ for
+the valuations of the ratio. At the rational prime $5$, the same norm
+ratio has valuation $-8$, entirely from the denominator. Lean checks
+these norm remainders. [Lean numerical checks](GaussianRelativeDeterminant.lean)
+
+For an odd Gaussian prime $\mathfrak q\nmid 2\delta q$, let $\ell$ be the
+underlying rational prime, $m_{\mathfrak q}$ the order of $U$ in the
+quadratic residue algebra and $c_{\mathfrak q}=v(U^{m_{\mathfrak q}}-1)$,
+using the unramified local valuation with $v(\ell)=1$. If the quadratic
+algebra splits either component gives the same answers, since the two
+values of $U$ are inverses. Then
+
+$$
+v_{\mathfrak q}(\Delta_n)
+=2\,\mathbf 1_{m_{\mathfrak q}\mid n}
+  \bigl(c_{\mathfrak q}+v_\ell(n)\bigr).
+$$
+
+Indeed $\alpha,\beta,2u$ are units at $\mathfrak q$ and $\Delta_n$
+has valuation twice that of $U^n-1$. Raising an element congruent to
+$1$ to a power prime to $\ell$ preserves its valuation of the difference
+from $1$. Raising it to $\ell$ increases that valuation by one by the
+binomial expansion in this unramified ring. Thus each off-diagonal
+contribution to the ratio is an explicit difference of two divisibility
+counts with $n=p+1$ and $n=p-1$. To turn the ratio into a window bound I
+need an estimate for their sum, with the window weight, after accounting
+for the matching primes and the finitely many excluded local primes.
+The valuation formula and log-size calculation here are written arguments.
+
+## The common divisor over all starting values
+
+I can remove the dependence on the order of the one chosen rotation. Let
+$b_n(h)=((h+u)^n-(h-u)^n)/(2u)$ and let $\mathfrak g_n$ be the ideal
+generated by the values $b_n(h)$ for $h\in\mathbb Z[i]$, with all prime
+factors above $2D$ removed. Use $n\ge1$. At a good Gaussian prime
+$\mathfrak q$, write $Q=N\mathfrak q$ and let $\ell$ be its rational prime.
+The exact local formula is
+
+$$
+v_{\mathfrak q}(\mathfrak g_n)
+=\mathbf 1_{\eta(\mathfrak q)=-1}
+ \sum_{j\ge0}\mathbf 1_{(Q+1)\ell^j\mid n}.
+$$
+
+Lean proves the equivalent containment statement for every $k\ge1$.
+
+$$
+\mathfrak g_n\subseteq\mathfrak q^k
+\quad\Longleftrightarrow\quad
+\eta(\mathfrak q)=-1\ \text{ and }\ (Q+1)\ell^{k-1}\mid n .
+$$
+
+The theorem uses the original archived character of $\mathfrak q$.
+It covers both residue degrees of Gaussian primes away from $2D$.
+[Exact Lean valuation criterion](GaussianCommonDivisorPowers.lean)
+
+If the relative sign is $+1$, I choose $h$ to equal a nonzero root $u$
+in the residue field. Then $b_n(h)=(2u)^{n-1}$ there, so the common
+divisor has valuation zero. If the sign is $-1$, the function
+$h\mapsto (h+u)/(h-u)$ on $\mathbb F_Q$ is injective and takes values
+in the group of norm-one elements of $\mathbb F_{Q^2}^{\times}$.
+It misses $1$ and the group has order $Q+1$. Thus its image contains
+an element of order $Q+1$, giving valuation zero for some $h$ unless
+$Q+1$ divides $n$. [Lean residue-field criterion](GaussianCommonDivisor.lean) · [Application to the actual prime ideals](GaussianIdealCommonDivisor.lean)
+
+At an even index $m$ prime to $\ell$, let $h=\pi$ be a generator of
+$\mathfrak q$. Modulo $\pi^2$, the coefficient is
+$b_m(\pi)=\pi m\delta^{m/2-1}$. If $Q+1\mid m$, every starting value
+gives the first prime factor and this one has exactly one. When the
+index is multiplied by $\ell$, the geometric sum relating the two
+coefficients gives the next factor. Its real coordinate, modulo
+$\mathfrak q^2$, is $\ell$ times a power of the real coordinate of
+$(h+u)^m$. The latter is a unit at the negative sign. This yields
+exactly one additional factor at each step. [Lean first-order expansion](GaussianCommonDivisorLift.lean) · [Lean powers and exactness](GaussianCommonDivisorPowers.lean)
+
+At index $72$ the single start $h=1+i$ gave a factor above $5$.
+For the common divisor, Lean checks that $h=1$ avoids the prime at
+$r=2$, while $h=2$ avoids the prime at $r=-2$. Neither prime above
+$5$ survives taking all starting values. [Lean example](GaussianIdealCommonDivisor.lean)
+
+For $n\ge1$, form the Möbius product of ideals
+
+$$
+\mathfrak c_n=\prod_{d\mid n}\mathfrak g_d^{\,\mu(n/d)}.
+$$
+
+Then $v_{\mathfrak q}(\mathfrak c_n)$ is exactly the indicator of
+$n=(Q+1)\ell^j$ for some $j\ge0$ and $\eta(\mathfrak q)=-1$. In
+particular $\mathfrak c_n$ is integral. Lean checks the Möbius transform
+of the containment counts for any finite cutoff. Taking $\ell^B>n$
+covers every contributing power $j<B$. At $n=p+1$ for a rational prime
+$p$, the $j=0$ term only counts the degree-one inert Gaussian primes
+above $p$. For $j\ge1$, the contributing rational primes satisfy
+$\ell^2\le x+1$ when $p\le x$. For each $\ell$ there are at most two
+Gaussian primes and at most $\log(x+1)/\log\ell$ powers. It follows
+that
+
+$$
+\log N\mathfrak c_{p+1}=I(p)\log p+e(p),\qquad
+e(p)\ge0,\quad\sum_{p\le x}e(p)=O(\sqrt x\log x).
+$$
+
+With the same cutoff factor $(1/p-1/x)$, the $e(p)$ add a constant and
+an $O(x^{-1/2}\log x)$ error. This gives the same one-sided window
+criterion for the centered sum of $\log N\mathfrak c_{p+1}$. The bound
+on that centered sum is still the arithmetic input. [Lean Möbius transform](GaussianCommonDivisorMoebius.lean)
+
+The ideal $\mathfrak g_n$ can be calculated by a finite gcd. The
+polynomial $b_n(a+bi)$ in $a,b$ has total degree at most $n-1$. Its
+Newton coefficients are the mixed forward differences at $(0,0)$.
+Each uses only values on the grid $a,b\ge0$, $a+b\le n-1$, and every
+value at integer $a,b$ is an integral combination of the coefficients
+by the binomial expansion. An exact Gaussian gcd on these grids
+gives norms $1,169,73$ for $\mathfrak g_6,\mathfrak g_{14},
+\mathfrak g_{74}$ respectively. The finite gcd calculations and
+the summed cutoff comparison use the written arguments above.
+[Common divisor build and axiom audit](common-divisor-replay-audit.txt)
+
+## The Dirichlet series of the primitive ideal norms
+
+I can sum over every index $n$ rather than preselect $n=p+1$. Put
+$c(n)=\log N\mathfrak c_n$ and
+$P(w)=\sum_{n\ge1}c(n)n^{-w}$. For $\Re w>1$, the exact local
+exponents give
+
+$$
+P(w)=
+\sum_{\substack{\mathfrak q\text{ good}\\\eta(\mathfrak q)=-1}}
+\frac{\log Q}{(Q+1)^w(1-\ell^{-w})},
+\qquad
+\sum_{n\ge1}\frac{\log N\mathfrak g_n}{n^w}=\zeta(w)P(w).
+$$
+
+In the first formula a marked prime contributes at the sequence
+$(Q+1)\ell^j$. In the second, it contributes at every multiple
+of those indices. Both rearrangements are absolutely convergent
+in this half-plane.
+
+If I keep only $Q=\ell$ and $j=0$, the smoothed sum of $c(n)$ is
+the original inert-prime sum with each index moved from $\ell$
+to $\ell+1$. In the omitted terms, $Q=\ell^2$ or $j\ge1$ implies
+$\ell^2\le n$. For $n\le x$ the total omitted log weight is
+$O(\sqrt x\log x)$. Moving the first terms back from $\ell+1$
+to $\ell$ in the weight $(1/n-1/x)$ changes the sum by a constant
+plus $O(\log x/x)$, since
+$|1/(\ell+1)-1/\ell|\le1/\ell^2$. Thus, after adjusting the
+centering constant, the all-index sum still has the same
+one-sided window criterion.
+
+The archived Euler factors imply the identity
+
+$$
+P(w)=\frac12\left(-\frac{\zeta_k'(w)}{\zeta_k(w)}
+                    +\frac{G'(w)}{G(w)}\right)+E(w),
+\qquad k=\mathbb Q(i),
+$$
+
+where $E$ is holomorphic on $\Re w>1/2$. Indeed the expression
+inside the sum for a good negative prime, after the factor
+$1/2$, has weight $(\log Q)Q^{-w}/(1-Q^{-2w})$. The positive
+signs cancel, and the finitely many bad factors contribute
+holomorphic terms on $\Re w>0$. On a compact set with
+$\Re w\ge\sigma>1/2$, the difference per negative prime is bounded
+by a constant times
+
+$$
+(\log Q)\left(Q^{-1-\sigma}+Q^{-\sigma}\ell^{-\sigma}
+                   +Q^{-3\sigma}\right).
+$$
+
+The series of these bounds converges, since $\ell\le Q\le\ell^2$
+and there are at most two Gaussian primes over $\ell$. With the
+rational Dirichlet result supplied, $\zeta_k=\zeta\beta$ has no
+zeros to the right of the half line. An upper-right zero of $G$
+of order $m$ then gives a pole of $P$ of residue $m/2$ at the
+same $w$. In the Super Zeta coordinate, $P(2s)$ has the pole at
+$s=w/2$ with residue $m/4$. These are written analytic
+consequences of the local exponents. The estimate to prove is
+the upper bound on the centered all-index sum on cofinal windows.
+[Archived logarithmic derivative](ArchivedGaussianLogDerivative.lean) · [Existing window implication](GaussianLowerPrimeWindow.lean)
+
+## The centered common-divisor window in Lean
+
+For a good rational prime $p$, I write $b_f(p)$ for the number of
+negative Gaussian ideals over $p$ of residue degree $f$, multiplied by
+$f\log p$. The two possible degrees are $1$ and $2$. The weighted
+Möbius theorem gives each occurrence at $(p^f+1)p^j$ precisely this
+weight. At the excluded primes I keep the original signed coefficient
+in the reference ramp. [Weighted Möbius identity](GaussianIndexMoebiusWeights.lean) · [Base coefficient](GaussianIndexWeights.lean)
+
+Let $A(x)$ be the sum of $b_f(p)\max(x/((p^f+1)p^j)-1,0)$ over these
+occurrences. Write $B(x)$ for the ramp on the unshifted Gaussian base
+coefficients with the finite corrections above, and put
+$
+C_{\rm shift}=\sum_p\frac{b_1(p)}{p(p+1)},\qquad
+C_{\rm tail}=\sum_{(f,j)\ne(1,0)}\sum_p\frac{b_f(p)}{(p^f+1)p^j}.
+$
+With $R_1(x)$ the original prime-only ramp and $c$ its linear
+coefficient, the new centered reading is
+$
+W(x)=2A(x)-B(x)-cx+2x(C_{\rm shift}-C_{\rm tail}).
+$
+Lean proves $|W(x)+R_1(x)|\le D_\theta x^\theta$ for $x\ge1$ and
+$1/2<\theta\le1$. The constants come from summable weights. The
+unit-shift loss is nonnegative and the sparse terms contribute with
+the opposite sign after centering. So an upper bound for $W$ on
+arbitrarily late windows of the required width supplies the original
+lower bound for $R_1$, and conversely. [Window theorem and quartic implication](GaussianPrimitiveIndexWindow.lean) · [Lean replay and axiom audit](index-window-replay-audit.txt)
+
+## Gaussian poles at the quarter-line address
+
+I use the Mellin transform of $W(x)$ on $x>1$, with weight $x^{-w-1}$.
+In its convergence region $\Re w>2$, Lean identifies it with
+$-\Phi_G(w)+M_E(w)$, where $\Phi_G$ is the regularized transform of the
+full signed Gaussian prime ramp and $E(x)$ is the sum of that ramp and
+$W(x)$. The full-ramp error is $O(x^\theta)$ for every
+$1/2<\theta<1$. Lean proves $M_E$ analytic on $\Re w>1/2$. This carries
+each right-hand Gaussian zero to a simple pole of the new transform
+at the same $w$. [Mellin identity and pole theorem](GaussianPrimitiveIndexMellin.lean)
+
+For the squared cutoff $X=x^2$, the transform is $2\Psi(2s)$.
+If $\Psi(w)=c/(w-\rho)+a(w)$ locally at a pole, then the new principal
+part is $c/(s-\rho/2)$. Lean checks the half-address and the unchanged
+nonzero residue. [Half-address theorem](GaussianPrimitiveIndexMellin.lean#L228) · [Lean replay and axiom audit](index-window-replay-audit.txt)
+
+## A half-window at the original determinant indices
+
+I write $N_i$ for the address of a marked occurrence and $b_i$ for its
+signed weight, including the Gaussian base comparison and the centering
+weight at $N_i=1$. Its contribution to the reading at the original
+integer $n$ is $b_i$ if $N_i\mid n$. At each good rational prime, the
+weighted containment theorem gives its contribution from the common
+divisor of the determinant coefficients. It keeps the two marked
+Gaussian primes above a split $p$ separate. [Original-index accounting](GaussianRawWindowCounts.lean)
+
+I sum these readings for $x/2\le n<x$. Write $A(x)$ for that sum,
+$W(x)$ for the centered primitive ramp and $\Psi$ for its Mellin
+transform. The family ramp is exactly $W(x)-W(1)$ for $x\ge1$. Summing
+over the multiples gives ordinary zeta and using the half-window gives
+the elementary factor $1-2^{-w}$. For $\Re w>1$ the exact identity is
+$
+\int_1^\infty A(x)x^{-w-1}\,dx =
+(1-2^{-w})\,((w-1)\zeta(w))\,\bigl(\Psi(w)-W(1)/w\bigr).
+$
+[Lean transform](GaussianDivisorWindow.lean)
+
+At $w=1$, Lean uses the analytic version of $(w-1)\zeta(w)$, with
+value one. With the rational Dirichlet input, the two factors before
+the parentheses are nonzero on $\Re w>1/2$. If the Gaussian factor
+has a zero there, its primitive Mellin pole survives at the same
+address. Supplying the real-axis positivity and the one-sided bound
+for $A$ on arbitrarily late $[Y,Y^{1+\delta}]$ gives the quartic
+critical-line result. [Lean criterion and exact inputs](GaussianRawWindowCriterion.lean)
+
+## The square-root split of the half-window
+
+The number of multiples of $N_i$ in $[x/2,x)$ is exactly
+$\lceil x/N_i\rceil-\lceil x/(2N_i)\rceil$. It differs from
+$x/(2N_i)$ by less than one. I use this length only for addresses
+$N_i\le\sqrt{x}$. The weighted total of the discarded rounding terms
+is at most
+$
+x^\theta \sum_i |b_i|/N_i^{2\theta}\qquad(\theta>1/2).
+$
+Lean proves the series summable. This leaves the exact counts at
+larger addresses and the length term from the smaller ones. An upper
+bound for that reading on the same late intervals supplies the raw
+window bound. [Exact counts and error](GaussianRawWindowRounding.lean) · [Resulting criterion](GaussianRawWindowCriterion.lean)
+
+## A prime-only sum on the same half-window
+
+The count of multiples of $d$ in $[x/2,x)$ equals the count of odd
+multiples of $d$ below $x$. Primes above $\sqrt{x}$ can lose a term
+when I move $p$ to $p+1$ only if the odd multiplier $m<\sqrt{x}$
+satisfies $mp<x\le m(p+1)$. Each $m$ admits at most one such $p$.
+At $x=100$, the shift from $19$ to $20$ loses the term with $m=5$.
+For addresses at most $\sqrt{x}$ I use the previous rounding bound.
+After accounting for $x/(2p(p+1))$ per unit of weight, the total
+shift error is bounded by $D_\theta x^\theta$ for $1/2<\theta<1$.
+[Odd multiple count](GaussianHalfWindowMultiplicity.lean) · [Endpoint count](GaussianHalfWindowShift.lean) · [Centered shift](GaussianCenteredHalfWindowShift.lean)
+
+Each sparse address also satisfies
+$
+\left|M_x(d)-\frac{x}{2d}\right|\le \left(\frac{x}{d}\right)^\theta,
+\qquad 0\le\theta\le1,
+$
+where $M_x(d)$ is the exact count. The existing summability of the
+higher addresses gives a linear contribution and an error at the
+same exponent. With the centering terms collected, I get the
+finite sum
+$
+P(x)=-\sum_{p\ {\rm prime}} a(p)\log p\,
+     \#\{m\ge1:\ m\ {\rm odd},\ mp<x\}
+     -\frac{x}{2}\bigl(\Re(G'(1)/G(1))+\kappa_{\rm powers}\bigr).
+$
+Here $a(p)$ is the original Gaussian Euler coefficient and
+$\kappa_{\rm powers}$ is the existing higher-prime-power linear
+coefficient. Lean proves $|A(x)-P(x)|\le D_\theta x^\theta$ for
+$x\ge1$. So the original raw window bound and the prime-only
+window bound are equivalent, with the same exponent and window
+width and an adjustment to the constant. The quartic theorem takes
+the latter bound together with the rational Dirichlet and real-axis
+positivity inputs. [Coefficient and bound in Lean](GaussianRawPrimeWindow.lean) · [Source replay and axioms](prime-half-window-replay-audit.txt)
+
+## The same prime weights over a real quadratic base
+
+Put $a=-5045155$, $b=1027708$, $D=a^2+b^2$ and $F=\mathbb Q(\sqrt D)$.
+In the original normal closure choose $\alpha^2=a+bi$ and
+$\beta=\overline{\alpha}$. Since $\alpha\beta=\sqrt D$, the extension
+$F(\alpha+\beta)$ has radicand $2(a+\sqrt D)$. This radicand is positive
+at one real embedding of $F$ and negative at the other. The resulting
+quartic has two real embeddings and one complex pair. Lean checks the
+two inequalities in the actual radicands.
+[Archimedean signs](GaussianRealQuadraticWeights.lean)
+
+At a good rational prime, write $r^2=-1$ and $s^2=D$ whenever these
+roots exist in the residue field. If both exist, then
+$(a+br+s)^2=(a+br)\,2(a+s)$, so the two readings agree whenever the
+factors are nonzero. If $b$ is nonzero on reduction and only one base splits,
+the product of its two radicands is a nonsquare and their signs sum to zero. When
+$2(a+s)$ vanishes on reduction, I use $2(s-a)$. Their product at the
+norm root is $4b^2$, so they give the same square class over $F$.
+This second reading also handles primes dividing $b$.
+
+Lean proves the finite-field identity and specializes it to the
+original Euler coefficient for every odd rational prime away from
+$D$. The real-quadratic readings at $5,11,13,73$ are respectively
+$2,0,-2,0$, with $11$ exercising the second radicand. The exceptional
+primes keep the original coefficient, so the finite sum $P(x)$ is
+exactly the same in both descriptions at every cutoff.
+[Prime coefficient and window equality](GaussianRealQuadraticWeights.lean) · [Source replay and axioms](real-quadratic-replay-audit.txt)
+
+## A fixed minor for the identity and central Frobenius labels
+
+I used Kominers's interpolation matrix to choose the rows $1,XY$ and
+the points $1,4+\beta$ with $\beta^2=2(a+\sqrt D)$. The second coordinate
+uses either the identity or the central element $z$, which sends
+$\beta$ to $-\beta$. Thus the two determinants are $(4+\beta)^2-1$
+and $15-\beta^2$. The rows and points stay fixed across primes.
+Kominers's larger construction uses a triangular row change that
+accumulates forced divisibility for each chosen Frobenius class.
+[Source theorem and row change](https://hexagonmath.org/pdf/2610.00451v1)
+
+Lean computes these two norms in the successive quadratic algebras
+and checks the exact divisibilities. At $5$ the norm valuations are
+$(1,0)$, at $13$ they are $(0,2)$, and at $73$ both are zero.
+The first norm also has valuation $2$ at $7$, whose archived prime
+weight is zero. The second has valuation $2$ at $61$, whose archived
+prime weight is $+2$. These extra factors defeat exact classification by
+the two norms. At any fixed finite set of primes, changing the weights
+and adjusting the linear centering changes the window by a bounded
+amount. If the set grows with the interpolation matrix, the bound needs
+to hold as the matrix grows. [Exact minor and off-class divisors](GaussianFrobeniusFixedMinor.lean) · [Source replay and axioms](fixed-frobenius-minor-replay-audit.txt) · [Checked rounding bound](GaussianRawWindowRounding.lean#L17)
+
+## A larger matrix at the same primes
+
+I used the rows $1,X,\ldots,X^{13},Y$, the scalar nodes $0,\ldots,13$,
+and the two marked nodes $\beta,i$. Both labels fix $i$. The central
+label sends $\beta$ to $-\beta$. I used orders $0,1,2$ for the
+coefficients of the corresponding powers in the first-coordinate
+Taylor expansion. These orders have invertible factorials at the five
+tested primes, so the same modular rank tests hold with ordinary
+derivatives.
+
+| Prime | Identity label | Central label |
+| --- | --- | --- |
+| $5$ | Every full-row minor is zero | A unit minor exists |
+| $7$ | A unit minor exists | A unit minor exists |
+| $13$ | A unit minor exists | Every full-row minor is zero |
+| $61$ | A unit minor exists | A unit minor exists |
+| $73$ | A unit minor exists | A unit minor exists |
+
+The determinants are read in the successive quadratic algebras over
+$\mathbb Z/p\mathbb Z$. At $5$ or $13$ the repeated rows are $Y$ and
+$X^p$ for the corresponding label. At $7$, the node $i$ gives
+$i-i^7=2i$, a unit in the residue algebra. At $61$ and $73$, the
+scalar Vandermonde block and the extra first derivative at $0$ give
+a unit determinant. The test gives a modular unit or vanishing for
+this fixed set of rows. [Scalar blocks](GaussianFrobeniusJetScaffold.lean) · [Five prime tests](GaussianFrobeniusJetMinors.lean)
+
+## When every ordinary-derivative minor vanishes
+
+If the identity graph has both $X^p$ and $Y^p$ as rows, their values agree
+at every sampled point on $Y=X$. Every positive-order ordinary partial
+derivative of either row is zero in characteristic $p$. Therefore every
+minor that uses all rows has determinant zero modulo $p$. For Kominers's
+row triangle $r+ks<X$, the two rows are present once $p<X$ and $kp<X$.
+
+Lean also checks this for an arbitrary polynomial relation $F$ over a
+domain of characteristic $p$. If $F$ vanishes at the sampled points and
+the row span contains the nonzero $F^p$, all ordinary-derivative minors
+using the full row set vanish. The coefficient derivative of order $p$
+distinguishes $X^p$ and $Y^p$, and it also breaks the Frobenius agreement
+$X^p=Y$ in that order. The coefficient derivatives below order $p$
+preserve the Frobenius agreement. [Ordinary and coefficient derivative theorems](GaussianFrobeniusOrdinaryJet.lean) · [Source replay and axioms](frobenius-jet-replay-audit.txt)
+
+## What the fixed CM place data can distinguish
+
+In the normal closure $L/\mathbb Q$, write $z$ for the automorphism
+negating both roots and $c$ for complex conjugation. With the order-four
+rotation $\gamma$ used in the field proof, $z=[\gamma,c]$. Every Galois
+CM field $H/\mathbb Q$ has central complex conjugation in its Galois
+group. In the common quotient on $H\cap L$, the commutator $z$ therefore
+acts trivially. In the Galois group of $HL/\mathbb Q$, multiplying by
+$(z,1)$ exchanges two Frobenius labels with identical restriction to $H$.
+
+For the original Gaussian count $I(p)$, the weights on $1,z$ are $0,2$.
+The two single-root flips each give $1$ and the other four elements
+give $0$. For the count over $A=\mathbb Q(i,\sqrt D)$ the weights on
+$1,z$ are $0,4$ and all others give $0$. If a pointwise upper bound
+depends only on Frobenius in $H$, it must bound the higher value on
+both members of each pair. Lean checks that the smallest paired
+majorants have group totals $6$ and $8$, where both original totals
+are $4$ and $|\operatorname{Gal}(L/\mathbb Q)|=8$.
+[Lean commutator and paired weights](GaussianCMPrimeBarrier.lean)
+
+The projections of $\operatorname{Gal}(HL/\mathbb Q)$ to
+$\operatorname{Gal}(L/\mathbb Q)$ have equal-size fibers. By Chebotarev,
+a fixed CM Frobenius majorant has mean at least $3/4$ for $I$ and $1$
+for the count over $A$, against the true mean $1/2$ in each case.
+With the original cutoff weight $\log p(1/p-1/x)$, partial summation
+gives a logarithmic excess of at least $(1/4+o(1))\log x$ and
+$(1/2+o(1))\log x$ respectively. The upper comparison retains that
+excess when centered at the target mean. The field and density
+steps here use the written Galois argument and Chebotarev.
+[Field and centering conventions](gaussian-biquadratic-class-character.md) · [Effective Chebotarev, Theorem 1.1](https://aareyanmanzoor.github.io/assets/articles/lagarias-odlyzko.pdf#page=3)
+
+Sernau's local pairing uses Frobenius to recover complex conjugation
+at a non-split prime. For the remaining count over $A$, Frobenius is
+the relative swap $z$ on the negative class. The recurrence and norm
+ratio retain that sign. A reuse of the theta-lift argument would need
+a local valuation bound responding to $z$ and the corresponding total
+size and index bounds.
+[Frobenius role](https://github.com/lsernau/grh-lean/blob/72fead102f663d5c7a407964a13dc0cf9d977207/grh-compact/src/New/Data/WeilDataOfE.lean#L119) · [Local valuation theorem](https://github.com/lsernau/grh-lean/blob/72fead102f663d5c7a407964a13dc0cf9d977207/grh-compact/src/New/Columns/LocalStatement.lean#L285) · [Covolume comparison](https://github.com/lsernau/grh-lean/blob/72fead102f663d5c7a407964a13dc0cf9d977207/grh-compact/src/New/Main.lean#L121)
+
+[Lean replay and axiom audit](relative-determinant-replay-audit.txt)

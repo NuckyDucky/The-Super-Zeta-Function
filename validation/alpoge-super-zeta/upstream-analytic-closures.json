@@ -1,0 +1,152 @@
+{
+  "commit": "ba2a065656ec7c638baa601994de3e0245ff6665",
+  "depth_from_each_root": 64,
+  "lanes": {
+    "poleData": {
+      "roots": [
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.poleData"
+      ],
+      "modules_read": 12,
+      "imports": {
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.poleData": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.CharFamilyLFunctionNeZeroOfOneLeRe",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.GchiConj",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.GchiGrowth",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LFunctionConj",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LogDerivLocal",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.measurableGchi",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiModOne",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiOfNeOne",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.CharFamilyLFunctionNeZeroOfOneLeRe": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.GchiConj": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LFunctionConj",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.GchiGrowth": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LFunctionConj": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LogDerivLocal": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.measurableGchi": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiModOne": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.MellinRamp",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.mellinGchiOfNeOne": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.MellinRamp",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.MellinRamp": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion",
+          "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily": [
+          "Mathlib"
+        ]
+      }
+    },
+    "landauWindow": {
+      "roots": [
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindow"
+      ],
+      "modules_read": 16,
+      "imports": {
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindow": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCauchy",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCoeff",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauDichotomy",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauFinite",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauGrowthContra",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauKernelMax",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauNearest",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauPoleAsym",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauPoleReLe",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauTails",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindowIneq",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCauchy": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCoeff": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.IteratedDerivLaplace",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauDichotomy": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauFinite",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauFinite": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauGrowthContra": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauKernelMax": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauNearest": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauFinite",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauPoleAsym": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauCauchy",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauPoleReLe": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauTails": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.kernelIntegral",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.landauWindowIneq": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LandauKernelMax",
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.IteratedDerivLaplace": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.kernelIntegral": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily": [
+          "Mathlib"
+        ]
+      }
+    },
+    "LogDerivLocal": {
+      "roots": [
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LogDerivLocal"
+      ],
+      "modules_read": 3,
+      "imports": {
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.LogDerivLocal": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.LandauZeroFreeCriterion": [
+          "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily"
+        ],
+        "Development.AutomorphicArithmetic.DedekindLFunctions.CharFamily": [
+          "Mathlib"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+NativeDottieRay
+'DottieOriented.TraceRecovery.firstCorrection_pi_div_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.TraceRecovery.firstCorrection_neg_pi_div_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.determinant_contrast_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.determinant_zeros_disjoint_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.reference_ray_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.determinant_ray_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.kernel_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieMellin
+'DottieOriented.NativeSpectrum.kernel_tail_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.correction_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.correction_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.archived_first_corrections' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieContact
+'DottieOriented.NativeSpectrum.arithmetic_hurwitz_shifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.reference_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.corrected_slopes_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.contrast_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.values_at_reference_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.same_input_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.native_cross_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.native_cross_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.native_ratio_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.native_cross_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.raw_signed_slope_regular' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+NativeDottieOrigin
+'DottieOriented.NativeSpectrum.origin_return_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.crossed_origin_angles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.first_reading_from_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

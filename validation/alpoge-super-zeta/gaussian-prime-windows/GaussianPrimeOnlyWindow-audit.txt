@@ -1,0 +1,17 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+'AlpogeSuperZeta.archivedGaussianPrimeOnlyRamp_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeOnlyRamp_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeWindowBound_iff_prime_only' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_only_windows (hD : DirichletLZerosOnLine)
+  (hcut : ArchivedGaussianPrimeOnlyWindowBound) : DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_only_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianPrimeError_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_error (hD : DirichletLZerosOnLine)
+  (hcut : ∀ (θ : ℝ), 1 / 2 < θ → θ < 1 → ∃ C ≥ 0, ∀ᶠ (x : ℝ) in atTop, archivedGaussianPrimeError x ≤ C * x ^ (θ - 1)) :
+  DedekindZetaRH QuarticModel.K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_prime_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

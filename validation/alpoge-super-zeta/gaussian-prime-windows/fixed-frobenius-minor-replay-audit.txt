@@ -1,0 +1,11 @@
+Fixed Frobenius evaluation minor and off-class control
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Fresh source build with -j1 -DwarningAsError=true, against the 38-module recorded replay.
+
+'AlpogeSuperZeta.archivedFixedFrobeniusMinor_norms' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedFixedFrobeniusMinor_local_test' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedFixedFrobeniusMinor_off_class_weights' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianFrobeniusFixedMinor exit=0 (33.14 s)

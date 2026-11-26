@@ -1,0 +1,188 @@
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+'DottieOriented.NativeSpectrum.MellinInteger.checkedColumn_correct' depends on axioms: [propext, Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.checkedBlockTotals_correct' depends on axioms: [propext, Quot.sound]
+MellinIntegerBlock00
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock00.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock00.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 5.87 s)
+MellinIntegerBlock01
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock01.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock01.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 5.61 s)
+MellinIntegerBlock02
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock02.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock02.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 5.71 s)
+MellinIntegerBlock03
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock03.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock03.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 5.72 s)
+MellinIntegerBlock04
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock04.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock04.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 5.55 s)
+MellinIntegerBlock05
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock05.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock05.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 5.69 s)
+MellinIntegerBlock06
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock06.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock06.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 5.82 s)
+MellinIntegerBlock07
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock07.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock07.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 6.02 s)
+MellinIntegerBlock08
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock08.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock08.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 5.78 s)
+MellinIntegerBlock09
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock09.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock09.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 7.25 s)
+MellinIntegerBlock10
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock10.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock10.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 14.84 s)
+MellinIntegerBlock11
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock11.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock11.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 20.25 s)
+MellinIntegerBlock12
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock12.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock12.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 17.54 s)
+MellinIntegerBlock13
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock13.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock13.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 16.11 s)
+MellinIntegerBlock14
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock14.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock14.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 20.44 s)
+MellinIntegerBlock15
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock15.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock15.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 21.31 s)
+MellinIntegerBlock16
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock16.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock16.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 18.36 s)
+MellinIntegerBlock17
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock17.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock17.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 16.52 s)
+MellinIntegerBlock18
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock18.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock18.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 19.53 s)
+MellinIntegerBlock19
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock19.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock19.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 22.1 s)
+MellinIntegerBlock20
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock20.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock20.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 17.87 s)
+MellinIntegerBlock21
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock21.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock21.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 17.32 s)
+MellinIntegerBlock22
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock22.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock22.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 19.67 s)
+MellinIntegerBlock23
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock23.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock23.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 22.19 s)
+MellinIntegerBlock24
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock24.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock24.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 18.44 s)
+MellinIntegerBlock25
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock25.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock25.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 16.88 s)
+MellinIntegerBlock26
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock26.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock26.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 19.6 s)
+MellinIntegerBlock27
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock27.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock27.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 22.06 s)
+MellinIntegerBlock28
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock28.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock28.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 18.7 s)
+MellinIntegerBlock29
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock29.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock29.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 16.74 s)
+MellinIntegerBlock30
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock30.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock30.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 20.16 s)
+MellinIntegerBlock31
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock31.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock31.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 22.45 s)
+MellinIntegerBlock32
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock32.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock32.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 18.73 s)
+MellinIntegerBlock33
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock33.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock33.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 17.17 s)
+MellinIntegerBlock34
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock34.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock34.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 20.07 s)
+MellinIntegerBlock35
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock35.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock35.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 16.97 s)
+MellinIntegerBlock36
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock36.column_arithmetic' does not depend on any axioms
+'DottieOriented.NativeSpectrum.MellinInteger.MellinIntegerBlock36.block_arithmetic' does not depend on any axioms
+exit=0 (elapsed 6.09 s)
+
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+MellinIntegerTable
+exit=0
+MellinIntegerMoment
+'_private.MellinIntegerMoment.0.DottieOriented.NativeSpectrum.MellinInteger.integerRule' depends on axioms: [propext]
+'DottieOriented.NativeSpectrum.MellinInteger.sample_moment_exact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.sample_moment_from_blocks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
+MellinOuterSamples
+Try this: ring_nf
+'DottieOriented.NativeSpectrum.left_zeroDensity_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.right_zeroDensity_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.left_node_zero_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.right_node_zero_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0
+MellinIntegerCertificate
+'_private.MellinIntegerCertificate.0.DottieOriented.NativeSpectrum.MellinInteger.total_caps' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.rational_sample_sums_checked' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.firstDisk_correctionGap_from_checked_sums' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.outer_sample_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinInteger.firstDisk_correctionGap_from_middle_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit=0
