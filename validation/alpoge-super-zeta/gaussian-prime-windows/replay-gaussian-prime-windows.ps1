@@ -94,7 +94,11 @@ $modules = @(
     'GaussianFrobeniusJetSeparation',
     'GaussianFrobeniusMinorIdeal',
     'GaussianD4MinorSupport',
-    'GaussianFrobeniusIdentityMinor'
+    'GaussianFrobeniusIdentityMinor',
+    'GaussianFrobeniusMinorPowers',
+    'GaussianFrobeniusIdentityIdeal',
+    'GaussianFrobeniusCentralIdeal',
+    'GaussianD4MinorExponents'
 )
 
 $savedPath = $env:LEAN_PATH

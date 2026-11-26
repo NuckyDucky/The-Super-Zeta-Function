@@ -1,0 +1,43 @@
+Independent replay of the four retained ideal-exponent certificates.
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -DwarningAsError=true
+Output directory: fresh. Earlier identity-minor and common-minor support certificates were reused from their independent replays.
+
+Running GaussianFrobeniusMinorPowers (SHA256 BA5EA71869088076C58162FC70653D0757BF489A0CD9279DDC589AC73FE3B64A)
+'AlpogeSuperZeta.frobeniusTriangleHasseMinor_mem_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_le_pow_of_frobenius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.frobeniusTriangleHasseMinor_value_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianFrobeniusMinorPowers exit=0 37.326s
+Running GaussianFrobeniusIdentityIdeal (SHA256 7BF647A3138604694BBBEF8A2EF07F112E800A3D8D562FFA5E77F5B94C89BF58)
+'AlpogeSuperZeta.pow_notMem_succ_of_notMem_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.natCast_notMem_pow_succ_of_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusIdentityMinorIdeal_not_le_pow_succ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusIdentityMinorIdeal_exactExponent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusIdentityMinorIdeal_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianFrobeniusIdentityIdeal exit=0 35.669s
+Running GaussianFrobeniusCentralIdeal (SHA256 AFFF69EA5A017C7798CFF87690AAF9276E21E641D83D2EED90ABD9CE4E4974CE)
+'AlpogeSuperZeta.normalizedFrobenius_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.normalizedFrobenius_pair_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusNormalizedRows_separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_exactExponent_of_normalized_values' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusMinorIdeal_count_of_normalized_values' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianFrobeniusCentralIdeal exit=0 37.85s
+Running GaussianD4MinorExponents (SHA256 463B91F418FA939F43A08F4BA4A1576C650391197EA2A28AA3A2C48B6973FF34)
+'AlpogeSuperZeta.frobenius_cast_dvd_of_conjugate_intersection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianCentral_commute_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.sqrtFrobeniusD4MinorIdeal_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianD4MinorExponents exit=0 35.381s
+Four fresh modules passed.
+Axiom reports: 16
+Unexpected axioms: 

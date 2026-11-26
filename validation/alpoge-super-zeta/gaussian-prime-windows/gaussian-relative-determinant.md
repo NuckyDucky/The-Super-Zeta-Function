@@ -614,6 +614,47 @@ the integers. If $p$ is a uniformizer in the local ring at $P$, the
 same exponent bounds the common ideal from above. To prove equality
 there, I also need every generator to lie in $P^{V_p(x,k)}$.
 
+## The exact exponents at the two Frobenius labels
+
+Write $r=ph+u$ with $0\le u<p$ in each row. If $p\ge k$, the
+change from $X^rY^s$ to $X^uY^s(X^p-Y)^h$ stays inside the
+triangle and has determinant $1$. At a matching prime ideal $P$,
+the first $p$ Taylor coefficients of $(a+T)^p-\sigma(a)$ lie in $P$.
+Every jet used here has order less than $p$. The transformed row
+therefore contributes $P^h$ across every column. Lean proves that
+every eligible determinant lies in $P^{V_p(x,k)}$.
+[All-minor divisibility](GaussianFrobeniusMinorPowers.lean)
+
+If the label is the identity, the integer-node factorial minor
+gives the reverse bound on the exponent at an unramified prime.
+For the central label, I use the quotient of $a^p-\sigma(a)$ by $p$.
+The congruence at one prime extends to all conjugate primes because
+the label is central. If $(p)$ is their intersection, that quotient
+is integral. Adding $pb$ to $a$ holds its first residue fixed and
+subtracts the residue of $\sigma(b)$ from the quotient. I can choose
+the two residues independently. The distinct exponent pairs
+$(u+ps,h)$ separate the rows over the residue field, so an order-zero
+minor has a normalized determinant that survives modulo $P$.
+[Identity ideal](GaussianFrobeniusIdentityIdeal.lean) · [Central ideal](GaussianFrobeniusCentralIdeal.lean)
+
+For $x\ge2$ and $p\ge2\sqrt{x}$, the assembled Lean theorem gives
+$
+v_P(I_\sigma(x))=
+\begin{cases}
+V_p(x,2\sqrt{x}),&g=\sigma,\\
+0,&g\ne\sigma.
+\end{cases}
+$
+Here $\sigma$ is the identity or the central label. The declaration
+takes the $D_4$ action, the residue size, the stabilizer and
+Frobenius action, and the two unramified inputs $p\notin P^2$ and
+$(p)=\bigcap_\gamma\gamma^{-1}P$. It states the exponent as the
+count of $P$ in the normalized ideal factors. If I instantiate these
+data in the quartic's normal closure, the residue degrees give the
+weights for the log norms. The next arithmetic estimate compares the
+centered signed norm sums throughout arbitrarily late windows.
+[Exact D4 statement](GaussianD4MinorExponents.lean) · [Build and axiom output](gaussian-frobenius-exponents-audit.txt)
+
 ## What the fixed CM place data can distinguish
 
 In the normal closure $L/\mathbb Q$, write $z$ for the automorphism
