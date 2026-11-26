@@ -107,7 +107,10 @@ $modules = @(
     'GaussianClosurePrimeTrace',
     'ArchivedGaussianNormCriterion',
     'GaussianSquaredRoundingResidual',
-    'ArchivedGaussianNormPowerBound'
+    'ArchivedGaussianNormPowerBound',
+    'GaussianPrimePrefixKernel',
+    'GaussianLocalPrimeWindow',
+    'GaussianFifthPowerPrimeWindow'
 )
 
 $savedPath = $env:LEAN_PATH

@@ -31,25 +31,27 @@ private theorem weighted_sum_le_of_prefix_le (a w : ℕ → ℝ) (n : ℕ) {M : 
       rw [← sum_mul, sum_range_sub w]
       ring
 
-private def roundingWeight (x : ℝ) (p : ℕ) : ℝ :=
+/-- The residual weight at a positive integer, with the bound \(1/2\) at zero. -/
+def squaredRoundingWeight (x : ℝ) (p : ℕ) : ℝ :=
   if p = 0 then 1 / 2 else squaredRoundingResidual (x / (p : ℝ))
 
-private theorem roundingWeight_nonneg {x : ℝ} (hx : 0 ≤ x) (p : ℕ) :
-    0 ≤ roundingWeight x p := by
+theorem squaredRoundingWeight_nonneg {x : ℝ} (hx : 0 ≤ x) (p : ℕ) :
+    0 ≤ squaredRoundingWeight x p := by
   by_cases h : p = 0
-  · simp [roundingWeight, h]
-  · simpa only [roundingWeight, if_neg h] using
+  · simp [squaredRoundingWeight, h]
+  · simpa only [squaredRoundingWeight, if_neg h] using
       squaredRoundingResidual_nonneg (div_nonneg hx (Nat.cast_nonneg p))
 
-private theorem roundingWeight_antitone {x : ℝ} (hx : 0 ≤ x) : Antitone (roundingWeight x) := by
+theorem squaredRoundingWeight_antitone {x : ℝ} (hx : 0 ≤ x) :
+    Antitone (squaredRoundingWeight x) := by
   intro m n hmn
   by_cases hn : n = 0
   · have hm := Nat.eq_zero_of_le_zero (hn ▸ hmn)
     simp [hn, hm]
   by_cases hm : m = 0
-  · simpa only [roundingWeight, if_neg hn, if_pos hm] using
+  · simpa only [squaredRoundingWeight, if_neg hn, if_pos hm] using
       squaredRoundingResidual_le_half (div_nonneg hx (Nat.cast_nonneg n))
-  rw [roundingWeight, if_neg hn, roundingWeight, if_neg hm]
+  rw [squaredRoundingWeight, if_neg hn, squaredRoundingWeight, if_neg hm]
   apply squaredRoundingResidual_monotoneOn (div_nonneg hx (Nat.cast_nonneg n))
     (div_nonneg hx (Nat.cast_nonneg m))
   exact div_le_div_of_nonneg_left hx (Nat.cast_pos.mpr (Nat.pos_of_ne_zero hm))
@@ -64,16 +66,17 @@ def archivedGaussianReciprocalCenterError (x : ℝ) : ℝ :=
   (∑ p ∈ range (⌊x⌋₊ + 1), archivedGaussianSignedPrimeWeight p / (p : ℝ)) -
     archivedGaussianPrimeCenter
 
-private theorem archivedGaussianPrimeSquaredWindow_eq_rounding {x : ℝ} (hx : 1 ≤ x) :
+theorem archivedGaussianPrimeSquaredWindow_eq_rounding {x : ℝ} (hx : 1 ≤ x) :
     archivedGaussianPrimeSquaredWindow x =
-      (∑ p ∈ range (⌊x⌋₊ + 1), (-archivedGaussianSignedPrimeWeight p) * roundingWeight x p) +
+      (∑ p ∈ range (⌊x⌋₊ + 1), (-archivedGaussianSignedPrimeWeight p) * squaredRoundingWeight x p) +
         x / 3 * archivedGaussianReciprocalCenterError x := by
   let b := archivedGaussianSignedPrimeWeight
   let S (p : ℕ) := ∑ m ∈ range ⌈x⌉₊, squaredRampWeight x ((m + 1) * p)
-  have hterm (p : ℕ) : b p * S p = (-b p) * roundingWeight x p + (x / 3) * (b p / (p : ℝ)) := by
+  have hterm (p : ℕ) :
+      b p * S p = (-b p) * squaredRoundingWeight x p + (x / 3) * (b p / (p : ℝ)) := by
     by_cases hp : p = 0
     · simp [hp, b, archivedGaussianSignedPrimeWeight]
-    · rw [roundingWeight, if_neg hp,
+    · rw [squaredRoundingWeight, if_neg hp,
         squaredRoundingResidual_at_prime (one_pos.trans_le hx) (Nat.pos_of_ne_zero hp)]
       change b p * S p = (-b p) * (x / (3 * (p : ℝ)) - S p) + (x / 3) * (b p / (p : ℝ))
       ring
@@ -91,9 +94,9 @@ theorem archivedGaussianPrimeSquaredWindow_le_of_prefix_le {x M : ℝ} (hx : 1 �
   rw [archivedGaussianPrimeSquaredWindow_eq_rounding hx]
   refine add_le_add ?_ le_rfl
   have h := weighted_sum_le_of_prefix_le (fun p => -archivedGaussianSignedPrimeWeight p)
-    (roundingWeight x) ⌊x⌋₊ (roundingWeight_antitone (zero_le_one.trans hx))
-    (roundingWeight_nonneg (zero_le_one.trans hx) _) hprefix
-  rwa [show roundingWeight x 0 = 1 / 2 by simp [roundingWeight], mul_one_div] at h
+    (squaredRoundingWeight x) ⌊x⌋₊ (squaredRoundingWeight_antitone (zero_le_one.trans hx))
+    (squaredRoundingWeight_nonneg (zero_le_one.trans hx) _) hprefix
+  rwa [show squaredRoundingWeight x 0 = 1 / 2 by simp [squaredRoundingWeight], mul_one_div] at h
 
 namespace GaussianQuarticClosure
 
