@@ -160,43 +160,51 @@ private theorem gaussianKernel_logBand_tail :
       rw [div_pow]
       exact div_le_div_of_nonneg_right hConst (by positivity)
 
-private theorem primeTerm_bound_at_two {X : ℝ} (hx : 0 < X) {D : ℝ}
+private theorem primeTerm_bound_at_two (a : ArithmeticFunction ℂ) {X : ℝ} (hx : 0 < X) {D : ℝ}
     {p : ℕ} (hp : p ≠ 0)
     (hK : |archivedGaussianVaughanKernel (p / X)| ≤
        D / (X ^ (3 : ℕ) * ((p : ℝ) / X) ^ (2 : ℕ))) :
-    |primeTerm X p| ≤ (D / X) * ‖LSeries.term archivedGaussianVaughanPrimeCoefficients (2 : ℂ) p‖ := by
+    |(a p).re * archivedGaussianVaughanKernel (p / X)| ≤
+      (D / X) * ‖LSeries.term a (2 : ℂ) p‖ := by
   have hp₀ : 0 < (p : ℝ) := Nat.cast_pos.mpr (Nat.pos_of_ne_zero hp)
-  have hN : ‖LSeries.term archivedGaussianVaughanPrimeCoefficients (2 : ℂ) p‖ =
-      ‖archivedGaussianVaughanPrimeCoefficients p‖ / (p : ℝ) ^ (2 : ℕ) := by
+  have hN : ‖LSeries.term a (2 : ℂ) p‖ = ‖a p‖ / (p : ℝ) ^ (2 : ℕ) := by
     rw [LSeries.term_of_ne_zero hp, norm_div, ← Complex.ofReal_natCast,
       Complex.norm_cpow_eq_rpow_re_of_pos hp₀]
     norm_num [Real.rpow_two]
-  rw [primeTerm, abs_mul, hN]
+  rw [abs_mul, hN]
   calc
-    _ ≤ ‖archivedGaussianVaughanPrimeCoefficients p‖ *
+    _ ≤ ‖a p‖ *
         (D / (X ^ (3 : ℕ) * ((p : ℝ) / X) ^ (2 : ℕ))) :=
       mul_le_mul (abs_re_le_norm _) hK (abs_nonneg _) (norm_nonneg _)
     _ = _ := by field_simp [hx.ne', hp₀.ne']
 
 set_option maxHeartbeats 1000000 in
-private theorem primeBand_error :
+/-- Restrict the original theta weighting of a prime-supported sequence
+to the two logarithmic edges. The omitted mass is inverse in the scale. -/
+theorem gaussianVaughan_prime_restriction_error (a : ArithmeticFunction ℂ)
+    (ha : LSeriesSummable a (2 : ℂ)) (hZero : ∀ p : ℕ, ¬p.Prime → a p = 0) :
     ∃ C ≥ 0, ∀ᶠ X : ℝ in atTop,
-      |(∑' p : ℕ, primeTerm X p) - archivedGaussianVaughanPrimeBand X| ≤ C / X := by
+      |(∑' p : ℕ, (a p).re * archivedGaussianVaughanKernel (p / X)) -
+        (∑ p ∈ archivedGaussianVaughanBandPrimes X, (a p).re *
+          archivedGaussianVaughanKernel (p / X))| ≤ C / X := by
   obtain ⟨D, hD, hTail⟩ := gaussianKernel_logBand_tail
-  let b (p : ℕ) := ‖LSeries.term archivedGaussianVaughanPrimeCoefficients (2 : ℂ) p‖
-  have hb : Summable b := (archivedGaussianVaughanPrime_summable (by norm_num)).norm
+  let b (p : ℕ) := ‖LSeries.term a (2 : ℂ) p‖
+  have hb : Summable b := ha.norm
   have hB : 0 ≤ ∑' p, b p := tsum_nonneg fun _ => norm_nonneg _
   refine ⟨D * ∑' p, b p, mul_nonneg hD hB, ?_⟩
   filter_upwards [eventually_gt_atTop (1 : ℝ), hTail] with X hX hTail
   have hx := zero_lt_one.trans hX
   let S := archivedGaussianVaughanBandPrimes X
-  let f := ((S : Set ℕ)ᶜ).indicator (primeTerm X)
-  have hSplit := (primeTerm_summable hx).sum_add_tsum_compl (s := S)
+  let t (p : ℕ) := (a p).re * archivedGaussianVaughanKernel (p / X)
+  let f := ((S : Set ℕ)ᶜ).indicator t
+  have ht : Summable t := by
+    change Summable (fun p : ℕ => (a p).re * archivedGaussianVaughanKernel (p / X))
+    simpa only [Complex.reCLM_apply, mul_re, ofReal_re, ofReal_im, mul_zero, sub_zero] using
+      Complex.reCLM.summable (gaussianTheta_term_summable hx ha)
+  have hSplit := ht.sum_add_tsum_compl (s := S)
   rw [_root_.tsum_subtype] at hSplit
-  have hDiff : (∑' p : ℕ, primeTerm X p) - archivedGaussianVaughanPrimeBand X = ∑' p, f p := by
-    rw [archivedGaussianVaughanPrimeBand, if_pos hX]
-    change (∑' p : ℕ, primeTerm X p) - (∑ p ∈ S, primeTerm X p) = ∑' p, f p
-    change (∑ p ∈ S, primeTerm X p) + (∑' p, f p) = ∑' p : ℕ, primeTerm X p at hSplit
+  have hDiff : (∑' p : ℕ, t p) - (∑ p ∈ S, t p) = ∑' p, f p := by
+    change (∑ p ∈ S, t p) + (∑' p, f p) = ∑' p : ℕ, t p at hSplit
     linarith
   let M := D / X
   have hM : 0 ≤ M := div_nonneg hD hx.le
@@ -206,7 +214,7 @@ private theorem primeBand_error :
       simp only [f, Set.indicator_of_notMem hp, norm_zero]
       exact mul_nonneg hM (norm_nonneg _)
     have hp : p ∈ (S : Set ℕ)ᶜ := by simpa using hmem
-    rw [show f p = primeTerm X p from Set.indicator_of_mem hp _, Real.norm_eq_abs]
+    rw [show f p = t p from Set.indicator_of_mem hp _, Real.norm_eq_abs]
     by_cases hpp : p.Prime
     · have hL : 0 < logRadius X := Real.rpow_pos_of_pos (Real.log_pos hX) _
       have hps : ¬ ((X / logRadius X ≤ (p : ℝ)) ∧ (p : ℝ) ≤ X * logRadius X) :=
@@ -220,17 +228,27 @@ private theorem primeBand_error :
           apply (lt_div_iff₀ hx).mpr
           simpa only [mul_comm] using (lt_of_not_ge hr)
       have hPos : 0 < (p : ℝ) / X := div_pos (Nat.cast_pos.mpr hpp.pos) hx
-      exact primeTerm_bound_at_two hx hpp.ne_zero (hTail _ hPos hArgument)
-    · rw [show primeTerm X p = 0 by simp [primeTerm, archivedGaussianVaughanPrimeCoefficients, hpp],
-        abs_zero]
+      exact primeTerm_bound_at_two a hx hpp.ne_zero (hTail _ hPos hArgument)
+    · rw [show t p = 0 by simp [t, hZero p hpp], abs_zero]
       exact mul_nonneg hM (norm_nonneg _)
   have hf : Summable (fun p => ‖f p‖) :=
     (hb.mul_left M).of_nonneg_of_le (fun _ => norm_nonneg _) hTerm
+  change |(∑' p : ℕ, t p) - (∑ p ∈ S, t p)| ≤ (D * ∑' p, b p) / X
   rw [hDiff, ← Real.norm_eq_abs]
   calc
     _ ≤ ∑' p, ‖f p‖ := norm_tsum_le_tsum_norm hf
     _ ≤ ∑' p, M * b p := hf.tsum_le_tsum hTerm (hb.mul_left M)
     _ = _ := by rw [tsum_mul_left]; dsimp only [M]; ring
+
+private theorem primeBand_error :
+    ∃ C ≥ 0, ∀ᶠ X : ℝ in atTop,
+      |(∑' p : ℕ, primeTerm X p) - archivedGaussianVaughanPrimeBand X| ≤ C / X := by
+  obtain ⟨C, hC, hBound⟩ := gaussianVaughan_prime_restriction_error
+    archivedGaussianVaughanPrimeCoefficients (archivedGaussianVaughanPrime_summable (by norm_num))
+    (fun p hp => by simp [archivedGaussianVaughanPrimeCoefficients, hp])
+  refine ⟨C, hC, ?_⟩
+  filter_upwards [eventually_gt_atTop (1 : ℝ), hBound] with X hX hBound
+  simpa only [archivedGaussianVaughanPrimeBand, if_pos hX, primeTerm] using hBound
 
 theorem archivedGaussianVaughanPrimeBand_approx (hDir : DirichletLZerosOnLine) :
     ∃ C ≥ 0, ∀ᶠ X : ℝ in atTop,
@@ -309,6 +327,7 @@ theorem quartic_rh_of_archived_vaughan_prime_band
 #check archivedGaussianVaughanPrimeBand_window_iff
 #check quartic_rh_of_archived_vaughan_prime_band
 #print axioms archivedGaussianVaughanPrimeBand_eq_sum
+#print axioms gaussianVaughan_prime_restriction_error
 #print axioms archivedGaussianVaughanPrimeBand_approx
 #print axioms archivedGaussianVaughanPrimeBand_window_iff
 #print axioms quartic_rh_of_archived_vaughan_prime_band

@@ -18,13 +18,13 @@ noncomputable section
 def regularDirichlet {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) : ℂ → ℂ :=
   if χ = 1 then LFunctionTrivChar₁ N else LFunction χ
 
-private theorem regularDirichlet_differentiable {N : ℕ} [NeZero N]
+theorem regularDirichlet_differentiable {N : ℕ} [NeZero N]
     (χ : DirichletCharacter ℂ N) : Differentiable ℂ (regularDirichlet χ) := by
   by_cases hχ : χ = 1
   · simpa only [regularDirichlet, if_pos hχ] using differentiable_LFunctionTrivChar₁ N
   · simpa only [regularDirichlet, if_neg hχ] using differentiable_LFunction hχ
 
-private theorem regularDirichlet_ne_zero (hDir : DirichletLZerosOnLine) {N : ℕ} [NeZero N]
+theorem regularDirichlet_ne_zero (hDir : DirichletLZerosOnLine) {N : ℕ} [NeZero N]
     (χ : DirichletCharacter ℂ N) {w : ℂ} (hw : 1 / 2 < w.re) :
     regularDirichlet χ w ≠ 0 := by
   by_cases h₁ : w = 1
@@ -138,17 +138,29 @@ private theorem regularDirichlet_center {N : ℕ} [NeZero N] (χ : DirichletChar
 /-- For a fixed modulus, the zero-free input bounds the logarithmic
 derivatives uniformly in the character and in the height. The principal
 function is regularized at one before taking its logarithmic derivative. -/
-theorem rationalDirichlet_logDeriv_strip (hDir : DirichletLZerosOnLine) (N : ℕ) [NeZero N] :
-    ∃ C > 0, ∀ (χ : DirichletCharacter ℂ N) (w : ℂ), 3 / 4 ≤ w.re → w.re ≤ 13 / 4 →
+theorem rationalDirichlet_logDeriv_critical_strip (hDir : DirichletLZerosOnLine)
+    (N : ℕ) [NeZero N] {a : ℝ} (ha : 1 / 2 < a) (ha₁ : a ≤ 1) :
+    ∃ C > 0, ∀ (χ : DirichletCharacter ℂ N) (w : ℂ), a ≤ w.re → w.re ≤ 4 - a →
       ‖logDeriv (regularDirichlet χ) w‖ ≤ C * (1 + Real.log (1 + |w.im|)) := by
   obtain ⟨A, hA, hgrowth⟩ := regularDirichlet_growth N
-  let a := Real.log (25 * A) - Real.log (1 / 2) + 1
-  have ha : 0 ≤ a := by
+  let r := 2 - a
+  let R := (r + 3 / 2) / 2
+  let d := (R - r) / 2
+  have hr : 0 ≤ r := by dsimp [r]; linarith
+  have hR : R < 3 / 2 := by dsimp [R, r]; linarith
+  have hd : 0 < d := by dsimp [d, R, r]; linarith
+  have hrd : r + d < R := by dsimp [d, R, r]; linarith
+  let K := 2 * (r + d) / (R - (r + d)) / d
+  have hK : 0 < K :=
+    div_pos (div_pos (mul_pos (by norm_num) (add_pos_of_nonneg_of_pos hr hd))
+      (sub_pos.mpr hrd)) hd
+  let L := Real.log (25 * A) - Real.log (1 / 2) + 1
+  have hL : 0 ≤ L := by
     have hlog := Real.log_le_log (by norm_num : (0 : ℝ) < 1 / 2)
       (show (1 / 2 : ℝ) ≤ 25 * A by linarith)
-    dsimp [a]
+    dsimp [L]
     linarith
-  refine ⟨520 * (a + 2), by positivity, fun χ w hw₁ hw₂ => ?_⟩
+  refine ⟨K * (L + 2), by positivity, fun χ w hw₁ hw₂ => ?_⟩
   let c : ℂ := 2 + (w.im : ℂ) * I
   let f : ℂ → ℂ := fun u => regularDirichlet χ (c + u)
   let u := w - c
@@ -156,21 +168,22 @@ theorem rationalDirichlet_logDeriv_strip (hDir : DirichletLZerosOnLine) (N : ℕ
   have hc : c.re = 2 := by simp [c, mul_re]
   have hci : c.im = w.im := by simp [c, mul_im]
   have hcu : c + u = w := by dsimp [u]; ring
-  have hu : ‖u‖ ≤ 5 / 4 := by
+  have hu : ‖u‖ ≤ r := by
     have hue : u = ((w.re - 2 : ℝ) : ℂ) := by
       apply Complex.ext
       · simp [u, hc]
       · simp [u, hci]
     rw [hue, Complex.norm_real, Real.norm_eq_abs, abs_le]
+    dsimp only [r]
     constructor <;> linarith
   have hfd : Differentiable ℂ f :=
     (regularDirichlet_differentiable χ).comp (differentiable_id.const_add c)
-  have hhalf (v : ℂ) (hv : v ∈ ball (0 : ℂ) (7 / 5)) : 1 / 2 < (c + v).re := by
+  have hhalf (v : ℂ) (hv : v ∈ ball (0 : ℂ) R) : 1 / 2 < (c + v).re := by
     have hvn := mem_ball_zero_iff.mp hv
     have hvr := (abs_le.mp (Complex.abs_re_le_norm v)).1
     rw [add_re, hc]
     linarith
-  have hupper (v : ℂ) (hv : v ∈ ball (0 : ℂ) (7 / 5)) : ‖f v‖ ≤ B := by
+  have hupper (v : ℂ) (hv : v ∈ ball (0 : ℂ) R) : ‖f v‖ ≤ B := by
     have hvn := mem_ball_zero_iff.mp hv
     have hcn : ‖c‖ ≤ 2 + |w.im| := by
       refine (norm_add_le _ _).trans ?_
@@ -186,7 +199,7 @@ theorem rationalDirichlet_logDeriv_strip (hDir : DirichletLZerosOnLine) (N : ℕ
       _ = B := by dsimp [B]; ring
   have hcenter : (1 / 2 : ℝ) ≤ ‖f 0‖ := by
     simpa only [f, add_zero] using regularDirichlet_center χ hc
-  have hbound := logDeriv_le_disk (b := 1 / 2) (by norm_num) hcenter
+  have hbound := logDeriv_le_disk_buffer hd hr hrd (b := 1 / 2) (by norm_num) hcenter
     hfd.differentiableOn (fun v hv => regularDirichlet_ne_zero hDir χ (hhalf v hv)) hupper hu
   have hshift : logDeriv f u = logDeriv (regularDirichlet χ) w := by
     have hd := (regularDirichlet_differentiable χ (c + u)).hasDerivAt
@@ -200,13 +213,56 @@ theorem rationalDirichlet_logDeriv_strip (hDir : DirichletLZerosOnLine) (N : ℕ
     rw [Real.log_mul (by positivity) (by positivity), Real.log_pow]
     norm_num
   have hlog₀ := Real.log_nonneg (show 1 ≤ 1 + |w.im| by linarith [abs_nonneg w.im])
+  change ‖logDeriv (regularDirichlet χ) w‖ ≤ K * _ at hbound
   refine hbound.trans ?_
+  rw [mul_assoc]
+  apply mul_le_mul_of_nonneg_left _ hK.le
   rw [hlog]
-  dsimp [a] at ha ⊢
-  nlinarith [mul_nonneg ha hlog₀]
+  dsimp [L] at hL ⊢
+  nlinarith [mul_nonneg hL hlog₀]
+
+theorem rationalDirichlet_logDeriv_strip (hDir : DirichletLZerosOnLine) (N : ℕ) [NeZero N] :
+    ∃ C > 0, ∀ (χ : DirichletCharacter ℂ N) (w : ℂ), 3 / 4 ≤ w.re → w.re ≤ 13 / 4 →
+      ‖logDeriv (regularDirichlet χ) w‖ ≤ C * (1 + Real.log (1 + |w.im|)) := by
+  simpa only [show (4 : ℝ) - 3 / 4 = 13 / 4 by norm_num] using
+    rationalDirichlet_logDeriv_critical_strip hDir N (a := 3 / 4) (by norm_num) (by norm_num)
+
+theorem dirichlet_neg_logDeriv_eq_regular {N : ℕ} [NeZero N]
+    (χ : DirichletCharacter ℂ N) {z : ℂ} (hz : 1 < z.re) :
+    -logDeriv (LFunction χ) z =
+      -logDeriv (regularDirichlet χ) z + (if χ = 1 then (z - 1)⁻¹ else 0) := by
+  by_cases hχ : χ = 1
+  · subst χ
+    have hz₀ : z ≠ 1 := by
+      intro h
+      rw [h, one_re] at hz
+      exact (lt_irrefl _) hz
+    have hEq : regularDirichlet (1 : DirichletCharacter ℂ N) =ᶠ[𝓝 z]
+        (fun w => (w - 1) * LFunctionTrivChar N w) := by
+      filter_upwards [isOpen_compl_singleton.mem_nhds
+        (show z ∈ ({1} : Set ℂ)ᶜ from hz₀)] with w hw
+      rw [regularDirichlet, if_pos rfl, LFunctionTrivChar₁, Function.update_of_ne hw]
+    have hL := LFunction_ne_zero_of_one_le_re (1 : DirichletCharacter ℂ N) (Or.inr hz₀) hz.le
+    have hLin : HasDerivAt (fun w : ℂ => w - 1) 1 z := (hasDerivAt_id z).sub_const 1
+    have hlog : logDeriv (fun w : ℂ => w - 1) z = (z - 1)⁻¹ := by
+      rw [logDeriv_apply, hLin.deriv, one_div]
+    have hReg : logDeriv (regularDirichlet (1 : DirichletCharacter ℂ N)) z =
+        (z - 1)⁻¹ + logDeriv (LFunctionTrivChar N) z := by
+      rw [logDeriv_apply, hEq.deriv_eq, hEq.eq_of_nhds, ← logDeriv_apply,
+        logDeriv_mul (f := fun w : ℂ => w - 1) (g := LFunctionTrivChar N) z
+          (sub_ne_zero.mpr hz₀) hL hLin.differentiableAt
+          (differentiableAt_LFunction _ _ (Or.inl hz₀)), hlog]
+    rw [hReg, if_pos rfl]
+    change _ = -((z - 1)⁻¹ + logDeriv (LFunctionTrivChar N) z) + (z - 1)⁻¹
+    ring
+  · simp only [regularDirichlet, if_neg hχ, add_zero]
 
 #check rationalDirichlet_logDeriv_strip
+#print axioms regularDirichlet_differentiable
+#print axioms regularDirichlet_ne_zero
+#print axioms rationalDirichlet_logDeriv_critical_strip
 #print axioms rationalDirichlet_logDeriv_strip
+#print axioms dirichlet_neg_logDeriv_eq_regular
 
 end
 end AlpogeSuperZeta
