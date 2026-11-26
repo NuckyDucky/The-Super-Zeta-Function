@@ -177,13 +177,16 @@ private theorem dyadicContinuation_pole {Φ b : ℂ → ℂ} {ρ : ℂ} (hρ : �
   change M w * (c / (w - ρ) + b w) + _ = _
   ring
 
-private theorem quartic_rh_of_dyadic_full_windows (hD : DirichletLZerosOnLine)
-    (hWindow : GaussianCutoffWindowBound archivedGaussianDyadicMangoldtWindow) :
-    DedekindZetaRH QuarticModel.K := by
+private theorem dyadic_mellin_data :
+    ∃ Φ : ℂ → ℂ,
+      (∀ w : ℂ, 1 / 2 < w.re → archivedGaussianFactor w ≠ 0 → AnalyticAt ℂ Φ w) ∧
+      (∀ ρ ∈ gaussianPoles, 1 / 2 < ρ.re → ∃ c : ℂ, c ≠ 0 ∧
+        (ρ.im = 0 → 0 < c.re ∧ c.im = 0) ∧ ∃ b : ℂ → ℂ, AnalyticAt ℂ b ρ ∧
+          ∀ᶠ w in 𝓝[≠] ρ, Φ w = c / (w - ρ) + b w) ∧
+      (∀ w : ℂ, 2 < w.re → ∫ x in Ioi (1 : ℝ),
+        (archivedGaussianDyadicMangoldtWindow x : ℂ) * (x : ℂ) ^ (-w - 1) = Φ w) := by
   obtain ⟨Φ, hΦ, ha, hp, _⟩ := gaussian_regularized_transform
-  refine quartic_rh_of_gaussian_mellin_windows hD (Φ := dyadicContinuation Φ)
-    (A := archivedGaussianDyadicMangoldtWindow)
-    (indexedCutoffSum_measurable .window _ _) dyadic_full_growth ?_ ?_ ?_ hWindow
+  refine ⟨dyadicContinuation Φ, ?_, ?_, ?_⟩
   · intro w hw hn
     exact dyadicContinuation_analytic (ha w (fun h => by norm_num [h] at hw) hn)
   · intro ρ hρ _
@@ -199,6 +202,21 @@ private theorem quartic_rh_of_dyadic_full_windows (hD : DirichletLZerosOnLine)
     field_simp [h0, sub_ne_zero.mpr h1]
     ring
 
+theorem gaussianPole_re_le_of_dyadic_full_log_window {θ δ : ℝ}
+    (hθ : 1 / 2 < θ) (hθ₁ : θ < 1) (hδ : 0 < δ)
+    (hWindow : Deduction.WindowHypU (fun u => archivedGaussianDyadicMangoldtWindow (Real.exp u)) θ δ)
+    {w : ℂ} (hw : w ∈ gaussianPoles) : w.re ≤ θ := by
+  obtain ⟨_, ha, hp, hT⟩ := dyadic_mellin_data
+  exact gaussianPole_re_le_of_mellin_log_window (indexedCutoffSum_measurable .window _ _)
+    dyadic_full_growth ha hp hT hθ hθ₁ hδ hWindow hw
+
+private theorem quartic_rh_of_dyadic_full_windows (hD : DirichletLZerosOnLine)
+    (hWindow : GaussianCutoffWindowBound archivedGaussianDyadicMangoldtWindow) :
+    DedekindZetaRH QuarticModel.K := by
+  obtain ⟨_, ha, hp, hT⟩ := dyadic_mellin_data
+  exact quartic_rh_of_gaussian_mellin_windows hD (indexedCutoffSum_measurable .window _ _)
+    dyadic_full_growth ha hp hT hWindow
+
 /-- A cofinal estimate for the prime-only central-class excess implies Dedekind RH
 for the archived quartic. The real-pole residue is positive with this sign. -/
 theorem quartic_rh_of_archived_gaussian_dyadic_prime_windows (hD : DirichletLZerosOnLine)
@@ -209,6 +227,7 @@ theorem quartic_rh_of_archived_gaussian_dyadic_prime_windows (hD : DirichletLZer
       archivedGaussianDyadicPrimeWindow_error).mpr hWindow)
 
 #print axioms archivedGaussianDyadicMangoldtWindow_mellin
+#print axioms gaussianPole_re_le_of_dyadic_full_log_window
 #print axioms dyadicContinuation_pole
 #print axioms archivedGaussianDyadicPrimeWindow_eq_sum
 #print axioms archivedGaussianDyadicPrimeWindow_error

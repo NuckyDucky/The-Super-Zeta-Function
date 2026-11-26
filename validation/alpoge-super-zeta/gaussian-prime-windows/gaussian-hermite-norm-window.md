@@ -69,3 +69,17 @@ $$
 The sum $a+b$ can be zero. Its least nonzero magnitude is $P_z$, attained with $a=(P_z+P_1)/2$ and $b=(P_z-P_1)/2$. Both products are odd, so these are integers. The remaining estimate asks me to find such a pair at each $x$ in arbitrarily late windows $[Y,Y^{1+\delta_\theta}]$ with $\log|a+b|\le x/16+C_\theta x^\theta$ for each $1/2<\theta<1$. Lean checks that the pointwise inequality for a pair is equivalent to the upper bound on the exact central excess. The quartic RH theorem takes the late-window bound and the rational Dirichlet result. [Exact class products and quartic theorem](GaussianHermiteSharpCount.lean#L149) · [Sum inequality](GaussianHermiteResidueLattice.lean#L130) · [Replay and axioms](gaussian-hermite-value-replay-audit.txt)
 
 For a separate small integer check, take $x=38$. The comparison primes are $29$ and $37$, so $M=1073$. Evaluating the odd polynomial modulo $M$ gives $R\equiv-1$ and $D_{19}\equiv813$. The gcds of $812$ and $814$ with $1073$ give $29$ and $37$, respectively. The pair $(33,-4)$ has sum $29$ and difference $37$, and $813\cdot33-4=25\cdot1073$. This example uses the individual prime signs in that small window.
+
+## The area of the positive Hermite excess
+
+Let $E(x)=\log P_z(x)-x/16$ from the gcd above, and put $u=\log x$. For a fixed $1/2<\theta<1$ and a fixed $\delta>0$, I ask for the bound
+
+$$
+\int_U^{(1+\delta)U}\max(0,E(e^u))e^{-\theta u}\,du\ \le\ e^{\eta U}.
+$$
+
+I need it on arbitrarily late windows for each $\eta>0$. In the original variable this is the weighted positive area on $[Y,Y^{1+\delta}]$ with weight $x^{-\theta-1}$ and allowance $Y^\eta$. Lean proves integrability by using a finite sum of prime readings on each bounded window above the cutoff. The positive part lets individual high readings spend part of the area budget. [Integrability](GaussianHermiteIntegratedWindow.lean#L114) · [Exact quantifiers](GaussianHermiteIntegratedWindow.lean#L174)
+
+If I supply the rational Dirichlet result, the combined prime count and the higher prime powers cost at most $B x^\theta$. Lean bounds the full signed Mangoldt reading on the dyadic interval by $4E(x)+Bx^\theta$. After weighting at $\theta$, that correction contributes at most $B\delta U$ to the majorant integral. I use the area bound with $\eta/2$ so the constant factor and the linear term fit inside $e^{\eta U}$ on the late windows. [Signed comparison](GaussianHermiteIntegratedWindow.lean#L13)
+
+If I then apply Alpöge's Landau window theorem to the Mellin transform of the full signed reading, the real part of every Gaussian zero is at most $\theta$. The dyadic factor $1-2^{-w}$ preserves the poles with $\Re w>1/2$. Gaussian reflection and the rational cofactors give the band $1-\theta\le\Re w\le\theta$ for the actual quartic's nontrivial zeros. Taking the area bound for every $\theta>1/2$ below $1$ gives the quartic RH implication with the area condition still explicit. [Alpöge's window theorem](https://github.com/leanprover-community/riemann-hypothesis/blob/ba2a065656ec7c638baa601994de3e0245ff6665/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindow.lean#L83) · [Dyadic pole theorem](GaussianDyadicPrimeWindow.lean) · [Quartic band and critical line](GaussianHermiteIntegratedWindow.lean#L196) · [Replay and axioms](gaussian-hermite-integrated-replay-audit.txt)

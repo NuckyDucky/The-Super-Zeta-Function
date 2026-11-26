@@ -191,6 +191,52 @@ def GaussianCutoffWindowBound (A : ℝ → ℝ) : Prop :=
     ∃ δ : ℝ, 0 < δ ∧ ∃ C : ℝ, 0 ≤ C ∧ ∀ Y₀ : ℝ, ∃ Y ≥ Y₀,
       ∀ y ∈ Icc Y (Y ^ (1 + δ)), A y ≤ C * y ^ θ
 
+/-- One integrated window estimate at exponent θ bounds the real part of each
+Gaussian pole by θ. The shift into the Landau half-plane leaves the weighted
+majorant integral unchanged. -/
+theorem gaussianPole_re_le_of_mellin_log_window
+    {A : ℝ → ℝ} {Φ : ℂ → ℂ} (hA : Measurable A)
+    (hGrowth : ∃ C ≥ (0 : ℝ), ∀ x ≥ (1 : ℝ), |A x| ≤ C * x ^ (2 : ℝ))
+    (hAnalytic : ∀ w : ℂ, 1 / 2 < w.re → archivedGaussianFactor w ≠ 0 → AnalyticAt ℂ Φ w)
+    (hPole : ∀ ρ ∈ gaussianPoles, 1 / 2 < ρ.re → ∃ c : ℂ, c ≠ 0 ∧
+      (ρ.im = 0 → 0 < c.re ∧ c.im = 0) ∧ ∃ b : ℂ → ℂ, AnalyticAt ℂ b ρ ∧
+        ∀ᶠ w in 𝓝[≠] ρ, Φ w = c / (w - ρ) + b w)
+    (hTransform : ∀ w : ℂ, 2 < w.re →
+      ∫ x in Ioi (1 : ℝ), (A x : ℂ) * (x : ℂ) ^ (-w - 1) = Φ w)
+    {θ δ : ℝ} (hθ : 1 / 2 < θ) (hθ₁ : θ < 1) (hδ : 0 < δ)
+    (hWindow : Deduction.WindowHypU (fun u => A (Real.exp u)) θ δ)
+    {w : ℂ} (hw : w ∈ gaussianPoles) : w.re ≤ θ := by
+  by_contra! hright
+  let a : ℝ := (1 / 2 + θ) / 2
+  have ha : 1 / 2 < a := by dsimp [a]; linarith
+  have haθ : a < θ := by dsimp [a]; linarith
+  have hData := gaussianLogCutoff_hasPoleData hA hGrowth hAnalytic hPole hTransform ha
+  have hWindowShifted : Deduction.WindowHypU (gaussianLogCutoff A a) (θ - a) δ := by
+    intro η hη U₀
+    obtain ⟨U, hU, R, hR, hUpper, hIntegral⟩ := hWindow η hη U₀
+    let R' (u : ℝ) := R u * Real.exp (-a * u)
+    have hEq : (fun u => R' u * Real.exp (-(θ - a) * u)) =
+        fun u => R u * Real.exp (-θ * u) := by
+      funext u
+      dsimp only [R']
+      rw [mul_assoc, ← Real.exp_add, show -a * u + -(θ - a) * u = -θ * u by ring]
+    refine ⟨U, hU, R', ?_, ?_, ?_⟩
+    · rw [hEq]
+      exact hR
+    · intro u hu
+      obtain ⟨hR₀, hg⟩ := hUpper u hu
+      exact ⟨mul_nonneg hR₀ (Real.exp_nonneg _), mul_le_mul_of_nonneg_right hg (Real.exp_nonneg _)⟩
+    · rw [hEq]
+      exact hIntegral
+  have hz : w - (a : ℂ) ∈ shiftedGaussianPoles a := by
+    refine ⟨?_, ?_⟩
+    · simp only [sub_re, ofReal_re]; linarith
+    · rwa [sub_add_cancel]
+  have hle := Deduction.landau_window hData (show 0 < θ - a by linarith)
+    (show θ - a < 1 by linarith) hδ hWindowShifted (w - (a : ℂ)) hz
+  simp only [sub_re, ofReal_re] at hle
+  linarith
+
 /-- A cutoff whose Mellin transform detects the actual Gaussian poles gives the quartic
 window test, with the sign of any real residue supplied explicitly. -/
 theorem quartic_rh_of_gaussian_mellin_windows (hD : DirichletLZerosOnLine)
@@ -209,41 +255,11 @@ theorem quartic_rh_of_gaussian_mellin_windows (hD : DirichletLZerosOnLine)
   intro w hright hleft _ hz
   have hp : 0 < w.re := by linarith
   have hw : w ∈ gaussianPoles := ⟨hp, (archivedGaussianFactor_zero_iff_mellin hp).mpr hz⟩
-  let a : ℝ := (1 / 2 + w.re) / 2
-  let θ : ℝ := (a + w.re) / 2
-  have ha : 1 / 2 < a := by dsimp [a]; linarith
-  have ht : a < θ := by dsimp [θ, a]; linarith
-  have ht' : θ < w.re := by dsimp [θ, a]; linarith
-  obtain ⟨δ, hδ, C, hC, hW⟩ := hcut θ (ha.trans ht) (ht'.trans hleft)
-  have hData := gaussianLogCutoff_hasPoleData hA hGrowth hAnalytic hPole hTransform ha
-  let f : ℝ → ℝ := fun y => A y * y ^ (-a)
-  have hF : ∀ Y₀ : ℝ, ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)),
-      f y ≤ C * y ^ (θ - a) := by
-    intro Y₀
-    obtain ⟨Y, hY, hb⟩ := hW (max Y₀ 1)
-    refine ⟨Y, (le_max_left _ _).trans hY, fun y hy => ?_⟩
-    have hy₁ : 1 ≤ y := (le_max_right Y₀ 1).trans (hY.trans hy.1)
-    have hy₀ := zero_lt_one.trans_le hy₁
-    dsimp [f]
-    calc
-      _ ≤ (C * y ^ θ) * y ^ (-a) :=
-        mul_le_mul_of_nonneg_right (hb y hy) (Real.rpow_nonneg hy₀.le _)
-      _ = _ := by rw [mul_assoc, ← Real.rpow_add hy₀, sub_eq_add_neg]
-  have hfun : (fun u => f (Real.exp u)) = gaussianLogCutoff A a := by
-    funext u
-    simp only [f, gaussianLogCutoff, Real.rpow_def_of_pos (Real.exp_pos _), Real.log_exp]
-    rw [mul_comm u (-a)]
-  have hh := logWindow_of_pointwise_norm_windows f (θ := θ - a) (δ := δ) hδ hC hF
-  rw [hfun] at hh
-  have hθ₀ : 0 < θ - a := by linarith
-  have hθ₁ : θ - a < 1 := by linarith
-  have hz' : w - (a : ℂ) ∈ shiftedGaussianPoles a := by
-    refine ⟨?_, ?_⟩
-    · simp only [sub_re, ofReal_re]; linarith
-    · rwa [sub_add_cancel]
-  have hle := Deduction.landau_window hData hθ₀ hθ₁ hδ hh (w - (a : ℂ)) hz'
-  simp only [sub_re, ofReal_re] at hle
-  linarith
+  obtain ⟨θ, hθ, hwθ⟩ := exists_between hright
+  obtain ⟨δ, hδ, C, hC, hW⟩ := hcut θ hθ (hwθ.trans hleft)
+  exact (not_le_of_gt hwθ) (gaussianPole_re_le_of_mellin_log_window
+    hA hGrowth hAnalytic hPole hTransform hθ (hwθ.trans hleft) hδ
+    (logWindow_of_pointwise_norm_windows A hδ hC hW) hw)
 
 /-- The original cutoff test uses a multiplier that survives at the Gaussian poles. -/
 theorem quartic_rh_of_gaussian_cutoff_windows_of_nonzero_at_poles (hD : DirichletLZerosOnLine)
@@ -318,6 +334,7 @@ theorem quartic_rh_of_archived_gaussian_large_address_windows (hD : DirichletLZe
 
 #print axioms gaussianWindowZetaFactor_analytic
 #print axioms gaussianLogCutoff_hasPoleData
+#print axioms gaussianPole_re_le_of_mellin_log_window
 #print axioms quartic_rh_of_gaussian_mellin_windows
 #print axioms quartic_rh_of_gaussian_cutoff_windows_of_nonzero_at_poles
 #print axioms quartic_rh_of_gaussian_cutoff_windows

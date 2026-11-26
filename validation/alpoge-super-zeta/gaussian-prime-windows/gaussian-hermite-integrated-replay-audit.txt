@@ -1,0 +1,131 @@
+Independent replay of the Hermite positive-area criterion
+Lean 4.33.1 at 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+Mathlib at 0df444a360eaa60ab8c11dca51a86af692955474
+Alpöge at ba2a065656ec7c638baa601994de3e0245ff6665
+
+The three listed sources were built in order against the pinned imports.
+All 23 axiom reports contain propext, Classical.choice, and Quot.sound.
+The printed theorem premises include the area bound and the supplied
+rational Dirichlet result. Local machine paths are omitted.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true ; LEAN_NUM_THREADS=1
+Running GaussianRawWindowCriterion (SHA256 0CB31C27EA4C724EEC31311534D729EF1BF60642B891745A0A86E04452B189D8)
+'_private.GaussianRawWindowCriterion.0.AlpogeSuperZeta.gaussianWindowZetaFactor_analytic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianRawWindowCriterion.0.AlpogeSuperZeta.gaussianLogCutoff_hasPoleData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.gaussianPole_re_le_of_mellin_log_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_mellin_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_cutoff_windows_of_nonzero_at_poles' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_gaussian_cutoff_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+def AlpogeSuperZeta.GaussianCutoffWindowBound : (ℝ → ℝ) → Prop :=
+fun A =>
+  ∀ (θ : ℝ),
+    1 / 2 < θ → θ < 1 → ∃ δ, 0 < δ ∧ ∃ C, 0 ≤ C ∧ ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)), A y ≤ C * y ^ θ
+def AlpogeSuperZeta.ArchivedGaussianRawWindowBound : Prop :=
+GaussianCutoffWindowBound archivedGaussianRawWindow
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_raw_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (hcut : ArchivedGaussianRawWindowBound) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_raw_windows' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_large_address_windows (hD : DirichletLZerosOnLine)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re)
+  (hcut :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 →
+          ∃ δ,
+            0 < δ ∧
+              ∃ C,
+                0 ≤ C ∧
+                  ∀ (Y₀ : ℝ), ∃ Y ≥ Y₀, ∀ y ∈ Icc Y (Y ^ (1 + δ)), archivedGaussianLargeAddressWindow y ≤ C * y ^ θ) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_large_address_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianRawWindowCriterion exit=0 61.718s
+Running GaussianDyadicPrimeWindow (SHA256 725A789927D5342BEB34C3C12ECF3D26D244B98B2AD2D2FA73DE844150CFCA9B)
+'AlpogeSuperZeta.archivedGaussianDyadicMangoldtWindow_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.gaussianPole_re_le_of_dyadic_full_log_window' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianDyadicPrimeWindow.0.AlpogeSuperZeta.dyadicContinuation_pole' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianDyadicPrimeWindow_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianDyadicPrimeWindow_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.quartic_rh_of_archived_gaussian_dyadic_prime_windows (hD : DirichletLZerosOnLine)
+  (hWindow : GaussianCutoffWindowBound archivedGaussianDyadicPrimeWindow) : DedekindZetaRH K
+'AlpogeSuperZeta.quartic_rh_of_archived_gaussian_dyadic_prime_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianDyadicPrimeWindow exit=0 60.769s
+2 fresh module(s) passed in 122.515s.
+Axiom reports: 14 / 14
+Unexpected axioms:
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true ; LEAN_NUM_THREADS=1
+Running GaussianHermiteIntegratedWindow (SHA256 668362E53BC2A4B7DE2B47B58C2AC3E680B30B3ADF4D1335DAC8DEA502CD14B3)
+AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianFactor_re_le_of_hermite_log_window (hDir : DirichletLZerosOnLine)
+  {θ δ : ℝ} (hθ : 1 / 2 < θ) (hθ₁ : θ < 1) (hδ : 0 < δ)
+  (hWindow : Deduction.WindowHypU (fun u => archivedGaussianHermiteValueExcess (Real.exp u)) θ δ) {w : ℂ}
+  (hw : archivedGaussianFactor w = 0) : w.re ≤ θ
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_hermite_log_windows
+  (hDir : DirichletLZerosOnLine)
+  (hcut :
+    ∀ (θ : ℝ),
+      1 / 2 < θ →
+        θ < 1 → ∃ δ > 0, Deduction.WindowHypU (fun u => archivedGaussianHermiteValueExcess (Real.exp u)) θ δ) :
+  DedekindZetaRH K
+def AlpogeSuperZeta.GaussianQuarticClosure.ArchivedGaussianHermiteAreaBound : ℝ → ℝ → Prop :=
+fun θ δ =>
+  ∀ (η : ℝ),
+    0 < η →
+      ∀ (U₀ : ℝ),
+        ∃ U ≥ U₀, ∫ (u : ℝ) in Icc U ((1 + δ) * U), archivedGaussianHermiteWeightedPositive θ u ≤ Real.exp (η * U)
+AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianFactor_re_le_of_hermite_positive_area
+  (hDir : DirichletLZerosOnLine) {θ δ : ℝ} (hθ : 1 / 2 < θ) (hθ₁ : θ < 1) (hδ : 0 < δ)
+  (hArea : ArchivedGaussianHermiteAreaBound θ δ) {w : ℂ} (hw : archivedGaussianFactor w = 0) : w.re ≤ θ
+AlpogeSuperZeta.GaussianQuarticClosure.archivedQuarticZeta_strip_of_hermite_positive_area (hDir : DirichletLZerosOnLine)
+  {θ δ : ℝ} (hθ : 1 / 2 < θ) (hθ₁ : θ < 1) (hδ : 0 < δ) (hArea : ArchivedGaussianHermiteAreaBound θ δ) {w : ℂ}
+  (hw₀ : 0 < w.re) (hw₁ : w.re < 1) (hw : archivedQuarticZeta w = 0) : 1 - θ ≤ w.re ∧ w.re ≤ θ
+AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_hermite_positive_area
+  (hDir : DirichletLZerosOnLine) (hcut : ∀ (θ : ℝ), 1 / 2 < θ → θ < 1 → ∃ δ > 0, ArchivedGaussianHermiteAreaBound θ δ) :
+  DedekindZetaRH K
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianDyadicMangoldtWindow_le_hermiteValue' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.GaussianHermiteIntegratedWindow.0.AlpogeSuperZeta.GaussianQuarticClosure.hermite_log_window_to_mangoldt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianFactor_re_le_of_hermite_log_window' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_hermite_log_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianHermiteWeightedPositive_integrableOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianHermite_log_window_of_positive_area' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedGaussianFactor_re_le_of_hermite_positive_area' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.archivedQuarticZeta_strip_of_hermite_positive_area' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.GaussianQuarticClosure.quartic_rh_of_archived_gaussian_hermite_positive_area' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianHermiteIntegratedWindow exit=0 62.644s
+1 fresh module(s) passed in 62.658s.
+Axiom reports: 9 / 9
+Unexpected axioms:
