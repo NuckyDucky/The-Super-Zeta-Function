@@ -1,0 +1,94 @@
+Independent Lean source replays for the filtered Gaussian prime contour
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Alpöge source ba2a065656ec7c638baa601994de3e0245ff6665
+Command options -j1 -M4000 -DwarningAsError=true
+Builds use pinned parent modules and independent output directories in dependency order.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Running GaussianVaughanFilteredDirichlet (SHA256 74F12F18026BD38B687BDE3A002EC51F0115CA45D49E10B56C3A9769507BF0D3)
+'AlpogeSuperZeta.archivedGaussianFilteredDirichletLog_principal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianFilteredDirichletLog_analyticAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianFilteredDirichletLog_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanFilteredDirichlet exit=0 44.678s
+Running GaussianVaughanHigherContinuation (SHA256 C94F0FB72264827D6A0FFD455AC754E27486CFA0323ECA1DA36AC744D68EA374)
+'AlpogeSuperZeta.archivedGaussianVaughanHigherCorrection_uniform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigherMellin_analyticAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanHigherMellin_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_continues (hDir : DirichletLZerosOnLine) :
+  (∀ (z : ℂ),
+      1 / 3 < z.re → AnalyticAt ℂ (archivedGaussianVaughanPrimeContinuation archivedGaussianVaughanHigherMellin) z) ∧
+    ∀ (z : ℂ),
+      1 < z.re →
+        HasMellin archivedGaussianVaughanCompletedPrimeKernel z
+          (archivedGaussianVaughanPrimeContinuation archivedGaussianVaughanHigherMellin z)
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_continues' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanHigherContinuation exit=0 45.646s
+Running GaussianDirichletVerticalGrowth (SHA256 58694426076AFF909E0780600A2CA0D2D98E0AFC3677D8EB4703B0EF9E7EF992)
+AlpogeSuperZeta.rationalDirichlet_logDeriv_strip (hDir : DirichletLZerosOnLine) (N : ℕ) [NeZero N] :
+  ∃ C > 0,
+    ∀ (χ : DirichletCharacter ℂ N) (w : ℂ),
+      3 / 4 ≤ w.re → w.re ≤ 13 / 4 → ‖logDeriv (regularDirichlet χ) w‖ ≤ C * (1 + Real.log (1 + |w.im|))
+'AlpogeSuperZeta.rationalDirichlet_logDeriv_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianDirichletVerticalGrowth exit=0 51.248s
+3 fresh module(s) passed in 141.593s.
+Axiom reports: 8 / 8
+Unexpected axioms:
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Running GaussianVaughanFilteredGrowth (SHA256 5DA299B7A6C4F27EBFC47655313BD59F6A256760335C4482A53592D203C2375E)
+AlpogeSuperZeta.filteredDirichletLog_strip (hDir : DirichletLZerosOnLine) (N : ℕ) [NeZero N] :
+  ∃ C > 0,
+    ∀ (χ : DirichletCharacter ℂ N) (z : ℂ),
+      3 / 8 ≤ z.re → z.re ≤ 13 / 8 → ‖archivedGaussianFilteredDirichletLog χ z‖ ≤ C * (1 + Real.log (1 + 2 * |z.im|))
+'AlpogeSuperZeta.filteredDirichletLog_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.archivedGaussianVaughanHigherMellin_strip (hDir : DirichletLZerosOnLine) :
+  ∃ C > 0,
+    ∀ (z : ℂ),
+      3 / 8 ≤ z.re →
+        z.re ≤ 13 / 8 →
+          ‖archivedGaussianVaughanHigherMellin z‖ ≤
+            C * (1 + Real.log (1 + 2 * |z.im|)) * ‖QuarticModel.archivedMellin (z / 7) / 7‖
+'AlpogeSuperZeta.archivedGaussianVaughanHigherMellin_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_strip_envelope (hDir : DirichletLZerosOnLine) :
+  ∃ C > 0,
+    ∀ (z : ℂ),
+      3 / 8 ≤ z.re →
+        z.re ≤ 13 / 8 →
+          ‖archivedGaussianVaughanPrimeContinuation archivedGaussianVaughanHigherMellin z‖ ≤
+            ‖QuarticModel.archivedMellin (z / 7) / 7‖ *
+              (3 * ‖deriv QuarticModel.archivedGaussianFactor z‖ +
+                C * (1 + Real.log (1 + 2 * |z.im|)) * ‖QuarticModel.archivedGaussianFactor z‖)
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_strip_envelope' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanFilteredGrowth exit=0 47.076s
+1 fresh module(s) passed in 47.091s.
+Axiom reports: 3 / 3
+Unexpected axioms:
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Running GaussianVaughanContourDecay (SHA256 9947C3F0F8C28831CB5D7324A56F7B59165DE089E63E8783705E279AB399A661)
+AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_rapid_decay (hDir : DirichletLZerosOnLine) (k : ℕ) :
+  ∃ C ≥ 0,
+    ∀ (z : ℂ),
+      3 / 8 ≤ z.re →
+        z.re ≤ 13 / 8 →
+          (1 + |z.im|) ^ k * ‖archivedGaussianVaughanPrimeContinuation archivedGaussianVaughanHigherMellin z‖ ≤ C
+'AlpogeSuperZeta.archivedGaussianThetaMellin_rapid_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanCompletedPrime_rapid_decay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanContourDecay exit=0 49.436s
+1 fresh module(s) passed in 49.454s.
+Axiom reports: 2 / 2
+Unexpected axioms:

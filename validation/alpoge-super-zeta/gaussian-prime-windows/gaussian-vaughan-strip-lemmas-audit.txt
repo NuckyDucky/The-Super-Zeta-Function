@@ -1,0 +1,19 @@
+Independent 4.33.1 Lean source replays of the disk, Gamma and Gaussian strip lemmas
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Command options -j1 -DwarningAsError=true. The Gaussian strip replay also used -M4000.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Running GaussianLogDerivativeDisk (SHA256 B43893253BCD57ED2F5C43F2ABA0AE022009D77037C0591563807A82FA8B1843)
+'AlpogeSuperZeta.logDeriv_le_disk' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianLogDerivativeDisk exit=0 14.336s
+Running GaussianVaughanGammaStrip (SHA256 0C0AFCB9D8E897C4A5D32F34E79A61F09164C1763AFD86A707807FDC65575403)
+'AlpogeSuperZeta.gamma_rapid_decay_on_positive_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.inv_gamma_bound_on_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanGammaStrip exit=0 13.132s
+Axiom reports: 3 / 3
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Running GaussianVaughanGaussianStrip (SHA256 985B2EF7A98DA048F35536A593D5DFB572C8CA75A2B03DBB8FBB02157A5072F2)
+'AlpogeSuperZeta.archivedMellin_bounded_on_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AlpogeSuperZeta.archivedGaussianFactor_polynomial_on_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanGaussianStrip exit=0 123.153s
+Axiom reports: 2 / 2

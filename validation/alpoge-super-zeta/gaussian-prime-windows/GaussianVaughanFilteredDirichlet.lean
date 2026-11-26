@@ -166,6 +166,21 @@ theorem archivedGaussianFilteredDirichletLog_eq {N : ℕ} [NeZero N]
     ring
   · simp only [archivedGaussianFilteredDirichletLog, if_neg hχ]
 
+/-- The principal branch uses Mathlib's pole-removed Dirichlet function. -/
+theorem archivedGaussianFilteredDirichletLog_principal {N : ℕ} [NeZero N]
+    (χ : DirichletCharacter ℂ N) (z : ℂ) (hχ : χ = 1) :
+    archivedGaussianFilteredDirichletLog χ z =
+      scaleDifference z * (-logDeriv (LFunctionTrivChar₁ N) (2 * z)) +
+        dslope scaleDifference ((1 / 2 : ℝ) : ℂ) z / 2 := by
+  have he : principalRegular N = LFunctionTrivChar₁ N := by
+    funext w
+    by_cases hw : w = 1
+    · subst w
+      simp only [principalRegular, LFunctionTrivChar₁, Function.update_self, principalResidue]
+    · simp only [principalRegular, LFunctionTrivChar₁, Function.update_of_ne hw]
+  rw [archivedGaussianFilteredDirichletLog, if_pos hχ, he]
+
+#print axioms archivedGaussianFilteredDirichletLog_principal
 #print axioms archivedGaussianFilteredDirichletLog_analyticAt
 #print axioms archivedGaussianFilteredDirichletLog_eq
 
