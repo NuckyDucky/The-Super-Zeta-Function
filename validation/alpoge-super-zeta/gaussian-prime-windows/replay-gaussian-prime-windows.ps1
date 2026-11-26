@@ -181,7 +181,8 @@ if ($AlpogeGrowthCheckout) {
         'Formalism.ZeroFreeRegion.ZetaLogDerivativeBounds.ZetaInvBound',
         'Formalism.ZeroFreeRegion.ZetaLogDerivativeBounds.NormLogDerivLeLamF',
         'Formalism.ZeroFreeRegion.ZetaLogDerivativeBounds.LogDerivRight',
-        'Formalism.LandauZeroFreeBounds.ExceptionalZeroBounds.LRight'
+        'Formalism.LandauZeroFreeBounds.ExceptionalZeroBounds.LRight',
+        'Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ExplicitFormula.LGrowthGamma'
     )
     $growthFiles = @($growthModules | ForEach-Object { 'src/' + $_.Replace('.', '/') + '.lean' })
     & git -C $growthRepo diff --quiet HEAD -- @growthFiles
@@ -193,7 +194,8 @@ if ($AlpogeGrowthCheckout) {
         'GaussianVaughanFilteredGrowth',
         'GaussianVaughanContourDecay',
         'GaussianVaughanPrimeInversion',
-        'GaussianVaughanCompletedPrimeBound'
+        'GaussianVaughanCompletedPrimeBound',
+        'GaussianVaughanLeftLineGamma'
     )
 }
 
@@ -238,7 +240,7 @@ try {
         if ($module -in @('GaussianVaughanGaussianStrip', 'GaussianDirichletVerticalGrowth',
                 'GaussianVaughanFilteredGrowth', 'GaussianVaughanContourDecay', 'MellinContourShift',
                 'GaussianVaughanCofactorBound', 'GaussianVaughanPrimeInversion',
-                'GaussianVaughanCompletedPrimeBound')) {
+                'GaussianVaughanCompletedPrimeBound', 'GaussianVaughanLeftLineGamma')) {
             $leanArgs += '-M4000'
         }
         & $lean @leanArgs -o "$out/$module.olean" "$PSScriptRoot/$module.lean"
