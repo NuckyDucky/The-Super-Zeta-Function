@@ -148,7 +148,8 @@ $modules = @(
     'GaussianVaughanGammaStrip',
     'GaussianVaughanGaussianStrip',
     'MellinContourShift',
-    'GaussianVaughanCofactorBound'
+    'GaussianVaughanCofactorBound',
+    'GaussianVaughanContourMoments'
 )
 
 if ($AlpogeGrowthCheckout) {
@@ -195,7 +196,14 @@ if ($AlpogeGrowthCheckout) {
         'GaussianVaughanContourDecay',
         'GaussianVaughanPrimeInversion',
         'GaussianVaughanCompletedPrimeBound',
-        'GaussianVaughanLeftLineGamma'
+        'GaussianVaughanLeftLineGamma',
+        'GaussianVaughanConvolvedLeftLine',
+        'GaussianVaughanSelectedContour',
+        'GaussianVaughanGammaFixedStrip',
+        'GaussianVaughanGammaRatioStrip',
+        'GaussianVaughanConvolvedStrip',
+        'GaussianVaughanKernelAtZero',
+        'GaussianVaughanBelowWindowBound'
     )
 }
 
@@ -240,7 +248,11 @@ try {
         if ($module -in @('GaussianVaughanGaussianStrip', 'GaussianDirichletVerticalGrowth',
                 'GaussianVaughanFilteredGrowth', 'GaussianVaughanContourDecay', 'MellinContourShift',
                 'GaussianVaughanCofactorBound', 'GaussianVaughanPrimeInversion',
-                'GaussianVaughanCompletedPrimeBound', 'GaussianVaughanLeftLineGamma')) {
+                'GaussianVaughanCompletedPrimeBound', 'GaussianVaughanLeftLineGamma',
+                'GaussianVaughanContourMoments', 'GaussianVaughanConvolvedLeftLine',
+                'GaussianVaughanSelectedContour', 'GaussianVaughanGammaFixedStrip',
+                'GaussianVaughanGammaRatioStrip', 'GaussianVaughanConvolvedStrip',
+                'GaussianVaughanKernelAtZero', 'GaussianVaughanBelowWindowBound')) {
             $leanArgs += '-M4000'
         }
         & $lean @leanArgs -o "$out/$module.olean" "$PSScriptRoot/$module.lean"

@@ -1,0 +1,105 @@
+Independent source replays for the small-argument kernel and below-window bound
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Alpöge source ba2a065656ec7c638baa601994de3e0245ff6665
+Each pass uses the earlier pinned dependencies. Local machine paths omitted.
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-left-line-gamma-20261126-104955-394
+Running GaussianVaughanContourMoments (SHA256 0EB413E1A1ACF4EA8DF525C3D8A180AF6D11F98DE854C6A589E3518BF8E88EF5)
+'AlpogeSuperZeta.gaussian_integrate_left_contours' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanContourMoments exit=0 24.324s
+Running GaussianVaughanConvolvedLeftLine (SHA256 D845652445A61571ACC7E192D309FF449876621A16BA32CD39CBC6FEAF5E48A3)
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedMellin_reflect' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedMellin_left_pointwise' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanConvolvedLeftLine exit=0 51.668s
+Running GaussianVaughanSelectedContour (SHA256 2624E9845D5A8CED4A43E55A0EEB371714CB1A024BBA4459E985A6275DE638B9)
+AlpogeSuperZeta.archivedGaussianVaughanConvolvedMellin_selected_inverse_bound :
+  ∃ C > 0,
+    ∃ c > 0,
+      ∃ v₀ > 0,
+        ∀ v > 0,
+          v ≤ v₀ →
+            ∃ N,
+              1 ≤ N ∧
+                ‖mellinInv (-↑(7 * N)) archivedGaussianVaughanConvolvedMellin v‖ ≤ C * Real.exp (-c * v ^ (-(7 / 15)))
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedMellin_left_integrated' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedMellin_left_inverse_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedMellin_selected_inverse_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanSelectedContour exit=0 49.159s
+Running GaussianVaughanGammaFixedStrip (SHA256 BF80B2A45F0CB490D4BD163007BB03EF3810E8E0AF61F7361112F4211E4B2BB7)
+'AlpogeSuperZeta.gaussianGamma_fixed_positive_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanGammaFixedStrip exit=0 53.396s
+Running GaussianVaughanGammaRatioStrip (SHA256 4C16314F92845BFAA156CCD118F72A5CD7D2855DEEE7B94272839BAB574C535E)
+'AlpogeSuperZeta.gaussianGamma_ratio_norm_on_negative_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianVaughanGammaRatioStrip exit=0 53.446s
+5 fresh module(s) passed in 232.045s.
+Axiom reports: 8 / 8
+Unexpected axioms:
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-selected-contour-gamma-20261126-111143-501
+Running GaussianVaughanConvolvedStrip (SHA256 248B5975FD6EDB3CC23FF0E2251FC88DB08819778F50DB6DAAE669AA63526B13)
+'AlpogeSuperZeta.archivedGaussianFactor_norm_to_right_of_integer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedMellin_exponential_on_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedMellin_square_decay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanConvolvedStrip exit=0 52.713s
+Running GaussianVaughanKernelAtZero (SHA256 19BDEE682A4417DF26C685CC684AFCD22385015627DD04CE3E843BE9B5FB0487)
+AlpogeSuperZeta.archivedGaussianVaughanConvolvedKernel_small_argument :
+  ∃ C > 0,
+    ∃ c > 0,
+      ∃ v₀ > 0, ∀ v > 0, v ≤ v₀ → |archivedGaussianVaughanConvolvedKernel v| ≤ C * Real.exp (-c * v ^ (-(7 / 15)))
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedKernel_continuousAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedKernel_eq_leftMellinInv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.archivedGaussianVaughanConvolvedKernel_small_argument' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanKernelAtZero exit=0 47.897s
+2 fresh module(s) passed in 100.631s.
+Axiom reports: 6 / 6
+Unexpected axioms:
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Lean invocation: -j1 -M4000 -DwarningAsError=true --root=<project source> ; LEAN_NUM_THREADS=1
+Independent dependency replay: crosscheck-vaughan-kernel-at-zero-20261126-111734-931
+Running GaussianVaughanBelowWindowBound (SHA256 DC03FF8C714001EB62FA910DFBCFEF8BDEC91A7F3773D68E255F7B1219EBC8CE)
+AlpogeSuperZeta.archivedGaussianVaughanBelowWindowSum_inv_bound (W : ℝ → ℝ) (hW : ∀ u ≥ 0, |W u| ≤ 1) :
+  ∃ C > 0, ∀ᶠ (X : ℝ) in atTop, |archivedGaussianVaughanBelowWindowSum W X| ≤ C / X
+AlpogeSuperZeta.quartic_rh_of_archived_vaughan_windows_upper_error (hDir : DirichletLZerosOnLine)
+  (hFree : ∀ (w : ℂ), archivedGaussianKnownBoundary < w.re → archivedGaussianFactor w ≠ 0)
+  (hpos : ∀ (σ : ℝ), 0 < (QuarticRealFormula.completed ↑σ).re) (W : ℝ → ℝ) (hW : ∀ u ≥ 0, |W u| ≤ 1)
+  (hSupport : ∀ u ≥ 2, W u = 0) {A : ℝ} (hA : 0 ≤ A)
+  (hUpper :
+    ∀ᶠ (X : ℝ) in atTop,
+      |archivedGaussianVaughanSum X - archivedGaussianVaughanUpperPrimeSum W X| ≤
+        A * (X ^ (3 / 8) * Real.log X ^ (8 / 3)))
+  (hcut : GaussianCutoffWindowBound (archivedGaussianVaughanLowerSum W)) : DedekindZetaRH K
+'AlpogeSuperZeta.archivedGaussianVaughanBelowWindowSum_inv_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'AlpogeSuperZeta.quartic_rh_of_archived_vaughan_windows_upper_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+GaussianVaughanBelowWindowBound exit=0 52.261s
+1 fresh module(s) passed in 52.279s.
+Axiom reports: 2 / 2
+Unexpected axioms:
