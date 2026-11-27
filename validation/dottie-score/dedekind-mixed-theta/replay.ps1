@@ -2,7 +2,8 @@
 param(
     [Parameter(Mandatory)] [string] $AxiomCheckout,
     [Parameter(Mandatory)] [string] $LeanBin,
-    [ValidateRange(1, 8)] [int] $BuildThreads = 2
+    [ValidateRange(1, 8)] [int] $BuildThreads = 2,
+    [switch] $SampledContours
 )
 
 $ErrorActionPreference = 'Stop'
@@ -31,8 +32,14 @@ $inputs = [ordered]@{
     DedekindFieldInputs = 'cccd630c12934edafa2943819adbaf35fd52b9e6'
     DedekindFieldUniverses = 'fb339e0849ee4e882211f731e04a2b51599efe86'
 }
-$stage = (New-Item -ItemType Directory -Force -Path "$root/.lake/super-zeta-mixed-theta/src").FullName
-$out = (New-Item -ItemType Directory -Force -Path "$root/.lake/super-zeta-mixed-theta/lib").FullName
+$replayName = if ($SampledContours) { 'super-zeta-sampled-contours' } else { 'super-zeta-mixed-theta' }
+$stage = (New-Item -ItemType Directory -Force -Path "$root/.lake/$replayName/src").FullName
+$out = (New-Item -ItemType Directory -Force -Path "$root/.lake/$replayName/lib").FullName
+if ($SampledContours) {
+    $inputs.Add('DottieDyadicGeometry', '92d55ff728fdfcf2dcae06dcf33e85fb81638da4')
+    $inputs.Add('DedekindFiniteDottieCover', '3925b92783ca6750d284814e844ba07182214175')
+    $inputs.Add('DedekindCofinalSignedRings', '26aad230939523504635bc7f1e02299e71608a37')
+}
 foreach ($name in $inputs.Keys) {
     $file = Join-Path $fieldSourceRoot "$name.lean"
     $hash = (& git hash-object --no-filters -- $file).Trim()
@@ -43,6 +50,15 @@ foreach ($name in $inputs.Keys) {
     "Super Zeta source $name $hash"
 }
 $modules = @('DedekindMixedTheta', 'DedekindMixedThetaTail')
+if ($SampledContours) {
+    $modules += @(
+        'DedekindMixedThetaSignedRings',
+        'DottieRationalContour',
+        'DedekindMixedThetaCompletedRings',
+        'DedekindMixedThetaOscillation',
+        'DedekindMixedThetaFiniteSamples'
+    )
+}
 foreach ($name in $modules) {
     $file = Join-Path $PSScriptRoot "$name.lean"
     $hash = (& git hash-object --no-filters -- $file).Trim()
