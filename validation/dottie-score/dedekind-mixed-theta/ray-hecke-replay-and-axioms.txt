@@ -1,0 +1,60 @@
+Finite-order ray-class Hecke counts and Dedekind ERH
+Lean 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+New source modules checked against pinned imports with warnings treated as errors.
+Repository replay selector: replay-discriminant23.ps1 -RayHecke
+Independent replay rebuilt RayHeckeStripCounts from source and then rebuilt the final RayHeckeDedekindTransfer against that object. Both exited 0 and all 13 axiom reports matched.
+
+RayHeckeStripCounts source 2b6de827cdfc91f1178c0649b66358b74520a0dd
+RayHeckeStripCounts exit=0
+@rayHeckeRH_iff_cofinal_counts : ∀ {K : Type} [inst : Field K] [inst_1 : NumberField K] {m : Ideal (𝓞 K)} (hm : m ≠ ⊥)
+  (χ : RayClassCharacter K m),
+  StripZerosOnLine (rayHeckeContinuation hm χ) ↔
+    ∀ (H : ℝ),
+      ∃ T,
+        H ≤ T ∧
+          ((rayHeckeCountingFunction hm χ).stripZeroCount T fun x => True) =
+            (rayHeckeCountingFunction hm χ).stripZeroCount T fun w => w.re = 1 / 2
+dedekindZetaRH_iff_unit_rayHecke : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  DedekindZetaRH K ↔ StripZerosOnLine (rayHeckeContinuation ⋯ (LargeSieve.principalUnitRayCharacter K))
+'FieldTarget.rayHeckeCountingFunction_eq_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeContinuation_eq_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeCountingFunction_order_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeRH_iff_cofinal_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeContinuation_ne_zero_of_right_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_unit_rayHecke' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+RayHeckeDedekindTransfer source 26034f9735811daed7e61b753d4d851e33482999
+RayHeckeDedekindTransfer exit=0
+rayHecke_zero_lifts_to_dedekind : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K)) (hm : m ≠ ⊥)
+  (χ : RayClassCharacter K m),
+  ∃ R, ∀ (w : ℂ), 0 < w.re → w ≠ 1 → rayHeckeContinuation hm χ w = 0 → mixedThetaContinuation (↥↑R.extension) w = 0
+rayHecke_zero_reflects_into_family : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K))
+  (hm : m ≠ ⊥) (χ : RayClassCharacter K m) {w : ℂ},
+  0 < w.re →
+    w.re < 1 →
+      rayHeckeContinuation hm χ w = 0 →
+        ∃ m', ∃ (hm' : m' ≠ ⊥), ∃ χ', rayHeckeContinuation hm' χ' (1 - (starRingEnd ℂ) w) = 0
+allDedekindRH_iff_all_rayHeckeRH : (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K) ↔
+  ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m),
+    StripZerosOnLine (rayHeckeContinuation hm χ)
+rational_rayHeckeRH_of_dirichlet : (∀ (N : ℕ) [inst : NeZero N] (ψ : DirichletCharacter ℂ N),
+    StripZerosOnLine (DirichletCharacter.LFunction ψ)) →
+  ∀ (m : Ideal (𝓞 ℚ)) (hm : m ≠ ⊥) (χ : RayClassCharacter ℚ m), StripZerosOnLine (rayHeckeContinuation hm χ)
+rayHecke_familyRH_iff_right_band : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m), StripZerosOnLine (rayHeckeContinuation hm χ)) ↔
+    ∀ (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m) (w : ℂ),
+      1 / 2 < w.re → w.re ≤ 31 / 32 → rayHeckeContinuation hm χ w ≠ 0
+allDedekindRH_iff_rayHecke_right_band : (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K) ↔
+  ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m)
+    (w : ℂ), 1 / 2 < w.re → w.re ≤ 31 / 32 → rayHeckeContinuation hm χ w ≠ 0
+'FieldTarget.dedekindContinuation_eq_rayHecke_product_of_local_factors' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.rayHecke_zero_lifts_to_dedekind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHecke_zero_reflects_into_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_all_rayHeckeRH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rational_rayHeckeRH_of_dirichlet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHecke_familyRH_iff_right_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_rayHecke_right_band' depends on axioms: [propext, Classical.choice, Quot.sound]
