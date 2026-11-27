@@ -1,0 +1,89 @@
+Discriminant-23 interval replay on the finite logarithmic theta model.
+The centered model uses outward Arb balls and the analytic Taylor and theta allowances.
+The absolute height bound applies only when a whole band is listed.
+
+python check_discriminant23_centered.py --band 19/2 20 --step 1/16
+python_flint=0.9.0 norm_cutoff=64 retained_terms=174 u_cutoff=4 theta_order=46 precision_digits=44
+crossing=1 open_height_bracket=(41/4,165/16) direction=-1 slope_lower=[9.9959725e-7 +/- 3.01e-16]
+crossing=2 open_height_bracket=(91/8,183/16) direction=1 slope_lower=[2.3985935e-7 +/- 2.05e-15]
+crossing=3 open_height_bracket=(103/8,207/16) direction=-1 slope_lower=[4.4326669e-8 +/- 4.88e-16]
+crossing=4 open_height_bracket=(117/8,235/16) direction=1 slope_lower=[3.3451369e-9 +/- 4.84e-17]
+crossing=5 open_height_bracket=(263/16,33/2) direction=-1 slope_lower=[4.8964581e-11 +/- 1.71e-19]
+crossing=6 open_height_bracket=(273/16,137/8) direction=1 slope_lower=[1.4063069e-11 +/- 7.07e-20]
+crossing=7 open_height_bracket=(289/16,145/8) direction=-1 slope_lower=[4.3688463e-12 +/- 1.13e-20]
+crossing=8 open_height_bracket=(305/16,153/8) direction=1 slope_lower=[1.5147425e-12 +/- 7.60e-21]
+band=[19/2,20] full_real_interval=[0,1] positive_simple_zeros=8 boxes=496 minimum_checked_margin=[3.2801482e-15 +/- 2.82e-23] elapsed_s=15.303
+
+python check_discriminant23_centered.py --digits 48 --band 19/2 20 --step 1/16
+python_flint=0.9.0 norm_cutoff=64 retained_terms=174 u_cutoff=4 theta_order=46 precision_digits=60
+crossing=1 open_height_bracket=(41/4,165/16) direction=-1 slope_lower=[9.9959725e-7 +/- 3.01e-16]
+crossing=2 open_height_bracket=(91/8,183/16) direction=1 slope_lower=[2.3985935e-7 +/- 2.05e-15]
+crossing=3 open_height_bracket=(103/8,207/16) direction=-1 slope_lower=[4.4326669e-8 +/- 4.88e-16]
+crossing=4 open_height_bracket=(117/8,235/16) direction=1 slope_lower=[3.3451369e-9 +/- 4.84e-17]
+crossing=5 open_height_bracket=(263/16,33/2) direction=-1 slope_lower=[4.8964581e-11 +/- 1.71e-19]
+crossing=6 open_height_bracket=(273/16,137/8) direction=1 slope_lower=[1.4063069e-11 +/- 7.07e-20]
+crossing=7 open_height_bracket=(289/16,145/8) direction=-1 slope_lower=[4.3688463e-12 +/- 1.13e-20]
+crossing=8 open_height_bracket=(305/16,153/8) direction=1 slope_lower=[1.5147425e-12 +/- 7.60e-21]
+band=[19/2,20] full_real_interval=[0,1] positive_simple_zeros=8 boxes=496 minimum_checked_margin=[3.2801482e-15 +/- 2.82e-23] elapsed_s=22.741
+
+python check_discriminant23_centered.py --digits 48 --cutoff 128 --end 5 --order 92 --degree 48 --step 1/16 --band 20 40
+python_flint=0.9.0 norm_cutoff=128 retained_terms=342 u_cutoff=5 theta_order=92 precision_digits=60
+crossing=1 open_height_bracket=(81/4,325/16) direction=-1 slope_lower=[4.4723485e-13 +/- 3.69e-21]
+crossing=2 open_height_bracket=(22,353/16) direction=1 slope_lower=[1.5924607e-14 +/- 1.81e-22]
+crossing=3 open_height_bracket=(363/16,91/4) direction=-1 slope_lower=[5.8191459e-15 +/- 1.64e-23]
+crossing=4 open_height_bracket=(381/16,191/8) direction=1 slope_lower=[1.6415408e-15 +/- 4.45e-23]
+crossing=5 open_height_bracket=(201/8,403/16) direction=-1 slope_lower=[2.0798853e-16 +/- 4.10e-24]
+crossing=6 open_height_bracket=(421/16,211/8) direction=1 slope_lower=[1.7358526e-17 +/- 4.91e-25]
+crossing=7 open_height_bracket=(435/16,109/4) direction=-1 slope_lower=[3.3141037e-18 +/- 2.50e-26]
+crossing=8 open_height_bracket=(449/16,225/8) direction=1 slope_lower=[6.7324308e-19 +/- 4.67e-27]
+crossing=9 open_height_bracket=(461/16,231/8) direction=-1 slope_lower=[2.5072175e-19 +/- 2.94e-27]
+crossing=10 open_height_bracket=(237/8,475/16) direction=1 slope_lower=[1.4567557e-19 +/- 3.58e-27]
+crossing=11 open_height_bracket=(499/16,125/4) direction=-1 slope_lower=[2.0572928e-20 +/- 5.34e-29]
+crossing=12 open_height_bracket=(257/8,515/16) direction=1 slope_lower=[5.0018182e-21 +/- 1.51e-29]
+crossing=13 open_height_bracket=(535/16,67/2) direction=-1 slope_lower=[3.9587922e-22 +/- 1.60e-30]
+crossing=14 open_height_bracket=(275/8,551/16) direction=1 slope_lower=[3.7803795e-23 +/- 1.46e-31]
+crossing=15 open_height_bracket=(559/16,35) direction=-1 slope_lower=[1.3870059e-23 +/- 3.72e-31]
+crossing=16 open_height_bracket=(575/16,36) direction=1 slope_lower=[4.4963482e-24 +/- 3.19e-32]
+crossing=17 open_height_bracket=(589/16,295/8) direction=-1 slope_lower=[1.2305996e-24 +/- 4.36e-32]
+crossing=18 open_height_bracket=(301/8,603/16) direction=1 slope_lower=[4.9638794e-25 +/- 1.53e-33]
+crossing=19 open_height_bracket=(621/16,311/8) direction=-1 slope_lower=[9.2570400e-26 +/- 3.10e-34]
+crossing=20 open_height_bracket=(317/8,635/16) direction=1 slope_lower=[2.4307177e-26 +/- 2.75e-34]
+band=[20,40] full_real_interval=[0,1] positive_simple_zeros=20 boxes=1210 minimum_checked_margin=[2.2006413e-28 +/- 4.98e-36] elapsed_s=75.492
+
+python check_discriminant23_centered.py --digits 64 --cutoff 128 --end 5 --order 92 --degree 48 --step 1/16 --band 20 40
+python_flint=0.9.0 norm_cutoff=128 retained_terms=342 u_cutoff=5 theta_order=92 precision_digits=76
+crossing=1 open_height_bracket=(81/4,325/16) direction=-1 slope_lower=[4.4723485e-13 +/- 3.69e-21]
+crossing=2 open_height_bracket=(22,353/16) direction=1 slope_lower=[1.5924607e-14 +/- 1.81e-22]
+crossing=3 open_height_bracket=(363/16,91/4) direction=-1 slope_lower=[5.8191459e-15 +/- 1.64e-23]
+crossing=4 open_height_bracket=(381/16,191/8) direction=1 slope_lower=[1.6415408e-15 +/- 4.45e-23]
+crossing=5 open_height_bracket=(201/8,403/16) direction=-1 slope_lower=[2.0798853e-16 +/- 4.10e-24]
+crossing=6 open_height_bracket=(421/16,211/8) direction=1 slope_lower=[1.7358526e-17 +/- 4.91e-25]
+crossing=7 open_height_bracket=(435/16,109/4) direction=-1 slope_lower=[3.3141037e-18 +/- 2.50e-26]
+crossing=8 open_height_bracket=(449/16,225/8) direction=1 slope_lower=[6.7324308e-19 +/- 4.67e-27]
+crossing=9 open_height_bracket=(461/16,231/8) direction=-1 slope_lower=[2.5072175e-19 +/- 2.94e-27]
+crossing=10 open_height_bracket=(237/8,475/16) direction=1 slope_lower=[1.4567557e-19 +/- 3.58e-27]
+crossing=11 open_height_bracket=(499/16,125/4) direction=-1 slope_lower=[2.0572928e-20 +/- 5.34e-29]
+crossing=12 open_height_bracket=(257/8,515/16) direction=1 slope_lower=[5.0018182e-21 +/- 1.51e-29]
+crossing=13 open_height_bracket=(535/16,67/2) direction=-1 slope_lower=[3.9587922e-22 +/- 1.60e-30]
+crossing=14 open_height_bracket=(275/8,551/16) direction=1 slope_lower=[3.7803795e-23 +/- 1.46e-31]
+crossing=15 open_height_bracket=(559/16,35) direction=-1 slope_lower=[1.3870059e-23 +/- 3.72e-31]
+crossing=16 open_height_bracket=(575/16,36) direction=1 slope_lower=[4.4963482e-24 +/- 3.19e-32]
+crossing=17 open_height_bracket=(589/16,295/8) direction=-1 slope_lower=[1.2305996e-24 +/- 4.36e-32]
+crossing=18 open_height_bracket=(301/8,603/16) direction=1 slope_lower=[4.9638794e-25 +/- 1.53e-33]
+crossing=19 open_height_bracket=(621/16,311/8) direction=-1 slope_lower=[9.2570400e-26 +/- 3.10e-34]
+crossing=20 open_height_bracket=(317/8,635/16) direction=1 slope_lower=[2.4307177e-26 +/- 2.75e-34]
+band=[20,40] full_real_interval=[0,1] positive_simple_zeros=20 boxes=1210 minimum_checked_margin=[2.2006413e-28 +/- 4.98e-36] elapsed_s=110.818
+
+python check_discriminant23_centered.py --digits 92 --cutoff 230 --end 6 --order 165 --degree 88 --step 1/16 --band 100 1601/16
+python_flint=0.9.0 norm_cutoff=230 retained_terms=592 u_cutoff=6 theta_order=165 precision_digits=104
+band=[100,1601/16] full_real_interval=[0,1] positive_simple_zeros=0 boxes=4 minimum_checked_margin=[1.1791605e-68 +/- 4.21e-76] elapsed_s=1.213
+
+python check_discriminant23_centered.py 20
+python check_discriminant23_centered.py --digits 92 --cutoff 230 --end 6 --order 165 100
+python check_discriminant23_centered.py --digits 672 --cutoff 1641 --end 12 --order 1185 4861/5
+python_flint=0.9.0 norm_cutoff=64 retained_terms=174 u_cutoff=4 theta_order=46 precision_digits=44
+t=20 finite=[-1.761763237338806e-13 +/- 3.65e-29] model_error=[6.08020e-25 +/- 4.20e-31] completed=[-1.76176323734e-13 +/- 7.28e-25] elapsed_s=0.0045
+python_flint=0.9.0 norm_cutoff=230 retained_terms=592 u_cutoff=6 theta_order=165 precision_digits=104
+t=100 finite=[4.448008688548703e-68 +/- 2.13e-84] model_error=[4.32092e-92 +/- 4.40e-98] completed=[4.44800868855e-68 +/- 1.30e-80] elapsed_s=0.0259
+python_flint=0.9.0 norm_cutoff=1641 retained_terms=4290 u_cutoff=12 theta_order=1185 precision_digits=684
+t=4861/5 finite=[8.709695067790313e-663 +/- 3.38e-679] model_error=[1.19872e-667 +/- 3.64e-674] completed=[8.710e-663 +/- 4.25e-667] elapsed_s=1.7170

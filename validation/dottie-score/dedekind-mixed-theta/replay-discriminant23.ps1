@@ -192,6 +192,8 @@ if ($HigherPolynomialBands) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23NineteenHalvesSigns.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23NineteenHalvesBand.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23PrecisionBudget.lean')
+        (Join-Path $PSScriptRoot 'CenteredFoldedMellin.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CenteredModel.lean')
     )
 }
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'

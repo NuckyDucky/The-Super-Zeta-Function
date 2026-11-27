@@ -94,6 +94,16 @@ private theorem thetaDensity_norm_le (N : ℕ) {c : ℝ} {z : ℂ}
   exact (norm_sub_le _ _).trans
     (add_le_add (hSum _ discriminant23_principal_form_growth) (hSum _ discriminant23_other_form_growth))
 
+theorem discriminant23_phaseDensity_real_norm_le (N : ℕ) (u : ℝ) :
+    ‖discriminant23PhaseDensityUpTo N (u : ℂ)‖ ≤
+      (((characterThetaTermsUpTo discriminant23PrincipalForm N).card +
+        (characterThetaTermsUpTo discriminant23OtherForm N).card : ℕ) : ℝ) := by
+  have hu : (u : ℂ) ∈ sphere ((u - 1 / 4 : ℝ) : ℂ) (1 / 4 : ℝ) := by
+    rw [mem_sphere, dist_eq_norm, ← Complex.ofReal_sub, Complex.norm_real, Real.norm_eq_abs]
+    rw [show u - (u - 1 / 4) = 1 / 4 by ring]
+    norm_num
+  simpa only [densityMass, Nat.cast_add] using thetaDensity_norm_le N hu
+
 private theorem radialPhaseWeight_norm_le (odd : Bool) {w : ℂ} {L u : ℝ}
     (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) (hu : u ∈ Icc (0 : ℝ) L) :
     ‖radialPhaseWeight odd w u‖ ≤ 2 * (L + 1) := by
@@ -318,5 +328,6 @@ end
 #print axioms discriminant23_phaseTaylor_error_at_64_4_96
 #print axioms discriminant23_phaseTaylorUpTo_error
 #print axioms discriminant23_exists_uniform_phaseApproximation
+#print axioms discriminant23_phaseDensity_real_norm_le
 
 end FieldTarget
