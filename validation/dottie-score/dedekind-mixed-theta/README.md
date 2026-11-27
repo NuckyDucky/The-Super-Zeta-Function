@@ -293,6 +293,8 @@ If I ask for any positive tolerance, Lean supplies one set of cutoffs and one Ta
 
 For a positive rational tolerance $a/b$, I can choose the parameters using three integer inequalities. Lean proves that the inequalities can all be satisfied and that they imply the requested absolute error for both readings. [Integer parameter tests](DedekindDiscriminant23AdaptiveParameters.lean)
 
+If I keep norms through $1641$, use $48$ panels, and take Taylor depth $2238$, then Lean gives value and slope errors strictly below $10^{-666}$ for every $0\le\Re w\le1$ at every height. The integer tests bound the retained lattice term count by $14{,}450$. To certify a sign on a region I still need the finite-sum enclosure to clear this error. [Lean theorem](DedekindDiscriminant23PrecisionBudget.lean) · [Independent source replay](discriminant23-precision-budget-replay-and-axioms.txt)
+
 ## Finite-order Hecke functions across number fields
 
 I take a number field, a nonzero modulus ideal and a ray-class character. If I weight each ray class by that character and clear the pole at $w=1$, I get one entire reading of the actual Hecke series. Lean transfers zeros and multiplicities at the same $w$. If the complete and on-line counts agree through arbitrarily high checkpoints, every strip zero of that character lies on the line. [Hecke reading and counts](RayHeckeStripCounts.lean)
