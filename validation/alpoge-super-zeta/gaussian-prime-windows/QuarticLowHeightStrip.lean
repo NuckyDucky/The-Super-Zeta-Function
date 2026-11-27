@@ -222,8 +222,32 @@ theorem certified_quartic_completed_low_strip_ne_zero {w : ℂ}
   rw [hz, zero_re] at hf
   exact (not_le_of_gt (by positivity : 0 < Real.exp (-20) / 4)) hf
 
+/-- A measuring circle contained in the low strip has a uniform signed
+margin with the constant contour weight `-I`. -/
+theorem certified_quartic_completed_low_circle_sign {c : ℂ} {r : ℝ}
+    (hleft : r ≤ c.re) (hright : c.re + r ≤ 1) (hheight : |c.im| + r ≤ 1 / 20) :
+    ∀ w ∈ Metric.sphere c r,
+      (-I * QuarticRealFormula.completed w).im ≤ -(Real.exp (-20) / 4) := by
+  intro w hw
+  have hd := Metric.mem_sphere.mp hw
+  rw [dist_eq_norm] at hd
+  have hre := abs_le.mp ((abs_re_le_norm (w - c)).trans hd.le)
+  rw [sub_re] at hre
+  have h₀ : 0 ≤ w.re := by linarith only [hre.1, hleft]
+  have h₁ : w.re ≤ 1 := by linarith only [hre.2, hright]
+  have hi : |w.im - c.im| ≤ r := by
+    simpa only [sub_im] using (abs_im_le_norm (w - c)).trans hd.le
+  have ht : |w.im| ≤ 1 / 20 := by
+    calc
+      |w.im| ≤ |w.im - c.im| + |c.im| := by
+        simpa only [sub_add_cancel] using abs_add (w.im - c.im) c.im
+      _ ≤ 1 / 20 := by linarith only [hi, hheight]
+  rw [neg_mul, neg_im, mul_im, I_re, I_im, zero_mul, one_mul, zero_add]
+  exact neg_le_neg (certified_quartic_completed_low_strip_floor h₀ h₁ ht)
+
 #print axioms certified_quartic_mellin_low_strip_floor
 #print axioms certified_quartic_completed_low_strip_floor
 #print axioms certified_quartic_completed_low_strip_ne_zero
+#print axioms certified_quartic_completed_low_circle_sign
 
 end QuarticKernel

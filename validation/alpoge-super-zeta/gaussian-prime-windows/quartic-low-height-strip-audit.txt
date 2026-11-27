@@ -1,8 +1,9 @@
 Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
-QuarticLowHeightStrip source 24b31bb8c0048f3220652c7ae33b0d765bb3583b
+QuarticLowHeightStrip source 4fa5f6b47f156be7a9d003c34a32bacd53ee3b93
 Try this: ring_nf
 'QuarticKernel.certified_quartic_mellin_low_strip_floor' depends on axioms: [propext, Classical.choice, Quot.sound]
 'QuarticKernel.certified_quartic_completed_low_strip_floor' depends on axioms: [propext, Classical.choice, Quot.sound]
 'QuarticKernel.certified_quartic_completed_low_strip_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticKernel.certified_quartic_completed_low_circle_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
 Lean exit=0
-Elapsed seconds=25.853
+Elapsed seconds=38.305
