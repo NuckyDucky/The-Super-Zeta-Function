@@ -62,18 +62,55 @@ theorem imaginaryCenterPowerBox_contains {m d : ℤ} (hd : 0 < d) (k : ℕ) :
 /-- Keep the first 34 Taylor terms in the rectangle calculation. -/
 def discriminant23ReadingTerms : ℕ := 34
 
-def discriminant23ReadingPartialTaylor (odd : Bool) (w : ℂ) : ℂ :=
-  ∑ k ∈ Finset.range discriminant23ReadingTerms, (discriminant23ReadingCoefficient odd k : ℂ) *
+def discriminant23ReadingTaylorUpTo (odd : Bool) (terms : ℕ) (w : ℂ) : ℂ :=
+  ∑ k ∈ Finset.range terms, (discriminant23ReadingCoefficient odd k : ℂ) *
     discriminant23ReadingArgument w ^ k
 
+def discriminant23ReadingPartialTaylor (odd : Bool) (w : ℂ) : ℂ :=
+  discriminant23ReadingTaylorUpTo odd discriminant23ReadingTerms w
+
 /-- The imaginary endpoints are centered offsets. The real endpoints are in
-units of one twelfth in the normalized coordinate. -/
+units of the supplied horizontal denominator. -/
+def discriminant23ReadingCellBoxUpTo (coefficient : ℕ → Box) (terms : ℕ)
+    (m radius d left right dx : ℤ) : ComplexBox :=
+  let argument : ComplexBox := ⟨rangeRatio left right dx, rangeRatio (-radius) radius d⟩
+  ComplexBox.horner argument (ComplexBox.shiftedCoefficient
+    (fun j ↦ ComplexBox.real (coefficient j)) (imaginaryCenterPowerBox m d) terms) 0 terms
+
 def discriminant23ReadingCellBox (coefficient : ℕ → Box)
     (m radius d left right : ℤ) : ComplexBox :=
-  let argument : ComplexBox := ⟨rangeRatio left right 12, rangeRatio (-radius) radius d⟩
-  ComplexBox.horner argument (ComplexBox.shiftedCoefficient
+  discriminant23ReadingCellBoxUpTo coefficient discriminant23ReadingTerms m radius d left right 12
+
+theorem discriminant23_readingCellBoxUpTo_contains
+    (coefficient : ℕ → Box) (odd : Bool) (terms : ℕ)
+    (hCoeff : ∀ k, Contains (coefficient k) (discriminant23ReadingCoefficient odd k))
+    {m radius d left right dx : ℤ} (hd : 0 < d) (hx : 0 < dx) {w : ℂ}
+    (hRe₀ : (left : ℝ) / (dx : ℝ) ≤ (discriminant23ReadingArgument w).re)
+    (hRe₁ : (discriminant23ReadingArgument w).re ≤ (right : ℝ) / (dx : ℝ))
+    (hIm₀ : (-(radius : ℝ)) / (d : ℝ) ≤ (discriminant23ReadingArgument w).im - (m : ℝ) / (d : ℝ))
+    (hIm₁ : (discriminant23ReadingArgument w).im - (m : ℝ) / (d : ℝ) ≤ (radius : ℝ) / (d : ℝ)) :
+    ComplexBox.Contains (discriminant23ReadingCellBoxUpTo coefficient terms m radius d left right dx)
+      (discriminant23ReadingTaylorUpTo odd terms w) := by
+  let c := imaginaryCenter m d
+  let z := discriminant23ReadingArgument w - c
+  have hZre : z.re = (discriminant23ReadingArgument w).re := by
+    simp [z, c, imaginaryCenter, Complex.sub_re]
+  have hZim : z.im = (discriminant23ReadingArgument w).im - (m : ℝ) / (d : ℝ) := by
+    simp [z, c, imaginaryCenter, Complex.sub_im]
+  have hz : ComplexBox.Contains ⟨rangeRatio left right dx, rangeRatio (-radius) radius d⟩ z := by
+    constructor
+    · rw [hZre]
+      exact rangeRatio_contains hx hRe₀ hRe₁
+    · rw [hZim]
+      exact rangeRatio_contains hd (by simpa only [Int.cast_neg] using hIm₀) hIm₁
+  have hs := ComplexBox.shifted_horner_contains hz
     (fun j ↦ ComplexBox.real (coefficient j)) (imaginaryCenterPowerBox m d)
-    discriminant23ReadingTerms) 0 discriminant23ReadingTerms
+    (fun j ↦ (discriminant23ReadingCoefficient odd j : ℂ)) c
+    (fun j ↦ ComplexBox.real_contains (hCoeff j)) (imaginaryCenterPowerBox_contains hd)
+    terms
+  have hTotal : c + z = discriminant23ReadingArgument w := by dsimp [z]; ring
+  rw [hTotal] at hs
+  exact hs
 
 theorem discriminant23_readingCellBox_contains
     (coefficient : ℕ → Box) (odd : Bool)
@@ -84,27 +121,9 @@ theorem discriminant23_readingCellBox_contains
     (hIm₀ : (-(radius : ℝ)) / (d : ℝ) ≤ (discriminant23ReadingArgument w).im - (m : ℝ) / (d : ℝ))
     (hIm₁ : (discriminant23ReadingArgument w).im - (m : ℝ) / (d : ℝ) ≤ (radius : ℝ) / (d : ℝ)) :
     ComplexBox.Contains (discriminant23ReadingCellBox coefficient m radius d left right)
-      (discriminant23ReadingPartialTaylor odd w) := by
-  let c := imaginaryCenter m d
-  let z := discriminant23ReadingArgument w - c
-  have hZre : z.re = (discriminant23ReadingArgument w).re := by
-    simp [z, c, imaginaryCenter, Complex.sub_re]
-  have hZim : z.im = (discriminant23ReadingArgument w).im - (m : ℝ) / (d : ℝ) := by
-    simp [z, c, imaginaryCenter, Complex.sub_im]
-  have hz : ComplexBox.Contains ⟨rangeRatio left right 12, rangeRatio (-radius) radius d⟩ z := by
-    constructor
-    · rw [hZre]
-      exact rangeRatio_contains (by norm_num) hRe₀ hRe₁
-    · rw [hZim]
-      exact rangeRatio_contains hd (by simpa only [Int.cast_neg] using hIm₀) hIm₁
-  have hs := ComplexBox.shifted_horner_contains hz
-    (fun j ↦ ComplexBox.real (coefficient j)) (imaginaryCenterPowerBox m d)
-    (fun j ↦ (discriminant23ReadingCoefficient odd j : ℂ)) c
-    (fun j ↦ ComplexBox.real_contains (hCoeff j)) (imaginaryCenterPowerBox_contains hd)
-    discriminant23ReadingTerms
-  have hTotal : c + z = discriminant23ReadingArgument w := by dsimp [z]; ring
-  rw [hTotal] at hs
-  exact hs
+      (discriminant23ReadingPartialTaylor odd w) :=
+  discriminant23_readingCellBoxUpTo_contains coefficient odd discriminant23ReadingTerms hCoeff
+    hd (dx := 12) (by norm_num) hRe₀ hRe₁ hIm₀ hIm₁
 
 def discriminant23BelowBox (coefficient : ℕ → Box) (j : Fin 16) : ComplexBox :=
   discriminant23ReadingCellBox coefficient (61 + 10 * (j.val : ℤ)) 5 288 (-1) 1
@@ -121,6 +140,7 @@ def discriminant23ReadingMargin : ℤ :=
   83 * 10 ^ 18
 
 #print axioms imaginaryCenterPowerBox_contains
+#print axioms discriminant23_readingCellBoxUpTo_contains
 #print axioms discriminant23_readingCellBox_contains
 
 end

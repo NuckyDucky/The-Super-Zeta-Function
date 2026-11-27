@@ -128,23 +128,34 @@ private theorem reflectedExp_partial_error {T : ℝ} {N : ℕ}
       add_le_add h₁ h₂
     _ = _ := by ring
 
-/-- The complex error of the shared Taylor polynomial is bounded by the absolute
-mass of the weights times the error for one reflected pair. -/
+/-- Bound the remainder at each node by its own exponential radius. -/
+theorem reflectedExpPolynomial_error_le_of_radii {ι : Type*} (s : Finset ι) (a r T : ι → ℝ)
+    (odd : Bool) (N : ℕ) {z : ℂ}
+    (hcut : ∀ i ∈ s, T i / (N.succ : ℝ) ≤ 1 / 2)
+    (hz : ∀ i ∈ s, ‖(r i : ℂ) * z‖ ≤ T i) :
+    ‖reflectedExpSum s a r odd z - reflectedExpPolynomial s a r odd N z‖ ≤
+      ∑ i ∈ s, |a i| * (4 * (T i) ^ N / (N.factorial : ℝ)) := by
+  rw [reflectedExpSum, reflectedExpPolynomial_eq_sum, ← Finset.sum_sub_distrib]
+  refine (norm_sum_le _ _).trans ?_
+  apply Finset.sum_le_sum
+  intro i hi
+  rw [← mul_sub, norm_mul, Complex.norm_real, Real.norm_eq_abs]
+  exact mul_le_mul_of_nonneg_left
+    (reflectedExp_partial_error (hcut i hi) odd (hz i hi)) (abs_nonneg _)
+
+/-- A common radius gives the absolute mass of the weights times one remainder. -/
 theorem reflectedExpPolynomial_error_le {ι : Type*} (s : Finset ι) (a r : ι → ℝ)
     (odd : Bool) (N : ℕ) {z : ℂ} {T : ℝ}
     (hcut : T / (N.succ : ℝ) ≤ 1 / 2)
     (hz : ∀ i ∈ s, ‖(r i : ℂ) * z‖ ≤ T) :
     ‖reflectedExpSum s a r odd z - reflectedExpPolynomial s a r odd N z‖ ≤
       (∑ i ∈ s, |a i|) * (4 * T ^ N / (N.factorial : ℝ)) := by
-  rw [reflectedExpSum, reflectedExpPolynomial_eq_sum, ← Finset.sum_sub_distrib]
-  refine (norm_sum_le _ _).trans ?_
   rw [Finset.sum_mul]
-  apply Finset.sum_le_sum
-  intro i hi
-  rw [← mul_sub, norm_mul, Complex.norm_real, Real.norm_eq_abs]
-  exact mul_le_mul_of_nonneg_left (reflectedExp_partial_error hcut odd (hz i hi)) (abs_nonneg _)
+  exact reflectedExpPolynomial_error_le_of_radii s a r (fun _ ↦ T) odd N
+    (fun _ _ ↦ hcut) hz
 
 #print axioms reflectedExpParity_eq
+#print axioms reflectedExpPolynomial_error_le_of_radii
 #print axioms reflectedExpPolynomial_error_le
 
 end
