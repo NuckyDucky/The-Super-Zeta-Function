@@ -153,3 +153,18 @@ Use the original pinned AxiomMath checkout and Lean toolchain for this replay.
 pwsh ./validation/dottie-score/dedekind-mixed-theta/replay.ps1 `
   -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -Cyclotomic
 ~~~
+
+## All abelian number fields
+
+If $K/\mathbb Q$ is abelian, Lean now supplies a positive modulus and a rational embedding of $K$ into its cyclotomic field from the pinned Kronecker–Weber proof. If the Dirichlet strip-zero statement holds for every character of every positive modulus, Lean gives Dedekind RH for every abelian number field. Conversely, taking the cyclotomic fields recovers the Dirichlet statement. The input matches `DirichletLZerosOnLine` in the compact replay of Alpöge's proof. [Lean equivalence](DedekindAbelianFields.lean) · [Kronecker–Weber source](https://github.com/AxiomMath/DedekindZetaZeroFree/blob/09afbb4ce6570c1615d58509dc197fc9f0956b7d/vendor/class-field-theory/Lean4/ClassFieldTheory/KroneckerWeber/Core.lean#L68) · [Dirichlet statement](https://github.com/lsernau/grh-lean/blob/72fead102f663d5c7a407964a13dc0cf9d977207/grh-compact/src/Statements.lean#L10)
+
+## Solvable Galois extensions at the same input
+
+If $L/K$ is Galois with solvable group, Lean composes the entire factors along the abelian steps. For the Dedekind continuations of $K$ and $L$ it gives an entire function $g$ with $Z_L(w)=g(w)Z_K(w)$ for every $w\ne1$. A zero of the lower field is a zero of the upper field at the same $w$. If the lower field satisfies Dedekind RH, the upper field satisfies it exactly when the strip zeros of $g$ lie on the line. [Entire factor and zero transfer](DedekindSolvableQuotient.lean)
+
+For a solvable Galois extension $L/\mathbb Q$, Lean chooses the subfield fixed by the commutator subgroup. The rational Dirichlet input handles that abelian subfield. The remaining statement for $L$ is the critical-line result for the entire relative factor. [Field criterion](DedekindSolvableQuotient.lean) · [Exact types and axiom output](field-extensions-replay-and-axioms.txt)
+
+~~~powershell
+pwsh ./validation/dottie-score/dedekind-mixed-theta/replay.ps1 `
+  -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -FieldExtensions
+~~~
