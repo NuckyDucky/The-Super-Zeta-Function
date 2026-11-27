@@ -3,7 +3,8 @@
 param(
     [Parameter(Mandatory)] [string] $AxiomCheckout,
     [Parameter(Mandatory)] [string] $LeanBin,
-    [ValidateRange(1, 8)] [int] $BuildThreads = 1
+    [ValidateRange(1, 8)] [int] $BuildThreads = 1,
+    [switch] $DirichletMod23
 )
 
 $ErrorActionPreference = 'Stop'
@@ -60,6 +61,16 @@ $sources = @(
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23CompletedProduct.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23DottieReading.lean')
 )
+if ($DirichletMod23) {
+    $sources += @(
+        (Join-Path $PSScriptRoot 'DedekindRationalPrimeFibers.lean')
+        (Join-Path $PSScriptRoot 'DedekindEulerByRationalPrime.lean')
+        (Join-Path $PSScriptRoot 'DedekindCyclotomicLocalEuler.lean')
+        (Join-Path $PSScriptRoot 'DedekindCyclotomicContinuation.lean')
+        (Join-Path $PSScriptRoot 'DedekindCyclotomicSubfields.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23DirichletReduction.lean')
+    )
+}
 $importsNeeded = foreach ($source in $sources) {
     foreach ($line in (Get-Content -LiteralPath $source)) {
         if ($line -cmatch '^import ((?:Mathlib|ClassFieldTheory|DedekindZetaZeroFree)\.[A-Za-z0-9._]+)$') {
@@ -68,7 +79,12 @@ $importsNeeded = foreach ($source in $sources) {
     }
 }
 $dependencies = @($importsNeeded | Sort-Object -Unique)
-$out = (New-Item -ItemType Directory -Force -Path (Join-Path $checkout '.lake/super-zeta-discriminant23/lib')).FullName
+$libraryPath = if ($DirichletMod23) {
+    '.lake/super-zeta-discriminant23-mod23/lib'
+} else {
+    '.lake/super-zeta-discriminant23/lib'
+}
+$out = (New-Item -ItemType Directory -Force -Path (Join-Path $checkout $libraryPath)).FullName
 $oldPath = $env:Path
 $oldLeanPath = $env:LEAN_PATH
 $oldThreads = $env:LEAN_NUM_THREADS
