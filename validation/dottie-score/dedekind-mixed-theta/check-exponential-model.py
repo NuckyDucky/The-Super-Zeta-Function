@@ -72,9 +72,11 @@ def main(precision=144):
         outer_bound + constant_error + outer * slope_error
     ) * (radius / outer) ** 2
     direct_bound = relative_bound(radius)
-    assert 1 < outer_bound < arb("1.01631")
+    outer_limit = arb("1.01631")
+    inner_limit = arb(".8954")
+    assert 1 < outer_bound < outer_limit
     assert inner_bound < arb(".954")
-    assert direct_bound < arb(".8954")
+    assert direct_bound < inner_limit
     print("Outer relative error", outer_bound)
     print("Inner relative error from Schwarz", inner_bound.upper())
     print("Inner relative error from direct intervals", direct_bound)
@@ -88,6 +90,22 @@ def main(precision=144):
     print("Height band center", replay["HEIGHT"], "with half width 1/4096")
     print("Cauchy height drift allowance", height_drift)
     print("Signed margin on every circle in the band", height_margin)
+
+    target_margin = arb(".0396")
+    allowed_loss = 1 - inner_limit - target_margin
+    calculated_shift = (outer - radius) * allowed_loss / (outer_limit + allowed_loss)
+    exact_shift = arb(1625) / 3460192
+    assert (calculated_shift - exact_shift).contains(0)
+    assert exact_shift > height_half_width
+    calculated_clearance = outer - radius - exact_shift
+    assert calculated_clearance > 0
+    centered_drift = (outer_bound * exact_shift / calculated_clearance).upper()
+    calculated_margin = (1 - direct_bound - centered_drift).lower()
+    assert calculated_margin > target_margin
+    print("Required signed margin", target_margin)
+    print("Calculated height half width 1625/3460192", exact_shift)
+    print("Verified centered drift allowance", centered_drift)
+    print("Signed margin throughout the calculated band", calculated_margin)
 
     modulus_bound = sum(
         (abs(coeff) * (radius / h) ** k for k, coeff in enumerate(coefficients)), arb(0)

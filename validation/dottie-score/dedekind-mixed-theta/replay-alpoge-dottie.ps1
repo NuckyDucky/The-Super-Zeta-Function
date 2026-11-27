@@ -88,7 +88,8 @@ try {
         'ContourTaylor', 'ContourCircleSamples', 'DottieCayleyWeightedRiemann', 'DottieCayleySameInput',
         'DottieCayleySamplePolynomial', 'DottieCayleyGrowthBridge', 'DottieCandidateCircles',
         'DottieNearOneDisk', 'DottieAlpogeDisk', 'DottieNativeCandidate', 'DottieNativeExclusion',
-        'DedekindMixedThetaSampleModel', 'ContourExponentialModel', 'DottieHeightBand'
+        'DedekindMixedThetaSampleModel', 'ContourExponentialModel', 'DottieHeightBand',
+        'DottieCalculatedHeightBand'
     )
     foreach ($name in $modules) {
         $target = Join-Path $stage "$name.lean"

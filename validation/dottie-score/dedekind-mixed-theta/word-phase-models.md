@@ -47,6 +47,14 @@ Take the same center $c=3/4+100000001i$, radius $31/128$, and exponential refere
 
 If the relative error is at most $0.8954$ on the original circle, then the imaginary part of $-i\zeta/P$ is at most $-0.1046$ there. The outer circle of radius $1/4$ gives a norm bound of $2.01631$ for that weighted reading. With clearance $31/4096$, Cauchy's estimate bounds the change under any of the chosen shifts by $2.01631/31$. So every translated circle keeps a signed margin above $0.039$. The 144-bit and 192-bit interval replays give a lower bound above $0.0396$. [Lean height-band proof](DottieHeightBand.lean) · [Lean audit](dottie-height-band-margin-audit.txt) · [Interval replay](exponential-model-interval-audit.txt)
 
+Keep $0.0396$ as the requested signed margin. The relative error bound $1.01631$ controls the centered weighted reading $-i(\zeta/P-1)$, whose derivative is the same as that of $-i\zeta/P$. If the starting margin is $m$, the margin to keep is $\mu$, the centered norm bound is $M$, and the two radii are $r<R$, then the safe half-width is
+
+$$
+\delta=\frac{(m-\mu)(R-r)}{M+(m-\mu)}.
+$$
+
+Here this gives $1625/3460192$, approximately $0.000469627$. Both interval replays enclose a margin above $0.0396$ throughout the larger band. For a Dedekind continuation, the completed mixed-theta bound supplies the field's part of the outer allowance. A holomorphic weight with a bounded norm and a signed reference circle then supply the remaining inputs. [Calculated band and field theorem](DottieCalculatedHeightBand.lean) · [Lean audit](dottie-calculated-height-band-audit.txt)
+
 ## Replay
 
 Build the project Lean library on 4.19.0 for the two-lap reference. Compile the archived [FlankReferences module](../../../archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/FlankReferences.lean) into the same library search path, then check [DottieTwoLapReference](../../alpoge-super-zeta/DottieTwoLapReference.lean). The field and exponential models build with the pinned 4.35.0-rc3 [Alpöge-Dottie replay](replay-alpoge-dottie.ps1) after the sampled contour replay.
