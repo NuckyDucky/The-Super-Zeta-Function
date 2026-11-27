@@ -81,6 +81,22 @@ private theorem pole_denominator_ne_zero {w : ℂ} (hlo : 0 < w.re) (hhi : w.re 
   have hw₁ : w ≠ 1 := by rintro rfl; norm_num at hhi
   exact mul_ne_zero hw₀ (sub_ne_zero.mpr hw₁.symm)
 
+theorem mixedThetaCompletedTruncation_differentiableOn_strip (K : Type)
+    [Field K] [NumberField K] {cut : ℝ} (hcut : 1 ≤ cut) :
+    DifferentiableOn ℂ (mixedThetaCompletedTruncation K cut) (Complex.re ⁻¹' Ioo (0 : ℝ) 1) := by
+  have hden : Differentiable ℂ (fun w : ℂ ↦ w * (1 - w)) :=
+    differentiable_id.mul ((differentiable_const (1 : ℂ)).sub differentiable_id)
+  apply (mixedThetaTruncation_differentiable K hcut).differentiableOn.sub
+  exact (differentiable_const (Theta.mixedThetaPair K).f₀).differentiableOn.div hden.differentiableOn
+    (fun _ hw ↦ pole_denominator_ne_zero hw.1 hw.2)
+
+theorem mixedThetaCompletedTruncation_differentiableOn_disk (K : Type)
+    [Field K] [NumberField K] {cut ρ : ℝ} {c : ℂ} (hcut : 1 ≤ cut)
+    (hLeft : ρ < c.re) (hRight : ρ < 1 - c.re) :
+    DifferentiableOn ℂ (mixedThetaCompletedTruncation K cut) (closedBall c ρ) :=
+  (mixedThetaCompletedTruncation_differentiableOn_strip K hcut).mono
+    (fun _ hw ↦ closedBall_re_inside hLeft hRight hw)
+
 def mixedThetaCompletedTaylorAllowance (K : Type) [Field K] [NumberField K]
     (cut : ℝ) (c : ℂ) (ρ r : ℝ) (n : ℕ) : ℝ :=
   mixedThetaWeightedTail K cut 0 +
@@ -95,12 +111,7 @@ theorem mixedTheta_completed_disk_taylor_error_le (K : Type) [Field K] [NumberFi
     ‖mixedThetaCompletedReading K (c + z) -
       ∑ k ∈ Finset.range n, contourTaylorCoeff (mixedThetaCompletedTruncation K cut) c ρ k * z ^ k‖ ≤
       mixedThetaCompletedTaylorAllowance K cut c ρ r n := by
-  have hden : Differentiable ℂ (fun w : ℂ ↦ w * (1 - w)) :=
-    differentiable_id.mul ((differentiable_const (1 : ℂ)).sub differentiable_id)
-  have hF : DifferentiableOn ℂ (mixedThetaCompletedTruncation K cut) (closedBall c (ρ : ℝ)) := by
-    apply (mixedThetaTruncation_differentiable K hcut).differentiableOn.sub
-    exact (differentiable_const (Theta.mixedThetaPair K).f₀).differentiableOn.div hden.differentiableOn
-      (fun w hw ↦ (closedBall_re_inside hLeft hRight hw).elim pole_denominator_ne_zero)
+  have hF := mixedThetaCompletedTruncation_differentiableOn_disk K hcut hLeft hRight
   have hP := contourTaylor_tail_le hF (fun w hw ↦
       mixedThetaCompletedTruncation_norm_le_circleAllowance K hcut hLeft hRight
         (sphere_subset_closedBall hw)) hr hz n

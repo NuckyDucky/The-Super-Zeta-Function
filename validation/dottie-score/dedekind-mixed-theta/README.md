@@ -269,6 +269,8 @@ For a rational disk inside the strip, I take coefficients from the finite Mellin
 
 If I fix the radii and the clearance from the strip edges, Lean gives one Mellin cutoff and Taylor degree for any positive error target, at every allowed center height. The coefficient identity divides the $n$th derivative by $n!$. For the folded Mellin reading, this cancels the factorial in the coefficient error and leaves the weighted radial tail divided by $\rho^n$. [Uniform analytic allowance](DedekindDiskTaylorAccuracy.lean) · [Coefficient error](DedekindTaylorCoefficientError.lean)
 
+For the $n$th coefficient at $c$, I integrate the two folded phases with weights $(\log x)^n$ and $(-\log x)^n$, then divide by $n!$. The two pole terms are $(-1)^n/c^{n+1}$ and $1/(1-c)^{n+1}$, both multiplied by the same theta constant and subtracted. If the outer disk stays in the strip, Lean identifies this formula with the coefficient in the disk test. The error is still the radial tail plus the Taylor tail. [Exact moment and disk bound](DedekindMellinMomentCoefficients.lean) · [Lean output](dedekind-mellin-moment-coefficients-replay-and-axioms.txt)
+
 Replay these results with `-HigherPolynomialBands`. [Lean output and axiom checks](dedekind-polynomial-bands-replay-and-axioms.txt)
 
 ## Discriminant-23 ideal norms and class number

@@ -158,6 +158,7 @@ if ($HigherPolynomialBands) {
         (Join-Path $PSScriptRoot 'DedekindDiskTaylorError.lean')
         (Join-Path $PSScriptRoot 'DedekindDiskTaylorAccuracy.lean')
         (Join-Path $PSScriptRoot 'DedekindTaylorCoefficientError.lean')
+        (Join-Path $PSScriptRoot 'DedekindMellinMomentCoefficients.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23HigherPanel.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23SixBandSigns.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23SixBand.lean')
