@@ -89,3 +89,13 @@ Lean proves that the integer phase reduction gives the original interval endpoin
 With the same 1,024 pairs, signs, imports, and one-worker setup, the rational replay took 73.433 seconds and the cached replay took 58.734 seconds. Both runs used eight separate 128-pair checks in one Lean process. The single 1,024-pair computation reached the memory limit. [Rational replay audit](DottieSharpRational1024Chunks.audit.txt) · [Cached replay audit](DottieSharpCached1024Chunks.audit.txt)
 
 The reference subtotal now covers the first 256 consecutive rows. [Reference theorem](DottieFastReferencePrefix256.lean#L122) · [Axioms](DottieFastReferencePrefix256.audit.txt)
+
+## Direct row replay for the full sharp prefix
+
+The direct evaluator uses the same lattice signs and sums both coordinates of all eleven moments. Lean proves that every full row and every contiguous span agrees with the original scalar sums. The exact table for rows 100 and 101 passes again using this evaluator. [Row identities](DottieDirectJointMomentRows.lean) · [Span and circle theorems](DottieDirectJointMomentSpans.lean#L29) · [Two-row proof](DottieDirectJointMomentSpanExample.lean#L11) · [Axiom audit](DottieDirectJointMomentSpanExample.audit.txt)
+
+Use the pinned Lean and compiled imports to run the ranges in the [run plan](DottieSharpCandidateRunPlan.json). For each range, pass its start, stop and output path to `replay_sharp_candidates.py` along with the Lean executable and `DottieSharpCandidateMain.lean`. Keep the plan and its checkpoint files in one directory. The runner saves completed rows and resumes at the first unfinished row.
+
+Run `python -B collect_sharp_candidates.py <plan>` to see progress. With all 37,984 rows present, `--lean-output DottieFullSharpCandidate.lean` adds the integer totals and their box comparison. Lean checks the boxes with `decide +kernel`. The circle theorem takes the exact equality to the full span and the reference ceiling as explicit inputs.
+
+The compiled run matched all 22 entries on each of the three already certified rows, 100, 101 and 37983. Resuming an interrupted two-row run reproduced the same checkpoint bytes.

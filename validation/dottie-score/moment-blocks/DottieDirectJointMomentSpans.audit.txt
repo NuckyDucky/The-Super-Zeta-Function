@@ -1,0 +1,8 @@
+DottieDirectJointMomentSpans source 669251730948e300e92f3c90844b8efc5ba3a1b2
+'QuarticModel.DottieFixedIntervals.dottie_direct_joint_moment_span_agrees' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_margin_of_direct_span' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieDirectJointMomentSpans exit=0 (11.511 seconds)
