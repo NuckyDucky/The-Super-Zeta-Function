@@ -40,8 +40,24 @@ C(w)\ne0\text{ for every }w\text{ with }1/2<\operatorname{Re}w<1
 $$
 The certified band covers the smaller heights. The field's reflected zero relation accounts for the left half at the same height. [Higher-right theorem](DedekindDiscriminant23DirichletReduction.lean) · [Exact Lean output](discriminant23-dirichlet-mod23-replay-and-axioms.txt)
 
+## Cumulative counts and multiplicities
+
+If $0<\operatorname{Re} w<1$, the pole polynomial and the Gamma factors are analytic and nonzero at $w$. So the whole-plane Mellin reading preserves the multiplicity of the field's Dedekind continuation at $w$. The entire reading has a nonzero value at zero for every number field in this construction. It extends across both edges of the open strip, so its isolated zeros form a finite set on every bounded height band. [Multiplicity transfer](DedekindMixedThetaSignedRings.lean) · [Finiteness and complete counts](DedekindFiniteStripCounts.lean)
+
+If $0<\operatorname{Re}w<1$, write $m_K(w)$ for the multiplicity of the Dedekind continuation of $K$ at $w$, with zero multiplicity when it is nonzero there. Write $m_C(w)$ for the multiplicity in the character fold. Lean gives
+$$
+m_L(w)=m_F(w)+2m_C(w).
+$$
+If I sum through $|\operatorname{Im}w|\le T$, the same equation holds for the complete count, for the count on the line, and for the count off the line. If $T\le7/6$, Lean gives count zero for $L$ and for $C$. [Local orders and complete counts](DedekindDiscriminant23ZeroCounts.lean)
+
+If the Dirichlet input at $23$ is supplied, the off-line field count is twice the off-line character count. If the total and on-line character counts agree up to arbitrarily high checkpoints, Lean proves Dedekind RH for $L$. If that field has all of its strip zeros on the line, the counts agree at every checkpoint. The general counting theorem gives the same cumulative criterion using a field's own entire Mellin reading. [Character count criterion](DedekindDiscriminant23ZeroCounts.lean) · [General field count criterion](DedekindFiniteStripCounts.lean)
+
+On the line the two Mellin phases of $C$ are conjugate, so $C(1/2+it)$ is real. If its real part is positive at a lower height and negative at a higher height, Lean gives a zero of $C$ and of $\zeta_L$ at the same point between those heights. [Sign-bracket theorem](DedekindDiscriminant23ZeroCounts.lean)
+
 ## Replay
 
 Run the [pinned discriminant-23 replay](replay-discriminant23.ps1) with the checkout and Lean version in the [archive README](README.md). [Exact Lean output](discriminant23-dottie-field-replay-and-axioms.txt)
 
 Add `-DirichletMod23` to the same command to replay the cyclotomic dependencies and the modulus-23 theorem. [Modulus-23 replay output](discriminant23-dirichlet-mod23-replay-and-axioms.txt)
+
+The same `-DirichletMod23` replay includes the multiplicity transfer and both count criteria. [Count replay output and axioms](discriminant23-zero-counts-replay-and-axioms.txt)
