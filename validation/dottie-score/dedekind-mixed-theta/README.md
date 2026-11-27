@@ -218,3 +218,9 @@ pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-cyclic-euler.ps1 `
 Take the splitting field of $X^3-X-1$. Lean gives the Galois group $S_3$, identifies the quadratic subfield $\mathbb Q(\sqrt{-23})$, and proves that the relative extension is cyclic of degree three. [Field and group](DedekindDiscriminant23Field.lean) · [Relative extension](DedekindDiscriminant23Quadratic.lean)
 
 If $|w-3/4|\le31/128$, then the completed class product built from the two discriminant-23 theta sums has real part at most $-1/400$. Lean proves the lattice and integral bounds and applies them throughout the closed disk. The same-input identity with the repository's completed field reading is the next Lean handoff. [Formula and exact bounds](discriminant23-dottie.md) · [Disk theorem](Discriminant23DottieDisk.lean) · [Lean output](discriminant23-replay-and-axioms.txt)
+
+## Discriminant-23 ideal norms and class number
+
+I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)
+
+Lean identifies the two forms in my disk formula with the element norm on the full ring of integers and with the element norm divided by $2$ on an ideal of norm $2$. Every ideal class has a representative of norm at most $3$. The ideals above $2$ and $3$ give exactly three classes, and Lean proves they are distinct. [Norm forms](DedekindDiscriminant23NormForms.lean) · [Class number](DedekindDiscriminant23ClassNumber.lean) · [Derivation and replay command](discriminant23-field-arithmetic.md) · [Exact Lean output](discriminant23-field-replay-and-axioms.txt)

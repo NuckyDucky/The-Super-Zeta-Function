@@ -34,6 +34,12 @@ $sources = @(
     (Join-Path $PSScriptRoot 'Discriminant23ThetaEnvelope.lean')
     (Join-Path $PSScriptRoot 'DottieClassMellinBounds.lean')
     (Join-Path $PSScriptRoot 'Discriminant23DottieDisk.lean')
+    (Join-Path $PSScriptRoot 'DedekindUnramifiedFrobenius.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23Unramified.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23Integers.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23NormForms.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23ClassRepresentatives.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23ClassNumber.lean')
 )
 $importsNeeded = foreach ($source in $sources) {
     foreach ($line in (Get-Content -LiteralPath $source)) {
