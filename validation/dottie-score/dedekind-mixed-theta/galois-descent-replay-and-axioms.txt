@@ -1,0 +1,200 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Replay option: -GlobalDescent -BuildThreads 1
+
+Build completed successfully (14455 jobs).
+AxiomMath relative Dottie imports exit=0
+Build completed successfully (8969 jobs).
+
+Relative Dottie dependency module exits
+FieldTarget exit=0
+DedekindDottieSetup exit=0
+DedekindFieldInputs exit=0
+DedekindFieldUniverses exit=0
+DottieDyadicGeometry exit=0
+DedekindFiniteDottieCover exit=0
+DedekindCofinalSignedRings exit=0
+DedekindMixedTheta exit=0
+DedekindMixedThetaTail exit=0
+DedekindMixedThetaSignedRings exit=0
+DedekindMixedThetaCompletedRings exit=0
+DedekindCuretonThorner exit=0
+DedekindMixedThetaRightEdge exit=0
+DedekindRationalPrimeFibers exit=0
+DedekindEulerByRationalPrime exit=0
+DedekindCyclotomicLocalEuler exit=0
+DedekindCyclotomicContinuation exit=0
+DedekindCyclotomicSubfields exit=0
+DedekindAbelianFields exit=0
+DedekindSolvableQuotient exit=0
+DottieRationalContour exit=0
+DedekindMixedThetaOscillation exit=0
+DedekindMixedThetaFiniteSamples exit=0
+DedekindMixedThetaSampleCover exit=0
+DedekindSolvableClosure exit=0
+DedekindRelativeDottie exit=0
+DedekindRelativeDottieSamples exit=0
+
+Cyclic Euler factors and global Dedekind descent
+
+Super Zeta source DedekindCyclicSubgroupWeights 41657a93cf83979ae51be2e777799a90ff8ee65d
+exists_cyclic_conjugate_count_weights : ∀ (G : Type u_1) [inst : Group G] [inst_1 : Fintype G],
+  ∃ c, ∀ (g : G), (∑ H, c H * ∑ x, if x⁻¹ * g * x ∈ ↑H then 1 else 0) = ↑(Fintype.card G)
+'FieldTarget.exists_cyclic_subgroup_weights' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_cyclic_conjugate_count_weights' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclicSubgroupWeights exit=0
+Super Zeta source DedekindUnramifiedFrobenius b0d74e6350b6896dc0e55a35f58f395d1b69c4c3
+@frobenius_pow_mem_fixingSubgroup_iff : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K] [inst_1 : NumberField K]
+  [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [inst_5 : IsGalois K L] (E : IntermediateField K L)
+  (p : HeightOneSpectrum (𝓞 K)) (Q : HeightOneSpectrum (𝓞 ↥E)) (P : HeightOneSpectrum (𝓞 L)),
+  Q.asIdeal.LiesOver p.asIdeal →
+    P.asIdeal.LiesOver Q.asIdeal →
+      Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+        ∀ (σ : Gal(L/K)),
+          IsArithFrobAt (𝓞 K) σ P.asIdeal → ∀ (n : ℕ), σ ^ n ∈ E.fixingSubgroup ↔ Q.asIdeal.inertiaDeg (𝓞 K) ∣ n
+'FieldTarget.unramified_iff_inertia_bot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.frobenius_pow_mem_fixingSubgroup_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindUnramifiedFrobenius exit=0
+Super Zeta source DedekindPrimeFiberCounting 157311e5ea74fe31e68416d1247deaea96de2742
+@frobenius_conjugate_count_eq_prime_degree_sum : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [inst_5 : IsGalois K L]
+  (E : IntermediateField K L) (p : HeightOneSpectrum (𝓞 K)) (P : HeightOneSpectrum (𝓞 L)),
+  P.asIdeal.LiesOver p.asIdeal →
+    Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+      ∀ (σ : Gal(L/K)),
+        IsArithFrobAt (𝓞 K) σ P.asIdeal →
+          ∀ (n : ℕ),
+            (∑ x, if x⁻¹ * σ ^ n * x ∈ E.fixingSubgroup then 1 else 0) =
+              ↑(Nat.card ↥E.fixingSubgroup) * ∑ Q, if (↑Q).inertiaDeg (𝓞 K) ∣ n then ↑((↑Q).inertiaDeg (𝓞 K)) else 0
+'FieldTarget.frobenius_conjugate_count_eq_prime_degree_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindPrimeFiberCounting exit=0
+Super Zeta source DedekindCyclicEulerCoefficients 8ca3663f507da2b1bcfde751ff5c7a2996b11be4
+@exists_weighted_unramified_prime_power_match : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [IsGalois K L],
+  ∃ a,
+    ∀ (p : HeightOneSpectrum (𝓞 K)) (P : HeightOneSpectrum (𝓞 L)),
+      P.asIdeal.LiesOver p.asIdeal →
+        Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+          ∀ (n : ℕ), ∑ H, a H * primePowerResidueCount (IntermediateField.fixedField ↑H) p n = ↑(Nat.card Gal(L/K))
+'FieldTarget.exists_weighted_unramified_prime_power_match' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclicEulerCoefficients exit=0
+Super Zeta source DedekindCyclicEulerFactors 821bc27811eb0337157d9a919d020861b12d2223
+@exists_weighted_unramified_local_factor_product : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [IsGalois K L],
+  ∃ a,
+    ∀ (p : HeightOneSpectrum (𝓞 K)) (P : HeightOneSpectrum (𝓞 L)),
+      P.asIdeal.LiesOver p.asIdeal →
+        Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+          ∀ {A : Type} [inst_6 : CommGroup A] (u : ℕ → A),
+            ∏ H, (∏ Q, u ((↑Q).inertiaDeg (𝓞 K))) ^ a H = u 1 ^ ↑(Nat.card Gal(L/K))
+'FieldTarget.exists_weighted_unramified_local_factor_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclicEulerFactors exit=0
+Super Zeta source DedekindFiniteRamification 0b30d1bb226615e1b9182e2568b7877ba00474b3
+exists_ramified_base_prime_finset : ∀ (K : Type u_1) (L : Type u_2) [inst : Field K] [NumberField K] [inst_2 : Field L]
+  [NumberField L] [inst_4 : Algebra K L],
+  ∃ S,
+    ∀ (p : HeightOneSpectrum (𝓞 K)), p ∈ S ↔ ∃ P, P.asIdeal.LiesOver p.asIdeal ∧ ¬Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal
+'FieldTarget.exists_ramified_base_prime_finset' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFiniteRamification exit=0
+Super Zeta source DedekindCyclicZetaLocal 0083921c300fadee860438c8a705c813b5847c73
+@exists_weighted_unramified_dedekind_local_product : ∀ {K : Type u_4} [inst : Field K] [inst_1 : NumberField K]
+  {L : Type u_5} [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [IsGalois K L],
+  ∃ a,
+    ∀ (p : HeightOneSpectrum (𝓞 K)) (P : HeightOneSpectrum (𝓞 L)),
+      P.asIdeal.LiesOver p.asIdeal →
+        Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+          ∀ (w : ℂ),
+            0 < w.re →
+              ∏ H, (localDedekindDenominator (↥(IntermediateField.fixedField ↑H)) p w)⁻¹ ^ (a H).toNat =
+                (1 - ↑(Ideal.absNorm p.asIdeal) ^ (-w))⁻¹ ^ Nat.card Gal(L/K) *
+                  ∏ H, (localDedekindDenominator (↥(IntermediateField.fixedField ↑H)) p w)⁻¹ ^ (-a H).toNat
+'FieldTarget.exists_weighted_unramified_dedekind_local_product' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindCyclicZetaLocal exit=0
+Super Zeta source DedekindCyclicZetaProducts 6cc4bd833f2d4601de154da440150038815b00e6
+@exists_cyclic_fixed_field_zeta_product : ∀ {K : Type u_4} [inst : Field K] [inst_1 : NumberField K] {L : Type u_5}
+  [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [IsGalois K L] {ZK : ℂ → ℂ},
+  IsDedekindZeta K ZK →
+    ∀ {ZE : CyclicSubgroups Gal(L/K) → ℂ → ℂ},
+      (∀ (H : CyclicSubgroups Gal(L/K)), IsDedekindZeta (↥(IntermediateField.fixedField ↑H)) (ZE H)) →
+        ∃ S a,
+          (∀ (p : HeightOneSpectrum (𝓞 K)),
+              p ∈ S ↔ ∃ P, P.asIdeal.LiesOver p.asIdeal ∧ ¬Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal) ∧
+            ∀ (w : ℂ),
+              w ≠ 1 →
+                ∏ H, (finiteEulerCorrection (↥(IntermediateField.fixedField ↑H)) S w * ZE H w) ^ (a H).toNat =
+                  (finiteEulerCorrection K S w * ZK w) ^ Nat.card Gal(L/K) *
+                    ∏ H, (finiteEulerCorrection (↥(IntermediateField.fixedField ↑H)) S w * ZE H w) ^ (-a H).toNat
+'FieldTarget.finiteEulerCorrection_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.hasProd_dedekind_euler_outside_finset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_cyclic_fixed_field_zeta_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclicZetaProducts exit=0
+Super Zeta source DedekindCyclicZetaDescent f66946e9dc501feb41819ca0674314823a0094f4
+dedekindZeta_zero_of_galois_extension : ∀ (K L : Type) [inst : Field K] [inst_1 : NumberField K] [inst_2 : Field L]
+  [inst_3 : NumberField L] [inst_4 : Algebra K L] [IsGalois K L] {ZK ZL : ℂ → ℂ},
+  IsDedekindZeta K ZK → IsDedekindZeta L ZL → ∀ {w : ℂ}, 0 < w.re → w ≠ 1 → ZK w = 0 → ZL w = 0
+dedekindZetaRH_of_galois_embedding : ∀ (K : Type u_1) (L : Type) [inst : Field K] [inst_1 : NumberField K]
+  [inst_2 : Field L] [inst_3 : NumberField L] [IsGalois ℚ L] (ι : K →ₐ[ℚ] L), DedekindZetaRH L → DedekindZetaRH K
+dedekindZetaRH_of_all_galois_over_rat : (∀ (F : Type) [inst : Field F] [inst_1 : NumberField F] [IsGalois ℚ F],
+    DedekindZetaRH F) →
+  ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K
+'FieldTarget.dedekindZeta_zero_of_galois_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_galois_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_galois_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_rational_normalClosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_all_galois_over_rat' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclicZetaDescent exit=0
+Super Zeta source DedekindGaloisDottieTarget 15486b38cc2345bcaf52125b2078640dbe5b9818
+def FieldTarget.HasDottieCompletedSampleHeightCover : (L : Type) → [inst : Field L] → [NumberField L] → Prop :=
+fun L [Field L] [NumberField L] =>
+  ∀ (t : ℝ),
+    0 ≤ t →
+      ∃ l u,
+        t ∈ Icc l u ∧
+          ∀ (ε : ℝ),
+            0 < ε →
+              ∀ (w : ℂ),
+                w.im ∈ Icc l u →
+                  1 / 2 + ε ≤ w.re →
+                    w.re ≤ 31 / 32 →
+                      ∃ a,
+                        w ∈ Metric.ball (dottieScaledRightCenter (↑a).1 (↑a).2) (dottieScaledRadius (↑a).2) ∧
+                          HasDottieCompletedSamples L (↑a).1 (↑a).2
+def FieldTarget.HasDottieCompletedSamples : (K : Type) → [inst : Field K] → [NumberField K] → ℝ → ℕ → Prop :=
+fun K [Field K] [NumberField K] T n =>
+  ∃ R,
+    1 ≤ R ∧
+      ∃ m,
+        0 < m ∧
+          ∃ axis,
+            ‖axis‖ = 1 ∧
+              ∃ margin,
+                0 < margin ∧
+                  ∃ tail,
+                    2 *
+                          ∫ (t : ℝ) in Ioi R,
+                            ‖(DedekindZetaZeroFree.AbelianQuotient.Theta.mixedThetaPair K).f t -
+                                (DedekindZetaZeroFree.AbelianQuotient.Theta.mixedThetaPair K).f₀‖ ≤
+                        tail ∧
+                      ∀ a ∈ contourQuarterTurns,
+                        ∀ j ≤ m,
+                          (axis *
+                                    mixedThetaCompletedTruncation K R
+                                      (rationalContourSample (dottieScaledRightCenter T n) (dottieScaledRadius n) a m
+                                        j)).im +
+                                mixedThetaContourVariation K R (dottieScaledRightCenter T n) (dottieScaledRadius n) *
+                                  (2 * dottieScaledRadius n / ↑m) +
+                              tail ≤
+                            -margin
+dedekindZetaRH_of_dirichlet_and_nonabelian_galois_sample_cover : (∀ (m : ℕ) [inst : NeZero m]
+    (χ : DirichletCharacter ℂ m), StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (∀ (L : Type) [inst : Field L] [inst_1 : NumberField L] [IsGalois ℚ L],
+      ¬IsAbelianGalois ℚ L → HasDottieCompletedSampleHeightCover L) →
+    ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K
+'FieldTarget.dedekindZetaRH_of_completed_sample_height_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_dirichlet_and_nonabelian_galois_sample_cover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindGaloisDottieTarget exit=0

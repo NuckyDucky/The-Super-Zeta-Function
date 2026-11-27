@@ -3,7 +3,8 @@
 param(
     [Parameter(Mandatory)] [string] $AxiomCheckout,
     [Parameter(Mandatory)] [string] $LeanBin,
-    [ValidateRange(1, 8)] [int] $BuildThreads = 1
+    [ValidateRange(1, 8)] [int] $BuildThreads = 1,
+    [switch] $GlobalDescent
 )
 
 $ErrorActionPreference = 'Stop'
@@ -25,7 +26,8 @@ $version
 "AxiomMath $head"
 "Mathlib $mathlib"
 
-$out = (New-Item -ItemType Directory -Force -Path (Join-Path $root '.lake/super-zeta-cyclic-euler/lib')).FullName
+$replayName = if ($GlobalDescent) { 'super-zeta-cyclic-zeta-descent' } else { 'super-zeta-cyclic-euler' }
+$out = (New-Item -ItemType Directory -Force -Path (Join-Path $root ".lake/$replayName/lib")).FullName
 $modules = @(
     'DedekindCyclicSubgroupWeights'
     'DedekindUnramifiedFrobenius'
@@ -45,6 +47,21 @@ $dependencies = @(
     '+Mathlib.RingTheory.Frobenius:olean'
     '+Mathlib.Tactic.Linarith:olean'
 )
+if ($GlobalDescent) {
+    $modules += @(
+        'DedekindFiniteRamification'
+        'DedekindCyclicZetaLocal'
+        'DedekindCyclicZetaProducts'
+        'DedekindCyclicZetaDescent'
+        'DedekindGaloisDottieTarget'
+    )
+    $dependencies += @(
+        '+DedekindZetaZeroFree.LFunctions.Dedekind.EulerProductRegrouping:olean'
+        '+Mathlib.Algebra.Group.Units.Hom:olean'
+        '+Mathlib.Analysis.SpecialFunctions.Pow.Deriv:olean'
+        '+Mathlib.RingTheory.DedekindDomain.Different:olean'
+    )
+}
 
 $oldPath = $env:Path
 $oldLeanPath = $env:LEAN_PATH
@@ -54,18 +71,31 @@ $pwsh = (Get-Command pwsh).Source
 try {
     $env:Path = $bin + $separator + $oldPath
     $env:LEAN_NUM_THREADS = [string] $BuildThreads
+    if ($GlobalDescent) {
+        & $pwsh -NoLogo -NoProfile -NonInteractive -File (Join-Path $PSScriptRoot 'replay.ps1') `
+            -AxiomCheckout $root -LeanBin $bin -BuildThreads $BuildThreads -RelativeDottie
+        if ($LASTEXITCODE -ne 0) { throw 'Relative Dottie replay failed.' }
+    }
     & $lake -d $root build @dependencies
-    if ($LASTEXITCODE -ne 0) { throw 'Mathlib build failed.' }
+    if ($LASTEXITCODE -ne 0) { throw 'Lake dependency build failed.' }
 
     $imports = & $lake -d $root env $pwsh -NoLogo -NoProfile -NonInteractive -Command '$env:LEAN_PATH'
     if ($LASTEXITCODE -ne 0 -or !$imports) { throw 'Could not read the Lake import path.' }
-    $env:LEAN_PATH = $out + $separator + ($imports | Select-Object -Last 1)
+    $importPaths = @($out)
+    if ($GlobalDescent) { $importPaths += Join-Path $root '.lake/super-zeta-relative-dottie/lib' }
+    $importPaths += $imports | Select-Object -Last 1
+    $env:LEAN_PATH = $importPaths -join $separator
 
     foreach ($name in $modules) {
         $file = Join-Path $PSScriptRoot "$name.lean"
         $blob = (& git hash-object --no-filters -- $file).Trim()
         "Super Zeta source $name $blob"
-        & $lean "-j$BuildThreads" '-M3300' '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' (Join-Path $out "$name.olean") $file
+        $memory = if ($name -in @('DedekindCyclicZetaProducts', 'DedekindCyclicZetaDescent', 'DedekindGaloisDottieTarget')) {
+            6000
+        } else {
+            3300
+        }
+        & $lean "-j$BuildThreads" "-M$memory" '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' (Join-Path $out "$name.olean") $file
         $status = $LASTEXITCODE
         "$name exit=$status"
         if ($status -ne 0) { throw "$name failed." }

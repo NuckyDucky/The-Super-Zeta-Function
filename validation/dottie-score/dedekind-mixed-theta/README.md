@@ -193,9 +193,22 @@ $$
 =u(1)^{|G|}.
 $$
 
-On $\operatorname{Re} w>0$, take $u(d)=(1-(Np)^{-dw})^{-1}$ for $d>0$. This matches the base Euler factor with the factors of the cyclic fixed fields. The global transfer still needs the ramified Euler factors and analytic continuation of the product identity. [Cyclic weights](DedekindCyclicSubgroupWeights.lean) · [Prime-power coefficients](DedekindCyclicEulerCoefficients.lean) · [Exact product](DedekindCyclicEulerFactors.lean) · [Lean replay and axioms](cyclic-euler-replay-and-axioms.txt)
+On $\operatorname{Re} w>0$, take $u(d)=(1-(Np)^{-dw})^{-1}$ for $d>0$. This matches the base Euler factor with the factors of the cyclic fixed fields. [Cyclic weights](DedekindCyclicSubgroupWeights.lean) · [Prime-power coefficients](DedekindCyclicEulerCoefficients.lean) · [Exact product](DedekindCyclicEulerFactors.lean) · [Lean replay and axioms](cyclic-euler-replay-and-axioms.txt)
 
 ~~~powershell
 pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-cyclic-euler.ps1 `
   -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin>
+~~~
+
+## Same-input zero transfer for any Galois group
+
+Let $S$ consist of the base primes with a ramified prime above them in $L/K$. For each intermediate field $E$, multiply $Z_E(w)$ by the Euler denominators over $S$. The resulting product uses the primes outside $S$ for $\operatorname{Re} w>1$. The cyclic weights give a finite identity between these corrected zeta values. Lean carries the identity to every $w\ne1$. [Ramified prime set](DedekindFiniteRamification.lean) · [Local factors](DedekindCyclicZetaLocal.lean) · [Continued product](DedekindCyclicZetaProducts.lean)
+
+If $\operatorname{Re} w>0$ and $Z_K(w)=0$ at $w\ne1$, the identity forces a zero of a cyclic fixed field at the same $w$. The finite corrections are nonzero there. The upper extension over that fixed field is cyclic, so its abelian quotient transfers the zero to $Z_L(w)$. If all rational Galois fields satisfy Dedekind RH, then the normal-closure transfer gives Dedekind RH for every number field. [Exact zero transfer and field reduction](DedekindCyclicZetaDescent.lean)
+
+The Dottie version takes two inputs. `hD` places the rational Dirichlet zeros on the line. `hs` supplies completed Mellin sample coverage for each nonabelian Galois field over $\mathbb Q$. At each nonnegative height, Lean needs a band and measuring disks covering the points between its near-line clearance and real part $31/32$. The finite sample bounds must give a strict boundary sign after variation and tail allowances. [Exact sample premise](DedekindGaloisDottieTarget.lean) · [Lean replay and axioms](galois-descent-replay-and-axioms.txt)
+
+~~~powershell
+pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-cyclic-euler.ps1 `
+  -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -GlobalDescent
 ~~~
