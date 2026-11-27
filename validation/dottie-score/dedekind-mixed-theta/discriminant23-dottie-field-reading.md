@@ -54,6 +54,14 @@ If the Dirichlet input at $23$ is supplied, the off-line field count is twice th
 
 On the line the two Mellin phases of $C$ are conjugate, so $C(1/2+it)$ is real. If its real part is positive at a lower height and negative at a higher height, Lean gives a zero of $C$ and of $\zeta_L$ at the same point between those heights. [Sign-bracket theorem](DedekindDiscriminant23ZeroCounts.lean)
 
+## Certified signs at heights 5 and 11/2
+
+If I keep the nonzero lattice points in $[-5,5]^2$ with norm at most $32$, the error in each theta sum is between zero and $q/100{,}000$ for $0\le q\le3/11$. The retained difference is a polynomial with exact integer coefficients. In the logarithmic radial coordinate, Lean bounds the error between the actual $C$ reading and the integral of this polynomial with its Mellin weight over $[0,3]$ by $1/100{,}000$. [Theta remainder](Discriminant23ThetaEnvelope.lean) · [Finite polynomial](DedekindDiscriminant23CharacterPolynomial.lean) · [Mellin integral bound](DedekindDiscriminant23CharacterIntegral.lean)
+
+If $|t|\le11/2$, Lean bounds the total error of the 1,024-trapezoid reading by $7/12{,}500$. The fixed-point sample sums give a lower bound $3/5{,}000$ at height $5$ and an upper bound $-1/1{,}250$ at height $11/2$. Both signs survive that error budget. Lean then gives a zero of $\zeta_L$ and $C$ at the same critical-line point with $5<t<11/2$, and an actual field vanishing order of at least two for this witness. [Integration error](DedekindDiscriminant23CharacterQuadrature.lean) · [Endpoint signs and field zero](DedekindDiscriminant23CharacterBracket.lean) · [Lean output](discriminant23-character-bracket-replay-and-axioms.txt)
+
+If I replace $w$ by $1-w$, the two Mellin powers exchange and $C$ stays the same. So the zero at $\tfrac12+it$ supplies a second zero at $\tfrac12-it$. For every $T\ge11/2$, Lean counts at least two critical-line zeros with multiplicity for $C$ and at least four for $L$. [Reflection and count theorems](DedekindDiscriminant23CharacterReflectedCounts.lean)
+
 ## Replay
 
 Run the [pinned discriminant-23 replay](replay-discriminant23.ps1) with the checkout and Lean version in the [archive README](README.md). [Exact Lean output](discriminant23-dottie-field-replay-and-axioms.txt)

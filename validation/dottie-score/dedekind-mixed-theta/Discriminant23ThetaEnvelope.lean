@@ -332,11 +332,138 @@ theorem discriminant23_classThetaStar_bounds {q : ℝ} (hq : 0 ≤ q) (hqu : q �
     mul_nonneg hq (tsum_nonneg (normFormTerm_nonneg _ hq)),
     mul_le_mul_of_nonneg_left (h1.2.trans hU1) hq⟩
 
+/-- The lattice points used for the finite character reading. -/
+def characterThetaBox : Finset (ℤ × ℤ) := (Icc (-5 : ℤ) 5).product (Icc (-5 : ℤ) 5)
+
+def characterThetaTerms (Q : ℤ → ℤ → ℤ) : Finset (ℤ × ℤ) :=
+  characterThetaBox.filter (fun p ↦ p ≠ (0, 0) ∧ Q p.1 p.2 ≤ 32)
+
+def classThetaFinite (Q : ℤ → ℤ → ℤ) (q : ℝ) : ℝ :=
+  ∑ p ∈ characterThetaTerms Q, q ^ (Q p.1 p.2).toNat
+
+private theorem lattice_square_le_scaled_tail {n : ℤ} (hn : 6 ≤ n.natAbs) :
+    latticeRatio ^ (n.natAbs ^ 2) ≤ latticeRatio ^ 10 * latticeTail n := by
+  rw [latticeTail, ite_eq_left (show 5 ≤ n.natAbs by omega), ← pow_add, ← pow_add]
+  apply pow_le_pow_of_le_one (by norm_num [latticeRatio]) (by norm_num [latticeRatio])
+  have hmul := Nat.mul_le_mul_left n.natAbs hn
+  rw [pow_two]
+  omega
+
+private theorem normFormTerm_le_scaled_tail (Q : ℤ → ℤ → ℤ)
+    (hQ : ∀ m n, m ^ 2 + n ^ 2 ≤ 2 * Q m n) {q : ℝ} (hq : 0 ≤ q) (hqu : q ≤ 3 / 11)
+    {p : ℤ × ℤ} (hp : p ∉ characterThetaBox) :
+    normalizedFormTerm Q q p ≤ latticeRatio ^ 10 * latticeTailMajor p := by
+  have hr0 : 0 ≤ latticeRatio := by norm_num [latticeRatio]
+  have hout : 6 ≤ p.1.natAbs ∨ 6 ≤ p.2.natAbs := by
+    by_contra! h
+    apply hp
+    exact mem_product.mpr ⟨mem_Icc.mpr (by omega), mem_Icc.mpr (by omega)⟩
+  apply (normFormTerm_le Q hQ hq hqu p).trans
+  rw [latticeTailMajor, mul_left_comm (latticeRatio ^ 10) (11 / 3 : ℝ)]
+  apply mul_le_mul_of_nonneg_left _ (by norm_num)
+  rcases hout with h | h
+  · calc
+      _ ≤ (latticeRatio ^ 10 * latticeTail p.1) * latticeMajor p.2 :=
+        mul_le_mul (lattice_square_le_scaled_tail h) (lattice_square_le_major _)
+          (pow_nonneg hr0 _) (mul_nonneg (pow_nonneg hr0 _) (latticeTail_nonneg _))
+      _ ≤ _ := by
+        rw [mul_assoc]
+        exact mul_le_mul_of_nonneg_left
+          (le_add_of_nonneg_right (mul_nonneg (latticeMajor_nonneg _) (latticeTail_nonneg _)))
+          (pow_nonneg hr0 _)
+  · calc
+      _ ≤ latticeMajor p.1 * (latticeRatio ^ 10 * latticeTail p.2) :=
+        mul_le_mul (lattice_square_le_major _) (lattice_square_le_scaled_tail h)
+          (pow_nonneg hr0 _) (latticeMajor_nonneg _)
+      _ ≤ _ := by
+        rw [mul_left_comm]
+        exact mul_le_mul_of_nonneg_left
+          (le_add_of_nonneg_left (mul_nonneg (latticeTail_nonneg _) (latticeMajor_nonneg _)))
+          (pow_nonneg hr0 _)
+
+private theorem classThetaFinite_eq (Q : ℤ → ℤ → ℤ)
+    (hQ : ∀ m n, m ^ 2 + n ^ 2 ≤ 2 * Q m n) (q : ℝ) :
+    classThetaFinite Q q = q * ∑ p ∈ characterThetaTerms Q, normalizedFormTerm Q q p := by
+  rw [classThetaFinite, mul_sum]
+  apply sum_congr rfl
+  intro p hp
+  have hp₀ := ((mem_filter.mp hp).2).1
+  have hpos := form_positive Q hQ hp₀
+  have hexp : (Q p.1 p.2).toNat = (Q p.1 p.2 - 1).toNat + 1 := by omega
+  rw [normalizedFormTerm, ite_eq_right hp₀, hexp, pow_succ']
+
+/-- A finite norm sum with a uniform theta remainder. The estimate uses the
+same lattice majorant as the full theta envelope. -/
+theorem classThetaStar_sub_finite_bounds (Q : ℤ → ℤ → ℤ)
+    (hQ : ∀ m n, m ^ 2 + n ^ 2 ≤ 2 * Q m n) {q : ℝ} (hq : 0 ≤ q) (hqu : q ≤ 3 / 11) :
+    0 ≤ classThetaStar Q q - classThetaFinite Q q ∧
+      classThetaStar Q q - classThetaFinite Q q ≤ q / 100000 := by
+  let f := normalizedFormTerm Q q
+  let terms := characterThetaTerms Q
+  let g (p : ℤ × ℤ) := if p ∈ terms then f p else 0
+  let small (p : ℤ × ℤ) : ℝ := if p ∈ characterThetaBox then (3 / 11 : ℝ) ^ 32 else 0
+  let scale := latticeRatio ^ 10
+  have hscale : 0 ≤ scale := by norm_num [scale, latticeRatio]
+  have hsF : Summable f := (normalizedForm_sum_le Q hQ hq hqu).1
+  have hsG : HasSum g (∑ p ∈ terms, f p) := by
+    have h : HasSum g (∑ p ∈ terms, g p) :=
+      hasSum_sum_of_ne_finset_zero (fun p hp ↦ by simp [g, hp])
+    simpa [g] using h
+  have hsmallCard : characterThetaBox.card = 121 := by decide +kernel
+  have hsSmall : HasSum small (121 * (3 / 11 : ℝ) ^ 32) := by
+    have h : HasSum small (∑ p ∈ characterThetaBox, small p) :=
+      hasSum_sum_of_ne_finset_zero (fun p hp ↦ by simp [small, hp])
+    simpa [small, hsmallCard] using h
+  have hsMajor := (latticeTailMajor_hasSum.mul_left scale).add hsSmall
+  have hTail0 (p : ℤ × ℤ) : 0 ≤ scale * latticeTailMajor p :=
+    mul_nonneg hscale (mul_nonneg (by norm_num)
+      (add_nonneg (mul_nonneg (latticeTail_nonneg _) (latticeMajor_nonneg _))
+        (mul_nonneg (latticeMajor_nonneg _) (latticeTail_nonneg _))))
+  have hgNonneg (p : ℤ × ℤ) : 0 ≤ f p - g p := by
+    by_cases hp : p ∈ terms
+    · simp [g, hp]
+    · simpa [g, hp] using normFormTerm_nonneg Q hq p
+  have hpoint (p : ℤ × ℤ) : f p - g p ≤ scale * latticeTailMajor p + small p := by
+    by_cases hp : p ∈ terms
+    · simp only [g, ite_eq_left hp, sub_self]
+      exact add_nonneg (hTail0 p) (by dsimp [small]; positivity)
+    rw [show g p = 0 by simp [g, hp], sub_zero]
+    by_cases hb : p ∈ characterThetaBox
+    · rw [show small p = (3 / 11 : ℝ) ^ 32 by simp [small, hb]]
+      apply le_add_of_nonneg_of_le (hTail0 p)
+      by_cases hz : p = (0, 0)
+      · simp [f, normalizedFormTerm, hz]
+        positivity
+      have hQp : 32 < Q p.1 p.2 := by
+        by_contra! h
+        exact hp (mem_filter.mpr ⟨hb, hz, h⟩)
+      change normalizedFormTerm Q q p ≤ (3 / 11 : ℝ) ^ 32
+      rw [normalizedFormTerm, ite_eq_right hz]
+      exact (pow_le_pow_left₀ hq hqu _).trans
+        (pow_le_pow_of_le_one (by norm_num) (by norm_num) (by omega))
+    · rw [show small p = 0 by simp [small, hb], add_zero]
+      exact normFormTerm_le_scaled_tail Q hQ hq hqu hb
+  have hsRem := hsF.sub hsG.summable
+  have hrem : (∑' p, (f p - g p)) ≤ 1 / (100000 : ℝ) := by
+    calc
+      _ ≤ ∑' p, (scale * latticeTailMajor p + small p) :=
+        hsRem.tsum_le_tsum hpoint hsMajor.summable
+      _ = _ := hsMajor.tsum_eq
+      _ ≤ _ := by norm_num [scale, latticeRatio]
+  have hExact : classThetaStar Q q - classThetaFinite Q q =
+      q * ∑' p, (f p - g p) := by
+    rw [classThetaStar_eq hQ, classThetaFinite_eq Q hQ, hsF.tsum_sub hsG.summable,
+      hsG.tsum_eq, mul_sub]
+  rw [hExact, div_eq_mul_inv]
+  exact ⟨mul_nonneg hq (tsum_nonneg hgNonneg),
+    mul_le_mul_of_nonneg_left (by simpa only [one_div] using hrem) hq⟩
+
 #print axioms discriminant23_principal_envelope_lt
 #print axioms discriminant23_other_envelope_lt
 #print axioms discriminant23_thetaScale_interval
 #print axioms discriminant23_thetaExp_interval
 #print axioms discriminant23_classThetaStar_bounds
+#print axioms classThetaStar_sub_finite_bounds
 
 end
 end FieldTarget
