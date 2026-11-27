@@ -53,3 +53,5 @@ lake env lean -j1 -s65536 -M5100 -DwarningAsError=true ../validation/dottie-scor
 ```
 
 From the packet directory, `python generate_fast_reference_replay.py 0 32 generated` generates the same first batch. Pass `--witness-root` for archived packed rows and `--checkpoint` for saved candidate totals.
+
+The refactored check now gives one exact subtotal for the first 80 consecutive rows of the original weight. Its imports cover `[0,32)`, `[32,56)`, and `[56,80)`. Smaller independent sources keep the interpreter within the memory cap. Compile those three sources to objects on the module path before checking the combined theorem. [Prefix theorem](DottieFastReferencePrefix80.lean#L15) · [Axiom audit](DottieFastReferencePrefix80.audit.txt)
