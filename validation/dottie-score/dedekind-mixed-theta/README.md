@@ -293,6 +293,16 @@ If I ask for any positive tolerance, Lean supplies one set of cutoffs and one Ta
 
 For a positive rational tolerance $a/b$, I can choose the parameters using three integer inequalities. Lean proves that the inequalities can all be satisfied and that they imply the requested absolute error for both readings. [Integer parameter tests](DedekindDiscriminant23AdaptiveParameters.lean)
 
+## Finite-order Hecke functions across number fields
+
+I take a number field, a nonzero modulus ideal and a ray-class character. If I weight each ray class by that character and clear the pole at $w=1$, I get one entire reading of the actual Hecke series. Lean transfers zeros and multiplicities at the same $w$. If the complete and on-line counts agree through arbitrarily high checkpoints, every strip zero of that character lies on the line. [Hecke reading and counts](RayHeckeStripCounts.lean)
+
+If I take the trivial character at the unit modulus, the reading gives the Dedekind zeta of the original field. If I take any ray-class character, Lean gives an abelian extension whose Dedekind zeta receives each zero at the same $w$. The finite Euler corrections stay nonzero for $0<\Re w$. If I reflect that Dedekind zero to $1-\overline w$, Lean gives a Hecke factor over the original base field that vanishes there. This gives the equivalence between Dedekind RH for all number fields and the critical-line statement for all finite-order ray-class Hecke functions. [Same-input transfer, reflection, and equivalence](RayHeckeDedekindTransfer.lean)
+
+If I supply the rational Dirichlet critical-line theorem, Lean gives the Hecke cases over $\mathbb Q$. The right-edge theorem covers $31/32<\Re w$ in the strip for every character. The all-field theorem can use a proof of nonvanishing for each character on $1/2<\Re w\le31/32$ at all heights. [Rational input and exact remaining band](RayHeckeDedekindTransfer.lean)
+
+Replay with `-RayHecke`. [Lean output and axioms](ray-hecke-replay-and-axioms.txt)
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)

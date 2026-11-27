@@ -9,7 +9,8 @@ param(
     [switch] $ComplexDerivatives,
     [switch] $CharacterQuadrature,
     [switch] $CharacterCount,
-    [switch] $HigherPolynomialBands
+    [switch] $HigherPolynomialBands,
+    [switch] $RayHecke
 )
 
 $ErrorActionPreference = 'Stop'
@@ -82,15 +83,26 @@ $sources = @(
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23CompletedProduct.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23DottieReading.lean')
 )
-if ($DirichletMod23) {
+if ($DirichletMod23 -or $RayHecke) {
     $sources += @(
         (Join-Path $PSScriptRoot 'DedekindRationalPrimeFibers.lean')
         (Join-Path $PSScriptRoot 'DedekindEulerByRationalPrime.lean')
         (Join-Path $PSScriptRoot 'DedekindCyclotomicLocalEuler.lean')
         (Join-Path $PSScriptRoot 'DedekindCyclotomicContinuation.lean')
         (Join-Path $PSScriptRoot 'DedekindCyclotomicSubfields.lean')
+    )
+}
+if ($DirichletMod23) {
+    $sources += @(
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23DirichletReduction.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23ZeroCounts.lean')
+    )
+}
+if ($RayHecke) {
+    $sources += @(
+        (Join-Path $PSScriptRoot 'DedekindAbelianFields.lean')
+        (Join-Path $PSScriptRoot 'RayHeckeStripCounts.lean')
+        (Join-Path $PSScriptRoot 'RayHeckeDedekindTransfer.lean')
     )
 }
 if ($CharacterBracket) {
@@ -195,6 +207,8 @@ $importsNeeded = foreach ($source in $sources) {
 $dependencies = @($importsNeeded | Sort-Object -Unique)
 $libraryPath = if ($HigherPolynomialBands) {
     '.lake/super-zeta-higher-polynomial-bands/lib'
+} elseif ($RayHecke) {
+    '.lake/super-zeta-ray-hecke/lib'
 } elseif ($CharacterCount) {
     '.lake/super-zeta-discriminant23-character-count/lib'
 } elseif ($CharacterBracket) {
