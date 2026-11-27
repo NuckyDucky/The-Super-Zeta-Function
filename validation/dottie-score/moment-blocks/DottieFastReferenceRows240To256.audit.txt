@@ -1,0 +1,3 @@
+DottieFastReferenceRows240To256 source 29bf09a5e721fad400cb63cc7396d8754cb52763
+'QuarticModel.dottieFastReferenceRows240To256' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieFastReferenceRows240To256 exit=0 (27.057 seconds)

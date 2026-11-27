@@ -1,0 +1,16 @@
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+'SuperZeta.DottieSpectralCalibration.riemannFactor_norm_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.DottieSpectralCalibration.corrected_relative_bound_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.DottieSpectralCalibration.corrected_weighted_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.DottieSpectralCalibration.riemannFactor_weight_differentiableOn_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.DottieSpectralCalibration.field_relative_bound_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.DottieSpectralCalibration.field_weighted_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+Lean exit=0

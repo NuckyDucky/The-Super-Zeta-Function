@@ -1,0 +1,5 @@
+DottieSharpBlockScalarReplay source 571e2fd0555600cb383a2bf5e278712146e7d16b
+'QuarticModel.DottieFixedIntervals.dottie_sharp_scalar_replay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieSharpBlockScalarReplay exit=0 (39.887 seconds)

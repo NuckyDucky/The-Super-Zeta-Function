@@ -1,0 +1,26 @@
+DottieSharpCached1024Chunks source d4ab9b6955652df6b636f74a2d8d1ad6cfa25316
+'QuarticModel.DottieFixedIntervals.dottie_sharp_cached_chunk0' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_cached_chunk128' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_cached_chunk256' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_cached_chunk384' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_cached_chunk512' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_cached_chunk640' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_cached_chunk768' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_cached_chunk896' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieSharpCached1024Chunks exit=0 (58.734 seconds)

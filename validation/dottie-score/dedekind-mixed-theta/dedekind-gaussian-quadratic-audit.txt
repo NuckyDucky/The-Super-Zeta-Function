@@ -1,0 +1,20 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindGaussianQuadratic source 369551b132a6adfb6ecb43ace37eb11300f17dcd
+@gaussianQuadratic_completionRatio : ∀ {w : ℂ},
+  0 < w.re → zetaGammaFactor GaussianQuadraticField w / w.Gammaℝ = 4 ^ (w / 2) * (w + 1).Gammaℝ
+gaussianQuadratic_dottie_band_of_beta_slope : (∀ (w : ℂ),
+    1 < w.re →
+      dedekindZeta GaussianQuadraticField w = riemannZeta w * DirichletCharacter.LFunction gaussianQuadraticChar w) →
+  ∀ {L : ℝ},
+    0 ≤ L →
+      2 * (gaussianQuadraticWeightedBeta 1 * completedRiemannZeta₀ 1 + deriv gaussianQuadraticWeightedBeta 1).re <
+          ‖gaussianQuadraticWeightedBeta 1‖ / (1 + (L + 31 / 128) ^ 2) →
+        HasFiniteDottieBoundaryCertificate (mixedThetaContinuation GaussianQuadraticField)
+          (mixedThetaCompletedReading GaussianQuadraticField) (-L) L
+'FieldTarget.gaussianQuadratic_discr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadratic_signature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadratic_completionRatio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadraticWeightedBeta_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadratic_dottie_band_of_beta_slope' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindGaussianQuadratic exit=0

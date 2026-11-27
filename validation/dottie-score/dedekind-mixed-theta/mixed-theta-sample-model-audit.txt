@@ -1,0 +1,29 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaSampleModel source 905d746ab6641cc0be2a72930ef45e6d445f942c
+mixedThetaContinuation_ne_zero_of_sample_model : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {c w ω : ℂ}
+  {P : ℂ → ℂ} {R : ℝ≥0} {h r ε q : ℝ} {N n : ℕ} (samples : ℕ → ℂ),
+  0 < c.re - ↑R →
+    0 < 1 - c.re - ↑R →
+      0 < N →
+        n ≤ N →
+          IsPrimitiveRoot ω N →
+            ‖ω‖ = 1 →
+              0 < r →
+                r < h →
+                  h < ↑R →
+                    q < 1 →
+                      (∀ j < N, ‖samples j - mixedThetaCompletedReading K (c + ↑h * ω ^ j)‖ ≤ ε) →
+                        DifferentiableOn ℂ P (closedBall c r) →
+                          (∀ z ∈ closedBall c r, P z ≠ 0) →
+                            (∀ z ∈ sphere c r,
+                                ‖contourSamplePolynomial samples ω N n ((z - c) / ↑h) - P z‖ +
+                                    mixedThetaContourSampleError K c (↑R) h r ε N n ≤
+                                  q * ‖P z‖) →
+                              w ∈ closedBall c r → mixedThetaContinuation K w ≠ 0
+'FieldTarget.contour_model_weight_im_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.contour_ne_zero_of_relative_boundary_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_norm_le_on_disk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_sample_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaContinuation_ne_zero_of_sample_model' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaSampleModel exit=0

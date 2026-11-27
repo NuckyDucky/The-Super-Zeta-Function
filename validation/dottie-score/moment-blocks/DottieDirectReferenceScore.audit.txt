@@ -1,0 +1,4 @@
+DottieDirectReferenceScore source ca879c3122f1adb6a8e71909f2e2436a8dabe74e
+'QuarticModel.dottie_reference_projection_direct_score_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_reference_decimal_of_direct_score_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieDirectReferenceScore exit=0 (16.906 seconds)

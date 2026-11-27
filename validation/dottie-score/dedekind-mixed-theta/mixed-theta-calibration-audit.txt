@@ -1,0 +1,31 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaCalibration source 7d2f198e1453fc28ee911372060f09d8d5a99d2a
+dedekindZeta_ne_zero_of_completed_sample_model : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {Z : ℂ → ℂ},
+  IsDedekindZeta K Z →
+    ∀ {c w ω : ℂ} {P : ℂ → ℂ} {R : ℝ≥0} {h r ε q : ℝ} {N n : ℕ} (samples : ℕ → ℂ),
+      0 < c.re - ↑R →
+        0 < 1 - c.re - ↑R →
+          0 < N →
+            n ≤ N →
+              IsPrimitiveRoot ω N →
+                ‖ω‖ = 1 →
+                  0 < r →
+                    r < h →
+                      h < ↑R →
+                        q < 1 →
+                          (∀ j < N,
+                              have z := c + ↑h * ω ^ j;
+                              ‖samples j - dedekindGammaFactor K z * Z z‖ ≤ ε) →
+                            DifferentiableOn ℂ P (closedBall c r) →
+                              (∀ z ∈ closedBall c r, P z ≠ 0) →
+                                (∀ z ∈ sphere c r,
+                                    ‖contourSamplePolynomial samples ω N n ((z - c) / ↑h) - P z‖ +
+                                        mixedThetaContourSampleError K c (↑R) h r ε N n ≤
+                                      q * ‖P z‖) →
+                                  w ∈ closedBall c r → Z w ≠ 0
+'FieldTarget.mixedThetaCompletedReading_eq_gamma_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_relative_bound_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_weighted_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZeta_ne_zero_of_completed_sample_model' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaCalibration exit=0

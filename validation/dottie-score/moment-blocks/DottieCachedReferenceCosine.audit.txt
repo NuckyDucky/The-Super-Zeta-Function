@@ -1,0 +1,3 @@
+DottieCachedReferenceCosine source 6c59cd74364f1b98fd9fd76938a013ebbfd4a5cc
+'QuarticModel.dottie_cached_reference_weight_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCachedReferenceCosine exit=0 (12.685 seconds)

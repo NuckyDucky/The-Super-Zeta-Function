@@ -1,0 +1,24 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+DottieOuterCapture source 1a3c5837235013a9d165ebca4a7ff15d7116f65e
+'SuperZeta.Reciprocal.cap_tendsto_fixed_of_box_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_even_first_near_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_tendsto_fixed_of_first_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.first_phase_exponent_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_tendsto_fixed_near_even_pi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_tendsto_fixed_in_outer_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieOuterCapture exit=0
+DottieDarkPhase source 030def3afdab4fbb0396d4ce91cf18e6287f6206
+'SuperZeta.Reciprocal.cap_second_phase_logNatAddPiI' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_third_log_modulus_logNatAddPiI' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_tendsto_fixed_overflow_4096' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_overflow_and_third_small_4097' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieDarkPhase exit=0
+DottiePhaseBeforeOverflow source 91b3761eb81710549c208649725b40ae888978d5
+'SuperZeta.Reciprocal.cap_second_log_modulus_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_third_log_modulus_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_third_log_abs_log_modulus_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.Reciprocal.cap_tendsto_fixed_overflow_at_even_range' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.Reciprocal.cap_odd_range_fourth_phase_near_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottiePhaseBeforeOverflow exit=0

@@ -1,0 +1,19 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaPoleDominance source 07191587d8e4251b5f078fd7225348a9801a8f0c
+dottie_completed_samples_of_mass : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {H T : ℝ} {n : ℕ},
+  0 ≤ H →
+    |T - 1 / 512| + dottieScaledRadius n ≤ H →
+      2 * ∫ (t : ℝ) in Ioi 1, ‖(Theta.mixedThetaPair K).f t - (Theta.mixedThetaPair K).f₀‖ <
+          ‖(Theta.mixedThetaPair K).f₀‖ / (1 + H ^ 2) →
+        HasDottieCompletedSamples K T n
+finite_dottie_boundary_of_mellin_mass : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {L : ℝ},
+  0 ≤ L →
+    2 * ∫ (t : ℝ) in Ioi 1, ‖(Theta.mixedThetaPair K).f t - (Theta.mixedThetaPair K).f₀‖ <
+        ‖(Theta.mixedThetaPair K).f₀‖ / (1 + (L + 31 / 128) ^ 2) →
+      HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) (-L) L
+'FieldTarget.dottie_reciprocal_pole_re_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_signed_of_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_completed_samples_of_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.finite_dottie_boundary_of_mellin_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaPoleDominance exit=0

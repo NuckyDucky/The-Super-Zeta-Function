@@ -1,0 +1,8 @@
+DottieDirectJointMomentRows source 892cfaaedd7cfb6a8441aa35d215c872e0fced95
+'QuarticModel.DottieFixedIntervals.dottie_direct_joint_moment_block_agrees' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_direct_joint_moment_row_getD' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieDirectJointMomentRows exit=0 (12.764 seconds)

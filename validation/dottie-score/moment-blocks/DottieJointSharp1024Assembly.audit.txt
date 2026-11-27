@@ -1,0 +1,4 @@
+DottieJointSharp1024Assembly source 5556cfe8919226726408413e1e1d1ac8509b9512
+'QuarticModel.DottieFixedIntervals.dottie_sharp_1024_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_1024_within_cutoff' depends on axioms: [propext]
+DottieJointSharp1024Assembly exit=0 (12.24 seconds)

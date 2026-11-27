@@ -1,0 +1,5 @@
+DottieSharpReferenceProjection source ee02a689f81306a5a1300f09c88d6ce65f354b16
+'QuarticModel.DottieFixedIntervals.dottie_sharp_margin_of_reference_projection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieSharpReferenceProjection exit=0 (18.476 seconds)

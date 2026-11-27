@@ -1,0 +1,5 @@
+DottieJointSharpChunk512 source f2e8005220e2988aa749b1618220de46a772a444
+'QuarticModel.DottieFixedIntervals.dottie_sharp_chunk512_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieJointSharpChunk512 exit=0 (19.335 seconds)

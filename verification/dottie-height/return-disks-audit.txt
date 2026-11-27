@@ -1,0 +1,6 @@
+python-flint 0.9.0
+{"Re L": "837/178", "Im L / pi": "171/112", "least period": 40, "cap entry update": 320, "return derivative strictly below": "0.005", "excluded proper returns": [8, 20]}
+{"Re L": "3/178", "Im L / pi": "33/112", "least period": 168, "cap entry update": 840, "return derivative strictly below": "1e-6", "excluded proper returns": [24, 56, 84]}
+{"Re L": "3/178", "Im L / pi": "249/560", "least period": 234, "cap entry update": 468, "return derivative strictly below": "1e-149", "excluded proper returns": [18, 78, 117]}
+{"Re L": "3/178", "Im L / pi": "621/560", "least period": 300, "cap entry update": 900, "return derivative strictly below": "1e-16", "excluded proper returns": [60, 100, 150]}
+check-return-disks exit=0

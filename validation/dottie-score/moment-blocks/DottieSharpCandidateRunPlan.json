@@ -1,0 +1,42 @@
+{
+  "purpose": "sharp arithmetic candidate",
+  "proof_base": "58f7275056eb86d8510698601610e10e8b3b9546",
+  "lean_version": "4.33.1",
+  "cutoff": 1442840576,
+  "columns": 22,
+  "rows": 37984,
+  "off_diagonal_pairs": 566569733,
+  "inputs_sha256": {
+    "DottieSharpCandidateMain.lean": "a283420cd9b9fb99238d409ef21d7adea90017d39dba3bebc705b7b16e33eb3b",
+    "DottieDirectJointMomentRows.lean": "b1a8b7fd8510533488c1decfa1171d1d8e3d09a89befb3ea25b519cad736068c",
+    "DottieFastSharpWeights.lean": "77bba717eb590e5fada04df57451109c8edbb7288748b970e299903a5b453f59",
+    "DottieFastSharpTaylor.lean": "5f89bb843cc4588d4377f07cd8ddce060a178ae8d0b0431ef78483da79fdbe4b",
+    "replay_sharp_candidates.py": "c7249c71c6e3219c841ef5581574d539e96ebfaf479b2884431b466f60533417"
+  },
+  "ranges": [
+    {
+      "first": 0,
+      "stop": 16832,
+      "pairs": 141649696,
+      "checkpoint": "rows-0-16832.tsv"
+    },
+    {
+      "first": 16832,
+      "stop": 23804,
+      "pairs": 141653610,
+      "checkpoint": "rows-16832-23804.tsv"
+    },
+    {
+      "first": 23804,
+      "stop": 29377,
+      "pairs": 141631913,
+      "checkpoint": "rows-23804-29377.tsv"
+    },
+    {
+      "first": 29377,
+      "stop": 37984,
+      "pairs": 141634514,
+      "checkpoint": "rows-29377-37984.tsv"
+    }
+  ]
+}

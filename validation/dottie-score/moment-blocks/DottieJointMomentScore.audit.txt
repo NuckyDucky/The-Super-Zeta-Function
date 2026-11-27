@@ -1,0 +1,8 @@
+DottieJointMomentScore source d80d7fa9e60527498f171f498da4c0dffe3654f4
+'QuarticModel.DottieFixedIntervals.dottie_joint_moment_weights_getD' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_joint_moment_block_getD' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieJointMomentScore exit=0 (13.103 seconds)

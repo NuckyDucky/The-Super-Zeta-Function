@@ -1,0 +1,3 @@
+DottieFastReferenceRows144To160 source bfe5c4e11bb4c4c577853a1a36e329fe01f24b2d
+'QuarticModel.dottieFastReferenceRows144To160' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieFastReferenceRows144To160 exit=0 (22.229 seconds)

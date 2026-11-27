@@ -1,0 +1,17 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+DedekindFiniteDottieCover source 1ce3d6fc8561775b97cb6ee9124e25f403e4f45e
+DedekindCofinalSignedRings source 26aad230939523504635bc7f1e02299e71608a37
+@dedekindZetaRH_of_finite_signed_dottie_boundaries : ∀ {K : Type u_1} [inst : Field K] [inst_1 : NumberField K]
+  {Z F : ℂ → ℂ},
+  IsDedekindZeta K Z →
+    DifferentiableOn ℂ F (re ⁻¹' Ioo 0 1) →
+      (∀ (z : ℂ), 0 < z.re → z.re < 1 → Z z = 0 → F z = 0) →
+        (∀ (z : ℂ), 0 < z.re → z.re < 1 → Z z = 0 → Z (1 - (starRingEnd ℂ) z) = 0) →
+          (∀ (z : ℂ), 31 / 32 < z.re → z.re < 1 → Z z ≠ 0) →
+            (∀ (N : ℕ), HasFiniteDottieBoundaryCertificate Z F (-↑N) ↑N) → DedekindZetaRH K
+'FieldTarget.dottie_disk_nonzero_of_signed_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_band_nonzero_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_finite_signed_dottie_boundaries' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindCofinalSignedRings exit=0

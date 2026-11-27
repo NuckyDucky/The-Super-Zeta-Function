@@ -1,0 +1,15 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaRegularPartBound source dafa6500a7370cfb6c56f377282aa97add5bff75
+mixedTheta_mass_bracket_from_regularized_one : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  ((Theta.mixedThetaPair K).Λ₀ 1).re ≤
+      2 * ∫ (t : ℝ) in Ioi 1, ‖(Theta.mixedThetaPair K).f t - (Theta.mixedThetaPair K).f₀‖ ∧
+    2 * ∫ (t : ℝ) in Ioi 1, ‖(Theta.mixedThetaPair K).f t - (Theta.mixedThetaPair K).f₀‖ ≤
+      2 * ((Theta.mixedThetaPair K).Λ₀ 1).re
+finite_dottie_boundary_of_regularized_one : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {L : ℝ},
+  0 ≤ L →
+    2 * ((Theta.mixedThetaPair K).Λ₀ 1).re < ‖(Theta.mixedThetaPair K).f₀‖ / (1 + (L + 31 / 128) ^ 2) →
+      HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) (-L) L
+'FieldTarget.mixedTheta_mass_bracket_from_regularized_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.finite_dottie_boundary_of_regularized_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaRegularPartBound exit=0

@@ -1,0 +1,8 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindRationalCalibration source 99d4f4687fe6139ef29a078785cb75707669d448
+rat_mixedTheta_regular_part_and_constant : (Theta.mixedThetaPair ℚ).Λ₀ = completedRiemannZeta₀ ∧
+  (Theta.mixedThetaPair ℚ).f₀ = 1
+'FieldTarget.rat_ideal_norm_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rat_mixedTheta_regular_part_and_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindRationalCalibration exit=0

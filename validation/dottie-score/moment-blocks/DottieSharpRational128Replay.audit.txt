@@ -1,0 +1,5 @@
+DottieSharpRational128Replay source 3085b51a15c63c4256f4d05f082acbb5b0b2c9fe
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_128_ticks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieSharpRational128Replay exit=0 (20.79 seconds)

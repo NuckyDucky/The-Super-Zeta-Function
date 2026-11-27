@@ -1,0 +1,12 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+DottieDyadicRings source befe264f99761561c0a450d502d214e7e546b33b
+DedekindFiniteDottieCover source 1ce3d6fc8561775b97cb6ee9124e25f403e4f45e
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_inset_covers' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.exists_finite_dottie_band_cover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.exists_dedekind_band_clearance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_finite_dedekind_band_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFiniteDottieCover exit=0

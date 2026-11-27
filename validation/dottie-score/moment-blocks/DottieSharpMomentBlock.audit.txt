@@ -1,0 +1,4 @@
+DottieSharpMomentBlock source a5311c1aba5e1d37a757ab9fd7f450fe25428324
+'QuarticModel.DottieFixedIntervals.sharpBlockMomentTicks_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.DottieFixedIntervals.sharpBlock_within_cutoff' depends on axioms: [propext]
+DottieSharpMomentBlock exit=0 (57.079 seconds)

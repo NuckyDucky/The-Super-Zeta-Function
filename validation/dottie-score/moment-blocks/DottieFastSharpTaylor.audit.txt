@@ -1,0 +1,8 @@
+DottieFastSharpTaylor source 100ddcb747c5861bd350a8b5611d175490a7baf8
+'QuarticModel.DottieFixedIntervals.dottie_cached_factorial_interval_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_fast_imaginary_exp_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieFastSharpTaylor exit=0 (12.542 seconds)

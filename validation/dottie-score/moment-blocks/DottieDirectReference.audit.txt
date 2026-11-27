@@ -1,0 +1,14 @@
+DottieDirectReference source 0e0ebabded677eb54b69f3ebea1482660d275d5e
+'QuarticModel.DottieFixedIntervals.dottie_reference_projection_eq_cosine_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_reference_projection_le_decimal_of_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_reference_projection_le_decimal_of_scores' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_margin_of_decimal_reference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieDirectReference exit=0 (14.627 seconds)

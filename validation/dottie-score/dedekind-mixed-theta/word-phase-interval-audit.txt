@@ -1,0 +1,28 @@
+{
+  "ordinaryHeight": 100000001,
+  "radius": "31/128",
+  "zetaErrorBudget": "1e-9",
+  "wholeCircleCones": [
+    {
+      "laps": 1,
+      "coneRealToNegativeImaginaryRatio": "9/5",
+      "acceptedClosedCells": 571,
+      "coveredUniformCells": 8192,
+      "lowestConeMargin": "[0.00120892758862 +/- 4.30e-15]"
+    },
+    {
+      "laps": 2,
+      "coneRealToNegativeImaginaryRatio": "4/3",
+      "acceptedClosedCells": 504,
+      "coveredUniformCells": 2048,
+      "lowestConeMargin": "[0.000638022231519 +/- 3.85e-17]"
+    }
+  ],
+  "oneLapSpreadWitness": {
+    "inputsOver96Turns": [
+      0,
+      45
+    ],
+    "cosineUpper": "[-0.432704137150 +/- 3.69e-13]"
+  }
+}

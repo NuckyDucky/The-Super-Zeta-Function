@@ -1,0 +1,11 @@
+DottieSharpScoreRanges source 538c97d1eb0d49a75d263c3e8fae11fd20079629
+'QuarticModel.DottieFixedIntervals.dottie_moment_score_fit_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_admissible_ticks_nonempty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_margin_of_score_ranges' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieSharpScoreRanges exit=0 (12.02 seconds)

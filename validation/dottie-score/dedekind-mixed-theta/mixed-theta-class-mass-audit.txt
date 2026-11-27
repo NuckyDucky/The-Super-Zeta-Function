@@ -1,0 +1,10 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaClassMass source e3e7252caf30eabf4cdc4a15f069a5a383453279
+finite_dottie_boundary_of_class_masses : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {L : ℝ},
+  0 ≤ L →
+    2 * ∑ c, mixedThetaClassMass K c < ↑(Fintype.card (ClassGroup (𝓞 K))) / (1 + (L + 31 / 128) ^ 2) →
+      HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) (-L) L
+'FieldTarget.mixedTheta_mellin_mass_eq_class_sum' depends on axioms: [propext, choice, Quot.sound]
+'FieldTarget.finite_dottie_boundary_of_class_masses' depends on axioms: [propext, choice, Quot.sound]
+DedekindMixedThetaClassMass exit=0

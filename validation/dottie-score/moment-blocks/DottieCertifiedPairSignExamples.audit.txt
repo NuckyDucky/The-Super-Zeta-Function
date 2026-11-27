@@ -1,0 +1,4 @@
+DottieCertifiedPairSignExamples source c956c4b6aec11f916633043ee6d34625e6aabba3
+'QuarticModel.referencePairSigns11763_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.sharpPairSigns26858_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCertifiedPairSignExamples exit=0 (83.325 seconds)

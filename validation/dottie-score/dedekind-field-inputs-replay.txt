@@ -1,0 +1,71 @@
+Independent replay of DedekindFieldInputs.
+The local audit path and source-directory path were removed for publication.
+Base repository revision: b2cec6ca8dbef8a64e4f41064c024c45228c0d8d
+
+Replay with the repository toolchain from lean-ideal73:
+  lake build DottieHeightVerification
+  lake env lean -j1 -M3000 -DwarningAsError=true DedekindFieldInputs.lean
+
+The functional equation and external zero-free premise appear in the printed
+theorem types below. This replay builds the adapters with the project pin.
+The upstream 31/32 statement uses its own toolchain:
+https://github.com/AxiomMath/DedekindZetaZeroFree/blob/09afbb4ce6570c1615d58509dc197fc9f0956b7d/Solution/DedekindZetaSolution.lean
+
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib HEAD: 0df444a360eaa60ab8c11dca51a86af692955474
+Lean invocation: -j1 -M3000 -DwarningAsError=true --root=<sources>; LEAN_NUM_THREADS=1
+FieldTarget source git blob 2d736feec6079b6aa96df2bfa9ab20eac0f5c859
+DedekindDottieSetup source git blob f3f1929adb407339f0473a322ffb208b94f33053
+DedekindFieldInputs source SHA256 1EA1E37EB39AEA9848AADEAF3D8CA1E76162B42263E580D3E5AFBFD508397EFE
+Running FieldTarget
+'FieldTarget.continuation_eq_off_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_third_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+FieldTarget exit=0 15.723s
+FieldTarget axiom reports: 2 / 2; unexpected: 
+Running DedekindDottieSetup
+@dedekindZetaRH_of_same_input_signed_regions : ∀ {K : Type u_1} [inst : Field K] [inst_1 : NumberField K]
+  {Orbit : Type u_2} {Z U V : ℂ → ℂ},
+  IsDedekindZeta K Z →
+    ∀ (region : Orbit → Set ℂ) (axis : Orbit → ℂ) (retained : Orbit → ℂ → ℂ) (margin : Orbit → ℂ → ℝ),
+      (∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → U w = V w) →
+        (∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → Z (1 - (starRingEnd ℂ) w) = 0) →
+          (∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → Z w = 0 → ∃ a, w ∈ region a) →
+            (∀ (a : Orbit), ∀ w ∈ region a, 0 < margin a w) →
+              (∀ (a : Orbit), ∀ w ∈ region a, (retained a w).im ≤ -(2 * margin a w)) →
+                (∀ (a : Orbit), ∀ w ∈ region a, (axis a * (U w - V w) - retained a w).im ≤ margin a w) →
+                  DedekindZetaRH K
+'FieldTarget.readings_ne_of_signed_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_regions' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDottieSetup exit=0 16.107s
+DedekindDottieSetup axiom reports: 3 / 3; unexpected: 
+Running DedekindFieldInputs
+FieldTarget.continuation_reflects_zeros_of_completion.{u_1} {K : Type u_1} [Field K] [NumberField K] {Z A Λ : ℂ → ℂ}
+  (hZ : IsDedekindZeta K Z) (hcomplete : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Λ w = A w * Z w)
+  (hscale : ∀ (w : ℂ), 0 < w.re → w.re < 1 → A w ≠ 0) (hfe : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Λ (1 - w) = Λ w) (w : ℂ)
+  (hw₀ : 0 < w.re) (hw₁ : w.re < 1) (hz : Z w = 0) : Z (1 - (starRingEnd ℂ) w) = 0
+FieldTarget.continuation_reflects_zeros_of_functionalEquation.{u_1} {K : Type u_1} [Field K] [NumberField K] {Z : ℂ → ℂ}
+  (hZ : IsDedekindZeta K Z)
+  (hfe : ∀ (w : ℂ), 0 < w.re → w.re < 1 → dedekindGammaFactor K (1 - w) * Z (1 - w) = dedekindGammaFactor K w * Z w)
+  (w : ℂ) (hw₀ : 0 < w.re) (hw₁ : w.re < 1) (hz : Z w = 0) : Z (1 - (starRingEnd ℂ) w) = 0
+FieldTarget.dedekindZetaRH_of_same_input_signed_gap_below.{u_1, u_2} {K : Type u_1} [Field K] [NumberField K]
+  {Orbit : Type u_2} {Z U V : ℂ → ℂ} {b : ℝ} (hZ : IsDedekindZeta K Z)
+  (hfree : ∃ W, IsDedekindZeta K W ∧ ∀ (w : ℂ), b < w.re → w ≠ 1 → W w ≠ 0) (region : Orbit → Set ℂ) (axis : Orbit → ℂ)
+  (retained : Orbit → ℂ → ℂ) (main tail : Orbit → ℂ → ℝ) (hzero : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → U w = V w)
+  (hreflect : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → Z (1 - (starRingEnd ℂ) w) = 0)
+  (hlocate : ∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → w.re ≤ b → Z w = 0 → ∃ a, w ∈ region a)
+  (hgap : ∀ (a : Orbit), ∀ w ∈ region a, tail a w < main a w)
+  (hmodel : ∀ (a : Orbit), ∀ w ∈ region a, (retained a w).im ≤ -main a w)
+  (htail : ∀ (a : Orbit), ∀ w ∈ region a, (axis a * (U w - V w) - retained a w).im ≤ tail a w) : DedekindZetaRH K
+'FieldTarget.dedekindZeta_conj_argument' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_conj_argument' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_reflects_zeros_of_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindGammaFactor_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_reflects_zeros_of_functionalEquation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.continuation_ne_zero_above' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_gap_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFieldInputs exit=0 16.21s
+DedekindFieldInputs axiom reports: 7 / 7; unexpected: 
+Three fresh modules and 12 axiom reports passed in 48.1s.

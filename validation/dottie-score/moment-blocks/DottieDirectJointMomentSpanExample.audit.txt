@@ -1,0 +1,5 @@
+DottieDirectJointMomentSpanExample source 1463d40a62402aab3e703f558d556a05144d7a12
+'QuarticModel.DottieFixedIntervals.dottie_direct_joint_moment_two_rows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieDirectJointMomentSpanExample exit=0 (13.276 seconds)

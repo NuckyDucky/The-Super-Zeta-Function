@@ -1,0 +1,39 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+DottieHeightTransport source 855ba437bf68362c2ed905aae7e23e23d65196c3
+DottieMarkedHeight source 516cf373c9d70bb31d1743e6ac750bce056aae8f
+DottieDyadicRings source befe264f99761561c0a450d502d214e7e546b33b
+'SuperZeta.StirlingCorrection.dottieFlankHeight_archived' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieFlankHeight_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieFlankHeight_strictAntiOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieFlankAtHeight_mem_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieFlankAtHeight_witness_band' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieHeightTransport exit=0
+'SuperZeta.StirlingCorrection.lifted_arrow_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.height_from_marked_arrow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.ordered_clock_640' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.scalar_period_320_of_divisor_exclusions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.rootedReturn_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.rootedWinding_of_im_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_height_covers_witness_band' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_band_selects_marked_returns' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieMarkedHeight exit=0
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_real_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_scaled_band_selects_marked_returns' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.archivedScaledRightDisk_exclusion_of_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieDyadicRings exit=0
+DottieDyadicRings source verified after replay

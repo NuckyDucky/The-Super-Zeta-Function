@@ -1,0 +1,3 @@
+DottieDirectReferenceInteriorRow source 27df5691fcf1748189c9641989f6d549f586adf0
+'QuarticModel.dottieDirectReferenceInteriorRow' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieDirectReferenceInteriorRow exit=0 (134.279 seconds)

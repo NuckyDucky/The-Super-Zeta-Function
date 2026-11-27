@@ -1,0 +1,50 @@
+python-flint 0.9.0
+check_moderate_disks.py source aa90ab283602fd56d82aba23447eebffb1db20b6
+Arb precision 192
+Ordinary center 0.5000000000000000000000000000 + [21.02203963877155499000000000 +/- 1e-31]j ordinary radius [1.0000000000000e-8 +/- 3e-26]
+Spectral center 0.2500000000000000000000000000 + [10.51101981938577749500000000 +/- 1e-31]j spectral radius [5.0000000000000e-9 +/- 3e-27]
+Center normalized Mellin gap [-2.0722711896517516010e-9 +/- 5.20e-29] + [-1.0436748639383574412e-9 +/- 7.60e-29]j
+Center ordinary derivative of normalized Mellin gap [2.83242166346995832e-9 +/- 6.57e-27] + [-9.1580262868657802e-10 +/- 4.28e-27]j
+Complex variation upper bound [2.976794760790e-17 +/- 4.87e-30]
+Taylor remainder upper bound [2.289082055714e-48 +/- 2.68e-61]
+Raw gap magnitude lower bound [1702224.5539590825 +/- 3.98e-11]
+Checked raw gap > 1702200
+Ordinary center 0.5000000000000000000000000000 + [21.02203963877155499000000000 +/- 1e-31]j ordinary radius 0.00048828125000000
+Spectral center 0.2500000000000000000000000000 + [10.51101981938577749500000000 +/- 1e-31]j spectral radius 0.00024414062500000
+Center normalized Mellin gap [-2.0722711896517516010e-9 +/- 5.20e-29] + [-1.0436748639383574412e-9 +/- 7.60e-29]j
+Center ordinary derivative of normalized Mellin gap [2.83242166346995832e-9 +/- 6.57e-27] + [-9.1580262868657802e-10 +/- 4.28e-27]j
+Complex variation upper bound [1.453967573226e-12 +/- 2.90e-25]
+Taylor remainder upper bound [3.109362748625e-20 +/- 2.45e-33]
+Raw gap magnitude lower bound [1699814.1631105877 +/- 4.55e-11]
+Checked raw gap > 1699800
+Ordinary center 0.5000000000000000000000000000 + [25.01085758014568880000000000 +/- 1e-31]j ordinary radius [1.0000000000000e-8 +/- 3e-26]
+Spectral center 0.2500000000000000000000000000 + [12.50542879007284440000000000 +/- 1e-31]j spectral radius [5.0000000000000e-9 +/- 3e-27]
+Center normalized Mellin gap [6.15188111967159354e-11 +/- 8.41e-29] + [-2.3392182479365550e-12 +/- 4.56e-29]j
+Center ordinary derivative of normalized Mellin gap [-5.378290641245767e-11 +/- 6.41e-27] + [5.855687144478515e-11 +/- 2.41e-27]j
+Complex variation upper bound [7.950791342670e-19 +/- 4.23e-32]
+Taylor remainder upper bound [2.289082055714e-48 +/- 2.68e-61]
+Raw gap magnitude lower bound [28273639.081889578 +/- 9.59e-11]
+Checked raw gap > 28273600
+Ordinary center 0.5000000000000000000000000000 + [25.01085758014568880000000000 +/- 1e-31]j ordinary radius 0.00048828125000000
+Spectral center 0.2500000000000000000000000000 + [12.50542879007284440000000000 +/- 1e-31]j spectral radius 0.00024414062500000
+Center normalized Mellin gap [6.15188111967159354e-11 +/- 8.41e-29] + [-2.3392182479365550e-12 +/- 4.56e-29]j
+Center ordinary derivative of normalized Mellin gap [-5.378290641245767e-11 +/- 6.41e-27] + [5.855687144478515e-11 +/- 2.41e-27]j
+Complex variation upper bound [3.883453557923e-14 +/- 2.66e-27]
+Taylor remainder upper bound [3.109362748625e-20 +/- 2.45e-33]
+Raw gap magnitude lower bound [28233589.864468023 +/- 3.17e-10]
+Checked raw gap > 28233500
+check_moderate_disks.py exit=0
+check_rotated_ray.py source 192e13fe8e2798f9c4bfeaadc8528dcd7359ffdc
+Arb precision 128
+First pole q in (1.58722, 1.58723)
+Second pole q in (1.98299, 1.98300)
+First pole angle lower bound [0.86797215319408002 +/- 7.55e-20]
+First pole angle upper bound [0.86797549513884298 +/- 9.97e-19]
+Rotated ray angle [0.92729521800161223 +/- 2.43e-18]
+Second pole angle lower bound [0.99803664117264053 +/- 8.44e-19]
+Checked first pole |x| < 3 and theta - delta > 1/20
+Checked pi/2 - delta > 7/10
+Medium rotated-ray integral upper bound [14.028649556343767 +/- 2.07e-16]
+Full rotated-ray residual constant upper bound [63.936638149461834 +/- 2.33e-16]
+Checked residual < 64 exp(-theta t) for 0 <= Re(w) <= 1
+check_rotated_ray.py exit=0

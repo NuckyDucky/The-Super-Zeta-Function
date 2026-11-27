@@ -1,0 +1,627 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Super Zeta source FieldTarget 2d736feec6079b6aa96df2bfa9ab20eac0f5c859
+Super Zeta source DedekindDottieSetup f3f1929adb407339f0473a322ffb208b94f33053
+Super Zeta source DedekindFieldInputs cccd630c12934edafa2943819adbaf35fd52b9e6
+Super Zeta source DedekindFieldUniverses fb339e0849ee4e882211f731e04a2b51599efe86
+Super Zeta source DottieDyadicGeometry 92d55ff728fdfcf2dcae06dcf33e85fb81638da4
+Super Zeta source DedekindFiniteDottieCover 3925b92783ca6750d284814e844ba07182214175
+Super Zeta source DedekindCofinalSignedRings 26aad230939523504635bc7f1e02299e71608a37
+Super Zeta source DedekindMixedTheta e95a2b1ab06738f7aa69a5155631e217d732aa13
+Super Zeta source DedekindMixedThetaTail 4cb30a02ae63c5a35a53ab618c493adbdab783f8
+Super Zeta source DedekindMixedThetaSignedRings f12d251417d0f34c243142cdb8b3d06274a90f31
+Super Zeta source DottieRationalContour 72cd3b6d4dfea15201c5cc445c1d959a7612dee5
+Super Zeta source DedekindMixedThetaCompletedRings ac115f920da6165710fc264654de4403ca1b1706
+Super Zeta source DedekindMixedThetaOscillation e68978c1b42c1338b8d9739230e3bece01260108
+Super Zeta source DedekindMixedThetaFiniteSamples 6b5f74b236de67437056eee071af474f7cbc3464
+Super Zeta source DottieContourPhase 00a26b531d4a387c69e47b4e9a95df765b6b1f74
+Super Zeta source DottieCayleyWeightedRiemann 40f978a07dcdcf7a176e40fc3059f44c9a102ad2
+Super Zeta source DottieCayleySameInput 6b216c807b7045aa5017835aba6869877b07c477
+⚠ [8963/8999] Replayed DedekindZetaZeroFree.Theta.Profiles.MixedTraceNorm
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:21:26: This simp argument is unused:
+  WithLp.prod_inner_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [traceRadialScale, traceEmbedding, traceToMixed, unscaleComplexCoordinates,
+    mixedEmbedding.euclidean.toMixed, mixedSpaceOfRealSpace_apply, radialMixedSpaceUnit, PiLp.inner_apply,
+    LinearEquiv.prodCongr_symm, LinearEquiv.prodCongr_apply, ContinuousLinearEquiv.prodCongr_symm,
+    ContinuousLinearEquiv.prodCongr_apply, ContinuousLinearEquiv.piCongrRight_symm_apply,
+    mixedEmbedding.mixedEmbedding_apply_isReal, mixedEmbedding.mixedEmbedding_apply_isComplex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:21:51: This simp argument is unused:
+  PiLp.inner_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [traceRadialScale, traceEmbedding, traceToMixed, unscaleComplexCoordinates,
+    mixedEmbedding.euclidean.toMixed, mixedSpaceOfRealSpace_apply, radialMixedSpaceUnit, WithLp.prod_inner_apply,
+    LinearEquiv.prodCongr_symm, LinearEquiv.prodCongr_apply, ContinuousLinearEquiv.prodCongr_symm,
+    ContinuousLinearEquiv.prodCongr_apply, ContinuousLinearEquiv.piCongrRight_symm_apply,
+    mixedEmbedding.mixedEmbedding_apply_isReal, mixedEmbedding.mixedEmbedding_apply_isComplex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:24:4: This simp argument is unused:
+  ContinuousLinearEquiv.piCongrRight_symm_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [traceRadialScale, traceEmbedding, traceToMixed, unscaleComplexCoordinates,
+    mixedEmbedding.euclidean.toMixed, mixedSpaceOfRealSpace_apply, radialMixedSpaceUnit, WithLp.prod_inner_apply,
+    PiLp.inner_apply, LinearEquiv.prodCongr_symm, LinearEquiv.prodCongr_apply, ContinuousLinearEquiv.prodCongr_symm,
+    ContinuousLinearEquiv.prodCongr_apply, mixedEmbedding.mixedEmbedding_apply_isReal,
+    mixedEmbedding.mixedEmbedding_apply_isComplex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:25:4: This simp argument is unused:
+  mixedEmbedding.mixedEmbedding_apply_isReal
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [traceRadialScale, traceEmbedding, traceToMixed, unscaleComplexCoordinates,
+    mixedEmbedding.euclidean.toMixed, mixedSpaceOfRealSpace_apply, radialMixedSpaceUnit, WithLp.prod_inner_apply,
+    PiLp.inner_apply, LinearEquiv.prodCongr_symm, LinearEquiv.prodCongr_apply, ContinuousLinearEquiv.prodCongr_symm,
+    ContinuousLinearEquiv.prodCongr_apply, ContinuousLinearEquiv.piCongrRight_symm_apply,
+    mixedEmbedding.mixedEmbedding_apply_isComplex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:26:4: This simp argument is unused:
+  mixedEmbedding.mixedEmbedding_apply_isComplex
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [traceRadialScale, traceEmbedding, traceToMixed, unscaleComplexCoordinates,
+    mixedEmbedding.euclidean.toMixed, mixedSpaceOfRealSpace_apply, radialMixedSpaceUnit, WithLp.prod_inner_apply,
+    PiLp.inner_apply, LinearEquiv.prodCongr_symm, LinearEquiv.prodCongr_apply, ContinuousLinearEquiv.prodCongr_symm,
+    ContinuousLinearEquiv.prodCongr_apply, ContinuousLinearEquiv.piCongrRight_symm_apply,
+    mixedEmbedding.mixedEmbedding_apply_isReal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:28:28: This simp argument is unused:
+  WithLp.ofLp_toLp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.prod_norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2, WithLp.fst, WithLp.snd, PiLp.toLp_apply,
+    ContinuousLinearEquiv.piCongrRight_symm_apply, divideBySqrtTwo_symm_apply, Pi.mul_apply,
+    mixedEmbedding.mixedEmbedding_apply_isReal, mixedEmbedding.mixedEmbedding_apply_isComplex, _root_.norm_smul,
+    Real.norm_eq_abs, mul_pow, sq_abs, Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 2), norm_embedding_of_isReal,
+    norm_embedding_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:28:46: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.prod_norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2, WithLp.fst, WithLp.snd, WithLp.ofLp_toLp,
+    ContinuousLinearEquiv.piCongrRight_symm_apply, divideBySqrtTwo_symm_apply, Pi.mul_apply,
+    mixedEmbedding.mixedEmbedding_apply_isReal, mixedEmbedding.mixedEmbedding_apply_isComplex, _root_.norm_smul,
+    Real.norm_eq_abs, mul_pow, sq_abs, Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 2), norm_embedding_of_isReal,
+    norm_embedding_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:33:4: This simp argument is unused:
+  norm_embedding_of_isReal
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.prod_norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2, WithLp.fst, WithLp.snd, WithLp.ofLp_toLp,
+    PiLp.toLp_apply, ContinuousLinearEquiv.piCongrRight_symm_apply, divideBySqrtTwo_symm_apply, Pi.mul_apply,
+    mixedEmbedding.mixedEmbedding_apply_isReal, mixedEmbedding.mixedEmbedding_apply_isComplex, _root_.norm_smul,
+    Real.norm_eq_abs, mul_pow, sq_abs, Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 2), norm_embedding_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedTraceNorm.lean:33:30: This simp argument is unused:
+  norm_embedding_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.prod_norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2, WithLp.fst, WithLp.snd, WithLp.ofLp_toLp,
+    PiLp.toLp_apply, ContinuousLinearEquiv.piCongrRight_symm_apply, divideBySqrtTwo_symm_apply, Pi.mul_apply,
+    mixedEmbedding.mixedEmbedding_apply_isReal, mixedEmbedding.mixedEmbedding_apply_isComplex, _root_.norm_smul,
+    Real.norm_eq_abs, mul_pow, sq_abs, Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 2), norm_embedding_of_isReal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8968/8999] Replayed DedekindZetaZeroFree.Theta.Unfolding.MixedRadialJacobian
+warning: DedekindZetaZeroFree/Theta/Unfolding/MixedRadialJacobian.lean:42:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/MixedRadialJacobian.lean:42:6: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [8971/8999] Replayed DedekindZetaZeroFree.Nonvanishing.Mellin.MixedGaussianProduct
+warning: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:44:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:51:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+info: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:57:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:28:8: automatically included section variable(s) unused in theorem `_private.DedekindZetaZeroFree.Nonvanishing.Mellin.MixedGaussianProduct.0.DedekindZetaZeroFree.AbelianQuotient.Theta.place_integral`:
+  [NumberField K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NumberField K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:76:4: Unused tactic linter: `push_cast` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:112:25: `if_true` has been deprecated: Use `ite_true` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵t̵r̵u̵e̵i̲t̲e̲_̲t̲r̲u̲e̲
+warning: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:112:34: `if_false` has been deprecated: Use `ite_false` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵f̵a̵l̵s̵e̵i̲t̲e̲_̲f̲a̲l̲s̲e̲
+warning: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:136:28: This simp argument is unused:
+  Complex.ofReal_sub
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.ofReal_re, Complex.ofReal_prod, Complex.ofReal_mul, Complex.ofReal_exp, Complex.ofReal_neg,
+    Complex.ofReal_pow, Complex.ofReal_natCast, Complex.ofReal_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Nonvanishing/Mellin/MixedGaussianProduct.lean:136:48: This simp argument is unused:
+  Complex.ofReal_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.ofReal_re, Complex.ofReal_prod, Complex.ofReal_mul, Complex.ofReal_exp, Complex.ofReal_neg,
+    Complex.ofReal_pow, Complex.ofReal_natCast, Complex.ofReal_sub]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8973/8999] Replayed DedekindZetaZeroFree.Arithmetic.Ideals.IdealElementDecomposition
+warning: DedekindZetaZeroFree/Arithmetic/Ideals/IdealElementDecomposition.lean:338:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/Arithmetic/Ideals/IdealElementDecomposition.lean:339:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/Arithmetic/Ideals/IdealElementDecomposition.lean:344:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/Arithmetic/Ideals/IdealElementDecomposition.lean:345:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8984/8999] Replayed DedekindZetaZeroFree.Theta.Unfolding.UnitSlabRadialAngularIntegration
+warning: DedekindZetaZeroFree/Theta/Unfolding/UnitSlabRadialAngularIntegration.lean:108:37: `measurable_pi_lambda` has been deprecated: Use `Measurable.of_eval` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵a̵s̵u̵r̵a̵b̵l̵e̵_̵p̵i̵_̵l̵a̵m̵b̵d̵a̵M̲e̲a̲s̲u̲r̲a̲b̲l̲e̲.̲o̲f̲_̲e̲v̲a̲l̲
+warning: DedekindZetaZeroFree/Theta/Unfolding/UnitSlabRadialAngularIntegration.lean:110:10: `measurable_pi_lambda` has been deprecated: Use `Measurable.of_eval` instead
+
+Hint: Replace the deprecated name:
+  m̵e̵a̵s̵u̵r̵a̵b̵l̵e̵_̵p̵i̵_̵l̵a̵m̵b̵d̵a̵M̲e̲a̲s̲u̲r̲a̲b̲l̲e̲.̲o̲f̲_̲e̲v̲a̲l̲
+warning: DedekindZetaZeroFree/Theta/Unfolding/UnitSlabRadialAngularIntegration.lean:117:18: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: DedekindZetaZeroFree/Theta/Unfolding/UnitSlabRadialAngularIntegration.lean:145:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/UnitSlabRadialAngularIntegration.lean:156:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/UnitSlabRadialAngularIntegration.lean:156:35: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/UnitSlabRadialAngularIntegration.lean:170:50: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [8985/8999] Replayed DedekindZetaZeroFree.Theta.Unfolding.MixedConeMellin
+warning: DedekindZetaZeroFree/Theta/Unfolding/MixedConeMellin.lean:57:25: This simp argument is unused:
+  smul_eq_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [MeasureTheory.setIntegral_univ, mixedConeRadialKernel, mixedRadialJacobian, Complex.real_smul,
+    mul_comm (b := (Module.finrank ℚ K : ℝ))]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/MixedConeMellin.lean:334:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/MixedConeMellin.lean:356:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/MixedConeMellin.lean:357:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/MixedConeMellin.lean:412:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: DedekindZetaZeroFree/Theta/Unfolding/MixedConeMellin.lean:412:6: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [8988/8999] Replayed DedekindZetaZeroFree.Geometry.TranslatedLatticeGap
+warning: DedekindZetaZeroFree/Geometry/TranslatedLatticeGap.lean:14:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8989/8999] Replayed DedekindZetaZeroFree.Theta.Profiles.UniformMixedThetaTail
+warning: DedekindZetaZeroFree/Theta/Profiles/UniformMixedThetaTail.lean:31:15: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: DedekindZetaZeroFree/Theta/Profiles/UniformMixedThetaTail.lean:95:6: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: DedekindZetaZeroFree/Theta/Profiles/UniformMixedThetaTail.lean:113:27: This simp argument is unused:
+  radialLift
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [angularLift, hv]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/UniformMixedThetaTail.lean:223:29: Variable name `hab` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hab
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DedekindZetaZeroFree/Theta/Profiles/UniformMixedThetaTail.lean:297:10: `continuousOn_finset_sum` has been deprecated: Use `continuousOn_finsetSum` instead
+
+Hint: Replace the deprecated name:
+  continuousOn_finset_̵s̵S̲um
+⚠ [8990/8999] Replayed DedekindZetaZeroFree.Theta.Profiles.AngularAverageRegularityAndDecay
+warning: DedekindZetaZeroFree/Theta/Profiles/AngularAverageRegularityAndDecay.lean:54:8: This simp argument is unused:
+  setIntegral_const
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [volume_cube K, Measure.real]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8991/8999] Replayed DedekindZetaZeroFree.Theta.Profiles.CenteredPoissonSummation
+warning: DedekindZetaZeroFree/Theta/Profiles/CenteredPoissonSummation.lean:86:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: DedekindZetaZeroFree/Theta/Profiles/CenteredPoissonSummation.lean:101:25: This simp argument is unused:
+  Real.toNNReal_of_nonneg (le_of_lt (one_div_pos.mpr ht))
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [NNReal.smul_def, max_eq_left (le_of_lt (inv_pos.mpr ht)), ht.ne']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Profiles/CenteredPoissonSummation.lean:102:45: This simp argument is unused:
+  ht.ne'
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [NNReal.smul_def, Real.toNNReal_of_nonneg (le_of_lt (one_div_pos.mpr ht)),
+    max_eq_left (le_of_lt (inv_pos.mpr ht))]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8993/9006] Replayed DedekindZetaZeroFree.LFunctions.Dedekind.IdealClassThetaMellin
+warning: DedekindZetaZeroFree/LFunctions/Dedekind/IdealClassThetaMellin.lean:43:4: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: DedekindZetaZeroFree/LFunctions/Dedekind/IdealClassThetaMellin.lean:183:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: DedekindZetaZeroFree/LFunctions/Dedekind/IdealClassThetaMellin.lean:183:6: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [8994/9006] Replayed DedekindZetaZeroFree.Theta.Profiles.MixedThetaFunctionalEquationPair
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedThetaFunctionalEquationPair.lean:23:8: `MeasureTheory.integrable_finset_sum` has been deprecated: Use `MeasureTheory.integrable_finsetSum` instead
+
+Hint: Replace the deprecated name:
+  MeasureTheory.integrable_finset_̵s̵S̲um
+warning: DedekindZetaZeroFree/Theta/Profiles/MixedThetaFunctionalEquationPair.lean:37:8: `MeasureTheory.integrable_finset_sum` has been deprecated: Use `MeasureTheory.integrable_finsetSum` instead
+
+Hint: Replace the deprecated name:
+  MeasureTheory.integrable_finset_̵s̵S̲um
+⚠ [8995/9006] Replayed DedekindZetaZeroFree.LFunctions.Dedekind.MixedThetaPairMellin
+warning: DedekindZetaZeroFree/LFunctions/Dedekind/MixedThetaPairMellin.lean:33:8: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8999/9006] Replayed DedekindZetaZeroFree.HarmonicAnalysis.Mellin.WeakPairPoleClearing
+warning: DedekindZetaZeroFree/HarmonicAnalysis/Mellin/WeakPairPoleClearing.lean:20:55: Variable name `hk` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hk
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DedekindZetaZeroFree/HarmonicAnalysis/Mellin/WeakPairPoleClearing.lean:32:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: DedekindZetaZeroFree/HarmonicAnalysis/Mellin/WeakPairPoleClearing.lean:39:34: This simp argument is unused:
+  WeakFEPair.symm_g
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WeakFEPair.symm_f, WeakFEPair.symm_f₀, WeakFEPair.symm_g₀, WeakFEPair.symm_k, WeakFEPair.symm_ε,
+    hg, hg₀, hε, inv_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [9000/9006] Replayed DedekindZetaZeroFree.HarmonicAnalysis.Mellin.TailRemainder
+warning: DedekindZetaZeroFree/HarmonicAnalysis/Mellin/TailRemainder.lean:11:62: Variable name `hk` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hk
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [9001/9006] Replayed DedekindZetaZeroFree.Arithmetic.Ideals.TraceDualClassInvolution
+warning: DedekindZetaZeroFree/Arithmetic/Ideals/TraceDualClassInvolution.lean:41:33: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [mul_inv_rev, mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Arithmetic/Ideals/TraceDualClassInvolution.lean:44:33: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [mul_inv_rev, mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [9002/9006] Replayed DedekindZetaZeroFree.HarmonicAnalysis.Haar.PeriodicCubeIntegration
+warning: DedekindZetaZeroFree/HarmonicAnalysis/Haar/PeriodicCubeIntegration.lean:33:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/HarmonicAnalysis/Haar/PeriodicCubeIntegration.lean:20:23: Variable name `hf` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hf
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DedekindZetaZeroFree/HarmonicAnalysis/Haar/PeriodicCubeIntegration.lean:70:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: DedekindZetaZeroFree/HarmonicAnalysis/Haar/PeriodicCubeIntegration.lean:59:23: Variable name `hf` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hf
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [9003/9006] Replayed DedekindZetaZeroFree.Theta.Profiles.PrincipalIdealCenteredShapeCovariance
+warning: DedekindZetaZeroFree/Theta/Profiles/PrincipalIdealCenteredShapeCovariance.lean:108:56: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: DedekindZetaZeroFree/Theta/Profiles/PrincipalIdealCenteredShapeCovariance.lean:108:68: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [9004/9006] Replayed DedekindZetaZeroFree.Theta.Periods.AngularAverageClassInvariance
+warning: DedekindZetaZeroFree/Theta/Periods/AngularAverageClassInvariance.lean:47:33: `RingEquiv.coe_monoidHom_refl` has been deprecated: Use `RingEquiv.toMonoidHom_refl` instead
+
+Hint: Replace the deprecated name:
+  R̵i̵n̵g̵E̵q̵u̵i̵v̵.̵c̵o̵e̵_̵m̵o̵n̵o̵i̵d̵H̵o̵m̵_̵r̵e̵f̵l̵R̲i̲n̲g̲E̲q̲u̲i̲v̲.̲t̲o̲M̲o̲n̲o̲i̲d̲H̲o̲m̲_̲r̲e̲f̲l̲
+warning: DedekindZetaZeroFree/Theta/Periods/AngularAverageClassInvariance.lean:47:4: This simp argument is unused:
+  RingEquiv.toMulEquiv_eq_coe
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ClassGroup.equiv_mk, FractionalIdeal.canonicalEquiv_self, RingEquiv.coe_monoidHom_refl] at hq
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: DedekindZetaZeroFree/Theta/Periods/AngularAverageClassInvariance.lean:47:33: This simp argument is unused:
+  RingEquiv.coe_monoidHom_refl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ClassGroup.equiv_mk, FractionalIdeal.canonicalEquiv_self, RingEquiv.toMulEquiv_eq_coe] at hq
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Build completed successfully (9006 jobs).
+AxiomMath mixed theta imports exit=0
+'FieldTarget.continuation_eq_off_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_third_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+FieldTarget exit=0
+@dedekindZetaRH_of_same_input_signed_regions : ∀ {K : Type u_1} [inst : Field K] [inst_1 : NumberField K]
+  {Orbit : Type u_2} {Z U V : ℂ → ℂ},
+  IsDedekindZeta K Z →
+    ∀ (region : Orbit → Set ℂ) (axis : Orbit → ℂ) (retained : Orbit → ℂ → ℂ) (margin : Orbit → ℂ → ℝ),
+      (∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → U w = V w) →
+        (∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → Z (1 - (starRingEnd ℂ) w) = 0) →
+          (∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → Z w = 0 → ∃ a, w ∈ region a) →
+            (∀ (a : Orbit), ∀ w ∈ region a, 0 < margin a w) →
+              (∀ (a : Orbit), ∀ w ∈ region a, (retained a w).im ≤ -(2 * margin a w)) →
+                (∀ (a : Orbit), ∀ w ∈ region a, (axis a * (U w - V w) - retained a w).im ≤ margin a w) →
+                  DedekindZetaRH K
+'FieldTarget.readings_ne_of_signed_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_regions' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDottieSetup exit=0
+FieldTarget.continuation_reflects_zeros_of_completion.{u_1} {K : Type u_1} [Field K] [NumberField K] {Z A Λ : ℂ → ℂ}
+  (hZ : IsDedekindZeta K Z) (hcomplete : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Λ w = A w * Z w)
+  (hscale : ∀ (w : ℂ), 0 < w.re → w.re < 1 → A w ≠ 0) (hfe : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Λ (1 - w) = Λ w) (w : ℂ)
+  (hw₀ : 0 < w.re) (hw₁ : w.re < 1) (hz : Z w = 0) : Z (1 - (starRingEnd ℂ) w) = 0
+FieldTarget.continuation_reflects_zeros_of_functionalEquation.{u_1} {K : Type u_1} [Field K] [NumberField K] {Z : ℂ → ℂ}
+  (hZ : IsDedekindZeta K Z)
+  (hfe : ∀ (w : ℂ), 0 < w.re → w.re < 1 → dedekindGammaFactor K (1 - w) * Z (1 - w) = dedekindGammaFactor K w * Z w)
+  (w : ℂ) (hw₀ : 0 < w.re) (hw₁ : w.re < 1) (hz : Z w = 0) : Z (1 - (starRingEnd ℂ) w) = 0
+FieldTarget.dedekindZetaRH_of_same_input_signed_gap_below.{u_1, u_2} {K : Type u_1} [Field K] [NumberField K]
+  {Orbit : Type u_2} {Z U V : ℂ → ℂ} {b : ℝ} (hZ : IsDedekindZeta K Z)
+  (hfree : ∃ W, IsDedekindZeta K W ∧ ∀ (w : ℂ), b < w.re → w ≠ 1 → W w ≠ 0) (region : Orbit → Set ℂ) (axis : Orbit → ℂ)
+  (retained : Orbit → ℂ → ℂ) (main tail : Orbit → ℂ → ℝ) (hzero : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → U w = V w)
+  (hreflect : ∀ (w : ℂ), 0 < w.re → w.re < 1 → Z w = 0 → Z (1 - (starRingEnd ℂ) w) = 0)
+  (hlocate : ∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → w.re ≤ b → Z w = 0 → ∃ a, w ∈ region a)
+  (hgap : ∀ (a : Orbit), ∀ w ∈ region a, tail a w < main a w)
+  (hmodel : ∀ (a : Orbit), ∀ w ∈ region a, (retained a w).im ≤ -main a w)
+  (htail : ∀ (a : Orbit), ∀ w ∈ region a, (axis a * (U w - V w) - retained a w).im ≤ tail a w) : DedekindZetaRH K
+'FieldTarget.dedekindZeta_conj_argument' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_conj_argument' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_reflects_zeros_of_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindGammaFactor_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.continuation_reflects_zeros_of_functionalEquation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.continuation_ne_zero_above' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_same_input_signed_gap_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFieldInputs exit=0
+'FieldTarget.dedekindZeta_eq_of_ringEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.isDedekindZeta_iff_of_ringEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dedekind_continuation_of_small_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFieldUniverses exit=0
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_real_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieDyadicGeometry exit=0
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_inset_covers' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.exists_finite_dottie_band_cover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.exists_dedekind_band_clearance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_finite_dedekind_band_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindFiniteDottieCover exit=0
+@dedekindZetaRH_of_finite_signed_dottie_boundaries : ∀ {K : Type u_1} [inst : Field K] [inst_1 : NumberField K]
+  {Z F : ℂ → ℂ},
+  IsDedekindZeta K Z →
+    DifferentiableOn ℂ F (re ⁻¹' Ioo 0 1) →
+      (∀ (z : ℂ), 0 < z.re → z.re < 1 → Z z = 0 → F z = 0) →
+        (∀ (z : ℂ), 0 < z.re → z.re < 1 → Z z = 0 → Z (1 - (starRingEnd ℂ) z) = 0) →
+          (∀ (z : ℂ), 31 / 32 < z.re → z.re < 1 → Z z ≠ 0) →
+            (∀ (N : ℕ), HasFiniteDottieBoundaryCertificate Z F (-↑N) ↑N) → DedekindZetaRH K
+'FieldTarget.dottie_disk_nonzero_of_signed_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_band_nonzero_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_finite_signed_dottie_boundaries' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindCofinalSignedRings exit=0
+'FieldTarget.exists_dedekind_continuation_with_mixedTheta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dedekind_continuation_with_functionalEquation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.mixedTheta_completion_eq_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_reading_eq_iff_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dedekind_continuation_with_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedTheta exit=0
+'FieldTarget.mixedTheta_mellin_eq_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_mellin_tail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_signed_truncation_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_ne_zero_of_signed_truncation' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaTail exit=0
+dedekindZetaRH_of_mixedTheta_signed_rings : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (w : ℂ), 31 / 32 < w.re → w.re < 1 → mixedThetaContinuation K w ≠ 0) →
+    (∀ (N : ℕ), HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaSignedReading K) (-↑N) ↑N) →
+      DedekindZetaRH K
+'FieldTarget.mixedThetaContinuation_isDedekind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaContinuation_reflects' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaSignedReading_eq_mellin_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaSignedReading_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaSignedReading_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_mixedTheta_signed_rings' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaSignedRings exit=0
+'SuperZeta.StirlingCorrection.rationalContourSample_mem_sphere' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.exists_rationalContourPoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.exists_rationalContourInterval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.exists_near_rationalContourSample' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_signed_boundary_of_rational_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieRationalContour exit=0
+dedekindZetaRH_of_completed_mixedTheta_signed_rings : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (w : ℂ), 31 / 32 < w.re → w.re < 1 → mixedThetaContinuation K w ≠ 0) →
+    (∀ (N : ℕ), HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) (-↑N) ↑N) →
+      DedekindZetaRH K
+'FieldTarget.mixedThetaCompletedReading_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_eq_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedTruncation_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_im_le_of_truncation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_completed_mixedTheta_signed_rings' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindMixedThetaCompletedRings exit=0
+'FieldTarget.mixedThetaIntegrand_difference_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaTruncation_difference_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaOscillation exit=0
+'FieldTarget.contourPoleDifference_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedTruncation_difference_le_on_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dottie_completed_boundary_of_rational_samples' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaFiniteSamples exit=0
+'FieldTarget.no_signed_axis_of_positive_turns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_disk_nonzero_of_holomorphic_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieContourPhase exit=0
+@dottieCayley_riemannZeta_ne_zero_of_arcs : ∀ {m : ℕ},
+  0 < m →
+    (∀ a ∈ contourQuarterTurns,
+        ∀ (j : Fin m),
+          ∀ t ∈ Icc (↑↑j / ↑m) ((↑↑j + 1) / ↑m),
+            (dottieCayleyWeight (rationalContourPoint dottieCayleyCenter (31 / 128) a t) *
+                  riemannZeta (rationalContourPoint dottieCayleyCenter (31 / 128) a t)).im ≤
+              -(1 / 16)) →
+      ∀ w ∈ Metric.closedBall dottieCayleyCenter (31 / 128), riemannZeta w ≠ 0
+'FieldTarget.dottieCayley_center_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayley_radius_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayleyScale_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayleyReading_eq_replay_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayleyWeight_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayley_riemannZeta_ne_zero_of_arcs' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCayleyWeightedRiemann exit=0
+@dottieCayley_same_input_iff : ∀ {w : ℂ},
+  w ∈ Metric.closedBall dottieCayleyCenter (31 / 128) →
+    (dottieCayleyWeight w * riemannZeta w = dottieCayleyUnweighted w ↔ w = dottieCayleyCenter ∨ riemannZeta w = 0)
+'FieldTarget.dottieCayley_same_input_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCayleySameInput exit=0
+Weighted Cayley release replay exit=0

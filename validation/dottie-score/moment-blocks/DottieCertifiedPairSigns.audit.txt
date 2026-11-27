@@ -1,0 +1,3 @@
+DottieCertifiedPairSigns source fcce864a7f29d3f0552d016c4f96ff22f5165bb9
+'QuarticModel.dottie_pair_block_eq_of_checked_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCertifiedPairSigns exit=0 (12.206 seconds)

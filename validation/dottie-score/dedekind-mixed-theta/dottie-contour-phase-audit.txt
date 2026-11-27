@@ -1,0 +1,6 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DottieContourPhase source 00a26b531d4a387c69e47b4e9a95df765b6b1f74
+'FieldTarget.no_signed_axis_of_positive_turns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_disk_nonzero_of_holomorphic_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieContourPhase exit=0

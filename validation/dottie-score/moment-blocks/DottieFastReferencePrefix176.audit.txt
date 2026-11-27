@@ -1,0 +1,3 @@
+DottieFastReferencePrefix176 source 187f63a0b9254c9b41e4f37347aff9ebe1b3782c
+'QuarticModel.dottieDirectReferencePrefix176' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieFastReferencePrefix176 exit=0 (11.932 seconds)

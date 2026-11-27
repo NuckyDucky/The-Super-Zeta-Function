@@ -1,0 +1,4 @@
+DottieFastReferenceScore source 9d886a489acf54c0a827c7f8e293cc363fe57e9d
+'QuarticModel.dottie_fast_reference_weight_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.dottie_fast_reference_score_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieFastReferenceScore exit=0 (13.865 seconds)
