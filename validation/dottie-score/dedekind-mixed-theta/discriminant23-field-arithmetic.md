@@ -28,7 +28,7 @@ $$
 
 Thus the class of $P=P_{2,0}$, its inverse, and the principal class exhaust the class group. The form for $N_{F/\mathbb Q}$ gives no element of norm $2$. The only elements of norm $4$ are $2$ and $-2$, and $P^2\ne(2)$ since the two norm-two primes are distinct. Lean therefore proves that the three classes are distinct and that the class number is $3$. [Small representatives](DedekindDiscriminant23ClassRepresentatives.lean) · [Class group](DedekindDiscriminant23ClassNumber.lean)
 
-The first disk sign applies to the explicit class product. To carry it to the actual completed reading, the next Lean steps identify the class-group Artin map for $L/F$, express the zeta factors by the ideal sums, and match their continuation to the folded Mellin formula.
+The first disk sign applies to the explicit class product. Lean now identifies how each ideal class splits in $L/F$ and expresses the actual zeta factors as class-character series. The next step matches their continuation to the folded Mellin formula. [Prime splitting and Euler factorization](discriminant23-hilbert-and-euler.md)
 
 ## Replay
 

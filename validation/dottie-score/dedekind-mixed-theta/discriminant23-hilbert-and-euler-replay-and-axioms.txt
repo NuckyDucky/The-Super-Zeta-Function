@@ -1,0 +1,183 @@
+Discriminant-23 field identification, splitting, and Euler product replay
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Lake dependency output excerpt
+Build completed successfully (9890 jobs).
+
+Super Zeta module output
+Super Zeta source DottieDyadicGeometry 92d55ff728fdfcf2dcae06dcf33e85fb81638da4
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_real_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieDyadicGeometry exit=0
+Super Zeta source DedekindDiscriminant23Field e2f33b56e7e3f5251cc7f1dc6e47ebc3c325336f
+FieldTarget.discriminant23_galois_group : Nonempty (Gal(Discriminant23GaloisField/ℚ) ≃* Equiv.Perm (Fin 3))
+'FieldTarget.discriminant23_galois_group' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_galois_nonabelian' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Field exit=0
+Super Zeta source DedekindDiscriminant23Quadratic f191870bb30c56fc58fd43df139e05c2ec491361
+exists_discriminant23_square_root : ∃ v, v ^ 2 = -23
+discriminant23QuadraticEquiv : Discriminant23QuadraticField ≃ₐ[ℚ] ↥discriminant23QuadraticSubfield
+discriminant23_relative_galois_cyclic : IsCyclic Gal(L/↥discriminant23QuadraticSubfield)
+'FieldTarget.exists_discriminant23_square_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23QuadraticEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_relative_galois_cyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Quadratic exit=0
+Super Zeta source DottieCompletedProductSign 9b61f694d2089c64b438ceff91c413907a1355a3
+@re_completed_class_product_le : ∀ {w A C : ℂ},
+  1 / 2 ≤ w.re →
+    w.re < 1 →
+      ‖w - 3 / 4‖ ≤ 1 / 4 →
+        ‖A‖ ≤ 4 / 5 →
+          1 / 8 ≤ C.re → |C.im| ≤ |w.im| * (w.re - 1 / 2) / 4 → ((A - 3 / 2 / (w * (1 - w))) * C ^ 2).re ≤ -(1 / 400)
+'FieldTarget.re_completed_class_product_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+@re_completed_class_product_le_on_first_dottie_disk : ∀ {w A C : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    ‖A‖ ≤ 4 / 5 →
+      1 / 8 ≤ C.re → |C.im| ≤ |w.im| * (w.re - 1 / 2) / 4 → ((A - 3 / 2 / (w * (1 - w))) * C ^ 2).re ≤ -(1 / 400)
+'FieldTarget.re_completed_class_product_le_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieCompletedProductSign exit=0
+Super Zeta source Discriminant23ThetaEnvelope dfa3aa63ea663a558221e7d1fcdd4286f533a6a5
+'FieldTarget.discriminant23_principal_envelope_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_other_envelope_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_thetaScale_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_thetaExp_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_classThetaStar_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+Discriminant23ThetaEnvelope exit=0
+Super Zeta source DottieClassMellinBounds 68b8d6621e64cb662f96f64573239ba779157852
+'FieldTarget.classMellinWeight_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellin_log_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellin_integral_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieClassMellinBounds exit=0
+Super Zeta source Discriminant23DottieDisk 77e052f907a24bfc2ddd1c07e68210933923bfec
+@re_discriminant23_classProduct_le_on_first_dottie_disk : ∀ {w : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    (discriminant23CompletedClassProduct w).re ≤ -(1 / 400)
+@discriminant23_classProduct_ne_zero_on_first_dottie_disk : ∀ {w : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    discriminant23CompletedClassProduct w ≠ 0
+'FieldTarget.re_discriminant23_classProduct_le_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_classProduct_ne_zero_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Discriminant23DottieDisk exit=0
+Super Zeta source DedekindUnramifiedFrobenius b0d74e6350b6896dc0e55a35f58f395d1b69c4c3
+@frobenius_pow_mem_fixingSubgroup_iff : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K] [inst_1 : NumberField K]
+  [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [inst_5 : IsGalois K L] (E : IntermediateField K L)
+  (p : HeightOneSpectrum (𝓞 K)) (Q : HeightOneSpectrum (𝓞 ↥E)) (P : HeightOneSpectrum (𝓞 L)),
+  Q.asIdeal.LiesOver p.asIdeal →
+    P.asIdeal.LiesOver Q.asIdeal →
+      Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+        ∀ (σ : Gal(L/K)),
+          IsArithFrobAt (𝓞 K) σ P.asIdeal → ∀ (n : ℕ), σ ^ n ∈ E.fixingSubgroup ↔ Q.asIdeal.inertiaDeg (𝓞 K) ∣ n
+'FieldTarget.unramified_iff_inertia_bot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.frobenius_pow_mem_fixingSubgroup_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindUnramifiedFrobenius exit=0
+Super Zeta source DedekindDiscriminant23Unramified ffd01346e274da540be0f8a410bb4ccfdf616e64
+discriminant23_relative_unramified : ∀ (P : HeightOneSpectrum (𝓞 L)),
+  Algebra.IsUnramifiedAt (𝓞 ↥discriminant23QuadraticSubfield) P.asIdeal
+discriminant23_discriminant_tower : (NumberField.discr L).natAbs =
+  (NumberField.discr ↥discriminant23QuadraticSubfield).natAbs ^ 3
+'FieldTarget.discriminant23_relative_inertia_bot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_relative_unramified' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_relative_different' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_discriminant_tower' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Unramified exit=0
+Super Zeta source DedekindDiscriminant23Integers bda993207b21328eee193f4e6ee663316f13d46c
+discriminant23_quadratic_discriminant : discr ↥discriminant23QuadraticSubfield = -23
+discriminant23_galois_discriminant_abs : (discr L).natAbs = 23 ^ 3
+discriminant23_galois_signature : InfinitePlace.nrRealPlaces L = 0 ∧ InfinitePlace.nrComplexPlaces L = 3
+discriminant23_quadratic_norm : ∀ (m n : ℤ),
+  (Algebra.norm ℤ) (↑m + ↑n * discriminant23Omega) = m ^ 2 + m * n + 6 * n ^ 2
+discriminant23_completion_factor : ∀ (w : ℂ),
+  ↑|discr L| ^ (w / 2) * w.Gammaℝ ^ InfinitePlace.nrRealPlaces L * w.Gammaℂ ^ InfinitePlace.nrComplexPlaces L =
+    8 * (23 ^ (w / 2) * (2 * ↑Real.pi) ^ (-w) * Complex.Gamma w) ^ 3
+'FieldTarget.discriminant23_quadratic_discriminant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23IntegersBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23Integers_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_quadratic_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_galois_discriminant_abs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_galois_signature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_completion_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Integers exit=0
+Super Zeta source DedekindDiscriminant23NormForms 9a9513bd9ad6724e01dadc5c86abfc4ddb14a4ef
+discriminant23NormTwoIdeal_coordinates : ∀ (x : 𝓞 ↥discriminant23QuadraticSubfield),
+  x ∈ discriminant23NormTwoIdeal ↔ ∃ m n, x = ↑(2 * m) + ↑n * ω
+discriminant23_principal_norm_form : ∀ (m n : ℤ), (Algebra.norm ℤ) (↑m + ↑n * ω) = discriminant23PrincipalForm m n
+discriminant23_norm_two_form : ∀ (m n : ℤ),
+  (Algebra.norm ℤ) (↑(2 * m) + ↑n * ω) = ↑(Ideal.absNorm discriminant23NormTwoIdeal) * discriminant23OtherForm m n
+'FieldTarget.discriminant23ResidueIdeal_absNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23NormTwoIdeal_isPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23NormTwoIdeal_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_principal_norm_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_norm_two_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_units_eq_one_or_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23NormForms exit=0
+Super Zeta source DedekindDiscriminant23ClassRepresentatives 01129f3b800e84521ba69d98c4b907a36269082f
+discriminant23_class_small_representative : ∀ (C : ClassGroup (𝓞 ↥discriminant23QuadraticSubfield)),
+  ∃ I, ClassGroup.mk0 I = C ∧ Ideal.absNorm ↑I ≤ 3
+@discriminant23_small_prime_ideal : ∀ {p : ℕ} [inst : Fact (Nat.Prime p)],
+  p ∣ 6 →
+    ∀ (J : Ideal (𝓞 ↥discriminant23QuadraticSubfield)),
+      Ideal.absNorm J = p →
+        ∃ e, (e = 0 ∨ e = 1) ∧ ∃ (he : ↑e ^ 2 - ↑e + 6 = 0), J = discriminant23ResidueIdeal p (↑e) he
+'FieldTarget.discriminant23_class_small_representative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_small_prime_ideal' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23ClassRepresentatives exit=0
+Super Zeta source DedekindDiscriminant23ClassNumber bf22b45b311a727e2b8581200844005390a052c9
+discriminant23_class_number : classNumber ↥discriminant23QuadraticSubfield = 3
+discriminant23_class_candidates : ∀ (C : ClassGroup (𝓞 ↥discriminant23QuadraticSubfield)),
+  C = 1 ∨ C = classTwo ∨ C = classTwo⁻¹
+'FieldTarget.discriminant23_class_number' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_class_group_cyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23ClassNumber exit=0
+Super Zeta source DedekindDiscriminant23Hilbert 406593dbfa4835480360d7e2fc908f62d0024b73
+discriminant23_isSmallHilbertClassField : IsSmallHilbertClassField discriminant23AbelianExtension
+discriminant23_relative_splitsCompletely_iff_class_eq_one : ∀
+  (v : HeightOneSpectrum (𝓞 ↥discriminant23QuadraticSubfield)),
+  FinitePrimeSplitsCompletely ↥discriminant23QuadraticSubfield L23 v ↔
+    (ClassGroup.mk ↥discriminant23QuadraticSubfield) (finitePrimeFractionalIdeal v) = 1
+discriminant23_relative_residue_degree_eq_class_order : ∀ (v : HeightOneSpectrum (𝓞 ↥discriminant23QuadraticSubfield))
+  (P : HeightOneSpectrum (𝓞 L23)),
+  P.asIdeal.LiesOver v.asIdeal →
+    P.asIdeal.inertiaDeg (𝓞 ↥discriminant23QuadraticSubfield) =
+      orderOf ((ClassGroup.mk ↥discriminant23QuadraticSubfield) (finitePrimeFractionalIdeal v))
+'FieldTarget.isSmallHilbertClassField_of_finrank_eq_classNumber' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_relative_everywhereUnramified' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23AbelianExtension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_isSmallHilbertClassField' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_relative_splitsCompletely_iff_class_eq_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_relative_prime_count_mul_residue_degree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_relative_residue_degree_eq_class_order' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Hilbert exit=0
+Super Zeta source DedekindDiscriminant23EulerProduct 61455ecf04f91e68a37f1e33d20a4fc271b6386e
+discriminant23_relative_eulerDenominator : ∀ (v : HeightOneSpectrum (𝓞 ↥discriminant23QuadraticSubfield)) (w : ℂ),
+  ∏ Q ∈ IsDedekindDomain.primesOverFinset v.asIdeal (𝓞 L23), (1 - ↑(Ideal.absNorm Q) ^ (-w)) =
+    (1 - ↑(Ideal.absNorm v.asIdeal) ^ (-w)) *
+        (1 - discriminant23ClassWeight 1 v.asIdeal * ↑(Ideal.absNorm v.asIdeal) ^ (-w)) *
+      (1 - discriminant23ClassWeight 2 v.asIdeal * ↑(Ideal.absNorm v.asIdeal) ^ (-w))
+@discriminant23_dedekindZeta_eq_classSeries : ∀ {w : ℂ},
+  1 < w.re →
+    dedekindZeta L23 w =
+      dedekindZeta (↥discriminant23QuadraticSubfield) w * discriminant23ClassSeries 1 w * discriminant23ClassSeries 2 w
+'FieldTarget.discriminant23ClassCharacter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_relative_eulerDenominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_dedekindZeta_eq_classSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23EulerProduct exit=0

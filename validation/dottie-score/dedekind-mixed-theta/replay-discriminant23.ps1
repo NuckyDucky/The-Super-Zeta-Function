@@ -40,10 +40,12 @@ $sources = @(
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23NormForms.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23ClassRepresentatives.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23ClassNumber.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23Hilbert.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23EulerProduct.lean')
 )
 $importsNeeded = foreach ($source in $sources) {
     foreach ($line in (Get-Content -LiteralPath $source)) {
-        if ($line -cmatch '^import (Mathlib\.[A-Za-z0-9._]+)$') {
+        if ($line -cmatch '^import ((?:Mathlib|ClassFieldTheory|DedekindZetaZeroFree)\.[A-Za-z0-9._]+)$') {
             "+$($Matches[1]):olean"
         }
     }
