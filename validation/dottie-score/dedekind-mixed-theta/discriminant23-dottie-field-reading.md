@@ -20,6 +20,14 @@ If $1/2\le\operatorname{Re} w<1$ and $|\operatorname{Im} w|\le1/2$, the theta in
 
 If $0<\operatorname{Re} w<1$ and $|\operatorname{Im} w|\le1/2$, the actual field reading times $w(1-w)$ has real part at most $-3/64$. This proves $\zeta_L(w)\ne0$ across the entire band. [Field theorem](DedekindDiscriminant23DottieReading.lean) · [Lean output and axioms](discriminant23-low-strip-replay-and-axioms.txt)
 
+## The character fold at the same input
+
+Write $M_K(w)$ for the pole-cleared completed reading of $K$ and $C(w)$ for the full principal-minus-nonprincipal fold. If $0<\operatorname{Re}w<1$, Lean gives $M_L(w)=M_F(w)C(w)^2$ at that very $w$. So $\zeta_L(w)=0$ if and only if $\zeta_F(w)=0$ or $C(w)=0$. If the zeros of $\zeta_F$ are on the line, Dedekind RH for $L$ is equivalent to $\operatorname{Re}w=1/2$ for every strip zero of $C$. [Base-field continuation](DedekindDiscriminant23CompletedProduct.lean) · [Zero and RH equivalences](DedekindDiscriminant23DottieReading.lean)
+
+If $|\operatorname{Im}w|\le7/6$ in that strip, the character-fold real part is at least $1/96$ and the real part of $M_F(w)$ is at most $-3/13$. Lean gets the character bound from the height-dependent cosine loss. It gets the base bound by multiplying the total fold's norm allowance $216/143$ by the pole weight's norm allowance $11/6$ and subtracting the pole constant $3$. [Height-dependent Mellin bound](DottieClassMellinBounds.lean) · [Bounds on both factors](DedekindDiscriminant23DottieReading.lean)
+
+If I multiply the completed reading of $L$ by $w(1-w)/C(w)^2$, the result is $M_F(w)$ and has real part at most $-3/13$. Lean proves this weight is analytic at every point of the band. The product identity also gives $|M_L(w)|\ge1/39936$, so the actual Dedekind continuation is nonzero throughout this entire band. The zero-exclusion theorem takes only the strip and height inequalities. [Weighted reading and zero exclusion](DedekindDiscriminant23DottieReading.lean) · [Exact Lean output](discriminant23-factor-reading-replay-and-axioms.txt)
+
 ## Replay
 
 Run the [pinned discriminant-23 replay](replay-discriminant23.ps1) with the checkout and Lean version in the [archive README](README.md). [Exact Lean output](discriminant23-dottie-field-replay-and-axioms.txt)

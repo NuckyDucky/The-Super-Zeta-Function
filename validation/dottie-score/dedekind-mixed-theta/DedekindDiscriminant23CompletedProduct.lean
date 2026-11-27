@@ -80,6 +80,13 @@ def discriminant23TotalFold (w : ℂ) : ℂ :=
 def discriminant23CharacterFold (w : ℂ) : ℂ :=
   (idealClassThetaPair F23 1).Λ₀ w - (idealClassThetaPair F23 c₂).Λ₀ w
 
+private theorem discriminant23TotalFold_differentiable : Differentiable ℂ discriminant23TotalFold :=
+  (idealClassThetaPair F23 1).differentiable_Λ₀.add
+    ((differentiable_const (2 : ℂ)).mul (idealClassThetaPair F23 c₂).differentiable_Λ₀)
+
+theorem discriminant23CharacterFold_differentiable : Differentiable ℂ discriminant23CharacterFold :=
+  (idealClassThetaPair F23 1).differentiable_Λ₀.sub (idealClassThetaPair F23 c₂).differentiable_Λ₀
+
 private theorem sum_three_classes (f : C23 → ℂ) :
     (∑ C, f C) = f 1 + f c₂ + f c₂⁻¹ := by
   classical
@@ -166,9 +173,48 @@ private theorem gamma_eq_base_cube (w : ℂ) :
   norm_num
   ring
 
-private theorem field_lambda_eq_gamma_zeta {w : ℂ} (hw : 1 < w.re) :
-    (mixedThetaPair L23).Λ w = zetaGammaFactor L23 w * dedekindZeta L23 w :=
-  ((mixedThetaPair L23).hasMellin hw).2.symm.trans (hasMellin_mixedThetaPair L23 hw).2
+private theorem field_lambda_eq_gamma_zeta (K : Type) [Field K] [NumberField K]
+    {w : ℂ} (hw : 1 < w.re) :
+    (mixedThetaPair K).Λ w = zetaGammaFactor K w * dedekindZeta K w :=
+  ((mixedThetaPair K).hasMellin hw).2.symm.trans (hasMellin_mixedThetaPair K hw).2
+
+private theorem entire_eq_of_right_half_plane {f g : ℂ → ℂ}
+    (hf : Differentiable ℂ f) (hg : Differentiable ℂ g)
+    (h : ∀ w : ℂ, 1 < w.re → f w = g w) : f = g := by
+  have hOpen : ∀ᶠ z in nhds (2 : ℂ), 1 < z.re :=
+    (isOpen_lt (continuous_const : Continuous (fun _ : ℂ ↦ (1 : ℝ)))
+      Complex.continuous_re).mem_nhds (show 1 < (2 : ℂ).re by norm_num)
+  have hEv : f =ᶠ[nhds (2 : ℂ)] g := by
+    filter_upwards [hOpen] with z hz
+    exact h z hz
+  exact (Complex.analyticOnNhd_univ_iff_differentiable.mpr hf).eq_of_eventuallyEq
+    (Complex.analyticOnNhd_univ_iff_differentiable.mpr hg) hEv
+
+/-- The sum of the three class folds gives the actual pole-cleared
+quadratic Dedekind reading. -/
+theorem discriminant23_continued_completed_base (w : ℂ) :
+    w * (1 - w) * (mixedThetaPair F23).Λ₀ w - (mixedThetaPair F23).f₀ =
+      w * (1 - w) * discriminant23TotalFold w - 3 := by
+  let lhs : ℂ → ℂ := fun z ↦ z * (1 - z) * (mixedThetaPair F23).Λ₀ z - (mixedThetaPair F23).f₀
+  let rhs : ℂ → ℂ := fun z ↦ z * (1 - z) * discriminant23TotalFold z - 3
+  have hp : Differentiable ℂ (fun z : ℂ ↦ z * (1 - z)) :=
+    differentiable_id.mul ((differentiable_const (1 : ℂ)).sub differentiable_id)
+  have hL : Differentiable ℂ lhs :=
+    (hp.mul (mixedThetaPair F23).differentiable_Λ₀).sub (differentiable_const _)
+  have hR : Differentiable ℂ rhs :=
+    (hp.mul discriminant23TotalFold_differentiable).sub (differentiable_const (3 : ℂ))
+  refine congrFun (entire_eq_of_right_half_plane hL hR ?_) w
+  intro z hz
+  have h₀ : z ≠ 0 := by rintro rfl; norm_num at hz
+  have h₁ : z ≠ 1 := by rintro rfl; norm_num at hz
+  let P := mixedThetaPair F23
+  have hVal : P.Λ z = discriminant23TotalFold z - 3 / (z * (1 - z)) :=
+    (field_lambda_eq_gamma_zeta F23 hz).trans (completed_base_eq_total hz)
+  rw [lambda_sub_of_self_dual_constants P rfl rfl
+    (mixedThetaPair_global_g₀_eq_f₀ F23) z h₀ h₁] at hVal
+  change z * (1 - z) * P.Λ₀ z - P.f₀ = _
+  linear_combination (norm := (field_simp [h₀, sub_ne_zero.mpr h₁.symm]; ring))
+    (z * (1 - z)) * hVal
 
 private theorem continued_product_right {w : ℂ} (hw : 1 < w.re) :
     w * (1 - w) * (mixedThetaPair L23).Λ₀ w - (mixedThetaPair L23).f₀ =
@@ -181,7 +227,7 @@ private theorem continued_product_right {w : ℂ} (hw : 1 < w.re) :
   have hVal : P.Λ w =
       (discriminant23TotalFold w - 3 / (w * (1 - w))) * discriminant23CharacterFold w ^ 2 := by
     change (mixedThetaPair L23).Λ w = _
-    rw [field_lambda_eq_gamma_zeta hw, gamma_eq_base_cube, discriminant23_dedekindZeta_eq_classSeries hw,
+    rw [field_lambda_eq_gamma_zeta L23 hw, gamma_eq_base_cube, discriminant23_dedekindZeta_eq_classSeries hw,
       show zetaGammaFactor F23 w ^ 3 *
           (dedekindZeta F23 w * discriminant23ClassSeries 1 w * discriminant23ClassSeries 2 w) =
         (zetaGammaFactor F23 w * dedekindZeta F23 w) *
@@ -205,26 +251,18 @@ theorem discriminant23_continued_completed_class_product (w : ℂ) :
     (z * (1 - z) * discriminant23TotalFold z - 3) * discriminant23CharacterFold z ^ 2
   have hp : Differentiable ℂ (fun z : ℂ ↦ z * (1 - z)) :=
     differentiable_id.mul ((differentiable_const (1 : ℂ)).sub differentiable_id)
-  have ha := (idealClassThetaPair F23 1).differentiable_Λ₀
-  have hb := (idealClassThetaPair F23 c₂).differentiable_Λ₀
-  have ht : Differentiable ℂ discriminant23TotalFold :=
-    ha.add ((differentiable_const (2 : ℂ)).mul hb)
-  have hc : Differentiable ℂ discriminant23CharacterFold := ha.sub hb
   have hL : Differentiable ℂ lhs :=
     (hp.mul (mixedThetaPair L23).differentiable_Λ₀).sub (differentiable_const _)
   have hR : Differentiable ℂ rhs :=
-    ((hp.mul ht).sub (differentiable_const (3 : ℂ))).mul (hc.pow 2)
-  have hOpen : ∀ᶠ z in nhds (2 : ℂ), 1 < z.re :=
-    (isOpen_lt (continuous_const : Continuous (fun _ : ℂ ↦ (1 : ℝ)))
-      Complex.continuous_re).mem_nhds (show 1 < (2 : ℂ).re by norm_num)
-  have hEv : lhs =ᶠ[nhds (2 : ℂ)] rhs := by
-    filter_upwards [hOpen] with z hz
-    exact continued_product_right hz
-  exact congrFun ((Complex.analyticOnNhd_univ_iff_differentiable.mpr hL).eq_of_eventuallyEq
-    (Complex.analyticOnNhd_univ_iff_differentiable.mpr hR) hEv) w
+    ((hp.mul discriminant23TotalFold_differentiable).sub (differentiable_const (3 : ℂ))).mul
+      (discriminant23CharacterFold_differentiable.pow 2)
+  exact congrFun (entire_eq_of_right_half_plane hL hR (fun _ hz ↦ continued_product_right hz)) w
 
+#check @discriminant23_continued_completed_base
 #check @discriminant23_continued_completed_class_product
 #print axioms discriminant23_classLambdaZero_eq_fold
+#print axioms discriminant23CharacterFold_differentiable
+#print axioms discriminant23_continued_completed_base
 #print axioms discriminant23_continued_completed_class_product
 
 end

@@ -5,7 +5,7 @@ import Discriminant23DottieDisk
 namespace FieldTarget
 
 open scoped NumberField
-open NumberField MeasureTheory Set
+open NumberField MeasureTheory Set ArtinPrimitiveRootsConjecture
 open SuperZeta.StirlingCorrection
 
 noncomputable section
@@ -51,7 +51,7 @@ private theorem fold_translate (H : ℝ → ℝ) (w : ℂ) :
   ring
 
 private theorem total_fold_eq_dottie (w : ℂ) :
-    discriminant23TotalFold w = 2 * classMellinReading (fun t ↦ thetaSum (1 + t)) w := by
+    discriminant23TotalFold w = 2 * discriminant23TotalClassReading w := by
   have hp := discriminant23_fold_integrable (1 : ClassGroup (𝓞 F23)) w
   have hn := discriminant23_fold_integrable c₂ w
   rw [discriminant23TotalFold, discriminant23_classLambdaZero_eq_fold,
@@ -66,7 +66,7 @@ private theorem total_fold_eq_dottie (w : ℂ) :
   · exact fold_translate thetaSum w
 
 private theorem character_fold_eq_dottie (w : ℂ) :
-    discriminant23CharacterFold w = 2 * classMellinReading (fun t ↦ thetaDifference (1 + t)) w := by
+    discriminant23CharacterFold w = 2 * discriminant23CharacterClassReading w := by
   have hp := discriminant23_fold_integrable (1 : ClassGroup (𝓞 F23)) w
   have hn := discriminant23_fold_integrable c₂ w
   rw [discriminant23CharacterFold, discriminant23_classLambdaZero_eq_fold,
@@ -92,8 +92,8 @@ theorem discriminant23_completedReading_eq_classProduct (w : ℂ)
     rw [← hw] at hhi
     norm_num at hhi
   have hPole : w * (1 - w) ≠ 0 := mul_ne_zero h₀ h₁
-  let A := classMellinReading (fun t ↦ thetaSum (1 + t)) w
-  let C := classMellinReading (fun t ↦ thetaDifference (1 + t)) w
+  let A := discriminant23TotalClassReading w
+  let C := discriminant23CharacterClassReading w
   have hModel : discriminant23CompletedClassProduct w = (A - (3 / 2 : ℂ) / (w * (1 - w))) * C ^ 2 :=
     rfl
   have h := discriminant23_continued_completed_class_product w
@@ -106,6 +106,42 @@ theorem discriminant23_completedReading_eq_classProduct (w : ℂ)
           (DedekindZetaZeroFree.AbelianQuotient.Theta.mixedThetaPair L23).f₀ := by
       field_simp [h₀, h₁]
     _ = _ := h.trans (by field_simp [h₀, h₁]; ring)
+
+/-- The actual pole-cleared readings have one relative factor, the square
+of the class-character fold, at the same input throughout the strip. -/
+theorem discriminant23_signedReading_eq_base_mul_character_sq (w : ℂ)
+    (h0 : 0 < w.re) (h1 : w.re < 1) :
+    mixedThetaSignedReading L23 w =
+      mixedThetaSignedReading F23 w * discriminant23CharacterFold w ^ 2 := by
+  rw [mixedThetaSignedReading_eq_mellin_sub L23 w h0 h1,
+    discriminant23_continued_completed_class_product,
+    mixedThetaSignedReading_eq_mellin_sub F23 w h0 h1, discriminant23_continued_completed_base]
+
+theorem discriminant23_dedekind_zero_iff_base_or_character (w : ℂ)
+    (h0 : 0 < w.re) (h1 : w.re < 1) :
+    mixedThetaContinuation L23 w = 0 ↔
+      mixedThetaContinuation F23 w = 0 ∨ discriminant23CharacterFold w = 0 := by
+  rw [← mixedThetaSignedReading_zero_iff L23 w h0 h1,
+    discriminant23_signedReading_eq_base_mul_character_sq w h0 h1, mul_eq_zero,
+    mixedThetaSignedReading_zero_iff F23 w h0 h1, pow_eq_zero_iff (by norm_num : (2 : ℕ) ≠ 0)]
+
+theorem discriminant23_dedekindRH_iff_base_and_character :
+    DedekindZetaRH L23 ↔ DedekindZetaRH F23 ∧ StripZerosOnLine discriminant23CharacterFold := by
+  rw [dedekindZetaRH_iff_strip (mixedThetaContinuation_isDedekind L23),
+    dedekindZetaRH_iff_strip (mixedThetaContinuation_isDedekind F23)]
+  constructor
+  · intro h
+    exact ⟨fun w h0 h1 hz ↦ h w h0 h1
+      ((discriminant23_dedekind_zero_iff_base_or_character w h0 h1).mpr (.inl hz)),
+      fun w h0 h1 hz ↦ h w h0 h1
+        ((discriminant23_dedekind_zero_iff_base_or_character w h0 h1).mpr (.inr hz))⟩
+  · rintro ⟨hF, hC⟩ w h0 h1 hz
+    exact ((discriminant23_dedekind_zero_iff_base_or_character w h0 h1).mp hz).elim
+      (hF w h0 h1) (hC w h0 h1)
+
+theorem discriminant23_dedekindRH_iff_character (hF : DedekindZetaRH F23) :
+    DedekindZetaRH L23 ↔ StripZerosOnLine discriminant23CharacterFold := by
+  rw [discriminant23_dedekindRH_iff_base_and_character, and_iff_right hF]
 
 /-- The signed margin for the genuine completed reading on the entire
 first closed Dottie disk. -/
@@ -154,16 +190,135 @@ theorem discriminant23_dedekind_ne_zero_on_low_strip {w : ℂ}
   rw [(mixedThetaCompletedReading_zero_iff L23 w h0 h1).mpr hz, mul_zero, Complex.zero_re] at h
   norm_num at h
 
+theorem discriminant23_fold_bounds_to_seven_sixths {w : ℂ}
+    (h0 : 0 ≤ w.re) (h1 : w.re ≤ 1) (him : |w.im| ≤ 7 / 6) :
+    ‖discriminant23TotalFold w‖ ≤ 216 / 143 ∧ 1 / 96 ≤ (discriminant23CharacterFold w).re := by
+  obtain ⟨hA, hC⟩ := discriminant23_class_reading_bounds_on_strip h0 h1
+  rw [total_fold_eq_dottie, character_fold_eq_dottie]
+  constructor
+  · rw [norm_mul, show ‖(2 : ℂ)‖ = 2 by norm_num]
+    linarith only [hA]
+  · have hi := pow_le_pow_left₀ (abs_nonneg _) him 2
+    rw [sq_abs] at hi
+    norm_num [Complex.mul_re]
+    nlinarith only [hi, hC]
+
+private theorem discriminant23_characterFold_ne_zero_on_wide_strip {w : ℂ}
+    (h0 : 0 ≤ w.re) (h1 : w.re ≤ 1) (him : |w.im| ≤ 7 / 6) :
+    discriminant23CharacterFold w ≠ 0 := by
+  have h := (discriminant23_fold_bounds_to_seven_sixths h0 h1 him).2
+  intro hz
+  rw [hz, Complex.zero_re] at h
+  norm_num at h
+
+theorem re_discriminant23_signed_base_le_on_wide_strip {w : ℂ}
+    (h0 : 0 < w.re) (h1 : w.re < 1) (him : |w.im| ≤ 7 / 6) :
+    (mixedThetaSignedReading F23 w).re ≤ -(3 / 13 : ℝ) := by
+  have hgeom := norm_dottie_pole_weight_sq_le h0.le h1.le
+  have h2 := pow_le_pow_left₀ (abs_nonneg _) him 2
+  rw [sq_abs] at h2
+  have h4 := pow_le_pow_left₀ (sq_nonneg w.im) h2 2
+  have hq : ‖w * (1 - w)‖ ≤ 11 / 6 := by
+    apply (sq_le_sq₀ (norm_nonneg _) (by norm_num : (0 : ℝ) ≤ 11 / 6)).mp
+    nlinarith only [hgeom, h2, h4]
+  have ht := (discriminant23_fold_bounds_to_seven_sixths h0.le h1.le him).1
+  have hreg : ‖w * (1 - w) * discriminant23TotalFold w‖ ≤ 36 / 13 := calc
+    _ = ‖w * (1 - w)‖ * ‖discriminant23TotalFold w‖ := norm_mul ..
+    _ ≤ (11 / 6) * (216 / 143) := mul_le_mul hq ht (norm_nonneg _) (by norm_num)
+    _ = _ := by norm_num
+  have hre := (Complex.re_le_norm _).trans hreg
+  rw [mixedThetaSignedReading_eq_mellin_sub F23 w h0 h1,
+    discriminant23_continued_completed_base, Complex.sub_re]
+  norm_num [Complex.mul_re] at hre ⊢
+  linarith only [hre]
+
+/-- Normalize the completed reading by the proved nonzero character factor. -/
+def discriminant23CharacterWeight (w : ℂ) : ℂ :=
+  w * (1 - w) / discriminant23CharacterFold w ^ 2
+
+theorem discriminant23CharacterWeight_analyticOnNhd :
+    AnalyticOnNhd ℂ discriminant23CharacterWeight
+      {w : ℂ | 0 < w.re ∧ w.re < 1 ∧ |w.im| ≤ 7 / 6} := by
+  have hp : Differentiable ℂ (fun z : ℂ ↦ z * (1 - z)) :=
+    differentiable_id.mul ((differentiable_const (1 : ℂ)).sub differentiable_id)
+  have hp' := Complex.analyticOnNhd_univ_iff_differentiable.mpr hp
+  have hc' := Complex.analyticOnNhd_univ_iff_differentiable.mpr
+    (discriminant23CharacterFold_differentiable.pow 2)
+  intro w hw
+  exact (hp' w (mem_univ w)).div (hc' w (mem_univ w))
+    (pow_ne_zero _ (discriminant23_characterFold_ne_zero_on_wide_strip hw.1.le hw.2.1.le hw.2.2))
+
+theorem re_discriminant23_characterWeightedReading_le_on_wide_strip {w : ℂ}
+    (h0 : 0 < w.re) (h1 : w.re < 1) (him : |w.im| ≤ 7 / 6) :
+    (discriminant23CharacterWeight w * mixedThetaCompletedReading L23 w).re ≤ -(3 / 13 : ℝ) := by
+  have h0w : w ≠ 0 := by rintro rfl; norm_num at h0
+  have h1w : 1 - w ≠ 0 := by
+    intro h
+    rw [← sub_eq_zero.mp h] at h1
+    norm_num at h1
+  have hC := discriminant23_characterFold_ne_zero_on_wide_strip h0.le h1.le him
+  have heq : discriminant23CharacterWeight w * mixedThetaCompletedReading L23 w =
+      mixedThetaSignedReading F23 w := by
+    rw [discriminant23CharacterWeight, mixedThetaCompletedReading,
+      discriminant23_signedReading_eq_base_mul_character_sq w h0 h1]
+    field_simp [h0w, h1w, hC]
+  rw [heq]
+  exact re_discriminant23_signed_base_le_on_wide_strip h0 h1 him
+
+theorem norm_discriminant23_signedReading_ge_on_wide_strip {w : ℂ}
+    (h0 : 0 < w.re) (h1 : w.re < 1) (him : |w.im| ≤ 7 / 6) :
+    (1 / 39936 : ℝ) ≤ ‖mixedThetaSignedReading L23 w‖ := by
+  have hre := re_discriminant23_signed_base_le_on_wide_strip h0 h1 him
+  have hbase : (3 / 13 : ℝ) ≤ ‖mixedThetaSignedReading F23 w‖ := calc
+    _ ≤ (-mixedThetaSignedReading F23 w).re := by
+      rw [Complex.neg_re]
+      linarith only [hre]
+    _ ≤ ‖-mixedThetaSignedReading F23 w‖ := Complex.re_le_norm _
+    _ = _ := norm_neg _
+  have hC := (discriminant23_fold_bounds_to_seven_sixths h0.le h1.le him).2.trans
+    (Complex.re_le_norm _)
+  rw [discriminant23_signedReading_eq_base_mul_character_sq w h0 h1, norm_mul, norm_pow]
+  calc
+    (1 / 39936 : ℝ) = (3 / 13) * (1 / 96) ^ 2 := by norm_num
+    _ ≤ _ := mul_le_mul hbase (pow_le_pow_left₀ (by norm_num) hC 2)
+      (by norm_num) (norm_nonneg _)
+
+/-- The wider low-height band is zero-free for the actual Dedekind continuation. -/
+theorem discriminant23_dedekind_ne_zero_to_seven_sixths {w : ℂ}
+    (h0 : 0 < w.re) (h1 : w.re < 1) (him : |w.im| ≤ 7 / 6) :
+    mixedThetaContinuation L23 w ≠ 0 := by
+  intro hz
+  have h := norm_discriminant23_signedReading_ge_on_wide_strip h0 h1 him
+  rw [(mixedThetaSignedReading_zero_iff L23 w h0 h1).mpr hz, norm_zero] at h
+  norm_num at h
+
 #check @discriminant23_completedReading_eq_classProduct
+#check @discriminant23_signedReading_eq_base_mul_character_sq
+#check @discriminant23_dedekind_zero_iff_base_or_character
+#check @discriminant23_dedekindRH_iff_character
 #check @re_discriminant23_completedReading_le_on_first_dottie_disk
 #check @discriminant23_dedekind_ne_zero_on_first_dottie_disk
 #check @re_weighted_discriminant23_completedReading_le_on_low_strip
 #check @discriminant23_dedekind_ne_zero_on_low_strip
+#check @discriminant23CharacterWeight_analyticOnNhd
+#check @re_discriminant23_characterWeightedReading_le_on_wide_strip
+#check @norm_discriminant23_signedReading_ge_on_wide_strip
+#check @discriminant23_dedekind_ne_zero_to_seven_sixths
 #print axioms discriminant23_completedReading_eq_classProduct
+#print axioms discriminant23_signedReading_eq_base_mul_character_sq
+#print axioms discriminant23_dedekind_zero_iff_base_or_character
+#print axioms discriminant23_dedekindRH_iff_base_and_character
+#print axioms discriminant23_dedekindRH_iff_character
 #print axioms re_discriminant23_completedReading_le_on_first_dottie_disk
 #print axioms discriminant23_dedekind_ne_zero_on_first_dottie_disk
 #print axioms re_weighted_discriminant23_completedReading_le_on_low_strip
 #print axioms discriminant23_dedekind_ne_zero_on_low_strip
+#print axioms discriminant23_fold_bounds_to_seven_sixths
+#print axioms re_discriminant23_signed_base_le_on_wide_strip
+#print axioms discriminant23CharacterWeight_analyticOnNhd
+#print axioms re_discriminant23_characterWeightedReading_le_on_wide_strip
+#print axioms norm_discriminant23_signedReading_ge_on_wide_strip
+#print axioms discriminant23_dedekind_ne_zero_to_seven_sixths
 
 end
 end FieldTarget
