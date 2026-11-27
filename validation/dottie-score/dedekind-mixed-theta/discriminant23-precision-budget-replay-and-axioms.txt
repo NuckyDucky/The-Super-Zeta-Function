@@ -1,0 +1,15 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath HEAD: 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib HEAD: 0493595ecd5da8ef14742febab99728f98e948e8
+Lean invocation: -j1 -M7500 -DwarningAsError=true; LEAN_NUM_THREADS=1
+Existing import: DedekindDiscriminant23AdaptiveParameters
+DedekindDiscriminant23PrecisionBudget source 8534c0f2185fc88ce774ac5c375481f6a192f551
+DedekindDiscriminant23PrecisionBudget source SHA-256 2F1C9EAEF0186B62776130A854769A4C928291E99A63EA725762F28FE2AE2FD5
+@discriminant23_phase_error_below_10_pow_neg_666 : ∀ {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      ‖discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo 1641 12 2238 false w‖ < 1 / 10 ^ 666 ∧
+        ‖deriv discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo 1641 12 2238 true w‖ < 1 / 10 ^ 666
+'FieldTarget.discriminant23_phase_error_below_10_pow_neg_666' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23PrecisionBudget exit=0 27.503s
+DedekindDiscriminant23PrecisionBudget reproduced its saved printed scopes and all 1 transitive axiom reports.
