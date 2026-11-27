@@ -219,6 +219,8 @@ Take the splitting field of $X^3-X-1$. Lean gives the Galois group $S_3$, identi
 
 If $|w-3/4|\le31/128$, the completed class product has real part at most $-1/400$. Lean identifies the actual completed Dedekind reading at the same $w$ as eight times that product. So its real part is at most $-1/50$ and the field zeta has no zero throughout the closed disk. [Formula and exact bounds](discriminant23-dottie.md) · [Actual field theorem](DedekindDiscriminant23DottieReading.lean) · [Lean output](discriminant23-dottie-field-replay-and-axioms.txt)
 
+If $0<\operatorname{Re}w<1$ and $|\operatorname{Im}w|\le1/2$, multiply the actual completed reading by $w(1-w)$. Lean gives a real-part ceiling of $-3/64$ across the whole band. So the Dedekind zeta of the splitting field is nonzero there. [Weighted bound and field theorem](DedekindDiscriminant23DottieReading.lean) · [Exact Lean output](discriminant23-low-strip-replay-and-axioms.txt)
+
 ## Discriminant-23 ideal norms and class number
 
 I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)

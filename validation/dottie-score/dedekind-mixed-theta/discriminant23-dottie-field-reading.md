@@ -14,6 +14,12 @@ Lean pairs each class theta function with its trace dual. The regulator is one a
 
 The change of variable from the positive radial coordinate to the disk integral gives a factor of two for each of the three folds. If $0<\operatorname{Re} w<1$, the actual completed field reading equals $8P(w)$, where $P$ is the [first disk formula](discriminant23-dottie.md). If $|w-3/4|\le31/128$, the existing ceiling $-1/400$ for $\operatorname{Re} P(w)$ gives a ceiling of $-1/50$ for the real part of the completed field reading. The continued $\zeta_L(w)$ is nonzero throughout this closed disk. [Same-input identity and disk theorem](DedekindDiscriminant23DottieReading.lean)
 
+## The full low-height strip
+
+If $1/2\le\operatorname{Re} w<1$ and $|\operatorname{Im} w|\le1/2$, the theta integrals give $|A|\le4/5$, $u=\operatorname{Re} C\ge1/8$, and $|\operatorname{Im} C|\le u/2$. Multiplying by $w(1-w)$ gives the product $(w(1-w)A-3/2)C^2$. The regular term has real part at most $3u^2/4$ and the pole term contributes at most $-9u^2/8$. The folded formula agrees at $w$ and $1-w$, so the same inequality holds on the other half. [Mellin bounds](DottieClassMellinBounds.lean) · [Weighted class product](Discriminant23DottieDisk.lean)
+
+If $0<\operatorname{Re} w<1$ and $|\operatorname{Im} w|\le1/2$, the actual field reading times $w(1-w)$ has real part at most $-3/64$. This proves $\zeta_L(w)\ne0$ across the entire band. [Field theorem](DedekindDiscriminant23DottieReading.lean) · [Lean output and axioms](discriminant23-low-strip-replay-and-axioms.txt)
+
 ## Replay
 
 Run the [pinned discriminant-23 replay](replay-discriminant23.ps1) with the checkout and Lean version in the [archive README](README.md). [Exact Lean output](discriminant23-dottie-field-replay-and-axioms.txt)

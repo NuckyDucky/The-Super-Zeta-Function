@@ -78,6 +78,16 @@ def discriminant23CompletedClassProduct (w : ℂ) : ℂ :=
   let C := classMellinReading differencedTheta w
   (A - (3 / 2 : ℂ) / (w * (1 - w))) * C ^ 2
 
+private theorem discriminant23_class_reading_bounds {w : ℂ}
+    (hhalf : 1 / 2 ≤ w.re) (hone : w.re ≤ 1) (him : |w.im| ≤ 1 / 2) :
+    ‖classMellinReading summedTheta w‖ ≤ 4 / 5 ∧
+      1 / 8 ≤ (classMellinReading differencedTheta w).re ∧
+      |(classMellinReading differencedTheta w).im| ≤ |w.im| * (w.re - 1 / 2) / 4 := by
+  have hP := measurable_classTheta discriminant23PrincipalForm
+  have hO := measurable_classTheta discriminant23OtherForm
+  exact classMellin_integral_bounds_to_half (hP.add (hO.const_mul 2)) (hP.sub hO)
+    (fun t ht ↦ (theta_bounds ht.le).1) (fun t ht ↦ (theta_bounds ht.le).2) hhalf hone him
+
 theorem re_discriminant23_classProduct_le_on_first_dottie_disk {w : ℂ}
     (hw : w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0)) :
     (discriminant23CompletedClassProduct w).re ≤ -(1 / 400 : ℝ) := by
@@ -86,14 +96,8 @@ theorem re_discriminant23_classProduct_le_on_first_dottie_disk {w : ℂ}
   rw [dist_eq_norm] at hd
   have hm := (Complex.abs_im_le_norm (w - dottieScaledRightCenter (1 / 512) 0)).trans hd
   norm_num [dottieScaledRightCenter, dottieScaledRadius, dottieRingScale] at hm
-  have him : |w.im| ≤ 1 / 4 := hm.trans (by norm_num)
-  have hP := measurable_classTheta discriminant23PrincipalForm
-  have hO := measurable_classTheta discriminant23OtherForm
-  have hU : Measurable summedTheta := hP.add (hO.const_mul 2)
-  have hD : Measurable differencedTheta := hP.sub hO
-  obtain ⟨hA, hC, hphase⟩ := classMellin_integral_bounds hU hD
-    (fun t ht ↦ (theta_bounds ht.le).1) (fun t ht ↦ (theta_bounds ht.le).2)
-    hstrip.1.le hstrip.2.le him
+  have him : |w.im| ≤ 1 / 2 := hm.trans (by norm_num)
+  obtain ⟨hA, hC, hphase⟩ := discriminant23_class_reading_bounds hstrip.1.le hstrip.2.le him
   exact re_completed_class_product_le_on_first_dottie_disk hw hA hC hphase
 
 theorem discriminant23_classProduct_ne_zero_on_first_dottie_disk {w : ℂ}
@@ -104,10 +108,129 @@ theorem discriminant23_classProduct_ne_zero_on_first_dottie_disk {w : ℂ}
   rw [hz, Complex.zero_re] at h
   norm_num at h
 
+private theorem norm_pole_denominator_le {w : ℂ}
+    (hhalf : 1 / 2 ≤ w.re) (hone : w.re ≤ 1) (him : |w.im| ≤ 1 / 2) :
+    ‖w * (1 - w)‖ ≤ 3 / 4 := by
+  let z := w * (1 - w)
+  have hre : z.re = w.re * (1 - w.re) + w.im ^ 2 := by
+    simp only [z, Complex.mul_re, Complex.sub_re, Complex.sub_im, Complex.one_re, Complex.one_im]
+    ring
+  have him' : z.im = (1 - 2 * w.re) * w.im := by
+    simp only [z, Complex.mul_im, Complex.sub_re, Complex.sub_im, Complex.one_re, Complex.one_im]
+    ring
+  have hs : w.im ^ 2 ≤ (1 / 4 : ℝ) := by
+    have h := pow_le_pow_left₀ (abs_nonneg _) him 2
+    rw [sq_abs] at h
+    linarith only [h]
+  have hre0 : 0 ≤ z.re := by
+    rw [hre]
+    exact add_nonneg (mul_nonneg (by linarith only [hhalf]) (sub_nonneg.mpr hone)) (sq_nonneg _)
+  have hre1 : z.re ≤ 1 / 2 := by
+    nlinarith only [hre, hs, sq_nonneg (w.re - 1 / 2)]
+  have hrs := pow_le_pow_left₀ hre0 hre1 2
+  have hf : |1 - 2 * w.re| ≤ 1 := abs_le.mpr ⟨by linarith only [hone], by linarith only [hhalf]⟩
+  have hi : |z.im| ≤ 1 / 2 := by
+    rw [him', abs_mul]
+    simpa only [one_mul] using mul_le_mul hf him (abs_nonneg _) (by norm_num : (0 : ℝ) ≤ 1)
+  have his := pow_le_pow_left₀ (abs_nonneg _) hi 2
+  rw [sq_abs] at his
+  change ‖z‖ ≤ _
+  apply (sq_le_sq₀ (norm_nonneg z) (by norm_num : (0 : ℝ) ≤ 3 / 4)).mp
+  rw [Complex.sq_norm, Complex.normSq_apply]
+  linarith only [hrs, his]
+
+private theorem re_weighted_classProduct_le_right {w : ℂ}
+    (hhalf : 1 / 2 ≤ w.re) (hone : w.re < 1) (him : |w.im| ≤ 1 / 2) :
+    (w * (1 - w) * discriminant23CompletedClassProduct w).re ≤ -(3 / 512 : ℝ) := by
+  let z := w * (1 - w)
+  let A := classMellinReading summedTheta w
+  let C := classMellinReading differencedTheta w
+  let u := C.re
+  let v := C.im
+  obtain ⟨hA, hu, hphase⟩ := discriminant23_class_reading_bounds hhalf hone.le him
+  change ‖A‖ ≤ _ at hA
+  change 1 / 8 ≤ u at hu
+  have hxy := mul_le_mul him (show w.re - 1 / 2 ≤ 1 / 2 by linarith only [hone])
+    (sub_nonneg.mpr hhalf) (by norm_num : (0 : ℝ) ≤ 1 / 2)
+  have hv : |v| ≤ u / 2 := by
+    change |v| ≤ _ at hphase
+    linarith only [hphase, hxy, hu]
+  have hvSq : v ^ 2 ≤ u ^ 2 / 4 := by
+    have h := pow_le_pow_left₀ (abs_nonneg _) hv 2
+    rw [sq_abs] at h
+    nlinarith only [h]
+  have huSq : (1 / 64 : ℝ) ≤ u ^ 2 := by
+    have h := pow_le_pow_left₀ (by norm_num : (0 : ℝ) ≤ 1 / 8) hu 2
+    linarith only [h]
+  have hCre : (3 / 4) * u ^ 2 ≤ (C ^ 2).re := by
+    rw [pow_two C, Complex.mul_re]
+    change (3 / 4) * u ^ 2 ≤ u * u - v * v
+    nlinarith only [hvSq]
+  have hCnorm : ‖C ^ 2‖ ≤ (5 / 4) * u ^ 2 := by
+    rw [norm_pow, Complex.sq_norm, Complex.normSq_apply]
+    change u * u + v * v ≤ _
+    nlinarith only [hvSq]
+  have hReg : (z * A * C ^ 2).re ≤ (3 / 4) * u ^ 2 := calc
+    _ ≤ ‖z * A * C ^ 2‖ := Complex.re_le_norm _
+    _ = (‖z‖ * ‖A‖) * ‖C ^ 2‖ := by rw [norm_mul, norm_mul]
+    _ ≤ ((3 / 4) * (4 / 5)) * ((5 / 4) * u ^ 2) :=
+      mul_le_mul (mul_le_mul (norm_pole_denominator_le hhalf hone.le him) hA
+        (norm_nonneg _) (by norm_num)) hCnorm (norm_nonneg _) (by norm_num)
+    _ = _ := by ring
+  have hw0 : w ≠ 0 := by rintro rfl; norm_num at hhalf
+  have hw1 : 1 - w ≠ 0 := by
+    intro h
+    rw [← sub_eq_zero.mp h] at hone
+    norm_num at hone
+  have hz : z ≠ 0 := mul_ne_zero hw0 hw1
+  have heq : z * discriminant23CompletedClassProduct w =
+      z * A * C ^ 2 - (3 / 2 : ℂ) * C ^ 2 := by
+    change z * ((A - (3 / 2 : ℂ) / z) * C ^ 2) = _
+    field_simp [hz]
+  have hre : (z * discriminant23CompletedClassProduct w).re =
+      (z * A * C ^ 2).re - (3 / 2 : ℝ) * (C ^ 2).re := by
+    rw [heq, Complex.sub_re, Complex.mul_re (3 / 2 : ℂ)]
+    norm_num [Complex.div_re, Complex.div_im]
+  change (z * discriminant23CompletedClassProduct w).re ≤ _
+  rw [hre]
+  nlinarith only [hReg, hCre, huSq]
+
+private theorem classMellinReading_one_sub (H : ℝ → ℝ) (w : ℂ) :
+    classMellinReading H (1 - w) = classMellinReading H w := by
+  have hweight (v : ℝ) : classMellinWeight (1 - w) v = classMellinWeight w v := by
+    unfold classMellinWeight
+    rw [show 1 - w - 1 = -w by ring, show -(1 - w) = w - 1 by ring, add_comm]
+  simp only [classMellinReading, hweight]
+
+private theorem discriminant23_classProduct_one_sub (w : ℂ) :
+    discriminant23CompletedClassProduct (1 - w) = discriminant23CompletedClassProduct w := by
+  simp only [discriminant23CompletedClassProduct, classMellinReading_one_sub, sub_sub_cancel,
+    mul_comm (1 - w) w]
+
+/-- A polynomial weight clears the poles and keeps a signed margin across
+the full width of the open strip up to height `1/2`. -/
+theorem re_weighted_discriminant23_classProduct_le_on_low_strip {w : ℂ}
+    (h0 : 0 < w.re) (h1 : w.re < 1) (him : |w.im| ≤ 1 / 2) :
+    (w * (1 - w) * discriminant23CompletedClassProduct w).re ≤ -(3 / 512 : ℝ) := by
+  by_cases hhalf : 1 / 2 ≤ w.re
+  · exact re_weighted_classProduct_le_right hhalf h1 him
+  · have hhalf' : 1 / 2 ≤ (1 - w).re := by
+      simp only [Complex.sub_re, Complex.one_re]
+      linarith only [lt_of_not_ge hhalf]
+    have h1' : (1 - w).re < 1 := by
+      simp only [Complex.sub_re, Complex.one_re]
+      linarith only [h0]
+    have him' : |(1 - w).im| ≤ 1 / 2 := by
+      simpa only [Complex.sub_im, Complex.one_im, zero_sub, abs_neg] using him
+    simpa only [sub_sub_cancel, mul_comm (1 - w) w, discriminant23_classProduct_one_sub] using
+      re_weighted_classProduct_le_right hhalf' h1' him'
+
 #check @re_discriminant23_classProduct_le_on_first_dottie_disk
 #check @discriminant23_classProduct_ne_zero_on_first_dottie_disk
+#check @re_weighted_discriminant23_classProduct_le_on_low_strip
 #print axioms re_discriminant23_classProduct_le_on_first_dottie_disk
 #print axioms discriminant23_classProduct_ne_zero_on_first_dottie_disk
+#print axioms re_weighted_discriminant23_classProduct_le_on_low_strip
 
 end
 end FieldTarget
