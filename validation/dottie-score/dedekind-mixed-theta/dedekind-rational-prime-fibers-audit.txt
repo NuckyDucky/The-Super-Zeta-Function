@@ -1,0 +1,8 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindRationalPrimeFibers source 1910bf7252dfc7d4465b4a9a1b7371e8a6f534b3
+rationalPrimeFiberEquiv : (K : Type u_2) →
+  [inst : Field K] → [inst_1 : NumberField K] → (p : Nat.Primes) × RationalPrimeFiber K p ≃ HeightOneSpectrum (𝓞 K)
+'FieldTarget.rationalPrimeFiberEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rationalPrimeFiberEquiv_asIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindRationalPrimeFibers exit=0
