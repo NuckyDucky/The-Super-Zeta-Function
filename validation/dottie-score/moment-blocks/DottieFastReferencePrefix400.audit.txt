@@ -1,0 +1,7 @@
+Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Mathlib 0df444a360eaa60ab8c11dca51a86af692955474
+Lean flags -j1 -M4000 -DwarningAsError=true, LEAN_NUM_THREADS=1
+Source blob 56aa84f280a3c755e5168c6e0b014402c4907325
+Source SHA-256 F6AD7BF138C096128A5F7493353AE89A33EF4CC6C468FEA07B6B5F2189BCC9A6
+'QuarticModel.dottieDirectReferencePrefix400' depends on axioms: [propext, Classical.choice, Quot.sound]
+Lean exit=0 elapsed=11.955s
