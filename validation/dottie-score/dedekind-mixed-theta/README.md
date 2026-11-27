@@ -212,3 +212,9 @@ The Dottie version takes two inputs. `hD` places the rational Dirichlet zeros on
 pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-cyclic-euler.ps1 `
   -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -GlobalDescent
 ~~~
+
+## First Dottie disk for the discriminant-23 class product
+
+Take the splitting field of $X^3-X-1$. Lean gives the Galois group $S_3$, identifies the quadratic subfield $\mathbb Q(\sqrt{-23})$, and proves that the relative extension is cyclic of degree three. [Field and group](DedekindDiscriminant23Field.lean) · [Relative extension](DedekindDiscriminant23Quadratic.lean)
+
+If $|w-3/4|\le31/128$, then the completed class product built from the two discriminant-23 theta sums has real part at most $-1/400$. Lean proves the lattice and integral bounds and applies them throughout the closed disk. The same-input identity with the repository's completed field reading is the next Lean handoff. [Formula and exact bounds](discriminant23-dottie.md) · [Disk theorem](Discriminant23DottieDisk.lean) · [Lean output](discriminant23-replay-and-axioms.txt)
