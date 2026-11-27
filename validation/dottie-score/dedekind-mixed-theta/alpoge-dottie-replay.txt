@@ -148,4 +148,18 @@ DottieNativeCandidate source a6f22f643f4791f7545250aee1855d56bae7b778
                     ∀ (b : Bool), 0 ≤ (W z * (Z b (z / 2) - J b (z / 2))).im
 'FieldTarget.dottie_native_words_candidate_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
 DottieNativeCandidate exit=0
+DottieNativeExclusion source 4f6e2e2981c6e30f075e2262d54a7e16d0b2c4d3
+@dottie_native_words_ne_zero_of_signed_boundary : ∀ {ρ : ℂ} (Z J : Bool → ℂ → ℂ),
+  (∀ (b : Bool) (w : ℂ), 0 < w.re → w.re < 1 → Z b (w / 2) - J b (w / 2) = dottieNativeThirds w) →
+    1 / 2 < ρ.re →
+      ρ.re ≤ 127 / 128 →
+        (∀ (n : ℕ),
+            ρ ∈ closedBall (dottieScaledRightCenter (ρ.im + 1 / 512) n) (dottieScaledRadius n) →
+              ∃ W b,
+                DifferentiableOn ℂ W (re ⁻¹' Ioo 0 1) ∧
+                  ∀ z ∈ sphere (dottieScaledRightCenter (ρ.im + 1 / 512) n) (dottieScaledRadius n),
+                    (W z * (Z b (z / 2) - J b (z / 2))).im < 0) →
+          riemannZeta ρ ≠ 0
+'FieldTarget.dottie_native_words_ne_zero_of_signed_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieNativeExclusion exit=0
 Alpoge-Dottie replay exit=0

@@ -87,7 +87,7 @@ try {
     $modules = @(
         'ContourTaylor', 'ContourCircleSamples', 'DottieCayleyWeightedRiemann', 'DottieCayleySameInput',
         'DottieCayleySamplePolynomial', 'DottieCayleyGrowthBridge', 'DottieCandidateCircles',
-        'DottieNearOneDisk', 'DottieAlpogeDisk', 'DottieNativeCandidate'
+        'DottieNearOneDisk', 'DottieAlpogeDisk', 'DottieNativeCandidate', 'DottieNativeExclusion'
     )
     foreach ($name in $modules) {
         $target = Join-Path $stage "$name.lean"
