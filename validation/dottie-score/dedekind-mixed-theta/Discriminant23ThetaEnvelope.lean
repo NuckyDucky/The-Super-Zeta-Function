@@ -2,6 +2,7 @@ import Mathlib.Analysis.Real.Pi.Bounds
 import Mathlib.Analysis.Normed.Ring.InfiniteSum
 import Mathlib.Analysis.SpecificLimits.Basic
 import Mathlib.Tactic.Linarith
+import Mathlib.Data.Nat.Sqrt
 import Mathlib.Topology.Algebra.InfiniteSum.NatInt
 import Mathlib.Topology.Algebra.InfiniteSum.Real
 
@@ -459,20 +460,31 @@ theorem classThetaStar_sub_finite_bounds (Q : ℤ → ℤ → ℤ)
     mul_le_mul_of_nonneg_left (by simpa only [one_div] using hrem) hq⟩
 
 
-/-- For forms of this growth, every omitted norm is at least 33. Peeling off
-23 heat powers leaves a summable lattice majorant of mass 16. -/
-theorem classThetaStar_sub_finite_bounds_sharp (Q : ℤ → ℤ → ℤ)
+private theorem form_growth_nat (Q : ℤ → ℤ → ℤ)
     (hQ : ∀ m n, 9 * (m ^ 2 + n ^ 2) ≤ 10 * Q m n)
+    (p : ℤ × ℤ) (hp : 0 ≤ Q p.1 p.2) :
+    9 * (p.1.natAbs ^ 2 + p.2.natAbs ^ 2) ≤ 10 * (Q p.1 p.2).toNat := by
+  apply Int.ofNat_le.mp
+  push_cast
+  rw [sq_abs, sq_abs, Int.toNat_of_nonneg hp]
+  exact hQ _ _
+
+/-- Any finite collection containing all nonzero pairs of norm at most N
+allows an error of 16 times the p-th heat power under the stated cutoff rule. -/
+private theorem classThetaStar_sub_sum_bounds (Q : ℤ → ℤ → ℤ) (terms : Finset (ℤ × ℤ))
+    (hQ : ∀ m n, 9 * (m ^ 2 + n ^ 2) ≤ 10 * Q m n)
+    {N order : ℕ} (hOrder : 0 < order) (hCut : 18 * order + 9 ≤ 13 * (N + 1))
+    (hNonzero : ∀ p ∈ terms, p ≠ (0, 0))
+    (hKeep : ∀ p : ℤ × ℤ, p ≠ (0, 0) → (Q p.1 p.2).toNat ≤ N → p ∈ terms)
     {q : ℝ} (hq : 0 ≤ q) (hqu : q ≤ 3 / 11) :
-    0 ≤ classThetaStar Q q - classThetaFinite Q q ∧
-      classThetaStar Q q - classThetaFinite Q q ≤ 16 * q ^ 23 := by
+    0 ≤ classThetaStar Q q - ∑ p ∈ terms, q ^ (Q p.1 p.2).toNat ∧
+      classThetaStar Q q - ∑ p ∈ terms, q ^ (Q p.1 p.2).toNat ≤ 16 * q ^ order := by
   have hWeak (m n : ℤ) : m ^ 2 + n ^ 2 ≤ 2 * Q m n := by
     have h := hQ m n
     have hm := sq_nonneg m
     have hn := sq_nonneg n
     omega
   let f := normalizedFormTerm Q q
-  let terms := characterThetaTerms Q
   let g (p : ℤ × ℤ) := if p ∈ terms then f p else 0
   have hsF : Summable f := (normalizedForm_sum_le Q hWeak hq hqu).1
   have hsG : HasSum g (∑ p ∈ terms, f p) := by
@@ -480,12 +492,12 @@ theorem classThetaStar_sub_finite_bounds_sharp (Q : ℤ → ℤ → ℤ)
       hasSum_sum_of_ne_finset_zero (fun p hp ↦ by simp [g, hp])
     simpa [g] using h
   have hsMajor := (latticeProduct_hasSum latticeMajor_hasSum latticeMajor_hasSum
-    latticeMajor_nonneg latticeMajor_nonneg).mul_left (q ^ 22)
+    latticeMajor_nonneg latticeMajor_nonneg).mul_left (q ^ (order - 1))
   have hgNonneg (p : ℤ × ℤ) : 0 ≤ f p - g p := by
     by_cases hp : p ∈ terms
     · simp [g, hp]
     · simpa [g, hp] using normFormTerm_nonneg Q hq p
-  have hpoint (p : ℤ × ℤ) : f p - g p ≤ q ^ 22 * (latticeMajor p.1 * latticeMajor p.2) := by
+  have hpoint (p : ℤ × ℤ) : f p - g p ≤ q ^ (order - 1) * (latticeMajor p.1 * latticeMajor p.2) := by
     by_cases hp : p ∈ terms
     · simp only [g, ite_eq_left hp, sub_self]
       unfold latticeMajor latticeRatio
@@ -496,39 +508,24 @@ theorem classThetaStar_sub_finite_bounds_sharp (Q : ℤ → ℤ → ℤ)
       unfold latticeMajor latticeRatio
       positivity
     have hpos := form_positive Q hWeak hz
-    have hSquares : 9 * (p.1.natAbs ^ 2 + p.2.natAbs ^ 2) ≤ 10 * (Q p.1 p.2).toNat := by
-      apply Int.ofNat_le.mp
-      push_cast
-      rw [sq_abs, sq_abs, Int.toNat_of_nonneg (by omega : 0 ≤ Q p.1 p.2)]
-      exact hQ _ _
-    have hQp : 33 ≤ (Q p.1 p.2).toNat := by
-      by_cases hb : p ∈ characterThetaBox
-      · have hgt : 32 < Q p.1 p.2 := by
-          by_contra! h
-          exact hp (mem_filter.mpr ⟨hb, hz, h⟩)
-        omega
-      · have hout : 6 ≤ p.1.natAbs ∨ 6 ≤ p.2.natAbs := by
-          by_contra! h
-          exact hb (mem_product.mpr ⟨mem_Icc.mpr (by omega), mem_Icc.mpr (by omega)⟩)
-        rcases hout with h | h
-        · have ht : 36 ≤ p.1.natAbs ^ 2 := pow_le_pow_left' h 2
-          omega
-        · have ht : 36 ≤ p.2.natAbs ^ 2 := pow_le_pow_left' h 2
-          omega
+    have hSquares := form_growth_nat Q hQ p (by omega)
+    have hQp : N + 1 ≤ (Q p.1 p.2).toNat := by
+      by_contra! h
+      exact hp (hKeep p hz (by omega))
     have habs (n : ℕ) : 2 * n ≤ n ^ 2 + 1 := by
       apply Int.ofNat_le.mp
       push_cast
       nlinarith only [sq_nonneg ((n : ℤ) - 1)]
-    have hExp : p.1.natAbs + p.2.natAbs ≤ 2 * ((Q p.1 p.2).toNat - 23) := by
+    have hExp : p.1.natAbs + p.2.natAbs ≤ 2 * ((Q p.1 p.2).toNat - order) := by
       have h₁ := habs p.1.natAbs
       have h₂ := habs p.2.natAbs
       omega
     change normalizedFormTerm Q q p ≤ _
     rw [normalizedFormTerm, ite_eq_right hz,
-      show (Q p.1 p.2 - 1).toNat = 22 + ((Q p.1 p.2).toNat - 23) by omega, pow_add]
+      show (Q p.1 p.2 - 1).toNat = (order - 1) + ((Q p.1 p.2).toNat - order) by omega, pow_add]
     apply mul_le_mul_of_nonneg_left _ (pow_nonneg hq _)
     calc
-      _ ≤ (latticeRatio ^ 2) ^ ((Q p.1 p.2).toNat - 23) :=
+      _ ≤ (latticeRatio ^ 2) ^ ((Q p.1 p.2).toNat - order) :=
         pow_le_pow_left₀ hq (hqu.trans (by norm_num [latticeRatio])) _
       _ ≤ latticeMajor p.1 * latticeMajor p.2 := by
         unfold latticeMajor
@@ -536,15 +533,81 @@ theorem classThetaStar_sub_finite_bounds_sharp (Q : ℤ → ℤ → ℤ)
         exact pow_le_pow_of_le_one (by norm_num [latticeRatio]) (by norm_num [latticeRatio]) hExp
   have hsRem := hsF.sub hsG.summable
   have hrem := (hsRem.tsum_le_tsum hpoint hsMajor.summable).trans_eq hsMajor.tsum_eq
-  have hExact : classThetaStar Q q - classThetaFinite Q q = q * ∑' p, (f p - g p) := by
-    rw [classThetaStar_eq hWeak, classThetaFinite_eq Q hWeak, hsF.tsum_sub hsG.summable,
-      hsG.tsum_eq, mul_sub]
+  have hFin : (∑ p ∈ terms, q ^ (Q p.1 p.2).toNat) = q * ∑ p ∈ terms, f p := by
+    rw [Finset.mul_sum]
+    apply sum_congr rfl
+    intro p hp
+    have hz := hNonzero p hp
+    have hpos := form_positive Q hWeak hz
+    have hexp : (Q p.1 p.2).toNat = (Q p.1 p.2 - 1).toNat + 1 := by omega
+    rw [show f p = q ^ (Q p.1 p.2 - 1).toNat by simp [f, normalizedFormTerm, hz],
+      hexp, pow_succ']
+  have hExact : classThetaStar Q q - (∑ p ∈ terms, q ^ (Q p.1 p.2).toNat) =
+      q * ∑' p, (f p - g p) := by
+    rw [classThetaStar_eq hWeak, hFin, hsF.tsum_sub hsG.summable, hsG.tsum_eq, mul_sub]
   rw [hExact]
   refine ⟨mul_nonneg hq (tsum_nonneg hgNonneg), ?_⟩
   calc
-    _ ≤ q * (q ^ 22 * (4 * 4)) := mul_le_mul_of_nonneg_left hrem hq
-    _ = _ := by ring
+    _ ≤ q * (q ^ (order - 1) * (4 * 4)) := mul_le_mul_of_nonneg_left hrem hq
+    _ = 16 * (q * q ^ (order - 1)) := by ring
+    _ = _ := by rw [← pow_succ', Nat.sub_add_cancel hOrder]
 
+/-- Enumerate exactly the nonzero pairs of norm at most N for a form with
+the quadratic growth used below. The square box follows from that growth. -/
+def characterThetaTermsUpTo (Q : ℤ → ℤ → ℤ) (N : ℕ) : Finset (ℤ × ℤ) :=
+  let b : ℤ := Nat.sqrt (10 * N / 9)
+  ((Icc (-b) b).product (Icc (-b) b)).filter
+    (fun p ↦ p ≠ (0, 0) ∧ (Q p.1 p.2).toNat ≤ N)
+
+private theorem mem_characterThetaTermsUpTo_of_norm (Q : ℤ → ℤ → ℤ)
+    (hQ : ∀ m n, 9 * (m ^ 2 + n ^ 2) ≤ 10 * Q m n)
+    {p : ℤ × ℤ} (hp : p ≠ (0, 0)) {N : ℕ} (hN : (Q p.1 p.2).toNat ≤ N) :
+    p ∈ characterThetaTermsUpTo Q N := by
+  have hpos : 0 ≤ Q p.1 p.2 := by
+    have h := hQ p.1 p.2
+    have h₁ := sq_nonneg p.1
+    have h₂ := sq_nonneg p.2
+    omega
+  have hS := form_growth_nat Q hQ p hpos
+  have hI (x : ℤ) (hx : x.natAbs ^ 2 ≤ 10 * N / 9) :
+      x ∈ Icc (-(Nat.sqrt (10 * N / 9) : ℤ)) (Nat.sqrt (10 * N / 9) : ℤ) := by
+    have h := Nat.le_sqrt'.mpr hx
+    exact mem_Icc.mpr ⟨by omega, by omega⟩
+  exact mem_filter.mpr
+    ⟨mem_product.mpr ⟨hI _ (by omega), hI _ (by omega)⟩, hp, hN⟩
+
+theorem characterThetaTermsUpTo_thirtyTwo (Q : ℤ → ℤ → ℤ) :
+    characterThetaTermsUpTo Q 32 = characterThetaTerms Q := by
+  have hb : Nat.sqrt (10 * 32 / 9) = 5 := by decide +kernel
+  ext p
+  simp only [characterThetaTermsUpTo, hb, Nat.cast_ofNat, characterThetaTerms,
+    characterThetaBox, mem_filter]
+  constructor
+  · rintro ⟨hBox, hz, hQ⟩
+    exact ⟨hBox, hz, by omega⟩
+  · rintro ⟨hBox, hz, hQ⟩
+    exact ⟨hBox, hz, by omega⟩
+
+theorem classThetaStar_sub_finiteUpTo_bounds (Q : ℤ → ℤ → ℤ)
+    (hQ : ∀ m n, 9 * (m ^ 2 + n ^ 2) ≤ 10 * Q m n)
+    {N order : ℕ} (hOrder : 0 < order) (hCut : 18 * order + 9 ≤ 13 * (N + 1))
+    {q : ℝ} (hq : 0 ≤ q) (hqu : q ≤ 3 / 11) :
+    0 ≤ classThetaStar Q q - ∑ p ∈ characterThetaTermsUpTo Q N, q ^ (Q p.1 p.2).toNat ∧
+      classThetaStar Q q - ∑ p ∈ characterThetaTermsUpTo Q N, q ^ (Q p.1 p.2).toNat ≤
+        16 * q ^ order := by
+  exact classThetaStar_sub_sum_bounds Q (characterThetaTermsUpTo Q N) hQ hOrder hCut
+    (fun _ hx ↦ (mem_filter.mp hx).2.1) (fun _ hx hN ↦ mem_characterThetaTermsUpTo_of_norm Q hQ hx hN) hq hqu
+
+/-- At cutoff 32 the general bound retains 23 heat powers. -/
+theorem classThetaStar_sub_finite_bounds_sharp (Q : ℤ → ℤ → ℤ)
+    (hQ : ∀ m n, 9 * (m ^ 2 + n ^ 2) ≤ 10 * Q m n)
+    {q : ℝ} (hq : 0 ≤ q) (hqu : q ≤ 3 / 11) :
+    0 ≤ classThetaStar Q q - classThetaFinite Q q ∧
+      classThetaStar Q q - classThetaFinite Q q ≤ 16 * q ^ 23 := by
+  simpa only [characterThetaTermsUpTo_thirtyTwo, classThetaFinite] using
+    classThetaStar_sub_finiteUpTo_bounds Q hQ (N := 32) (order := 23) (by decide) (by decide) hq hqu
+
+#print axioms classThetaStar_sub_finiteUpTo_bounds
 #print axioms classThetaStar_sub_finite_bounds_sharp
 #print axioms discriminant23_principal_envelope_lt
 #print axioms discriminant23_other_envelope_lt

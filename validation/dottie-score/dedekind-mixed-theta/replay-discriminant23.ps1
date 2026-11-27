@@ -132,6 +132,8 @@ if ($CharacterQuadrature) {
         (Join-Path $PSScriptRoot 'ExponentialMoments.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23PhaseQuadrature.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23PhaseEvaluation.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23AdaptivePhase.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23AdaptiveParameters.lean')
     )
 }
 if ($CharacterCount) {

@@ -277,6 +277,16 @@ If $0\le\Re w\le1$, the value and first derivative errors from quadrature are ea
 
 Replay this section with `-CharacterQuadrature`.
 
+### Choose the cutoffs for any positive error tolerance
+
+If I retain norms up to $N$ and choose $p\ge1$ with $18p+9\le13(N+1)$, the two lattice polynomials approximate the class-theta difference with error at most $16q^p$ for $0\le q\le3/11$. For a radial endpoint $R$, the assembled model allowance is $15(3/11)^{p-1}+(126/5)e^{-5R/4}$. [Lattice truncation](Discriminant23ThetaEnvelope.lean) · [Integrated error and derivatives](DedekindDiscriminant23CharacterComplex.lean)
+
+I take $R=e^L$ and absorb the logarithmic Jacobian into the density. The two rates in the remaining weight are $w-1$ and $-w$. Their exponentials have norm at most one for $0\le\Re w\le1$ along the real integration interval. If I increase the Taylor depth by one, the quadrature allowance is halved. The moment formula uses the endpoint recursion on the reflected panel. [Exact moments and all-height bound](DedekindDiscriminant23AdaptivePhase.lean)
+
+If I ask for any positive tolerance, Lean supplies one set of cutoffs and one Taylor depth for the value and slope together over the whole closed strip. The concrete choice $N=64$, $p=46$, $L=4$, and $96$ terms per panel gives an absolute error below $10^{-23}$ on all $16$ panels combined. For a sign test, the finite-sum enclosure must clear that allowance. [Lean theorem and replay](discriminant23-tunable-error-replay-and-axioms.txt)
+
+For a positive rational tolerance $a/b$, I can choose the parameters using three integer inequalities. Lean proves that the inequalities can all be satisfied and that they imply the requested absolute error for both readings. [Integer parameter tests](DedekindDiscriminant23AdaptiveParameters.lean)
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)
