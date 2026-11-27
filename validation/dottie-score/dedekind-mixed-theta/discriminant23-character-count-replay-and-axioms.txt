@@ -1,0 +1,146 @@
+Discriminant-23 character count through height 11/2
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+Super Zeta base e295ca2f59c4651a10ee92d634b127f7a05ed0c1
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Source replay used one thread and warningAsError over the pinned dependencies.
+An independent source replay of the final count certificate matched all three
+printed theorem statements and all four transitive axiom reports.
+
+Super Zeta source DedekindDiscriminant23CharacterSamples b7bed7f7f93ac82e5a2ea1b9dcdd52167ec0dbf7
+discriminant23_characterSample_contains : ∀ (high : Bool) (i : Fin 1025),
+  Contains (discriminant23CharacterSample high i)
+    (discriminant23CharacterLogPolynomial (discriminant23EndpointHeight high) (discriminant23LogNode i))
+'_private.DedekindDiscriminant23CharacterSamples.0.FieldTarget.phases_fit' does not depend on any axioms
+'FieldTarget.discriminant23_characterSample_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23CharacterSamples exit=0
+
+Super Zeta source FoldedExponentialTaylor c023e504b2c83f1d36e178b897321419f186d643
+'FieldTarget.reflectedExpParity_eq' depends on axioms: [propext, Quot.sound]
+'FieldTarget.reflectedExpPolynomial_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+FoldedExponentialTaylor exit=0
+
+Super Zeta source NinePointGrid d890a7baf17fb183128ab50874daec71fc76519b
+'FieldTarget.ninePointComposite_eq_grid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.ninePointGrid32_weight_abs_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+NinePointGrid exit=0
+
+Super Zeta source DedekindDiscriminant23CharacterMoments f80b9cf8936178c455be7ded3a2c16b4a2ca33d1
+@discriminant23_character_taylor_bounds : ∀ {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      |w.im| ≤ 11 / 2 →
+        ‖discriminant23CharacterComplexModel w - discriminant23ReadingTaylor false w‖ ≤ 33 / 1000000 ∧
+          ‖deriv discriminant23CharacterComplexModel w - discriminant23ReadingTaylor true w‖ ≤ 33 / 1000000
+discriminant23_character_counts_of_taylor_signs : (∀ (w : ℂ),
+    w.re ∈ Icc 0 1 → w.im ∈ Icc (7 / 6) (9 / 2) → 43 / 1000000 < (discriminant23ReadingTaylor false w).re) →
+  (∀ (w : ℂ),
+      w.re ∈ Icc 0 1 → w.im ∈ Icc (83 / 16) (11 / 2) → (discriminant23ReadingTaylor false w).re < -(43 / 1000000)) →
+    (∀ (w : ℂ),
+        w.re ∈ Icc 0 1 → w.im ∈ Icc (9 / 2) (83 / 16) → 43 / 1000000 < (discriminant23ReadingTaylor true w).im) →
+      (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun x => True) = 2 ∧
+        (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun w => w.re = 1 / 2) = 2
+'FieldTarget.discriminant23_character_taylor_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_counts_of_taylor_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23CharacterMoments exit=0
+
+Super Zeta source MellinFixedComplexPolynomial f85dc86b0e953b9429b87a4c429d1b56b56c6dee
+'DottieOriented.NativeSpectrum.MellinFixed.rangeRatio_contains' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.lt_of_box_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.lt_of_box_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.ComplexBox.shifted_horner_contains' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+MellinFixedComplexPolynomial exit=0
+
+Super Zeta source DedekindDiscriminant23ReadingIntervals 2c61a2335ce3386da809a2f105b061bde05ea4a2
+'FieldTarget.discriminant23_readingAmplitudeBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_momentMultiplierBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_readingCoefficientBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23ReadingIntervals exit=0
+
+Super Zeta source DedekindDiscriminant23AmplitudeData f2c730ad9e654245c226c36de523f8c4664c5ac6
+'_private.DedekindDiscriminant23AmplitudeData.0.FieldTarget.amplitudeBlock0' depends on axioms: [propext]
+'_private.DedekindDiscriminant23AmplitudeData.0.FieldTarget.amplitude_blocks' depends on axioms: [propext, Quot.sound]
+'FieldTarget.discriminant23_storedAmplitudeBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23AmplitudeData exit=0
+
+Super Zeta source DedekindDiscriminant23CoefficientData e15489858f8418d4f2de3bd4692f76f313c23b21
+'_private.DedekindDiscriminant23CoefficientData.0.FieldTarget.coefficientBlock0' depends on axioms: [propext]
+'_private.DedekindDiscriminant23CoefficientData.0.FieldTarget.coefficient_blocks' depends on axioms: [propext,
+ Quot.sound]
+'FieldTarget.discriminant23_storedReadingCoefficientBox_contains' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23CoefficientData exit=0
+
+Super Zeta source DedekindDiscriminant23ReadingCells e336a2bc4e77367a6fd483eafeb0bbe2546dabe4
+'FieldTarget.imaginaryCenterPowerBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_readingCellBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23ReadingCells exit=0
+
+Super Zeta source DedekindDiscriminant23ReadingTail e068bb7ecff9ae63593850c563fb12f97554563c
+'_private.DedekindDiscriminant23ReadingTail.0.FieldTarget.tailMass_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_reading_partial_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23ReadingTail exit=0
+
+Super Zeta source DedekindDiscriminant23ReadingCover ef1a4c400ef61c4451f369b8078047f8d6b41bdd
+discriminant23_character_counts_of_integer_cells : ∀ (value slope : ℕ → Box),
+  (∀ (k : ℕ), Contains (value k) (discriminant23ReadingCoefficient false k)) →
+    (∀ (k : ℕ), Contains (slope k) (discriminant23ReadingCoefficient true k)) →
+      (∀ (j : Fin 16), discriminant23ReadingMargin < (discriminant23BelowBox value j).re.lo) →
+        (∀ (j : Fin 14), discriminant23ReadingMargin < (discriminant23SlopeBox slope j).im.lo) →
+          (∀ (rightSide : Bool) (j : Fin 8),
+              (discriminant23AboveBox value rightSide j).re.hi < -discriminant23ReadingMargin) →
+            (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun x => True) = 2 ∧
+              (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun w => w.re = 1 / 2) = 2
+'FieldTarget.discriminant23_character_counts_of_integer_cells' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23ReadingCover exit=0
+
+Super Zeta source DedekindDiscriminant23BelowCellSigns 58f48aa79ce588c927b030fa081635e9de461449
+'FieldTarget.discriminant23_below_cell_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23BelowCellSigns exit=0
+
+Super Zeta source DedekindDiscriminant23SlopeCellSigns 438f8706170f285b027c429972f197c3b863e460
+'FieldTarget.discriminant23_slope_cell_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23SlopeCellSigns exit=0
+
+Super Zeta source DedekindDiscriminant23AboveCellSigns 28e35f0027bdb3f65c73b47c52d495ae88f7d22f
+'FieldTarget.discriminant23_above_cell_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23AboveCellSigns exit=0
+
+Super Zeta source DedekindDiscriminant23CountCertificate 081cd4cd0f84e5916e44e6e4e145f679ba68afb0
+discriminant23_character_counts_at_eleven_halves : (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2)
+      fun x => True) =
+    2 ∧
+  (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun w => w.re = 1 / 2) = 2
+discriminant23_field_counts_at_eleven_halves_add_four : ((mixedThetaCountingFunction L23).stripZeroCount (11 / 2)
+      fun x => True) =
+    ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount (11 / 2) fun x => True) + 4 ∧
+  ((mixedThetaCountingFunction L23).stripZeroCount (11 / 2) fun w => w.re = 1 / 2) =
+    ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount (11 / 2) fun w => w.re = 1 / 2) + 4
+discriminant23_dedekindRH_iff_character_above_eleven_halves : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (DedekindZetaRH L23 ↔ ∀ (w : ℂ), 1 / 2 < w.re → w.re < 1 → 11 / 2 < |w.im| → discriminant23CharacterFold w ≠ 0)
+'FieldTarget.discriminant23_character_counts_at_eleven_halves' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_field_counts_at_eleven_halves_add_four' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_character_zero_on_line_through_eleven_halves' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character_above_eleven_halves' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23CountCertificate exit=0
+
+33 axiom reports. The only axioms listed are propext, Classical.choice and Quot.sound.

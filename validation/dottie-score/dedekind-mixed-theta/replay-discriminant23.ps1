@@ -7,7 +7,8 @@ param(
     [switch] $DirichletMod23,
     [switch] $CharacterBracket,
     [switch] $ComplexDerivatives,
-    [switch] $CharacterQuadrature
+    [switch] $CharacterQuadrature,
+    [switch] $CharacterCount
 )
 
 $ErrorActionPreference = 'Stop'
@@ -30,6 +31,9 @@ $version
 "Mathlib $mathlib"
 
 $repo = Join-Path $PSScriptRoot '../../..'
+if ($CharacterCount) {
+    $CharacterQuadrature = $true
+}
 if ($CharacterQuadrature) {
     $ComplexDerivatives = $true
 }
@@ -121,6 +125,24 @@ if ($CharacterQuadrature) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterSparse.lean')
     )
 }
+if ($CharacterCount) {
+    $sources += @(
+        (Join-Path $PSScriptRoot 'FoldedExponentialTaylor.lean')
+        (Join-Path $PSScriptRoot 'NinePointGrid.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterMoments.lean')
+        (Join-Path $PSScriptRoot 'MellinFixedComplexPolynomial.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23ReadingIntervals.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23AmplitudeData.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CoefficientData.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23ReadingCells.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23ReadingTail.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23ReadingCover.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23BelowCellSigns.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23SlopeCellSigns.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23AboveCellSigns.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CountCertificate.lean')
+    )
+}
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'
 $pinnedPiModule = 'Mathlib.Analysis.Real.Pi.Bounds'
 $importsNeeded = foreach ($source in $sources) {
@@ -133,7 +155,9 @@ $importsNeeded = foreach ($source in $sources) {
     }
 }
 $dependencies = @($importsNeeded | Sort-Object -Unique)
-$libraryPath = if ($CharacterBracket) {
+$libraryPath = if ($CharacterCount) {
+    '.lake/super-zeta-discriminant23-character-count/lib'
+} elseif ($CharacterBracket) {
     '.lake/super-zeta-discriminant23-character-bracket/lib'
 } elseif ($DirichletMod23) {
     '.lake/super-zeta-discriminant23-mod23/lib'
