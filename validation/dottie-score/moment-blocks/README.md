@@ -99,3 +99,9 @@ Use the pinned Lean and compiled imports to run the ranges in the [run plan](Dot
 Run `python -B collect_sharp_candidates.py <plan>` to see progress. With all 37,984 rows present, `--lean-output DottieFullSharpCandidate.lean` adds the integer totals and their box comparison. Lean checks the boxes with `decide +kernel`. The circle theorem takes the exact equality to the full span and the reference ceiling as explicit inputs.
 
 The compiled run matched all 22 entries on each of the three already certified rows, 100, 101 and 37983. Resuming an interrupted two-row run reproduced the same checkpoint bytes.
+
+## Direct reference score through row 287
+
+The kernel checked the next two ranges, rows 256–271 and 272–287, against the saved candidate totals. The sum through row 287 uses the original weight. Build the two range files before the prefix assembly. [First range](DottieFastReferenceRows256To272.audit.txt) · [Second range](DottieFastReferenceRows272To288.audit.txt) · [288-row theorem](DottieFastReferencePrefix288.lean#L7) · [Axioms](DottieFastReferencePrefix288.audit.txt)
+
+The nine cosine divisors can be reused at each norm. Lean checks their values and proves the cached weight equals the previous exact weight, including its rounding. Both evaluations give the same totals on four 128-pair blocks of row 11763. [Weight identity](DottieCachedReferenceCosine.lean#L51) · [512-pair check](DottieCachedReferenceCosineBench512.lean) · [Audit](DottieCachedReferenceCosineBench512.audit.txt)

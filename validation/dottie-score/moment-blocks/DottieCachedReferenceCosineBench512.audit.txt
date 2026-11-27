@@ -1,0 +1,25 @@
+DottieCachedReferenceCosineBench512 source 1f450f8b0f20469093594b005cdb7b04960aec85
+type checking took 1.28s
+type checking took 1.25s
+type checking took 2.42s
+type checking took 3.52s
+type checking took 4.57s
+type checking took 5.61s
+type checking took 6.69s
+type checking took 7.75s
+'QuarticModel.reference_block_original_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuarticModel.reference_block_cached_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+cumulative profiling times:
+	attribute application 0.0546ms
+	elaboration 1.9ms
+	fix level params 0.044ms
+	instantiate metavars 0.0482ms
+	let-to-have transformation 0.0505ms
+	overlappingInstancesLinter 5.88ms
+	process pre-definitions 0.667ms
+	share common exprs 0.124ms
+	tactic execution 2.28ms
+	tacticAnalysis 7.16ms
+	type checking 33.1s
+	typeclass inference 2.96ms
+DottieCachedReferenceCosineBench512 exit=0 (21.984 seconds)

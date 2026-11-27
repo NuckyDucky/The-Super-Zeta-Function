@@ -1,0 +1,22 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaSampleCover source f41d153a4aaf73d94f3b421ff39a28a2c49a8af8
+hasFiniteDottieBoundaryCertificate_of_completed_samples : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K]
+  {l u : ℝ},
+  (∀ (ε : ℝ),
+      0 < ε →
+        ∀ (w : ℂ),
+          w.im ∈ Icc l u →
+            1 / 2 + ε ≤ w.re →
+              w.re ≤ 31 / 32 →
+                ∃ a,
+                  w ∈ Metric.ball (dottieScaledRightCenter (↑a).1 (↑a).2) (dottieScaledRadius (↑a).2) ∧
+                    HasDottieCompletedSamples K (↑a).1 (↑a).2) →
+    HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) l u
+'FieldTarget.hasFiniteDottieBoundaryCertificate_of_local_signs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.hasFiniteDottieBoundaryCertificate_of_completed_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindMixedThetaSampleCover exit=0
