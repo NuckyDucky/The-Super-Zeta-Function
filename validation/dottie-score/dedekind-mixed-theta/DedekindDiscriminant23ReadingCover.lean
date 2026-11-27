@@ -9,7 +9,7 @@ open Set
 
 noncomputable section
 
-private theorem equal_cells_cover (a d t : ℝ) (n : ℕ) (h₀ : a ≤ t)
+theorem real_mem_equal_closed_cells (a d t : ℝ) (n : ℕ) (h₀ : a ≤ t)
     (h₁ : t ≤ a + ((n + 1 : ℕ) : ℝ) * d) :
     ∃ j : Fin (n + 1), a + (j.val : ℝ) * d ≤ t ∧ t ≤ a + ((j.val : ℝ) + 1) * d := by
   induction n with
@@ -22,12 +22,12 @@ private theorem equal_cells_cover (a d t : ℝ) (n : ℕ) (h₀ : a ≤ t)
     · refine ⟨Fin.last (n + 1), le_of_lt (lt_of_not_ge h), ?_⟩
       simpa only [Fin.val_last, Nat.cast_add, Nat.cast_one, Nat.succ_eq_add_one] using h₁
 
-private theorem argument_re (w : ℂ) :
+theorem discriminant23_readingArgument_re (w : ℂ) :
     (discriminant23ReadingArgument w).re = (w.re - 1 / 2) / 6 := by
   unfold discriminant23ReadingArgument
   norm_num [Complex.div_re, Complex.sub_re, Complex.normSq_apply]
 
-private theorem argument_im (w : ℂ) :
+theorem discriminant23_readingArgument_im (w : ℂ) :
     (discriminant23ReadingArgument w).im = w.im / 6 := by
   unfold discriminant23ReadingArgument
   norm_num [Complex.div_im, Complex.sub_im, Complex.normSq_apply]
@@ -35,7 +35,7 @@ private theorem argument_im (w : ℂ) :
 private theorem argument_re_bounds {w : ℂ} (hr : w.re ∈ Icc (0 : ℝ) 1) :
     (-1 : ℝ) / 12 ≤ (discriminant23ReadingArgument w).re ∧
       (discriminant23ReadingArgument w).re ≤ (1 : ℝ) / 12 := by
-  rw [argument_re]
+  rw [discriminant23_readingArgument_re]
   exact ⟨by linarith only [hr.1], by linarith only [hr.2]⟩
 
 private theorem projection_error (odd : Bool) {w : ℂ} (hr : w.re ∈ Icc (0 : ℝ) 1)
@@ -47,7 +47,7 @@ private theorem projection_error (odd : Bool) {w : ℂ} (hr : w.re ∈ Icc (0 : 
   have hr' : |(discriminant23ReadingArgument w).re| ≤ 1 / 12 :=
     abs_le.mpr ⟨by linarith only [(argument_re_bounds hr).1], (argument_re_bounds hr).2⟩
   have hi : |(discriminant23ReadingArgument w).im| ≤ 11 / 12 := by
-    rw [argument_im, abs_of_nonneg (div_nonneg ht.1 (by norm_num))]
+    rw [discriminant23_readingArgument_im, abs_of_nonneg (div_nonneg ht.1 (by norm_num))]
     linarith only [ht.2]
   have hz : ‖discriminant23ReadingArgument w‖ ≤ 1 :=
     (Complex.norm_le_abs_re_add_abs_im _).trans (by linarith only [hr', hi])
@@ -91,29 +91,29 @@ theorem discriminant23_character_counts_of_integer_cells (value slope : ℕ → 
       discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) (fun w ↦ w.re = 1 / 2) = 2 := by
   refine discriminant23_character_counts_of_taylor_signs ?_ ?_ ?_
   · intro w hr ht
-    obtain ⟨j, hLow, hHigh⟩ := equal_cells_cover (7 / 6) (5 / 24) w.im 15 ht.1
+    obtain ⟨j, hLow, hHigh⟩ := real_mem_equal_closed_cells (7 / 6) (5 / 24) w.im 15 ht.1
       (by norm_num; exact ht.2)
     have h := discriminant23_readingCellBox_contains value false hValue
       (w := w)
       (m := 61 + 10 * (j.val : ℤ)) (radius := 5) (d := 288) (left := -1) (right := 1)
       (by norm_num) (by simpa using (argument_re_bounds hr).1)
       (by simpa using (argument_re_bounds hr).2)
-      (by rw [argument_im]; push_cast; linarith only [hLow])
-      (by rw [argument_im]; push_cast; linarith only [hHigh])
+      (by rw [discriminant23_readingArgument_im]; push_cast; linarith only [hLow])
+      (by rw [discriminant23_readingArgument_im]; push_cast; linarith only [hHigh])
     have hError := (projection_error false hr
       ⟨by linarith only [ht.1], by linarith only [ht.2]⟩).1
     exact margin_lower h.1 (hBelow j) hError
   · intro w hr ht
-    obtain ⟨j, hLow, hHigh⟩ := equal_cells_cover (83 / 16) (5 / 128) w.im 7 ht.1
+    obtain ⟨j, hLow, hHigh⟩ := real_mem_equal_closed_cells (83 / 16) (5 / 128) w.im 7 ht.1
       (by norm_num; exact ht.2)
     have hImag₀ : (-5 : ℝ) / 1536 ≤ (discriminant23ReadingArgument w).im -
         ((1333 + 10 * (j.val : ℤ) : ℤ) : ℝ) / 1536 := by
-      rw [argument_im]
+      rw [discriminant23_readingArgument_im]
       push_cast
       linarith only [hLow]
     have hImag₁ : (discriminant23ReadingArgument w).im -
         ((1333 + 10 * (j.val : ℤ) : ℤ) : ℝ) / 1536 ≤ 5 / 1536 := by
-      rw [argument_im]
+      rw [discriminant23_readingArgument_im]
       push_cast
       linarith only [hHigh]
     have hError := (projection_error false hr ⟨by linarith only [ht.1], ht.2⟩).1
@@ -122,26 +122,27 @@ theorem discriminant23_character_counts_of_integer_cells (value slope : ℕ → 
         (w := w)
         (m := 1333 + 10 * (j.val : ℤ)) (radius := 5) (d := 1536) (left := -1) (right := 0)
         (by norm_num) (by simpa using (argument_re_bounds hr).1)
-        (by rw [argument_re]; norm_num; linarith only [hs]) (by simpa using hImag₀)
+        (by rw [discriminant23_readingArgument_re]; norm_num; linarith only [hs])
+        (by simpa using hImag₀)
         (by simpa using hImag₁)
       exact margin_upper h.1 (hAbove false j) hError
     · have hs' : (1 / 2 : ℝ) < w.re := lt_of_not_ge hs
       have h := discriminant23_readingCellBox_contains value false hValue
         (w := w)
         (m := 1333 + 10 * (j.val : ℤ)) (radius := 5) (d := 1536) (left := 0) (right := 1)
-        (by norm_num) (by rw [argument_re]; norm_num; linarith only [hs'])
+        (by norm_num) (by rw [discriminant23_readingArgument_re]; norm_num; linarith only [hs'])
         (by simpa using (argument_re_bounds hr).2) (by simpa using hImag₀) (by simpa using hImag₁)
       exact margin_upper h.1 (hAbove true j) hError
   · intro w hr ht
-    obtain ⟨j, hLow, hHigh⟩ := equal_cells_cover (9 / 2) (11 / 224) w.im 13 ht.1
+    obtain ⟨j, hLow, hHigh⟩ := real_mem_equal_closed_cells (9 / 2) (11 / 224) w.im 13 ht.1
       (by norm_num; exact ht.2)
     have h := discriminant23_readingCellBox_contains slope true hSlope
       (w := w)
       (m := 2027 + 22 * (j.val : ℤ)) (radius := 11) (d := 2688) (left := -1) (right := 1)
       (by norm_num) (by simpa using (argument_re_bounds hr).1)
       (by simpa using (argument_re_bounds hr).2)
-      (by rw [argument_im]; push_cast; linarith only [hLow])
-      (by rw [argument_im]; push_cast; linarith only [hHigh])
+      (by rw [discriminant23_readingArgument_im]; push_cast; linarith only [hLow])
+      (by rw [discriminant23_readingArgument_im]; push_cast; linarith only [hHigh])
     have hError := (projection_error true hr
       ⟨by linarith only [ht.1], by linarith only [ht.2]⟩).2
     exact margin_lower h.2 (hMiddle j) hError

@@ -8,7 +8,8 @@ param(
     [switch] $CharacterBracket,
     [switch] $ComplexDerivatives,
     [switch] $CharacterQuadrature,
-    [switch] $CharacterCount
+    [switch] $CharacterCount,
+    [switch] $HigherPolynomialBands
 )
 
 $ErrorActionPreference = 'Stop'
@@ -31,6 +32,9 @@ $version
 "Mathlib $mathlib"
 
 $repo = Join-Path $PSScriptRoot '../../..'
+if ($HigherPolynomialBands) {
+    $CharacterCount = $true
+}
 if ($CharacterCount) {
     $CharacterQuadrature = $true
 }
@@ -143,6 +147,22 @@ if ($CharacterCount) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23CountCertificate.lean')
     )
 }
+if ($HigherPolynomialBands) {
+    $sources += @(
+        (Join-Path $PSScriptRoot 'DedekindCuretonThorner.lean')
+        (Join-Path $PSScriptRoot 'DedekindMixedThetaRightEdge.lean')
+        (Join-Path $PSScriptRoot 'DedekindHighRightAfterCount.lean')
+        (Join-Path $PSScriptRoot 'MellinFixedTaylorTail.lean')
+        (Join-Path $PSScriptRoot 'MellinFixedPolynomialDisk.lean')
+        (Join-Path $PSScriptRoot 'DedekindPolynomialBand.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiskTaylorError.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiskTaylorAccuracy.lean')
+        (Join-Path $PSScriptRoot 'DedekindTaylorCoefficientError.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23HigherPanel.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23SixBandSigns.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23SixBand.lean')
+    )
+}
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'
 $pinnedPiModule = 'Mathlib.Analysis.Real.Pi.Bounds'
 $importsNeeded = foreach ($source in $sources) {
@@ -155,7 +175,9 @@ $importsNeeded = foreach ($source in $sources) {
     }
 }
 $dependencies = @($importsNeeded | Sort-Object -Unique)
-$libraryPath = if ($CharacterCount) {
+$libraryPath = if ($HigherPolynomialBands) {
+    '.lake/super-zeta-higher-polynomial-bands/lib'
+} elseif ($CharacterCount) {
     '.lake/super-zeta-discriminant23-character-count/lib'
 } elseif ($CharacterBracket) {
     '.lake/super-zeta-discriminant23-character-bracket/lib'

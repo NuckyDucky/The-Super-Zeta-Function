@@ -1,0 +1,179 @@
+Dedekind polynomial bands and the discriminant-23 count through height 6
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+Height-5.5 source checkpoint a0116707d8147136344979b30f2144bcf96b20e3
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Changed modules replayed from staged sources over the checked prerequisites.
+Lean used one thread, a 4500 MiB memory allowance and warningAsError.
+Independent source replays checked the final six-band, disk and uniform accuracy certificates.
+
+Super Zeta source DedekindDiscriminant23CharacterMoments acdcd86dd0bc40f8aef74146c7338013214df09e
+@discriminant23_character_taylor_bounds : ∀ {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      |w.im| ≤ 11 / 2 →
+        ‖discriminant23CharacterComplexModel w - discriminant23ReadingTaylor false w‖ ≤ 33 / 1000000 ∧
+          ‖deriv discriminant23CharacterComplexModel w - discriminant23ReadingTaylor true w‖ ≤ 33 / 1000000
+discriminant23_character_counts_of_taylor_signs : (∀ (w : ℂ),
+    w.re ∈ Icc 0 1 → w.im ∈ Icc (7 / 6) (9 / 2) → 43 / 1000000 < (discriminant23ReadingTaylor false w).re) →
+  (∀ (w : ℂ),
+      w.re ∈ Icc 0 1 → w.im ∈ Icc (83 / 16) (11 / 2) → (discriminant23ReadingTaylor false w).re < -(43 / 1000000)) →
+    (∀ (w : ℂ),
+        w.re ∈ Icc 0 1 → w.im ∈ Icc (9 / 2) (83 / 16) → 43 / 1000000 < (discriminant23ReadingTaylor true w).im) →
+      (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun x => True) = 2 ∧
+        (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun w => w.re = 1 / 2) = 2
+'FieldTarget.discriminant23_character_taylor_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_counts_of_taylor_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23CharacterMoments exit=0
+Super Zeta source DedekindDiscriminant23ReadingCover e1b73b7ef9bf22b3dc063cfc33bae8de4312bb81
+discriminant23_character_counts_of_integer_cells : ∀ (value slope : ℕ → Box),
+  (∀ (k : ℕ), Contains (value k) (discriminant23ReadingCoefficient false k)) →
+    (∀ (k : ℕ), Contains (slope k) (discriminant23ReadingCoefficient true k)) →
+      (∀ (j : Fin 16), discriminant23ReadingMargin < (discriminant23BelowBox value j).re.lo) →
+        (∀ (j : Fin 14), discriminant23ReadingMargin < (discriminant23SlopeBox slope j).im.lo) →
+          (∀ (rightSide : Bool) (j : Fin 8),
+              (discriminant23AboveBox value rightSide j).re.hi < -discriminant23ReadingMargin) →
+            (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun x => True) = 2 ∧
+              (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun w => w.re = 1 / 2) = 2
+'FieldTarget.discriminant23_character_counts_of_integer_cells' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23ReadingCover exit=0
+Super Zeta source DedekindHighRightAfterCount e54c54b119aef45abd9ffc7b3302644d164ce7eb
+dedekind_stripCounts_equal_of_high_right_band : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {T U : ℝ},
+  (((mixedThetaCountingFunction K).stripZeroCount T fun x => True) =
+      (mixedThetaCountingFunction K).stripZeroCount T fun w => w.re = 1 / 2) →
+    (∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 31 / 32 → T < |w.im| → |w.im| ≤ U → mixedThetaContinuation K w ≠ 0) →
+      ((mixedThetaCountingFunction K).stripZeroCount U fun x => True) =
+        (mixedThetaCountingFunction K).stripZeroCount U fun w => w.re = 1 / 2
+dedekindZetaRH_iff_high_right_of_strip_counts : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {T : ℝ},
+  (((mixedThetaCountingFunction K).stripZeroCount T fun x => True) =
+      (mixedThetaCountingFunction K).stripZeroCount T fun w => w.re = 1 / 2) →
+    (DedekindZetaRH K ↔ ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 31 / 32 → T < |w.im| → mixedThetaContinuation K w ≠ 0)
+discriminant23_dedekindRH_iff_character_high_right : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (DedekindZetaRH Discriminant23GaloisField ↔
+    ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 31 / 32 → 11 / 2 < |w.im| → discriminant23CharacterFold w ≠ 0)
+'FieldTarget.dedekind_stripCounts_equal_of_high_right_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_high_right_of_strip_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character_high_right' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindHighRightAfterCount exit=0
+Super Zeta source MellinFixedTaylorTail 999bdacec1262b47186c88f3cd1890b301fb77a7
+'DottieOriented.NativeSpectrum.MellinFixed.ComplexBox.polynomial_tail_le_of_weighted_mass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+MellinFixedTaylorTail exit=0
+Super Zeta source MellinFixedPolynomialDisk a822cbb78d3cf8b0e1a38d4847af4a3c2edc5323
+'DottieOriented.NativeSpectrum.MellinFixed.ComplexBox.re_pos_of_polynomial_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DottieOriented.NativeSpectrum.MellinFixed.PolynomialDiskCertificate.nonzero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+MellinFixedPolynomialDisk exit=0
+Super Zeta source DedekindPolynomialBand 1e3f204fff9e40d86a97f4ac4458e1702f46d719
+dedekind_stripCounts_equal_of_polynomial_band : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {T U : ℝ},
+  (((mixedThetaCountingFunction K).stripZeroCount T fun x => True) =
+      (mixedThetaCountingFunction K).stripZeroCount T fun w => w.re = 1 / 2) →
+    HasDedekindPolynomialBandCertificate K T U →
+      ((mixedThetaCountingFunction K).stripZeroCount U fun x => True) =
+        (mixedThetaCountingFunction K).stripZeroCount U fun w => w.re = 1 / 2
+dedekindZetaRH_of_cofinal_polynomial_bands : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {T : ℝ},
+  (((mixedThetaCountingFunction K).stripZeroCount T fun x => True) =
+      (mixedThetaCountingFunction K).stripZeroCount T fun w => w.re = 1 / 2) →
+    (∀ (H : ℝ), ∃ U, H ≤ U ∧ HasDedekindPolynomialBandCertificate K T U) → DedekindZetaRH K
+'FieldTarget.dedekind_stripCounts_equal_of_polynomial_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_cofinal_polynomial_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindPolynomialBand exit=0
+Super Zeta source DedekindDiskTaylorError b0256d6720dadb6535e5b62700d640b7bc947ab8
+mixedTheta_polynomialDiskCertificate : (K : Type) →
+  [inst : Field K] →
+    [inst_1 : NumberField K] →
+      {cut : ℝ} →
+        {ρ : ℝ≥0} →
+          {c direction : ℂ} →
+            {p q n : ℕ} →
+              {approximation tail : ℤ} →
+                1 ≤ cut →
+                  ↑ρ < c.re →
+                    ↑ρ < 1 - c.re →
+                      0 < q →
+                        1 ≤ n →
+                          ↑p / ↑q < ↑ρ →
+                            ‖direction‖ = 1 →
+                              (boxes : ℕ → ComplexBox) →
+                                (∀ k < n,
+                                    (boxes k).Contains
+                                      (direction * contourTaylorCoeff (mixedThetaCompletedTruncation K cut) c (↑ρ) k)) →
+                                  mixedThetaCompletedTaylorAllowance K cut c (↑ρ) (↑p / ↑q) n ≤
+                                      ↑approximation / ↑scale →
+                                    ComplexBox.weightedTailMass boxes p q 1 n ≤ tail * ↑q ^ n →
+                                      approximation + tail < (boxes 0).re.lo →
+                                        PolynomialDiskCertificate (mixedThetaCompletedReading K) c p q
+'FieldTarget.mixedThetaCompletedTruncation_norm_le_circleAllowance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.mixedTheta_completed_disk_taylor_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_polynomialDiskCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiskTaylorError exit=0
+Super Zeta source DedekindDiscriminant23HigherPanel 1cfbdbdc70e4ccf4035df2eb06045cb133cefe9c
+'FieldTarget.discriminant23_panel_value_bound_at_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_value_quadrature_bound_to_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23HigherPanel exit=0
+Super Zeta source DedekindDiscriminant23SixBandSigns 6b11045eba1e6f92a37a12eba93b2978141713bd
+'FieldTarget.discriminant23_six_band_cell_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_value_weighted_tail_at_101_over_100' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23SixBandSigns exit=0
+Super Zeta source DedekindDiscriminant23SixBand 4b4c52d665bfe72be9ca702c814cf4ddb6cc24b5
+discriminant23_character_counts_at_six : (discriminant23CharacterCountingFunction.stripZeroCount 6 fun x => True) = 2 ∧
+  (discriminant23CharacterCountingFunction.stripZeroCount 6 fun w => w.re = 1 / 2) = 2
+discriminant23_field_counts_at_six_add_four : ((mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount 6
+      fun x => True) =
+    ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount 6 fun x => True) + 4 ∧
+  ((mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount 6 fun w => w.re = 1 / 2) =
+    ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount 6 fun w => w.re = 1 / 2) + 4
+discriminant23_dedekindRH_iff_character_above_six : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (DedekindZetaRH Discriminant23GaloisField ↔
+    ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 31 / 32 → 6 < |w.im| → discriminant23CharacterFold w ≠ 0)
+'FieldTarget.discriminant23_character_re_negative_in_six_band' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_character_nonzero_in_six_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_counts_at_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_field_counts_at_six_add_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character_above_six' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23SixBand exit=0
+Super Zeta source DedekindDiskTaylorAccuracy 2c08c646ece058f0c2687e98a511e50b6645aab1
+exists_mixedThetaCompletedTaylorAllowance_le_uniform_height : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K]
+  {ρ r δ ε : ℝ},
+  0 ≤ r →
+    r < ρ →
+      0 < δ →
+        0 < ε →
+          ∃ cut,
+            1 ≤ cut ∧
+              ∃ n,
+                1 ≤ n ∧
+                  ∀ (c : ℂ), ρ + δ ≤ c.re → c.re ≤ 1 - ρ - δ → mixedThetaCompletedTaylorAllowance K cut c ρ r n ≤ ε
+'FieldTarget.mixedThetaWeightedTail_zero_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_mixedThetaCompletedTaylorAllowance_le_uniform_height' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiskTaylorAccuracy exit=0
+
+Super Zeta source DedekindTaylorCoefficientError e3122071438628b8a63a3f9453a428d2c75d24c3
+'FieldTarget.contourTaylorCoeff_eq_iteratedDeriv_div_factorial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.mixedTheta_folded_taylorCoeff_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindTaylorCoefficientError exit=0
+
+27 axiom reports. The only axioms listed are propext, Classical.choice and Quot.sound.
