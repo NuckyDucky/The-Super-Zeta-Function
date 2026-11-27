@@ -4,7 +4,8 @@ param(
     [Parameter(Mandatory)] [string] $LeanBin,
     [ValidateRange(1, 8)] [int] $BuildThreads = 2,
     [switch] $SampledContours,
-    [switch] $RightEdge
+    [switch] $RightEdge,
+    [switch] $Cyclotomic
 )
 
 $ErrorActionPreference = 'Stop'
@@ -33,10 +34,10 @@ $inputs = [ordered]@{
     DedekindFieldInputs = 'cccd630c12934edafa2943819adbaf35fd52b9e6'
     DedekindFieldUniverses = 'fb339e0849ee4e882211f731e04a2b51599efe86'
 }
-$replayName = if ($RightEdge) { 'super-zeta-right-edge' } elseif ($SampledContours) { 'super-zeta-sampled-contours' } else { 'super-zeta-mixed-theta' }
+$replayName = if ($Cyclotomic) { 'super-zeta-cyclotomic' } elseif ($RightEdge) { 'super-zeta-right-edge' } elseif ($SampledContours) { 'super-zeta-sampled-contours' } else { 'super-zeta-mixed-theta' }
 $stage = (New-Item -ItemType Directory -Force -Path "$root/.lake/$replayName/src").FullName
 $out = (New-Item -ItemType Directory -Force -Path "$root/.lake/$replayName/lib").FullName
-if ($SampledContours -or $RightEdge) {
+if ($SampledContours -or $RightEdge -or $Cyclotomic) {
     $inputs.Add('DottieDyadicGeometry', '92d55ff728fdfcf2dcae06dcf33e85fb81638da4')
     $inputs.Add('DedekindFiniteDottieCover', '3925b92783ca6750d284814e844ba07182214175')
     $inputs.Add('DedekindCofinalSignedRings', '26aad230939523504635bc7f1e02299e71608a37')
@@ -51,9 +52,9 @@ foreach ($name in $inputs.Keys) {
     "Super Zeta source $name $hash"
 }
 $modules = @('DedekindMixedTheta', 'DedekindMixedThetaTail')
+if ($SampledContours -or $RightEdge -or $Cyclotomic) { $modules += 'DedekindMixedThetaSignedRings' }
 if ($SampledContours) {
     $modules += @(
-        'DedekindMixedThetaSignedRings',
         'DottieRationalContour',
         'DedekindMixedThetaCompletedRings',
         'DedekindMixedThetaOscillation',
@@ -72,14 +73,19 @@ if ($SampledContours) {
         'DedekindRationalPrimeFibers',
         'DedekindEulerByRationalPrime',
         'DedekindGaussianEulerProduct',
+        'DedekindGaussianContinuation',
         'DottieContourPhase',
         'DottieCayleyWeightedRiemann',
         'DottieCayleySameInput'
     )
 }
 if ($RightEdge) {
-    if (!$SampledContours) { $modules += @('DedekindMixedThetaSignedRings', 'DedekindMixedThetaCompletedRings') }
+    if (!$SampledContours) { $modules += 'DedekindMixedThetaCompletedRings' }
     $modules += @('DedekindCuretonThorner', 'DedekindMixedThetaRightEdge')
+}
+if ($Cyclotomic) {
+    if (!$SampledContours) { $modules += @('DedekindRationalPrimeFibers', 'DedekindEulerByRationalPrime') }
+    $modules += @('DedekindCyclotomicLocalEuler', 'DedekindCyclotomicContinuation', 'DedekindCyclotomicSubfields')
 }
 foreach ($name in $modules) {
     $file = Join-Path $PSScriptRoot "$name.lean"
@@ -103,17 +109,23 @@ try {
         '+DedekindZetaZeroFree.HarmonicAnalysis.Mellin.TailRemainder:olean',
         '+DedekindZetaZeroFree.Theta.Inversion.MixedPairGlobalSelfDuality:olean'
     )
-    if ($SampledContours) {
+    if ($SampledContours -or $Cyclotomic) {
         $targets += @(
             '+DedekindZetaZeroFree.LFunctions.Dedekind.PrimeIdealEulerProduct:olean',
             '+Mathlib.NumberTheory.NumberField.Cyclotomic.Ideal:olean',
             '+Mathlib.NumberTheory.EulerProduct.DirichletLSeries:olean'
         )
     }
+    if ($Cyclotomic) {
+        $targets += @(
+            '+DedekindZetaZeroFree.RepresentationTheory.FiniteAbelian.RegularCharacterEulerPolynomial:olean',
+            '+DedekindZetaZeroFree.LFunctions.Dedekind.EntireAbelianQuotient:olean'
+        )
+    }
     if ($RightEdge) { $targets += '+DedekindZetaZeroFree.Main:olean' }
     & $lake build @targets
     $status = $LASTEXITCODE
-    $importSet = if ($RightEdge) { 'right-edge' } else { 'mixed theta' }
+    $importSet = if ($Cyclotomic) { 'cyclotomic' } elseif ($RightEdge) { 'right-edge' } else { 'mixed theta' }
     "AxiomMath $importSet imports exit=$status"
     if ($status -ne 0) { exit $status }
 
@@ -122,9 +134,9 @@ try {
     if ($LASTEXITCODE -ne 0 -or !$imports) { throw 'Could not determine the pinned Lake import path.' }
     $env:LEAN_PATH = $out + [IO.Path]::PathSeparator + ($imports | Select-Object -Last 1)
     $env:LEAN_NUM_THREADS = '1'
-    $replayMemory = if ($SampledContours) { 5200 } else { 3500 }
+    $replayMemory = if ($SampledContours -or $Cyclotomic) { 5200 } else { 3500 }
     foreach ($name in (@($inputs.Keys) + $modules)) {
-        $moduleMemory = if ($name -in @('DedekindCuretonThorner', 'DedekindMixedThetaRightEdge')) { 6000 } else { $replayMemory }
+        $moduleMemory = if ($name -in @('DedekindCuretonThorner', 'DedekindMixedThetaRightEdge', 'DedekindCyclotomicSubfields')) { 6000 } else { $replayMemory }
         & $lean -j1 "-M$moduleMemory" -DwarningAsError=true "--root=$stage" -o "$out/$name.olean" "$stage/$name.lean"
         $status = $LASTEXITCODE
         "$name exit=$status"

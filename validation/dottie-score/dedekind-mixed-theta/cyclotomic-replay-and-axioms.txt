@@ -1,0 +1,100 @@
+Gaussian field and cyclotomic Dedekind zeta: Lean replay
+
+Independent source replays with the pinned imports already built.
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath HEAD: 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib HEAD: 0493595ecd5da8ef14742febab99728f98e948e8
+Lean invocation: -j1 -M5200 -DwarningAsError=true; LEAN_NUM_THREADS=1
+Lake environment exit=0 (no Lake build invoked)
+DedekindGaussianContinuation source 98385381e4dbc09cd3a9a9f16f2a59df14e1385a
+DedekindGaussianContinuation source SHA-256 E19491DB425D3086428BF643D7320F1EB1EE2405930303E957667341E88C2B3F
+@gaussianQuadratic_mixedThetaContinuation_eq_zeta_beta : ∀ {w : ℂ},
+  w ≠ 1 →
+    mixedThetaContinuation GaussianQuadraticField w =
+      riemannZeta w * DirichletCharacter.LFunction gaussianQuadraticChar w
+gaussianQuadratic_dedekindZetaRH_iff_zeta_beta : DedekindZetaRH GaussianQuadraticField ↔
+  StripZerosOnLine riemannZeta ∧ StripZerosOnLine (DirichletCharacter.LFunction gaussianQuadraticChar)
+'FieldTarget.gaussianQuadratic_zeta_beta_isDedekind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadratic_mixedThetaContinuation_eq_zeta_beta' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.gaussianQuadratic_dedekindZetaRH_iff_zeta_beta' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindGaussianContinuation exit=0 18.408s
+DedekindGaussianContinuation reproduced its saved printed scopes and all 3 transitive axiom reports.
+DedekindCyclotomicLocalEuler source 74b3dbcb6df280af3fecb37b74ad067ebd9f56f2
+DedekindCyclotomicLocalEuler source SHA-256 67129948331F82E7E12A8645B94051ADEAAF9D6E674C598B57BCE2FA6CBD3B78
+cyclotomic_localEuler_denominator_of_not_dvd : ∀ (m : ℕ) [inst : NeZero m] (p : ℕ) [Fact (Nat.Prime p)],
+  ¬p ∣ m →
+    ∀ (z : ℂ),
+      ∏ P ∈ IsDedekindDomain.primesOverFinset (span {↑p}) (𝓞 (CyclotomicField m ℚ)), (1 - z ^ P.inertiaDeg ℤ) =
+        ∏ χ, (1 - χ ↑p * z)
+'FieldTarget.cyclotomic_localEuler_denominator_of_not_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclotomicLocalEuler exit=0 18.661s
+DedekindCyclotomicLocalEuler reproduced its saved printed scopes and all 1 transitive axiom reports.
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath HEAD: 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib HEAD: 0493595ecd5da8ef14742febab99728f98e948e8
+Lean invocation: -j1 -M5200 -DwarningAsError=true; LEAN_NUM_THREADS=1
+Lake environment exit=0 (no Lake build invoked)
+DedekindCyclotomicContinuation source 4c687d3f6079069a9bd4da5dacccb17bddfbff45
+DedekindCyclotomicContinuation source SHA-256 FE41574A1379B518B91DC94276B0D8F82903CBAD470FB7463C2016F199DF0054
+cyclotomic_continuation_eq_dirichlet_product : ∀ (m : ℕ) [inst : NeZero m] {Z : ℂ → ℂ},
+  IsDedekindZeta (CyclotomicField m ℚ) Z →
+    ∀ {w : ℂ}, w ≠ 1 → cyclotomicFiniteEulerDenominator m w * Z w = ∏ χ, DirichletCharacter.LFunction χ w
+cyclotomic_dedekindZetaRH_iff_dirichlet : ∀ (m : ℕ) [inst : NeZero m],
+  DedekindZetaRH (CyclotomicField m ℚ) ↔
+    ∀ (χ : DirichletCharacter ℂ m), StripZerosOnLine (DirichletCharacter.LFunction χ)
+'FieldTarget.cyclotomicFiniteEulerDenominator_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.cyclotomic_continuation_eq_dirichlet_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.cyclotomic_dedekindZetaRH_iff_dirichlet' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclotomicContinuation exit=0 19.512s
+DedekindCyclotomicContinuation reproduced its saved printed scopes and all 3 transitive axiom reports.
+DedekindCyclotomicSubfields source 81bf46edde15a677e64eeaaa18784248ad5c0cc5
+DedekindCyclotomicSubfields source SHA-256 E2C231107EEBAAE8F90A13B7D41C718741D2D9E23F17CA5378FA6AA61419FA26
+dedekindZetaRH_of_abelian_extension : ∀ (K L : Type) [inst : Field K] [inst_1 : NumberField K] [inst_2 : Field L]
+  [inst_3 : NumberField L] [inst_4 : Algebra K L] [IsAbelianGalois K L], DedekindZetaRH L → DedekindZetaRH K
+dedekindZetaRH_of_cyclotomic_embedding : ∀ (m : ℕ) [inst : NeZero m] (K : Type u_1) [inst_1 : Field K]
+  [inst_2 : NumberField K] (ι : K →ₐ[ℚ] CyclotomicField m ℚ),
+  (∀ (χ : DirichletCharacter ℂ m), StripZerosOnLine (DirichletCharacter.LFunction χ)) → DedekindZetaRH K
+'FieldTarget.dedekindZetaRH_of_abelian_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_cyclotomic_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclotomicSubfields exit=0 19.964s
+DedekindCyclotomicSubfields reproduced its saved printed scopes and all 2 transitive axiom reports.
+
+Published replay mode: replay.ps1 -Cyclotomic
+Replay on the pinned checkout and toolchain above.
+Super Zeta source FieldTarget 2d736feec6079b6aa96df2bfa9ab20eac0f5c859
+Super Zeta source DedekindDottieSetup f3f1929adb407339f0473a322ffb208b94f33053
+Super Zeta source DedekindFieldInputs cccd630c12934edafa2943819adbaf35fd52b9e6
+Super Zeta source DedekindFieldUniverses fb339e0849ee4e882211f731e04a2b51599efe86
+Super Zeta source DottieDyadicGeometry 92d55ff728fdfcf2dcae06dcf33e85fb81638da4
+Super Zeta source DedekindFiniteDottieCover 3925b92783ca6750d284814e844ba07182214175
+Super Zeta source DedekindCofinalSignedRings 26aad230939523504635bc7f1e02299e71608a37
+Super Zeta source DedekindMixedTheta e95a2b1ab06738f7aa69a5155631e217d732aa13
+Super Zeta source DedekindMixedThetaTail 4cb30a02ae63c5a35a53ab618c493adbdab783f8
+Super Zeta source DedekindMixedThetaSignedRings f12d251417d0f34c243142cdb8b3d06274a90f31
+Super Zeta source DedekindRationalPrimeFibers 1910bf7252dfc7d4465b4a9a1b7371e8a6f534b3
+Super Zeta source DedekindEulerByRationalPrime 1d5f35404ad5e6100652b8043f1abad3742c1c50
+Super Zeta source DedekindCyclotomicLocalEuler 74b3dbcb6df280af3fecb37b74ad067ebd9f56f2
+Super Zeta source DedekindCyclotomicContinuation 4c687d3f6079069a9bd4da5dacccb17bddfbff45
+Super Zeta source DedekindCyclotomicSubfields 81bf46edde15a677e64eeaaa18784248ad5c0cc5
+Build completed successfully (10062 jobs).
+AxiomMath cyclotomic imports exit=0
+FieldTarget exit=0
+DedekindDottieSetup exit=0
+DedekindFieldInputs exit=0
+DedekindFieldUniverses exit=0
+DottieDyadicGeometry exit=0
+DedekindFiniteDottieCover exit=0
+DedekindCofinalSignedRings exit=0
+DedekindMixedTheta exit=0
+DedekindMixedThetaTail exit=0
+DedekindMixedThetaSignedRings exit=0
+DedekindRationalPrimeFibers exit=0
+DedekindEulerByRationalPrime exit=0
+DedekindCyclotomicLocalEuler exit=0
+DedekindCyclotomicContinuation exit=0
+DedekindCyclotomicSubfields exit=0
+Cyclotomic replay exit=0
