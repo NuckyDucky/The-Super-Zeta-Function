@@ -320,6 +320,13 @@ pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-hecke-seven-eighths.p
   -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -HuCacheRoot <hu-cache-root>
 ~~~
 
+### Discriminant-23 above the certified count
+
+- If $7/8<\Re w<1$, then the character fold is nonzero. A zero of the fold would force a zero of the sextic Dedekind continuation at that same $w$. If I supply the modulo-23 Dirichlet critical-line theorem, then Dedekind RH for the sextic field is equivalent to character nonvanishing on $1/2<\Re w\le7/8$ and $\Im w>19/2$. The complete count through $|\Im w|\le19/2$ supplies the lower heights. [Exact field theorem](DedekindDiscriminant23SevenEighths.lean) · [Earlier count](DedekindDiscriminant23NineteenHalvesBand.lean)
+- If I keep the scaled Taylor radius $8/5$ and take $T\ge0$, then this radius contains every argument from $0\le\Re w\le1$, $|\Im w|\le T$ exactly when $T^2\le9191/100$. The adaptive phase estimate lets me choose a new finite approximation beyond that radius. [Radius theorem](DedekindDiscriminant23TaylorRadiusCeiling.lean) · [Adaptive error theorem](DedekindDiscriminant23AdaptivePhase.lean)
+
+Build the discriminant-23 inputs with `replay-discriminant23.ps1 -HigherPolynomialBands` on the same pinned checkout. Pass the resulting `.lake/super-zeta-higher-polynomial-bands/lib` directory to `replay-hecke-seven-eighths.ps1 -Discriminant23Imports` along with the inputs above. [Lean output and axiom audit](discriminant23-seven-eighths-replay-and-axioms.txt)
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)

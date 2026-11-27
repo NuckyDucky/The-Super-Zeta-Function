@@ -4,7 +4,8 @@ param(
     [Parameter(Mandatory)] [string] $AxiomCheckout,
     [Parameter(Mandatory)] [string] $LeanBin,
     [Parameter(Mandatory)] [string] $HuCacheRoot,
-    [string[]] $RayHeckeImports = @()
+    [string[]] $RayHeckeImports = @(),
+    [string[]] $Discriminant23Imports = @()
 )
 
 $ErrorActionPreference = 'Stop'
@@ -39,6 +40,9 @@ if ($RayHeckeImports.Count -eq 0) {
     )
 }
 $baseline = foreach ($path in $RayHeckeImports) { (Resolve-Path -LiteralPath $path).Path }
+$characterImports = @(
+    foreach ($path in $Discriminant23Imports) { (Resolve-Path -LiteralPath $path).Path }
+)
 $out = (New-Item -ItemType Directory -Force -Path (
     Join-Path $axiom '.lake/super-zeta-hecke-seven-eighths/lib')).FullName
 $separator = [IO.Path]::PathSeparator
@@ -67,7 +71,16 @@ try {
         HeckeSevenEighthsTransfer = 6
         DedekindSevenEighthsCoverage = 3
     }
+    if ($characterImports.Count -gt 0) {
+        $modules.Add('DedekindDiscriminant23SevenEighths', 2)
+        $modules.Add('DedekindDiscriminant23TaylorRadiusCeiling', 1)
+    }
     foreach ($name in $modules.Keys) {
+        if ($name -eq 'DedekindDiscriminant23SevenEighths') {
+            # Use the higher-band factorization ahead of any earlier cached copy.
+            $env:LEAN_PATH = ($huLibraries + @($out) + $characterImports + $baseline +
+                @($imports | Select-Object -Last 1)) -join $separator
+        }
         $source = Join-Path $PSScriptRoot "$name.lean"
         $blob = (& git hash-object --no-filters -- $source).Trim()
         "Super Zeta source $name $blob"
