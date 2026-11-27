@@ -17,11 +17,24 @@ $$
 
 with the original signed Gaussian coefficients $a_n$. Evaluating the sine and cosine at the phase endpoints gives the upper bound $0.1716868$ from the six enclosed reference moments. The sharp-circle theorem accepts the exact decimal $0.171687$ and the eleven sharp score fits. The directed replay of the archived full moment table gives an upper bound below $0.17168626$ at both 224 and 320 bits. The Lean proof keeps the six full moment enclosures explicit. [Exact formula](DottieDirectReference.lean#L43) · [Decimal comparison](DottieDirectReference.lean#L148) · [Lean audit](DottieDirectReference.audit.txt) · [Archived moments](../../../archive/2026-11-21-gaussian-rectangle-v001/signed-blocks.json)
 
+## One integer reference score
+
+Lean encloses the phase at the original reference input within $5\times10^{-13}$ radians of $3.92292489981824$. If $S$ is the signed integer total over the original cutoff, the full reference projection differs from $|S|/2^{256}$ by at most $0.00000033276$. The comparison $10^7|S|\le1716866\cdot 2^{256}$ supplies the reference bound $0.171687$. [Phase theorem](DottiePreciseReferencePhase.lean#L93) · [Score theorem](DottieDirectReferenceScore.lean#L273) · [Axiom audits](DottieDirectReferenceScore.audit.txt)
+
+The four-part integer calculation covered all 16,638 consecutive rows. Its normalized total was $0.171683928012601107\ldots$. Lean checked the integer comparison for this candidate and replayed both the final row and the full 11,763-pair interior row. Supplying the full equality of the Lean score and the recorded integer gives the decimal bound. [Candidate and exact remaining premise](DottieDirectReferenceCandidate.lean) · [Candidate receipt](DottieDirectReferenceCandidate.json) · [Full checked row](DottieDirectReferenceInteriorRow.lean#L74) · [Row audit](DottieDirectReferenceInteriorRow.audit.txt)
+
+The [integer calculator](replay_direct_reference_candidates.py) takes a zero-based start row, an exclusive end row, and a destination for the row totals. The four partition boundaries are `0, 7373, 10426, 12868, 16638`.
+
 To replay, build the pinned `lean-ideal73` imports as described in the [verification package](../../../lean-ideal73/README.md). From `lean-ideal73`, check each source with Lean 4.33.1 and the built imports on the module path.
 
 ```text
 lake env lean -j1 -s65536 -M4500 -DwarningAsError=true --root=../validation/dottie-score/moment-blocks -o .lake/build/lib/lean/DottieSharpReferenceProjection.olean ../validation/dottie-score/moment-blocks/DottieSharpReferenceProjection.lean
-lake env lean -j1 -s65536 -M4500 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieDirectReference.lean
+lake env lean -j1 -s65536 -M4500 -DwarningAsError=true --root=../validation/dottie-score/moment-blocks -o .lake/build/lib/lean/DottieDirectReference.olean ../validation/dottie-score/moment-blocks/DottieDirectReference.lean
+lake env lean -j1 -s65536 -M4500 -DwarningAsError=true --root=../validation/dottie-score/moment-blocks -o .lake/build/lib/lean/DottiePreciseReferencePhase.olean ../validation/dottie-score/moment-blocks/DottiePreciseReferencePhase.lean
+lake env lean -j1 -s65536 -M4500 -DwarningAsError=true --root=../validation/dottie-score/moment-blocks -o .lake/build/lib/lean/DottieDirectReferenceScore.olean ../validation/dottie-score/moment-blocks/DottieDirectReferenceScore.lean
+lake env lean -j1 -s65536 -M4500 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieDirectReferenceBlocks.lean
+lake env lean -j1 -s65536 -M4500 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieDirectReferenceCandidate.lean
+lake env lean -j1 -s65536 -M5100 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieDirectReferenceInteriorRow.lean
 lake env lean -j1 -s65536 -M4500 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieReferenceMomentBlock.lean
 lake env lean -j1 -s65536 -M4500 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieSharpMomentBlock.lean
 ```

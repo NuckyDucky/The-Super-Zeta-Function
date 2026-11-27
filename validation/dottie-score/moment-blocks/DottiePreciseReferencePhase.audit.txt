@@ -1,0 +1,3 @@
+DottiePreciseReferencePhase source 6fd21652f5ac854689ff7ea188809a9ddd9e00bf
+'QuarticModel.dottie_sharp_reference_unit_precise_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottiePreciseReferencePhase exit=0 (16.22 seconds)

@@ -1,0 +1,4 @@
+DottieDirectReferenceCandidate source 00a6c8fed643351d272c59781f926cbdb3c9afb3
+'QuarticModel.dottie_direct_reference_candidate_passes' depends on axioms: [propext]
+'QuarticModel.dottie_reference_decimal_of_candidate_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieDirectReferenceCandidate exit=0 (19.725 seconds)
