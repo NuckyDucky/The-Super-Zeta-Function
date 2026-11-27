@@ -224,3 +224,9 @@ If $|w-3/4|\le31/128$, then the completed class product built from the two discr
 I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)
 
 Lean identifies the two forms in my disk formula with the element norm on the full ring of integers and with the element norm divided by $2$ on an ideal of norm $2$. Every ideal class has a representative of norm at most $3$. The ideals above $2$ and $3$ give exactly three classes, and Lean proves they are distinct. [Norm forms](DedekindDiscriminant23NormForms.lean) · [Class number](DedekindDiscriminant23ClassNumber.lean) · [Derivation and replay command](discriminant23-field-arithmetic.md) · [Exact Lean output](discriminant23-field-replay-and-axioms.txt)
+
+## Discriminant-23 prime splitting and Euler product
+
+If $\mathfrak p$ is a prime of $F$, the order of its class gives the residue degree of every prime above it in $L$. The principal class gives three primes of degree one. Either other class gives one prime of degree three. Lean gets this from the Hilbert class field identification and uses it to match all the Euler factors. [Hilbert class field and splitting](DedekindDiscriminant23Hilbert.lean)
+
+If $\operatorname{Re} w>1$, the actual $\zeta_L(w)$ equals $\zeta_F(w)$ times the two nontrivial class-character series. The next equality matches the completed class series to the folded Mellin readings on the Dottie disk. [Exact factorization](DedekindDiscriminant23EulerProduct.lean) · [Derivation and replay command](discriminant23-hilbert-and-euler.md) · [Exact Lean output](discriminant23-hilbert-and-euler-replay-and-axioms.txt)
