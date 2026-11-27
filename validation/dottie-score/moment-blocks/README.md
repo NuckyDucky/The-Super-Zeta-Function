@@ -119,3 +119,7 @@ Four more 8-row kernel checks cover rows 352–383. Their sum extends the origin
 ## Direct reference score through row 399
 
 Two 8-row kernel checks cover rows 384–399. Add them to the 384-row theorem and Lean gives the exact subtotal for rows 0–399 with the original reference weight. Build the two new row files to Lean objects before building the prefix. The full score equality still needs the rest of the row contributions. [Rows 384–391](DottieFastReferenceRows384To392.lean#L201) · [Rows 392–399](DottieFastReferenceRows392To400.lean#L201) · [400-row theorem](DottieFastReferencePrefix400.lean#L17) · [Replay and axioms](DottieFastReferencePrefix400.audit.txt)
+
+## Direct reference score through row 415
+
+Lean checks rows 400–407 and 408–415 with `decide +kernel` and adds both subtotals to the 400-row theorem. The new theorem gives the exact subtotal for rows 0–415 with the original weight. Build the two new row files before the prefix. [Rows 400–407](DottieFastReferenceRows400To408.lean#L201) · [Rows 408–415](DottieFastReferenceRows408To416.lean#L201) · [416-row theorem](DottieFastReferencePrefix416.lean#L17) · [Lean audit](DottieFastReferencePrefix416.audit.txt)
