@@ -58,6 +58,8 @@ if ($SampledContours) {
         'DedekindMixedThetaOscillation',
         'DedekindMixedThetaFiniteSamples',
         'DedekindMixedThetaSampleCover',
+        'DedekindMixedThetaSampleCompleteness',
+        'DedekindMixedThetaPoleDominance',
         'DottieContourPhase',
         'DottieCayleyWeightedRiemann',
         'DottieCayleySameInput'

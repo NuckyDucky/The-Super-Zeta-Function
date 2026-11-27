@@ -1,0 +1,24 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaSampleCompleteness source 5c98b0106b7d8a4b16c25c23d905bff11da2a995
+dottie_completed_samples_iff_boundary_sign : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (T : ℝ) (n : ℕ),
+  HasDottieCompletedSamples K T n ↔ HasDottieBoundarySign (mixedThetaCompletedReading K) T n
+finite_dottie_boundary_iff_completed_sample_cover : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (l u : ℝ),
+  HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) l u ↔
+    ∃ ε,
+      0 < ε ∧
+        ∃ disks,
+          (∀ (w : ℂ),
+              w.im ∈ Icc l u → 1 / 2 < w.re → w.re ≤ 31 / 32 → w.re - 1 / 2 < ε → mixedThetaContinuation K w ≠ 0) ∧
+            (∀ (w : ℂ),
+                w.im ∈ Icc l u →
+                  1 / 2 + ε ≤ w.re →
+                    w.re ≤ 31 / 32 →
+                      ∃ a ∈ disks,
+                        w ∈ Metric.ball (dottieScaledRightCenter (↑a).1 (↑a).2) (dottieScaledRadius (↑a).2)) ∧
+              ∀ a ∈ disks, HasDottieCompletedSamples K (↑a).1 (↑a).2
+'FieldTarget.dottie_completed_samples_iff_boundary_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.finite_dottie_boundary_iff_completed_sample_cover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindMixedThetaSampleCompleteness exit=0

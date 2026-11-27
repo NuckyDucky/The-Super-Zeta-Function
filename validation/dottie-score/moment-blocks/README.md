@@ -105,3 +105,7 @@ The compiled run matched all 22 entries on each of the three already certified r
 The kernel checked the next two ranges, rows 256–271 and 272–287, against the saved candidate totals. The sum through row 287 uses the original weight. Build the two range files before the prefix assembly. [First range](DottieFastReferenceRows256To272.audit.txt) · [Second range](DottieFastReferenceRows272To288.audit.txt) · [288-row theorem](DottieFastReferencePrefix288.lean#L7) · [Axioms](DottieFastReferencePrefix288.audit.txt)
 
 The nine cosine divisors can be reused at each norm. Lean checks their values and proves the cached weight equals the previous exact weight, including its rounding. Both evaluations give the same totals on four 128-pair blocks of row 11763. [Weight identity](DottieCachedReferenceCosine.lean#L51) · [512-pair check](DottieCachedReferenceCosineBench512.lean) · [Audit](DottieCachedReferenceCosineBench512.audit.txt)
+
+## Direct reference score through row 319
+
+Lean checks rows 288–303, 304–311, and 312–319, and adds them to the certified prefix. The final theorem uses the original weight on the first 320 rows. Build the last two range files before their span and build that span and rows 288–303 before the prefix. [Span theorem](DottieFastReferenceSpan304To320.lean) · [320-row theorem](DottieFastReferencePrefix320.lean#L7) · [Axioms](DottieFastReferencePrefix320.audit.txt)

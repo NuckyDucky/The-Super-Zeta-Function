@@ -1,0 +1,3 @@
+DottieFastReferencePrefix320 source f6301e9b635f65ab58cb50f727c632aca96d9cce
+'QuarticModel.dottieDirectReferencePrefix320' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieFastReferencePrefix320 exit=0 (13.703 seconds)
