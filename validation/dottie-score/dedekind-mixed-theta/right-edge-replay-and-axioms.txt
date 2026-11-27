@@ -1,0 +1,64 @@
+Right-edge proof and independent height-cover replay
+
+Pinned upstream and DedekindCuretonThorner replay (nonvanishing build and final module output)
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+DedekindCuretonThorner source d0f287dada857d47d6a9a9aa1d1da03a9ae541ca
+
+Build completed successfully (14455 jobs).
+AxiomMath nonvanishing imports exit=0
+@dedekindZetaRH_of_signed_gap_with31_32 : ∀ {K : Type u_1} [inst : Field K] [inst_1 : NumberField K] {Orbit : Type u_2}
+  {U V : ℂ → ℂ} (region : Orbit → Set ℂ) (axis : Orbit → ℂ) (retained : Orbit → ℂ → ℂ) (main tail : Orbit → ℂ → ℝ),
+  (∀ (w : ℂ), 0 < w.re → w.re < 1 → dedekindContinuation K w = 0 → U w = V w) →
+    (∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 31 / 32 → dedekindContinuation K w = 0 → ∃ a, w ∈ region a) →
+      (∀ (a : Orbit), ∀ w ∈ region a, tail a w < main a w) →
+        (∀ (a : Orbit), ∀ w ∈ region a, (retained a w).im ≤ -main a w) →
+          (∀ (a : Orbit), ∀ w ∈ region a, (axis a * (U w - V w) - retained a w).im ≤ tail a w) → DedekindZetaRH K
+'FieldTarget.exists_dedekind_continuation_with_zero_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindContinuation_isDedekindZeta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_signed_gap_with31_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCuretonThorner exit=0
+
+Independent replay with the pinned local imports
+
+Lean invocation: -j1 -M6000 -DwarningAsError=true; LEAN_NUM_THREADS=1
+Lake environment exit=0 (no Lake build invoked)
+DedekindMixedThetaRightEdge source abb9e77b625391c675f32dbf905311a3e18b40f9
+DedekindMixedThetaRightEdge source SHA-256 3237DB0BD3766F92D740D17B417B85FCB7B59DACF569485053A4766CAEE436FD
+dedekindZetaRH_of_mixedTheta_signed_height_cover : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (t : ℝ),
+      0 ≤ t →
+        ∃ l u,
+          t ∈ Icc l u ∧ HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaSignedReading K) l u) →
+    DedekindZetaRH K
+dedekindZetaRH_of_completed_mixedTheta_signed_height_cover : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (t : ℝ),
+      0 ≤ t →
+        ∃ l u,
+          t ∈ Icc l u ∧
+            HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) l u) →
+    DedekindZetaRH K
+dedekindZetaRH_of_cofinal_mixedTheta_signed_rings : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (N : ℕ),
+      ∃ M, N ≤ M ∧ HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaSignedReading K) (-↑M) ↑M) →
+    DedekindZetaRH K
+dedekindZetaRH_of_cofinal_mixedTheta_nonneg_rings : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (N : ℕ),
+      ∃ M, N ≤ M ∧ HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaSignedReading K) 0 ↑M) →
+    DedekindZetaRH K
+'FieldTarget.mixedThetaContinuation_ne_zero_above_31_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_mixedTheta_signed_height_cover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_completed_mixedTheta_signed_height_cover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_cofinal_mixedTheta_signed_rings' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_cofinal_mixedTheta_nonneg_rings' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindMixedThetaRightEdge exit=0 26.639s
+The four full theorem types and all five axiom reports match right-edge-expanded.log after normalizing line endings.
