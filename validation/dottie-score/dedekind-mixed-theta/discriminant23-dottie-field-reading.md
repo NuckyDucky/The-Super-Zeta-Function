@@ -62,6 +62,18 @@ If $|t|\le11/2$, Lean bounds the total error of the 1,024-trapezoid reading by $
 
 If I replace $w$ by $1-w$, the two Mellin powers exchange and $C$ stays the same. So the zero at $\tfrac12+it$ supplies a second zero at $\tfrac12-it$. For every $T\ge11/2$, Lean counts at least two critical-line zeros with multiplicity for $C$ and at least four for $L$. [Reflection and count theorems](DedekindDiscriminant23CharacterReflectedCounts.lean)
 
+## Complex values and the complete count
+
+If $Q$ is the integral of the same retained polynomial on $0\le u\le3$ with both complex Mellin weights, Lean bounds $|C(w)-Q(w)|$ by $1/100{,}000$ on $-1\le\operatorname{Re}w\le2$. A unit circle about any $w$ in $0\le\operatorname{Re}w\le1$ then gives $|C^{(n)}(w)-Q^{(n)}(w)|\le n!/100{,}000$. Both bounds apply at every height. [Complex integral and error](DedekindDiscriminant23CharacterComplex.lean)
+
+If I prove these three signs for $Q$ throughout $0\le\operatorname{Re}w\le1$, Lean gives complete and on-line character counts of two through $|\operatorname{Im}w|\le11/2$. The derivative makes the imaginary reading strictly increasing across the middle band and the real reading strictly decreasing up the line. Reflection preserves the order at the second zero. [Single-zero theorem](ComplexStripSingleZero.lean) · [Exact count premises](DedekindDiscriminant23CountFromSigns.lean)
+
+- If $7/6\le\operatorname{Im}w\le9/2$, the input is $\operatorname{Re}Q(w)>1/100{,}000$.
+- If $9/2\le\operatorname{Im}w\le83/16$, the input is $\operatorname{Im}Q'(w)>1/100{,}000$.
+- If $83/16\le\operatorname{Im}w\le11/2$, the input is $\operatorname{Re}Q(w)<-1/100{,}000$.
+
+The outward interval replay evaluates a composite Simpson sum and encloses each Taylor polynomial on a whole cell. All three signs pass over the full rectangles at both replay precisions. These three inequalities are the numerical inputs to the count theorem. [Interval script](check_character_bands_interval.py) · [Exact interval output](discriminant23-character-band-interval.txt)
+
 ## Replay
 
 Run the [pinned discriminant-23 replay](replay-discriminant23.ps1) with the checkout and Lean version in the [archive README](README.md). [Exact Lean output](discriminant23-dottie-field-replay-and-axioms.txt)
@@ -69,3 +81,5 @@ Run the [pinned discriminant-23 replay](replay-discriminant23.ps1) with the chec
 Add `-DirichletMod23` to the same command to replay the cyclotomic dependencies and the modulus-23 theorem. [Modulus-23 replay output](discriminant23-dirichlet-mod23-replay-and-axioms.txt)
 
 The same `-DirichletMod23` replay includes the multiplicity transfer and both count criteria. [Count replay output and axioms](discriminant23-zero-counts-replay-and-axioms.txt)
+
+Add `-ComplexDerivatives` to replay the general field derivative bound, its multiplicity test, and the approximate-reading inputs to the complete character count. [Exact Lean output](discriminant23-complex-derivatives-replay-and-axioms.txt)

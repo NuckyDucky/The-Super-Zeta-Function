@@ -231,6 +231,12 @@ If I evaluate the character fold on the critical line at heights $5$ and $11/2$,
 
 If $T\ge11/2$, the reflected points both enter the critical-line count through $|\operatorname{Im}w|\le T$. The fold contributes at least two and the splitting-field count is at least four, with multiplicities. [Reflection and cumulative lower bound](DedekindDiscriminant23CharacterReflectedCounts.lean)
 
+## Complex values and derivatives for a general number field
+
+If I truncate a field's folded Mellin integral at $R\ge1$ and widen the strip by $\rho>0$, Lean bounds the full complex error by $B_K(R,\rho)=2\int_R^\infty x^\rho|f_K(x)-f_{K,0}|\,dx$. If $0\le\operatorname{Re}w\le1$, the error in derivative order $n$ is at most $n!B_K(R,\rho)/\rho^n$. For each field and derivative order a sufficiently large cutoff meets any positive error allowance at every height. [Finite integral](ComplexMellinFoldEstimates.lean) · [Field tail](DedekindMixedThetaDerivative.lean) · [Uniform cutoff](DedekindMixedThetaMultiplicity.lean)
+
+If the truncated slope with the exact pole correction clears that error at a zero, Lean gives vanishing order one for the actual Dedekind zeta. If I use the retained discriminant-$23$ theta polynomial, Lean gives error at most $1/100{,}000$ for the character value and first derivative throughout the closed critical strip. The complete count through $11/2$ now has three explicit signed bounds to fill. Replay with `-ComplexDerivatives`. [Multiplicity test](DedekindMixedThetaMultiplicity.lean) · [Exact error and count inputs](discriminant23-dottie-field-reading.md#complex-values-and-the-complete-count) · [Lean output](discriminant23-complex-derivatives-replay-and-axioms.txt)
+
 ## Discriminant-23 ideal norms and class number
 
 I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)
