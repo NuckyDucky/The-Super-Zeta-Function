@@ -1,0 +1,94 @@
+#Requires -Version 7.4
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory)] [string] $AxiomCheckout,
+    [Parameter(Mandatory)] [string] $LeanBin,
+    [Parameter(Mandatory)] [string] $HuCacheRoot,
+    [string[]] $RayHeckeImports = @()
+)
+
+$ErrorActionPreference = 'Stop'
+[Console]::OutputEncoding = [Text.Encoding]::UTF8
+$axiom = (Resolve-Path -LiteralPath $AxiomCheckout).Path
+$hu = (Resolve-Path -LiteralPath $HuCacheRoot).Path
+$bin = (Resolve-Path -LiteralPath $LeanBin).Path
+$suffix = if ($IsWindows) { '.exe' } else { '' }
+$lean = Join-Path $bin "lean$suffix"
+$lake = Join-Path $bin "lake$suffix"
+$version = & $lean --version
+$axiomRev = (& git -C $axiom rev-parse HEAD).Trim()
+$mathlibRev = (& git -C (Join-Path $axiom '.lake/packages/mathlib') rev-parse HEAD).Trim()
+if ($axiomRev -ne '09afbb4ce6570c1615d58509dc197fc9f0956b7d' -or
+    $mathlibRev -ne '0493595ecd5da8ef14742febab99728f98e948e8' -or
+    $version -notmatch '470d5ce1400764999581fd26d5d72b00d990b0f4') {
+    throw 'Use the pinned AxiomMath checkout, Mathlib, and Lean 4.35.0-rc3.'
+}
+
+$huLibraries = @(
+    (Join-Path $hu '.lake/build/lib/lean')
+    (Join-Path $hu 'vendor/class-field-theory/.lake/build/lib/lean')
+    (Join-Path $hu '.lake/packages/TauCeti/.lake/build/lib/lean')
+)
+$solution = Join-Path $huLibraries[0] 'HeckeSevenEighthsSolution.olean'
+$solutionHash = (Get-FileHash -LiteralPath $solution -Algorithm SHA256).Hash
+if ($RayHeckeImports.Count -eq 0) {
+    $RayHeckeImports = @(
+        (Join-Path $axiom '.lake/super-zeta-ray-hecke/lib')
+        (Join-Path $axiom '.lake/super-zeta-cyclic-zeta-descent/lib')
+        (Join-Path $axiom '.lake/super-zeta-relative-dottie/lib')
+    )
+}
+$baseline = foreach ($path in $RayHeckeImports) { (Resolve-Path -LiteralPath $path).Path }
+$out = (New-Item -ItemType Directory -Force -Path (
+    Join-Path $axiom '.lake/super-zeta-hecke-seven-eighths/lib')).FullName
+$separator = [IO.Path]::PathSeparator
+$pwsh = (Get-Command pwsh).Source
+$oldPath = $env:Path
+$oldLeanPath = $env:LEAN_PATH
+$oldThreads = $env:LEAN_NUM_THREADS
+$version
+"AxiomMath $axiomRev"
+"Mathlib $mathlibRev"
+"Hu solution object SHA-256 $solutionHash"
+
+try {
+    $env:Path = $bin + $separator + $oldPath
+    $env:LEAN_NUM_THREADS = '1'
+    $imports = & $lake -d $axiom env $pwsh -NoLogo -NoProfile -NonInteractive -Command '$env:LEAN_PATH'
+    if ($LASTEXITCODE -ne 0 -or !$imports) { throw 'Could not read the Lake import path.' }
+
+    # The release supplies a few shared base modules absent from the AxiomMath cache.
+    # Use its whole base namespace for all five source replays.
+    $env:LEAN_PATH = ($huLibraries + @($out) + $baseline + @($imports | Select-Object -Last 1)) -join $separator
+    $modules = [ordered]@{
+        RayHeckeStripCounts = 6
+        RayHeckeDedekindTransfer = 7
+        RayHeckeRightBand = 3
+        HeckeSevenEighthsTransfer = 6
+        DedekindSevenEighthsCoverage = 3
+    }
+    foreach ($name in $modules.Keys) {
+        $source = Join-Path $PSScriptRoot "$name.lean"
+        $blob = (& git hash-object --no-filters -- $source).Trim()
+        "Super Zeta source $name $blob"
+        $object = Join-Path $out "$name.olean"
+        $report = & $lean '-j1' '-M7500' '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' $object $source 2>&1
+        $status = $LASTEXITCODE
+        $report
+        "$name exit=$status"
+        if ($status -ne 0) { throw "$name failed." }
+        $reports = [regex]::Matches(($report -join "`n"), 'depends on axioms:\s*\[([^\]]*)\]')
+        if ($reports.Count -ne $modules[$name]) { throw "Missing axiom reports for $name." }
+        foreach ($entry in $reports) {
+            $axioms = $entry.Groups[1].Value -split ',\s*' | ForEach-Object { $_.Trim() }
+            if ($axioms | Where-Object { $_ -notin @('propext', 'Classical.choice', 'Quot.sound') }) {
+                throw "Unexpected axiom in $name."
+            }
+        }
+    }
+}
+finally {
+    $env:Path = $oldPath
+    $env:LEAN_PATH = $oldLeanPath
+    $env:LEAN_NUM_THREADS = $oldThreads
+}
