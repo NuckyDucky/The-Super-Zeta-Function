@@ -217,7 +217,7 @@ pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-cyclic-euler.ps1 `
 
 Take the splitting field of $X^3-X-1$. Lean gives the Galois group $S_3$, identifies the quadratic subfield $\mathbb Q(\sqrt{-23})$, and proves that the relative extension is cyclic of degree three. [Field and group](DedekindDiscriminant23Field.lean) · [Relative extension](DedekindDiscriminant23Quadratic.lean)
 
-If $|w-3/4|\le31/128$, then the completed class product built from the two discriminant-23 theta sums has real part at most $-1/400$. Lean proves the lattice and integral bounds and applies them throughout the closed disk. The same-input identity with the repository's completed field reading is the next Lean handoff. [Formula and exact bounds](discriminant23-dottie.md) · [Disk theorem](Discriminant23DottieDisk.lean) · [Lean output](discriminant23-replay-and-axioms.txt)
+If $|w-3/4|\le31/128$, the completed class product has real part at most $-1/400$. Lean identifies the actual completed Dedekind reading at the same $w$ as eight times that product. So its real part is at most $-1/50$ and the field zeta has no zero throughout the closed disk. [Formula and exact bounds](discriminant23-dottie.md) · [Actual field theorem](DedekindDiscriminant23DottieReading.lean) · [Lean output](discriminant23-dottie-field-replay-and-axioms.txt)
 
 ## Discriminant-23 ideal norms and class number
 
@@ -229,4 +229,4 @@ Lean identifies the two forms in my disk formula with the element norm on the fu
 
 If $\mathfrak p$ is a prime of $F$, the order of its class gives the residue degree of every prime above it in $L$. The principal class gives three primes of degree one. Either other class gives one prime of degree three. Lean gets this from the Hilbert class field identification and uses it to match all the Euler factors. [Hilbert class field and splitting](DedekindDiscriminant23Hilbert.lean)
 
-If $\operatorname{Re} w>1$, the actual $\zeta_L(w)$ equals $\zeta_F(w)$ times the two nontrivial class-character series. The next equality matches the completed class series to the folded Mellin readings on the Dottie disk. [Exact factorization](DedekindDiscriminant23EulerProduct.lean) · [Derivation and replay command](discriminant23-hilbert-and-euler.md) · [Exact Lean output](discriminant23-hilbert-and-euler-replay-and-axioms.txt)
+If $\operatorname{Re} w>1$, the actual $\zeta_L(w)$ equals $\zeta_F(w)$ times the two nontrivial class-character series. Clearing the two poles lets Lean continue the completed product identity to the whole plane. The two nonprincipal classes give the same theta sum and the same kernel occurs on both halves of the fold. [Exact factorization](DedekindDiscriminant23EulerProduct.lean) · [Class kernels and continuation](discriminant23-dottie-field-reading.md)

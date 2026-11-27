@@ -12,7 +12,7 @@ $$
 \qquad
 L_{\chi^k}(w)=\sum_{\mathfrak a\ne0}\chi([\mathfrak a])^k (N\mathfrak a)^{-w}.
 $$
-The next equality is between these class series after completion and the folded Mellin readings used on the first Dottie disk. [Actual Dedekind-zeta factorization](DedekindDiscriminant23EulerProduct.lean) · [First disk proof](Discriminant23DottieDisk.lean)
+Lean matches the completed class series with the folded Mellin readings used on the first Dottie disk. [Actual Dedekind-zeta factorization](DedekindDiscriminant23EulerProduct.lean) · [Continued field identity](discriminant23-dottie-field-reading.md)
 
 ## Replay
 

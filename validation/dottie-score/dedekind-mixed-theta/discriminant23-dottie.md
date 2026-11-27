@@ -40,7 +40,7 @@ The contour rotation is multiplication by $i$, so the imaginary part of the rota
 
 With $(2\pi)^{-w}\Gamma(w)$ per complex place, the classical completed product for $L$ is $P(w)$. Poisson summation folds the three class sums. The trivial class character gives $A(w)-3/(2w(1-w))$, and each nontrivial class character gives $C(w)$. The relative extension is unramified and $L$ has three complex places, so the library convention with $2(2\pi)^{-w}\Gamma(w)$ per complex place introduces a factor of $8$. [Class product and character](https://orbilu.uni.lu/bitstream/10993/51645/1/OnSerreJordan-7.pdf) · [Lean Gamma convention](https://github.com/leanprover-community/mathlib4/blob/0493595ecd5da8ef14742febab99728f98e948e8/Mathlib/Analysis/SpecialFunctions/Gamma/Deligne.lean#L53)
 
-The remaining Lean handoff at this disk is the exact equality between `mixedThetaCompletedReading Discriminant23GaloisField w` and `8 * discriminant23CompletedClassProduct w` on the open strip. That identity carries the disk's sign and nonvanishing to the field reading at the same input. Extending the range of heights requires additional bounds.
+Lean proves that `mixedThetaCompletedReading Discriminant23GaloisField w` equals `8 * discriminant23CompletedClassProduct w` throughout the open strip. The real part of the field reading is at most $-1/50$ throughout the closed disk, and the continued Dedekind zeta is nonzero there. [Same-input identity](DedekindDiscriminant23DottieReading.lean) · [Continuation and replay](discriminant23-dottie-field-reading.md)
 
 ## Replay
 

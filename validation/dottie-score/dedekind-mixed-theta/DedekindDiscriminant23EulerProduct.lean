@@ -24,11 +24,11 @@ def discriminant23ClassCharacter : ClassGroup (𝓞 F) →* ℂ :=
   (Units.coeHom ℂ).comp ((rootsOfUnity 3 ℂ).subtype.comp
     discriminant23ClassEquivRoots.toMonoidHom)
 
-private theorem discriminant23ClassCharacter_injective :
+theorem discriminant23ClassCharacter_injective :
     Function.Injective discriminant23ClassCharacter :=
   Units.val_injective.comp (Subtype.val_injective.comp discriminant23ClassEquivRoots.injective)
 
-private theorem discriminant23ClassCharacter_cube (g : ClassGroup (𝓞 F)) :
+theorem discriminant23ClassCharacter_cube (g : ClassGroup (𝓞 F)) :
     discriminant23ClassCharacter g ^ 3 = 1 := by
   rw [← discriminant23_class_number, ← map_pow]
   exact congrArg discriminant23ClassCharacter (pow_card_eq_one (x := g)) |>.trans
@@ -173,6 +173,8 @@ theorem discriminant23_dedekindZeta_eq_classSeries {w : ℂ} (hw : 1 < w.re) :
 #check @discriminant23_relative_eulerDenominator
 #check @discriminant23_dedekindZeta_eq_classSeries
 #print axioms discriminant23ClassCharacter
+#print axioms discriminant23ClassCharacter_injective
+#print axioms discriminant23ClassCharacter_cube
 #print axioms discriminant23_relative_eulerDenominator
 #print axioms discriminant23_dedekindZeta_eq_classSeries
 

@@ -28,6 +28,16 @@ $version
 $repo = Join-Path $PSScriptRoot '../../..'
 $sources = @(
     (Join-Path $repo 'lean-ideal73/DottieDyadicGeometry.lean')
+    (Join-Path $repo 'lean-ideal73/FieldTarget.lean')
+    (Join-Path $repo 'lean-ideal73/DedekindDottieSetup.lean')
+    (Join-Path $repo 'lean-ideal73/DedekindFieldInputs.lean')
+    (Join-Path $repo 'lean-ideal73/DedekindFieldUniverses.lean')
+    (Join-Path $repo 'lean-ideal73/DedekindFiniteDottieCover.lean')
+    (Join-Path $repo 'lean-ideal73/DedekindCofinalSignedRings.lean')
+    (Join-Path $PSScriptRoot 'DedekindMixedTheta.lean')
+    (Join-Path $PSScriptRoot 'DedekindMixedThetaSignedRings.lean')
+    (Join-Path $PSScriptRoot 'DedekindMixedThetaTail.lean')
+    (Join-Path $PSScriptRoot 'DedekindMixedThetaCompletedRings.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23Field.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23Quadratic.lean')
     (Join-Path $PSScriptRoot 'DottieCompletedProductSign.lean')
@@ -42,6 +52,13 @@ $sources = @(
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23ClassNumber.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23Hilbert.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23EulerProduct.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23ClassSeries.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23ClassTheta.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23ThetaForms.lean')
+    (Join-Path $PSScriptRoot 'DedekindIdealClassThetaPair.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23ThetaProfiles.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23CompletedProduct.lean')
+    (Join-Path $PSScriptRoot 'DedekindDiscriminant23DottieReading.lean')
 )
 $importsNeeded = foreach ($source in $sources) {
     foreach ($line in (Get-Content -LiteralPath $source)) {
