@@ -255,6 +255,22 @@ The squared character factor adds 4 to each count for the Galois field, above th
 
 Run the pinned replay with `-CharacterCount` to check the samples, cells and count from source. [Replay and axiom output](discriminant23-character-count-replay-and-axioms.txt)
 
+## Carry the count through height 6
+
+I use the same 257 samples and coefficient rows in the next half-unit band. All 32 sign comparisons pass with `decide +kernel`. The retained real part is below $-600/10^6$, and the full approximation error is at most $548/10^6$. The character fold then has real part below $-52/10^6$ throughout $0\le\Re w\le1$, $11/2\le\Im w\le6$. Reflection covers the negative band. [Cell signs](DedekindDiscriminant23SixBandSigns.lean) · [Full error and count](DedekindDiscriminant23SixBand.lean)
+
+The complete and critical-line character counts stay at 2 through $|\Im w|\le6$. Its square adds 4 to each count for the Galois field in addition to the quadratic-base count. If I supply the Dirichlet critical-line theorem modulo 23, the remaining character check is $1/2<\Re w\le31/32$, $|\Im w|>6$. [Exact premises](DedekindDiscriminant23SixBand.lean)
+
+## Extend an existing count for any number field
+
+If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)
+
+For a rational disk inside the strip, I take coefficients from the finite Mellin reading with the pole term kept exact. The error allowance is the radial tail plus the geometric Taylor tail. If the lower real endpoint of the rotated constant term exceeds that allowance plus the weighted mass of the other coefficient boxes, Lean proves nonvanishing across the disk. [Analytic allowance](DedekindDiskTaylorError.lean) · [Integer margin](MellinFixedPolynomialDisk.lean) · [Weighted tail](MellinFixedTaylorTail.lean)
+
+If I fix the radii and the clearance from the strip edges, Lean gives one Mellin cutoff and Taylor degree for any positive error target, at every allowed center height. The coefficient identity divides the $n$th derivative by $n!$. For the folded Mellin reading, this cancels the factorial in the coefficient error and leaves the weighted radial tail divided by $\rho^n$. [Uniform analytic allowance](DedekindDiskTaylorAccuracy.lean) · [Coefficient error](DedekindTaylorCoefficientError.lean)
+
+Replay these results with `-HigherPolynomialBands`. [Lean output and axiom checks](dedekind-polynomial-bands-replay-and-axioms.txt)
+
 ## Discriminant-23 ideal norms and class number
 
 I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)

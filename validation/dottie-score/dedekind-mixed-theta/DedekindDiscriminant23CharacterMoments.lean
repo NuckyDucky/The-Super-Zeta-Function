@@ -284,26 +284,56 @@ private theorem argument_norm_le_one {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re �
   rw [discriminant23ReadingArgument, norm_div, hSix]
   exact (div_le_one (by norm_num)).mpr hn
 
-private theorem sparse_quad_taylor_error {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
-    (ht : |w.im| ≤ 11 / 2) (odd : Bool) :
+private theorem sparse_quad_taylor_error_of_radius {w : ℂ} {R : ℝ}
+    (hR : R / 73 ≤ 1 / 2) (harg : ‖discriminant23ReadingArgument w‖ ≤ R / 18)
+    (odd : Bool) :
     ‖ninePointComposite (sparseSample odd w) 0 (3 / 64) 32 - discriminant23ReadingTaylor odd w‖ ≤
-      1 / 10 ^ 10 := by
-  have hnorm := argument_norm_le_one hlo hhi ht
+      (22 / 5 * 30) * (4 * R ^ 72 / (Nat.factorial 72 : ℝ)) := by
   have hnode (j : ℕ) (hj : j ∈ Finset.range 257) :
-      ‖(discriminant23ReadingRate j : ℂ) * discriminant23ReadingArgument w‖ ≤ 18 := by
+      ‖(discriminant23ReadingRate j : ℂ) * discriminant23ReadingArgument w‖ ≤ R := by
     obtain ⟨hu, hu'⟩ := discriminant23_readingNode_mem hj
     rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
       abs_of_nonneg (show 0 ≤ discriminant23ReadingRate j by unfold discriminant23ReadingRate; positivity)]
-    have hR : discriminant23ReadingRate j ≤ 18 := by unfold discriminant23ReadingRate; linarith only [hu']
-    exact (mul_le_mul hR hnorm (norm_nonneg _) (by norm_num : (0 : ℝ) ≤ 18)).trans (by norm_num)
+    have hRate : discriminant23ReadingRate j ≤ 18 := by
+      unfold discriminant23ReadingRate
+      linarith only [hu']
+    calc
+      _ ≤ 18 * (R / 18) := mul_le_mul hRate harg (norm_nonneg _) (by norm_num)
+      _ = R := by ring
   rw [sparse_quad_eq_exp_sum]
   change ‖reflectedExpSum (Finset.range 257) (discriminant23ReadingAmplitude odd)
     discriminant23ReadingRate odd (discriminant23ReadingArgument w) -
       reflectedExpPolynomial (Finset.range 257) (discriminant23ReadingAmplitude odd)
         discriminant23ReadingRate odd 72 (discriminant23ReadingArgument w)‖ ≤ _
-  refine (reflectedExpPolynomial_error_le _ _ _ odd 72 (by norm_num) hnode).trans ?_
-  refine (mul_le_mul_of_nonneg_right (amplitude_mass odd) (by positivity)).trans ?_
+  have hR₀ : 0 ≤ R := by linarith only [harg, norm_nonneg (discriminant23ReadingArgument w)]
+  refine (reflectedExpPolynomial_error_le _ _ _ odd 72 (by simpa using hR) hnode).trans ?_
+  exact mul_le_mul_of_nonneg_right (amplitude_mass odd) (by positivity)
+
+private theorem sparse_quad_taylor_error {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
+    (ht : |w.im| ≤ 11 / 2) (odd : Bool) :
+    ‖ninePointComposite (sparseSample odd w) 0 (3 / 64) 32 - discriminant23ReadingTaylor odd w‖ ≤
+      1 / 10 ^ 10 := by
+  refine (sparse_quad_taylor_error_of_radius (R := 18) (by norm_num)
+    (by simpa using argument_norm_le_one hlo hhi ht) odd).trans ?_
   norm_num [Nat.factorial]
+
+/-- The same stored coefficient row works at every input inside the supplied
+Taylor radius once the quadrature error there has been bounded. -/
+theorem discriminant23_value_taylor_error_of_quadrature {w : ℂ} {R E : ℝ}
+    (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) (hR : R / 73 ≤ 1 / 2)
+    (harg : ‖discriminant23ReadingArgument w‖ ≤ R / 18)
+    (hQuad : ‖discriminant23CharacterComplexModel w -
+      ninePointComposite (fun u ↦ discriminant23PanelValue w u) 0 (3 / 64) 32‖ ≤ E) :
+    ‖discriminant23CharacterComplexModel w - discriminant23ReadingTaylor false w‖ ≤
+      E + (11 / 5000000 + (22 / 5 * 30) * (4 * R ^ 72 / (Nat.factorial 72 : ℝ))) := by
+  have heq : denseSample false w = fun u : ℝ ↦ discriminant23PanelValue w u := by
+    funext u
+    simp [denseSample, phase, discriminant23PanelValue, panelDensity_ofReal]
+  rw [← heq] at hQuad
+  exact (norm_sub_le_norm_sub_add_norm_sub _ (ninePointComposite (denseSample false w) 0 (3 / 64) 32)
+    _).trans (add_le_add hQuad ((norm_sub_le_norm_sub_add_norm_sub _
+      (ninePointComposite (sparseSample false w) 0 (3 / 64) 32) _).trans
+        (add_le_add (quad_change hlo hhi false) (sparse_quad_taylor_error_of_radius hR harg false))))
 
 /-- This single allowance includes grid integration, the five-term substitution,
 and the shared exponential Taylor tail. -/
