@@ -1,0 +1,71 @@
+Discriminant-23 class product on the first Dottie disk
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Build completed successfully (3087 jobs).
+Super Zeta source DottieDyadicGeometry 92d55ff728fdfcf2dcae06dcf33e85fb81638da4
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_real_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SuperZeta.StirlingCorrection.dottieScaledRightDisk_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieDyadicGeometry exit=0
+Super Zeta source DedekindDiscriminant23Field e2f33b56e7e3f5251cc7f1dc6e47ebc3c325336f
+FieldTarget.discriminant23_galois_group : Nonempty (Gal(Discriminant23GaloisField/ℚ) ≃* Equiv.Perm (Fin 3))
+'FieldTarget.discriminant23_galois_group' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_galois_nonabelian' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Field exit=0
+Super Zeta source DedekindDiscriminant23Quadratic f191870bb30c56fc58fd43df139e05c2ec491361
+exists_discriminant23_square_root : ∃ v, v ^ 2 = -23
+discriminant23QuadraticEquiv : Discriminant23QuadraticField ≃ₐ[ℚ] ↥discriminant23QuadraticSubfield
+discriminant23_relative_galois_cyclic : IsCyclic Gal(L/↥discriminant23QuadraticSubfield)
+'FieldTarget.exists_discriminant23_square_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23QuadraticEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_relative_galois_cyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Quadratic exit=0
+Super Zeta source DottieCompletedProductSign 9b61f694d2089c64b438ceff91c413907a1355a3
+@re_completed_class_product_le : ∀ {w A C : ℂ},
+  1 / 2 ≤ w.re →
+    w.re < 1 →
+      ‖w - 3 / 4‖ ≤ 1 / 4 →
+        ‖A‖ ≤ 4 / 5 →
+          1 / 8 ≤ C.re → |C.im| ≤ |w.im| * (w.re - 1 / 2) / 4 → ((A - 3 / 2 / (w * (1 - w))) * C ^ 2).re ≤ -(1 / 400)
+'FieldTarget.re_completed_class_product_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+@re_completed_class_product_le_on_first_dottie_disk : ∀ {w A C : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    ‖A‖ ≤ 4 / 5 →
+      1 / 8 ≤ C.re → |C.im| ≤ |w.im| * (w.re - 1 / 2) / 4 → ((A - 3 / 2 / (w * (1 - w))) * C ^ 2).re ≤ -(1 / 400)
+'FieldTarget.re_completed_class_product_le_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieCompletedProductSign exit=0
+Super Zeta source Discriminant23ThetaEnvelope dfa3aa63ea663a558221e7d1fcdd4286f533a6a5
+'FieldTarget.discriminant23_principal_envelope_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_other_envelope_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_thetaScale_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_thetaExp_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_classThetaStar_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+Discriminant23ThetaEnvelope exit=0
+Super Zeta source DottieClassMellinBounds 68b8d6621e64cb662f96f64573239ba779157852
+'FieldTarget.classMellinWeight_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellin_log_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellin_integral_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieClassMellinBounds exit=0
+Super Zeta source Discriminant23DottieDisk 77e052f907a24bfc2ddd1c07e68210933923bfec
+@re_discriminant23_classProduct_le_on_first_dottie_disk : ∀ {w : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    (discriminant23CompletedClassProduct w).re ≤ -(1 / 400)
+@discriminant23_classProduct_ne_zero_on_first_dottie_disk : ∀ {w : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    discriminant23CompletedClassProduct w ≠ 0
+'FieldTarget.re_discriminant23_classProduct_le_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_classProduct_ne_zero_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Discriminant23DottieDisk exit=0
+
+Independent replay reproduced the seven source fingerprints, the printed theorem types, and all 21 axiom reports. Seven compilation exits were 0.
