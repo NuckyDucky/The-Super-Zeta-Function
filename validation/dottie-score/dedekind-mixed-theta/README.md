@@ -55,3 +55,5 @@ If three readings have positive successive oriented determinants, one constant r
 If a holomorphic weight gives the strict sign around the circle, Lean gives zero exclusion for the original reading at the same input.
 
 [Lean phase proofs](DottieContourPhase.lean) · [Axiom audit](dottie-contour-phase-audit.txt) · [Interval checker](check-completed-phase.py) · [Interval output](completed-phase-diagnostic.txt)
+
+For the actual Cayley circle, Lean checks the comparison at the same input and the implication from signed arcs to zero exclusion on the closed disk. The interval replay checks the arc premise. [Weighted Cayley circle and replay](weighted-cayley-circle.md)

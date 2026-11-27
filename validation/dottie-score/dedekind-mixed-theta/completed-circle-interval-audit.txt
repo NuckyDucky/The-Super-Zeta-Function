@@ -1,0 +1,23 @@
+{
+  "pythonFlint": "0.9.0",
+  "flint": "3.6.0",
+  "precisionBits": 144,
+  "center": [
+    0.75,
+    100000001
+  ],
+  "radius": "31/128",
+  "zetaPointEvaluations": 96,
+  "polynomialDegree": 64,
+  "cauchyRadius": "1/2",
+  "FourierRadius": "5/16",
+  "uniformZetaErrorUpper": "[5.5896098324502e-11 +/- 8.13e-27]",
+  "testedCells": 272,
+  "acceptedClosedCells": 168,
+  "maximumSubdivisionDepth": 7,
+  "uniformCellsPerQuarter": 128,
+  "coveredUniformCells": 512,
+  "lowestSignedLowerBound": "[0.0645883134566 +/- 2.48e-14]",
+  "wholeBoundaryNormalizedMarginGreaterThan": "1/16"
+}
+check-completed-circle exit=0

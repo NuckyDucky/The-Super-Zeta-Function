@@ -56,7 +56,10 @@ if ($SampledContours) {
         'DottieRationalContour',
         'DedekindMixedThetaCompletedRings',
         'DedekindMixedThetaOscillation',
-        'DedekindMixedThetaFiniteSamples'
+        'DedekindMixedThetaFiniteSamples',
+        'DottieContourPhase',
+        'DottieCayleyWeightedRiemann',
+        'DottieCayleySameInput'
     )
 }
 foreach ($name in $modules) {

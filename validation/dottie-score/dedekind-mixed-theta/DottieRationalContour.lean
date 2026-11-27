@@ -95,22 +95,25 @@ private theorem exists_quarter_first_quadrant {z : ℂ} (hn : ‖z‖ = 1) :
       by simpa using neg_nonneg.mpr (le_of_not_ge hx),
       by simpa using neg_nonneg.mpr (le_of_not_ge hy), by simp⟩
 
+/-- The rational parameterization on one rotated quarter of a circle. -/
+def rationalContourPoint (c : ℂ) (r : ℝ) (a : ℂ) (t : ℝ) : ℂ :=
+  c + (r : ℂ) * (a * rationalUnitArc t)
+
 /-- For a rational center and radius these samples are rational complex points. -/
 def rationalContourSample (c : ℂ) (r : ℝ) (a : ℂ) (m j : ℕ) : ℂ :=
-  c + (r : ℂ) * (a * rationalUnitArc ((j : ℝ) / m))
+  rationalContourPoint c r a ((j : ℝ) / m)
 
 theorem rationalContourSample_mem_sphere {c a : ℂ} {r : ℝ} (hr : 0 < r)
     {m j : ℕ} (ha : a ∈ contourQuarterTurns) :
     rationalContourSample c r a m j ∈ Metric.sphere c r := by
   rw [Metric.mem_sphere, dist_eq_norm]
-  simp [rationalContourSample, norm_of_mem_contourQuarterTurns ha,
+  simp [rationalContourSample, rationalContourPoint, norm_of_mem_contourQuarterTurns ha,
     rationalUnitArc_norm, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hr]
 
-/-- At (m+1) samples per quadrant the distance allowance is `2*r/m`. -/
-theorem exists_near_rationalContourSample {c z : ℂ} {r : ℝ} (hr : 0 < r)
-    (hz : z ∈ Metric.sphere c r) {m : ℕ} (hm : 0 < m) :
-    ∃ a ∈ contourQuarterTurns, ∃ j ≤ m,
-      dist z (rationalContourSample c r a m j) ≤ 2 * r / (m : ℝ) := by
+/-- The exact rational arcs cover every circumference point, including endpoints. -/
+theorem exists_rationalContourPoint {c z : ℂ} {r : ℝ} (hr : 0 < r)
+    (hz : z ∈ Metric.sphere c r) :
+    ∃ a ∈ contourQuarterTurns, ∃ t ∈ Icc (0 : ℝ) 1, z = rationalContourPoint c r a t := by
   let v := (z - c) / (r : ℂ)
   have hv : ‖v‖ = 1 := by
     rw [show v = (z-c)/(r:ℂ) from rfl, norm_div, ← dist_eq_norm, Metric.mem_sphere.mp hz,
@@ -118,10 +121,40 @@ theorem exists_near_rationalContourSample {c z : ℂ} {r : ℝ} (hr : 0 < r)
   obtain ⟨a, ha, u, hu, hx, hy, hvu⟩ := exists_quarter_first_quadrant hv
   obtain ⟨t, ht, htu⟩ := exists_rationalUnitArc_of_first_quadrant hu hx hy
   have hvt : v = a * rationalUnitArc t := by rw [htu, hvu]
-  have hzEq : z = c + (r : ℂ) * (a * rationalUnitArc t) := by
-    rw [← hvt, show v = (z-c)/(r:ℂ) from rfl, ← mul_div_assoc,
-      mul_div_cancel_left₀ _ (Complex.ofReal_ne_zero.mpr hr.ne')]
-    ring
+  refine ⟨a, ha, t, ht, ?_⟩
+  rw [rationalContourPoint, ← hvt, show v = (z-c)/(r:ℂ) from rfl, ← mul_div_assoc,
+    mul_div_cancel_left₀ _ (Complex.ofReal_ne_zero.mpr hr.ne')]
+  ring
+
+/-- A uniform closed partition covers the full parameter interval. -/
+theorem exists_rationalContourInterval {m : ℕ} (hm : 0 < m) {t : ℝ}
+    (ht : t ∈ Icc (0 : ℝ) 1) :
+    ∃ j : Fin m, t ∈ Icc (((j : ℕ) : ℝ) / m) ((((j : ℕ) : ℝ) + 1) / m) := by
+  have hmR : (0 : ℝ) < m := by exact_mod_cast hm
+  by_cases h : t = 1
+  · have hj : m - 1 < m := by omega
+    have hEnd : (((m - 1 : ℕ) : ℝ) + 1) = m := by
+      exact_mod_cast (show m - 1 + 1 = m by omega)
+    refine ⟨⟨m - 1, hj⟩, ?_, ?_⟩
+    · rw [h]
+      exact (div_le_one hmR).mpr (by exact_mod_cast hj.le)
+    · change t ≤ (((m - 1 : ℕ) : ℝ) + 1) / m
+      rw [h, hEnd, div_self hmR.ne']
+  · let j := ⌊t * (m : ℝ)⌋₊
+    have hjlow : (j : ℝ) ≤ t * m := Nat.floor_le (mul_nonneg ht.1 hmR.le)
+    have hjhigh : t * m < (j : ℝ) + 1 := Nat.lt_floor_add_one _
+    have htm : t * (m : ℝ) < (m : ℝ) := by
+      simpa only [one_mul] using mul_lt_mul_of_pos_right (lt_of_le_of_ne ht.2 h) hmR
+    have hj : j < m := by
+      exact_mod_cast hjlow.trans_lt htm
+    exact ⟨⟨j, hj⟩, (div_le_iff₀ hmR).mpr hjlow, (le_div_iff₀ hmR).mpr hjhigh.le⟩
+
+/-- At (m+1) samples per quadrant the distance allowance is `2*r/m`. -/
+theorem exists_near_rationalContourSample {c z : ℂ} {r : ℝ} (hr : 0 < r)
+    (hz : z ∈ Metric.sphere c r) {m : ℕ} (hm : 0 < m) :
+    ∃ a ∈ contourQuarterTurns, ∃ j ≤ m,
+      dist z (rationalContourSample c r a m j) ≤ 2 * r / (m : ℝ) := by
+  obtain ⟨a, ha, t, ht, hzEq⟩ := exists_rationalContourPoint hr hz
   let j := ⌊t * (m : ℝ)⌋₊
   have hmR : (0 : ℝ) < m := by exact_mod_cast hm
   have hjlow : (j : ℝ) ≤ t * m := Nat.floor_le (mul_nonneg ht.1 hmR.le)
@@ -135,7 +168,8 @@ theorem exists_near_rationalContourSample {c z : ℂ} {r : ℝ} (hr : 0 < r)
     rw [abs_of_nonneg (sub_nonneg.mpr hdivlow)]
     linarith
   refine ⟨a, ha, j, hj, ?_⟩
-  rw [dist_eq_norm, hzEq, rationalContourSample]
+  rw [dist_eq_norm, hzEq]
+  simp only [rationalContourSample, rationalContourPoint]
   rw [show c + (r : ℂ) * (a * rationalUnitArc t) -
       (c + (r : ℂ) * (a * rationalUnitArc ((j : ℝ) / m))) =
         (r : ℂ) * a * (rationalUnitArc t - rationalUnitArc ((j : ℝ) / m)) by ring,
@@ -184,6 +218,8 @@ theorem dottie_signed_boundary_of_rational_samples {F : ℂ → ℂ} {axis : ℂ
   linarith
 
 #print axioms rationalContourSample_mem_sphere
+#print axioms exists_rationalContourPoint
+#print axioms exists_rationalContourInterval
 #print axioms exists_near_rationalContourSample
 #print axioms dottie_signed_boundary_of_rational_samples
 
