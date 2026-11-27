@@ -181,3 +181,21 @@ For a field with solvable normal closure, Lean transfers a zero to the closure a
 pwsh ./validation/dottie-score/dedekind-mixed-theta/replay.ps1 `
   -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -RelativeDottie -BuildThreads 1
 ~~~
+
+## Cyclic fixed fields and unramified Euler factors
+
+If $L/K$ is Galois and $P$ over $p$ is unramified, then the smallest positive Frobenius power at $P$ that fixes the intermediate field $E$ is $f(Q/p)$, where $Q$ is the prime below $P$ in $E$. The conjugate count at step $n$ is the size of the fixing subgroup times the sum of $f(Q/p)$ over the primes with $f(Q/p)\mid n$. [Frobenius return](DedekindUnramifiedFrobenius.lean) · [Prime count](DedekindPrimeFiberCounting.lean)
+
+Let $H$ run over the cyclic subgroups of $G=\mathrm{Gal}(L/K)$. Lean gives one family of integer weights $a_H$ for every unramified $p$. If $u(d)$ is the invertible factor assigned to residue degree $d$, then
+
+$$
+\prod_H\left(\prod_{Q\mid p\text{ in }L^H}u(f(Q/p))\right)^{a_H}
+=u(1)^{|G|}.
+$$
+
+On $\operatorname{Re} w>0$, take $u(d)=(1-(Np)^{-dw})^{-1}$ for $d>0$. This matches the base Euler factor with the factors of the cyclic fixed fields. The global transfer still needs the ramified Euler factors and analytic continuation of the product identity. [Cyclic weights](DedekindCyclicSubgroupWeights.lean) · [Prime-power coefficients](DedekindCyclicEulerCoefficients.lean) · [Exact product](DedekindCyclicEulerFactors.lean) · [Lean replay and axioms](cyclic-euler-replay-and-axioms.txt)
+
+~~~powershell
+pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-cyclic-euler.ps1 `
+  -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin>
+~~~
