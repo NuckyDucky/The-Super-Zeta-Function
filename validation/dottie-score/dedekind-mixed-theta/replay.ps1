@@ -62,6 +62,8 @@ if ($SampledContours) {
         'DedekindMixedThetaPoleDominance',
         'DedekindMixedThetaClassMass',
         'DedekindMixedThetaRegularPartBound',
+        'DedekindRationalCalibration',
+        'DedekindRationalDottieBand',
         'DottieContourPhase',
         'DottieCayleyWeightedRiemann',
         'DottieCayleySameInput'

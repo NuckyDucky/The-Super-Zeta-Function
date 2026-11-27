@@ -1,0 +1,14 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindRationalDottieBand source cef58402719bc5335b1bd1396c97ff126a997e55
+rat_mixedTheta_regular_part_at_one : ((Theta.mixedThetaPair ℚ).Λ₀ 1).re =
+  (Real.eulerMascheroniConstant - Real.log (4 * Real.pi)) / 2 + 1
+finite_dottie_boundary_rat_four : HasFiniteDottieBoundaryCertificate (mixedThetaContinuation ℚ)
+  (mixedThetaCompletedReading ℚ) (-4) 4
+@mixedTheta_rat_band_nonzero : ∀ {w : ℂ},
+  w.im ∈ Icc (-4) 4 → 1 / 2 < w.re → w.re ≤ 31 / 32 → mixedThetaContinuation ℚ w ≠ 0
+'FieldTarget.rat_mixedTheta_regular_part_at_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rat_mixedTheta_regular_part_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.finite_dottie_boundary_rat_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_rat_band_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindRationalDottieBand exit=0
