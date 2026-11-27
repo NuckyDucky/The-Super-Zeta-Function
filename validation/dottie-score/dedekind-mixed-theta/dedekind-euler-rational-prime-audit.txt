@@ -1,0 +1,10 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindEulerByRationalPrime source 1d5f35404ad5e6100652b8043f1abad3742c1c50
+dedekindZeta_eq_eulerProduct_rationalPrimes : ∀ (K : Type u_2) [inst : Field K] [inst_1 : NumberField K] (s : ℂ),
+  1 < s.re →
+    dedekindZeta K s =
+      ∏' (p : Nat.Primes),
+        ∏ P ∈ IsDedekindDomain.primesOverFinset (span {↑↑p}) (𝓞 K), (1 - (↑↑p ^ (-s)) ^ P.inertiaDeg ℤ)⁻¹
+'FieldTarget.dedekindZeta_eq_eulerProduct_rationalPrimes' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindEulerByRationalPrime exit=0

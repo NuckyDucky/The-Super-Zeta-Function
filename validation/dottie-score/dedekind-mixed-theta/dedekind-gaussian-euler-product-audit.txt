@@ -1,0 +1,17 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindGaussianEulerProduct source 8bd8e24ad4e1b680f3ee333b3dc502fe07594771
+gaussianQuadratic_dedekindZeta_eq_zeta_beta : ∀ (w : ℂ),
+  1 < w.re →
+    dedekindZeta GaussianQuadraticField w = riemannZeta w * DirichletCharacter.LFunction gaussianQuadraticChar w
+@gaussianQuadratic_dottie_band_of_weighted_beta_bound : ∀ {L : ℝ},
+  0 ≤ L →
+    2 * (gaussianQuadraticWeightedBeta 1 * completedRiemannZeta₀ 1 + deriv gaussianQuadraticWeightedBeta 1).re <
+        ‖gaussianQuadraticWeightedBeta 1‖ / (1 + (L + 31 / 128) ^ 2) →
+      HasFiniteDottieBoundaryCertificate (mixedThetaContinuation GaussianQuadraticField)
+        (mixedThetaCompletedReading GaussianQuadraticField) (-L) L
+'FieldTarget.gaussianQuadratic_dedekindZeta_eq_zeta_beta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadratic_dottie_band_of_weighted_beta_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindGaussianEulerProduct exit=0

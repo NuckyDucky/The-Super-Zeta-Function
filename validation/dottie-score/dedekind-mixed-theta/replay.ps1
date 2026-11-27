@@ -68,6 +68,9 @@ if ($SampledContours) {
         'DedekindGaussianQuadratic',
         'DedekindGaussianPrimeDegrees',
         'DedekindGaussianLocalEuler',
+        'DedekindRationalPrimeFibers',
+        'DedekindEulerByRationalPrime',
+        'DedekindGaussianEulerProduct',
         'DottieContourPhase',
         'DottieCayleyWeightedRiemann',
         'DottieCayleySameInput'
@@ -95,6 +98,13 @@ try {
         '+DedekindZetaZeroFree.HarmonicAnalysis.Mellin.TailRemainder:olean',
         '+DedekindZetaZeroFree.Theta.Inversion.MixedPairGlobalSelfDuality:olean'
     )
+    if ($SampledContours) {
+        $targets += @(
+            '+DedekindZetaZeroFree.LFunctions.Dedekind.PrimeIdealEulerProduct:olean',
+            '+Mathlib.NumberTheory.NumberField.Cyclotomic.Ideal:olean',
+            '+Mathlib.NumberTheory.EulerProduct.DirichletLSeries:olean'
+        )
+    }
     & $lake build @targets
     $status = $LASTEXITCODE
     "AxiomMath mixed theta imports exit=$status"
@@ -105,8 +115,9 @@ try {
     if ($LASTEXITCODE -ne 0 -or !$imports) { throw 'Could not determine the pinned Lake import path.' }
     $env:LEAN_PATH = $out + [IO.Path]::PathSeparator + ($imports | Select-Object -Last 1)
     $env:LEAN_NUM_THREADS = '1'
+    $replayMemory = if ($SampledContours) { 5200 } else { 3500 }
     foreach ($name in (@($inputs.Keys) + $modules)) {
-        & $lean -j1 -M3500 -DwarningAsError=true "--root=$stage" -o "$out/$name.olean" "$stage/$name.lean"
+        & $lean -j1 "-M$replayMemory" -DwarningAsError=true "--root=$stage" -o "$out/$name.olean" "$stage/$name.lean"
         $status = $LASTEXITCODE
         "$name exit=$status"
         if ($status -ne 0) { exit $status }
