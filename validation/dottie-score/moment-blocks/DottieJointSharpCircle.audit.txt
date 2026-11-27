@@ -1,0 +1,5 @@
+DottieJointSharpCircle source c6adc9e6f5aadaafc1545e29c0101edf7b7db6c9
+'QuarticModel.DottieFixedIntervals.dottie_sharp_margin_of_joint_scores' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieJointSharpCircle exit=0 (12.066 seconds)
