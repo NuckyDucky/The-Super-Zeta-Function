@@ -1,0 +1,102 @@
+Finite Mellin moments and exact pole coefficients
+Lean 4.35.0-rc3 (470d5ce1400764999581fd26d5d72b00d990b0f4)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Source replay with -DwarningAsError=true against the pinned dependency cache.
+
+ComplexMellinFoldEstimates exit=0
+@foldedMellinTruncation_hasDerivAt : ∀ {f : ℝ → ℂ} {R : ℝ},
+  1 ≤ R →
+    IntervalIntegrable f volume 1 R →
+      ∀ (w : ℂ), HasDerivAt (foldedMellinTruncation f R) (∫ (x : ℝ) in 1..R, foldedMellinWeightDeriv w x * f x) w
+@iteratedDeriv_error_le_of_strip : ∀ {f g : ℂ → ℂ},
+  Differentiable ℂ f →
+    Differentiable ℂ g →
+      ∀ (n : ℕ) {ρ E : ℝ},
+        0 < ρ →
+          (∀ (z : ℂ), -ρ ≤ z.re → z.re ≤ 1 + ρ → ‖f z - g z‖ ≤ E) →
+            ∀ {w : ℂ}, 0 ≤ w.re → w.re ≤ 1 → ‖iteratedDeriv n f w - iteratedDeriv n g w‖ ≤ ↑n.factorial * E / ρ ^ n
+'FieldTarget.foldedMellinWeight_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.foldedMellinTruncation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.foldedMellinTruncation_iteratedDeriv_eq_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.iteratedDeriv_error_le_of_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindMixedThetaDerivative exit=0
+mixedTheta_mellin_error_le_wide : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {R ρ : ℝ},
+  1 ≤ R →
+    ∀ (w : ℂ),
+      -ρ ≤ w.re →
+        w.re ≤ 1 + ρ → ‖(Theta.mixedThetaPair K).Λ₀ w - mixedThetaTruncation K R w‖ ≤ mixedThetaWeightedTail K R ρ
+mixedTheta_mellin_iteratedDeriv_error_le : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (n : ℕ) {R ρ : ℝ},
+  1 ≤ R →
+    0 < ρ →
+      ∀ {w : ℂ},
+        0 ≤ w.re →
+          w.re ≤ 1 →
+            ‖iteratedDeriv n (Theta.mixedThetaPair K).Λ₀ w - iteratedDeriv n (mixedThetaTruncation K R) w‖ ≤
+              ↑n.factorial * mixedThetaWeightedTail K R ρ / ρ ^ n
+'FieldTarget.mixedThetaTruncation_differentiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaTruncation_iteratedDeriv_eq_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_mellin_error_le_wide' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_mellin_iteratedDeriv_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiskTaylorError exit=0
+mixedTheta_polynomialDiskCertificate : (K : Type) →
+  [inst : Field K] →
+    [inst_1 : NumberField K] →
+      {cut : ℝ} →
+        {ρ : ℝ≥0} →
+          {c direction : ℂ} →
+            {p q n : ℕ} →
+              {approximation tail : ℤ} →
+                1 ≤ cut →
+                  ↑ρ < c.re →
+                    ↑ρ < 1 - c.re →
+                      0 < q →
+                        1 ≤ n →
+                          ↑p / ↑q < ↑ρ →
+                            ‖direction‖ = 1 →
+                              (boxes : ℕ → ComplexBox) →
+                                (∀ k < n,
+                                    (boxes k).Contains
+                                      (direction * contourTaylorCoeff (mixedThetaCompletedTruncation K cut) c (↑ρ) k)) →
+                                  mixedThetaCompletedTaylorAllowance K cut c (↑ρ) (↑p / ↑q) n ≤
+                                      ↑approximation / ↑scale →
+                                    ComplexBox.weightedTailMass boxes p q 1 n ≤ tail * ↑q ^ n →
+                                      approximation + tail < (boxes 0).re.lo →
+                                        PolynomialDiskCertificate (mixedThetaCompletedReading K) c p q
+'FieldTarget.mixedThetaCompletedTruncation_norm_le_circleAllowance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.mixedTheta_completed_disk_taylor_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_polynomialDiskCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindTaylorCoefficientError exit=0
+'FieldTarget.contourTaylorCoeff_eq_iteratedDeriv_div_factorial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.mixedTheta_folded_taylorCoeff_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindMellinMomentCoefficients exit=0
+'FieldTarget.iteratedDeriv_mixedThetaPole_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_completed_taylorCoeff_eq_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_completed_disk_moment_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiskTaylorAccuracy exit=0
+exists_mixedThetaCompletedTaylorAllowance_le_uniform_height : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K]
+  {ρ r δ ε : ℝ},
+  0 ≤ r →
+    r < ρ →
+      0 < δ →
+        0 < ε →
+          ∃ cut,
+            1 ≤ cut ∧
+              ∃ n,
+                1 ≤ n ∧
+                  ∀ (c : ℂ), ρ + δ ≤ c.re → c.re ≤ 1 - ρ - δ → mixedThetaCompletedTaylorAllowance K cut c ρ r n ≤ ε
+'FieldTarget.mixedThetaWeightedTail_zero_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_mixedThetaCompletedTaylorAllowance_le_uniform_height' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -41,67 +41,117 @@ def foldedMellinWeightDeriv (w : ℂ) (x : ℝ) : ℂ :=
   (Real.log x : ℂ) *
     (Complex.exp ((w - 1) * (Real.log x : ℂ)) - Complex.exp (-w * (Real.log x : ℂ)))
 
-private theorem foldedMellinWeight_hasDerivAt (w : ℂ) (x : ℝ) :
-    HasDerivAt (fun z ↦ foldedMellinWeight z x) (foldedMellinWeightDeriv w x) w := by
+/-- The radial weight after any number of differentiations in the complex input. -/
+def foldedMellinLogWeight (n : ℕ) (w : ℂ) (x : ℝ) : ℂ :=
+  let L : ℂ := Real.log x
+  L ^ n * Complex.exp ((w - 1) * L) + (-L) ^ n * Complex.exp (-w * L)
+
+theorem foldedMellinLogWeight_zero (w : ℂ) (x : ℝ) :
+    foldedMellinLogWeight 0 w x = foldedMellinWeight w x := by
+  simp [foldedMellinLogWeight, foldedMellinWeight]
+
+theorem foldedMellinLogWeight_one (w : ℂ) (x : ℝ) :
+    foldedMellinLogWeight 1 w x = foldedMellinWeightDeriv w x := by
+  simp only [foldedMellinLogWeight, foldedMellinWeightDeriv, pow_one]
+  ring
+
+private theorem foldedMellinLogWeight_hasDerivAt (n : ℕ) (w : ℂ) (x : ℝ) :
+    HasDerivAt (fun z ↦ foldedMellinLogWeight n z x) (foldedMellinLogWeight (n + 1) w x) w := by
   let L : ℂ := Real.log x
   have ha : HasDerivAt (fun z : ℂ ↦ (z - 1) * L) L w := by
     simpa only [id, one_mul] using ((hasDerivAt_id w).sub_const (1 : ℂ)).mul_const L
   have hb : HasDerivAt (fun z : ℂ ↦ -z * L) (-L) w := by
     simpa only [Pi.neg_apply, id, neg_one_mul] using (hasDerivAt_id w).neg.mul_const L
-  convert ((Complex.hasDerivAt_exp _).comp w ha).add
-    ((Complex.hasDerivAt_exp _).comp w hb) using 1
+  convert (((Complex.hasDerivAt_exp _).comp w ha).const_mul (L ^ n)).add
+    (((Complex.hasDerivAt_exp _).comp w hb).const_mul ((-L) ^ n)) using 1
   · rfl
-  · dsimp only [L, foldedMellinWeightDeriv]
+  · dsimp only [L, foldedMellinLogWeight]
+    simp only [pow_succ]
     ring
 
 /-- A finite radial integral, with any integrable kernel on the cutoff interval. -/
 def foldedMellinTruncation (f : ℝ → ℂ) (R : ℝ) (w : ℂ) : ℂ :=
   ∫ x in (1 : ℝ)..R, foldedMellinWeight w x * f x
 
-theorem foldedMellinTruncation_hasDerivAt {f : ℝ → ℂ} {R : ℝ}
-    (hR : 1 ≤ R) (hf : IntervalIntegrable f volume 1 R) (w : ℂ) :
-    HasDerivAt (foldedMellinTruncation f R)
-      (∫ x in (1 : ℝ)..R, foldedMellinWeightDeriv w x * f x) w := by
-  let J : Set ℝ := [[(1 : ℝ), R]]
-  have hJ (x : ℝ) (hx : x ∈ J) : 0 < x := by
-    have ht : x ∈ Icc (1 : ℝ) R := by simpa only [J, uIcc_of_le hR] using hx
-    exact zero_lt_one.trans_le ht.1
-  have hlog : ContinuousOn (fun x : ℝ ↦ (Real.log x : ℂ)) J :=
-    Complex.continuous_ofReal.comp_continuousOn fun x hx ↦
-      (Real.continuousAt_log (hJ x hx).ne').continuousWithinAt
-  have hWeight (z : ℂ) : ContinuousOn (foldedMellinWeight z) J := by
-    unfold foldedMellinWeight
-    fun_prop
-  let S : Set (ℂ × ℝ) := Metric.closedBall w 1 ×ˢ J
-  have hS : IsCompact S := (isCompact_closedBall _ _).prod isCompact_uIcc
-  have hLogS : ContinuousOn (fun p : ℂ × ℝ ↦ (Real.log p.2 : ℂ)) S :=
-    hlog.comp continuous_snd.continuousOn (fun _ hp ↦ hp.2)
-  have hSlope : ContinuousOn (fun p : ℂ × ℝ ↦ foldedMellinWeightDeriv p.1 p.2) S := by
-    unfold foldedMellinWeightDeriv
-    fun_prop
+private theorem weightedInterval_hasDerivAt {f : ℝ → ℂ} {R : ℝ}
+    {W W' : ℂ → ℝ → ℂ} (hf : IntervalIntegrable f volume 1 R) (w : ℂ)
+    (hWeight : ∀ z, ContinuousOn (W z) [[(1 : ℝ), R]])
+    (hSlope : ContinuousOn (fun p : ℂ × ℝ ↦ W' p.1 p.2)
+      (Metric.closedBall w 1 ×ˢ [[(1 : ℝ), R]]))
+    (hDeriv : ∀ z x, HasDerivAt (fun v ↦ W v x) (W' z x) z) :
+    HasDerivAt (fun z ↦ ∫ x in (1 : ℝ)..R, W z x * f x)
+      (∫ x in (1 : ℝ)..R, W' w x * f x) w := by
+  have hS : IsCompact (Metric.closedBall w 1 ×ˢ [[(1 : ℝ), R]]) :=
+    (isCompact_closedBall _ _).prod isCompact_uIcc
   obtain ⟨B, hB⟩ := hS.exists_bound_of_continuousOn hSlope
-  have hSlopeW : ContinuousOn (foldedMellinWeightDeriv w) J :=
+  have hSlopeW : ContinuousOn (W' w) [[(1 : ℝ), R]] :=
     hSlope.comp (continuous_const.prodMk continuous_id).continuousOn
       (fun x hx ↦ ⟨Metric.mem_closedBall_self (by norm_num), hx⟩)
-  have hInt (z : ℂ) : IntervalIntegrable (fun x ↦ foldedMellinWeight z x * f x) volume 1 R :=
+  have hInt (z : ℂ) :
+      IntervalIntegrable (fun x ↦ W z x * f x) volume 1 R :=
     hf.continuousOn_mul (hWeight z)
-  have hDerivInt : IntervalIntegrable (fun x ↦ foldedMellinWeightDeriv w x * f x) volume 1 R :=
+  have hDerivInt :
+      IntervalIntegrable (fun x ↦ W' w x * f x) volume 1 R :=
     hf.continuousOn_mul hSlopeW
   have hbound (x : ℝ) (hx : x ∈ Ι (1 : ℝ) R)
       (z : ℂ) (hz : z ∈ Metric.ball w 1) :
-      ‖foldedMellinWeightDeriv z x * f x‖ ≤ B * ‖f x‖ := by
+      ‖W' z x * f x‖ ≤ B * ‖f x‖ := by
     rw [norm_mul]
     exact mul_le_mul_of_nonneg_right (hB (z, x) ⟨Metric.ball_subset_closedBall hz,
       uIoc_subset_uIcc hx⟩) (norm_nonneg _)
   exact (intervalIntegral.hasDerivAt_integral_of_dominated_loc_of_deriv_le
-    (F := fun z x ↦ foldedMellinWeight z x * f x)
-    (F' := fun z x ↦ foldedMellinWeightDeriv z x * f x)
+    (F := fun z x ↦ W z x * f x)
+    (F' := fun z x ↦ W' z x * f x)
     (bound := fun x ↦ B * ‖f x‖)
     (Metric.ball_mem_nhds _ (by norm_num : (0 : ℝ) < 1))
     (Filter.Eventually.of_forall fun z ↦ (hInt z).aestronglyMeasurable_restrict_uIoc)
     (hInt w) hDerivInt.aestronglyMeasurable_restrict_uIoc
     (Filter.Eventually.of_forall hbound) (hf.norm.const_mul B)
-    (Filter.Eventually.of_forall fun x _ z _ ↦ (foldedMellinWeight_hasDerivAt z x).mul_const _)).2
+    (Filter.Eventually.of_forall fun x _ z _ ↦ (hDeriv z x).mul_const _)).2
+
+private theorem foldedMellinLogWeight_continuousOn {X : Type*} [TopologicalSpace X]
+    {s : Set X} {z : X → ℂ} {x : X → ℝ} (n : ℕ)
+    (hz : ContinuousOn z s) (hlog : ContinuousOn (fun v ↦ (Real.log (x v) : ℂ)) s) :
+    ContinuousOn (fun v ↦ foldedMellinLogWeight n (z v) (x v)) s := by
+  unfold foldedMellinLogWeight
+  exact ((hlog.pow n).mul (((hz.sub continuousOn_const).mul hlog).cexp)).add
+    ((hlog.neg.pow n).mul ((hz.neg.mul hlog).cexp))
+
+private theorem foldedMellinLogMoment_hasDerivAt {f : ℝ → ℂ} {R : ℝ}
+    (hR : 1 ≤ R) (hf : IntervalIntegrable f volume 1 R) (n : ℕ) (w : ℂ) :
+    HasDerivAt (fun z ↦ ∫ x in (1 : ℝ)..R, foldedMellinLogWeight n z x * f x)
+      (∫ x in (1 : ℝ)..R, foldedMellinLogWeight (n + 1) w x * f x) w := by
+  have hlog : ContinuousOn (fun x : ℝ ↦ (Real.log x : ℂ)) [[(1 : ℝ), R]] := by
+    rw [uIcc_of_le hR]
+    exact Complex.continuous_ofReal.comp_continuousOn fun x hx ↦
+      (Real.continuousAt_log (zero_lt_one.trans_le hx.1).ne').continuousWithinAt
+  have hWeight (z : ℂ) : ContinuousOn (foldedMellinLogWeight n z) [[(1 : ℝ), R]] :=
+    foldedMellinLogWeight_continuousOn (x := id) n continuousOn_const hlog
+  have hLogS : ContinuousOn (fun p : ℂ × ℝ ↦ (Real.log p.2 : ℂ))
+      (Metric.closedBall w 1 ×ˢ [[(1 : ℝ), R]]) :=
+    hlog.comp continuous_snd.continuousOn (fun _ hp ↦ hp.2)
+  have hSlope : ContinuousOn (fun p : ℂ × ℝ ↦ foldedMellinLogWeight (n + 1) p.1 p.2)
+      (Metric.closedBall w 1 ×ˢ [[(1 : ℝ), R]]) :=
+    foldedMellinLogWeight_continuousOn (n + 1) continuous_fst.continuousOn hLogS
+  exact weightedInterval_hasDerivAt hf w hWeight hSlope (foldedMellinLogWeight_hasDerivAt n)
+
+theorem foldedMellinTruncation_hasDerivAt {f : ℝ → ℂ} {R : ℝ}
+    (hR : 1 ≤ R) (hf : IntervalIntegrable f volume 1 R) (w : ℂ) :
+    HasDerivAt (foldedMellinTruncation f R)
+      (∫ x in (1 : ℝ)..R, foldedMellinWeightDeriv w x * f x) w := by
+  unfold foldedMellinTruncation
+  simpa only [foldedMellinLogWeight_zero, Nat.zero_add, foldedMellinLogWeight_one] using
+    foldedMellinLogMoment_hasDerivAt hR hf 0 w
+
+theorem foldedMellinTruncation_iteratedDeriv_eq_integral {f : ℝ → ℂ} {R : ℝ}
+    (hR : 1 ≤ R) (hf : IntervalIntegrable f volume 1 R) (n : ℕ) (w : ℂ) :
+    iteratedDeriv n (foldedMellinTruncation f R) w =
+      ∫ x in (1 : ℝ)..R, foldedMellinLogWeight n w x * f x := by
+  induction n generalizing w with
+  | zero => simp only [iteratedDeriv_zero, foldedMellinLogWeight_zero, foldedMellinTruncation]
+  | succ n ih =>
+    rw [iteratedDeriv_succ, funext ih]
+    exact (foldedMellinLogMoment_hasDerivAt hR hf n w).deriv
 
 theorem foldedMellinTruncation_differentiable {f : ℝ → ℂ} {R : ℝ}
     (hR : 1 ≤ R) (hf : IntervalIntegrable f volume 1 R) :
@@ -130,6 +180,7 @@ theorem iteratedDeriv_error_le_of_strip {f g : ℂ → ℂ}
 #check @iteratedDeriv_error_le_of_strip
 #print axioms foldedMellinWeight_norm_le
 #print axioms foldedMellinTruncation_hasDerivAt
+#print axioms foldedMellinTruncation_iteratedDeriv_eq_integral
 #print axioms iteratedDeriv_error_le_of_strip
 
 end

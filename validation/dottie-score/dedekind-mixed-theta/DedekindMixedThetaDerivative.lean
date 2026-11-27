@@ -58,13 +58,27 @@ private theorem mixedThetaTruncation_eq_folded (K : Type) [Field K] [NumberField
   rw [foldedMellinWeight_eq_cpow w (zero_lt_one.trans_le hx₁.1)]
   rfl
 
+private theorem thetaKernel_intervalIntegrable (K : Type) [Field K] [NumberField K]
+    {R : ℝ} (hR : 1 ≤ R) :
+    IntervalIntegrable (thetaKernel K) volume 1 R :=
+  (intervalIntegrable_iff_integrableOn_Ioc_of_le hR).mpr
+    ((thetaKernel_integrable K).mono_set (fun _ hx ↦ hx.1))
+
 /-- The finite folded integral is entire for every field and real cutoff. -/
 theorem mixedThetaTruncation_differentiable (K : Type) [Field K] [NumberField K]
     {R : ℝ} (hR : 1 ≤ R) : Differentiable ℂ (mixedThetaTruncation K R) := by
   rw [mixedThetaTruncation_eq_folded K hR]
-  exact foldedMellinTruncation_differentiable hR
-    ((intervalIntegrable_iff_integrableOn_Ioc_of_le hR).mpr
-      ((thetaKernel_integrable K).mono_set (fun _ hx ↦ hx.1)))
+  exact foldedMellinTruncation_differentiable hR (thetaKernel_intervalIntegrable K hR)
+
+/-- The exact finite Mellin moment at any complex input and derivative order. -/
+theorem mixedThetaTruncation_iteratedDeriv_eq_integral (K : Type) [Field K] [NumberField K]
+    {R : ℝ} (hR : 1 ≤ R) (n : ℕ) (w : ℂ) :
+    iteratedDeriv n (mixedThetaTruncation K R) w =
+      ∫ x in (1 : ℝ)..R, foldedMellinLogWeight n w x *
+        ((Theta.mixedThetaPair K).f x - (Theta.mixedThetaPair K).f₀) := by
+  rw [mixedThetaTruncation_eq_folded K hR]
+  exact foldedMellinTruncation_iteratedDeriv_eq_integral hR
+    (thetaKernel_intervalIntegrable K hR) n w
 
 /-- The radial tail weighted for a strip extended by rho on either side. -/
 def mixedThetaWeightedTail (K : Type) [Field K] [NumberField K] (R ρ : ℝ) : ℝ :=
@@ -105,6 +119,7 @@ theorem mixedTheta_mellin_iteratedDeriv_error_le (K : Type) [Field K] [NumberFie
 #check @mixedTheta_mellin_error_le_wide
 #check @mixedTheta_mellin_iteratedDeriv_error_le
 #print axioms mixedThetaTruncation_differentiable
+#print axioms mixedThetaTruncation_iteratedDeriv_eq_integral
 #print axioms mixedTheta_mellin_error_le_wide
 #print axioms mixedTheta_mellin_iteratedDeriv_error_le
 
