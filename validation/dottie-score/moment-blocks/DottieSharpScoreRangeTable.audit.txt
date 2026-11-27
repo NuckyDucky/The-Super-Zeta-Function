@@ -1,0 +1,8 @@
+DottieSharpScoreRangeTable source 6e9ddbf463cdc31a9f7b0f073dcd2889f7c5b404
+'QuarticModel.DottieFixedIntervals.dottie_sharp_score_range_table_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_score_range_min_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieSharpScoreRangeTable exit=0 (11.516 seconds)

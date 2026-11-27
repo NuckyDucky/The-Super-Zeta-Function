@@ -1,0 +1,5 @@
+DottieJointRowBody37983From128 source b4e171a3dcb21c4ceb0e709f2cab26b5a21a4b2e
+'QuarticModel.DottieFixedIntervals.dottie_sharp_body37983From128_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieJointRowBody37983From128 exit=0 (18.195 seconds)
