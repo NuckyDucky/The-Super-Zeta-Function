@@ -1,0 +1,79 @@
+Pinned source replay
+Lean 4.35.0-rc3, compiler commit 470d5ce1400764999581fd26d5d72b00d990b0f4
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+The four modules below were replayed from source with warnings as errors against the pinned dependency library.
+A second independent source replay gave the same theorem statements and axioms.
+
+Super Zeta source ContourTaylor 4f5d740a9b9e8d45b6d8da30e4135ab37fb747c8
+'FieldTarget.norm_contourTaylorCoeff_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.contourTaylor_tail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ContourTaylor exit=0
+
+Super Zeta source ComplexNewtonCotes 0c0e49298f1945f823d32363ebec653a5d0c18d5
+'FieldTarget.ninePointWeight_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.ninePointWeight_norm_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.ninePoint_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.ninePointRule_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.ninePointComposite_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ComplexNewtonCotes exit=0
+
+Super Zeta source DedekindDiscriminant23CharacterPanel 42439c6800a2b259039b70d7dbce5710bd14f1d2
+@discriminant23_character_quadrature_bounds : ∀ {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      |w.im| ≤ 11 / 2 →
+        ‖discriminant23CharacterComplexModel w -
+                ninePointComposite (fun u => discriminant23PanelValue w ↑u) 0 (3 / 64) 32‖ ≤
+            3 / 100000 ∧
+          ‖deriv discriminant23CharacterComplexModel w -
+                ninePointComposite (fun u => discriminant23PanelSlope w ↑u) 0 (3 / 64) 32‖ ≤
+            3 / 100000
+'FieldTarget.discriminant23_panelValue_eq_integrand' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_characterComplexModel_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_panel_circle_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_characterCoefficient_abs_le' depends on axioms: [propext]
+'FieldTarget.discriminant23_character_quadrature_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23CharacterPanel exit=0
+
+Super Zeta source DedekindDiscriminant23CharacterSparse fc4acabbbcf24196960ab95f0253de4597fc915d
+@discriminant23_sparseModel_error : ∀ {w : ℂ},
+  -1 ≤ w.re → w.re ≤ 2 → ‖discriminant23CharacterComplexModel w - discriminant23SparseModel w‖ ≤ 1 / 20000000
+@discriminant23_sparseModel_deriv_error : ∀ {w : ℂ},
+  0 ≤ w.re → w.re ≤ 1 → ‖deriv discriminant23CharacterComplexModel w - deriv discriminant23SparseModel w‖ ≤ 1 / 20000000
+discriminant23_character_counts_at_eleven_halves_of_sparse_signs : (∀ (w : ℂ),
+    w.re ∈ Icc 0 1 → w.im ∈ Icc (7 / 6) (9 / 2) → 201 / 20000000 < (discriminant23SparseModel w).re) →
+  (∀ (w : ℂ), w.re ∈ Icc 0 1 → w.im ∈ Icc (83 / 16) (11 / 2) → (discriminant23SparseModel w).re < -(201 / 20000000)) →
+    (∀ (w : ℂ),
+        w.re ∈ Icc 0 1 → w.im ∈ Icc (9 / 2) (83 / 16) → 201 / 20000000 < (deriv discriminant23SparseModel w).im) →
+      (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun x => True) = 2 ∧
+        (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun w => w.re = 1 / 2) = 2
+'FieldTarget.discriminant23_characterPolynomial_sub_sparse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_characterPolynomial_sparse_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_sparseModel_differentiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_sparseModel_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_sparseModel_deriv_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_counts_at_eleven_halves_of_sparse_signs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23CharacterSparse exit=0
+
+Outward integer calculation, retained degree 32
+scale=1000000000000000000000000 nodes=257 coefficients=72 quadrature<=3/100000 exponential<1/10000000000 replacement<=0
+[7/6, 9/2] cells=16 signed_lower>=0.000425799370
+[9/2, 83/16] cells=14 signed_lower>=0.000119027622
+[83/16, 11/2] cells=16 signed_lower>=0.000237710233
+Integer replay exit=0
+
+Outward integer calculation, five terms and eta reference
+scale=1000000000000000000000000 nodes=257 coefficients=72 quadrature<=3/100000 exponential<1/10000000000 replacement<=1/20000000
+[7/6, 9/2] cells=16 signed_lower>=0.000425758182
+[9/2, 83/16] cells=14 signed_lower>=0.000118977859
+[83/16, 11/2] cells=16 signed_lower>=0.000237651578
+eta reference t=127892083/25000000 signed_lower>=0.000000000022906
+eta reference t=255784167/50000000 signed_lower>=0.000000000028784
+eta reference total error < 1/50000000000
+Integer replay exit=0
+
+The sign calculation is an integer interval replay outside Lean. The sparse-model count still takes three strict signed bounds as premises.
+The separate eta reference bracket uses the classical all-degree theta identity.

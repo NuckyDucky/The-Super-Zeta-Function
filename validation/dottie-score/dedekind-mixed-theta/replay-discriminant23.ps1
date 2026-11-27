@@ -6,7 +6,8 @@ param(
     [ValidateRange(1, 8)] [int] $BuildThreads = 1,
     [switch] $DirichletMod23,
     [switch] $CharacterBracket,
-    [switch] $ComplexDerivatives
+    [switch] $ComplexDerivatives,
+    [switch] $CharacterQuadrature
 )
 
 $ErrorActionPreference = 'Stop'
@@ -29,6 +30,9 @@ $version
 "Mathlib $mathlib"
 
 $repo = Join-Path $PSScriptRoot '../../..'
+if ($CharacterQuadrature) {
+    $ComplexDerivatives = $true
+}
 if ($ComplexDerivatives) {
     $CharacterBracket = $true
 }
@@ -107,6 +111,14 @@ if ($ComplexDerivatives) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterComplex.lean')
         (Join-Path $PSScriptRoot 'ComplexStripSingleZero.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23CountFromSigns.lean')
+    )
+}
+if ($CharacterQuadrature) {
+    $sources += @(
+        (Join-Path $PSScriptRoot 'ContourTaylor.lean')
+        (Join-Path $PSScriptRoot 'ComplexNewtonCotes.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterPanel.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterSparse.lean')
     )
 }
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'
