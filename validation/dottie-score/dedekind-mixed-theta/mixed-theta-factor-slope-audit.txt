@@ -1,0 +1,25 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaFactorSlope source 62ea310f58a526f88517055ac8c63675502b2683
+mixedTheta_poleCleared_value_and_slope : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  poleCleared (Theta.mixedThetaPair K) 1 = (Theta.mixedThetaPair K).f₀ ∧
+    HasDerivAt (poleCleared (Theta.mixedThetaPair K)) ((Theta.mixedThetaPair K).Λ₀ 1) 1
+mixedTheta_regular_part_of_dedekind_factor : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {B : ℂ → ℂ}
+  (F : ℂ → ℂ),
+  DifferentiableOn ℂ F {w | 0 < w.re} →
+    (∀ (w : ℂ), 1 < w.re → dedekindZeta K w = riemannZeta w * B w) →
+      (∀ (w : ℂ), 1 < w.re → F w = zetaGammaFactor K w / w.Gammaℝ * B w) →
+        (Theta.mixedThetaPair K).f₀ = F 1 ∧ (Theta.mixedThetaPair K).Λ₀ 1 = F 1 * completedRiemannZeta₀ 1 + deriv F 1
+finite_dottie_boundary_of_dedekind_factor_slope : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {B : ℂ → ℂ}
+  (F : ℂ → ℂ),
+  DifferentiableOn ℂ F {w | 0 < w.re} →
+    (∀ (w : ℂ), 1 < w.re → dedekindZeta K w = riemannZeta w * B w) →
+      (∀ (w : ℂ), 1 < w.re → F w = zetaGammaFactor K w / w.Gammaℝ * B w) →
+        ∀ {L : ℝ},
+          0 ≤ L →
+            2 * (F 1 * completedRiemannZeta₀ 1 + deriv F 1).re < ‖F 1‖ / (1 + (L + 31 / 128) ^ 2) →
+              HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) (-L) L
+'FieldTarget.mixedTheta_poleCleared_value_and_slope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_regular_part_of_dedekind_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.finite_dottie_boundary_of_dedekind_factor_slope' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaFactorSlope exit=0

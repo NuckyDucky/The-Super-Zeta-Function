@@ -113,3 +113,5 @@ Lean checks rows 288–303, 304–311, and 312–319, and adds them to the certi
 ## Direct reference score through row 351
 
 Four 8-row kernel checks cover rows 320–351. Their exact total joins the earlier prefix in the original reference weight. [32-row span](DottieFastReferenceSpan320To352.lean) · [352-row theorem](DottieFastReferencePrefix352.lean#L7) · [Axioms](DottieFastReferencePrefix352.audit.txt)
+
+Four more 8-row kernel checks cover rows 352–383. Their sum extends the original-weight prefix to 384 rows. Build these row files before the span, then build the prefix with the existing 352-row proof. [32-row span](DottieFastReferenceSpan352To384.lean) · [384-row theorem](DottieFastReferencePrefix384.lean#L6) · [Axioms](DottieFastReferencePrefix384.audit.txt)

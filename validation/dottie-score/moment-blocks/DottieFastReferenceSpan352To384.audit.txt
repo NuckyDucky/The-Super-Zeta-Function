@@ -1,0 +1,3 @@
+DottieFastReferenceSpan352To384 source 35e29c69da8af69df484a3423db3ccd8529a9c27
+'QuarticModel.dottieDirectReferenceSpan352To384' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieFastReferenceSpan352To384 exit=0 (11.923 seconds)
