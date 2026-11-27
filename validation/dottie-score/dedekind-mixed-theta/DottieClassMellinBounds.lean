@@ -144,13 +144,15 @@ private theorem exp_rate_first {r : ℝ} (hr : 0 < r) :
 def classMellinReading (F : ℝ → ℝ) (w : ℂ) : ℂ :=
   ∫ t : ℝ in Ioi 0, (F t : ℂ) * classMellinWeight w (Real.log (1 + t))
 
-theorem classMellin_integral_bounds_to_half {U D : ℝ → ℝ} (hU : Measurable U) (hD : Measurable D)
+/-- Retain the height in the real-part loss from the cosine term. -/
+theorem classMellin_integral_bounds_with_height {U D : ℝ → ℝ}
+    (hU : Measurable U) (hD : Measurable D)
     (hUbound : ∀ t > 0, 0 ≤ U t ∧ U t ≤ (54 / 55) * Real.exp (-(13 / 10) * t))
     (hDbound : ∀ t > 0, (5 / 16) * Real.exp (-(4 / 3) * t) ≤ D t ∧
       D t ≤ (63 / 110) * Real.exp (-(13 / 10) * t))
-    {w : ℂ} (hhalf : 1 / 2 ≤ w.re) (hone : w.re ≤ 1) (him : |w.im| ≤ 1 / 2) :
-    ‖classMellinReading U w‖ ≤ 4 / 5 ∧
-      1 / 8 ≤ (classMellinReading D w).re ∧
+    {w : ℂ} (hhalf : 1 / 2 ≤ w.re) (hone : w.re ≤ 1) :
+    ‖classMellinReading U w‖ ≤ 108 / 143 ∧
+      15 / 88 - (225 / 1859) * w.im ^ 2 ≤ (classMellinReading D w).re ∧
       |(classMellinReading D w).im| ≤ |w.im| * (w.re - 1 / 2) / 4 := by
   let W := fun t : ℝ ↦ classMellinWeight w (Real.log (1 + t))
   let E := fun t : ℝ ↦ Real.exp (-(13 / 10) * t)
@@ -211,10 +213,6 @@ theorem classMellin_integral_bounds_to_half {U D : ℝ → ℝ} (hU : Measurable
         congr 2
         ring
       _ ≤ _ := mul_le_mul (hDbound t ht).1 he (Real.exp_pos _).le (hD0 t ht)
-  have himSq : w.im ^ 2 ≤ (1 / 4 : ℝ) := by
-    have h := pow_le_pow_left₀ (abs_nonneg _) him 2
-    rw [sq_abs] at h
-    linarith only [h]
   refine ⟨?_, ?_, ?_⟩
   · change ‖∫ t in Ioi 0, (U t : ℂ) * W t‖ ≤ _
     apply (norm_integral_le_integral_norm _).trans
@@ -222,24 +220,23 @@ theorem classMellin_integral_bounds_to_half {U D : ℝ → ℝ} (hU : Measurable
       _ ≤ ∫ t in Ioi 0, (54 / 55 : ℝ) * E t :=
         setIntegral_mono_on hUi.norm (hEi.const_mul _) measurableSet_Ioi (hnorm hUbound)
       _ = (54 / 55 : ℝ) * (10 / 13) := by rw [integral_const_mul, hEval]
-      _ ≤ _ := by norm_num
-  · change 1 / 8 ≤ RCLike.re (∫ t in Ioi 0, (D t : ℂ) * W t)
+      _ = 108 / 143 := by norm_num
+  · change 15 / 88 - (225 / 1859) * w.im ^ 2 ≤
+      RCLike.re (∫ t in Ioi 0, (D t : ℂ) * W t)
     rw [← integral_re hDi]
     have hpoint (t : ℝ) (ht : t ∈ Ioi (0 : ℝ)) :
-        (5 / 16) * R t - (9 / 176) * X t ≤ ((D t : ℂ) * W t).re := by
+        (5 / 16) * R t - (9 / 44 * w.im ^ 2) * X t ≤ ((D t : ℂ) * W t).re := by
       have hb := mul_le_mul_of_nonneg_left (hWb t ht).2.1 (hD0 t ht)
       have hm := hmoment t ht
       have hh := mul_le_mul_of_nonneg_left hm (sq_nonneg w.im)
-      have hcost := mul_le_mul_of_nonneg_right himSq (show 0 ≤ (9 / 22) * X t by
-        dsimp [X, E]
-        exact mul_nonneg (by norm_num) (mul_nonneg (le_of_lt ht) (Real.exp_pos _).le))
       simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero]
       change D t * (Real.exp (-Real.log (1 + t) / 2) -
         w.im ^ 2 * (Real.log (1 + t)) ^ 2 / 2) ≤ D t * (W t).re at hb
-      nlinarith only [hb, hh, hcost, hbaseline t ht]
+      nlinarith only [hb, hh, hbaseline t ht]
     calc
-      (1 / 8 : ℝ) ≤ (5 / 16) * (6 / 11) - (9 / 176) * (100 / 169) := by norm_num
-      _ = ∫ t in Ioi 0, (5 / 16) * R t - (9 / 176) * X t := by
+      (15 / 88 : ℝ) - (225 / 1859) * w.im ^ 2 =
+          (5 / 16) * (6 / 11) - (9 / 44 * w.im ^ 2) * (100 / 169) := by ring
+      _ = ∫ t in Ioi 0, (5 / 16) * R t - (9 / 44 * w.im ^ 2) * X t := by
         rw [integral_sub (hRi.const_mul _) (hXi.const_mul _), integral_const_mul,
           integral_const_mul, hRval, hXval]
       _ ≤ _ := setIntegral_mono_on ((hRi.const_mul _).sub (hXi.const_mul _)) hdre
@@ -263,6 +260,20 @@ theorem classMellin_integral_bounds_to_half {U D : ℝ → ℝ} (hU : Measurable
 
 #print axioms classMellinWeight_bounds
 #print axioms classMellin_log_sq_le
+
+theorem classMellin_integral_bounds_to_half {U D : ℝ → ℝ} (hU : Measurable U) (hD : Measurable D)
+    (hUbound : ∀ t > 0, 0 ≤ U t ∧ U t ≤ (54 / 55) * Real.exp (-(13 / 10) * t))
+    (hDbound : ∀ t > 0, (5 / 16) * Real.exp (-(4 / 3) * t) ≤ D t ∧
+      D t ≤ (63 / 110) * Real.exp (-(13 / 10) * t))
+    {w : ℂ} (hhalf : 1 / 2 ≤ w.re) (hone : w.re ≤ 1) (him : |w.im| ≤ 1 / 2) :
+    ‖classMellinReading U w‖ ≤ 4 / 5 ∧
+      1 / 8 ≤ (classMellinReading D w).re ∧
+      |(classMellinReading D w).im| ≤ |w.im| * (w.re - 1 / 2) / 4 := by
+  obtain ⟨hU', hD', hphase⟩ := classMellin_integral_bounds_with_height hU hD hUbound hDbound hhalf hone
+  have hi := pow_le_pow_left₀ (abs_nonneg _) him 2
+  rw [sq_abs] at hi
+  exact ⟨hU'.trans (by norm_num), by nlinarith only [hi, hD'], hphase⟩
+
 theorem classMellin_integral_bounds {U D : ℝ → ℝ} (hU : Measurable U) (hD : Measurable D)
     (hUbound : ∀ t > 0, 0 ≤ U t ∧ U t ≤ (54 / 55) * Real.exp (-(13 / 10) * t))
     (hDbound : ∀ t > 0, (5 / 16) * Real.exp (-(4 / 3) * t) ≤ D t ∧
@@ -273,6 +284,7 @@ theorem classMellin_integral_bounds {U D : ℝ → ℝ} (hU : Measurable U) (hD 
       |(classMellinReading D w).im| ≤ |w.im| * (w.re - 1 / 2) / 4 :=
   classMellin_integral_bounds_to_half hU hD hUbound hDbound hhalf hone (him.trans (by norm_num))
 
+#print axioms classMellin_integral_bounds_with_height
 #print axioms classMellin_integral_bounds_to_half
 #print axioms classMellin_integral_bounds
 
