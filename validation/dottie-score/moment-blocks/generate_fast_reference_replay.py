@@ -4,6 +4,7 @@ import argparse
 import re
 from math import isqrt
 from pathlib import Path
+from typing import NamedTuple
 
 from replay_direct_reference_candidates import CUTOFF, ROW_COUNT, paired_block, row_sign, weight
 
@@ -17,6 +18,13 @@ PACKED_BLOCK = re.compile(
 FAST_WEIGHT = "dottieFastReferenceWeight"
 
 
+class Span(NamedTuple):
+    first: int
+    stop: int
+    theorem: str
+    total: int
+
+
 def row_head(row, limit):
     a = row + 1
     square = a * a
@@ -28,27 +36,25 @@ def row_head(row, limit):
 def archived_witnesses(witness_root, first, stop):
     if witness_root is None:
         return {}
-    paths = {}
+    witnesses = {}
     for pattern in ("DottiePairedRow*.lean", "*/kernel/DottiePairedRow*.lean"):
         for path in witness_root.glob(pattern):
-            match = re.fullmatch(r"DottiePairedRow([0-9]+)", path.stem)
+            match = re.fullmatch(r"DottiePairedRow(?:(\d+)|s(\d+)Through(\d+))", path.stem)
             if match is None:
                 continue
-            row = int(match[1]) - 1
-            if first <= row < stop:
-                if row in paths:
-                    raise ValueError(f"Two archived sources for row {row}")
-                paths[row] = path
-    witnesses = {}
-    for row, path in paths.items():
-        blocks = {}
-        for match in PACKED_BLOCK.finditer(path.read_text(encoding="utf-8-sig")):
-            index, lo, length = map(int, match.groups()[:3])
-            if index != row or (lo, length) in blocks:
-                raise ValueError(f"Invalid packed block in {path}")
-            blocks[lo, length] = match[4]
-        if blocks:
-            witnesses[row] = blocks
+            archive_first = int(match[1] or match[2]) - 1
+            archive_stop = int(match[1] or match[3])
+            if archive_stop <= first or stop <= archive_first:
+                continue
+            for block in PACKED_BLOCK.finditer(path.read_text(encoding="utf-8-sig")):
+                row, lo, length = map(int, block.groups()[:3])
+                if not archive_first <= row < archive_stop:
+                    raise ValueError(f"Packed row outside the declared range in {path}")
+                if first <= row < stop:
+                    row_blocks = witnesses.setdefault(row, {})
+                    if (lo, length) in row_blocks:
+                        raise ValueError(f"Duplicate archived block for row {row} in {path}")
+                    row_blocks[lo, length] = block[4]
     return witnesses
 
 
@@ -123,15 +129,17 @@ def render_row(lines, row, witnesses):
         "  decide +kernel",
         "",
     ])
-    return row_name, total
+    return Span(row, row + 1, row_name, total)
 
 
-def render_span(lines, first, stop, rows):
-    if stop == first + 1:
-        return rows[first]
-    middle = first + (stop - first) // 2
-    left_name, left = render_span(lines, first, middle, rows)
-    right_name, right = render_span(lines, middle, stop, rows)
+def render_span(lines, spans):
+    if len(spans) == 1:
+        return spans[0]
+    half = len(spans) // 2
+    first, middle, left_name, left = render_span(lines, spans[:half])
+    right_start, stop, right_name, right = render_span(lines, spans[half:])
+    if middle != right_start:
+        raise ValueError(f"Nonconsecutive spans at rows {middle} and {right_start}")
     name = f"span{first}_{stop}"
     total = left + right
     lines.extend([
@@ -144,7 +152,7 @@ def render_span(lines, first, stop, rows):
         "    _ = _ := by decide +kernel",
         "",
     ])
-    return name, total
+    return Span(first, stop, name, total)
 
 
 def main():
@@ -172,12 +180,13 @@ def main():
         "set_option maxRecDepth 12000",
         "",
     ]
-    rows = {}
+    rows = []
     for row in range(first, stop):
-        rows[row] = render_row(lines, row, witnesses.get(row, {}))
-        if expected and rows[row][1] != expected[row]:
+        span = render_row(lines, row, witnesses.get(row, {}))
+        if expected and span.total != expected[row]:
             raise ValueError(f"Calculated ticks differ from the saved candidate for row {row}")
-    span, total = render_span(lines, first, stop, rows)
+        rows.append(span)
+    _, _, span, total = render_span(lines, rows)
     name = f"dottieFastReferenceRows{first}To{stop}"
     lines.extend([
         f"theorem {name} :",

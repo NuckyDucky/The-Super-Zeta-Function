@@ -55,3 +55,13 @@ lake env lean -j1 -s65536 -M5100 -DwarningAsError=true ../validation/dottie-scor
 From the packet directory, `python generate_fast_reference_replay.py 0 32 generated` generates the same first batch. Pass `--witness-root` for archived packed rows and `--checkpoint` for saved candidate totals.
 
 The refactored check now gives one exact subtotal for the first 80 consecutive rows of the original weight. Its imports cover `[0,32)`, `[32,56)`, and `[56,80)`. Smaller independent sources keep the interpreter within the memory cap. Compile those three sources to objects on the module path before checking the combined theorem. [Prefix theorem](DottieFastReferencePrefix80.lean#L15) · [Axiom audit](DottieFastReferencePrefix80.audit.txt)
+
+## Join the checked ranges
+
+The first 144 consecutive rows now have one checked subtotal for the original weight. The generator can reuse packed witnesses from either archived single rows or bundled rows. The assembler takes the source files for consecutive spans and generates a theorem that imports those exact certificates. It rejects a gap or overlap. If all 16,638 rows are supplied, it also generates the equality for the full score. The current compiled assembly covers the first 144. [144-row theorem](DottieFastReferencePrefix144.lean#L59) · [Axioms](DottieFastReferencePrefix144.audit.txt) · [Span assembler](assemble_fast_reference_spans.py)
+
+To replay a generated assembly, compile each imported span to an object on the Lean module path before compiling the assembly. From this packet directory, an example assembly command is `python assemble_fast_reference_spans.py generated DottieFastReferenceRows80To96.lean DottieFastReferenceRows96To112.lean`.
+
+## Check the Gaussian signs once
+
+The signs depend on the lattice pair, so the same sign certificate works for every integer weight. Lean checked the archived reference subtotal over 1,024 pairs in row 11763 using those signs. It also checked both coordinates of all eleven original sharp moments over 32 pairs in row 26858 using one sign certificate. These are zero-based row indices. To replay the applications, build `DottieCertifiedPairSigns`, `DottieCertifiedPairSignExamples`, and the original `DottieSharpMomentBlock` to objects on the module path, then check `DottieCertifiedPairSignApplications`. [Weight-independent theorem](DottieCertifiedPairSigns.lean#L66) · [Applications](DottieCertifiedPairSignApplications.lean#L12) · [Axioms](DottieCertifiedPairSignApplications.audit.txt)
