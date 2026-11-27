@@ -245,6 +245,16 @@ If $q=\exp(-\alpha e^u)$ with $\alpha=2\pi/\sqrt{23}$, each heat power gives $\i
 
 If I use 32 nine-point panels, Lean gives error at most $3/100{,}000$ for the value and derivative of the original compact model throughout $0\le\operatorname{Re}w\le1$, $|\operatorname{Im}w|\le11/2$. Combining shared endpoints gives 257 integration nodes. With the five-term reading, the new count theorem asks for three strict margins of $201/20{,}000{,}000$ and then gives two simple character zeros on the line. The exact integer replay clears these margins over 46 cells. Lean still takes the three inequalities as premises. Replay the Lean bounds with `-CharacterQuadrature`. Replay the integer calculation with `python check_character_fixed_bands.py DedekindDiscriminant23CharacterPolynomial.lean --sparse --reference-bracket`. [Quadrature rule](ComplexNewtonCotes.lean) · [Complex value and derivative](DedekindDiscriminant23CharacterPanel.lean) · [Integer replay](check_character_fixed_bands.py) · [Lean and integer output](discriminant23-character-quadrature-replay-and-axioms.txt)
 
+## Two character zeros through height 5.5
+
+I group the quadrature into 257 distinct samples, then use the same samples for the even value polynomial and the odd slope polynomial. Lean checks every sample box and 72 coefficient boxes. The original value and slope are within $33/10^6$ of their Taylor readings across $0\le\Re w\le1$, $|\Im w|\le11/2$. [Taylor error](DedekindDiscriminant23CharacterMoments.lean) · [Sample boxes](DedekindDiscriminant23AmplitudeData.lean) · [Coefficient boxes](DedekindDiscriminant23CoefficientData.lean)
+
+If I keep 34 terms, the stored coefficient boxes bound the dropped terms by $40/10^6$. If the shorter readings clear $83/10^6$, the full Taylor readings clear $43/10^6$. All 46 rectangle comparisons pass with `decide +kernel`. The complete and critical-line character counts through $11/2$ are both 2. [Tail bound](DedekindDiscriminant23ReadingTail.lean) · [Exact count and premises](DedekindDiscriminant23CountCertificate.lean)
+
+The squared character factor adds 4 to each count for the Galois field, above the count for the quadratic base. If I supply the critical-line theorem for the Dirichlet characters modulo 23, Dedekind RH for the Galois field is equivalent to excluding character zeros with $1/2<\Re w<1$ and $|\Im w|>11/2$. [Lean count and remaining strip](DedekindDiscriminant23CountCertificate.lean)
+
+Run the pinned replay with `-CharacterCount` to check the samples, cells and count from source. [Replay and axiom output](discriminant23-character-count-replay-and-axioms.txt)
+
 ## Discriminant-23 ideal norms and class number
 
 I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)

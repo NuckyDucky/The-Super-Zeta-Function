@@ -36,6 +36,12 @@ private theorem alphaBox_contains : Contains alphaBox discriminant23ThetaScale :
   unfold Contains alphaBox scale
   constructor <;> norm_num <;> linarith
 
+/-- The directed enclosure of the heat scale is shared by the sample checks. -/
+def discriminant23ThetaScaleBox : Box := alphaBox
+
+theorem discriminant23_thetaScaleBox_contains :
+    Contains discriminant23ThetaScaleBox discriminant23ThetaScale := alphaBox_contains
+
 private def halfNodeBox (i : Fin 1025) : Box := fromRatio (3 * (i.val : ℤ)) 2048
 
 private def phaseBox (high : Bool) (i : Fin 1025) : Box :=
