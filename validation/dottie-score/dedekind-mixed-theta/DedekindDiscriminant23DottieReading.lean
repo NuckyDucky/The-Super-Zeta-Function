@@ -132,12 +132,38 @@ theorem discriminant23_dedekind_ne_zero_on_first_dottie_disk {w : ℂ}
   rw [hz', Complex.zero_re] at h
   norm_num at h
 
+/-- The polynomial weight `w * (1 - w)` keeps the genuine completed reading
+strictly negative in real part across the full low-height strip. -/
+theorem re_weighted_discriminant23_completedReading_le_on_low_strip {w : ℂ}
+    (h0 : 0 < w.re) (h1 : w.re < 1) (him : |w.im| ≤ 1 / 2) :
+    (w * (1 - w) * mixedThetaCompletedReading L23 w).re ≤ -(3 / 64 : ℝ) := by
+  rw [discriminant23_completedReading_eq_classProduct w h0 h1]
+  rw [show w * (1 - w) * (8 * discriminant23CompletedClassProduct w) =
+    8 * (w * (1 - w) * discriminant23CompletedClassProduct w) by ring]
+  have h := re_weighted_discriminant23_classProduct_le_on_low_strip h0 h1 him
+  norm_num [Complex.mul_re] at h ⊢
+  linarith only [h]
+
+/-- There are no zeros of the actual Dedekind continuation in the open
+critical strip at heights of absolute value at most `1/2`. -/
+theorem discriminant23_dedekind_ne_zero_on_low_strip {w : ℂ}
+    (h0 : 0 < w.re) (h1 : w.re < 1) (him : |w.im| ≤ 1 / 2) :
+    mixedThetaContinuation L23 w ≠ 0 := by
+  intro hz
+  have h := re_weighted_discriminant23_completedReading_le_on_low_strip h0 h1 him
+  rw [(mixedThetaCompletedReading_zero_iff L23 w h0 h1).mpr hz, mul_zero, Complex.zero_re] at h
+  norm_num at h
+
 #check @discriminant23_completedReading_eq_classProduct
 #check @re_discriminant23_completedReading_le_on_first_dottie_disk
 #check @discriminant23_dedekind_ne_zero_on_first_dottie_disk
+#check @re_weighted_discriminant23_completedReading_le_on_low_strip
+#check @discriminant23_dedekind_ne_zero_on_low_strip
 #print axioms discriminant23_completedReading_eq_classProduct
 #print axioms re_discriminant23_completedReading_le_on_first_dottie_disk
 #print axioms discriminant23_dedekind_ne_zero_on_first_dottie_disk
+#print axioms re_weighted_discriminant23_completedReading_le_on_low_strip
+#print axioms discriminant23_dedekind_ne_zero_on_low_strip
 
 end
 end FieldTarget
