@@ -12,8 +12,11 @@ local notation "P" => discriminant23NormTwoIdeal
 
 noncomputable section
 
-private def primeTwoConjugate : Ideal (𝓞 F) :=
+/-- The norm-two ideal at the residue root `ω = 1`. -/
+def discriminant23NormTwoConjugateIdeal : Ideal (𝓞 F) :=
   discriminant23ResidueIdeal 2 1 (by decide +kernel)
+
+local notation "Pbar" => discriminant23NormTwoConjugateIdeal
 
 private def primeThree : Ideal (𝓞 F) :=
   discriminant23ResidueIdeal 3 0 (by decide +kernel)
@@ -21,7 +24,7 @@ private def primeThree : Ideal (𝓞 F) :=
 private def primeThreeConjugate : Ideal (𝓞 F) :=
   discriminant23ResidueIdeal 3 1 (by decide +kernel)
 
-private theorem primeTwoConjugate_norm : primeTwoConjugate.absNorm = 2 :=
+theorem discriminant23NormTwoConjugateIdeal_absNorm : Ideal.absNorm Pbar = 2 :=
   discriminant23ResidueIdeal_absNorm _ _
 
 private theorem primeThree_norm : primeThree.absNorm = 3 :=
@@ -38,11 +41,12 @@ private theorem residue_mem_iff {p : ℕ} (r : ZMod p) (hr : r ^ 2 - r + 6 = 0) 
 private theorem mem_primeTwo_omega : ω ∈ P := by
   simpa using (discriminant23NormTwoIdeal_mem 0 1).mpr (dvd_zero 2)
 
-private theorem primeTwo_ne_conjugate : P ≠ primeTwoConjugate := by
+private theorem primeTwo_ne_conjugate : P ≠ Pbar := by
   intro h
-  have hm : ω ∈ primeTwoConjugate := h ▸ mem_primeTwo_omega
+  have hm : ω ∈ Pbar := h ▸ mem_primeTwo_omega
   have hnot := (residue_mem_iff (1 : ZMod 2) (by decide +kernel) 0 1).mp
-  have h1 : (0 : ZMod 2) + (1 : ZMod 2) * 1 = 0 := hnot (by simpa [primeTwoConjugate] using hm)
+  have h1 : (0 : ZMod 2) + (1 : ZMod 2) * 1 = 0 := hnot (by
+    simpa [discriminant23NormTwoConjugateIdeal] using hm)
   simp at h1
 
 private theorem ideal_eq_of_le_eq_positive_norm {I J : Ideal (𝓞 F)}
@@ -77,15 +81,15 @@ private theorem prime_product_of_membership {I J : Ideal (𝓞 F)} (hI : I.absNo
   exact (ideal_eq_of_le_eq_positive_norm hle (by rw [Ideal.absNorm_span_singleton, hn, map_mul])
     (by rw [map_mul]; exact Nat.mul_pos hI.pos hJ.pos)).symm
 
-private theorem norm_two_product : P * primeTwoConjugate = Ideal.span ({2} : Set (𝓞 F)) := by
+private theorem norm_two_product : P * Pbar = Ideal.span ({2} : Set (𝓞 F)) := by
   apply prime_product_of_membership
     (by rw [discriminant23NormTwoIdeal_absNorm]; decide +kernel)
-    (by rw [primeTwoConjugate_norm]; decide +kernel) primeTwo_ne_conjugate
+    (by rw [discriminant23NormTwoConjugateIdeal_absNorm]; decide +kernel) primeTwo_ne_conjugate
   · simpa [discriminant23NormTwoIdeal_absNorm] using Ideal.absNorm_mem P
-  · simpa [primeTwoConjugate_norm] using Ideal.absNorm_mem primeTwoConjugate
+  · simpa [discriminant23NormTwoConjugateIdeal_absNorm] using Ideal.absNorm_mem Pbar
   · have h := discriminant23_quadratic_norm 2 0
     norm_num at h
-    norm_num [h, discriminant23NormTwoIdeal_absNorm, primeTwoConjugate_norm]
+    norm_num [h, discriminant23NormTwoIdeal_absNorm, discriminant23NormTwoConjugateIdeal_absNorm]
 
 private theorem norm_omega_product : P * primeThree = Ideal.span ({ω} : Set (𝓞 F)) := by
   apply prime_product_of_membership
@@ -99,24 +103,31 @@ private theorem norm_omega_product : P * primeThree = Ideal.span ({ω} : Set (�
     norm_num [h, discriminant23NormTwoIdeal_absNorm, primeThree_norm]
 
 private theorem norm_other_omega_product :
-    primeTwoConjugate * primeThreeConjugate = Ideal.span ({ω - 1} : Set (𝓞 F)) := by
+    Pbar * primeThreeConjugate = Ideal.span ({ω - 1} : Set (𝓞 F)) := by
   apply prime_product_of_membership
-    (by rw [primeTwoConjugate_norm]; decide +kernel)
+    (by rw [discriminant23NormTwoConjugateIdeal_absNorm]; decide +kernel)
     (by rw [primeThreeConjugate_norm]; decide +kernel)
-    (by intro h; have he := congrArg Ideal.absNorm h; norm_num [primeTwoConjugate_norm, primeThreeConjugate_norm] at he)
-  · simpa [primeTwoConjugate, sub_eq_add_neg, add_comm] using
+    (by intro h; have he := congrArg Ideal.absNorm h
+        norm_num [discriminant23NormTwoConjugateIdeal_absNorm, primeThreeConjugate_norm] at he)
+  · simpa [discriminant23NormTwoConjugateIdeal, sub_eq_add_neg, add_comm] using
       (residue_mem_iff (1 : ZMod 2) (by decide +kernel) (-1) 1).mpr (by decide +kernel)
   · simpa [primeThreeConjugate, sub_eq_add_neg, add_comm] using
       (residue_mem_iff (1 : ZMod 3) (by decide +kernel) (-1) 1).mpr (by decide +kernel)
   · have h : Algebra.norm ℤ (ω - 1) = 6 := by
       simpa [sub_eq_add_neg, add_comm] using discriminant23_quadratic_norm (-1) 1
-    norm_num [h, primeTwoConjugate_norm, primeThreeConjugate_norm]
+    norm_num [h, discriminant23NormTwoConjugateIdeal_absNorm, primeThreeConjugate_norm]
 
 private def idealWithNonzeroNorm (J : Ideal (𝓞 F)) (hJ : J.absNorm ≠ 0) : (Ideal (𝓞 F))⁰ :=
   ⟨J, mem_nonZeroDivisors_of_ne_zero (fun h ↦ hJ (by simp [h]))⟩
 
+def discriminant23NormTwoRepresentative : (Ideal (𝓞 F))⁰ :=
+  idealWithNonzeroNorm P (by rw [discriminant23NormTwoIdeal_absNorm]; decide)
+
+def discriminant23NormTwoConjugateRepresentative : (Ideal (𝓞 F))⁰ :=
+  idealWithNonzeroNorm Pbar (by rw [discriminant23NormTwoConjugateIdeal_absNorm]; decide)
+
 def discriminant23NormTwoClass : ClassGroup (𝓞 F) :=
-  ClassGroup.mk0 (idealWithNonzeroNorm P (by rw [discriminant23NormTwoIdeal_absNorm]; decide))
+  ClassGroup.mk0 discriminant23NormTwoRepresentative
 
 local notation "classTwo" => discriminant23NormTwoClass
 
@@ -129,23 +140,29 @@ private theorem class_inverse_of_product {I J : (Ideal (𝓞 F))⁰} {x : 𝓞 F
     simpa [h0] using h
   exact ClassGroup.mk0_eq_mk0_inv_iff.mpr ⟨x, hx, h⟩
 
+theorem discriminant23_normTwoConjugate_class :
+    ClassGroup.mk0 discriminant23NormTwoConjugateRepresentative = classTwo⁻¹ := by
+  apply class_inverse_of_product (I := discriminant23NormTwoConjugateRepresentative)
+    (J := discriminant23NormTwoRepresentative)
+  exact mul_comm Pbar P |>.trans norm_two_product
+
 theorem discriminant23_class_candidates (C : ClassGroup (𝓞 F)) :
     C = 1 ∨ C = classTwo ∨ C = classTwo⁻¹ := by
   obtain ⟨I, hI, hn⟩ := discriminant23_class_small_representative C
   have h0 := Ideal.absNorm_ne_zero_of_nonZeroDivisors I
-  let I2 := idealWithNonzeroNorm P (by rw [discriminant23NormTwoIdeal_absNorm]; decide)
-  let I2' := idealWithNonzeroNorm primeTwoConjugate (by rw [primeTwoConjugate_norm]; decide)
+  let I2 := discriminant23NormTwoRepresentative
+  let I2' := discriminant23NormTwoConjugateRepresentative
   let I3 := idealWithNonzeroNorm primeThree (by rw [primeThree_norm]; decide)
   let I3' := idealWithNonzeroNorm primeThreeConjugate (by rw [primeThreeConjugate_norm]; decide)
-  have htwo : ClassGroup.mk0 I2' = classTwo⁻¹ := by
-    apply class_inverse_of_product (I := I2') (J := I2)
-    simpa only [I2, I2', idealWithNonzeroNorm, mul_comm] using norm_two_product
+  have htwo : ClassGroup.mk0 I2' = classTwo⁻¹ := discriminant23_normTwoConjugate_class
   have hthree : ClassGroup.mk0 I3 = classTwo⁻¹ := by
     apply class_inverse_of_product (I := I3) (J := I2)
-    simpa only [I3, I2, idealWithNonzeroNorm, mul_comm] using norm_omega_product
+    simpa only [I3, I2, discriminant23NormTwoRepresentative, idealWithNonzeroNorm, mul_comm]
+      using norm_omega_product
   have hthree' : ClassGroup.mk0 I3' = classTwo := by
     have h := class_inverse_of_product (I := I3') (J := I2') (x := ω - 1)
-      (by simpa only [I3', I2', idealWithNonzeroNorm, mul_comm] using norm_other_omega_product)
+      (by simpa only [I3', I2', discriminant23NormTwoConjugateRepresentative,
+        idealWithNonzeroNorm, mul_comm] using norm_other_omega_product)
     simpa only [htwo, inv_inv] using h
   have hs : (I : Ideal (𝓞 F)).absNorm = 1 ∨ (I : Ideal (𝓞 F)).absNorm = 2 ∨
       (I : Ideal (𝓞 F)).absNorm = 3 := by omega
@@ -195,7 +212,7 @@ private theorem small_norm_integer {x : 𝓞 F} (hx : (Algebra.norm ℤ x).natAb
   rw [he, discriminant23_quadratic_norm]
   simp [Int.natAbs_pow]
 
-private theorem classTwo_ne_one : classTwo ≠ 1 := by
+theorem discriminant23_normTwoClass_ne_one : classTwo ≠ 1 := by
   intro h
   have hp := (ClassGroup.mk0_eq_one_iff (idealWithNonzeroNorm P
     (by rw [discriminant23NormTwoIdeal_absNorm]; decide)).property).mp h
@@ -212,7 +229,7 @@ private theorem classTwo_ne_one : classTwo ≠ 1 := by
     nlinarith only [hs, hsq]
   interval_cases h : m.natAbs <;> norm_num [h] at hsq
 
-private theorem classTwo_ne_inv : classTwo ≠ classTwo⁻¹ := by
+theorem discriminant23_normTwoClass_ne_inv : classTwo ≠ classTwo⁻¹ := by
   intro h
   obtain ⟨x, _, hx⟩ := ClassGroup.mk0_eq_mk0_inv_iff.mp h
   have hP : P * P = Ideal.span {x} := hx
@@ -229,14 +246,14 @@ private theorem classTwo_ne_inv : classTwo ≠ classTwo⁻¹ := by
     rcases hi with hm | hm
     · simp [hx', hm]
     · simp [hx', hm, Ideal.span_singleton_neg]
-  have hprod : P * P = P * primeTwoConjugate := hP.trans (hspan.trans norm_two_product.symm)
+  have hprod : P * P = P * Pbar := hP.trans (hspan.trans norm_two_product.symm)
   have hp0 : P ≠ 0 := nonZeroDivisors.coe_ne_zero
     (idealWithNonzeroNorm P (by rw [discriminant23NormTwoIdeal_absNorm]; decide))
   exact primeTwo_ne_conjugate (mul_left_cancel₀ hp0 hprod)
 
 theorem discriminant23_class_number : NumberField.classNumber F = 3 := by
   classical
-  have hinv : classTwo⁻¹ ≠ 1 := fun h ↦ classTwo_ne_one (inv_eq_one.mp h)
+  have hinv : classTwo⁻¹ ≠ 1 := fun h ↦ discriminant23_normTwoClass_ne_one (inv_eq_one.mp h)
   let s : Finset (ClassGroup (𝓞 F)) := {1, classTwo, classTwo⁻¹}
   have hs : Finset.univ = s := by
     ext C
@@ -244,7 +261,7 @@ theorem discriminant23_class_number : NumberField.classNumber F = 3 := by
     exact discriminant23_class_candidates C
   change Finset.univ.card = 3
   rw [hs]
-  simp [s, classTwo_ne_one.symm, classTwo_ne_inv, hinv.symm]
+  simp [s, discriminant23_normTwoClass_ne_one.symm, discriminant23_normTwoClass_ne_inv, hinv.symm]
 
 theorem discriminant23_class_group_cyclic : IsCyclic (ClassGroup (𝓞 F)) := by
   let : Fact (Nat.Prime 3) := ⟨by decide +kernel⟩
@@ -254,6 +271,7 @@ theorem discriminant23_class_group_cyclic : IsCyclic (ClassGroup (𝓞 F)) := by
 
 #check @discriminant23_class_number
 #check @discriminant23_class_candidates
+#print axioms discriminant23_normTwoConjugate_class
 #print axioms discriminant23_class_number
 #print axioms discriminant23_class_group_cyclic
 
