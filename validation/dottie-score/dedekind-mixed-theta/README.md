@@ -225,6 +225,8 @@ If $0<\operatorname{Re}w<1$, the pole-cleared reading for $L$ equals the pole-cl
 
 If every Dirichlet character modulo $23$ has its strip zeros on the line, Lean supplies the quadratic base result. Then Dedekind RH for $L$ is equivalent to the character fold being nonzero throughout $1/2<\operatorname{Re}w<1$ and $|\operatorname{Im}w|>7/6$. [Modulus-23 theorem](DedekindDiscriminant23DirichletReduction.lean) · [Exact Lean output](discriminant23-dirichlet-mod23-replay-and-axioms.txt)
 
+If I count zeros through height $T$ with their multiplicities, the count for $L$ is the count for the quadratic base plus twice the character-fold count. If the rational Dirichlet input at $23$ is supplied, Dedekind RH for $L$ is equivalent to the complete character count and its on-line count agreeing at arbitrarily high checkpoints. [Exact count and cofinal theorem](DedekindDiscriminant23ZeroCounts.lean) · [Lean output](discriminant23-zero-counts-replay-and-axioms.txt)
+
 ## Discriminant-23 ideal norms and class number
 
 I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)

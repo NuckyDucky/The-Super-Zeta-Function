@@ -37,6 +37,7 @@ $sources = @(
     (Join-Path $repo 'lean-ideal73/DedekindCofinalSignedRings.lean')
     (Join-Path $PSScriptRoot 'DedekindMixedTheta.lean')
     (Join-Path $PSScriptRoot 'DedekindMixedThetaSignedRings.lean')
+    (Join-Path $PSScriptRoot 'DedekindFiniteStripCounts.lean')
     (Join-Path $PSScriptRoot 'DedekindMixedThetaTail.lean')
     (Join-Path $PSScriptRoot 'DedekindMixedThetaCompletedRings.lean')
     (Join-Path $PSScriptRoot 'DedekindDiscriminant23Field.lean')
@@ -69,6 +70,7 @@ if ($DirichletMod23) {
         (Join-Path $PSScriptRoot 'DedekindCyclotomicContinuation.lean')
         (Join-Path $PSScriptRoot 'DedekindCyclotomicSubfields.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23DirichletReduction.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23ZeroCounts.lean')
     )
 }
 $importsNeeded = foreach ($source in $sources) {

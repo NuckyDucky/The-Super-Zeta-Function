@@ -1,5 +1,6 @@
 import DedekindCofinalSignedRings
 import DedekindMixedTheta
+import Mathlib.Analysis.Analytic.Order
 import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
 
 /-! The actual pole-cleared mixed-theta reading, at the same input as the
@@ -86,6 +87,30 @@ theorem mixedThetaSignedReading_differentiableOn (K : Type*) [Field K] [NumberFi
     differentiable_id.mul ((differentiable_const (1:ℂ)).sub differentiable_id)
   exact hp.differentiableOn.mul (hgamma.mul hZ)
 
+/-- In the open critical strip, the pole polynomial and the gamma factor
+are analytic and nonzero. They preserve the order of a Dedekind zero. -/
+theorem mixedThetaSignedReading_order_eq_continuation (K : Type*) [Field K] [NumberField K]
+    {w : ℂ} (hlo : 0 < w.re) (hhi : w.re < 1) :
+    analyticOrderAt (mixedThetaSignedReading K) w = analyticOrderAt (mixedThetaContinuation K) w := by
+  let S : Set ℂ := Complex.re ⁻¹' Ioi (0 : ℝ)
+  let m : ℂ → ℂ := fun z ↦ z * (1 - z) * dedekindGammaFactor K z
+  have hS : IsOpen S := continuous_re.isOpen_preimage _ isOpen_Ioi
+  have hp : Differentiable ℂ (fun z : ℂ ↦ z * (1 - z)) :=
+    differentiable_id.mul ((differentiable_const (1 : ℂ)).sub differentiable_id)
+  have hgamma : DifferentiableOn ℂ (dedekindGammaFactor K) S :=
+    fun _ hz ↦ (gamma_factor_differentiableAt K hz).differentiableWithinAt
+  have hm : AnalyticAt ℂ m w := (hp.differentiableOn.mul hgamma).analyticOnNhd hS w hlo
+  have hw0 : w ≠ 0 := by rintro rfl; norm_num at hlo
+  have hw1 : w ≠ 1 := by rintro rfl; norm_num at hhi
+  have hm0 : m w ≠ 0 := mul_ne_zero (mul_ne_zero hw0 (sub_ne_zero.mpr hw1.symm))
+    (dedekindGammaFactor_ne_zero K hlo)
+  have hZ : AnalyticAt ℂ (mixedThetaContinuation K) w :=
+    (mixedThetaContinuation_isDedekind K).1.analyticOnNhd isOpen_compl_singleton w (by simpa using hw1)
+  have heq : mixedThetaSignedReading K = m * mixedThetaContinuation K := by
+    funext z
+    simp [mixedThetaSignedReading, m, mul_assoc]
+  rw [heq, analyticOrderAt_mul hm hZ, hm.analyticOrderAt_eq_zero.mpr hm0, zero_add]
+
 /-- The remaining inputs are the outer zero-free part of the strip and the
 finite signed certificates for the actual mixed-theta readings. -/
 theorem dedekindZetaRH_of_mixedTheta_signed_rings (K : Type*) [Field K] [NumberField K]
@@ -104,6 +129,7 @@ theorem dedekindZetaRH_of_mixedTheta_signed_rings (K : Type*) [Field K] [NumberF
 #print axioms mixedThetaSignedReading_eq_mellin_sub
 #print axioms mixedThetaSignedReading_zero_iff
 #print axioms mixedThetaSignedReading_differentiableOn
+#print axioms mixedThetaSignedReading_order_eq_continuation
 #print axioms dedekindZetaRH_of_mixedTheta_signed_rings
 
 end FieldTarget
