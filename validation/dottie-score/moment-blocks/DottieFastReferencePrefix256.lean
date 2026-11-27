@@ -1,0 +1,128 @@
+import DottieFastReferenceRows0To32
+import DottieFastReferenceRows32To56
+import DottieFastReferenceRows56To80
+import DottieFastReferenceRows80To96
+import DottieFastReferenceRows96To112
+import DottieFastReferenceRows112To128
+import DottieFastReferenceRows128To144
+import DottieFastReferenceRows144To160
+import DottieFastReferenceRows160To176
+import DottieFastReferenceRows176To192
+import DottieFastReferenceRows192To208
+import DottieFastReferenceRows208To224
+import DottieFastReferenceRows224To240
+import DottieFastReferenceRows240To256
+
+namespace QuarticModel
+
+private theorem span32_80 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 32 48 = (210055985157196564901714489323882946615572236369864513864981470402764765401328 : ℤ) := by
+  calc
+    _ = (2844303315207303955938745588343629537079563137215149335699091771436876842512 : ℤ) + (207211681841989260945775743735539317078492673232649364529282378631327888558816 : ℤ) := by
+      simpa only [Nat.reduceAdd, dottieFastReferenceRows32To56, dottieFastReferenceRows56To80] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 32 24 24
+    _ = _ := by decide +kernel
+
+private theorem span0_80 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 0 80 = (110417291909170196939781320748055514653463741168429282878316999971902615462840 : ℤ) := by
+  calc
+    _ = (-99638693248026367961933168575827431962108495201435230986664470430862149938488 : ℤ) + (210055985157196564901714489323882946615572236369864513864981470402764765401328 : ℤ) := by
+      simpa only [Nat.reduceAdd, dottieFastReferenceRows0To32, span32_80] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 0 32 48
+    _ = _ := by decide +kernel
+
+private theorem span80_112 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 80 32 = (-161838393236228892371634245584279290667362517357827840156587836126657196460928 : ℤ) := by
+  calc
+    _ = (-76098514952888493645771045249841768144716247535432759080734491761312645234848 : ℤ) + (-85739878283340398725863200334437522522646269822395081075853344365344551226080 : ℤ) := by
+      simpa only [Nat.reduceAdd, dottieFastReferenceRows80To96, dottieFastReferenceRows96To112] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 80 16 16
+    _ = _ := by decide +kernel
+
+private theorem span112_144 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 112 32 = (-134440424838597190693312730025813572376465711052210008905123624495334342094952 : ℤ) := by
+  calc
+    _ = (-99810738279674667111946500137928091401853733858120130310470258629648934841328 : ℤ) + (-34629686558922523581366229887885480974611977194089878594653365865685407253624 : ℤ) := by
+      simpa only [Nat.reduceAdd, dottieFastReferenceRows112To128, dottieFastReferenceRows128To144] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 112 16 16
+    _ = _ := by decide +kernel
+
+private theorem span80_144 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 80 64 = (-296278818074826083064946975610092863043828228410037849061711460621991538555880 : ℤ) := by
+  calc
+    _ = (-161838393236228892371634245584279290667362517357827840156587836126657196460928 : ℤ) + (-134440424838597190693312730025813572376465711052210008905123624495334342094952 : ℤ) := by
+      simpa only [Nat.reduceAdd, span80_112, span112_144] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 80 32 32
+    _ = _ := by decide +kernel
+
+private theorem span0_144 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 0 144 = (-185861526165655886125165654862037348390364487241608566183394460650088923093040 : ℤ) := by
+  calc
+    _ = (110417291909170196939781320748055514653463741168429282878316999971902615462840 : ℤ) + (-296278818074826083064946975610092863043828228410037849061711460621991538555880 : ℤ) := by
+      simpa only [Nat.reduceAdd, span0_80, span80_144] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 0 80 64
+    _ = _ := by decide +kernel
+
+private theorem span160_192 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 160 32 = (102747910625295990473951036493477408683217551749497534140180874041907493896608 : ℤ) := by
+  calc
+    _ = (27169709576067282286577167207107709707275070020084123870894420302943292752912 : ℤ) + (75578201049228708187373869286369698975942481729413410269286453738964201143696 : ℤ) := by
+      simpa only [Nat.reduceAdd, dottieFastReferenceRows160To176, dottieFastReferenceRows176To192] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 160 16 16
+    _ = _ := by decide +kernel
+
+private theorem span144_192 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 144 48 = (156962352153741148741646474084017079704831604837949633736913244482266302974832 : ℤ) := by
+  calc
+    _ = (54214441528445158267695437590539671021614053088452099596732370440358809078224 : ℤ) + (102747910625295990473951036493477408683217551749497534140180874041907493896608 : ℤ) := by
+      simpa only [Nat.reduceAdd, dottieFastReferenceRows144To160, span160_192] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 144 16 32
+    _ = _ := by decide +kernel
+
+private theorem span192_224 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 192 32 = (100290439105937298811665767188761087790808466602885885687696652411349317494728 : ℤ) := by
+  calc
+    _ = (62587422863807461607017564122925776727443142867962724828721178335977419956112 : ℤ) + (37703016242129837204648203065835311063365323734923160858975474075371897538616 : ℤ) := by
+      simpa only [Nat.reduceAdd, dottieFastReferenceRows192To208, dottieFastReferenceRows208To224] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 192 16 16
+    _ = _ := by decide +kernel
+
+private theorem span224_256 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 224 32 = (87971102162410554145265986340932709373146817083360087066586930276065480255184 : ℤ) := by
+  calc
+    _ = (57557164586454428905825371214830755973960410742174085442508157893425304274360 : ℤ) + (30413937575956125239440615126101953399186406341186001624078772382640175980824 : ℤ) := by
+      simpa only [Nat.reduceAdd, dottieFastReferenceRows224To240, dottieFastReferenceRows240To256] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 224 16 16
+    _ = _ := by decide +kernel
+
+private theorem span192_256 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 192 64 = (188261541268347852956931753529693797163955283686245972754283582687414797749912 : ℤ) := by
+  calc
+    _ = (100290439105937298811665767188761087790808466602885885687696652411349317494728 : ℤ) + (87971102162410554145265986340932709373146817083360087066586930276065480255184 : ℤ) := by
+      simpa only [Nat.reduceAdd, span192_224, span224_256] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 192 32 32
+    _ = _ := by decide +kernel
+
+private theorem span144_256 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 144 112 = (345223893422089001698578227613710876868786888524195606491196827169681100724744 : ℤ) := by
+  calc
+    _ = (156962352153741148741646474084017079704831604837949633736913244482266302974832 : ℤ) + (188261541268347852956931753529693797163955283686245972754283582687414797749912 : ℤ) := by
+      simpa only [Nat.reduceAdd, span144_192, span192_256] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 144 48 64
+    _ = _ := by decide +kernel
+
+private theorem span0_256 :
+    dottiePairedRowSpan 276824064 dottieFastReferenceWeight 0 256 = (159362367256433115573412572751673528478422401282587040307802366519592177631704 : ℤ) := by
+  calc
+    _ = (-185861526165655886125165654862037348390364487241608566183394460650088923093040 : ℤ) + (345223893422089001698578227613710876868786888524195606491196827169681100724744 : ℤ) := by
+      simpa only [Nat.reduceAdd, span0_144, span144_256] using
+        dottiePairedRowSpan_add 276824064 dottieFastReferenceWeight 0 144 112
+    _ = _ := by decide +kernel
+
+theorem dottieDirectReferencePrefix256 :
+    dottiePairedRowSpan 276824064 dottieDirectReferenceWeight 0 256 = (159362367256433115573412572751673528478422401282587040307802366519592177631704 : ℤ) := by
+  simpa only [funext dottie_fast_reference_weight_eq] using span0_256
+
+#print axioms dottieDirectReferencePrefix256
+
+end QuarticModel

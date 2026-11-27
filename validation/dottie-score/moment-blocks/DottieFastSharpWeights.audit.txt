@@ -1,0 +1,8 @@
+DottieFastSharpWeights source edb40f6d679082584e9b6f2fc420d46bc28d769c
+'QuarticModel.DottieFixedIntervals.dottie_fast_joint_moment_weight_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_fast_joint_moment_block_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieFastSharpWeights exit=0 (13.901 seconds)

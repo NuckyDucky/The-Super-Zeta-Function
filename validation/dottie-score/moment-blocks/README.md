@@ -81,3 +81,11 @@ Lean verifies the axis and any diagonal together with all off-diagonal pairs. It
 ## Exact integer ranges for the sharp box checks
 
 If a target component has endpoints `L` and `U`, its admissible score ticks run from `ceil(L/32^k) + 1475739525897` through `floor(U/32^k) - 1475739525897`, inclusive. The padding is the original `8/10^8` rounded out in the normalized integer units. Lean verified the endpoints for all 22 ranges. If the full real and imaginary sums lie within those ranges and the reference is at most `0.171687`, the original circle inequality follows. A certified enclosure contained in an admissible range supplies the corresponding sum bound. [Exact equivalence](DottieSharpScoreRanges.lean#L72) · [Endpoint table](DottieSharpScoreRangeTable.lean#L8) · [Circle theorem](DottieSharpScoreRanges.lean#L90)
+
+## Cache the phase and Taylor coefficients
+
+Lean proves that the integer phase reduction gives the original interval endpoints at every norm. The Taylor calculation uses the two nonzero products on the imaginary axis and reuses the checked coefficient endpoints. The midpoint weights and complete block totals agree exactly with the original calculation. Build `DottieFastSharpTaylor` before `DottieFastSharpWeights`. [Taylor identity](DottieFastSharpTaylor.lean#L83) · [Exact block identity](DottieFastSharpWeights.lean#L165)
+
+With the same 1,024 pairs, signs, imports, and one-worker setup, the rational replay took 73.433 seconds and the cached replay took 58.734 seconds. Both runs used eight separate 128-pair checks in one Lean process. The single 1,024-pair computation reached the memory limit. [Rational replay audit](DottieSharpRational1024Chunks.audit.txt) · [Cached replay audit](DottieSharpCached1024Chunks.audit.txt)
+
+The reference subtotal now covers the first 256 consecutive rows. [Reference theorem](DottieFastReferencePrefix256.lean#L122) · [Axioms](DottieFastReferencePrefix256.audit.txt)

@@ -1,0 +1,26 @@
+DottieSharpRational1024Chunks source 53d0ce589576ad64e95e564ebcfef65dde329424
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_chunk0' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_chunk128' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_chunk256' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_chunk384' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_chunk512' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_chunk640' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_chunk768' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.dottie_sharp_rational_chunk896' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieSharpRational1024Chunks exit=0 (73.433 seconds)
