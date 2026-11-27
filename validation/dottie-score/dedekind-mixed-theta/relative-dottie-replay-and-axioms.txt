@@ -1,0 +1,178 @@
+Relative Dottie signs and solvable normal closures
+
+Independent source replays using the pinned imports.
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath HEAD: 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib HEAD: 0493595ecd5da8ef14742febab99728f98e948e8
+Lean invocation: -j1 -M5200 -DwarningAsError=true; LEAN_NUM_THREADS=1
+Lake environment exit=0 (no Lake build invoked)
+DedekindSolvableClosure source 0830ecc5401d8594f84547f9f9379e37a36ff646
+DedekindSolvableClosure source SHA-256 B0F0986930FCC0E4C1D9CF81A53B742058992CB42AC1B3EF7190A54197A09719
+dedekind_entire_factor_of_solvable_embedding : ∀ (K : Type u_1) (L : Type) [inst : Field K] [inst_1 : NumberField K]
+  [inst_2 : Field L] [inst_3 : NumberField L] [IsGalois ℚ L] [Group.IsSolvable Gal(L/ℚ)] (ι : K →ₐ[ℚ] L)
+  {ZK ZL : ℂ → ℂ},
+  IsDedekindZeta K ZK → IsDedekindZeta L ZL → ∃ g, Differentiable ℂ g ∧ ∀ (w : ℂ), w ≠ 1 → ZL w = g w * ZK w
+dedekindZetaRH_of_solvable_embedding : ∀ (K : Type u_1) (L : Type) [inst : Field K] [inst_1 : NumberField K]
+  [inst_2 : Field L] [inst_3 : NumberField L] [IsGalois ℚ L] [Group.IsSolvable Gal(L/ℚ)] (ι : K →ₐ[ℚ] L),
+  DedekindZetaRH L → DedekindZetaRH K
+dedekindZetaRH_of_solvable_normalClosure : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K]
+  [Group.IsSolvable Gal(RationalNormalClosure K/ℚ)], DedekindZetaRH (RationalNormalClosure K) → DedekindZetaRH K
+'FieldTarget.dedekind_entire_factor_of_solvable_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_solvable_embedding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_solvable_normalClosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindSolvableClosure exit=0 21.965s
+DedekindSolvableClosure reproduced its saved printed scopes and all 3 transitive axiom reports.
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath HEAD: 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib HEAD: 0493595ecd5da8ef14742febab99728f98e948e8
+Lean invocation: -j1 -M6000 -DwarningAsError=true; LEAN_NUM_THREADS=1
+Lake environment exit=0 (no Lake build invoked)
+DedekindRelativeDottie source 5da3f9af9ba461d59d72a733ba33ab7c4dcc633d
+DedekindRelativeDottie source SHA-256 E51A3DCC40C3B7666D36C692F2C9D07BDAA693EC203EDA55FF4295AB4F3FF49E
+completedRelativeReading_boundary_of_cross_product : ∀ (K : Type u_1) (L : Type u_2) [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Field L] [inst_3 : NumberField L] {g : ℂ → ℂ},
+  (∀ (w : ℂ), w ≠ 1 → mixedThetaContinuation L w = g w * mixedThetaContinuation K w) →
+    ∀ {T M margin : ℝ} {n : ℕ} {axis : ℂ},
+      0 < M →
+        0 < margin →
+          (∀ w ∈ Metric.sphere (dottieScaledRightCenter T n) (dottieScaledRadius n),
+              ‖mixedThetaCompletedReading K w‖ ≤ M ∧
+                (axis * (mixedThetaCompletedReading L w * (starRingEnd ℂ) (mixedThetaCompletedReading K w))).im ≤
+                  -margin) →
+            ∀ w ∈ Metric.sphere (dottieScaledRightCenter T n) (dottieScaledRadius n),
+              (axis * completedRelativeReading K L g w).im ≤ -margin / M ^ 2
+dedekindZetaRH_of_relative_dottie_bands : ∀ (K : Type u_1) (L : Type u_2) [inst : Field K] [inst_1 : NumberField K]
+  [inst_2 : Field L] [inst_3 : NumberField L] {g : ℂ → ℂ},
+  Differentiable ℂ g →
+    (∀ (w : ℂ), w ≠ 1 → mixedThetaContinuation L w = g w * mixedThetaContinuation K w) →
+      DedekindZetaRH K →
+        (∀ (N : ℕ), ∃ M, N ≤ M ∧ HasFiniteDottieBoundaryCertificate g (completedRelativeReading K L g) 0 ↑M) →
+          DedekindZetaRH L
+'FieldTarget.completedRelativeReading_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.completedRelativeReading_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.relative_im_le_of_cross_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.completedRelativeReading_boundary_of_cross_product' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_relative_dottie_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindRelativeDottie exit=0 29.912s
+DedekindRelativeDottie reproduced its saved printed scopes and all 5 transitive axiom reports.
+DedekindRelativeDottieSamples source f803f1fc68d1b697b1590e0bec9a071f2c294525
+DedekindRelativeDottieSamples source SHA-256 D85678C24DB18C275F2458C3900C5FF66F6C3DCF4C8061F1E70D66BA5795A419
+def FieldTarget.HasDottieCompletedCrossProductSamples : (K L : Type) →
+  [inst : Field K] → [NumberField K] → [inst : Field L] → [NumberField L] → ℝ → ℕ → Prop :=
+fun K L [Field K] [NumberField K] [Field L] [NumberField L] T n =>
+  ∃ RK RL,
+    1 ≤ RK ∧
+      1 ≤ RL ∧
+        ∃ m,
+          0 < m ∧
+            ∃ axis,
+              ‖axis‖ = 1 ∧
+                ∃ M margin tailK tailL,
+                  0 < M ∧
+                    0 < margin ∧
+                      2 * ∫ (t : ℝ) in Ioi RK, ‖(Theta.mixedThetaPair K).f t - (Theta.mixedThetaPair K).f₀‖ ≤ tailK ∧
+                        2 * ∫ (t : ℝ) in Ioi RL, ‖(Theta.mixedThetaPair L).f t - (Theta.mixedThetaPair L).f₀‖ ≤ tailL ∧
+                          ∀ a ∈ contourQuarterTurns,
+                            ∀ j ≤ m,
+                              have v :=
+                                rationalContourSample (dottieScaledRightCenter T n) (dottieScaledRadius n) a m j;
+                              have A := mixedThetaCompletedTruncation L RL v;
+                              have B := mixedThetaCompletedTruncation K RK v;
+                              have eA := mixedThetaCompletedSampleError L RL tailL T n m;
+                              have eB := mixedThetaCompletedSampleError K RK tailK T n m;
+                              ‖B‖ + eB ≤ M ∧ (axis * (A * (starRingEnd ℂ) B)).im + eA * (‖B‖ + eB) + ‖A‖ * eB ≤ -margin
+def FieldTarget.HasCofinalDottieCrossProductSamples : (K L : Type) →
+  [inst : Field K] → [NumberField K] → [inst : Field L] → [NumberField L] → Prop :=
+fun K L [Field K] [NumberField K] [Field L] [NumberField L] =>
+  ∀ (N : ℕ),
+    ∃ M,
+      N ≤ M ∧
+        ∀ (ε : ℝ),
+          0 < ε →
+            ∀ (w : ℂ),
+              w.im ∈ Icc 0 ↑M →
+                1 / 2 + ε ≤ w.re →
+                  w.re ≤ 31 / 32 →
+                    ∃ a,
+                      w ∈ Metric.ball (dottieScaledRightCenter (↑a).1 (↑a).2) (dottieScaledRadius (↑a).2) ∧
+                        HasDottieCompletedCrossProductSamples K L (↑a).1 (↑a).2
+dedekindZetaRH_of_solvable_normalClosure_relative_samples : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K]
+  [Group.IsSolvable Gal(RationalNormalClosure K/ℚ)],
+  (∀ (m : ℕ) [inst : NeZero m] (χ : DirichletCharacter ℂ m), StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+    (let L := RationalNormalClosure K;
+      HasCofinalDottieCrossProductSamples (↥(IntermediateField.fixedField (commutator Gal(L/ℚ)))) L) →
+      DedekindZetaRH K
+'FieldTarget.norm_cross_product_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.completedRelativeReading_boundary_of_samples' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_solvable_relative_samples' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_solvable_galois_relative_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_solvable_normalClosure_relative_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindRelativeDottieSamples exit=0 30.63s
+DedekindRelativeDottieSamples reproduced its saved printed scopes and all 5 transitive axiom reports.
+
+Published replay mode: replay.ps1 -RelativeDottie -BuildThreads 1
+Super Zeta source FieldTarget 2d736feec6079b6aa96df2bfa9ab20eac0f5c859
+Super Zeta source DedekindDottieSetup f3f1929adb407339f0473a322ffb208b94f33053
+Super Zeta source DedekindFieldInputs cccd630c12934edafa2943819adbaf35fd52b9e6
+Super Zeta source DedekindFieldUniverses fb339e0849ee4e882211f731e04a2b51599efe86
+Super Zeta source DottieDyadicGeometry 92d55ff728fdfcf2dcae06dcf33e85fb81638da4
+Super Zeta source DedekindFiniteDottieCover 3925b92783ca6750d284814e844ba07182214175
+Super Zeta source DedekindCofinalSignedRings 26aad230939523504635bc7f1e02299e71608a37
+Super Zeta source DedekindMixedTheta e95a2b1ab06738f7aa69a5155631e217d732aa13
+Super Zeta source DedekindMixedThetaTail 4cb30a02ae63c5a35a53ab618c493adbdab783f8
+Super Zeta source DedekindMixedThetaSignedRings f12d251417d0f34c243142cdb8b3d06274a90f31
+Super Zeta source DedekindMixedThetaCompletedRings ac115f920da6165710fc264654de4403ca1b1706
+Super Zeta source DedekindCuretonThorner d0f287dada857d47d6a9a9aa1d1da03a9ae541ca
+Super Zeta source DedekindMixedThetaRightEdge abb9e77b625391c675f32dbf905311a3e18b40f9
+Super Zeta source DedekindRationalPrimeFibers 1910bf7252dfc7d4465b4a9a1b7371e8a6f534b3
+Super Zeta source DedekindEulerByRationalPrime 1d5f35404ad5e6100652b8043f1abad3742c1c50
+Super Zeta source DedekindCyclotomicLocalEuler 74b3dbcb6df280af3fecb37b74ad067ebd9f56f2
+Super Zeta source DedekindCyclotomicContinuation 4c687d3f6079069a9bd4da5dacccb17bddfbff45
+Super Zeta source DedekindCyclotomicSubfields 81bf46edde15a677e64eeaaa18784248ad5c0cc5
+Super Zeta source DedekindAbelianFields 51fb702eedd3537bbcb965d921f1fb95dcdd5e57
+Super Zeta source DedekindSolvableQuotient 0db41a211ab9120600242cc8843107fd68c34697
+Super Zeta source DottieRationalContour 72cd3b6d4dfea15201c5cc445c1d959a7612dee5
+Super Zeta source DedekindMixedThetaOscillation e68978c1b42c1338b8d9739230e3bece01260108
+Super Zeta source DedekindMixedThetaFiniteSamples 6b5f74b236de67437056eee071af474f7cbc3464
+Super Zeta source DedekindMixedThetaSampleCover f41d153a4aaf73d94f3b421ff39a28a2c49a8af8
+Super Zeta source DedekindSolvableClosure 0830ecc5401d8594f84547f9f9379e37a36ff646
+Super Zeta source DedekindRelativeDottie 5da3f9af9ba461d59d72a733ba33ab7c4dcc633d
+Super Zeta source DedekindRelativeDottieSamples f803f1fc68d1b697b1590e0bec9a071f2c294525
+Build completed successfully (14455 jobs).
+AxiomMath relative Dottie imports exit=0
+FieldTarget exit=0
+DedekindDottieSetup exit=0
+DedekindFieldInputs exit=0
+DedekindFieldUniverses exit=0
+DottieDyadicGeometry exit=0
+DedekindFiniteDottieCover exit=0
+DedekindCofinalSignedRings exit=0
+DedekindMixedTheta exit=0
+DedekindMixedThetaTail exit=0
+DedekindMixedThetaSignedRings exit=0
+DedekindMixedThetaCompletedRings exit=0
+DedekindCuretonThorner exit=0
+DedekindMixedThetaRightEdge exit=0
+DedekindRationalPrimeFibers exit=0
+DedekindEulerByRationalPrime exit=0
+DedekindCyclotomicLocalEuler exit=0
+DedekindCyclotomicContinuation exit=0
+DedekindCyclotomicSubfields exit=0
+DedekindAbelianFields exit=0
+DedekindSolvableQuotient exit=0
+DottieRationalContour exit=0
+DedekindMixedThetaOscillation exit=0
+DedekindMixedThetaFiniteSamples exit=0
+DedekindMixedThetaSampleCover exit=0
+DedekindSolvableClosure exit=0
+DedekindRelativeDottie exit=0
+DedekindRelativeDottieSamples exit=0
+Relative Dottie replay exit=0

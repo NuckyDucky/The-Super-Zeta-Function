@@ -6,10 +6,15 @@ param(
     [switch] $SampledContours,
     [switch] $RightEdge,
     [switch] $Cyclotomic,
-    [switch] $FieldExtensions
+    [switch] $FieldExtensions,
+    [switch] $RelativeDottie
 )
 
 $ErrorActionPreference = 'Stop'
+if ($RelativeDottie) {
+    $FieldExtensions = $true
+    $RightEdge = $true
+}
 if ($FieldExtensions) { $Cyclotomic = $true }
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 $root = (Resolve-Path -LiteralPath $AxiomCheckout).Path
@@ -36,7 +41,7 @@ $inputs = [ordered]@{
     DedekindFieldInputs = 'cccd630c12934edafa2943819adbaf35fd52b9e6'
     DedekindFieldUniverses = 'fb339e0849ee4e882211f731e04a2b51599efe86'
 }
-$replayName = if ($FieldExtensions) { 'super-zeta-field-extensions' } elseif ($Cyclotomic) { 'super-zeta-cyclotomic' } elseif ($RightEdge) { 'super-zeta-right-edge' } elseif ($SampledContours) { 'super-zeta-sampled-contours' } else { 'super-zeta-mixed-theta' }
+$replayName = if ($RelativeDottie) { 'super-zeta-relative-dottie' } elseif ($FieldExtensions) { 'super-zeta-field-extensions' } elseif ($Cyclotomic) { 'super-zeta-cyclotomic' } elseif ($RightEdge) { 'super-zeta-right-edge' } elseif ($SampledContours) { 'super-zeta-sampled-contours' } else { 'super-zeta-mixed-theta' }
 $stage = (New-Item -ItemType Directory -Force -Path "$root/.lake/$replayName/src").FullName
 $out = (New-Item -ItemType Directory -Force -Path "$root/.lake/$replayName/lib").FullName
 if ($SampledContours -or $RightEdge -or $Cyclotomic) {
@@ -90,6 +95,13 @@ if ($Cyclotomic) {
     $modules += @('DedekindCyclotomicLocalEuler', 'DedekindCyclotomicContinuation', 'DedekindCyclotomicSubfields')
 }
 if ($FieldExtensions) { $modules += @('DedekindAbelianFields', 'DedekindSolvableQuotient') }
+if ($RelativeDottie) {
+    if (!$SampledContours) {
+        $modules += @('DottieRationalContour', 'DedekindMixedThetaOscillation',
+            'DedekindMixedThetaFiniteSamples', 'DedekindMixedThetaSampleCover')
+    }
+    $modules += @('DedekindSolvableClosure', 'DedekindRelativeDottie', 'DedekindRelativeDottieSamples')
+}
 foreach ($name in $modules) {
     $file = Join-Path $PSScriptRoot "$name.lean"
     $hash = (& git hash-object --no-filters -- $file).Trim()
@@ -131,7 +143,7 @@ try {
     if ($RightEdge) { $targets += '+DedekindZetaZeroFree.Main:olean' }
     & $lake build @targets
     $status = $LASTEXITCODE
-    $importSet = if ($FieldExtensions) { 'field extension' } elseif ($Cyclotomic) { 'cyclotomic' } elseif ($RightEdge) { 'right-edge' } else { 'mixed theta' }
+    $importSet = if ($RelativeDottie) { 'relative Dottie' } elseif ($FieldExtensions) { 'field extension' } elseif ($Cyclotomic) { 'cyclotomic' } elseif ($RightEdge) { 'right-edge' } else { 'mixed theta' }
     "AxiomMath $importSet imports exit=$status"
     if ($status -ne 0) { exit $status }
 
@@ -142,7 +154,7 @@ try {
     $env:LEAN_NUM_THREADS = '1'
     $replayMemory = if ($SampledContours -or $Cyclotomic) { 5200 } else { 3500 }
     foreach ($name in (@($inputs.Keys) + $modules)) {
-        $moduleMemory = if ($name -in @('DedekindCuretonThorner', 'DedekindMixedThetaRightEdge', 'DedekindCyclotomicSubfields', 'DedekindAbelianFields', 'DedekindSolvableQuotient')) { 6000 } else { $replayMemory }
+        $moduleMemory = if ($name -in @('DedekindCuretonThorner', 'DedekindMixedThetaRightEdge', 'DedekindCyclotomicSubfields', 'DedekindAbelianFields', 'DedekindSolvableQuotient', 'DedekindRelativeDottieSamples')) { 6000 } else { $replayMemory }
         & $lean -j1 "-M$moduleMemory" -DwarningAsError=true "--root=$stage" -o "$out/$name.olean" "$stage/$name.lean"
         $status = $LASTEXITCODE
         "$name exit=$status"

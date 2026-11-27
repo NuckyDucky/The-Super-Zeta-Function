@@ -168,3 +168,16 @@ For a solvable Galois extension $L/\mathbb Q$, Lean chooses the subfield fixed b
 pwsh ./validation/dottie-score/dedekind-mixed-theta/replay.ps1 `
   -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -FieldExtensions
 ~~~
+
+## Compare the two completed readings on one Dottie circle
+
+If $L/K$ has a solvable Galois group, write $Z_L=gZ_K$. For the two completed readings $A_L$ and $A_K$, Lean gives $A_L=H A_K$ with $H=(\Gamma_L/\Gamma_K)g$. Multiplying by $\overline{A_K}$ gives $A_L\overline{A_K}=H|A_K|^2$. If the signed cross product has margin $\delta>0$ and $|A_K|\le M$ around the circle, then the signed reading of $H$ has margin at least $\delta/M^2$. [Completion and sign transfer](DedekindRelativeDottie.lean)
+
+For truncated samples $A,B$ of the upper and lower readings, let $e_A,e_B$ be the respective tail and variation allowances. Lean uses the cross-product error $e_A(|B|+e_B)+|A|e_B$ and an upper bound for $|B|+e_B$. If the resulting signed circles cover cofinal height bands, Lean assembles the finite covers, obtains the near-line clearance, and uses the right-edge theorem and reflection to finish the strip. [Exact sample inequalities](DedekindRelativeDottieSamples.lean)
+
+For a field with solvable normal closure, Lean transfers a zero to the closure at the same input. The closure's commutator-fixed field takes the Dirichlet strip-zero result. The other input is the cofinal sample condition comparing that fixed field and the closure. [Normal-closure transfer](DedekindSolvableClosure.lean) · [Exact final premises and Lean output](relative-dottie-replay-and-axioms.txt)
+
+~~~powershell
+pwsh ./validation/dottie-score/dedekind-mixed-theta/replay.ps1 `
+  -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -RelativeDottie -BuildThreads 1
+~~~
