@@ -67,11 +67,12 @@ theorem dottieCayleyWeight_differentiableOn :
   exact (((differentiableOn_const _).mul he.differentiableOn).mul hγ).div_const _
 
 /-- Exact handoff from closed rational-parameter arc enclosures to zero
-exclusion on the chosen disk. The signed arc enclosures are explicit inputs. -/
-theorem dottieCayley_riemannZeta_ne_zero_of_arcs {m : ℕ} (hm : 0 < m)
+exclusion on the chosen disk, for any holomorphic weight. -/
+theorem dottieCayley_riemannZeta_ne_zero_of_weighted_arcs {W : ℂ → ℂ} {m : ℕ}
+    (hW : DifferentiableOn ℂ W (Complex.re ⁻¹' Ioo (0 : ℝ) 1)) (hm : 0 < m)
     (hArcs : ∀ a ∈ contourQuarterTurns, ∀ j : Fin m, ∀ t ∈
       Icc (((j : ℕ) : ℝ) / m) ((((j : ℕ) : ℝ) + 1) / m),
-      (dottieCayleyWeight (rationalContourPoint dottieCayleyCenter (31 / 128) a t) *
+      (W (rationalContourPoint dottieCayleyCenter (31 / 128) a t) *
         riemannZeta (rationalContourPoint dottieCayleyCenter (31 / 128) a t)).im ≤ -(1 / 16)) :
     ∀ w ∈ Metric.closedBall dottieCayleyCenter (31 / 128 : ℝ), riemannZeta w ≠ 0 := by
   intro w hw
@@ -81,15 +82,24 @@ theorem dottieCayley_riemannZeta_ne_zero_of_arcs {m : ℕ} (hm : 0 < m)
     have h1 : z ≠ 1 := by rintro rfl; norm_num at htop
     exact (differentiableAt_riemannZeta h1).differentiableWithinAt
   have hboundary : ∀ z ∈ Metric.sphere (dottieScaledRightCenter dottieCayleyReference 0)
-      (dottieScaledRadius 0), (dottieCayleyWeight z * riemannZeta z).im ≤ -(1 / 16) := by
+      (dottieScaledRadius 0), (W z * riemannZeta z).im ≤ -(1 / 16) := by
     rw [dottieCayley_center_eq, dottieCayley_radius_eq]
     intro z hz
     obtain ⟨a, ha, t, ht, rfl⟩ := exists_rationalContourPoint (by norm_num) hz
     obtain ⟨j, hj⟩ := exists_rationalContourInterval hm ht
     exact hArcs a ha j t hj
-  exact dottie_disk_nonzero_of_holomorphic_weight hζ dottieCayleyWeight_differentiableOn
+  exact dottie_disk_nonzero_of_holomorphic_weight hζ hW
     (by norm_num : (0 : ℝ) < 1 / 16) hboundary
     (by simpa only [dottieCayley_center_eq, dottieCayley_radius_eq] using hw)
+
+/-- The signed arc enclosure for the exact weight used by the Cayley plot. -/
+theorem dottieCayley_riemannZeta_ne_zero_of_arcs {m : ℕ} (hm : 0 < m)
+    (hArcs : ∀ a ∈ contourQuarterTurns, ∀ j : Fin m, ∀ t ∈
+      Icc (((j : ℕ) : ℝ) / m) ((((j : ℕ) : ℝ) + 1) / m),
+      (dottieCayleyWeight (rationalContourPoint dottieCayleyCenter (31 / 128) a t) *
+        riemannZeta (rationalContourPoint dottieCayleyCenter (31 / 128) a t)).im ≤ -(1 / 16)) :
+    ∀ w ∈ Metric.closedBall dottieCayleyCenter (31 / 128 : ℝ), riemannZeta w ≠ 0 :=
+  dottieCayley_riemannZeta_ne_zero_of_weighted_arcs dottieCayleyWeight_differentiableOn hm hArcs
 
 #check @dottieCayley_riemannZeta_ne_zero_of_arcs
 #print axioms dottieCayley_center_eq
@@ -97,6 +107,7 @@ theorem dottieCayley_riemannZeta_ne_zero_of_arcs {m : ℕ} (hm : 0 < m)
 #print axioms dottieCayleyScale_pos
 #print axioms dottieCayleyReading_eq_replay_formula
 #print axioms dottieCayleyWeight_differentiableOn
+#print axioms dottieCayley_riemannZeta_ne_zero_of_weighted_arcs
 #print axioms dottieCayley_riemannZeta_ne_zero_of_arcs
 
 end

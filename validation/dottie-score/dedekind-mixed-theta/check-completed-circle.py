@@ -1,4 +1,4 @@
-"""Enclose the weighted ordinary-zeta reading on the entire Cayley example.
+"""Enclose the ordinary or completed-zeta reading on the entire Cayley circle.
 
 Use a single zeta polynomial for all arcs. If d_k are the Taylor coefficients
 at the disk center c and h is the sampling radius, the discrete Fourier
@@ -7,6 +7,7 @@ Cauchy's coefficient bound on the larger disk controls both that alias
 sum and the remainder of the polynomial on the measuring circle.
 """
 
+import argparse
 import json
 
 import flint
@@ -58,18 +59,19 @@ def evaluate(coefficients: list[acb], w: acb) -> acb:
     return total
 
 
-def check() -> dict:
+def check(ordinary: bool = False) -> dict:
     ctx.prec = 144
     center = acb(arb(3) / 4, HEIGHT)
     radius = arb(31) / 128
     h, coefficients, error = zeta_polynomial(center, radius)
-    uncertainty = acb(arb(0, error), arb(0, error))
-    pi = arb.pi()
-    log_pi = pi.log()
-    slope = (arb(HEIGHT) / (2 * pi)).log() / 2
-    scale = abs((-log_pi * center / 2).exp() * (center / 2).gamma())
-    if not scale > 0:
-        raise ArithmeticError("The normalization is not enclosed away from zero.")
+    if not ordinary:
+        uncertainty = acb(arb(0, error), arb(0, error))
+        pi = arb.pi()
+        log_pi = pi.log()
+        slope = (arb(HEIGHT) / (2 * pi)).log() / 2
+        scale = abs((-log_pi * center / 2).exp() * (center / 2).gamma())
+        if not scale > 0:
+            raise ArithmeticError("The normalization is not enclosed away from zero.")
 
     imaginary_unit = acb(0, 1)
     turns = (acb(1), imaginary_unit, acb(-1), -imaginary_unit)
@@ -85,10 +87,13 @@ def check() -> dict:
         t = arb(2 * index + 1) / (2 * n) + arb(0, arb(1) / (2 * n))
         rational_arc = (1 + imaginary_unit * t) / (1 - imaginary_unit * t)
         offset = radius * turns[quarter] * rational_arc
-        w = center + offset
-        zeta = evaluate(coefficients, offset / h) + uncertainty
-        gamma = (-log_pi * w / 2 - slope * offset).exp() * (w / 2).gamma()
-        signed = -(axis * gamma * zeta / scale).imag
+        approximation = evaluate(coefficients, offset / h)
+        if ordinary:
+            signed = -approximation.imag - arb(1) / 10**9
+        else:
+            w = center + offset
+            gamma = (-log_pi * w / 2 - slope * offset).exp() * (w / 2).gamma()
+            signed = -(axis * gamma * (approximation + uncertainty) / scale).imag
         tested += 1
         if signed > margin:
             lower = signed.lower()
@@ -112,7 +117,7 @@ def check() -> dict:
     if any(count != 1 for quarter in coverage for count in quarter):
         raise ArithmeticError("The accepted intervals did not partition the uniform mesh.")
 
-    return {
+    report = {
         "pythonFlint": flint.__version__,
         "flint": flint.__FLINT_VERSION__,
         "precisionBits": ctx.prec,
@@ -129,9 +134,16 @@ def check() -> dict:
         "uniformCellsPerQuarter": cells_per_quarter,
         "coveredUniformCells": len(turns) * cells_per_quarter,
         "lowestSignedLowerBound": least_lower.str(12),
-        "wholeBoundaryNormalizedMarginGreaterThan": "1/16",
     }
+    if ordinary:
+        report["polynomialErrorBudgetUsed"] = "1/1000000000"
+        report["wholeBoundaryOrdinaryMarginGreaterThan"] = "1/16"
+    else:
+        report["wholeBoundaryNormalizedMarginGreaterThan"] = "1/16"
+    return report
 
 
 if __name__ == "__main__":
-    print(json.dumps(check(), indent=2))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--ordinary", action="store_true", help="Check the imaginary part of zeta itself.")
+    print(json.dumps(check(ordinary=parser.parse_args().ordinary), indent=2))

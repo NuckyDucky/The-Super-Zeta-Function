@@ -1,0 +1,151 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Alpöge source NormCpowSubLePoint 1aeedcff2f9bc6aa196465c72936661ec2403883
+NormCpowSubLePoint source 1aeedcff2f9bc6aa196465c72936661ec2403883
+NormCpowSubLePoint exit=0
+Alpöge source DzDifferentiableOn 3123f36de19d54f6f6fd76f465b99e1ce630e03b
+DzDifferentiableOn source 3123f36de19d54f6f6fd76f465b99e1ce630e03b
+DzDifferentiableOn exit=0
+Alpöge source RiemannZetaOneEqOneSubOfRePos 482dcb937bc1460df0b85615adcaee8005c1e077
+RiemannZetaOneEqOneSubOfRePos source 79eaf48212977ec8466a75bc3ea21bcd794f11f6
+RiemannZetaOneEqOneSubOfRePos exit=0
+Alpöge source ZetaGrowth 76e0bbd075fd8ea6acf5edff73196e01416e726c
+ZetaGrowth source 0e423861d0357f93ac2d1c93813df5a0b8332397
+ZetaGrowth exit=0
+Alpöge source ZfoGrowthBall bbc0433ff6f3ef0a48cb0cdae925238f1fb11b20
+ZfoGrowthBall source ffae59f075409242da25682a8101ee4207004d65
+ZfoGrowthBall exit=0
+ContourTaylor source 4f5d740a9b9e8d45b6d8da30e4135ab37fb747c8
+'FieldTarget.norm_contourTaylorCoeff_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.contourTaylor_tail_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ContourTaylor exit=0
+ContourCircleSamples source f367f6605e00fc3f9be176cfcc226434b1943d96
+'FieldTarget.contourSamplePolynomial_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+ContourCircleSamples exit=0
+DottieCayleyWeightedRiemann source 90587056a68b9238f040f3f15867314621cafaa7
+@dottieCayley_riemannZeta_ne_zero_of_arcs : ∀ {m : ℕ},
+  0 < m →
+    (∀ a ∈ contourQuarterTurns,
+        ∀ (j : Fin m),
+          ∀ t ∈ Icc (↑↑j / ↑m) ((↑↑j + 1) / ↑m),
+            (dottieCayleyWeight (rationalContourPoint dottieCayleyCenter (31 / 128) a t) *
+                  riemannZeta (rationalContourPoint dottieCayleyCenter (31 / 128) a t)).im ≤
+              -(1 / 16)) →
+      ∀ w ∈ Metric.closedBall dottieCayleyCenter (31 / 128), riemannZeta w ≠ 0
+'FieldTarget.dottieCayley_center_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayley_radius_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayleyScale_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayleyReading_eq_replay_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayleyWeight_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayley_riemannZeta_ne_zero_of_weighted_arcs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dottieCayley_riemannZeta_ne_zero_of_arcs' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCayleyWeightedRiemann exit=0
+DottieCayleySameInput source 6b216c807b7045aa5017835aba6869877b07c477
+@dottieCayley_same_input_iff : ∀ {w : ℂ},
+  w ∈ Metric.closedBall dottieCayleyCenter (31 / 128) →
+    (dottieCayleyWeight w * riemannZeta w = dottieCayleyUnweighted w ↔ w = dottieCayleyCenter ∨ riemannZeta w = 0)
+'FieldTarget.dottieCayley_same_input_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCayleySameInput exit=0
+DottieCayleySamplePolynomial source c1a0b7abb002fc5023c2372b3fb15e41bbadf428
+'FieldTarget.dottieCayleyCauchyMajorant_of_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayleyZetaPolynomial_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+@dottieCayley_riemannZeta_ne_zero_of_sample_polynomial : ∀ {W : ℂ → ℂ} {m : ℕ},
+  DifferentiableOn ℂ W (re ⁻¹' Ioo 0 1) →
+    0 < m →
+      ∀ (samples : ℕ → ℂ),
+        (∀ w ∈ sphere dottieCayleyCenter (1 / 2), ‖riemannZeta w‖ ≤ 10 ^ 9) →
+          (∀ j < 96, ‖samples j - riemannZeta (dottieCayleySamplePoint j)‖ ≤ 1 / 10 ^ 12) →
+            (∀ a ∈ contourQuarterTurns,
+                ∀ (j : Fin m),
+                  ∀ t ∈ Icc (↑↑j / ↑m) ((↑↑j + 1) / ↑m),
+                    have w := rationalContourPoint dottieCayleyCenter (31 / 128) a t;
+                    (W w * dottieCayleyZetaPolynomial samples w).im + ‖W w‖ / 10 ^ 9 ≤ -(1 / 16)) →
+              ∀ w ∈ closedBall dottieCayleyCenter (31 / 128), riemannZeta w ≠ 0
+'FieldTarget.dottieCayley_riemannZeta_ne_zero_of_sample_polynomial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieCayleySamplePolynomial exit=0
+DottieCayleyGrowthBridge source 8e57f3f04cb171789235807d312ad40f4f870722
+'Formalism.ZF.growthBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottieCayleyCauchyMajorant' depends on axioms: [propext, Classical.choice, Quot.sound]
+@dottieCayley_riemannZeta_ne_zero_of_96_samples : ∀ {m : ℕ},
+  0 < m →
+    ∀ (samples : ℕ → ℂ),
+      (∀ j < 96, ‖samples j - riemannZeta (dottieCayleySamplePoint j)‖ ≤ 1 / 10 ^ 12) →
+        (∀ a ∈ contourQuarterTurns,
+            ∀ (j : Fin m),
+              ∀ t ∈ Icc (↑↑j / ↑m) ((↑↑j + 1) / ↑m),
+                have w := rationalContourPoint dottieCayleyCenter (31 / 128) a t;
+                (dottieCayleyZetaPolynomial samples w).im + 1 / 10 ^ 9 ≤ -(1 / 16)) →
+          ∀ w ∈ closedBall dottieCayleyCenter (31 / 128), riemannZeta w ≠ 0
+'FieldTarget.dottieCayley_riemannZeta_ne_zero_of_96_samples' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCayleyGrowthBridge exit=0
+DottieCandidateCircles source 356ef5c7fa2f38ea7b02ae98d401715b1ed64fc1
+'FieldTarget.dottie_candidate_zero_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+@riemannZeta_candidate_dottie_boundary : ∀ {ρ : ℂ},
+  1 / 2 < ρ.re →
+    ρ.re ≤ 127 / 128 →
+      riemannZeta ρ = 0 →
+        ∃ n,
+          ρ ∈ closedBall (dottieScaledRightCenter (ρ.im + 1 / 512) n) (dottieScaledRadius n) ∧
+            ∀ (W : ℂ → ℂ),
+              DifferentiableOn ℂ W (re ⁻¹' Ioo 0 1) →
+                ∃ z ∈ sphere (dottieScaledRightCenter (ρ.im + 1 / 512) n) (dottieScaledRadius n),
+                  0 ≤ (W z * riemannZeta z).im
+'FieldTarget.riemannZeta_candidate_dottie_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+dedekind_candidate_dottie_boundary : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K] {ρ : ℂ},
+  1 / 2 < ρ.re →
+    ρ.re ≤ 127 / 128 →
+      mixedThetaContinuation K ρ = 0 →
+        ∃ n,
+          ρ ∈ closedBall (dottieScaledRightCenter (ρ.im + 1 / 512) n) (dottieScaledRadius n) ∧
+            ∀ (W : ℂ → ℂ),
+              DifferentiableOn ℂ W (re ⁻¹' Ioo 0 1) →
+                ∃ z ∈ sphere (dottieScaledRightCenter (ρ.im + 1 / 512) n) (dottieScaledRadius n),
+                  0 ≤ (W z * mixedThetaCompletedReading K z).im
+'FieldTarget.dedekind_candidate_dottie_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieCandidateCircles exit=0
+DottieNearOneDisk source e0c575b225a2e28a3946df067104e154f3d4e634
+@dottie_disk_subset_near_one_iff : ∀ {σ t : ℝ},
+  1 ≤ σ →
+    ∀ (n : ℕ),
+      closedBall (dottieScaledRightCenter (t + 1 / 512) n) (dottieScaledRadius n) ⊆ closedBall (↑σ + ↑t * I) (1 / 2) ↔
+        σ - 1 ≤ dottieRingScale n / 2048
+'FieldTarget.dottie_disk_subset_near_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_base_disk_subset_alpoge' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieNearOneDisk exit=0
+DottieAlpogeDisk source 3983d73e8ed03bc3b46fd7d316d60bba10212ea1
+'Formalism.ZF.zfo_growth_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+@riemannZeta_le_on_dottie_disk_of_alpoge : ∀ {σ t : ℝ} {n : ℕ},
+  1 < σ →
+    σ ≤ 2 →
+      3 ≤ |t| →
+        σ - 1 ≤ dottieRingScale n / 2048 →
+          ∀ {w : ℂ},
+            w ∈ closedBall (dottieScaledRightCenter (t + 1 / 512) n) (dottieScaledRadius n) →
+              ‖riemannZeta w‖ ≤ 6 * (|t| + 2)
+'FieldTarget.riemannZeta_le_on_dottie_disk_of_alpoge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.riemannZeta_cayley_disk_bound_from_alpoge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.native_thirds_reading_le_on_dottie_disk_of_alpoge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieAlpogeDisk exit=0
+DottieNativeCandidate source a6f22f643f4791f7545250aee1855d56bae7b778
+'FieldTarget.dottie_native_words_le_on_alpoge_disk' depends on axioms: [propext, Classical.choice, Quot.sound]
+@dottie_native_words_candidate_boundary : ∀ {ρ : ℂ} (Z J : Bool → ℂ → ℂ),
+  (∀ (b : Bool) (w : ℂ), 0 < w.re → w.re < 1 → Z b (w / 2) - J b (w / 2) = dottieNativeThirds w) →
+    1 / 2 < ρ.re →
+      ρ.re ≤ 127 / 128 →
+        riemannZeta ρ = 0 →
+          ∃ n,
+            ρ ∈ closedBall (dottieScaledRightCenter (ρ.im + 1 / 512) n) (dottieScaledRadius n) ∧
+              ∀ (W : ℂ → ℂ),
+                DifferentiableOn ℂ W (re ⁻¹' Ioo 0 1) →
+                  ∃ z ∈ sphere (dottieScaledRightCenter (ρ.im + 1 / 512) n) (dottieScaledRadius n),
+                    ∀ (b : Bool), 0 ≤ (W z * (Z b (z / 2) - J b (z / 2))).im
+'FieldTarget.dottie_native_words_candidate_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieNativeCandidate exit=0
+Alpoge-Dottie replay exit=0
