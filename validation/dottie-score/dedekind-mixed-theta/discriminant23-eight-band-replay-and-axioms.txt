@@ -1,0 +1,162 @@
+Signed crossings and the complete discriminant-23 character count through height 8
+Lean 4.35.0-rc3 (470d5ce1400764999581fd26d5d72b00d990b0f4)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Source replay with -DwarningAsError=true against the pinned dependency cache.
+
+ComplexStripSingleZero exit=0
+@unique_simple_zero_of_signed_crossing : ∀ {f : ℂ → ℂ} {l σ r a b direction : ℝ},
+  (∀ (w : ℂ), w.re ∈ Icc l r → w.im ∈ Icc a b → AnalyticAt ℂ f w) →
+    σ ∈ Icc l r →
+      a < b →
+        0 < direction * (f { re := σ, im := a }).re →
+          direction * (f { re := σ, im := b }).re < 0 →
+            (∀ (w : ℂ), w.re ∈ Icc l r → w.im ∈ Icc a b → 0 < direction * (deriv f w).im) →
+              (∀ t ∈ Icc a b, (f { re := σ, im := t }).im = 0) →
+                ∃ t ∈ Ioo a b,
+                  analyticOrderNatAt f { re := σ, im := t } = 1 ∧
+                    ∀ (w : ℂ), w.re ∈ Icc l r → w.im ∈ Icc a b → (f w = 0 ↔ w = { re := σ, im := t })
+@strip_zero_unique_of_signed_bands : ∀ {f : ℂ → ℂ},
+  Differentiable ℂ f →
+    ∀ {start a b finish : ℝ},
+      start ≤ a →
+        a < b →
+          b ≤ finish →
+            (∀ (w : ℂ), w.re ∈ Icc 0 1 → w.im ∈ Icc start a → 0 < (f w).re) →
+              (∀ (w : ℂ), w.re ∈ Icc 0 1 → w.im ∈ Icc b finish → (f w).re < 0) →
+                (∀ (w : ℂ), w.re ∈ Icc 0 1 → w.im ∈ Icc a b → 0 < (deriv f w).im) →
+                  (∀ t ∈ Icc a b, (f { re := 1 / 2, im := t }).im = 0) →
+                    ∃ t ∈ Ioo a b,
+                      analyticOrderNatAt f { re := 1 / 2, im := t } = 1 ∧
+                        ∀ (w : ℂ), w.re ∈ Icc 0 1 → w.im ∈ Icc start finish → (f w = 0 ↔ w = { re := 1 / 2, im := t })
+'FieldTarget.unique_simple_zero_of_signed_crossing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.strip_zero_unique_of_signed_bands' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+ComplexStripCrossingCount exit=0
+NonzeroEntireFunction.stripZeroCount_add_reflected_crossing : ∀ (F : NonzeroEntireFunction) {T U t : ℝ},
+  0 ≤ T →
+    T < t →
+      t ≤ U →
+        (∀ (w : ℂ), F.toFun (1 - w) = F.toFun w) →
+          (∀ (w : ℂ), w.re ∈ Ioo 0 1 → w.im ∈ Ioc T U → (F.toFun w = 0 ↔ w = { re := 1 / 2, im := t })) →
+            analyticOrderNatAt F.toFun { re := 1 / 2, im := t } = 1 →
+              ∀ (P : ℂ → Prop), (∀ (w : ℂ), w.re = 1 / 2 → P w) → F.stripZeroCount U P = F.stripZeroCount T P + 2
+'FieldTarget.NonzeroEntireFunction.stripZeroCount_add_reflected_crossing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+FoldedExponentialTaylor exit=0
+'FieldTarget.reflectedExpParity_eq' depends on axioms: [propext, Quot.sound]
+'FieldTarget.reflectedExpPolynomial_error_le_of_radii' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.reflectedExpPolynomial_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23CharacterPanel exit=0
+@discriminant23_character_quadrature_bounds : ∀ {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      |w.im| ≤ 11 / 2 →
+        ‖discriminant23CharacterComplexModel w -
+                ninePointComposite (fun u => discriminant23PanelValue w ↑u) 0 (3 / 64) 32‖ ≤
+            3 / 100000 ∧
+          ‖deriv discriminant23CharacterComplexModel w -
+                ninePointComposite (fun u => discriminant23PanelSlope w ↑u) 0 (3 / 64) 32‖ ≤
+            3 / 100000
+'FieldTarget.discriminant23_panelValue_eq_integrand' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_characterComplexModel_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_panel_circle_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_characterCoefficient_abs_le' depends on axioms: [propext]
+'FieldTarget.discriminant23_panel_density_norm_le_of_geometric_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_character_quadrature_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23CharacterMoments exit=0
+@discriminant23_character_taylor_bounds : ∀ {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      |w.im| ≤ 11 / 2 →
+        ‖discriminant23CharacterComplexModel w - discriminant23ReadingTaylor false w‖ ≤ 33 / 1000000 ∧
+          ‖deriv discriminant23CharacterComplexModel w - discriminant23ReadingTaylor true w‖ ≤ 33 / 1000000
+discriminant23_character_counts_of_taylor_signs : (∀ (w : ℂ),
+    w.re ∈ Icc 0 1 → w.im ∈ Icc (7 / 6) (9 / 2) → 43 / 1000000 < (discriminant23ReadingTaylor false w).re) →
+  (∀ (w : ℂ),
+      w.re ∈ Icc 0 1 → w.im ∈ Icc (83 / 16) (11 / 2) → (discriminant23ReadingTaylor false w).re < -(43 / 1000000)) →
+    (∀ (w : ℂ),
+        w.re ∈ Icc 0 1 → w.im ∈ Icc (9 / 2) (83 / 16) → 43 / 1000000 < (discriminant23ReadingTaylor true w).im) →
+      (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun x => True) = 2 ∧
+        (discriminant23CharacterCountingFunction.stripZeroCount (11 / 2) fun w => w.re = 1 / 2) = 2
+'FieldTarget.discriminant23_character_taylor_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_taylor_bounds_of_quadrature_weighted' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_character_counts_of_taylor_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23HigherPanel exit=0
+'FieldTarget.discriminant23_panel_value_bound_at_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_value_quadrature_bound_to_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_quadrature_bounds_to_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+DedekindDiscriminant23ReadingCells exit=0
+'FieldTarget.imaginaryCenterPowerBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_readingCellBoxUpTo_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_readingCellBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23EightError exit=0
+'_private.DedekindDiscriminant23EightError.0.FieldTarget.integerMomentMass_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_readingMomentMass_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.DedekindDiscriminant23EightError.0.FieldTarget.weighted_tail_at_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_reading_error_to_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23EightSigns exit=0
+'_private.DedekindDiscriminant23EightSigns.0.FieldTarget.below_checks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.DedekindDiscriminant23EightSigns.0.FieldTarget.crossing_checks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.DedekindDiscriminant23EightSigns.0.FieldTarget.left_checks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.DedekindDiscriminant23EightSigns.0.FieldTarget.right_checks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.DedekindDiscriminant23EightSigns.0.FieldTarget.left_positive_check' depends on axioms: [propext, Quot.sound]
+'_private.DedekindDiscriminant23EightSigns.0.FieldTarget.right_positive_check' depends on axioms: [propext, Quot.sound]
+'_private.DedekindDiscriminant23EightSigns.0.FieldTarget.above_left_checks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.DedekindDiscriminant23EightSigns.0.FieldTarget.above_right_checks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_eight_below_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_eight_crossing_slope_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_eight_left_im_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_eight_right_im_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_eight_sides_re_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_eight_above_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23EightBand exit=0
+discriminant23_character_counts_at_eight : (discriminant23CharacterCountingFunction.stripZeroCount 8 fun x => True) =
+    4 ∧
+  (discriminant23CharacterCountingFunction.stripZeroCount 8 fun w => w.re = 1 / 2) = 4
+discriminant23_field_counts_at_eight_add_eight : ((mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount
+      8 fun x => True) =
+    ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount 8 fun x => True) + 8 ∧
+  ((mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount 8 fun w => w.re = 1 / 2) =
+    ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount 8 fun w => w.re = 1 / 2) + 8
+discriminant23_dedekindRH_iff_character_above_eight : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (DedekindZetaRH Discriminant23GaloisField ↔
+    ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 31 / 32 → 8 < |w.im| → discriminant23CharacterFold w ≠ 0)
+'FieldTarget.discriminant23_crossing_between_six_and_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_counts_at_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_field_counts_at_eight_add_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character_above_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

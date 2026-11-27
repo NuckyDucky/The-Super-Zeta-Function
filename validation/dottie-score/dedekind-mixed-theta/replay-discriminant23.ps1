@@ -162,6 +162,10 @@ if ($HigherPolynomialBands) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23HigherPanel.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23SixBandSigns.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23SixBand.lean')
+        (Join-Path $PSScriptRoot 'ComplexStripCrossingCount.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23EightError.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23EightSigns.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23EightBand.lean')
     )
 }
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'

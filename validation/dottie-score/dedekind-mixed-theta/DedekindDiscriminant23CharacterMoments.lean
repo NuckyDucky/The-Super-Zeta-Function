@@ -335,6 +335,83 @@ theorem discriminant23_value_taylor_error_of_quadrature {w : ℂ} {R E : ℝ}
       (ninePointComposite (sparseSample false w) 0 (3 / 64) 32) _).trans
         (add_le_add (quad_change hlo hhi false) (sparse_quad_taylor_error_of_radius hR harg false))))
 
+/-- The absolute 72nd moment of the quadrature weights at nodes rescaled to
+the unit interval. In particular, small weights at the largest nodes stay small. -/
+def discriminant23ReadingMomentMass (odd : Bool) : ℝ :=
+  ∑ j ∈ Finset.range 257, |discriminant23ReadingAmplitude odd j| *
+    (discriminant23ReadingNode j / 3) ^ 72
+
+private theorem sparse_quad_taylor_error_of_moment {w : ℂ} {r : ℝ}
+    (hcut : 18 * r / 73 ≤ 1 / 2) (hr : ‖discriminant23ReadingArgument w‖ ≤ r)
+    (odd : Bool) :
+    ‖ninePointComposite (sparseSample odd w) 0 (3 / 64) 32 - discriminant23ReadingTaylor odd w‖ ≤
+      discriminant23ReadingMomentMass odd * (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ)) := by
+  have hRate (j : ℕ) (hj : j ∈ Finset.range 257) :
+      0 ≤ discriminant23ReadingRate j ∧ discriminant23ReadingRate j ≤ 18 := by
+    obtain ⟨h₀, h₁⟩ := discriminant23_readingNode_mem hj
+    unfold discriminant23ReadingRate
+    exact ⟨by linarith only [h₀], by linarith only [h₁]⟩
+  have hr₀ : 0 ≤ r := (norm_nonneg _).trans hr
+  have hTerm (j : ℕ) (hj : j ∈ Finset.range 257) :
+      (discriminant23ReadingRate j * r) / (Nat.succ 72 : ℝ) ≤ 1 / 2 :=
+    (div_le_div_of_nonneg_right (mul_le_mul_of_nonneg_right (hRate j hj).2 hr₀)
+      (by norm_num : (0 : ℝ) ≤ (Nat.succ 72 : ℝ))).trans hcut
+  have hNode (j : ℕ) (hj : j ∈ Finset.range 257) :
+      ‖(discriminant23ReadingRate j : ℂ) * discriminant23ReadingArgument w‖ ≤
+        discriminant23ReadingRate j * r := by
+    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (hRate j hj).1]
+    exact mul_le_mul_of_nonneg_left hr (hRate j hj).1
+  rw [sparse_quad_eq_exp_sum]
+  refine (reflectedExpPolynomial_error_le_of_radii (Finset.range 257)
+    (discriminant23ReadingAmplitude odd) discriminant23ReadingRate
+    (fun j ↦ discriminant23ReadingRate j * r) odd 72 hTerm hNode).trans ?_
+  unfold discriminant23ReadingMomentMass
+  rw [Finset.sum_mul]
+  apply Finset.sum_le_sum
+  intro j _
+  apply le_of_eq
+  rw [show discriminant23ReadingRate j * r =
+      (discriminant23ReadingNode j / 3) * (18 * r) by unfold discriminant23ReadingRate; ring,
+    mul_pow]
+  ring
+
+/-- Supply quadrature checks for the same samples on a larger rectangle.
+The exponential remainder is proportional to the actual weighted moment. -/
+theorem discriminant23_character_taylor_bounds_of_quadrature_weighted {w : ℂ} {r E : ℝ}
+    (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
+    (hcut : 18 * r / 73 ≤ 1 / 2) (hr : ‖discriminant23ReadingArgument w‖ ≤ r)
+    (hValue : ‖discriminant23CharacterComplexModel w -
+      ninePointComposite (fun u ↦ discriminant23PanelValue w u) 0 (3 / 64) 32‖ ≤ E)
+    (hSlope : ‖deriv discriminant23CharacterComplexModel w -
+      ninePointComposite (fun u ↦ discriminant23PanelSlope w u) 0 (3 / 64) 32‖ ≤ E) :
+    ‖discriminant23CharacterComplexModel w - discriminant23ReadingTaylor false w‖ ≤
+      E + (11 / 5000000 + discriminant23ReadingMomentMass false *
+        (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ))) ∧
+    ‖deriv discriminant23CharacterComplexModel w - discriminant23ReadingTaylor true w‖ ≤
+      E + (11 / 5000000 + discriminant23ReadingMomentMass true *
+        (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ))) := by
+  have hQuad (odd : Bool) :
+      ‖reading odd w - ninePointComposite (denseSample odd w) 0 (3 / 64) 32‖ ≤ E := by
+    cases odd
+    · have hEq : denseSample false w = fun u : ℝ ↦ discriminant23PanelValue w u := by
+        funext u
+        simp [denseSample, phase, discriminant23PanelValue, panelDensity_ofReal]
+      rw [hEq]
+      exact hValue
+    · have hEq : denseSample true w = fun u : ℝ ↦ discriminant23PanelSlope w u := by
+        funext u
+        simp [denseSample, phase, discriminant23PanelSlope, panelDensity_ofReal]
+      rw [hEq]
+      exact hSlope
+  have hBoth (odd : Bool) : ‖reading odd w - discriminant23ReadingTaylor odd w‖ ≤
+      E + (11 / 5000000 + discriminant23ReadingMomentMass odd *
+        (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ))) :=
+    (norm_sub_le_norm_sub_add_norm_sub _ (ninePointComposite (denseSample odd w) 0 (3 / 64) 32)
+      _).trans (add_le_add (hQuad odd) ((norm_sub_le_norm_sub_add_norm_sub _
+        (ninePointComposite (sparseSample odd w) 0 (3 / 64) 32) _).trans
+          (add_le_add (quad_change hlo hhi odd) (sparse_quad_taylor_error_of_moment hcut hr odd))))
+  exact ⟨hBoth false, hBoth true⟩
+
 /-- This single allowance includes grid integration, the five-term substitution,
 and the shared exponential Taylor tail. -/
 theorem discriminant23_character_taylor_bounds {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
@@ -386,6 +463,7 @@ theorem discriminant23_character_counts_of_taylor_signs
 #check @discriminant23_character_taylor_bounds
 #check @discriminant23_character_counts_of_taylor_signs
 #print axioms discriminant23_character_taylor_bounds
+#print axioms discriminant23_character_taylor_bounds_of_quadrature_weighted
 #print axioms discriminant23_character_counts_of_taylor_signs
 
 end

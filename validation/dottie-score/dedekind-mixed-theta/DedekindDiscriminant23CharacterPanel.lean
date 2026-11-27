@@ -157,23 +157,18 @@ theorem discriminant23_characterCoefficient_abs_le :
     ∀ n : Fin 33, |discriminant23CharacterCoefficient n| ≤ (2 : ℤ) := by
   decide +kernel
 
-private theorem panel_density_norm_le {z : ℂ}
-    (hq : ‖Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)‖ ≤ 2 / 5) :
+theorem discriminant23_panel_density_norm_le_of_geometric_bound {z : ℂ} {r M : ℝ}
+    (hq : ‖Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)‖ ≤ r)
+    (hmass : ∑ n ∈ Finset.range 32, 2 * r ^ n ≤ M) :
     ‖discriminant23PanelDensity z‖ ≤
-      5 * ‖Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)‖ := by
+      M * ‖Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)‖ := by
   let q := Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)
-  change ‖∑ n ∈ Finset.range 33, (discriminant23CharacterCoefficient n : ℂ) * q ^ n‖ ≤ 5 * ‖q‖
+  change ‖∑ n ∈ Finset.range 33, (discriminant23CharacterCoefficient n : ℂ) * q ^ n‖ ≤ M * ‖q‖
   rw [Finset.sum_range_succ', show discriminant23CharacterCoefficient 0 = 0 by decide +kernel]
   simp only [Int.cast_zero, zero_mul, add_zero]
   refine (norm_sum_le _ _).trans ?_
-  have hs : ∑ n ∈ Finset.range 32, (2 : ℚ) * (2 / 5 : ℚ) ^ n ≤ 5 := by decide +kernel
-  have hs' : ∑ n ∈ Finset.range 32, (2 : ℝ) * (2 / 5 : ℝ) ^ n ≤ 5 := by
-    have hreal : ((∑ n ∈ Finset.range 32, (2 : ℚ) * (2 / 5 : ℚ) ^ n : ℚ) : ℝ) ≤
-        ((5 : ℚ) : ℝ) := Rat.cast_le.mpr hs
-    push_cast at hreal
-    exact hreal
   calc
-    _ ≤ ∑ n ∈ Finset.range 32, 2 * (2 / 5 : ℝ) ^ n * ‖q‖ := by
+    _ ≤ ∑ n ∈ Finset.range 32, 2 * r ^ n * ‖q‖ := by
       apply Finset.sum_le_sum
       intro n hn
       have hk : n + 1 < 33 := by simpa using Nat.succ_lt_succ (Finset.mem_range.mp hn)
@@ -184,7 +179,18 @@ private theorem panel_density_norm_le {z : ℂ}
       exact mul_le_mul_of_nonneg_right
         (mul_le_mul hc (pow_le_pow_left₀ (norm_nonneg _) hq n) (by positivity) (by norm_num))
         (norm_nonneg _)
-    _ ≤ _ := by rw [← Finset.sum_mul]; exact mul_le_mul_of_nonneg_right hs' (norm_nonneg _)
+    _ ≤ _ := by rw [← Finset.sum_mul]; exact mul_le_mul_of_nonneg_right hmass (norm_nonneg _)
+
+private theorem panel_density_norm_le {z : ℂ}
+    (hq : ‖Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)‖ ≤ 2 / 5) :
+    ‖discriminant23PanelDensity z‖ ≤
+      5 * ‖Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)‖ := by
+  apply discriminant23_panel_density_norm_le_of_geometric_bound hq
+  have hs : ∑ n ∈ Finset.range 32, (2 : ℚ) * (2 / 5 : ℚ) ^ n ≤ 5 := by decide +kernel
+  have hreal : ((∑ n ∈ Finset.range 32, (2 : ℚ) * (2 / 5 : ℚ) ^ n : ℚ) : ℝ) ≤
+      ((5 : ℚ) : ℝ) := Rat.cast_le.mpr hs
+  push_cast at hreal
+  exact hreal
 
 private theorem panel_weighted_term_bound {w z : ℂ} (hw₀ : 0 ≤ w.re) (hw₁ : w.re ≤ 1)
     (ht : |w.im| ≤ 11 / 2) (hx : -(1 / 4) ≤ z.re) (hy : |z.im| ≤ 1 / 4) :
@@ -270,6 +276,7 @@ theorem discriminant23_character_quadrature_bounds {w : ℂ}
 #print axioms discriminant23_characterComplexModel_deriv
 #print axioms discriminant23_panel_circle_bounds
 #print axioms discriminant23_characterCoefficient_abs_le
+#print axioms discriminant23_panel_density_norm_le_of_geometric_bound
 #print axioms discriminant23_character_quadrature_bounds
 
 end

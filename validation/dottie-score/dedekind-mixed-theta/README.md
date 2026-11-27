@@ -261,6 +261,14 @@ I use the same 257 samples and coefficient rows in the next half-unit band. All 
 
 The complete and critical-line character counts stay at 2 through $|\Im w|\le6$. Its square adds 4 to each count for the Galois field in addition to the quadratic-base count. If I supply the Dirichlet critical-line theorem modulo 23, the remaining character check is $1/2<\Re w\le31/32$, $|\Im w|>6$. [Exact premises](DedekindDiscriminant23SixBand.lean)
 
+### The signed crossing through height 8
+
+If my analytic reading is real on a vertical line, its real values have opposite signs at the ends, and the signed imaginary derivative stays positive across the rectangle, Lean gives one simple zero on that line. I can change the rectangle, the line, and the direction of the crossing. If the rest of the band is clear, the new zero and its reflection add 2 to the cumulative count. [Crossing theorem](ComplexStripSingleZero.lean) · [Count transfer](ComplexStripCrossingCount.lean)
+
+I keep the 257 samples and take 54 of the stored terms. I use the radius of each sample in the exponential error and enlarge the quadrature circle to radius $1/2$. Lean gives a value and slope error of at most $14/10^6$ through height 8. The 35 rectangle comparisons clear $16/10^6$ with `decide +kernel`. I use the slope in the center and the value on both sides. [Error](DedekindDiscriminant23EightError.lean) · [Signs](DedekindDiscriminant23EightSigns.lean)
+
+Lean gives one new positive simple zero between $13/2$ and $59/8$ on $\Re w=1/2$. The complete and critical-line character counts through $|\Im w|\le8$ are both 4. The squared character factor adds 8 to each Galois-field count over the quadratic base. If I supply the Dirichlet critical-line theorem modulo 23, the remaining check is $1/2<\Re w\le31/32$, $|\Im w|>8$. [Exact theorem and premises](DedekindDiscriminant23EightBand.lean) · [Lean output](discriminant23-eight-band-replay-and-axioms.txt)
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)
