@@ -127,6 +127,11 @@ if ($CharacterQuadrature) {
         (Join-Path $PSScriptRoot 'ComplexNewtonCotes.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterPanel.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterSparse.lean')
+        (Join-Path $PSScriptRoot 'WeightedContourTaylor.lean')
+        (Join-Path $PSScriptRoot 'WeightedContourTaylorEnclosures.lean')
+        (Join-Path $PSScriptRoot 'ExponentialMoments.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23PhaseQuadrature.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23PhaseEvaluation.lean')
     )
 }
 if ($CharacterCount) {

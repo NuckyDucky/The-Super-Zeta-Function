@@ -269,6 +269,14 @@ I keep the 257 samples and take 54 of the stored terms. I use the radius of each
 
 Lean gives one new positive simple zero between $13/2$ and $59/8$ on $\Re w=1/2$. The complete and critical-line character counts through $|\Im w|\le8$ are both 4. The squared character factor adds 8 to each Galois-field count over the quadratic base. If I supply the Dirichlet critical-line theorem modulo 23, the remaining check is $1/2<\Re w\le31/32$, $|\Im w|>8$. [Exact theorem and premises](DedekindDiscriminant23EightBand.lean) · [Lean output](discriminant23-eight-band-replay-and-axioms.txt)
 
+## The same quadrature panels at every height
+
+If I keep the two reflected exponentials as the integration weights, I can take Taylor coefficients of the theta density at the 32 fixed panel centers. I use 20 coefficients per panel. The input $w$ enters through integrals of a power times $e^{wu}$ or $e^{(1-w)u}$. Each integral follows from endpoint exponentials and the previous integral, with a power integral when the rate is zero. [Weighted Taylor bound](WeightedContourTaylor.lean) · [Exponential moments](ExponentialMoments.lean) · [Field formula](DedekindDiscriminant23PhaseEvaluation.lean)
+
+If $0\le\Re w\le1$, the value and first derivative errors from quadrature are each at most $1/10^{10}$ for the finite theta model. Every omitted lattice norm is at least $33$. Keeping $23$ powers of the heat coordinate in the omission estimate gives the theta-model allowance $1/10^9$, including the integral beyond the cutoff. The combined bound for the actual character reading and its derivative is $11/10^{10}$ at every height. If I enclose the fixed coefficients once, Lean bounds how far those enclosures can shift each weighted panel. The coefficient error and the numerical error of the moments must also fit inside a sign margin. [Coefficient enclosures](WeightedContourTaylorEnclosures.lean) [Theta remainder](Discriminant23ThetaEnvelope.lean) · [Reading and derivative bounds](DedekindDiscriminant23PhaseQuadrature.lean) · [Replay and exact Lean output](discriminant23-phase-quadrature-replay-and-axioms.txt)
+
+Replay this section with `-CharacterQuadrature`.
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)

@@ -52,6 +52,24 @@ theorem discriminant23_characterPolynomial_error {q : ℝ} (hq : 0 ≤ q) (hqu :
   rw [discriminant23_characterPolynomial_eq_finite]
   exact abs_le.mpr ⟨by linarith, by linarith⟩
 
+
+theorem discriminant23_characterPolynomial_error_sharp {q : ℝ} (hq : 0 ≤ q) (hqu : q ≤ 3 / 11) :
+    |classThetaStar discriminant23PrincipalForm q - classThetaStar discriminant23OtherForm q -
+      discriminant23CharacterPolynomial q| ≤ 16 * q ^ 23 := by
+  have hPrincipal (m n : ℤ) :
+      9 * (m ^ 2 + n ^ 2) ≤ 10 * discriminant23PrincipalForm m n := by
+    unfold discriminant23PrincipalForm
+    nlinarith only [sq_nonneg (m + 5 * n), sq_nonneg n]
+  have hOther (m n : ℤ) :
+      9 * (m ^ 2 + n ^ 2) ≤ 10 * discriminant23OtherForm m n := by
+    unfold discriminant23OtherForm
+    nlinarith only [sq_nonneg (m + n), sq_nonneg m, sq_nonneg n]
+  obtain ⟨hp₀, hp₁⟩ := classThetaStar_sub_finite_bounds_sharp _ hPrincipal hq hqu
+  obtain ⟨hn₀, hn₁⟩ := classThetaStar_sub_finite_bounds_sharp _ hOther hq hqu
+  rw [discriminant23_characterPolynomial_eq_finite]
+  exact abs_le.mpr ⟨by linarith only [hp₀, hn₁], by linarith only [hp₁, hn₀]⟩
+
+#print axioms discriminant23_characterPolynomial_error_sharp
 #check @discriminant23_characterPolynomial_error
 #print axioms coefficient_table
 #print axioms discriminant23_characterPolynomial_eq_finite
