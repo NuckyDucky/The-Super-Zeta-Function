@@ -303,6 +303,23 @@ If I supply the rational Dirichlet critical-line theorem, Lean gives the Hecke c
 
 Replay with `-RayHecke`. [Lean output and axioms](ray-hecke-replay-and-axioms.txt)
 
+## The seven-eighths right edge
+
+- If I take Boyang Hu’s trivial idèle class character, then its coefficient is $1$ on every nonzero ideal and $0$ on the zero ideal. The resulting series equals the Dedekind zeta series for $\Re w>1$. Lean identifies the continuations at the same $w$ throughout the open critical strip. [Hu’s Lean theorem](https://github.com/Rogerhu12/hecke-seven-eighths/blob/c77efa9237c4635ed61933fbca98722c359c984a/src/Solution/HeckeSevenEighthsSolution.lean#L53) · [Series and continuation](HeckeSevenEighthsTransfer.lean)
+- If $7/8<\Re w<1$, then Hu’s theorem gives nonvanishing of the actual Dedekind continuation at every height. If a ray-class Hecke zero lay there, then the same-input lift would give a Dedekind zero there. Lean gives the $7/8$ bound for both families and the exact all-field ERH equivalences with the band $1/2<\Re w\le7/8$. [Right-band transfer](RayHeckeRightBand.lean) · [Exact equivalences](HeckeSevenEighthsTransfer.lean)
+- If I prove nonvanishing for the field on $1/2<\Re w\le7/8$ at nonnegative heights, then conjugation, reflection and the right edge give Dedekind RH for that field. If I supply the rational Dirichlet theorem as `hD` and the Dottie completed-sample coverage as `hCover` for every nonabelian Galois field over $\mathbb Q$, then Lean gives Dedekind RH for every number field. For each nonnegative height it gives a bounded band and the disks beyond its near-line clearance. Each disk’s samples must give a strict sign after the variation and tail allowances. [Exact Dottie premises](DedekindSevenEighthsCoverage.lean) · [Lean output and axiom audit](hecke-seven-eighths-replay-and-axioms.txt)
+
+### Replay the seven-eighths proof
+
+Use the pinned Lean, Mathlib, and AxiomMath checkout above. Build the existing inputs with `replay-discriminant23.ps1 -RayHecke`, `replay.ps1 -RelativeDottie`, and `replay-cyclic-euler.ps1 -GlobalDescent`, with `-AxiomCheckout` and `-LeanBin` on each command. Run the relative Dottie replay before the global descent replay.
+
+Use the compiled library from [Hu’s pinned release](https://github.com/Rogerhu12/hecke-seven-eighths/releases/tag/lake-cache-c77efa9). Its `lake-cache.tar.zst.part-000` has SHA-256 `0c54475d31a8ed2a4d9ee3a424a4422e2df73651650800830fe91ff58762214b`. Extract it into the cache root, keeping the three library paths in the archive. The replay takes the extracted root, places Hu’s libraries first for the shared imports, recompiles the ray-Hecke sources and the three new files, and prints their transitive axioms.
+
+~~~powershell
+pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-hecke-seven-eighths.ps1 `
+  -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -HuCacheRoot <hu-cache-root>
+~~~
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)
