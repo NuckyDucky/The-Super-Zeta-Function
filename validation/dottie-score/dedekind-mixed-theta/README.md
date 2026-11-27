@@ -227,6 +227,10 @@ If every Dirichlet character modulo $23$ has its strip zeros on the line, Lean s
 
 If I count zeros through height $T$ with their multiplicities, the count for $L$ is the count for the quadratic base plus twice the character-fold count. If the rational Dirichlet input at $23$ is supplied, Dedekind RH for $L$ is equivalent to the complete character count and its on-line count agreeing at arbitrarily high checkpoints. [Exact count and cofinal theorem](DedekindDiscriminant23ZeroCounts.lean) · [Lean output](discriminant23-zero-counts-replay-and-axioms.txt)
 
+If I evaluate the character fold on the critical line at heights $5$ and $11/2$, Lean checks a positive reading at $5$ and a negative reading at $11/2$. So there is a common zero of the fold and $\zeta_L$ between those heights. The square of the fold gives the field zero multiplicity at least two. Replay with the same pinned tools and the `-CharacterBracket` switch. [Endpoint and multiplicity theorems](DedekindDiscriminant23CharacterBracket.lean) · [Lean output](discriminant23-character-bracket-replay-and-axioms.txt)
+
+If $T\ge11/2$, the reflected points both enter the critical-line count through $|\operatorname{Im}w|\le T$. The fold contributes at least two and the splitting-field count is at least four, with multiplicities. [Reflection and cumulative lower bound](DedekindDiscriminant23CharacterReflectedCounts.lean)
+
 ## Discriminant-23 ideal norms and class number
 
 I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)

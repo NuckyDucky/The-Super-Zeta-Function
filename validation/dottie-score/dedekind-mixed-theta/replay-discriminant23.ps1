@@ -4,7 +4,8 @@ param(
     [Parameter(Mandatory)] [string] $AxiomCheckout,
     [Parameter(Mandatory)] [string] $LeanBin,
     [ValidateRange(1, 8)] [int] $BuildThreads = 1,
-    [switch] $DirichletMod23
+    [switch] $DirichletMod23,
+    [switch] $CharacterBracket
 )
 
 $ErrorActionPreference = 'Stop'
@@ -27,6 +28,9 @@ $version
 "Mathlib $mathlib"
 
 $repo = Join-Path $PSScriptRoot '../../..'
+if ($CharacterBracket) {
+    $DirichletMod23 = $true
+}
 $sources = @(
     (Join-Path $repo 'lean-ideal73/DottieDyadicGeometry.lean')
     (Join-Path $repo 'lean-ideal73/FieldTarget.lean')
@@ -73,15 +77,39 @@ if ($DirichletMod23) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23ZeroCounts.lean')
     )
 }
+if ($CharacterBracket) {
+    $intervalRoot = Join-Path $repo 'validation/alpoge-super-zeta'
+    $sources += @(
+        (Join-Path $intervalRoot 'MellinFixedInterval.lean')
+        (Join-Path $intervalRoot 'MellinFixedFunctions.lean')
+        (Join-Path $intervalRoot 'MellinFixedIntervalSound.lean')
+        (Join-Path $intervalRoot 'MellinFixedElementary.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterPolynomial.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterIntegral.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterQuadrature.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterSamples.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterGrid.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterGridLower.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterGridUpper.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterBracket.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23CharacterReflectedCounts.lean')
+    )
+}
+$legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'
+$pinnedPiModule = 'Mathlib.Analysis.Real.Pi.Bounds'
 $importsNeeded = foreach ($source in $sources) {
     foreach ($line in (Get-Content -LiteralPath $source)) {
         if ($line -cmatch '^import ((?:Mathlib|ClassFieldTheory|DedekindZetaZeroFree)\.[A-Za-z0-9._]+)$') {
-            "+$($Matches[1]):olean"
+            $module = $Matches[1]
+            if ($CharacterBracket -and $module -ceq $legacyPiModule) { $module = $pinnedPiModule }
+            "+${module}:olean"
         }
     }
 }
 $dependencies = @($importsNeeded | Sort-Object -Unique)
-$libraryPath = if ($DirichletMod23) {
+$libraryPath = if ($CharacterBracket) {
+    '.lake/super-zeta-discriminant23-character-bracket/lib'
+} elseif ($DirichletMod23) {
     '.lake/super-zeta-discriminant23-mod23/lib'
 } else {
     '.lake/super-zeta-discriminant23/lib'
@@ -103,11 +131,24 @@ try {
 
     foreach ($path in $sources) {
         $source = (Resolve-Path -LiteralPath $path).Path
-        $sourceRoot = Split-Path -Parent $source
         $name = [IO.Path]::GetFileNameWithoutExtension($source)
         $blob = (& git hash-object --no-filters -- $source).Trim()
         "Super Zeta source $name $blob"
-        & $lean "-j$BuildThreads" '-M6500' '-DwarningAsError=true' "--root=$sourceRoot" '-o' (Join-Path $out "$name.olean") $source
+        if ($CharacterBracket -and $name -ceq 'MellinFixedElementary') {
+            $sourceText = [IO.File]::ReadAllText($source)
+            $oldImport = '(?m)^' + [regex]::Escape("import $legacyPiModule") + '(?=\r?$)'
+            if ([regex]::Matches($sourceText, $oldImport).Count -ne 1) {
+                throw 'Expected one legacy Mathlib pi-bounds import.'
+            }
+            $sourceDir = New-Item -ItemType Directory -Force -Path (Join-Path $out 'sources')
+            $source = Join-Path $sourceDir.FullName "$name.lean"
+            [IO.File]::WriteAllText($source, ($sourceText -creplace $oldImport, "import $pinnedPiModule"))
+            $replayBlob = (& git hash-object --no-filters -- $source).Trim()
+            "Pinned pi-bounds import replay $name $replayBlob"
+        }
+        $sourceRoot = Split-Path -Parent $source
+        $object = Join-Path $out "$name.olean"
+        & $lean "-j$BuildThreads" '-M6500' '-DwarningAsError=true' "--root=$sourceRoot" '-o' $object $source
         $status = $LASTEXITCODE
         "$name exit=$status"
         if ($status -ne 0) { throw "$name failed." }

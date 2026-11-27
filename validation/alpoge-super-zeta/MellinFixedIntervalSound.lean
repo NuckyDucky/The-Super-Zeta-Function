@@ -22,7 +22,7 @@ private theorem floor_le (n : Int) {d : Int} (hd : 0 < d) :
 private theorem le_ceiling (n : Int) {d : Int} (hd : 0 < d) :
     (n:ℝ)/(d:ℝ) ≤ (ceilDiv n d:ℝ) := by
   have h := floor_le (-n) hd
-  simp only [ceilDiv, Int.cast_neg, neg_div]
+  simp only [ceilDiv, Int.cast_neg]
   simpa only [Int.cast_neg, neg_div, neg_neg] using neg_le_neg h
 
 theorem ratio_contains (n : Int) {d : Int} (hd : 0 < d) :
@@ -115,7 +115,7 @@ theorem mul_contains {a b : Box} {x y : ℝ} (hx : Contains a x) (hy : Contains 
     · exact_mod_cast (le_max_right hl hh).trans (le_max_right (max ll lh) (max hl hh))
   obtain ⟨hL,hU⟩ := corners hx hy hll hlh hhl hhh
   have hcancel : ((scale:ℝ)*x*((scale:ℝ)*y))/(scale:ℝ) = (scale:ℝ)*(x*y) := by
-    field_simp [scale_pos.ne']
+    apply (div_eq_iff scale_pos.ne').mpr
     ring
   change ((l/scale:Int):ℝ) ≤ (scale:ℝ)*(x*y) ∧
     (scale:ℝ)*(x*y) ≤ (ceilDiv u scale:ℝ)
@@ -137,7 +137,8 @@ theorem divPositive_contains {a b : Box} {x y : ℝ} (hx : Contains a x) (hy : C
   have hbhi : 0 < b.hi := by exact_mod_cast hY.trans_le hy.2
   have hcancel : ((scale:ℝ)*x*(scale:ℝ))/((scale:ℝ)*y) = (scale:ℝ)*(x/y) := by
     have hy' : 0 < y := pos_of_mul_pos_right hY scale_pos.le
-    field_simp [hy'.ne', scale_pos.ne']
+    rw [← mul_div_assoc (scale : ℝ) x y]
+    apply (div_eq_div_iff (mul_pos scale_pos hy').ne' hy'.ne').mpr
     ring
   change (((a.lo*scale)/b.hi:Int):ℝ) ≤ (scale:ℝ)*(x/y) ∧
     (scale:ℝ)*(x/y) ≤ (ceilDiv (a.hi*scale) b.lo:ℝ)
@@ -162,6 +163,7 @@ theorem horner_contains {a : Box} {x : ℝ} (hx : Contains a x)
     simpa only [coefficients, horner, Finset.range_zero, Finset.sum_empty, Int.cast_zero] using constant_contains 0
   | succ n ih =>
     have hs := add_contains (hc start) (mul_contains hx (ih (start+1)))
+    change Contains (add (f start) (mul a (horner a (coefficients f (start+1) n)))) _
     convert hs using 1
     rw [Finset.sum_range_succ', Finset.mul_sum]
     simp only [Nat.add_zero, pow_zero, mul_one]

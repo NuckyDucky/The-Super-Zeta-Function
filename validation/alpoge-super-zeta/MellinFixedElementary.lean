@@ -19,17 +19,19 @@ private theorem sin_table : sinCoefficients = coefficients sinCoefficient 0 13 :
 private theorem exp_coefficient_contains (k : Nat) :
     Contains (expCoefficient k) (1/(k.factorial:ℝ)) := by
   have hk : (0:Int) < (k.factorial:Int) := by exact_mod_cast Nat.factorial_pos k
-  simpa only [Int.cast_one, Int.cast_natCast] using ratio_contains 1 hk
+  simpa only [expCoefficient, Int.cast_one, Int.cast_natCast] using ratio_contains 1 hk
 
 private theorem cos_coefficient_contains (k : Nat) :
     Contains (cosCoefficient k) (((-1:ℝ)^k)/((2*k).factorial:ℝ)) := by
   have hk : (0:Int) < ((2*k).factorial:Int) := by exact_mod_cast Nat.factorial_pos (2*k)
-  simpa only [Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast] using ratio_contains ((-1:Int)^k) hk
+  simpa only [cosCoefficient, Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast] using
+    ratio_contains ((-1:Int)^k) hk
 
 private theorem sin_coefficient_contains (k : Nat) :
     Contains (sinCoefficient k) (((-1:ℝ)^k)/((2*k+1).factorial:ℝ)) := by
   have hk : (0:Int) < ((2*k+1).factorial:Int) := by exact_mod_cast Nat.factorial_pos (2*k+1)
-  simpa only [Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast] using ratio_contains ((-1:Int)^k) hk
+  simpa only [sinCoefficient, Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast] using
+    ratio_contains ((-1:Int)^k) hk
 
 private theorem tail26 {r : ℝ} (hr : 0 ≤ r) (hr1 : r ≤ 1) :
     r^26 * ((27:ℝ)/(Nat.factorial 26*26)) ≤ 1/(scale:ℝ) := by
@@ -96,7 +98,7 @@ private theorem trigSmall_error {x : ℝ} (h : |x| ≤ 1) :
     |Real.cos x - cosPoly 13 x| ≤ 1/(scale:ℝ) ∧
       |Real.sin x - sinPoly 13 x| ≤ 1/(scale:ℝ) := by
   have hn : ‖(x:ℂ)*Complex.I‖ = |x| := by
-    simp [norm_mul, Complex.norm_real, Real.norm_eq_abs]
+    rw [norm_mul, Complex.norm_I, mul_one, Complex.norm_real, Real.norm_eq_abs]
   have ht := Complex.exp_bound (x := (x:ℂ)*Complex.I) (n := 26) (by simpa only [hn] using h) (by decide)
   rw [hn, show (26:Nat) = 2*13 by decide, complex_two_terms] at ht
   have ht' := ht.trans (tail26 (abs_nonneg x) h)
@@ -123,8 +125,8 @@ private theorem cosSinSmall_contains {a : Box} {x : ℝ} (hx : Contains a x) (h 
   have hr := (trigSmall_error h).1
   have hi := (trigSmall_error h).2
   simp only [Nat.zero_add] at hcos hsin
-  exact ⟨widen_contains hcos (units := 1) (by simpa only [Nat.cast_one] using hr),
-    widen_contains (mul_contains hx hsin) (units := 1) (by simpa only [Nat.cast_one] using hi)⟩
+  exact ⟨widen_contains hcos (units := 1) (by simpa only [cosPoly, Nat.cast_one] using hr),
+    widen_contains (mul_contains hx hsin) (units := 1) (by simpa only [sinPoly, Nat.cast_one] using hi)⟩
 
 private theorem doubledAngle_contains {p : Box × Box} {x : ℝ}
     (h : Contains p.1 (Real.cos x) ∧ Contains p.2 (Real.sin x)) :
@@ -135,7 +137,8 @@ private theorem doubledAngle_contains {p : Box × Box} {x : ℝ}
     exact sub_contains (mul_contains h.1 h.1) (mul_contains h.2 h.2)
   · rw [two_mul, Real.sin_add, show Real.sin x*Real.cos x+Real.cos x*Real.sin x =
       2*(Real.sin x*Real.cos x) by ring]
-    simpa only [Int.cast_ofNat] using mul_contains (constant_contains 2) (mul_contains h.2 h.1)
+    simpa only [doubledAngle, Int.cast_ofNat] using
+      mul_contains (constant_contains 2) (mul_contains h.2 h.1)
 
 private theorem pi_contains : Contains piBox Real.pi := by
   have hl := Real.pi_gt_d20
