@@ -1,0 +1,14 @@
+Lean (version 4.19.0, x86_64-w64-windows-gnu, commit 6caaee842e94, Release)
+DottieTwoLapReference source 2e371b2a5e8410d08580d73a318291d7b1d93e59
+FlankReferences source a3b0698d79335fe08ccfcec0bd32f9560fea56a8
+cap_two_lap_reference_eq : ∀ (y : ℝ) (p : ℂ) {w : ℂ},
+  capReturn y p = p →
+    nativeAngle y p = Real.pi / 6 ∨ nativeAngle y p = -(Real.pi / 6) →
+      w ≠ 1 →
+        reference (1 / 2 - (deriv (capReturn y ∘ capReturn y) p).arg / Real.pi) w = (2 ^ w - 1) * reference (1 / 3) w
+'DottieOriented.two_lap_arg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.sixth_reference_eq_twice_thirds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.two_lap_reference_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.cap_two_lap_reference_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DottieOriented.two_lap_sixth_reference_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieTwoLapReference exit=0

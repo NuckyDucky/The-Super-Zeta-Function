@@ -1,0 +1,12 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+ContourExponentialModel source 6ec84d5d3cf08f18aaa2a0227d45a1b382abb90d
+@contour_error_le_from_center_data : ∀ {G : ℂ → ℂ} {c z d : ℂ} {R M e₀ e₁ : ℝ},
+  z ∈ ball c R →
+    DifferentiableOn ℂ G (ball c R) →
+      (∀ u ∈ ball c R, ‖G u‖ ≤ M) →
+        HasDerivAt G d c → ‖G c‖ ≤ e₀ → ‖d‖ ≤ e₁ → ‖G z‖ ≤ e₀ + ‖z - c‖ * e₁ + (M + e₀ + R * e₁) * (‖z - c‖ / R) ^ 2
+'FieldTarget.contourExponentialModel_regular' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.contourExponentialModel_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.contour_error_le_from_center_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+ContourExponentialModel exit=0
