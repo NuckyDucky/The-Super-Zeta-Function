@@ -1,0 +1,38 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindMixedThetaCompletedRings source ac115f920da6165710fc264654de4403ca1b1706
+dedekindZetaRH_of_completed_mixedTheta_signed_rings : ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (w : ℂ), 31 / 32 < w.re → w.re < 1 → mixedThetaContinuation K w ≠ 0) →
+    (∀ (N : ℕ), HasFiniteDottieBoundaryCertificate (mixedThetaContinuation K) (mixedThetaCompletedReading K) (-↑N) ↑N) →
+      DedekindZetaRH K
+'FieldTarget.mixedThetaCompletedReading_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_eq_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedTruncation_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_im_le_of_truncation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_completed_mixedTheta_signed_rings' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindMixedThetaCompletedRings exit=0
+DottieRationalContour source d7130ff653852431616f627cce957b6a913eacf4
+'SuperZeta.StirlingCorrection.rationalContourSample_mem_sphere' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.exists_near_rationalContourSample' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SuperZeta.StirlingCorrection.dottie_signed_boundary_of_rational_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DottieRationalContour exit=0
+DedekindMixedThetaOscillation source e68978c1b42c1338b8d9739230e3bece01260108
+'FieldTarget.mixedThetaIntegrand_difference_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaTruncation_difference_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaOscillation exit=0
+DedekindMixedThetaFiniteSamples source 6b5f74b236de67437056eee071af474f7cbc3464
+'FieldTarget.contourPoleDifference_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedTruncation_difference_le_on_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dottie_completed_boundary_of_rational_samples' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaFiniteSamples exit=0
