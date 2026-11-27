@@ -162,4 +162,41 @@ DottieNativeExclusion source 4f6e2e2981c6e30f075e2262d54a7e16d0b2c4d3
           riemannZeta ρ ≠ 0
 'FieldTarget.dottie_native_words_ne_zero_of_signed_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
 DottieNativeExclusion exit=0
+DedekindMixedThetaSampleModel source 905d746ab6641cc0be2a72930ef45e6d445f942c
+mixedThetaContinuation_ne_zero_of_sample_model : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {c w ω : ℂ}
+  {P : ℂ → ℂ} {R : ℝ≥0} {h r ε q : ℝ} {N n : ℕ} (samples : ℕ → ℂ),
+  0 < c.re - ↑R →
+    0 < 1 - c.re - ↑R →
+      0 < N →
+        n ≤ N →
+          IsPrimitiveRoot ω N →
+            ‖ω‖ = 1 →
+              0 < r →
+                r < h →
+                  h < ↑R →
+                    q < 1 →
+                      (∀ j < N, ‖samples j - mixedThetaCompletedReading K (c + ↑h * ω ^ j)‖ ≤ ε) →
+                        DifferentiableOn ℂ P (closedBall c r) →
+                          (∀ z ∈ closedBall c r, P z ≠ 0) →
+                            (∀ z ∈ sphere c r,
+                                ‖contourSamplePolynomial samples ω N n ((z - c) / ↑h) - P z‖ +
+                                    mixedThetaContourSampleError K c (↑R) h r ε N n ≤
+                                  q * ‖P z‖) →
+                              w ∈ closedBall c r → mixedThetaContinuation K w ≠ 0
+'FieldTarget.contour_model_weight_im_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.contour_ne_zero_of_relative_boundary_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_norm_le_on_disk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaCompletedReading_sample_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaContinuation_ne_zero_of_sample_model' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindMixedThetaSampleModel exit=0
+ContourExponentialModel source 6ec84d5d3cf08f18aaa2a0227d45a1b382abb90d
+@contour_error_le_from_center_data : ∀ {G : ℂ → ℂ} {c z d : ℂ} {R M e₀ e₁ : ℝ},
+  z ∈ ball c R →
+    DifferentiableOn ℂ G (ball c R) →
+      (∀ u ∈ ball c R, ‖G u‖ ≤ M) →
+        HasDerivAt G d c → ‖G c‖ ≤ e₀ → ‖d‖ ≤ e₁ → ‖G z‖ ≤ e₀ + ‖z - c‖ * e₁ + (M + e₀ + R * e₁) * (‖z - c‖ / R) ^ 2
+'FieldTarget.contourExponentialModel_regular' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.contourExponentialModel_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.contour_error_le_from_center_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+ContourExponentialModel exit=0
 Alpoge-Dottie replay exit=0
