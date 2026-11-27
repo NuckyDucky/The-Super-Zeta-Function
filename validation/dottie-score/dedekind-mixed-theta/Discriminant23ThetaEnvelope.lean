@@ -458,6 +458,94 @@ theorem classThetaStar_sub_finite_bounds (Q : ℤ → ℤ → ℤ)
   exact ⟨mul_nonneg hq (tsum_nonneg hgNonneg),
     mul_le_mul_of_nonneg_left (by simpa only [one_div] using hrem) hq⟩
 
+
+/-- For forms of this growth, every omitted norm is at least 33. Peeling off
+23 heat powers leaves a summable lattice majorant of mass 16. -/
+theorem classThetaStar_sub_finite_bounds_sharp (Q : ℤ → ℤ → ℤ)
+    (hQ : ∀ m n, 9 * (m ^ 2 + n ^ 2) ≤ 10 * Q m n)
+    {q : ℝ} (hq : 0 ≤ q) (hqu : q ≤ 3 / 11) :
+    0 ≤ classThetaStar Q q - classThetaFinite Q q ∧
+      classThetaStar Q q - classThetaFinite Q q ≤ 16 * q ^ 23 := by
+  have hWeak (m n : ℤ) : m ^ 2 + n ^ 2 ≤ 2 * Q m n := by
+    have h := hQ m n
+    have hm := sq_nonneg m
+    have hn := sq_nonneg n
+    omega
+  let f := normalizedFormTerm Q q
+  let terms := characterThetaTerms Q
+  let g (p : ℤ × ℤ) := if p ∈ terms then f p else 0
+  have hsF : Summable f := (normalizedForm_sum_le Q hWeak hq hqu).1
+  have hsG : HasSum g (∑ p ∈ terms, f p) := by
+    have h : HasSum g (∑ p ∈ terms, g p) :=
+      hasSum_sum_of_ne_finset_zero (fun p hp ↦ by simp [g, hp])
+    simpa [g] using h
+  have hsMajor := (latticeProduct_hasSum latticeMajor_hasSum latticeMajor_hasSum
+    latticeMajor_nonneg latticeMajor_nonneg).mul_left (q ^ 22)
+  have hgNonneg (p : ℤ × ℤ) : 0 ≤ f p - g p := by
+    by_cases hp : p ∈ terms
+    · simp [g, hp]
+    · simpa [g, hp] using normFormTerm_nonneg Q hq p
+  have hpoint (p : ℤ × ℤ) : f p - g p ≤ q ^ 22 * (latticeMajor p.1 * latticeMajor p.2) := by
+    by_cases hp : p ∈ terms
+    · simp only [g, ite_eq_left hp, sub_self]
+      unfold latticeMajor latticeRatio
+      positivity
+    rw [show g p = 0 by simp [g, hp], sub_zero]
+    by_cases hz : p = (0, 0)
+    · simp only [f, normalizedFormTerm, ite_eq_left hz]
+      unfold latticeMajor latticeRatio
+      positivity
+    have hpos := form_positive Q hWeak hz
+    have hSquares : 9 * (p.1.natAbs ^ 2 + p.2.natAbs ^ 2) ≤ 10 * (Q p.1 p.2).toNat := by
+      apply Int.ofNat_le.mp
+      push_cast
+      rw [sq_abs, sq_abs, Int.toNat_of_nonneg (by omega : 0 ≤ Q p.1 p.2)]
+      exact hQ _ _
+    have hQp : 33 ≤ (Q p.1 p.2).toNat := by
+      by_cases hb : p ∈ characterThetaBox
+      · have hgt : 32 < Q p.1 p.2 := by
+          by_contra! h
+          exact hp (mem_filter.mpr ⟨hb, hz, h⟩)
+        omega
+      · have hout : 6 ≤ p.1.natAbs ∨ 6 ≤ p.2.natAbs := by
+          by_contra! h
+          exact hb (mem_product.mpr ⟨mem_Icc.mpr (by omega), mem_Icc.mpr (by omega)⟩)
+        rcases hout with h | h
+        · have ht : 36 ≤ p.1.natAbs ^ 2 := pow_le_pow_left' h 2
+          omega
+        · have ht : 36 ≤ p.2.natAbs ^ 2 := pow_le_pow_left' h 2
+          omega
+    have habs (n : ℕ) : 2 * n ≤ n ^ 2 + 1 := by
+      apply Int.ofNat_le.mp
+      push_cast
+      nlinarith only [sq_nonneg ((n : ℤ) - 1)]
+    have hExp : p.1.natAbs + p.2.natAbs ≤ 2 * ((Q p.1 p.2).toNat - 23) := by
+      have h₁ := habs p.1.natAbs
+      have h₂ := habs p.2.natAbs
+      omega
+    change normalizedFormTerm Q q p ≤ _
+    rw [normalizedFormTerm, ite_eq_right hz,
+      show (Q p.1 p.2 - 1).toNat = 22 + ((Q p.1 p.2).toNat - 23) by omega, pow_add]
+    apply mul_le_mul_of_nonneg_left _ (pow_nonneg hq _)
+    calc
+      _ ≤ (latticeRatio ^ 2) ^ ((Q p.1 p.2).toNat - 23) :=
+        pow_le_pow_left₀ hq (hqu.trans (by norm_num [latticeRatio])) _
+      _ ≤ latticeMajor p.1 * latticeMajor p.2 := by
+        unfold latticeMajor
+        rw [← pow_mul, ← pow_add]
+        exact pow_le_pow_of_le_one (by norm_num [latticeRatio]) (by norm_num [latticeRatio]) hExp
+  have hsRem := hsF.sub hsG.summable
+  have hrem := (hsRem.tsum_le_tsum hpoint hsMajor.summable).trans_eq hsMajor.tsum_eq
+  have hExact : classThetaStar Q q - classThetaFinite Q q = q * ∑' p, (f p - g p) := by
+    rw [classThetaStar_eq hWeak, classThetaFinite_eq Q hWeak, hsF.tsum_sub hsG.summable,
+      hsG.tsum_eq, mul_sub]
+  rw [hExact]
+  refine ⟨mul_nonneg hq (tsum_nonneg hgNonneg), ?_⟩
+  calc
+    _ ≤ q * (q ^ 22 * (4 * 4)) := mul_le_mul_of_nonneg_left hrem hq
+    _ = _ := by ring
+
+#print axioms classThetaStar_sub_finite_bounds_sharp
 #print axioms discriminant23_principal_envelope_lt
 #print axioms discriminant23_other_envelope_lt
 #print axioms discriminant23_thetaScale_interval

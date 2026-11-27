@@ -1,0 +1,97 @@
+Discriminant-23 character approximation with exact exponential moments
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Source replay using pinned import caches, one worker and -DwarningAsError=true.
+Repository replay selector: replay-discriminant23.ps1 -CharacterQuadrature
+
+Discriminant23ThetaEnvelope source 59f8cf2417ede62e6704078a0cf32023c704d319
+Discriminant23ThetaEnvelope exit=0
+'FieldTarget.classThetaStar_sub_finite_bounds_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_principal_envelope_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_other_envelope_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_thetaScale_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_thetaExp_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_classThetaStar_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classThetaStar_sub_finite_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23CharacterPolynomial source cff853e2b4c3dea02823f73d22069b870a17f802
+DedekindDiscriminant23CharacterPolynomial exit=0
+'FieldTarget.discriminant23_characterPolynomial_error_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+@discriminant23_characterPolynomial_error : ∀ {q : ℝ},
+  0 ≤ q →
+    q ≤ 3 / 11 →
+      |classThetaStar discriminant23PrincipalForm q - classThetaStar discriminant23OtherForm q -
+            discriminant23CharacterPolynomial q| ≤
+        q / 100000
+'_private.DedekindDiscriminant23CharacterPolynomial.0.FieldTarget.coefficient_table' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_characterPolynomial_eq_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_characterPolynomial_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23CharacterComplex source 1a5f944b9ccfdcfbcaa7dd2d2945ba43716a5998
+DedekindDiscriminant23CharacterComplex exit=0
+'FieldTarget.discriminant23_characterComplexModel_error_sharp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_characterComplexModel_iteratedDeriv_error_sharp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@discriminant23_characterComplexModel_error : ∀ {w : ℂ},
+  -1 ≤ w.re → w.re ≤ 2 → ‖discriminant23CharacterFold w - discriminant23CharacterComplexModel w‖ ≤ 1 / 100000
+discriminant23_characterComplexModel_iteratedDeriv_error : ∀ (n : ℕ) {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      ‖iteratedDeriv n discriminant23CharacterFold w - iteratedDeriv n discriminant23CharacterComplexModel w‖ ≤
+        ↑n.factorial / 100000
+'FieldTarget.discriminant23_characterComplexModel_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_characterComplexModel_iteratedDeriv_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+WeightedContourTaylor source 39bd8fc5d6501b2e7ce4c06c0880cd76377271fe
+WeightedContourTaylor exit=0
+'FieldTarget.weightedContourTaylorPanel_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.weightedContourTaylorComposite_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+ExponentialMoments source d068c0edb4cc1523b1a623febbbbba8cfe6e1db2
+ExponentialMoments exit=0
+'FieldTarget.exponentialMoment_zero_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exponentialMoment_zero_powers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exponentialMoment_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23PhaseQuadrature source 2a62c5580b8dd7c130ef43b082d31105ac2714a3
+DedekindDiscriminant23PhaseQuadrature exit=0
+'FieldTarget.discriminant23_phaseTaylor_finite_model_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_phaseTaylor_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+DedekindDiscriminant23PhaseEvaluation source dc8284a5f07b0291b53bed1575df78ba5bb08517
+DedekindDiscriminant23PhaseEvaluation exit=0
+@discriminant23_phaseTaylor_error : ∀ {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      ‖discriminant23CharacterFold w - discriminant23PhaseTaylor false w‖ ≤ 11 / 10 ^ 10 ∧
+        ‖deriv discriminant23CharacterFold w - discriminant23PhaseTaylor true w‖ ≤ 11 / 10 ^ 10
+discriminant23_phaseTaylor_eq_moments : ∀ (odd : Bool) (w : ℂ),
+  discriminant23PhaseTaylor odd w =
+    ∑ k ∈ Finset.range 32,
+      ∑ j ∈ Finset.range 20,
+        have c := (2 * ↑k + 1) * (3 / 64);
+        contourTaylorCoeff discriminant23PanelDensity (↑c) (1 / 4) j *
+          discriminant23PhaseMoment odd w (c - 3 / 64) (c + 3 / 64) c j
+'FieldTarget.discriminant23_phaseMoment_eq_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_phaseTaylor_eq_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Independent source replay reproduced the two general modules and the field error theorem.
+WeightedContourTaylor source 39bd8fc5d6501b2e7ce4c06c0880cd76377271fe exit=0
+ExponentialMoments source d068c0edb4cc1523b1a623febbbbba8cfe6e1db2 exit=0
+DedekindDiscriminant23PhaseQuadrature source 2a62c5580b8dd7c130ef43b082d31105ac2714a3 exit=0
+All seven independently printed axiom reports matched the replay above.
+
+WeightedContourTaylorEnclosures source 11249a41680af6acc3549111a09f0edf327c76f6
+WeightedContourTaylorEnclosures exit=0
+'FieldTarget.norm_weightedPowerMoment_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.weightedContourTaylorPanel_error_le_of_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
