@@ -22,8 +22,8 @@ def winding(vertices):
     return count
 
 
-def main():
-    ctx.prec, ctx.threads = 144, 1
+def main(precision=144):
+    ctx.prec, ctx.threads = precision, 1
     replay = runpy.run_path(str(Path(__file__).with_name("check-completed-circle.py")))
     i = acb(0, 1)
     center = acb(arb(3) / 4, replay["HEIGHT"])
@@ -74,10 +74,20 @@ def main():
     direct_bound = relative_bound(radius)
     assert 1 < outer_bound < arb("1.01631")
     assert inner_bound < arb(".954")
-    assert direct_bound < arb(".896")
+    assert direct_bound < arb(".8954")
     print("Outer relative error", outer_bound)
     print("Inner relative error from Schwarz", inner_bound.upper())
     print("Inner relative error from direct intervals", direct_bound)
+
+    height_half_width = arb(1) / 4096
+    clearance = outer - radius - height_half_width
+    assert clearance > 0
+    height_drift = ((1 + outer_bound) * height_half_width / clearance).upper()
+    height_margin = (1 - direct_bound - height_drift).lower()
+    assert height_margin > arb(".0396")
+    print("Height band center", replay["HEIGHT"], "with half width 1/4096")
+    print("Cauchy height drift allowance", height_drift)
+    print("Signed margin on every circle in the band", height_margin)
 
     modulus_bound = sum(
         (abs(coeff) * (radius / h) ** k for k, coeff in enumerate(coefficients)), arb(0)

@@ -1,0 +1,7 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DottieHeightBand source e010f8a4c599fc609c41eb0647486e581605cd89
+'FieldTarget.dottie_shifted_boundary_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_height_band_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.ordinary_cayley_height_band_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieHeightBand exit=0

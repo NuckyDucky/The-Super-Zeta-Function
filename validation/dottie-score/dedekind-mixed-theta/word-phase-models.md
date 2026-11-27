@@ -41,6 +41,12 @@ If the center match is exact, only the quadratic term remains. The replay of the
 
 Two other estimates can carry numerical errors between repeated readings. Close unit return marks satisfy $|a^m-b^m|\le m|a-b|$. If a field or word ratio is proved to equal $\prod_j r_j$ and $|r_j-1|\le\epsilon_j$ throughout the disk, then $|\prod_j r_j-1|\le\exp(\sum_j\epsilon_j)-1$. A sum below $\log 2$ then supplies a uniform relative error below one. [Power perturbation](https://github.com/MathePhysics/4D_Wilson_Loop_RG/blob/da7128a36a9c2b3b079c0712f20bae6e126c7dbb/LEAN/CoreLean/CoreLean/ProductExp.lean#L49-L77) · [Product perturbation](https://github.com/MathePhysics/4D_Wilson_Loop_RG/blob/da7128a36a9c2b3b079c0712f20bae6e126c7dbb/LEAN/CoreLean/BakerCampbellHausdorff/Product.lean#L62-L68) · [Exponential product bound](https://github.com/MathePhysics/4D_Wilson_Loop_RG/blob/da7128a36a9c2b3b079c0712f20bae6e126c7dbb/LEAN/CoreLean/CoreLean/LinkProduct.lean#L53-L58)
 
+## Move the ordinary circle in height
+
+Take the same center $c=3/4+100000001i$, radius $31/128$, and exponential reference $P$. Choose $1/4096$ as the maximum shift along the imaginary axis. The Dottie reference height is the circle's center height plus $1/512$.
+
+If the relative error is at most $0.8954$ on the original circle, then the imaginary part of $-i\zeta/P$ is at most $-0.1046$ there. The outer circle of radius $1/4$ gives a norm bound of $2.01631$ for that weighted reading. With clearance $31/4096$, Cauchy's estimate bounds the change under any of the chosen shifts by $2.01631/31$. So every translated circle keeps a signed margin above $0.039$. The 144-bit and 192-bit interval replays give a lower bound above $0.0396$. [Lean height-band proof](DottieHeightBand.lean) · [Lean audit](dottie-height-band-margin-audit.txt) · [Interval replay](exponential-model-interval-audit.txt)
+
 ## Replay
 
 Build the project Lean library on 4.19.0 for the two-lap reference. Compile the archived [FlankReferences module](../../../archive/2026-11-19-zero-transport-v001/Dottie-Off-Axis-Return/FlankReferences.lean) into the same library search path, then check [DottieTwoLapReference](../../alpoge-super-zeta/DottieTwoLapReference.lean). The field and exponential models build with the pinned 4.35.0-rc3 [Alpöge-Dottie replay](replay-alpoge-dottie.ps1) after the sampled contour replay.
