@@ -1,0 +1,6 @@
+DottieReferenceMomentBlock source 631ea85a4be0ceab8ff882cc255f6949bcf810d8
+'QuarticModel.DottieFixedIntervals.referenceBlockMomentTicks_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuarticModel.DottieFixedIntervals.referenceBlock_within_cutoff' depends on axioms: [propext]
+DottieReferenceMomentBlock exit=0 (92.346 seconds)
