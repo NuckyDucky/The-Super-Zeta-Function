@@ -1,0 +1,56 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Build completed successfully (3625 jobs).
+Super Zeta source DedekindCyclicSubgroupWeights 41657a93cf83979ae51be2e777799a90ff8ee65d
+exists_cyclic_conjugate_count_weights : ∀ (G : Type u_1) [inst : Group G] [inst_1 : Fintype G],
+  ∃ c, ∀ (g : G), (∑ H, c H * ∑ x, if x⁻¹ * g * x ∈ ↑H then 1 else 0) = ↑(Fintype.card G)
+'FieldTarget.exists_cyclic_subgroup_weights' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_cyclic_conjugate_count_weights' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclicSubgroupWeights exit=0
+Super Zeta source DedekindUnramifiedFrobenius b0d74e6350b6896dc0e55a35f58f395d1b69c4c3
+@frobenius_pow_mem_fixingSubgroup_iff : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K] [inst_1 : NumberField K]
+  [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [inst_5 : IsGalois K L] (E : IntermediateField K L)
+  (p : HeightOneSpectrum (𝓞 K)) (Q : HeightOneSpectrum (𝓞 ↥E)) (P : HeightOneSpectrum (𝓞 L)),
+  Q.asIdeal.LiesOver p.asIdeal →
+    P.asIdeal.LiesOver Q.asIdeal →
+      Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+        ∀ (σ : Gal(L/K)),
+          IsArithFrobAt (𝓞 K) σ P.asIdeal → ∀ (n : ℕ), σ ^ n ∈ E.fixingSubgroup ↔ Q.asIdeal.inertiaDeg (𝓞 K) ∣ n
+'FieldTarget.unramified_iff_inertia_bot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.frobenius_pow_mem_fixingSubgroup_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindUnramifiedFrobenius exit=0
+Super Zeta source DedekindPrimeFiberCounting 157311e5ea74fe31e68416d1247deaea96de2742
+@frobenius_conjugate_count_eq_prime_degree_sum : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [inst_5 : IsGalois K L]
+  (E : IntermediateField K L) (p : HeightOneSpectrum (𝓞 K)) (P : HeightOneSpectrum (𝓞 L)),
+  P.asIdeal.LiesOver p.asIdeal →
+    Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+      ∀ (σ : Gal(L/K)),
+        IsArithFrobAt (𝓞 K) σ P.asIdeal →
+          ∀ (n : ℕ),
+            (∑ x, if x⁻¹ * σ ^ n * x ∈ E.fixingSubgroup then 1 else 0) =
+              ↑(Nat.card ↥E.fixingSubgroup) * ∑ Q, if (↑Q).inertiaDeg (𝓞 K) ∣ n then ↑((↑Q).inertiaDeg (𝓞 K)) else 0
+'FieldTarget.frobenius_conjugate_count_eq_prime_degree_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindPrimeFiberCounting exit=0
+Super Zeta source DedekindCyclicEulerCoefficients 8ca3663f507da2b1bcfde751ff5c7a2996b11be4
+@exists_weighted_unramified_prime_power_match : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [IsGalois K L],
+  ∃ a,
+    ∀ (p : HeightOneSpectrum (𝓞 K)) (P : HeightOneSpectrum (𝓞 L)),
+      P.asIdeal.LiesOver p.asIdeal →
+        Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+          ∀ (n : ℕ), ∑ H, a H * primePowerResidueCount (IntermediateField.fixedField ↑H) p n = ↑(Nat.card Gal(L/K))
+'FieldTarget.exists_weighted_unramified_prime_power_match' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclicEulerCoefficients exit=0
+Super Zeta source DedekindCyclicEulerFactors 821bc27811eb0337157d9a919d020861b12d2223
+@exists_weighted_unramified_local_factor_product : ∀ {K : Type u_3} {L : Type u_4} [inst : Field K]
+  [inst_1 : NumberField K] [inst_2 : Field L] [inst_3 : NumberField L] [inst_4 : Algebra K L] [IsGalois K L],
+  ∃ a,
+    ∀ (p : HeightOneSpectrum (𝓞 K)) (P : HeightOneSpectrum (𝓞 L)),
+      P.asIdeal.LiesOver p.asIdeal →
+        Algebra.IsUnramifiedAt (𝓞 K) P.asIdeal →
+          ∀ {A : Type} [inst_6 : CommGroup A] (u : ℕ → A),
+            ∏ H, (∏ Q, u ((↑Q).inertiaDeg (𝓞 K))) ^ a H = u 1 ^ ↑(Nat.card Gal(L/K))
+'FieldTarget.exists_weighted_unramified_local_factor_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindCyclicEulerFactors exit=0
