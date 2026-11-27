@@ -227,6 +227,126 @@ theorem discriminant23_character_quadrature_bounds_to_eight {w : ℂ}
     hAny (by unfold discriminant23PanelSlope discriminant23PanelDensity; fun_prop)
       (fun _ hc _ hz ↦ (wider_panel_circle_bounds hlo hhi ht hc hz).2)⟩
 
+private theorem panel_density_bound_three_quarters {z : ℂ} (hx : -(3 / 4 : ℝ) ≤ z.re)
+    (hy : |z.im| ≤ 3 / 4) :
+    Real.exp z.re * ‖discriminant23PanelDensity z‖ ≤ 5 := by
+  let q := Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)
+  have hCos : (23 / 32 : ℝ) ≤ Real.cos z.im := by
+    have hSq : z.im ^ 2 ≤ (3 / 4 : ℝ) ^ 2 := by
+      rw [← sq_abs]
+      exact pow_le_pow_left₀ (abs_nonneg _) hy 2
+    linarith only [hSq, Real.one_sub_sq_div_two_le_cos (x := z.im)]
+  have hScale : (9 / 10 : ℝ) ≤ discriminant23ThetaScale * Real.cos z.im :=
+    (by norm_num : (9 / 10 : ℝ) ≤ (13 / 10) * (23 / 32)).trans
+      (mul_le_mul discriminant23_thetaScale_interval.1 hCos (by norm_num)
+        (by linarith only [discriminant23_thetaScale_interval.1]))
+  have hHeat : ‖q‖ ≤ Real.exp (-(9 / 10 : ℝ) * Real.exp z.re) := by
+    dsimp only [q]
+    rw [Complex.norm_exp, ← Complex.ofReal_neg, Complex.re_ofReal_mul, Complex.exp_re]
+    exact Real.exp_le_exp.mpr (by
+      nlinarith only [mul_le_mul_of_nonneg_right hScale (Real.exp_nonneg z.re)])
+  have hUpper : ‖q‖ ≤ 5 / 6 := by
+    refine hHeat.trans ((Real.exp_le_exp.mpr (show -(9 / 10 : ℝ) * Real.exp z.re ≤ -(9 / 40) by
+      linarith only [Real.add_one_le_exp z.re, hx])).trans ?_)
+    rw [Real.exp_neg, ← one_div]
+    have h := one_div_le_one_div_of_le (by norm_num : (0 : ℝ) < (49 / 40 : ℝ))
+      (by linarith only [Real.add_one_le_exp (9 / 40 : ℝ)] : (49 / 40 : ℝ) ≤ Real.exp (9 / 40))
+    exact h.trans (by norm_num)
+  have hGeomRat : ∑ n ∈ Finset.range 32, (2 : ℚ) * (5 / 6 : ℚ) ^ n ≤ 12 := by decide +kernel
+  have hGeom : ∑ n ∈ Finset.range 32, (2 : ℝ) * (5 / 6 : ℝ) ^ n ≤ 12 := by
+    have hReal : ((∑ n ∈ Finset.range 32, (2 : ℚ) * (5 / 6 : ℚ) ^ n : ℚ) : ℝ) ≤
+        ((12 : ℚ) : ℝ) := Rat.cast_le.mpr hGeomRat
+    push_cast at hReal
+    exact hReal
+  have hScaled : Real.exp z.re * ‖q‖ ≤ 5 / 12 := by
+    let x := (9 / 10 : ℝ) * Real.exp z.re
+    have hlin : x ≤ Real.exp (x - 1) := by linarith only [Real.add_one_le_exp (x - 1)]
+    have h := mul_le_mul_of_nonneg_right hlin (Real.exp_nonneg (-x))
+    rw [← Real.exp_add, show x - 1 + -x = -1 by ring] at h
+    have hNeg : Real.exp (-1) ≤ (3 / 8 : ℝ) := by
+      rw [Real.exp_neg, ← one_div, show (3 / 8 : ℝ) = 1 / (8 / 3) by norm_num]
+      exact one_div_le_one_div_of_le (by norm_num) (by linarith only [Real.exp_one_gt_d9])
+    have hQ := mul_le_mul_of_nonneg_left hHeat (Real.exp_nonneg z.re)
+    unfold x at h
+    rw [show -((9 / 10 : ℝ) * Real.exp z.re) = -(9 / 10 : ℝ) * Real.exp z.re by ring] at h
+    nlinarith only [hQ, h, hNeg]
+  have h := mul_le_mul_of_nonneg_left
+    (discriminant23_panel_density_norm_le_of_geometric_bound hUpper hGeom) (Real.exp_nonneg z.re)
+  change Real.exp z.re * ‖discriminant23PanelDensity z‖ ≤ Real.exp z.re * (12 * ‖q‖) at h
+  calc
+    _ ≤ Real.exp z.re * (12 * ‖q‖) := h
+    _ = 12 * (Real.exp z.re * ‖q‖) := by ring
+    _ ≤ 5 := by linarith only [hScaled]
+
+private theorem panel_bounds_to_nineteen_halves {w z : ℂ} {c : ℝ}
+    (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) (ht : |w.im| ≤ 19 / 2)
+    (hc : c ∈ Icc (0 : ℝ) 3) (hz : z ∈ sphere (c : ℂ) (3 / 4 : ℝ)) :
+    ‖discriminant23PanelValue w z‖ ≤ 30000 ∧ ‖discriminant23PanelSlope w z‖ ≤ 112500 := by
+  obtain ⟨hx, hy⟩ := panel_xy hc.1 hz
+  have hn : ‖z‖ ≤ 15 / 4 := by
+    have hd := mem_sphere.mp hz
+    rw [dist_eq_norm] at hd
+    have h := norm_add_le (z - (c : ℂ)) (c : ℂ)
+    rw [sub_add_cancel, hd, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hc.1] at h
+    linarith only [h, hc.2]
+  have hExp : Real.exp ((1 + (19 / 2 : ℝ)) * (3 / 4)) ≤ 3000 := by
+    refine (Real.exp_le_exp.mpr (by norm_num : (1 + (19 / 2 : ℝ)) * (3 / 4) ≤ 8)).trans ?_
+    rw [show (8 : ℝ) = (8 : ℕ) * 1 by norm_num, Real.exp_nat_mul]
+    exact (pow_le_pow_left₀ (Real.exp_nonneg _)
+      (by linarith only [Real.exp_one_lt_d9] : Real.exp 1 ≤ 68 / 25) 8).trans (by norm_num)
+  have hTerm (v : ℂ) (hL : 0 ≤ v.re) (hH : v.re ≤ 1) (hT : |v.im| ≤ 19 / 2) :
+      ‖Complex.exp (v * z) * discriminant23PanelDensity z‖ ≤ 15000 := by
+    rw [norm_mul]
+    calc
+      _ ≤ (Real.exp z.re * Real.exp ((1 + (19 / 2 : ℝ)) * (3 / 4))) *
+          ‖discriminant23PanelDensity z‖ :=
+        mul_le_mul_of_nonneg_right (exp_weight_on_panel hL hH hT hx hy) (norm_nonneg _)
+      _ = (Real.exp z.re * ‖discriminant23PanelDensity z‖) *
+          Real.exp ((1 + (19 / 2 : ℝ)) * (3 / 4)) := by ring
+      _ ≤ (5 : ℝ) * 3000 :=
+        mul_le_mul (panel_density_bound_three_quarters hx hy) hExp (Real.exp_nonneg _) (by norm_num)
+      _ = _ := by norm_num
+  have hw := hTerm w hlo hhi ht
+  have hv := hTerm (1 - w)
+    (by rw [Complex.sub_re, Complex.one_re]; linarith only [hhi])
+    (by rw [Complex.sub_re, Complex.one_re]; linarith only [hlo])
+    (by simpa only [Complex.sub_im, Complex.one_im, zero_sub, abs_neg] using ht)
+  constructor
+  · rw [discriminant23PanelValue, add_mul]
+    exact (norm_add_le _ _).trans (by linarith only [hw, hv])
+  · rw [discriminant23PanelSlope, mul_assoc, sub_mul, norm_mul]
+    have hsub := (norm_sub_le _ _).trans (add_le_add hw hv)
+    exact (mul_le_mul hn hsub (norm_nonneg _) (by norm_num)).trans (by norm_num)
+
+theorem discriminant23_character_quadrature_bounds_to_nineteen_halves {w : ℂ}
+    (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) (ht : |w.im| ≤ 19 / 2) :
+    ‖discriminant23CharacterComplexModel w -
+        ninePointComposite (fun u ↦ discriminant23PanelValue w u) 0 (3 / 64) 32‖ ≤ 23 / 10 ^ 8 ∧
+    ‖deriv discriminant23CharacterComplexModel w -
+        ninePointComposite (fun u ↦ discriminant23PanelSlope w u) 0 (3 / 64) 32‖ ≤ 85 / 10 ^ 8 := by
+  have hAny {F : ℂ → ℂ} {M : ℝ} (hF : Differentiable ℂ F)
+      (hB : ∀ c ∈ Icc (0 : ℝ) 3, ∀ z ∈ sphere (c : ℂ) (3 / 4 : ℝ), ‖F z‖ ≤ M) :
+      ‖(∫ u in (0 : ℝ)..3, F (u : ℂ)) -
+        ninePointComposite (fun u ↦ F u) 0 (3 / 64) 32‖ ≤
+        3 * (1 + 41142 / 28350) * (M * (1 / 16) ^ (10 : ℕ) / (1 - 1 / 16)) := by
+    have h := ninePointComposite_error_le (F := F) (a := 0) (h := 3 / 64)
+      (R := (3 / 4 : ℝ≥0)) (M := M) 32 (by norm_num) (by norm_num) hF (by
+        intro c hc z hz
+        exact hB c (by convert hc using 1; norm_num) z hz)
+    norm_num at h ⊢
+    exact h
+  have hModel : discriminant23CharacterComplexModel w =
+      ∫ u in (0 : ℝ)..3, discriminant23PanelValue w (u : ℂ) := by
+    simp_rw [discriminant23_panelValue_eq_integrand]
+    rfl
+  rw [hModel, discriminant23_characterComplexModel_deriv]
+  exact ⟨(hAny (by unfold discriminant23PanelValue discriminant23PanelDensity; fun_prop)
+    (fun _ hc _ hz ↦ (panel_bounds_to_nineteen_halves hlo hhi ht hc hz).1)).trans (by norm_num),
+    (hAny (by unfold discriminant23PanelSlope discriminant23PanelDensity; fun_prop)
+    (fun _ hc _ hz ↦ (panel_bounds_to_nineteen_halves hlo hhi ht hc hz).2)).trans (by norm_num)⟩
+
+#print axioms discriminant23_character_quadrature_bounds_to_nineteen_halves
+
 #print axioms discriminant23_panel_value_bound_at_height
 #print axioms discriminant23_value_quadrature_bound_to_six
 #print axioms discriminant23_character_quadrature_bounds_to_eight

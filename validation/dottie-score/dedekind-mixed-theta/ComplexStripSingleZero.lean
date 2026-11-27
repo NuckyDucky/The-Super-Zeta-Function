@@ -98,6 +98,41 @@ theorem unique_simple_zero_of_signed_crossing {f : ℂ → ℂ} {l σ r a b dire
   · rintro rfl
     exact htZero
 
+/-- The crossing slope only needs to be checked where a zero can occur in the
+middle band. The zero-location premise allows the two side regions to use
+different coordinates or estimates. -/
+theorem strip_zero_unique_of_signed_core {f : ℂ → ℂ} (hf : Differentiable ℂ f)
+    {start a b finish l σ r : ℝ}
+    (hstart : start ≤ a) (hab : a < b) (hfinish : b ≤ finish)
+    (hl : 0 ≤ l) (hσ : σ ∈ Icc l r) (hr : r ≤ 1)
+    (hBelow : ∀ w : ℂ, w.re ∈ Icc (0 : ℝ) 1 → w.im ∈ Icc start a → 0 < (f w).re)
+    (hAbove : ∀ w : ℂ, w.re ∈ Icc (0 : ℝ) 1 → w.im ∈ Icc b finish → (f w).re < 0)
+    (hCore : ∀ w : ℂ, w.re ∈ Icc (0 : ℝ) 1 → w.im ∈ Icc a b → f w = 0 → w.re ∈ Icc l r)
+    (hSlope : ∀ w : ℂ, w.re ∈ Icc l r → w.im ∈ Icc a b → 0 < (deriv f w).im)
+    (hReal : ∀ t ∈ Icc a b, (f ⟨σ, t⟩).im = 0) :
+    ∃ t ∈ Ioo a b, analyticOrderNatAt f ⟨σ, t⟩ = 1 ∧
+      ∀ w : ℂ, w.re ∈ Icc (0 : ℝ) 1 → w.im ∈ Icc start finish →
+        (f w = 0 ↔ w = ⟨σ, t⟩) := by
+  have hStrip : σ ∈ Icc (0 : ℝ) 1 := ⟨hl.trans hσ.1, hσ.2.trans hr⟩
+  obtain ⟨t, ht, hOrder, hUnique⟩ :=
+    unique_simple_zero_of_signed_crossing (direction := 1) (fun w _ _ ↦ hf.analyticAt w) hσ hab
+      (by simpa only [one_mul] using hBelow ⟨σ, a⟩ hStrip ⟨hstart, le_rfl⟩)
+      (by simpa only [one_mul] using hAbove ⟨σ, b⟩ hStrip ⟨le_rfl, hfinish⟩)
+      (fun w hw ht ↦ by simpa only [one_mul] using hSlope w hw ht) hReal
+  refine ⟨t, ht, hOrder, fun w hw htBand ↦ ⟨?_, ?_⟩⟩
+  · intro hwZero
+    have htm : w.im ∈ Icc a b := by
+      constructor
+      · by_contra! hh
+        have h := hBelow w hw ⟨htBand.1, hh.le⟩
+        rwa [hwZero, Complex.zero_re, lt_self_iff_false] at h
+      · by_contra! hh
+        have h := hAbove w hw ⟨hh.le, htBand.2⟩
+        rwa [hwZero, Complex.zero_re, lt_self_iff_false] at h
+    exact (hUnique w (hCore w hw htm hwZero) htm).mp hwZero
+  · rintro rfl
+    exact (hUnique ⟨σ, t⟩ hσ (Ioo_subset_Icc_self ht)).mpr rfl
+
 /-- The full-strip sign test uses the local crossing and excludes the two
 bands on either side by their real signs. -/
 theorem strip_zero_unique_of_signed_bands {f : ℂ → ℂ} (hf : Differentiable ℂ f)
@@ -110,24 +145,10 @@ theorem strip_zero_unique_of_signed_bands {f : ℂ → ℂ} (hf : Differentiable
       ∀ w : ℂ, w.re ∈ Icc (0 : ℝ) 1 → w.im ∈ Icc start finish →
         (f w = 0 ↔ w = ⟨1 / 2, t⟩) := by
   have hHalf : (1 / 2 : ℝ) ∈ Icc (0 : ℝ) 1 := by constructor <;> norm_num
-  obtain ⟨t, ht, hOrder, hUnique⟩ :=
-    unique_simple_zero_of_signed_crossing (direction := 1) (fun w _ _ ↦ hf.analyticAt w) hHalf hab
-      (by simpa only [one_mul] using hBelow ⟨1 / 2, a⟩ hHalf ⟨hstart, le_rfl⟩)
-      (by simpa only [one_mul] using hAbove ⟨1 / 2, b⟩ hHalf ⟨le_rfl, hfinish⟩)
-      (fun w hw ht ↦ by simpa only [one_mul] using hSlope w hw ht) hReal
-  refine ⟨t, ht, hOrder, fun w hw htBand ↦ ⟨?_, ?_⟩⟩
-  · intro hwZero
-    have htm : w.im ∈ Icc a b := by
-      constructor
-      · by_contra! hh
-        have h := hBelow w hw ⟨htBand.1, hh.le⟩
-        rwa [hwZero, Complex.zero_re, lt_self_iff_false] at h
-      · by_contra! hh
-        have h := hAbove w hw ⟨hh.le, htBand.2⟩
-        rwa [hwZero, Complex.zero_re, lt_self_iff_false] at h
-    exact (hUnique w hw htm).mp hwZero
-  · rintro rfl
-    exact (hUnique ⟨1 / 2, t⟩ hHalf (Ioo_subset_Icc_self ht)).mpr rfl
+  exact strip_zero_unique_of_signed_core hf hstart hab hfinish le_rfl hHalf le_rfl
+    hBelow hAbove (fun _ hw _ _ ↦ hw) hSlope hReal
+
+#print axioms strip_zero_unique_of_signed_core
 
 #check @unique_simple_zero_of_signed_crossing
 #check @strip_zero_unique_of_signed_bands

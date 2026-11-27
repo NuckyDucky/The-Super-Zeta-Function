@@ -269,6 +269,12 @@ I keep the 257 samples and take 54 of the stored terms. I use the radius of each
 
 Lean gives one new positive simple zero between $13/2$ and $59/8$ on $\Re w=1/2$. The complete and critical-line character counts through $|\Im w|\le8$ are both 4. The squared character factor adds 8 to each Galois-field count over the quadratic base. If I supply the Dirichlet critical-line theorem modulo 23, the remaining check is $1/2<\Re w\le31/32$, $|\Im w|>8$. [Exact theorem and premises](DedekindDiscriminant23EightBand.lean) · [Lean output](discriminant23-eight-band-replay-and-axioms.txt)
 
+### Six character zeros through height 9.5
+
+I keep the 257 quadrature samples and take 68 of the stored terms. If I bound each sample's exponential error separately on the larger quadrature circle, Lean gives a value error at most $45/10^8$ and a slope error at most $11/10^7$ through height $19/2$. The value boxes clear $6/10^7$ of margin and the slope boxes clear $2/10^6$. All 26 comparisons pass with `decide +kernel`. [Error](DedekindDiscriminant23NineteenHalvesError.lean) · [Signs on the full band](DedekindDiscriminant23NineteenHalvesSigns.lean)
+
+If I use the imaginary signs on the two sides to keep any zero in the middle, the signed slope gives one simple zero there, on $\Re w=1/2$ with height between $67/8$ and $9$. Reflection gives its partner. The complete and on-line character counts through $|\Im w|\le19/2$ are both 6. Squaring the character factor adds 12 to each count of the Galois field over the quadratic base. If I supply the Dirichlet critical-line theorem modulo 23, Dedekind RH for this field reduces to the same character on $1/2<\Re w\le31/32$ with $|\Im w|>19/2$. [Count and exact premises](DedekindDiscriminant23NineteenHalvesBand.lean) · [Lean replay and axioms](discriminant23-nineteen-halves-replay-and-axioms.txt)
+
 ## The same quadrature panels at every height
 
 If I keep the two reflected exponentials as the integration weights, I can take Taylor coefficients of the theta density at the 32 fixed panel centers. I use 20 coefficients per panel. The input $w$ enters through integrals of a power times $e^{wu}$ or $e^{(1-w)u}$. Each integral follows from endpoint exponentials and the previous integral, with a power integral when the rate is zero. [Weighted Taylor bound](WeightedContourTaylor.lean) · [Exponential moments](ExponentialMoments.lean) · [Field formula](DedekindDiscriminant23PhaseEvaluation.lean)

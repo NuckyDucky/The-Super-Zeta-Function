@@ -122,25 +122,27 @@ private theorem phase_norm_le {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
       _ = _ := by rw [two_mul u, Real.exp_add]; ring
 
 private theorem scaled_heat_thirteen {u : ℝ} (hu : 0 ≤ u) :
-    Real.exp (2 * u) * discriminant23ReadingHeat u ^ 13 ≤ (3 / 11 : ℝ) ^ 13 := by
+    Real.exp (2 * u) * discriminant23ReadingHeat u ^ 13 ≤ (3 / 11 : ℝ) ^ 13 * Real.exp (-(14 : ℝ) * u) := by
   let a := discriminant23ThetaScale
   have ha : 13 / 10 ≤ a := discriminant23_thetaScale_interval.1
   have han : 0 ≤ a := by linarith only [ha]
   have hG : 1 + u ≤ Real.exp u := by linarith only [Real.add_one_le_exp u]
   have hProd := mul_le_mul_of_nonneg_left hG han
-  have hArg : 2 * u + (13 : ℕ) * (-a * Real.exp u) ≤ (13 : ℕ) * (-a) := by
+  have hArg : 2 * u + (13 : ℕ) * (-a * Real.exp u) ≤ (13 : ℕ) * (-a) + -(14 : ℝ) * u := by
     push_cast
     nlinarith only [hProd, mul_nonneg (sub_nonneg.mpr ha) hu, hu]
   change Real.exp (2 * u) * Real.exp (-a * Real.exp u) ^ 13 ≤ _
   rw [← Real.exp_nat_mul, ← Real.exp_add]
   calc
-    _ ≤ Real.exp ((13 : ℕ) * (-a)) := Real.exp_le_exp.mpr hArg
-    _ = Real.exp (-a) ^ 13 := Real.exp_nat_mul _ _
-    _ ≤ _ := pow_le_pow_left₀ (by positivity) discriminant23_thetaExp_interval.2 13
+    _ ≤ Real.exp ((13 : ℕ) * (-a) + -(14 : ℝ) * u) := Real.exp_le_exp.mpr hArg
+    _ = Real.exp (-a) ^ 13 * Real.exp (-(14 : ℝ) * u) := by rw [Real.exp_add, Real.exp_nat_mul]
+    _ ≤ _ := mul_le_mul_of_nonneg_right
+      (pow_le_pow_left₀ (by positivity) discriminant23_thetaExp_interval.2 13) (Real.exp_nonneg _)
 
 private theorem sample_change {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
     {u : ℝ} (hu : 0 ≤ u) (odd : Bool) :
-    ‖denseSample odd w u - sparseSample odd w u‖ ≤ 1 / 2000000 := by
+    ‖denseSample odd w u - sparseSample odd w u‖ ≤
+      6 * ((3 / 11 : ℝ) ^ 13 * Real.exp (-(14 : ℝ) * u)) := by
   have hsmall := (heat_le hu).trans (by norm_num : (3 / 11 : ℝ) ≤ 1 / 3)
   have hpoly := discriminant23_characterPolynomial_sparse_error (Real.exp_nonneg _) hsmall
   unfold denseSample sparseSample
@@ -149,25 +151,58 @@ private theorem sample_change {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
     _ ≤ (2 * Real.exp (2 * u)) * (3 * discriminant23ReadingHeat u ^ 13) :=
       mul_le_mul (phase_norm_le hlo hhi hu odd) hpoly (abs_nonneg _) (by positivity)
     _ = 6 * (Real.exp (2 * u) * discriminant23ReadingHeat u ^ 13) := by ring
-    _ ≤ 6 * (3 / 11 : ℝ) ^ 13 := mul_le_mul_of_nonneg_left (scaled_heat_thirteen hu) (by norm_num)
-    _ ≤ _ := by norm_num
+    _ ≤ _ := mul_le_mul_of_nonneg_left (scaled_heat_thirteen hu) (by norm_num)
 
-private theorem quad_change {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) (odd : Bool) :
+
+private theorem readingWeight_abs_le : ∀ j : Fin 257, |ninePointGridWeight 32 j| ≤ 10496 := by
+  decide +kernel
+
+private theorem quad_change_sharp {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) (odd : Bool) :
     ‖ninePointComposite (denseSample odd w) 0 (3 / 64) 32 -
-      ninePointComposite (sparseSample odd w) 0 (3 / 64) 32‖ ≤ 11 / 5000000 := by
+      ninePointComposite (sparseSample odd w) 0 (3 / 64) 32‖ ≤ 1 / 10 ^ 7 := by
+  have hWeight (j : ℕ) (hj : j ∈ Finset.range 257) : |discriminant23ReadingWeight j| ≤ 1 / 28 := by
+    have hx : |(ninePointGridWeight 32 j : ℝ)| ≤ 10496 := by
+      exact_mod_cast readingWeight_abs_le ⟨j, Finset.mem_range.mp hj⟩
+    rw [discriminant23ReadingWeight, abs_mul, abs_of_nonneg (by norm_num)]
+    linarith only [hx]
+  have hDecay (j : ℕ) :
+      Real.exp (-(14 : ℝ) * discriminant23ReadingNode j) ≤ (128 / 149 : ℝ) ^ j := by
+    rw [show -(14 : ℝ) * discriminant23ReadingNode j = (j : ℝ) * (-(21 / 128 : ℝ)) by
+      unfold discriminant23ReadingNode; ring, Real.exp_nat_mul]
+    apply pow_le_pow_left₀ (Real.exp_nonneg _)
+    rw [Real.exp_neg, ← one_div, show (128 / 149 : ℝ) = 1 / (149 / 128) by norm_num]
+    exact one_div_le_one_div_of_le (by norm_num)
+      (by linarith only [Real.add_one_le_exp (21 / 128 : ℝ)])
+  have hRatio := hasSum_geometric_of_lt_one
+    (by norm_num : 0 ≤ (128 / 149 : ℝ)) (by norm_num : (128 / 149 : ℝ) < 1)
+  have hGeometric : ∑ j ∈ Finset.range 257, (128 / 149 : ℝ) ^ j ≤ 149 / 21 := by
+    have h := hRatio.summable.sum_le_tsum (Finset.range 257) (fun j _ ↦ by positivity)
+    rw [hRatio.tsum_eq] at h
+    exact h.trans (by norm_num)
   simp_rw [composite_eq_sum]
   rw [← Finset.sum_sub_distrib]
   refine (norm_sum_le _ _).trans ?_
   calc
-    _ ≤ ∑ j ∈ Finset.range 257, |discriminant23ReadingWeight j| * (1 / 2000000 : ℝ) := by
+    _ ≤ ∑ j ∈ Finset.range 257, (1 / 28 * (6 * (3 / 11) ^ 13) : ℝ) * (128 / 149) ^ j := by
       apply Finset.sum_le_sum
       intro j hj
       rw [← mul_sub, norm_mul, Complex.norm_real, Real.norm_eq_abs]
-      exact mul_le_mul_of_nonneg_left
-        (sample_change hlo hhi (discriminant23_readingNode_mem hj).1 odd) (abs_nonneg _)
+      have h := sample_change hlo hhi (discriminant23_readingNode_mem hj).1 odd
+      calc
+        _ ≤ (1 / 28 : ℝ) * (6 * ((3 / 11) ^ 13 *
+              Real.exp (-(14 : ℝ) * discriminant23ReadingNode j))) :=
+          mul_le_mul (hWeight j hj) h (norm_nonneg _) (by norm_num)
+        _ = (1 / 28 * (6 * (3 / 11) ^ 13) : ℝ) *
+              Real.exp (-(14 : ℝ) * discriminant23ReadingNode j) := by ring
+        _ ≤ _ := mul_le_mul_of_nonneg_left (hDecay j) (by positivity)
     _ ≤ _ := by
-      rw [← Finset.sum_mul]
-      exact (mul_le_mul_of_nonneg_right weight_mass (by norm_num)).trans (by norm_num)
+      rw [← Finset.mul_sum]
+      exact (mul_le_mul_of_nonneg_left hGeometric (by positivity)).trans (by norm_num)
+
+private theorem quad_change {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) (odd : Bool) :
+    ‖ninePointComposite (denseSample odd w) 0 (3 / 64) 32 -
+      ninePointComposite (sparseSample odd w) 0 (3 / 64) 32‖ ≤ 11 / 5000000 :=
+  (quad_change_sharp hlo hhi odd).trans (by norm_num)
 
 def discriminant23ReadingArgument (w : ℂ) : ℂ :=
   (w - 1 / 2) / 6
@@ -377,6 +412,44 @@ private theorem sparse_quad_taylor_error_of_moment {w : ℂ} {r : ℝ}
 
 /-- Supply quadrature checks for the same samples on a larger rectangle.
 The exponential remainder is proportional to the actual weighted moment. -/
+theorem discriminant23_character_taylor_bounds_of_quadrature_sharp {w : ℂ} {r EValue ESlope : ℝ}
+    (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
+    (hcut : 18 * r / 73 ≤ 1 / 2) (hr : ‖discriminant23ReadingArgument w‖ ≤ r)
+    (hValue : ‖discriminant23CharacterComplexModel w -
+      ninePointComposite (fun u ↦ discriminant23PanelValue w u) 0 (3 / 64) 32‖ ≤ EValue)
+    (hSlope : ‖deriv discriminant23CharacterComplexModel w -
+      ninePointComposite (fun u ↦ discriminant23PanelSlope w u) 0 (3 / 64) 32‖ ≤ ESlope) :
+    ‖discriminant23CharacterComplexModel w - discriminant23ReadingTaylor false w‖ ≤
+      EValue + (1 / 10 ^ 7 + discriminant23ReadingMomentMass false *
+        (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ))) ∧
+    ‖deriv discriminant23CharacterComplexModel w - discriminant23ReadingTaylor true w‖ ≤
+      ESlope + (1 / 10 ^ 7 + discriminant23ReadingMomentMass true *
+        (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ))) := by
+  let E (odd : Bool) := if odd then ESlope else EValue
+  have hQuad (odd : Bool) :
+      ‖reading odd w - ninePointComposite (denseSample odd w) 0 (3 / 64) 32‖ ≤ E odd := by
+    cases odd
+    · have hEq : denseSample false w = fun u : ℝ ↦ discriminant23PanelValue w u := by
+        funext u
+        simp [denseSample, phase, discriminant23PanelValue, panelDensity_ofReal]
+      rw [hEq]
+      exact hValue
+    · have hEq : denseSample true w = fun u : ℝ ↦ discriminant23PanelSlope w u := by
+        funext u
+        simp [denseSample, phase, discriminant23PanelSlope, panelDensity_ofReal]
+      rw [hEq]
+      exact hSlope
+  have hBoth (odd : Bool) : ‖reading odd w - discriminant23ReadingTaylor odd w‖ ≤
+      E odd + (1 / 10 ^ 7 + discriminant23ReadingMomentMass odd *
+        (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ))) :=
+    (norm_sub_le_norm_sub_add_norm_sub _ (ninePointComposite (denseSample odd w) 0 (3 / 64) 32)
+      _).trans (add_le_add (hQuad odd) ((norm_sub_le_norm_sub_add_norm_sub _
+        (ninePointComposite (sparseSample odd w) 0 (3 / 64) 32) _).trans
+          (add_le_add (quad_change_sharp hlo hhi odd) (sparse_quad_taylor_error_of_moment hcut hr odd))))
+  exact ⟨hBoth false, hBoth true⟩
+
+
+/-- Supply a common quadrature allowance for both readings, as in the lower bands. -/
 theorem discriminant23_character_taylor_bounds_of_quadrature_weighted {w : ℂ} {r E : ℝ}
     (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1)
     (hcut : 18 * r / 73 ≤ 1 / 2) (hr : ‖discriminant23ReadingArgument w‖ ≤ r)
@@ -390,27 +463,10 @@ theorem discriminant23_character_taylor_bounds_of_quadrature_weighted {w : ℂ} 
     ‖deriv discriminant23CharacterComplexModel w - discriminant23ReadingTaylor true w‖ ≤
       E + (11 / 5000000 + discriminant23ReadingMomentMass true *
         (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ))) := by
-  have hQuad (odd : Bool) :
-      ‖reading odd w - ninePointComposite (denseSample odd w) 0 (3 / 64) 32‖ ≤ E := by
-    cases odd
-    · have hEq : denseSample false w = fun u : ℝ ↦ discriminant23PanelValue w u := by
-        funext u
-        simp [denseSample, phase, discriminant23PanelValue, panelDensity_ofReal]
-      rw [hEq]
-      exact hValue
-    · have hEq : denseSample true w = fun u : ℝ ↦ discriminant23PanelSlope w u := by
-        funext u
-        simp [denseSample, phase, discriminant23PanelSlope, panelDensity_ofReal]
-      rw [hEq]
-      exact hSlope
-  have hBoth (odd : Bool) : ‖reading odd w - discriminant23ReadingTaylor odd w‖ ≤
-      E + (11 / 5000000 + discriminant23ReadingMomentMass odd *
-        (4 * (18 * r) ^ 72 / (Nat.factorial 72 : ℝ))) :=
-    (norm_sub_le_norm_sub_add_norm_sub _ (ninePointComposite (denseSample odd w) 0 (3 / 64) 32)
-      _).trans (add_le_add (hQuad odd) ((norm_sub_le_norm_sub_add_norm_sub _
-        (ninePointComposite (sparseSample odd w) 0 (3 / 64) 32) _).trans
-          (add_le_add (quad_change hlo hhi odd) (sparse_quad_taylor_error_of_moment hcut hr odd))))
-  exact ⟨hBoth false, hBoth true⟩
+  have h := discriminant23_character_taylor_bounds_of_quadrature_sharp hlo hhi hcut hr hValue hSlope
+  exact ⟨h.1.trans (by linarith), h.2.trans (by linarith)⟩
+
+#print axioms discriminant23_character_taylor_bounds_of_quadrature_sharp
 
 /-- This single allowance includes grid integration, the five-term substitution,
 and the shared exponential Taylor tail. -/

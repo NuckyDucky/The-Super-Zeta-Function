@@ -173,6 +173,12 @@ if ($HigherPolynomialBands) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23EightError.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23EightSigns.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23EightBand.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23NineteenHalvesError.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23NineteenHalvesCellChecks.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23NineteenHalvesWings.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23NineteenHalvesUpperCells.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23NineteenHalvesSigns.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23NineteenHalvesBand.lean')
     )
 }
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'
