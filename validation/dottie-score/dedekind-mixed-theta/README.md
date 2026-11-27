@@ -223,6 +223,8 @@ If $0<\operatorname{Re}w<1$ and $|\operatorname{Im}w|\le1/2$, multiply the actua
 
 If $0<\operatorname{Re}w<1$, the pole-cleared reading for $L$ equals the pole-cleared reading for $\mathbb Q(\sqrt{-23})$ times the square of the character fold at the same $w$. If the quadratic field has its zeros on the line, Dedekind RH for $L$ is equivalent to the strip-zero statement for that one fold. If $|\operatorname{Im}w|\le7/6$, Lean bounds both factors away from zero and proves $\zeta_L(w)\ne0$ throughout the band. [Factor identity and wider band](discriminant23-dottie-field-reading.md) · [Exact Lean output](discriminant23-factor-reading-replay-and-axioms.txt)
 
+If every Dirichlet character modulo $23$ has its strip zeros on the line, Lean supplies the quadratic base result. Then Dedekind RH for $L$ is equivalent to the character fold being nonzero throughout $1/2<\operatorname{Re}w<1$ and $|\operatorname{Im}w|>7/6$. [Modulus-23 theorem](DedekindDiscriminant23DirichletReduction.lean) · [Exact Lean output](discriminant23-dirichlet-mod23-replay-and-axioms.txt)
+
 ## Discriminant-23 ideal norms and class number
 
 I use the cyclic step over $F=\mathbb Q(\sqrt{-23})$. If a nonidentity inertia element acts on the cubic roots, then all three roots reduce to one value $r$. The cubic coefficients give $3r=0$ and $3r^2=1$. Lean rules this out at every finite prime and gives $|\operatorname{disc}(L)|=23^3$. [Relative ramification](DedekindDiscriminant23Unramified.lean) · [Discriminants and completion](DedekindDiscriminant23Integers.lean)

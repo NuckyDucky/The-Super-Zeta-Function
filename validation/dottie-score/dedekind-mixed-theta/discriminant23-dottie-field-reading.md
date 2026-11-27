@@ -28,6 +28,20 @@ If $|\operatorname{Im}w|\le7/6$ in that strip, the character-fold real part is a
 
 If I multiply the completed reading of $L$ by $w(1-w)/C(w)^2$, the result is $M_F(w)$ and has real part at most $-3/13$. Lean proves this weight is analytic at every point of the band. The product identity also gives $|M_L(w)|\ge1/39936$, so the actual Dedekind continuation is nonzero throughout this entire band. The zero-exclusion theorem takes only the strip and height inequalities. [Weighted reading and zero exclusion](DedekindDiscriminant23DottieReading.lean) · [Exact Lean output](discriminant23-factor-reading-replay-and-axioms.txt)
 
+## The Dirichlet input at 23
+
+Take a primitive 23rd root of unity $x$ and set $\eta=\sum_a x^a$, with $a$ running through the eleven nonzero squares modulo $23$. Lean checks $\eta^2+\eta+6=0$. So $(1+2\eta)^2=-23$ and the quadratic base $F$ embeds in $\mathbb Q(x)$. The cyclotomic theorem gives Dedekind RH for $F$ if the Dirichlet strip-zero statement holds for each character modulo $23$. [Quadratic period and embedding](DedekindDiscriminant23DirichletReduction.lean) · [Cyclotomic transfer](DedekindCyclotomicSubfields.lean)
+
+If that modulus-23 input holds, Lean gives the exact equivalence
+$$
+\operatorname{RH}(L)\quad\Longleftrightarrow\quad
+C(w)\ne0\text{ for every }w\text{ with }1/2<\operatorname{Re}w<1
+\text{ and }|\operatorname{Im}w|>7/6.
+$$
+The certified band covers the smaller heights. The field's reflected zero relation accounts for the left half at the same height. [Higher-right theorem](DedekindDiscriminant23DirichletReduction.lean) · [Exact Lean output](discriminant23-dirichlet-mod23-replay-and-axioms.txt)
+
 ## Replay
 
 Run the [pinned discriminant-23 replay](replay-discriminant23.ps1) with the checkout and Lean version in the [archive README](README.md). [Exact Lean output](discriminant23-dottie-field-replay-and-axioms.txt)
+
+Add `-DirichletMod23` to the same command to replay the cyclotomic dependencies and the modulus-23 theorem. [Modulus-23 replay output](discriminant23-dirichlet-mod23-replay-and-axioms.txt)
