@@ -38,3 +38,18 @@ lake env lean -j1 -s65536 -M5100 -DwarningAsError=true ../validation/dottie-scor
 lake env lean -j1 -s65536 -M4500 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieReferenceMomentBlock.lean
 lake env lean -j1 -s65536 -M4500 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieSharpMomentBlock.lean
 ```
+
+## Kernel replay with integer phase reduction
+
+Lean checks that a single integer remainder gives exactly the old rounded weight at every norm in the prefix. The full score equals the original score. The one-worker replay of the same 11,763-pair row took 62.527 seconds, down from 134.279 seconds with the rational phase calculation. An independent source replay matched the exact row total and the three transitive axiom reports. [Weight and score identities](DottieFastReferenceScore.lean#L136) · [Axioms](DottieFastReferenceScore.audit.txt) · [Old timing](DottieDirectReferenceInteriorRow.audit.txt) · [New row and timing](DottieFastReferenceInteriorRow.audit.txt)
+
+The batch generator checks the first 32 rows, row 1024, and the last two rows using the same weights. The row ranges here are zero-based with an exclusive end. Each source supplies an exact subtotal checked with `decide +kernel`. When an archived packed witness is available, Lean checks it again for the new weight. The full score equality with the candidate remains the reference proof input. [Generator](generate_fast_reference_replay.py) · [First 32 rows](DottieFastReferenceRows0To32.audit.txt) · [Row 1024](DottieFastReferenceRows1024To1025.audit.txt) · [Last two rows](DottieFastReferenceRows16636To16638.audit.txt)
+
+From `lean-ideal73`, after building `DottieDirectReferenceScore`, run the fast-score build and a batch replay.
+
+```text
+lake env lean -j1 -s65536 -M5100 -DwarningAsError=true --root=../validation/dottie-score/moment-blocks -o .lake/build/lib/lean/DottieFastReferenceScore.olean ../validation/dottie-score/moment-blocks/DottieFastReferenceScore.lean
+lake env lean -j1 -s65536 -M5100 -DwarningAsError=true ../validation/dottie-score/moment-blocks/DottieFastReferenceRows0To32.lean
+```
+
+From the packet directory, `python generate_fast_reference_replay.py 0 32 generated` generates the same first batch. Pass `--witness-root` for archived packed rows and `--checkpoint` for saved candidate totals.
