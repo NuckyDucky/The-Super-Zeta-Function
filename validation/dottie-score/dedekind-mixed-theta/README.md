@@ -329,6 +329,28 @@ pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-hecke-seven-eighths.p
 
 Build the discriminant-23 inputs with `replay-discriminant23.ps1 -HigherPolynomialBands` on the same pinned checkout. Pass the resulting `.lake/super-zeta-higher-polynomial-bands/lib` directory to `replay-hecke-seven-eighths.ps1 -Discriminant23Imports` along with the inputs above. [Lean output and axiom audit](discriminant23-seven-eighths-replay-and-axioms.txt)
 
+### Move the discriminant-23 Taylor center
+
+If I expand the logarithmic Mellin model at $c$, I keep both exponential phases at $c$ inside the coefficient integrals. Take $\Re c,\Re w\in[0,1]$ and $L\ge0$. If $r$ bounds $|w-c|$ and $Lr/(n+1)\le1/2$, then Lean bounds the extra Taylor error for the value by $4LM(Lr)^n/n!$, where $M$ is the number of retained terms in the two norm sums. For the derivative I multiply this allowance by $L$. If the norm cutoff $N$ and the positive error order $k$ satisfy $18k+9\le13(N+1)$, I add the existing norm and radial truncation error to each allowance. The same estimate holds for any imaginary parts of $c$ and $w$ satisfying the local radius condition. [Two exponential phases](CenteredFoldedMellin.lean) · [Actual character value and derivative](DedekindDiscriminant23CenteredModel.lean)
+
+If a mesh cell excludes zeros, I add zero to the count. If the real values on the critical line have opposite endpoint signs, the imaginary derivative has the signed margin throughout the core, and the outside rectangles exclude zeros, then Lean adds one simple on-line zero and its reflection. The mesh theorem adds these increments to the earlier full and on-line counts. [Mesh theorem](ComplexStripCrossingMesh.lean)
+
+The Arb replay used a height step of $1/16$, $64$ as the maximum norm, and $36$ Taylor terms per cell. It cleared $496$ closed boxes and found eight simple positive-height zeros between $19/2$ and $20$. I repeated it at two precisions. If I supply the inequalities as `Discriminant23TwentyBandConditions`, Lean gives both character counts as $22$ through $|\Im w|\le20$. The field factorization adds $44$ to the respective counts of the quadratic base. If I also supply the modulo-23 Dirichlet critical-line theorem, then the sextic’s remaining test is $1/2<\Re w\le7/8$ and $\Im w>20$. Arb currently supplies the numerical inequalities outside Lean. [Exact Lean premises and conclusions](DedekindDiscriminant23TwentyBand.lean) · [Lean output and axioms](discriminant23-centered-replay-and-axioms.txt)
+
+The run from $20$ to $40$ clears another $1210$ boxes and finds twenty more simple positive-height zeros. Both precisions give the same brackets. Together the two bands and the checked count through $19/2$ give $62$ character zeros through $|\Im w|\le40$, all on the line, with the new box inequalities checked by Arb. The point replay also gives a positive reading at $1/2+972.2i$ with its truncation error included. [Exact brackets and timing output](discriminant23-centered-interval-replay.txt)
+
+With Python and `python-flint==0.9.0`, run these commands from this directory.
+
+```text
+python check_discriminant23_centered.py --band 19/2 20 --step 1/16
+python check_discriminant23_centered.py --digits 48 --band 19/2 20 --step 1/16
+python check_discriminant23_centered.py --digits 48 --cutoff 128 --end 5 --order 92 --degree 48 --step 1/16 --band 20 40
+python check_discriminant23_centered.py --digits 64 --cutoff 128 --end 5 --order 92 --degree 48 --step 1/16 --band 20 40
+python check_discriminant23_centered.py --digits 672 --cutoff 1641 --end 12 --order 1185 4861/5
+```
+
+The `-HigherPolynomialBands` and `-Discriminant23Imports` replays above include the centered model and mesh theorems.
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)

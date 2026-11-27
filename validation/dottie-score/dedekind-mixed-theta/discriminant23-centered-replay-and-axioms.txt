@@ -1,0 +1,78 @@
+Centered discriminant-23 sources compiled with -DwarningAsError=true.
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Hu solution object SHA-256 281C366E32DFE006A005F636CD25C5DAF52A06A9138202E4D6DCAE60D7125905
+The independent replay used the same five source blobs and matched all 13 axiom reports.
+The interval box inequalities remain explicit theorem hypotheses.
+
+Super Zeta source CenteredFoldedMellin a6e72e19d6c35cbc82037491b8df33d6dce5856b
+'FieldTarget.centeredFoldedMellin_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+CenteredFoldedMellin exit=0
+
+Super Zeta source DedekindDiscriminant23AdaptivePhase 7d95d65011dbd00549606b856f633c9715eb77be
+@discriminant23_exists_uniform_phaseApproximation : ∀ {ε : ℝ},
+  0 < ε →
+    ∃ N L depth,
+      ∀ (w : ℂ),
+        0 ≤ w.re →
+          w.re ≤ 1 →
+            ‖discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo N L depth false w‖ < ε ∧
+              ‖deriv discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo N L depth true w‖ < ε
+'FieldTarget.discriminant23_phaseTaylorUpTo_eq_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_phaseTaylor_error_at_64_4_96' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_phaseTaylorUpTo_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_exists_uniform_phaseApproximation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_phaseDensity_real_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23AdaptivePhase exit=0
+
+Super Zeta source DedekindDiscriminant23CenteredModel 5eeb0ecc745db30fe5f54c513adb221fc55fc2e8
+@discriminant23_centeredTaylor_error_le : ∀ {N order : ℕ} {L r : ℝ} (slope : Bool) (n : ℕ),
+  0 < order →
+    18 * order + 9 ≤ 13 * (N + 1) →
+      0 ≤ L →
+        L * r / ↑(n + 1) ≤ 1 / 2 →
+          ∀ {c w : ℂ},
+            c.re ∈ Icc 0 1 →
+              w.re ∈ Icc 0 1 →
+                ‖w - c‖ ≤ r →
+                  ‖(if slope = true then deriv discriminant23CharacterFold w else discriminant23CharacterFold w) -
+                        discriminant23CenteredTaylor N L slope c n w‖ ≤
+                    discriminant23CenteredTaylorError N order L r slope n
+'FieldTarget.discriminant23_centeredTaylor_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23CenteredModel exit=0
+
+Super Zeta source ComplexStripCrossingMesh 61dc05fa9fdfaa138fd0f565f7da88f9e6f5ae06
+'FieldTarget.NonzeroEntireFunction.hasStripZeroIncrement_of_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.NonzeroEntireFunction.hasStripZeroIncrement_of_signed_crossing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.NonzeroEntireFunction.hasStripZeroIncrement_of_mesh' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ComplexStripCrossingMesh exit=0
+
+Super Zeta source DedekindDiscriminant23TwentyBand 7a25e796d991387a707a12181c432cd42dbbf3a7
+FieldTarget.Discriminant23TwentyBandConditions : Prop
+discriminant23_character_counts_at_twenty_of_band_conditions : Discriminant23TwentyBandConditions →
+  (discriminant23CharacterCountingFunction.stripZeroCount 20 fun x => True) = 22 ∧
+    (discriminant23CharacterCountingFunction.stripZeroCount 20 fun w => w.re = 1 / 2) = 22
+discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  Discriminant23TwentyBandConditions →
+    (DedekindZetaRH Discriminant23GaloisField ↔
+      ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → 20 < w.im → discriminant23CharacterFold w ≠ 0)
+'FieldTarget.discriminant23_character_counts_at_twenty_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_field_counts_at_twenty_add_forty_four_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23TwentyBand exit=0

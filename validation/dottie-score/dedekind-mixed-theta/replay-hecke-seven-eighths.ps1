@@ -74,6 +74,8 @@ try {
     if ($characterImports.Count -gt 0) {
         $modules.Add('DedekindDiscriminant23SevenEighths', 2)
         $modules.Add('DedekindDiscriminant23TaylorRadiusCeiling', 1)
+        $modules.Add('ComplexStripCrossingMesh', 3)
+        $modules.Add('DedekindDiscriminant23TwentyBand', 3)
     }
     foreach ($name in $modules.Keys) {
         if ($name -eq 'DedekindDiscriminant23SevenEighths') {
