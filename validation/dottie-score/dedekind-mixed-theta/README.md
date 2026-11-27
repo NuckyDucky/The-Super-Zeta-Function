@@ -131,3 +131,25 @@ Run the replay with the same pinned checkout and toolchain used above. The right
 pwsh ./validation/dottie-score/dedekind-mixed-theta/replay.ps1 `
   -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -RightEdge
 ~~~
+
+## Cyclotomic zeros at the same input
+
+For the Gaussian field, the checked Euler product gives the exact continuation $\zeta_{\mathbb Q(i)}(w)=\zeta(w)L(w,\chi_4)$ at every $w\ne1$. Its strip-zero statement is equivalent to the two corresponding statements for zeta and beta. The `-SampledContours` replay includes this Gaussian continuation. [Gaussian theorem](DedekindGaussianContinuation.lean)
+
+For a positive modulus $m$, put $K=\mathbb Q(\zeta_m)$. At a rational prime $p\nmid m$, the residue degrees and the order of $p$ in $(\mathbb Z/m\mathbb Z)^\times$ give the same Euler denominator as the product over the characters modulo $m$. At $p\mid m$, all those characters vanish at $p$. I collect the actual denominators above these finitely many primes into $B_m(w)$. [Local denominator identity](DedekindCyclotomicLocalEuler.lean)
+
+If $Z$ is any Dedekind continuation for $K$, Lean proves
+$$
+B_m(w)Z(w)=\prod_{\chi\bmod m}L(w,\chi)
+\qquad(w\ne1).
+$$
+The factor $B_m(w)$ is nonzero when $\Re w>0$. Every prime contribution has $|p^{-w}|<1$ there, and its residue degree is positive. Thus a zero in the open strip occurs at the same input as a zero of at least one Dirichlet factor. The two strip-zero statements are equivalent. [Continuation and zero theorem](DedekindCyclotomicContinuation.lean)
+
+If a field is supplied with a rational embedding into $K$, the entire abelian zeta quotient takes a zero of the embedded field to a zero of $K$ at that same $w$. Lean therefore proves Dedekind RH for the field from the strip-zero statements for the characters modulo $m$. The embedding and the Dirichlet statement are the explicit inputs. [Embedding theorem](DedekindCyclotomicSubfields.lean) · [Exact Lean types and axioms](cyclotomic-replay-and-axioms.txt)
+
+Use the original pinned AxiomMath checkout and Lean toolchain for this replay.
+
+~~~powershell
+pwsh ./validation/dottie-score/dedekind-mixed-theta/replay.ps1 `
+  -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -Cyclotomic
+~~~
