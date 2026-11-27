@@ -1,0 +1,10 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindGaussianPrimeDegrees source eda85d4c60672c53be99e02272fa384256757dc0
+gaussianQuadratic_primesOver_odd : ∀ (p : ℕ) [Fact (Nat.Prime p)],
+  p ≠ 2 → ((span {↑p}).primesOver (𝓞 GaussianQuadraticField)).ncard = if p % 4 = 1 then 2 else 1
+'FieldTarget.gaussianQuadratic_primesOver_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadratic_inertiaDegIn_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadratic_oddPrime_inertiaDegIn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianQuadratic_primesOver_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindGaussianPrimeDegrees exit=0

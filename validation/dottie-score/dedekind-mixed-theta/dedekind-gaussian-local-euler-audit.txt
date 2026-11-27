@@ -1,0 +1,8 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath source 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+DedekindGaussianLocalEuler source ef421d6e8e070615842aba9199009633fb42e5c1
+gaussianQuadratic_localEuler_denominator : ∀ (p : ℕ) [Fact (Nat.Prime p)] (z : ℂ),
+  ∏ P ∈ IsDedekindDomain.primesOverFinset (span {↑p}) (𝓞 GaussianQuadraticField), (1 - z ^ P.inertiaDeg ℤ) =
+    (1 - z) * (1 - gaussianQuadraticChar ↑p * z)
+'FieldTarget.gaussianQuadratic_localEuler_denominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindGaussianLocalEuler exit=0
