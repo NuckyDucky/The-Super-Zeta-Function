@@ -387,6 +387,14 @@ The kernel checks 487 rectangles over 168 height cells from $19/2$ through $20$.
 
 If I supply the Dirichlet critical-line statement modulo $23$, then RH for this splitting field is equivalent to nonvanishing of the character for $1/2<\Re w\le7/8$ and $\Im w>20$. To replay the exact count, use `replay-discriminant23.ps1 -GaussTwentyEndpoints` followed by `replay-hecke-seven-eighths.ps1 -Discriminant23TwentyCount` with the pinned inputs above. [Replay script](replay-hecke-seven-eighths.ps1)
 
+### Exact character and field counts through height $447/16$
+
+I keep the same 384 nodes. If I use outer radius $3/4$ for the Taylor tail and inner radius $1/4$ for the quadrature moments, then the moment errors of at most $10^{-30}$ give a value and slope error below $5\cdot10^{-23}$ through height $28$. If I take the 36-term reading on the right of the line through $\Re w=7/8$, the total error is below $10^{-22}$. [Two-radius rule](RationalPanelQuadrature.lean) · [Exact moment table](Gauss24PanelTable.lean) · [Height-dependent error](DedekindDiscriminant23GaussQuadrature.lean) · [Centered error](DedekindDiscriminant23GaussCentered.lean)
+
+I check 193 rectangles over 126 height cells from $20$ through $447/16$. I join the two cells around $109/4$ into one crossing bracket. If I apply the same-height reflection and the existing bound for $\Re w>7/8$, the right-hand checks give seven new simple zeros at positive height and seven reflected partners. The complete and critical-line character counts are both $36$ through $|\Im w|\le447/16$. Each splitting-field count equals its corresponding quadratic-base count plus $72$. [Reflection](Gauss23StripReflection.lean) · [Cover and sign checks](Gauss23RightMesh.lean) · [Count theorems](DedekindDiscriminant23RightBandCount.lean)
+
+If I supply the Dirichlet critical-line statement modulo $23$, Dedekind RH for the splitting field is equivalent to nonvanishing of the character for $1/2<\Re w\le7/8$ and $\Im w>447/16$. Replay with `replay-discriminant23.ps1 -GaussTwentyEndpoints` followed by `replay-hecke-seven-eighths.ps1 -Discriminant23RightBandCount` using the pinned inputs above. [Replay script](replay-hecke-seven-eighths.ps1) · [Exact Lean output](discriminant23-right-band-count-audit.txt)
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)

@@ -60,7 +60,7 @@ private def gauss24MomentNumerator (k : ℕ) : ℤ :=
 set_option maxRecDepth 4096 in
 set_option maxHeartbeats 4000000 in
 private theorem moments_checked : ∀ k : Fin 48,
-    |gauss24MomentNumerator k.val| * 10 ^ 28 ≤
+    |gauss24MomentNumerator k.val| * 10 ^ 30 ≤
       ((k.val : ℤ) + 1) * gauss24Denominator ^ (k.val + 1) := by
   decide +kernel
 
@@ -85,12 +85,12 @@ theorem gauss24_weight_abs_sum_le : (∑ i : Fin 24, |(gauss24Weight i : ℝ)|) 
   rw [← Finset.sum_div]
   exact (div_le_iff₀ hd).mpr (by exact_mod_cast weights_sum)
 
-theorem gauss24_moment_error {k : ℕ} (hk : k < 48) :
+theorem gauss24_moment_error_tight {k : ℕ} (hk : k < 48) :
     |(panelMoment k : ℝ) - ∑ i : Fin 24, (gauss24Weight i : ℝ) * (gauss24Node i : ℝ) ^ k| ≤
-      1 / 10 ^ 28 := by
+      1 / 10 ^ 30 := by
   have hd : (0 : ℝ) < (gauss24Denominator : ℝ) := by exact_mod_cast den_pos
   have hk' : (0 : ℝ) < (k : ℝ) + 1 := by positivity
-  have hx : |(gauss24MomentNumerator k : ℝ)| * 10 ^ 28 ≤
+  have hx : |(gauss24MomentNumerator k : ℝ)| * 10 ^ 30 ≤
       ((k : ℝ) + 1) * (gauss24Denominator : ℝ) ^ (k + 1) := by
     exact_mod_cast moments_checked ⟨k, hk⟩
   have hpositive : 0 < ((k : ℝ) + 1) * (gauss24Denominator : ℝ) ^ (k + 1) := by positivity
@@ -103,11 +103,17 @@ theorem gauss24_moment_error {k : ℕ} (hk : k < 48) :
     rw [← Finset.sum_div]
     field_simp [hd.ne', hk'.ne', pow_succ]
   rw [hre, abs_div, abs_of_pos hpositive]
-  apply (div_le_div_iff₀ hpositive (by positivity : (0 : ℝ) < 10 ^ 28)).mpr
+  apply (div_le_div_iff₀ hpositive (by positivity : (0 : ℝ) < 10 ^ 30)).mpr
   simpa only [one_mul] using hx
+
+theorem gauss24_moment_error {k : ℕ} (hk : k < 48) :
+    |(panelMoment k : ℝ) - ∑ i : Fin 24, (gauss24Weight i : ℝ) * (gauss24Node i : ℝ) ^ k| ≤
+      1 / 10 ^ 28 :=
+  (gauss24_moment_error_tight hk).trans (by norm_num)
 
 #print axioms gauss24_node_abs_le
 #print axioms gauss24_weight_abs_sum_le
+#print axioms gauss24_moment_error_tight
 #print axioms gauss24_moment_error
 
 end FieldTarget
