@@ -29,7 +29,31 @@ I take 49 Taylor coefficients of $-i/P$ about $c$ and round them to get $W$. If 
 
 If those bounds hold, the sign budget clears $3/5$, and Lean gives the conclusion for every $w$ in the closed measuring disk. The interval replay gives a lower margin above $0.6095$ at both tested precisions, with the same rational witness. The Lean theorem keeps the three analytic enclosure inputs explicit. [Lean theorem with exact polynomials](DedekindDiscriminant23Height29Polynomials.lean) · [Lean output and axioms](weighted-dottie-height29-replay-and-axioms.txt) · [Interval output](discriminant23-height29-interval-replay.txt)
 
-Run the pinned [Lean replay](README.md#replay-the-seven-eighths-proof) with `-Discriminant23Height29Dottie`. From this directory, run the interval checker with the pinned Flint version. The optional witness argument writes the coefficients in powers of $w-c$.
+## Check the whole disk directly
+
+If I use the same $P$ and $W$ on the radius-$63/256$ disk, Lean checks $\|WP+i\|\le29/50$. I clear the denominator $2^{288}$ and compute the product in Gaussian integers. Each output coefficient is checked in a block of eight with `decide +kernel`. The sum of the integer square-root ceilings, weighted by the radius powers, gives the bound everywhere on the disk. [Gaussian polynomial rules](DottieGaussianPolynomial.lean) · [Exact convolution and bound](DedekindDiscriminant23Height29ExactBounds.lean)
+
+If $h_E$ supplies $\|F-P\|\le2/10^{68}$ on that same closed disk, then
+
+$$
+\|WF+i\|
+\le\|WP+i\|+\|W\|\,\|F-P\|
+\le\frac{29}{50}+(3\cdot10^{58})\frac{2}{10^{68}}
+\le\frac35.
+$$
+
+If $F(w)=0$, the left side is $1$. Lean gives nonvanishing of the field's Dedekind zeta at every $w$ in the radius-$63/256$ disk. The pointwise inequality removes the contour mesh. The model error $h_E$ is the one enclosure supplied by the Arb replay. Lean also checks the model norm budget from the same coefficients. [Dedekind theorem](DedekindDiscriminant23Height29ExactBounds.lean) · [Lean output and axioms](height29-exact-bounds-replay-and-axioms.txt) · [Interval output](discriminant23-height29-interval-replay.txt)
+
+If either the base Dedekind zeta or the completed Hecke factor vanishes at $w$, then the product for $H$ vanishes at $w$. The same enclosure proves both factors nonzero on this disk. [Same-input factorization](DedekindDiscriminant23DottieReading.lean) · [Factor nonvanishing](DedekindDiscriminant23Height29ExactBounds.lean)
+
+Run the pinned [Lean replay](README.md#replay-the-seven-eighths-proof) with `-Discriminant23Height29Dottie`. Then run [the exact-bounds replay](replay-height29-exact-bounds.ps1) with the same imports and the compiled output of that replay. Supply the import directories through `-Imports` or the current `LEAN_PATH`.
+
+~~~powershell
+$imports = @('<height-29-replay-library>', '<other-pinned-import-directories>')
+& ./replay-height29-exact-bounds.ps1 -Lean '<pinned-lean-binary>' -OutputDirectory '<output>' -Imports $imports
+~~~
+
+From this directory, run the interval checker with the pinned Flint version. The optional witness argument writes the coefficients in powers of $w-c$.
 
 ```text
 uv run --with python-flint==0.9.0 python check-discriminant23-height29-weighted.py
