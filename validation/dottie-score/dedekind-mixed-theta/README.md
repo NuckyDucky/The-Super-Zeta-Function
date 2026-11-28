@@ -351,6 +351,16 @@ python check_discriminant23_centered.py --digits 672 --cutoff 1641 --end 12 --or
 
 The `-HigherPolynomialBands` and `-Discriminant23Imports` replays above include the centered model and mesh theorems.
 
+### Bound the quadrature error through height 20
+
+I split the logarithmic Mellin integral from $0$ through $4$ into 16 panels and use 24 rational nodes per panel. Lean checks the error of each moment of degree $0$ through $47$ against $10^{-28}$. If $0\le\Re w\le1$ and $|\Im w|\le20$, then Lean bounds the error of the 384-node sum by strictly less than $2\cdot10^{-19}$, for the completed character value and for its derivative. [Rational rule](RationalPanelQuadrature.lean) · [Checked moment table](Gauss24PanelTable.lean) · [Character error theorem](DedekindDiscriminant23GaussQuadrature.lean)
+
+If I give a rational height $t=m/d$ with $d>0$ and the 384 reduced-phase checks pass, then Lean encloses the real part of the finite reading at $w=1/2+it$. If the integer interval also clears the analytic error budget, then the actual character reading has that sign. [Theta amplitudes](DedekindDiscriminant23GaussIntervals.lean) · [Finite sum](DedekindDiscriminant23GaussPoint.lean) · [Signed endpoint test](DedekindDiscriminant23GaussEndpoint.lean)
+
+If I give one critical-line zero inside each of several disjoint positive-height brackets, then reflection adds at least two zeros per bracket to the existing symmetric count. The exact height-20 count still takes the full-strip and crossing-box inequalities in `Discriminant23TwentyBandConditions`. [Lower count](ComplexStripBracketLowerCount.lean) · [Height-20 premises](DedekindDiscriminant23TwentyBand.lean)
+
+Replay these modules with `replay-discriminant23.ps1 -HigherPolynomialBands`. [Lean output and axiom reports](discriminant23-gauss-replay-and-axioms.txt)
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)

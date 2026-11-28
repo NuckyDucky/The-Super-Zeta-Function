@@ -194,6 +194,13 @@ if ($HigherPolynomialBands) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23PrecisionBudget.lean')
         (Join-Path $PSScriptRoot 'CenteredFoldedMellin.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23CenteredModel.lean')
+        (Join-Path $PSScriptRoot 'RationalPanelQuadrature.lean')
+        (Join-Path $PSScriptRoot 'Gauss24PanelTable.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussQuadrature.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussIntervals.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussPoint.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussEndpoint.lean')
+        (Join-Path $PSScriptRoot 'ComplexStripBracketLowerCount.lean')
     )
 }
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'

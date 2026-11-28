@@ -1,0 +1,131 @@
+Discriminant -23 rational Gauss quadrature source replay
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Targeted source builds against the pinned character and strip dependencies.
+Options: -j1 -M7500 -DwarningAsError=true
+
+Source RationalPanelQuadrature 9f52e6e9ffdf0733c01c4de21c1b2139b226d4d9
+'FieldTarget.rationalPanelRule_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rationalCompositeRule_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+RationalPanelQuadrature exit=0
+
+Source DedekindDiscriminant23AdaptivePhase e21f1525b775d091c598790b1c49024dc21364bc
+@discriminant23_exists_uniform_phaseApproximation : ∀ {ε : ℝ},
+  0 < ε →
+    ∃ N L depth,
+      ∀ (w : ℂ),
+        0 ≤ w.re →
+          w.re ≤ 1 →
+            ‖discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo N L depth false w‖ < ε ∧
+              ‖deriv discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo N L depth true w‖ < ε
+'FieldTarget.discriminant23_phaseTaylorUpTo_eq_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_phaseTaylor_error_at_64_4_96' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_phaseTaylorUpTo_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_exists_uniform_phaseApproximation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_phaseDensity_real_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_phaseDensity_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_modelError_at_64_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23AdaptivePhase exit=0
+
+Source Gauss24PanelTable 459e95fb962e61b216b74da7f7950bd671b1b963
+'FieldTarget.gauss24_node_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss24_weight_abs_sum_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss24_moment_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss24PanelTable exit=0
+
+Source DedekindDiscriminant23GaussQuadrature d632d7e9ba0513706f8c50b247bd81f45476436c
+'FieldTarget.discriminant23_gaussReading_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23GaussQuadrature exit=0
+
+Source DedekindDiscriminant23GaussIntervals 9c04b5e072906b65147273aef0d36b6d8d9a4d79
+'FieldTarget.discriminant23_tightThetaScaleBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_amplitudeBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23GaussIntervals exit=0
+
+Source DedekindDiscriminant23GaussPoint 048e48de505397452e46e25d87b47bdf08570226
+'FieldTarget.gauss23_criticalReading_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_valueBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_criticalValueBox_eq_sums' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23GaussPoint exit=0
+
+Source DedekindDiscriminant23GaussEndpoint c5c1fc47de3721ee60bbe3548fb59a8cf25b1738
+'FieldTarget.gauss23_critical_sign_of_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23GaussEndpoint exit=0
+
+Source ComplexStripBracketLowerCount a1153cbfdde7e1559aad3dba7ea4683cda19c345
+'FieldTarget.NonzeroEntireFunction.stripZeroCount_ge_of_disjoint_brackets' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ComplexStripBracketLowerCount exit=0
+
+Lean declaration types
+@rationalPanelRule_error_le : ∀ {m : ℕ} (nodes weights : Fin m → ℚ) {F : ℂ → ℂ} {c h M δ W : ℝ} {R : NNReal} (n : ℕ),
+  0 ≤ h →
+    h < ↑R →
+      0 ≤ δ →
+        (∀ (i : Fin m), |↑(nodes i)| ≤ 1) →
+          ∑ i, |↑(weights i)| ≤ W →
+            (∀ k < n, |↑(panelMoment k) - ∑ i, ↑(weights i) * ↑(nodes i) ^ k| ≤ δ) →
+              DifferentiableOn ℂ F (Metric.closedBall ↑c ↑R) →
+                (∀ z ∈ Metric.sphere ↑c ↑R, ‖F z‖ ≤ M) →
+                  ‖(∫ (x : ℝ) in c - h..c + h, F ↑x) - rationalPanelRule nodes weights (fun x => F ↑x) c h‖ ≤
+                    h * M / (1 - h / ↑R) * ((2 + W) * (h / ↑R) ^ n + δ)
+@rationalCompositeRule_error_le : ∀ {m : ℕ} (nodes weights : Fin m → ℚ) {F : ℂ → ℂ} {a h M δ W : ℝ} {R : NNReal}
+  (n p : ℕ),
+  0 ≤ h →
+    h < ↑R →
+      0 ≤ δ →
+        (∀ (i : Fin m), |↑(nodes i)| ≤ 1) →
+          ∑ i, |↑(weights i)| ≤ W →
+            (∀ k < n, |↑(panelMoment k) - ∑ i, ↑(weights i) * ↑(nodes i) ^ k| ≤ δ) →
+              Differentiable ℂ F →
+                (∀ c ∈ Set.Icc a (a + 2 * ↑p * h), ∀ z ∈ Metric.sphere ↑c ↑R, ‖F z‖ ≤ M) →
+                  ‖(∫ (x : ℝ) in a..a + 2 * ↑p * h, F ↑x) - rationalCompositeRule nodes weights (fun x => F ↑x) a h p‖ ≤
+                    ↑p * (h * M / (1 - h / ↑R) * ((2 + W) * (h / ↑R) ^ n + δ))
+@gauss24_moment_error : ∀ {k : ℕ},
+  k < 48 → |↑(panelMoment k) - ∑ i, ↑(gauss24Weight i) * ↑(gauss24Node i) ^ k| ≤ 1 / 10 ^ 28
+discriminant23_gaussReading_error : ∀ (slope : Bool) {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      |w.im| ≤ 20 →
+        ‖(if slope = true then deriv discriminant23CharacterFold w else discriminant23CharacterFold w) -
+              discriminant23GaussReading slope w‖ <
+          2 / 10 ^ 19
+gauss23_amplitudeBox_contains : ∀ (j : Fin 16) (i : Fin 24),
+  DottieOriented.NativeSpectrum.MellinFixed.Contains (gauss23AmplitudeBox j i) (gauss23Amplitude j i)
+gauss23_criticalReading_eq_sum : ∀ (t : ℝ),
+  (discriminant23GaussReading false (gauss23CriticalPoint t)).re = gauss23CriticalFiniteSum t
+gauss23_valueBox_contains : ∀ (m : ℤ) {d : ℤ},
+  0 < d →
+    (∀ (j : Fin 16) (i : Fin 24), gauss23PhaseCheck m d j i = true) →
+      DottieOriented.NativeSpectrum.MellinFixed.Contains (gauss23CriticalValueBox m d)
+        (gauss23CriticalFiniteSum (↑m / ↑d))
+gauss23_criticalValueBox_eq_sums : ∀ (m d : ℤ),
+  gauss23CriticalValueBox m d =
+    { lo := ∑ j ∈ Finset.range 16, (gauss23CriticalPanelBox m d j).lo,
+      hi := ∑ j ∈ Finset.range 16, (gauss23CriticalPanelBox m d j).hi }
+gauss23_critical_sign_of_check : ∀ (m : ℤ) {d : ℤ},
+  0 < d →
+    ∀ (positive : Bool),
+      |↑m / ↑d| ≤ 20 →
+        (∀ (j : Fin 16) (i : Fin 24), gauss23PhaseCheck m d j i = true) →
+          gauss23ClearsError m d positive →
+            if positive = true then 0 < (discriminant23CharacterFold (gauss23CriticalPoint (↑m / ↑d))).re
+            else (discriminant23CharacterFold (gauss23CriticalPoint (↑m / ↑d))).re < 0
+@NonzeroEntireFunction.stripZeroCount_ge_of_disjoint_brackets : ∀ {ι : Type u_1} [inst : Fintype ι]
+  (F : NonzeroEntireFunction) {T U : ℝ},
+  0 ≤ T →
+    T ≤ U →
+      ∀ (a b : ι → ℝ),
+        (∀ (i : ι), T ≤ a i) →
+          (∀ (i : ι), b i ≤ U) →
+            (Pairwise fun i j => Disjoint (Set.Ioo (a i) (b i)) (Set.Ioo (a j) (b j))) →
+              (∀ (i : ι), ∃ t ∈ Set.Ioo (a i) (b i), F.toFun { re := 1 / 2, im := t } = 0) →
+                (∀ (w : ℂ), F.toFun (1 - w) = F.toFun w) →
+                  ∀ (P : ℂ → Prop),
+                    (∀ (w : ℂ), w.re = 1 / 2 → P w) → F.stripZeroCount T P + 2 * Fintype.card ι ≤ F.stripZeroCount U P
+
+Axiom reports: 20
