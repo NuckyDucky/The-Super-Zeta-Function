@@ -357,7 +357,7 @@ I split the logarithmic Mellin integral from $0$ through $4$ into 16 panels and 
 
 If I give a rational height $t=m/d$ with $d>0$ and the 384 reduced-phase checks pass, then Lean encloses the real part of the finite reading at $w=1/2+it$. If the integer interval also clears the analytic error budget, then the actual character reading has that sign. [Theta amplitudes](DedekindDiscriminant23GaussIntervals.lean) · [Finite sum](DedekindDiscriminant23GaussPoint.lean) · [Signed endpoint test](DedekindDiscriminant23GaussEndpoint.lean)
 
-If I give one critical-line zero inside each of several disjoint positive-height brackets, then reflection adds at least two zeros per bracket to the existing symmetric count. The exact height-20 count still takes the full-strip and crossing-box inequalities in `Discriminant23TwentyBandConditions`. [Lower count](ComplexStripBracketLowerCount.lean) · [Height-20 premises](DedekindDiscriminant23TwentyBand.lean)
+If I give one critical-line zero inside each of several disjoint positive-height brackets, then reflection adds at least two zeros per bracket to the existing symmetric count. The height-20 assembly uses the full-strip and crossing-box inequalities in `Discriminant23TwentyBandConditions`. [Lower count](ComplexStripBracketLowerCount.lean) · [Height-20 premises](DedekindDiscriminant23TwentyBand.lean)
 
 Replay these modules with `replay-discriminant23.ps1 -HigherPolynomialBands`. [Lean output and axiom reports](discriminant23-gauss-replay-and-axioms.txt)
 
@@ -371,11 +371,21 @@ If I reflect the new zero to negative height, both character counts through $|\I
 
 ### All eight crossings through height 20
 
-I check all sixteen marked endpoints on the $1/16$ height mesh. If I apply continuity in each disjoint bracket and reflect the positive heights, Lean gives at least $22$ for both character counts. Both splitting-field counts are at least their corresponding quadratic-base count plus $44$. If I supply a total character count of at most $22$, then both character counts equal $22$. Replay the endpoint checks with `replay-discriminant23.ps1 -GaussTwentyEndpoints`. [Endpoint signs and counts](DedekindDiscriminant23TwentyEndpointCertificate.lean) · [Lean output and axiom reports](discriminant23-gauss-height-twenty-audit.txt)
+I check all sixteen marked endpoints on the $1/16$ height mesh. If I apply continuity in each disjoint bracket and reflect the positive heights, Lean gives at least $22$ for both character counts. Both splitting-field counts are at least their corresponding quadratic-base count plus $44$. A total character count of at most $22$ suffices to give equality in both character counts. Replay the endpoint checks with `replay-discriminant23.ps1 -GaussTwentyEndpoints`. [Endpoint signs and counts](DedekindDiscriminant23TwentyEndpointCertificate.lean) · [Lean output and axiom reports](discriminant23-gauss-height-twenty-audit.txt)
 
 If I use any critical-line center $1/2+it$ with $|\Im w-t|\le1/2$, the 36-term polynomial has error below $3\cdot10^{-19}$ for the actual value or derivative on $0\le\Re w\le1$, $|\Im w|\le20$. Lean checks the 384 stored heat-amplitude intervals for reuse at every center. I can translate the polynomial inside each rectangle using the same coefficient boxes. If the directed real or imaginary interval clears the error allowance, then Lean gives that sign throughout the rectangle. [Taylor error](DedekindDiscriminant23GaussCentered.lean) · [Amplitude table](Gauss23AmplitudeCache.lean) · [Translated polynomial](Gauss23CoefficientIntervals.lean) · [Sign theorem](Gauss23CellSigns.lean)
 
-I use integer-height centers $10$ through $20$ and translate the polynomial to each rectangle's midpoint. At both 48 and 64 digits, Arb clears $480$ rectangles, including the signed slope and confinement checks around the eight crossings. If I supply these rectangle inequalities in Lean, `Discriminant23TwentyCellConditions` and the checked endpoint signs give the exact count. [Arb replay](check_discriminant23_gauss_cells.py) · [Rectangle obligations](DedekindDiscriminant23TwentyBand.lean)
+I use integer-height centers $10$ through $20$ and translate the polynomial to each rectangle's midpoint. At both 48 and 64 digits, Arb clears $480$ rectangles, including the signed slope and confinement checks around the eight crossings. The rectangle conditions and the checked endpoint signs give the exact count through the assembly theorem. [Arb replay](check_discriminant23_gauss_cells.py) · [Rectangle obligations](DedekindDiscriminant23TwentyBand.lean)
+
+### Exact character and field counts through height 20
+
+If I combine the checked endpoint signs with the full rectangle cover, Lean gives exactly $22$ character zeros with multiplicity through $|\Im w|\le20$. Every one has $\Re w=1/2$. Both splitting-field counts equal their corresponding quadratic-base counts plus $44$. [Exact count and factorization theorems](DedekindDiscriminant23TwentyCount.lean)
+
+I use the phase at unit height for each of the 384 nodes. Raising that phase to the anchor height gives enclosures for the eleven coefficient tables. If I move one place along the value coefficients and multiply by the degree, I get the derivative coefficient. I evaluate the constant and linear terms at each rectangle's midpoint and enclose the rest with the quadratic term. [Shared coefficients](Gauss23SharedCoefficients.lean) · [Midpoint Horner theorem](Gauss23CenteredHorner.lean)
+
+The kernel checks 487 rectangles over 168 height cells from $19/2$ through $20$. On an unmarked cell one signed coordinate excludes zero. On a marked cell the signed imaginary derivative holds in the middle, and the two exterior covers confine every zero to that middle rectangle. Lean checks both children cover the split edge. [Cell and grid proofs](Gauss23TwentyCell.lean) · [Lean output and axiom reports](discriminant23-height-twenty-count-audit.txt)
+
+If I supply the Dirichlet critical-line statement modulo $23$, then RH for this splitting field is equivalent to nonvanishing of the character for $1/2<\Re w\le7/8$ and $\Im w>20$. To replay the exact count, use `replay-discriminant23.ps1 -GaussTwentyEndpoints` followed by `replay-hecke-seven-eighths.ps1 -Discriminant23TwentyCount` with the pinned inputs above. [Replay script](replay-hecke-seven-eighths.ps1)
 
 ## Extend an existing count for any number field
 

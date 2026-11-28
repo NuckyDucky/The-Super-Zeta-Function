@@ -1,0 +1,187 @@
+Discriminant-23 exact count through height 20
+Lean 4.35.0-rc3 470d5ce1400764999581fd26d5d72b00d990b0f4
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Targeted source replay used pinned built imports, one worker, and warnings as errors.
+The rectangle decisions use decide +kernel. There are 168 cells, eight crossings, and 487 closed rectangles.
+
+DedekindDiscriminant23TwentyBand source Git blob 0fb43def1829b125fa54034b373265af2310a8e0
+FieldTarget.Discriminant23TwentyBandConditions : Prop
+discriminant23_character_counts_at_twenty_of_band_conditions : Discriminant23TwentyBandConditions →
+  (discriminant23CharacterCountingFunction.stripZeroCount 20 fun x => True) = 22 ∧
+    (discriminant23CharacterCountingFunction.stripZeroCount 20 fun w => w.re = 1 / 2) = 22
+discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  Discriminant23TwentyBandConditions →
+    (DedekindZetaRH Discriminant23GaloisField ↔
+      ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → 20 < w.im → discriminant23CharacterFold w ≠ 0)
+'FieldTarget.discriminant23_twentyBandConditions_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_counts_at_twenty_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_field_counts_at_twenty_add_forty_four_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23TwentyBand exit=0
+
+Gauss23SharedCoefficients source Git blob 3626d55d23248ff2924ad1f88ef3572f179a7b01
+'FieldTarget.gauss23_unitPhaseBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_integerWeightBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_sharedValueCoefficient_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_sharedCoefficient_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23SharedCoefficients exit=0
+
+Gauss23UnitPhaseTable source Git blob 29000af1e26becf292b9c60739d6c0fc1fe1679c
+'FieldTarget.gauss23_cachedUnitPhase_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_cachedUnitPhase_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23UnitPhaseTable exit=0
+
+Gauss23CoefficientTable source Git blob f0ab1ce6b481739f772379a5dffcf4330d61df26
+'FieldTarget.gauss23_tableValue_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23CoefficientTable exit=0
+
+Gauss23CenteredHorner source Git blob 9276b2245f9fb4ab4c9e4742747cbd78ac6a2ee0
+'DottieOriented.NativeSpectrum.MellinFixed.ComplexBox.centeredHorner_contains' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Gauss23CenteredHorner exit=0
+
+Gauss23RectangleCover source Git blob d382e596ed43e5d49dc646b7907bbf1a7c1a74fd
+'FieldTarget.Gauss23Rectangle.polynomialBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.Gauss23Cover.sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23RectangleCover exit=0
+
+Gauss23TwentyCell source Git blob 7c387a05ab6cf13b36f44c07466d88cc856a9eca
+'FieldTarget.Gauss23CellCover.sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23TwentyCell exit=0
+
+Gauss23TwentyGrid source Git blob 983e945a56f2829e79ebe8039975fc2ccd9b3147
+'FieldTarget.gauss23_twentySegment_of_checks' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23TwentyGrid exit=0
+
+Gauss23TwentyValues source Git blob eb613829a0fc1354e56a9d917855cd8fa86b3954
+Gauss23TwentyValues exit=0
+
+Gauss23Height10Values source Git blob b34801014cfe8397cfde96f8dbaa0dd301d6ab21
+'FieldTarget.gauss23_values_at_10_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height10Values exit=0
+
+Gauss23Height10Cover source Git blob 7edfc4ba2b81d554360b92fa4998157c2561ed31
+'FieldTarget.gauss23_checks_at_10' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height10Cover exit=0
+
+Gauss23Height11Values source Git blob 1492fd9519a286bfca487fa25d3822c7830a44bd
+'FieldTarget.gauss23_values_at_11_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height11Values exit=0
+
+Gauss23Height11Cover source Git blob a25eea0c2eb8ec2dfccf5799fb9c7239377fe2ab
+'FieldTarget.gauss23_checks_at_11' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height11Cover exit=0
+
+Gauss23Height12Values source Git blob 41e4ec6c50f61dc738503881013efdc84198f5b0
+'FieldTarget.gauss23_values_at_12_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height12Values exit=0
+
+Gauss23Height12Cover source Git blob ee2c2ed99e4944a6e64ffc30678d775110a435c2
+'FieldTarget.gauss23_checks_at_12' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height12Cover exit=0
+
+Gauss23Height13Values source Git blob 75f53aa7d85e0fa79796339c102371c3cafbae9f
+'FieldTarget.gauss23_values_at_13_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height13Values exit=0
+
+Gauss23Height13Cover source Git blob c70b89136680f5661331eaea07f7a2f8b74687c8
+'FieldTarget.gauss23_checks_at_13' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height13Cover exit=0
+
+Gauss23Height14Values source Git blob cdcb148c232481fec724b0d89072944ed53a12bf
+'FieldTarget.gauss23_values_at_14_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height14Values exit=0
+
+Gauss23Height14Cover source Git blob 215dfb59f39940251a3f8cf99b9cdd9eeb679854
+'FieldTarget.gauss23_checks_at_14' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height14Cover exit=0
+
+Gauss23Height15Values source Git blob 36f98a123be20cc49b2500f673713c62a8e1421e
+'FieldTarget.gauss23_values_at_15_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height15Values exit=0
+
+Gauss23Height15Cover source Git blob 6de3f050e5f41c44ba7d0dc1e3cde3739fd74ed2
+'FieldTarget.gauss23_checks_at_15' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height15Cover exit=0
+
+Gauss23Height16Values source Git blob e08bc69ff1d616a18e005ee7f6f33f6c334dd4c3
+'FieldTarget.gauss23_values_at_16_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height16Values exit=0
+
+Gauss23Height16Cover source Git blob e406d4329d7a7ec315f69f61ee4ad33141cfe062
+'FieldTarget.gauss23_checks_at_16' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height16Cover exit=0
+
+Gauss23Height17Values source Git blob 8cebff4018843f6436d6ea94f6389abf2096be22
+'FieldTarget.gauss23_values_at_17_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height17Values exit=0
+
+Gauss23Height17Cover source Git blob 8b57a769b0698f1d3cb80786ce2f3fd512c6f77e
+'FieldTarget.gauss23_checks_at_17' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height17Cover exit=0
+
+Gauss23Height18Values source Git blob d974bb549defd5e196f7f867f295da3f66b636d1
+'FieldTarget.gauss23_values_at_18_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height18Values exit=0
+
+Gauss23Height18Cover source Git blob 763452a96abfdb2a4bc8c8ea8ffa6b1049cae9c0
+'FieldTarget.gauss23_checks_at_18' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height18Cover exit=0
+
+Gauss23Height19Values source Git blob 3f6bcec1bbe44d941c09cc12c06cc70b8176647b
+'FieldTarget.gauss23_values_at_19_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height19Values exit=0
+
+Gauss23Height19Cover source Git blob d195921baa45371986b4523983a353c7db3c9218
+'FieldTarget.gauss23_checks_at_19' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height19Cover exit=0
+
+Gauss23Height20Values source Git blob c28603653304a5ce7ea591fd0357e2eb6bef0ea6
+'FieldTarget.gauss23_values_at_20_contain' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height20Values exit=0
+
+Gauss23Height20Cover source Git blob e51ac0aa5c2912d9c12bd153f3bc38b6ee22ed92
+'FieldTarget.gauss23_checks_at_20' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23Height20Cover exit=0
+
+DedekindDiscriminant23TwentyCount source Git blob 841f4ced5ab9fc4fc87606486c6d98796841fb41
+discriminant23_character_counts_at_twenty : (discriminant23CharacterCountingFunction.stripZeroCount 20 fun x => True) =
+    22 ∧
+  (discriminant23CharacterCountingFunction.stripZeroCount 20 fun w => w.re = 1 / 2) = 22
+discriminant23_field_counts_at_twenty_add_forty_four : ((mixedThetaCountingFunction
+          Discriminant23GaloisField).stripZeroCount
+      20 fun x => True) =
+    ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount 20 fun x => True) + 44 ∧
+  ((mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount 20 fun w => w.re = 1 / 2) =
+    ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount 20 fun w => w.re = 1 / 2) + 44
+discriminant23_dedekindRH_iff_character_above_twenty : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (DedekindZetaRH Discriminant23GaloisField ↔
+    ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → 20 < w.im → discriminant23CharacterFold w ≠ 0)
+'FieldTarget.discriminant23_twentyCellConditions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_twentyBandConditions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_counts_at_twenty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_line_through_twenty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_field_counts_at_twenty_add_forty_four' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character_above_twenty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23TwentyCount exit=0
+
+32 source builds, 44 axiom reports.
+Independent one-worker source replay used the same pinned imports and warnings as errors.
+Gauss23CenteredHorner 9276b2245f9fb4ab4c9e4742747cbd78ac6a2ee0 exit=0 16.212s
+Gauss23RectangleCover d382e596ed43e5d49dc646b7907bbf1a7c1a74fd exit=0 48.228s
+DedekindDiscriminant23TwentyCount 841f4ced5ab9fc4fc87606486c6d98796841fb41 exit=0 37.919s
+The independent replay matched all nine axiom reports and the final three printed theorem types.

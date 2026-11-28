@@ -5,7 +5,8 @@ param(
     [Parameter(Mandatory)] [string] $LeanBin,
     [Parameter(Mandatory)] [string] $HuCacheRoot,
     [string[]] $RayHeckeImports = @(),
-    [string[]] $Discriminant23Imports = @()
+    [string[]] $Discriminant23Imports = @(),
+    [switch] $Discriminant23TwentyCount
 )
 
 $ErrorActionPreference = 'Stop'
@@ -40,6 +41,9 @@ if ($RayHeckeImports.Count -eq 0) {
     )
 }
 $baseline = foreach ($path in $RayHeckeImports) { (Resolve-Path -LiteralPath $path).Path }
+if ($Discriminant23TwentyCount -and $Discriminant23Imports.Count -eq 0) {
+    $Discriminant23Imports = @((Join-Path $axiom '.lake/super-zeta-higher-polynomial-bands/lib'))
+}
 $characterImports = @(
     foreach ($path in $Discriminant23Imports) { (Resolve-Path -LiteralPath $path).Path }
 )
@@ -77,6 +81,21 @@ try {
         $modules.Add('ComplexStripCrossingMesh', 3)
         $modules.Add('DedekindDiscriminant23TwentyBand', 4)
     }
+    if ($Discriminant23TwentyCount) {
+        $modules.Add('Gauss23SharedCoefficients', 4)
+        $modules.Add('Gauss23UnitPhaseTable', 2)
+        $modules.Add('Gauss23CoefficientTable', 1)
+        $modules.Add('Gauss23CenteredHorner', 1)
+        $modules.Add('Gauss23RectangleCover', 2)
+        $modules.Add('Gauss23TwentyCell', 1)
+        $modules.Add('Gauss23TwentyGrid', 1)
+        $modules.Add('Gauss23TwentyValues', 0)
+        foreach ($height in 10..20) {
+            $modules.Add("Gauss23Height${height}Values", 1)
+            $modules.Add("Gauss23Height${height}Cover", 1)
+        }
+        $modules.Add('DedekindDiscriminant23TwentyCount', 6)
+    }
     foreach ($name in $modules.Keys) {
         if ($name -eq 'DedekindDiscriminant23SevenEighths') {
             # Use the higher-band factorization ahead of any earlier cached copy.
@@ -87,7 +106,10 @@ try {
         $blob = (& git hash-object --no-filters -- $source).Trim()
         "Super Zeta source $name $blob"
         $object = Join-Path $out "$name.olean"
-        $report = & $lean '-j1' '-M7500' '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' $object $source 2>&1
+        $stack = @(if ($name -like 'Gauss23*' -or $name -eq 'DedekindDiscriminant23TwentyCount') {
+            '-s32768'
+        })
+        $report = & $lean '-j1' @stack '-M7500' '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' $object $source 2>&1
         $status = $LASTEXITCODE
         $report
         "$name exit=$status"
