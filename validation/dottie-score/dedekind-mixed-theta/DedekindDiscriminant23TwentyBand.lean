@@ -1,5 +1,6 @@
 import ComplexStripCrossingMesh
 import DedekindDiscriminant23SevenEighths
+import DedekindDiscriminant23TwentyEndpointLogic
 
 /-! The exact sign inputs for the interval replay through height 20 and their
 consequences for the character and the Dedekind factorization. -/
@@ -9,12 +10,6 @@ namespace FieldTarget
 open ArtinPrimitiveRootsConjecture Complex Set
 
 noncomputable section
-
-def discriminant23TwentyHeight (k : ℕ) : ℝ := 19 / 2 + (k : ℝ) / 16
-
-def discriminant23TwentyDirection (k : ℕ) : ℤ :=
-  if k ∈ ([12, 54, 111, 137] : List ℕ) then -1
-  else if k ∈ ([30, 82, 121, 153] : List ℕ) then 1 else 0
 
 def Discriminant23TwentyBandConditions : Prop :=
   ∀ k < 168,
@@ -30,6 +25,47 @@ def Discriminant23TwentyBandConditions : Prop :=
         0 < (d : ℝ) * (deriv discriminant23CharacterFold w).im) ∧
       (∀ w : ℂ, w.re ∈ Ioo (0 : ℝ) 1 → w.im ∈ Icc a b → discriminant23CharacterFold w = 0 →
         w.re ∈ Icc (3 / 8 : ℝ) (5 / 8))
+
+/-- The remaining rectangle obligations after supplying the endpoint signs. -/
+def Discriminant23TwentyCellConditions : Prop :=
+  ∀ k < 168,
+    let a := discriminant23TwentyHeight k
+    let b := discriminant23TwentyHeight (k + 1)
+    let d := discriminant23TwentyDirection k
+    if d = 0 then
+      ∀ w : ℂ, w.re ∈ Ioo (0 : ℝ) 1 → w.im ∈ Ioc a b → discriminant23CharacterFold w ≠ 0
+    else
+      (∀ w : ℂ, w.re ∈ Icc (3 / 8 : ℝ) (5 / 8) → w.im ∈ Icc a b →
+        0 < (d : ℝ) * (deriv discriminant23CharacterFold w).im) ∧
+      (∀ w : ℂ, w.re ∈ Ioo (0 : ℝ) 1 → w.im ∈ Icc a b → discriminant23CharacterFold w = 0 →
+        w.re ∈ Icc (3 / 8 : ℝ) (5 / 8))
+
+theorem discriminant23_twentyBandConditions_iff :
+    Discriminant23TwentyBandConditions ↔
+      Discriminant23TwentyEndpointSigns ∧ Discriminant23TwentyCellConditions := by
+  constructor
+  · intro h
+    constructor
+    · intro k hk hd
+      have hBand := h k hk
+      dsimp only at hBand ⊢
+      rw [ite_eq_right hd] at hBand
+      exact ⟨hBand.1, hBand.2.1⟩
+    · intro k hk
+      have hBand := h k hk
+      dsimp only at hBand ⊢
+      by_cases hd : discriminant23TwentyDirection k = 0
+      · simpa only [ite_eq_left hd] using hBand
+      · simp only [ite_eq_right hd] at hBand ⊢
+        exact hBand.2.2
+  · rintro ⟨hSigns, hCells⟩ k hk
+    have hCell := hCells k hk
+    dsimp only at hCell ⊢
+    by_cases hd : discriminant23TwentyDirection k = 0
+    · simpa only [ite_eq_left hd] using hCell
+    · simp only [ite_eq_right hd] at hCell ⊢
+      obtain ⟨hA, hB⟩ := hSigns k hk hd
+      exact ⟨hA, hB, hCell.1, hCell.2⟩
 
 private def newCrossings (k : ℕ) : ℕ := if discriminant23TwentyDirection k = 0 then 0 else 1
 
@@ -106,6 +142,7 @@ theorem discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions
 #check Discriminant23TwentyBandConditions
 #check @discriminant23_character_counts_at_twenty_of_band_conditions
 #check @discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions
+#print axioms discriminant23_twentyBandConditions_iff
 #print axioms discriminant23_character_counts_at_twenty_of_band_conditions
 #print axioms discriminant23_field_counts_at_twenty_add_forty_four_of_band_conditions
 #print axioms discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions

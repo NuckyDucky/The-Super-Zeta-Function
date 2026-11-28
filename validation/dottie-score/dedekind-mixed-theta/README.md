@@ -369,6 +369,14 @@ I check the sign at $w=1/2+it$ for $t=41/4$, $165/16$, and $20$. Each endpoint u
 
 If I reflect the new zero to negative height, both character counts through $|\Im w|\le20$ are at least eight. The splitting-field count is then at least the quadratic-base count plus sixteen, for the full strip and for the critical line. Replay these certificates with `replay-discriminant23.ps1 -GaussPointCertificates`. [Count theorems](DedekindDiscriminant23GaussPilot.lean) · [Lean output and axiom reports](discriminant23-gauss-point-replay-and-axioms.txt)
 
+### All eight crossings through height 20
+
+I check all sixteen marked endpoints on the $1/16$ height mesh. If I apply continuity in each disjoint bracket and reflect the positive heights, Lean gives at least $22$ for both character counts. Both splitting-field counts are at least their corresponding quadratic-base count plus $44$. If I supply a total character count of at most $22$, then both character counts equal $22$. Replay the endpoint checks with `replay-discriminant23.ps1 -GaussTwentyEndpoints`. [Endpoint signs and counts](DedekindDiscriminant23TwentyEndpointCertificate.lean) · [Lean output and axiom reports](discriminant23-gauss-height-twenty-audit.txt)
+
+If I use any critical-line center $1/2+it$ with $|\Im w-t|\le1/2$, the 36-term polynomial has error below $3\cdot10^{-19}$ for the actual value or derivative on $0\le\Re w\le1$, $|\Im w|\le20$. Lean checks the 384 stored heat-amplitude intervals for reuse at every center. I can translate the polynomial inside each rectangle using the same coefficient boxes. If the directed real or imaginary interval clears the error allowance, then Lean gives that sign throughout the rectangle. [Taylor error](DedekindDiscriminant23GaussCentered.lean) · [Amplitude table](Gauss23AmplitudeCache.lean) · [Translated polynomial](Gauss23CoefficientIntervals.lean) · [Sign theorem](Gauss23CellSigns.lean)
+
+I use integer-height centers $10$ through $20$ and translate the polynomial to each rectangle's midpoint. At both 48 and 64 digits, Arb clears $480$ rectangles, including the signed slope and confinement checks around the eight crossings. If I supply these rectangle inequalities in Lean, `Discriminant23TwentyCellConditions` and the checked endpoint signs give the exact count. [Arb replay](check_discriminant23_gauss_cells.py) · [Rectangle obligations](DedekindDiscriminant23TwentyBand.lean)
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)
