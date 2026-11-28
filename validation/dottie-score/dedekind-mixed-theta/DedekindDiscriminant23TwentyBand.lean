@@ -26,19 +26,20 @@ def Discriminant23TwentyBandConditions : Prop :=
       (∀ w : ℂ, w.re ∈ Ioo (0 : ℝ) 1 → w.im ∈ Icc a b → discriminant23CharacterFold w = 0 →
         w.re ∈ Icc (3 / 8 : ℝ) (5 / 8))
 
-/-- The remaining rectangle obligations after supplying the endpoint signs. -/
-def Discriminant23TwentyCellConditions : Prop :=
-  ∀ k < 168,
-    let a := discriminant23TwentyHeight k
-    let b := discriminant23TwentyHeight (k + 1)
-    let d := discriminant23TwentyDirection k
-    if d = 0 then
-      ∀ w : ℂ, w.re ∈ Ioo (0 : ℝ) 1 → w.im ∈ Ioc a b → discriminant23CharacterFold w ≠ 0
-    else
-      (∀ w : ℂ, w.re ∈ Icc (3 / 8 : ℝ) (5 / 8) → w.im ∈ Icc a b →
-        0 < (d : ℝ) * (deriv discriminant23CharacterFold w).im) ∧
-      (∀ w : ℂ, w.re ∈ Ioo (0 : ℝ) 1 → w.im ∈ Icc a b → discriminant23CharacterFold w = 0 →
-        w.re ∈ Icc (3 / 8 : ℝ) (5 / 8))
+/-- The rectangle obligations for one cell after supplying the endpoint signs. -/
+def Discriminant23TwentyCellCondition (k : ℕ) : Prop :=
+  let a := discriminant23TwentyHeight k
+  let b := discriminant23TwentyHeight (k + 1)
+  let d := discriminant23TwentyDirection k
+  if d = 0 then
+    ∀ w : ℂ, w.re ∈ Ioo (0 : ℝ) 1 → w.im ∈ Ioc a b → discriminant23CharacterFold w ≠ 0
+  else
+    (∀ w : ℂ, w.re ∈ Icc (3 / 8 : ℝ) (5 / 8) → w.im ∈ Icc a b →
+      0 < (d : ℝ) * (deriv discriminant23CharacterFold w).im) ∧
+    (∀ w : ℂ, w.re ∈ Ioo (0 : ℝ) 1 → w.im ∈ Icc a b → discriminant23CharacterFold w = 0 →
+      w.re ∈ Icc (3 / 8 : ℝ) (5 / 8))
+
+def Discriminant23TwentyCellConditions : Prop := ∀ k < 168, Discriminant23TwentyCellCondition k
 
 theorem discriminant23_twentyBandConditions_iff :
     Discriminant23TwentyBandConditions ↔
@@ -53,6 +54,7 @@ theorem discriminant23_twentyBandConditions_iff :
       exact ⟨hBand.1, hBand.2.1⟩
     · intro k hk
       have hBand := h k hk
+      unfold Discriminant23TwentyCellCondition
       dsimp only at hBand ⊢
       by_cases hd : discriminant23TwentyDirection k = 0
       · simpa only [ite_eq_left hd] using hBand
@@ -60,6 +62,7 @@ theorem discriminant23_twentyBandConditions_iff :
         exact hBand.2.2
   · rintro ⟨hSigns, hCells⟩ k hk
     have hCell := hCells k hk
+    unfold Discriminant23TwentyCellCondition at hCell
     dsimp only at hCell ⊢
     by_cases hd : discriminant23TwentyDirection k = 0
     · simpa only [ite_eq_left hd] using hCell
