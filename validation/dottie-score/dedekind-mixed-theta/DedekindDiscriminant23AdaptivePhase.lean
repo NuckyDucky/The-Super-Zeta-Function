@@ -31,40 +31,42 @@ private def densityMass (N : ℕ) : ℝ :=
 def discriminant23PhaseQuadratureError (N L depth : ℕ) : ℝ :=
   4 * (L : ℝ) * ((L : ℝ) + 1) * densityMass N * (1 / 2) ^ depth
 
-private theorem exp_mul_heat_power_norm_le {z : ℂ} (hy : |z.im| ≤ 1 / 2) {k : ℕ} (hk : 1 ≤ k) :
+private theorem exp_mul_heat_power_norm_le {z : ℂ} (hy : |z.im| ≤ 1) {k : ℕ} (hk : 1 ≤ k) :
     ‖Complex.exp z * Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z) ^ k‖ ≤ 1 := by
   let q := Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)
-  have hcos : (7 / 8 : ℝ) ≤ Real.cos z.im := by
-    have hs : z.im ^ 2 ≤ (1 / 2 : ℝ) ^ 2 := by
+  have hcos : (1 / 2 : ℝ) ≤ Real.cos z.im := by
+    have hs : z.im ^ 2 ≤ (1 : ℝ) ^ 2 := by
       rw [← sq_abs]
       exact pow_le_pow_left₀ (abs_nonneg _) hy 2
     linarith only [hs, Real.one_sub_sq_div_two_le_cos (x := z.im)]
-  have hscale : (1 : ℝ) ≤ discriminant23ThetaScale * Real.cos z.im :=
-    (by norm_num : (1 : ℝ) ≤ (13 / 10) * (7 / 8)).trans
+  have hscale : (1 / 2 : ℝ) ≤ discriminant23ThetaScale * Real.cos z.im :=
+    (by norm_num : (1 / 2 : ℝ) ≤ (13 / 10) * (1 / 2)).trans
       (mul_le_mul discriminant23_thetaScale_interval.1 hcos (by norm_num)
         (by linarith only [discriminant23_thetaScale_interval.1]))
-  have hq : ‖q‖ ≤ Real.exp (-Real.exp z.re) := by
+  have hq : ‖q‖ ≤ Real.exp (-Real.exp z.re / 2) := by
     unfold q
     rw [Complex.norm_exp, ← Complex.ofReal_neg, Complex.re_ofReal_mul, Complex.exp_re]
     exact Real.exp_le_exp.mpr (by
       nlinarith only [mul_le_mul_of_nonneg_right hscale (Real.exp_nonneg z.re)])
   have hq₁ : ‖q‖ ≤ 1 := hq.trans
-    ((Real.exp_le_exp.mpr (neg_nonpos.mpr (Real.exp_nonneg _))).trans_eq Real.exp_zero)
+    ((Real.exp_le_exp.mpr (by linarith only [Real.exp_nonneg z.re])).trans_eq Real.exp_zero)
   have hpow : ‖q‖ ^ k ≤ ‖q‖ := by
     simpa only [pow_one] using pow_le_pow_of_le_one (norm_nonneg q) hq₁ hk
-  have hlin : Real.exp z.re ≤ Real.exp (Real.exp z.re - 1) := by
-    linarith only [Real.add_one_le_exp (Real.exp z.re - 1)]
+  have hlin : Real.exp z.re ≤ 2 * Real.exp (Real.exp z.re / 2 - 1) := by
+    linarith only [Real.add_one_le_exp (Real.exp z.re / 2 - 1)]
   change ‖Complex.exp z * q ^ k‖ ≤ 1
   rw [norm_mul, Complex.norm_exp, norm_pow]
   calc
-    _ ≤ Real.exp z.re * Real.exp (-Real.exp z.re) :=
+    _ ≤ Real.exp z.re * Real.exp (-Real.exp z.re / 2) :=
       mul_le_mul_of_nonneg_left (hpow.trans hq) (Real.exp_nonneg _)
-    _ ≤ Real.exp (Real.exp z.re - 1) * Real.exp (-Real.exp z.re) :=
+    _ ≤ (2 * Real.exp (Real.exp z.re / 2 - 1)) * Real.exp (-Real.exp z.re / 2) :=
       mul_le_mul_of_nonneg_right hlin (Real.exp_nonneg _)
-    _ = Real.exp (-1) := by rw [← Real.exp_add]; ring_nf
-    _ ≤ _ := (Real.exp_le_exp.mpr (by norm_num : (-1 : ℝ) ≤ 0)).trans_eq Real.exp_zero
+    _ = 2 * Real.exp (-1) := by rw [mul_assoc, ← Real.exp_add]; congr 2; ring
+    _ ≤ 1 := by
+      rw [Real.exp_neg, ← div_eq_mul_inv]
+      exact (div_le_one (Real.exp_pos 1)).mpr (by linarith only [Real.add_one_le_exp (1 : ℝ)])
 
-private theorem thetaDensity_im_norm_le (N : ℕ) {z : ℂ} (hy : |z.im| ≤ 1 / 2) :
+private theorem thetaDensity_im_norm_le (N : ℕ) {z : ℂ} (hy : |z.im| ≤ 1) :
     ‖discriminant23PhaseDensityUpTo N z‖ ≤ densityMass N := by
   let q := Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)
   have hSum (Q : ℤ → ℤ → ℤ) (hQ : ∀ m n, m ^ 2 + n ^ 2 ≤ 2 * Q m n) :
@@ -89,11 +91,17 @@ private theorem thetaDensity_im_norm_le (N : ℕ) {z : ℂ} (hy : |z.im| ≤ 1 /
   exact (norm_sub_le _ _).trans
     (add_le_add (hSum _ discriminant23_principal_form_growth) (hSum _ discriminant23_other_form_growth))
 
-theorem discriminant23_phaseDensity_norm_le (N : ℕ) {z : ℂ} (hy : |z.im| ≤ 1 / 2) :
+theorem discriminant23_phaseDensity_norm_le_of_abs_im_le_one (N : ℕ) {z : ℂ} (hy : |z.im| ≤ 1) :
     ‖discriminant23PhaseDensityUpTo N z‖ ≤
       (((characterThetaTermsUpTo discriminant23PrincipalForm N).card +
         (characterThetaTermsUpTo discriminant23OtherForm N).card : ℕ) : ℝ) := by
   simpa only [densityMass, Nat.cast_add] using thetaDensity_im_norm_le N hy
+
+theorem discriminant23_phaseDensity_norm_le (N : ℕ) {z : ℂ} (hy : |z.im| ≤ 1 / 2) :
+    ‖discriminant23PhaseDensityUpTo N z‖ ≤
+      (((characterThetaTermsUpTo discriminant23PrincipalForm N).card +
+        (characterThetaTermsUpTo discriminant23OtherForm N).card : ℕ) : ℝ) :=
+  discriminant23_phaseDensity_norm_le_of_abs_im_le_one N (hy.trans (by norm_num))
 
 private theorem thetaDensity_norm_le (N : ℕ) {c : ℝ} {z : ℂ}
     (hz : z ∈ sphere (c : ℂ) (1 / 4 : ℝ)) :

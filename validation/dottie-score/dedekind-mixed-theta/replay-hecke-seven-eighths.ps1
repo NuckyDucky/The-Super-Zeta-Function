@@ -6,7 +6,8 @@ param(
     [Parameter(Mandatory)] [string] $HuCacheRoot,
     [string[]] $RayHeckeImports = @(),
     [string[]] $Discriminant23Imports = @(),
-    [switch] $Discriminant23TwentyCount
+    [switch] $Discriminant23TwentyCount,
+    [switch] $Discriminant23RightBandCount
 )
 
 $ErrorActionPreference = 'Stop'
@@ -41,6 +42,7 @@ if ($RayHeckeImports.Count -eq 0) {
     )
 }
 $baseline = foreach ($path in $RayHeckeImports) { (Resolve-Path -LiteralPath $path).Path }
+if ($Discriminant23RightBandCount) { $Discriminant23TwentyCount = $true }
 if ($Discriminant23TwentyCount -and $Discriminant23Imports.Count -eq 0) {
     $Discriminant23Imports = @((Join-Path $axiom '.lake/super-zeta-higher-polynomial-bands/lib'))
 }
@@ -62,6 +64,13 @@ $version
 try {
     $env:Path = $bin + $separator + $oldPath
     $env:LEAN_NUM_THREADS = '1'
+    if ($Discriminant23RightBandCount) {
+        $starDeriv = Join-Path $axiom '.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/Deriv/Star.olean'
+        if (!(Test-Path -LiteralPath $starDeriv)) {
+            & $lake -d $axiom build '+Mathlib.Analysis.Calculus.Deriv.Star:olean'
+            if ($LASTEXITCODE -ne 0) { throw 'Could not build the Mathlib derivative reflection lemma.' }
+        }
+    }
     $imports = & $lake -d $axiom env $pwsh -NoLogo -NoProfile -NonInteractive -Command '$env:LEAN_PATH'
     if ($LASTEXITCODE -ne 0 -or !$imports) { throw 'Could not read the Lake import path.' }
 
@@ -86,7 +95,7 @@ try {
         $modules.Add('Gauss23UnitPhaseTable', 2)
         $modules.Add('Gauss23CoefficientTable', 1)
         $modules.Add('Gauss23CenteredHorner', 1)
-        $modules.Add('Gauss23RectangleCover', 2)
+        $modules.Add('Gauss23RectangleCover', 3)
         $modules.Add('Gauss23TwentyCell', 1)
         $modules.Add('Gauss23TwentyGrid', 1)
         $modules.Add('Gauss23TwentyValues', 0)
@@ -95,6 +104,18 @@ try {
             $modules.Add("Gauss23Height${height}Cover", 1)
         }
         $modules.Add('DedekindDiscriminant23TwentyCount', 6)
+    }
+    if ($Discriminant23RightBandCount) {
+        $modules.Add('Gauss23StripReflection', 2)
+        $modules.Add('DedekindDiscriminant23RightStripCount', 2)
+        $modules.Add('Gauss23RightBandCell', 1)
+        $modules.Add('Gauss23RightValues', 1)
+        $modules.Add('Gauss23RightMesh', 1)
+        foreach ($height in 20..28) {
+            if ($height -gt 20) { $modules.Add("Gauss23Height${height}Values", 1) }
+            $modules.Add("Gauss23Height${height}RightCover", 1)
+        }
+        $modules.Add('DedekindDiscriminant23RightBandCount', 5)
     }
     foreach ($name in $modules.Keys) {
         if ($name -eq 'DedekindDiscriminant23SevenEighths') {
@@ -106,7 +127,9 @@ try {
         $blob = (& git hash-object --no-filters -- $source).Trim()
         "Super Zeta source $name $blob"
         $object = Join-Path $out "$name.olean"
-        $stack = @(if ($name -like 'Gauss23*' -or $name -eq 'DedekindDiscriminant23TwentyCount') {
+        $stack = @(if ($name -like 'Gauss23*' -or $name -in @(
+            'DedekindDiscriminant23TwentyCount', 'DedekindDiscriminant23RightStripCount',
+            'DedekindDiscriminant23RightBandCount')) {
             '-s32768'
         })
         $report = & $lean '-j1' @stack '-M7500' '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' $object $source 2>&1

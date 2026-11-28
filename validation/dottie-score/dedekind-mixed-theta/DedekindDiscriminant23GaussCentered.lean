@@ -180,13 +180,14 @@ private theorem gauss23_centered_mass_le (slope : Bool) (t : ℝ) :
       mul_le_mul_of_nonneg_left gauss23_amplitude_abs_sum_le (by cases slope <;> norm_num)
     _ = _ := by cases slope <;> norm_num
 
-theorem discriminant23_gaussCenteredTaylor_error_lt (slope : Bool) (t : ℝ) (n : ℕ)
-    {w : ℂ} (hx₀ : 0 ≤ w.re) (hx₁ : w.re ≤ 1) (hy : |w.im| ≤ 20)
-    {r : ℝ} (hr : ‖w - gauss23CriticalPoint t‖ ≤ r)
+theorem discriminant23_gaussCenteredTaylor_error_lt_of_reading (slope : Bool) (t : ℝ) (n : ℕ)
+    {w : ℂ} {E r : ℝ} (hReading :
+      ‖(if slope then deriv discriminant23CharacterFold w else discriminant23CharacterFold w) -
+        discriminant23GaussReading slope w‖ < E) (hr : ‖w - gauss23CriticalPoint t‖ ≤ r)
     (hCut : 4 * r / (n + 1 : ℕ) ≤ 1 / 2) :
     ‖(if slope then deriv discriminant23CharacterFold w else discriminant23CharacterFold w) -
         gauss23CenteredTaylor slope t n w‖ <
-      (2 / 10 ^ 19 : ℝ) + (if slope then 8352 else 2088) * (2 * (4 * r) ^ n / (n.factorial : ℝ)) := by
+      E + (if slope then 8352 else 2088) * (2 * (4 * r) ^ n / (n.factorial : ℝ)) := by
   have hNode : ∀ p ∈ gauss23CenteredNodes, |gauss23CenteredNode p| ≤ 4 := by
     intro p _
     obtain ⟨h₀, h₁⟩ := gauss23_node_limits (Fin.ofNat 16 p.1) p.2
@@ -195,8 +196,17 @@ theorem discriminant23_gaussCenteredTaylor_error_lt (slope : Bool) (t : ℝ) (n 
     (gauss23CenteredPlus slope t) (gauss23CenteredMinus slope t) (by norm_num) hNode
     (gauss23_centered_mass_le slope t) n hCut hr
   rw [← gauss23_reading_eq_centered_sum slope t w] at h
-  have hq := discriminant23_gaussReading_error slope hx₀ hx₁ hy
-  exact (norm_sub_le_norm_sub_add_norm_sub _ _ _).trans_lt (add_lt_add_of_lt_of_le hq h)
+  exact (norm_sub_le_norm_sub_add_norm_sub _ _ _).trans_lt (add_lt_add_of_lt_of_le hReading h)
+
+theorem discriminant23_gaussCenteredTaylor_error_lt (slope : Bool) (t : ℝ) (n : ℕ)
+    {w : ℂ} (hx₀ : 0 ≤ w.re) (hx₁ : w.re ≤ 1) (hy : |w.im| ≤ 20)
+    {r : ℝ} (hr : ‖w - gauss23CriticalPoint t‖ ≤ r)
+    (hCut : 4 * r / (n + 1 : ℕ) ≤ 1 / 2) :
+    ‖(if slope then deriv discriminant23CharacterFold w else discriminant23CharacterFold w) -
+        gauss23CenteredTaylor slope t n w‖ <
+      (2 / 10 ^ 19 : ℝ) + (if slope then 8352 else 2088) * (2 * (4 * r) ^ n / (n.factorial : ℝ)) :=
+  discriminant23_gaussCenteredTaylor_error_lt_of_reading slope t n
+    (discriminant23_gaussReading_error slope hx₀ hx₁ hy) hr hCut
 
 theorem discriminant23_gaussCenteredTaylor_error_lt_of_half_height (slope : Bool) (t : ℝ)
     {w : ℂ} (hx₀ : 0 ≤ w.re) (hx₁ : w.re ≤ 1)
@@ -217,8 +227,32 @@ theorem discriminant23_gaussCenteredTaylor_error_lt_of_half_height (slope : Bool
   refine h.trans_le ?_
   cases slope <;> norm_num [Nat.factorial]
 
+theorem discriminant23_gaussCenteredTaylor_error_lt_of_right_twentyEight (slope : Bool) (t : ℝ)
+    {w : ℂ} (hx₀ : 1 / 2 ≤ w.re) (hx₁ : w.re ≤ 7 / 8)
+    (hy : |w.im| ≤ 28) (hd : |w.im - t| ≤ 1 / 2) :
+    ‖(if slope then deriv discriminant23CharacterFold w else discriminant23CharacterFold w) -
+        gauss23CenteredTaylor slope t 36 w‖ < (1 / 10 ^ 22 : ℝ) := by
+  have hx : |w.re - 1 / 2| ≤ (3 / 8 : ℝ) := abs_le.mpr
+    ⟨by linarith only [hx₀], by linarith only [hx₁]⟩
+  have hx2 := pow_le_pow_left₀ (abs_nonneg _) hx 2
+  have hy2 := pow_le_pow_left₀ (abs_nonneg _) hd 2
+  rw [sq_abs] at hx2 hy2
+  have hn : ‖w - gauss23CriticalPoint t‖ ≤ (5 / 8 : ℝ) := by
+    apply le_of_sq_le_sq _ (by norm_num)
+    rw [Complex.sq_norm, Complex.normSq_apply]
+    simp only [Complex.sub_re, Complex.sub_im, gauss23CriticalPoint]
+    norm_num at hx2 hy2
+    nlinarith only [hx2, hy2]
+  have hReading := discriminant23_gaussReading_error_of_twentyEight slope
+    (by linarith only [hx₀]) (by linarith only [hx₁]) hy
+  have h := discriminant23_gaussCenteredTaylor_error_lt_of_reading slope t 36 hReading hn (by norm_num)
+  refine h.trans_le ?_
+  cases slope <;> norm_num [Nat.factorial]
+
+#print axioms discriminant23_gaussCenteredTaylor_error_lt_of_reading
 #print axioms discriminant23_gaussCenteredTaylor_error_lt
 #print axioms discriminant23_gaussCenteredTaylor_error_lt_of_half_height
+#print axioms discriminant23_gaussCenteredTaylor_error_lt_of_right_twentyEight
 
 end
 
