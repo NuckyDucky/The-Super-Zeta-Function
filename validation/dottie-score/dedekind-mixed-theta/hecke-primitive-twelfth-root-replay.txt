@@ -1,0 +1,72 @@
+Primitive ray-character counts and the Dedekind twelfth-root reduction
+
+Lean 4.35.0-rc3 470d5ce1400764999581fd26d5d72b00d990b0f4
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Super Zeta source baseline 5b275b77366ff4951d1376ceee2c4e19fc741500
+
+The following source replays use the pinned prebuilt imports and -j1 -s32768 -M5000 -DwarningAsError=true.
+Both modules exited 0. All ten transitive axiom reports list propext, Classical.choice and Quot.sound.
+A second source replay with isolated outputs also exited 0. Its full Lean output matched both logs.
+Replay these proofs with replay-hecke-seven-eighths.ps1 -TwelfthRootTarget and the pinned inputs in README.md.
+
+RayHeckePrimitiveReduction.lean Git blob ed11e1ddb810b6c3a791c951a71e7a92c2b8b655
+rayHecke_exists_primitive_same_orders : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  IsTotallyComplex K →
+    ∀ (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m),
+      ∃ n,
+        ∃ (hn : n ≠ ⊥),
+          ∃ ψ,
+            ψ.IsPrimitive ∧
+              ∀ (w : ℂ),
+                0 < w.re →
+                  w ≠ 1 →
+                    (rayHeckeContinuation hm χ w = 0 ↔ rayHeckeContinuation hn ψ w = 0) ∧
+                      analyticOrderNatAt (rayHeckeContinuation hm χ) w =
+                        analyticOrderNatAt (rayHeckeContinuation hn ψ) w
+rayHecke_exists_primitive_same_counts : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  IsTotallyComplex K →
+    ∀ (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m),
+      ∃ n,
+        ∃ (hn : n ≠ ⊥),
+          ∃ ψ,
+            ψ.IsPrimitive ∧
+              ∀ (T : ℝ) (P : ℂ → Prop),
+                (rayHeckeCountingFunction hm χ).stripZeroCount T P = (rayHeckeCountingFunction hn ψ).stripZeroCount T P
+'FieldTarget.rayHeckeContinuation_eq_primitive_mul_euler' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHecke_exists_primitive_same_orders' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHecke_exists_primitive_same_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+RayHeckePrimitiveReduction exit=0
+
+DedekindTwelfthRootTarget.lean Git blob 04045da218edafd1008ec78b5138189214451f90
+allDedekindRH_iff_galois_twelfthRoot_primitive_band : (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+    DedekindZetaRH K) ↔
+  ∀ (L : Type) [inst : Field L] [inst_1 : NumberField L] [IsGalois ℚ L],
+    (∃ ζ, IsPrimitiveRoot ζ 12) →
+      ∀ (m : Ideal (𝓞 L)) (hm : m ≠ ⊥) (χ : RayClassCharacter L m),
+        χ.IsPrimitive → ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → 0 ≤ w.im → rayHeckeContinuation hm χ w ≠ 0
+dedekindZetaRH_of_dirichlet_and_twelfthRoot_galois_samples : (∀ (m : ℕ) [inst : NeZero m] (χ : DirichletCharacter ℂ m),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (∀ (L : Type) [inst : Field L] [inst_1 : NumberField L] [IsGalois ℚ L],
+      (∃ ζ, IsPrimitiveRoot ζ 12) → ¬IsAbelianGalois ℚ L → HasDottieCompletedSamplesToSevenEighths L) →
+    ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K
+mixedTheta_cyclotomic12_stripCounts_equal_descend : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (T : ℝ),
+  (((mixedThetaCountingFunction (CyclotomicField 12 K)).stripZeroCount T fun x => True) =
+      (mixedThetaCountingFunction (CyclotomicField 12 K)).stripZeroCount T fun w => w.re = 1 / 2) →
+    ((mixedThetaCountingFunction K).stripZeroCount T fun x => True) =
+      (mixedThetaCountingFunction K).stripZeroCount T fun w => w.re = 1 / 2
+'FieldTarget.mixedThetaContinuation_cyclotomic12_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaContinuation_cyclotomic12_order_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_cyclotomic12_stripCounts_equal_descend' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_galois_twelfthRoot_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_galois_twelfthRoot_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_galois_twelfthRoot_primitive_band' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_dirichlet_and_twelfthRoot_galois_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindTwelfthRootTarget exit=0
+

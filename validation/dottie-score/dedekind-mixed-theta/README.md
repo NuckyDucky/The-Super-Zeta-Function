@@ -311,6 +311,12 @@ Replay with `-RayHecke`. [Lean output and axioms](ray-hecke-replay-and-axioms.tx
 - If $7/8<\Re w<1$, then Hu’s theorem gives nonvanishing of the actual Dedekind continuation at every height. If a ray-class Hecke zero lay there, then the same-input lift would give a Dedekind zero there. Lean gives the $7/8$ bound for both families and the exact all-field ERH equivalences with the band $1/2<\Re w\le7/8$. [Right-band transfer](RayHeckeRightBand.lean) · [Exact equivalences](HeckeSevenEighthsTransfer.lean)
 - If I prove nonvanishing for the field on $1/2<\Re w\le7/8$ at nonnegative heights, then conjugation, reflection and the right edge give Dedekind RH for that field. If I supply the rational Dirichlet theorem as `hD` and the Dottie completed-sample coverage as `hCover` for every nonabelian Galois field over $\mathbb Q$, then Lean gives Dedekind RH for every number field. For each nonnegative height it gives a bounded band and the disks beyond its near-line clearance. Each disk’s samples must give a strict sign after the variation and tail allowances. [Exact Dottie premises](DedekindSevenEighthsCoverage.lean) · [Lean output and axiom audit](hecke-seven-eighths-replay-and-axioms.txt)
 
+### Primitive characters and fields containing a twelfth root
+
+- If I start with a ray character over a totally complex field, I can take the primitive character of the same idèle-class character. Their continued readings agree up to a finite Euler product. If $\Re w>0$ and $w\ne1$, that product is nonzero, so Lean gives the same zero and the same vanishing order at $w$. The two readings have equal strip counts through every height, for any selection of zeros. [AxiomMath's primitive conductor theorem](https://github.com/AxiomMath/DedekindZetaZeroFree/blob/09afbb4ce6570c1615d58509dc197fc9f0956b7d/DedekindZetaZeroFree/Arithmetic/RayClasses/PrimitiveConductors/SexticSupport.lean#L17) · [Count transfer](RayHeckePrimitiveReduction.lean)
+- If I adjoin a primitive twelfth root to $K$, Lean gives $\zeta_{K(\zeta_{12})}(w)=g(w)\zeta_K(w)$ off $w=1$, with $g$ entire. Every base-field zero is still present at the original input. If both counts agree through height $T$ for $K(\zeta_{12})$, they agree through $T$ for $K$. [Cyclotomic extension](https://github.com/AxiomMath/DedekindZetaZeroFree/blob/09afbb4ce6570c1615d58509dc197fc9f0956b7d/DedekindZetaZeroFree/Arithmetic/Kummer/TwelfthCyclotomicExtension.lean#L10) · [Factorization and count transfer](DedekindTwelfthRootTarget.lean)
+- If I take the rational normal closure after adjoining the root, Lean only needs the test on Galois fields over $\mathbb Q$ containing a primitive twelfth root. On those fields, nonvanishing for the primitive ray characters on $1/2<\Re w\le7/8$, $\Im w\ge0$ is equivalent to Dedekind RH for all number fields. If I supply the rational Dirichlet theorem, the Dottie sample premise is needed only for the nonabelian members of this field family. [Exact implications](DedekindTwelfthRootTarget.lean) · [Lean output and axioms](hecke-primitive-twelfth-root-replay.txt)
+
 ### Replay the seven-eighths proof
 
 Use the pinned Lean, Mathlib, and AxiomMath checkout above. Build the existing inputs with `replay-discriminant23.ps1 -RayHecke`, `replay.ps1 -RelativeDottie`, and `replay-cyclic-euler.ps1 -GlobalDescent`, with `-AxiomCheckout` and `-LeanBin` on each command. Run the relative Dottie replay before the global descent replay.
@@ -321,6 +327,8 @@ Use the compiled library from [Hu’s pinned release](https://github.com/Rogerhu
 pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-hecke-seven-eighths.ps1 `
   -AxiomCheckout <upstream-checkout> -LeanBin <pinned-toolchain-bin> -HuCacheRoot <hu-cache-root>
 ~~~
+
+Add `-TwelfthRootTarget` to replay the primitive count transfer and the twelfth-root field reduction with the same inputs. [Exact Lean output](hecke-primitive-twelfth-root-replay.txt)
 
 ### Discriminant-23 above the certified count
 
