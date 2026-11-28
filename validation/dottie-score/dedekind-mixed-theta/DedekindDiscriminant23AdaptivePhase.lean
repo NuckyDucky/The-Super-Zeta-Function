@@ -31,16 +31,16 @@ private def densityMass (N : ℕ) : ℝ :=
 def discriminant23PhaseQuadratureError (N L depth : ℕ) : ℝ :=
   4 * (L : ℝ) * ((L : ℝ) + 1) * densityMass N * (1 / 2) ^ depth
 
-private theorem exp_mul_heat_power_norm_le {z : ℂ} (hy : |z.im| ≤ 1 / 4) {k : ℕ} (hk : 1 ≤ k) :
+private theorem exp_mul_heat_power_norm_le {z : ℂ} (hy : |z.im| ≤ 1 / 2) {k : ℕ} (hk : 1 ≤ k) :
     ‖Complex.exp z * Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z) ^ k‖ ≤ 1 := by
   let q := Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)
-  have hcos : (31 / 32 : ℝ) ≤ Real.cos z.im := by
-    have hs : z.im ^ 2 ≤ (1 / 4 : ℝ) ^ 2 := by
+  have hcos : (7 / 8 : ℝ) ≤ Real.cos z.im := by
+    have hs : z.im ^ 2 ≤ (1 / 2 : ℝ) ^ 2 := by
       rw [← sq_abs]
       exact pow_le_pow_left₀ (abs_nonneg _) hy 2
     linarith only [hs, Real.one_sub_sq_div_two_le_cos (x := z.im)]
   have hscale : (1 : ℝ) ≤ discriminant23ThetaScale * Real.cos z.im :=
-    (by norm_num : (1 : ℝ) ≤ (13 / 10) * (31 / 32)).trans
+    (by norm_num : (1 : ℝ) ≤ (13 / 10) * (7 / 8)).trans
       (mul_le_mul discriminant23_thetaScale_interval.1 hcos (by norm_num)
         (by linarith only [discriminant23_thetaScale_interval.1]))
   have hq : ‖q‖ ≤ Real.exp (-Real.exp z.re) := by
@@ -64,13 +64,8 @@ private theorem exp_mul_heat_power_norm_le {z : ℂ} (hy : |z.im| ≤ 1 / 4) {k 
     _ = Real.exp (-1) := by rw [← Real.exp_add]; ring_nf
     _ ≤ _ := (Real.exp_le_exp.mpr (by norm_num : (-1 : ℝ) ≤ 0)).trans_eq Real.exp_zero
 
-private theorem thetaDensity_norm_le (N : ℕ) {c : ℝ} {z : ℂ}
-    (hz : z ∈ sphere (c : ℂ) (1 / 4 : ℝ)) :
+private theorem thetaDensity_im_norm_le (N : ℕ) {z : ℂ} (hy : |z.im| ≤ 1 / 2) :
     ‖discriminant23PhaseDensityUpTo N z‖ ≤ densityMass N := by
-  have hd := mem_sphere.mp hz
-  rw [dist_eq_norm] at hd
-  have hy := (Complex.abs_im_le_norm (z - (c : ℂ))).trans_eq hd
-  simp only [Complex.sub_im, Complex.ofReal_im, sub_zero] at hy
   let q := Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z)
   have hSum (Q : ℤ → ℤ → ℤ) (hQ : ∀ m n, m ^ 2 + n ^ 2 ≤ 2 * Q m n) :
       ‖∑ p ∈ characterThetaTermsUpTo Q N, Complex.exp z * q ^ (Q p.1 p.2).toNat‖ ≤
@@ -94,15 +89,26 @@ private theorem thetaDensity_norm_le (N : ℕ) {c : ℝ} {z : ℂ}
   exact (norm_sub_le _ _).trans
     (add_le_add (hSum _ discriminant23_principal_form_growth) (hSum _ discriminant23_other_form_growth))
 
+theorem discriminant23_phaseDensity_norm_le (N : ℕ) {z : ℂ} (hy : |z.im| ≤ 1 / 2) :
+    ‖discriminant23PhaseDensityUpTo N z‖ ≤
+      (((characterThetaTermsUpTo discriminant23PrincipalForm N).card +
+        (characterThetaTermsUpTo discriminant23OtherForm N).card : ℕ) : ℝ) := by
+  simpa only [densityMass, Nat.cast_add] using thetaDensity_im_norm_le N hy
+
+private theorem thetaDensity_norm_le (N : ℕ) {c : ℝ} {z : ℂ}
+    (hz : z ∈ sphere (c : ℂ) (1 / 4 : ℝ)) :
+    ‖discriminant23PhaseDensityUpTo N z‖ ≤ densityMass N := by
+  have hd := mem_sphere.mp hz
+  rw [dist_eq_norm] at hd
+  have hy := (Complex.abs_im_le_norm (z - (c : ℂ))).trans_eq hd
+  simp only [Complex.sub_im, Complex.ofReal_im, sub_zero] at hy
+  exact thetaDensity_im_norm_le N (hy.trans (by norm_num))
+
 theorem discriminant23_phaseDensity_real_norm_le (N : ℕ) (u : ℝ) :
     ‖discriminant23PhaseDensityUpTo N (u : ℂ)‖ ≤
       (((characterThetaTermsUpTo discriminant23PrincipalForm N).card +
         (characterThetaTermsUpTo discriminant23OtherForm N).card : ℕ) : ℝ) := by
-  have hu : (u : ℂ) ∈ sphere ((u - 1 / 4 : ℝ) : ℂ) (1 / 4 : ℝ) := by
-    rw [mem_sphere, dist_eq_norm, ← Complex.ofReal_sub, Complex.norm_real, Real.norm_eq_abs]
-    rw [show u - (u - 1 / 4) = 1 / 4 by ring]
-    norm_num
-  simpa only [densityMass, Nat.cast_add] using thetaDensity_norm_le N hu
+  exact discriminant23_phaseDensity_norm_le N (by simp)
 
 private theorem radialPhaseWeight_norm_le (odd : Bool) {w : ℂ} {L u : ℝ}
     (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) (hu : u ∈ Icc (0 : ℝ) L) :
@@ -252,12 +258,8 @@ private theorem densityMass_sixtyFour : densityMass 64 = 174 := by
   have hn : (characterThetaTermsUpTo discriminant23OtherForm 64).card = 84 := by decide +kernel
   norm_num [densityMass, hp, hn]
 
-/-- A concrete parameter choice for a smaller analytic allowance. -/
-theorem discriminant23_phaseTaylor_error_at_64_4_96 {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) :
-    ‖discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo 64 4 96 false w‖ < 1 / 10 ^ 23 ∧
-    ‖deriv discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo 64 4 96 true w‖ < 1 / 10 ^ 23 := by
-  have h := discriminant23_phaseTaylorUpTo_error (N := 64) (L := 4) (depth := 96) (order := 46)
-    (by decide) (by decide) (w := w) hlo hhi
+private theorem phaseError_at_64_4_96 : discriminant23CharacterModelError 46 (Real.exp 4) +
+    discriminant23PhaseQuadratureError 64 4 96 < 1 / 10 ^ 23 := by
   have h₄ : (50 : ℝ) ≤ Real.exp 4 := by
     rw [show (4 : ℝ) = (4 : ℕ) * 1 by norm_num, Real.exp_nat_mul]
     exact (by norm_num : (50 : ℝ) ≤ (27 / 10 : ℝ) ^ 4).trans
@@ -269,16 +271,26 @@ theorem discriminant23_phaseTaylor_error_at_64_4_96 {w : ℂ} (hlo : 0 ≤ w.re)
     refine (Real.exp_le_exp.mpr (by linarith only [h₄] : -(5 / 4 : ℝ) * Real.exp 4 ≤ -62)).trans ?_
     rw [show (-62 : ℝ) = (62 : ℕ) * (-1) by norm_num, Real.exp_nat_mul]
     exact pow_le_pow_left₀ (Real.exp_nonneg _) hNeg 62
-  have hTotal : discriminant23CharacterModelError 46 (Real.exp (4 : ℕ)) +
-      discriminant23PhaseQuadratureError 64 4 96 < 1 / 10 ^ 23 := by
-    unfold discriminant23CharacterModelError discriminant23PhaseQuadratureError
-    rw [densityMass_sixtyFour]
-    calc
-      _ ≤ (15 * (3 / 11 : ℝ) ^ (46 - 1 : ℕ) + (126 / 5) * (3 / 8 : ℝ) ^ 62) +
-          4 * (4 : ℝ) * (4 + 1) * 174 * (1 / 2) ^ 96 :=
-        add_le_add (add_le_add le_rfl (mul_le_mul_of_nonneg_left hTail (by norm_num))) le_rfl
-      _ < _ := by norm_num
-  exact ⟨h.1.trans_lt hTotal, h.2.trans_lt hTotal⟩
+  unfold discriminant23CharacterModelError discriminant23PhaseQuadratureError
+  rw [densityMass_sixtyFour]
+  calc
+    _ ≤ (15 * (3 / 11 : ℝ) ^ (46 - 1 : ℕ) + (126 / 5) * (3 / 8 : ℝ) ^ 62) +
+        4 * (4 : ℝ) * (4 + 1) * 174 * (1 / 2) ^ 96 :=
+      add_le_add (add_le_add le_rfl (mul_le_mul_of_nonneg_left hTail (by norm_num))) le_rfl
+    _ < _ := by norm_num
+
+theorem discriminant23_modelError_at_64_4 :
+    discriminant23CharacterModelError 46 (Real.exp 4) < 1 / 10 ^ 23 :=
+  (le_add_of_nonneg_right (by unfold discriminant23PhaseQuadratureError densityMass; positivity)).trans_lt
+    phaseError_at_64_4_96
+
+/-- A concrete parameter choice for a smaller analytic allowance. -/
+theorem discriminant23_phaseTaylor_error_at_64_4_96 {w : ℂ} (hlo : 0 ≤ w.re) (hhi : w.re ≤ 1) :
+    ‖discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo 64 4 96 false w‖ < 1 / 10 ^ 23 ∧
+    ‖deriv discriminant23CharacterFold w - discriminant23PhaseTaylorUpTo 64 4 96 true w‖ < 1 / 10 ^ 23 := by
+  have h := discriminant23_phaseTaylorUpTo_error (N := 64) (L := 4) (depth := 96) (order := 46)
+    (by decide) (by decide) (w := w) hlo hhi
+  exact ⟨h.1.trans_lt phaseError_at_64_4_96, h.2.trans_lt phaseError_at_64_4_96⟩
 
 private theorem radialPhaseWeight_eq_phaseWeight_neg (odd : Bool) (w : ℂ) (u : ℝ) :
     radialPhaseWeight odd w u = discriminant23PhaseWeight odd w (-u) := by
@@ -329,5 +341,7 @@ end
 #print axioms discriminant23_phaseTaylorUpTo_error
 #print axioms discriminant23_exists_uniform_phaseApproximation
 #print axioms discriminant23_phaseDensity_real_norm_le
+#print axioms discriminant23_phaseDensity_norm_le
+#print axioms discriminant23_modelError_at_64_4
 
 end FieldTarget
