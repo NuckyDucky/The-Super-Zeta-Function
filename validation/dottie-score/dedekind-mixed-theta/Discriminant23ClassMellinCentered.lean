@@ -7,9 +7,9 @@ open Finset Complex Set
 
 noncomputable section
 
-private def classGaussNodes : Finset (ℕ × Fin 24) := Finset.range 32 ×ˢ Finset.univ
+def classGaussNodes : Finset (ℕ × Fin 24) := Finset.range 32 ×ˢ Finset.univ
 
-private def classGaussNode (p : ℕ × Fin 24) : ℝ :=
+def classGaussNode (p : ℕ × Fin 24) : ℝ :=
   ((2 * (p.1 : ℝ) + 1) + (gauss24Node p.2 : ℝ)) / 16
 
 private def classGaussAmplitude (b : ℝ) (p : ℕ × Fin 24) : ℂ :=
@@ -28,6 +28,21 @@ private def classGaussMinus (b : ℝ) (c : ℂ) (p : ℕ × Fin 24) : ℂ :=
 def discriminant23ClassCombinationTaylorCoeff (b : ℝ) (c : ℂ) (k : ℕ) : ℂ :=
   centeredExponentialSumCoeff classGaussNodes classGaussNode
     (classGaussPlus b c) (classGaussMinus b c) k
+
+theorem discriminant23_classCombinationTaylorCoeff_eq_sum (b : ℝ) (c : ℂ) (k : ℕ) :
+    discriminant23ClassCombinationTaylorCoeff b c k =
+      ∑ p ∈ classGaussNodes,
+        let u := (classGaussNode p : ℂ)
+        ((gauss24Weight p.2 : ℝ) / 32 : ℝ) * (u ^ k / (k.factorial : ℂ)) *
+          Complex.exp u * discriminant23ClassCombinationPolynomial b 80
+            (Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp u)) *
+          (Complex.exp ((c - 1) * u) + (-1 : ℂ) ^ k * Complex.exp (-c * u)) := by
+  unfold discriminant23ClassCombinationTaylorCoeff centeredExponentialSumCoeff
+  apply Finset.sum_congr rfl
+  intro p _
+  unfold classGaussPlus classGaussMinus classGaussAmplitude
+  dsimp only
+  ring
 
 private theorem quadrature_eq_centered (b : ℝ) (c d : ℂ) :
     discriminant23ClassCombinationQuadrature b (c + d) =

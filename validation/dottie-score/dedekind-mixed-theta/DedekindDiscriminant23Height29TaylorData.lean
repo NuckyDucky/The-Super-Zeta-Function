@@ -57,6 +57,9 @@ private def height29TaylorData : Array (GaussianInt × GaussianInt) := #[
 private def height29TaylorNumerator (total : Bool) (k : ℕ) : GaussianInt :=
   if total then height29TaylorData[k]!.1 else height29TaylorData[k]!.2
 
+def height29SavedTaylorNumerator (total : Bool) (k : ℕ) : GaussianInt :=
+  height29TaylorNumerator total k
+
 def discriminant23Height29TaylorApprox (total : Bool) (k : ℕ) : ℂ :=
   gaussianScaled (height29TaylorNumerator total k) height29FactorDenominator
 
