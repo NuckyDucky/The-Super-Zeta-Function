@@ -361,6 +361,14 @@ If I give one critical-line zero inside each of several disjoint positive-height
 
 Replay these modules with `replay-discriminant23.ps1 -HigherPolynomialBands`. [Lean output and axiom reports](discriminant23-gauss-replay-and-axioms.txt)
 
+### A checked crossing above height 9.5
+
+If $t=m/d$ is rational with $d>0$ and $|t|\le20$, Lean proves that every reduced phase lies in the range of the trigonometric enclosure. The endpoint sign theorem then takes the directed integer margin. [Reduced-phase theorem](Gauss23ReducedPhase.lean)
+
+I check the sign at $w=1/2+it$ for $t=41/4$, $165/16$, and $20$. Each endpoint uses 16 separately checked panel bounds and an exact integer sum. If the value is negative at $41/4$ and positive at $165/16$, continuity on the critical line gives a character zero strictly between those heights. Lean checks both signs, the zero, and the negative value at $20$. [Panel arithmetic](DedekindDiscriminant23GaussPilotArithmetic.lean) · [Crossing theorem](DedekindDiscriminant23GaussPilot.lean)
+
+If I reflect the new zero to negative height, both character counts through $|\Im w|\le20$ are at least eight. The splitting-field count is then at least the quadratic-base count plus sixteen, for the full strip and for the critical line. Replay these certificates with `replay-discriminant23.ps1 -GaussPointCertificates`. [Count theorems](DedekindDiscriminant23GaussPilot.lean) · [Lean output and axiom reports](discriminant23-gauss-point-replay-and-axioms.txt)
+
 ## Extend an existing count for any number field
 
 If the complete count and the on-line count agree through $T$, a zero-free certificate on $1/2<\Re w\le31/32$, $T<|\Im w|\le U$ gives agreement through $U$. The field's right edge and reflection supply the rest of the strip. If I can supply such bands through arbitrarily large $U$, Lean gives Dedekind RH for that field. [Band theorem](DedekindHighRightAfterCount.lean) · [Cofinal theorem](DedekindPolynomialBand.lean)

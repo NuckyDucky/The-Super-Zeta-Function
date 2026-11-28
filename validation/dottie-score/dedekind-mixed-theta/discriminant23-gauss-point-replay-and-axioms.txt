@@ -1,0 +1,61 @@
+Discriminant -23 rational Gauss point certificates
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Targeted source builds against the pinned character and strip dependencies.
+Options: -j1 -M7500 -DwarningAsError=true
+
+Source Gauss23ReducedPhase f2809ff586d7ef1f7ed98fd5f16dc4426b12efd1
+'FieldTarget.gauss23_reduced_phase_in_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_phaseCheck_of_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_critical_sign_of_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23ReducedPhase exit=0
+
+Source DedekindDiscriminant23GaussPilotArithmetic fb72c91dbcde695801a8dc7515092d23744def28
+'FieldTarget.gauss23_firstLower_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_firstUpper_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_twenty_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23GaussPilotArithmetic exit=0
+
+Source DedekindDiscriminant23GaussPilot fb7b74a14956e45a4411405a4fad0af32bf66399
+'FieldTarget.discriminant23_gauss_re_neg_at_twenty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_gauss_first_crossing_signs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_gauss_first_crossing_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_gauss_character_counts_at_twenty_ge_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_gauss_field_counts_at_twenty_ge_base_add_sixteen' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23GaussPilot exit=0
+
+Lean declaration types
+gauss23_phaseCheck_of_height : ∀ (m : ℤ) {d : ℤ},
+  0 < d → |↑m / ↑d| ≤ 20 → ∀ (j : Fin 16) (i : Fin 24), gauss23PhaseCheck m d j i = true
+gauss23_critical_sign_of_interval : ∀ (m : ℤ) {d : ℤ},
+  0 < d →
+    ∀ (positive : Bool),
+      |↑m / ↑d| ≤ 20 →
+        gauss23ClearsError m d positive →
+          if positive = true then 0 < (discriminant23CharacterFold (gauss23CriticalPoint (↑m / ↑d))).re
+          else (discriminant23CharacterFold (gauss23CriticalPoint (↑m / ↑d))).re < 0
+gauss23_firstLower_clearsError : gauss23ClearsError 164 16 false
+gauss23_firstUpper_clearsError : gauss23ClearsError 165 16 true
+gauss23_twenty_clearsError : gauss23ClearsError 320 16 false
+discriminant23_gauss_re_neg_at_twenty : (discriminant23CharacterFold { re := 1 / 2, im := 20 }).re < 0
+discriminant23_gauss_first_crossing_signs : (discriminant23CharacterFold { re := 1 / 2, im := 41 / 4 }).re < 0 ∧
+  0 < (discriminant23CharacterFold { re := 1 / 2, im := 165 / 16 }).re
+discriminant23_gauss_first_crossing_exists : ∃ t ∈ Set.Ioo (41 / 4) (165 / 16),
+  discriminant23CharacterFold { re := 1 / 2, im := t } = 0
+discriminant23_gauss_character_counts_at_twenty_ge_eight : (8 ≤
+    discriminant23CharacterCountingFunction.stripZeroCount 20 fun x => True) ∧
+  8 ≤ discriminant23CharacterCountingFunction.stripZeroCount 20 fun w => w.re = 1 / 2
+discriminant23_gauss_field_counts_at_twenty_ge_base_add_sixteen : (((mixedThetaCountingFunction
+            ↥discriminant23QuadraticSubfield).stripZeroCount
+        20 fun x => True) +
+      16 ≤
+    (mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount 20 fun x => True) ∧
+  ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount 20 fun w => w.re = 1 / 2) + 16 ≤
+    (mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount 20 fun w => w.re = 1 / 2
+
+Axiom reports: 11
