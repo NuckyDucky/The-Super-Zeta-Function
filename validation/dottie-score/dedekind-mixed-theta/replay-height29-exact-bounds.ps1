@@ -50,13 +50,13 @@ if ($FactorQuadrature) {
     $modules.Add('RationalPanelQuadrature', 4)
     $modules.Add('Gauss24PanelTable', 4)
     $modules.Add('Discriminant23ClassMellinTruncation', 3)
-    $modules.Add('Discriminant23ClassMellinGauss', 3)
+    $modules.Add('Discriminant23ClassMellinGauss', 4)
     $modules.Add('DedekindDiscriminant23Height29FactorEnclosures', 1)
     $modules.Add('DedekindDiscriminant23Height29QuadratureCertificate', 4)
 }
 if ($CenteredTaylor) {
     if (!$FactorQuadrature) {
-        $modules.Add('Discriminant23ClassMellinGauss', 3)
+        $modules.Add('Discriminant23ClassMellinGauss', 4)
         $modules.Add('DedekindDiscriminant23Height29FactorEnclosures', 1)
         $modules.Add('DedekindDiscriminant23Height29QuadratureCertificate', 4)
     }

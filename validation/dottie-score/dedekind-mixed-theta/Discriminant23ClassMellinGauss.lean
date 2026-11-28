@@ -101,11 +101,11 @@ theorem discriminant23_classCombination_density_norm_le {b : ℝ} (hb : |b| ≤ 
   have h := mul_le_mul hb ho (norm_nonneg _) (by norm_num)
   linarith only [hp, h]
 
-private theorem norm_gaussIntegrand_le {b : ℝ} (hb : |b| ≤ 2) {w z : ℂ}
-    (hlo : -1 / 4 ≤ w.re) (hhi : w.re ≤ 5 / 4) (ht : |w.im| ≤ 30)
+private theorem norm_gaussIntegrand_le {b T : ℝ} (hb : |b| ≤ 2) {w z : ℂ}
+    (hlo : -1 / 4 ≤ w.re) (hhi : w.re ≤ 5 / 4) (ht : |w.im| ≤ T)
     {c r : ℝ} (hc : c ∈ Icc 0 4) (hr₀ : 0 ≤ r) (hr₁ : r ≤ 1 / 2)
     (hz : z ∈ sphere (c : ℂ) r) :
-    ‖discriminant23ClassCombinationIntegrand b 80 w z‖ ≤ 24 * Real.exp (1 + 32 * r) := by
+    ‖discriminant23ClassCombinationIntegrand b 80 w z‖ ≤ 24 * Real.exp (1 + (T + 2) * r) := by
   have hd := mem_sphere.mp hz
   rw [dist_eq_norm] at hd
   have hRe := (Complex.abs_re_le_norm (z - (c : ℂ))).trans_eq hd
@@ -115,8 +115,8 @@ private theorem norm_gaussIntegrand_le {b : ℝ} (hb : |b| ≤ 2) {w z : ℂ}
   have hLower : -r ≤ z.re := by linarith only [(abs_le.mp hRe).1, hc.1]
   have hUpper : z.re ≤ 4 + r := by linarith only [(abs_le.mp hRe).2, hc.2]
   have hE (v : ℂ) (hv₀ : -5 / 4 ≤ v.re) (hv₁ : v.re ≤ 1 / 4)
-      (hvt : |v.im| ≤ 30) :
-      ‖Complex.exp (v * z)‖ ≤ Real.exp (1 + 32 * r) := by
+      (hvt : |v.im| ≤ T) :
+      ‖Complex.exp (v * z)‖ ≤ Real.exp (1 + (T + 2) * r) := by
     have hX : v.re * z.re ≤ 1 + (5 / 4) * r := by
       by_cases hv : 0 ≤ v.re
       · have h := mul_le_mul_of_nonneg_left hUpper hv
@@ -125,12 +125,12 @@ private theorem norm_gaussIntegrand_le {b : ℝ} (hb : |b| ≤ 2) {w z : ℂ}
       · have h := mul_le_mul_of_nonpos_left hLower (le_of_not_ge hv)
         have h' := mul_le_mul_of_nonneg_right (neg_le_neg hv₀) hr₀
         linarith only [h, h']
-    have hY : -(v.im * z.im) ≤ 30 * r := by
+    have hY : -(v.im * z.im) ≤ T * r := by
       refine (neg_le_abs _).trans ?_
       rw [abs_mul]
-      exact mul_le_mul hvt hIm (abs_nonneg _) (by norm_num)
+      exact mul_le_mul hvt hIm (abs_nonneg _) ((abs_nonneg _).trans hvt)
     rw [Complex.norm_exp, Complex.mul_re]
-    exact Real.exp_le_exp.mpr (by linarith only [hX, hY, hr₀])
+    exact Real.exp_le_exp.mpr (by nlinarith only [hX, hY, hr₀])
   have h₁ := hE (w - 1)
     (by simp only [Complex.sub_re, Complex.one_re]; linarith only [hlo])
     (by simp only [Complex.sub_re, Complex.one_re]; linarith only [hhi])
@@ -225,6 +225,107 @@ theorem discriminant23_classCombination_quadrature_error {b : ℝ} (hb : |b| ≤
   rw [show discriminant23ClassCombinationReading b w - Q / 2 =
     (2 * discriminant23ClassCombinationReading b w - Q) / 2 by ring, norm_div, Complex.norm_ofNat]
   linarith only [h]
+
+/-- The same rational Gauss rule on equal panels of width 4/P. -/
+def discriminant23ClassCombinationScaledQuadrature (b : ℝ) (w : ℂ) (P : ℕ) : ℂ :=
+  rationalCompositeRule gauss24Node gauss24Weight
+    (fun u ↦ discriminant23ClassCombinationIntegrand b 80 w u) 0 (2 / (P : ℝ)) P / 2
+
+private theorem finite_gauss_error_scaled {b : ℝ} (hb : |b| ≤ 2) {w : ℂ}
+    (hlo : -1 / 4 ≤ w.re) (hhi : w.re ≤ 5 / 4) {P : ℕ}
+    (hP : 32 ≤ P) (ht : |w.im| ≤ (P : ℝ) - 2) :
+    ‖(∫ u in (0 : ℝ)..4, discriminant23ClassCombinationIntegrand b 80 w (u : ℂ)) -
+      rationalCompositeRule gauss24Node gauss24Weight
+        (fun u ↦ discriminant23ClassCombinationIntegrand b 80 w u) 0 (2 / (P : ℝ)) P‖ ≤
+      2 / 10 ^ 26 := by
+  have hP' : (32 : ℝ) ≤ (P : ℝ) := by exact_mod_cast hP
+  have hPos : 0 < (P : ℝ) := by linarith only [hP']
+  let R : ℝ≥0 := ⟨16 / (P : ℝ), by positivity⟩
+  let r : ℝ≥0 := ⟨4 / (P : ℝ), by positivity⟩
+  have hR : (R : ℝ) ≤ 1 / 2 := (div_le_iff₀ hPos).mpr (by linarith only [hP'])
+  have hrR : r ≤ R := NNReal.coe_le_coe.mp (div_le_div_of_nonneg_right (by norm_num) hPos.le)
+  have hPWidth : (P : ℝ) * (2 / (P : ℝ)) = 2 := by
+    field_simp
+  have hSpan : (0 : ℝ) + 2 * (P : ℝ) * (2 / (P : ℝ)) = 4 := by
+    rw [zero_add, mul_assoc, hPWidth]
+    norm_num
+  have hLargeExp : 1 + ((P : ℝ) - 2 + 2) * (R : ℝ) = 17 := by
+    rw [sub_add_cancel]
+    change 1 + (P : ℝ) * (16 / (P : ℝ)) = 17
+    field_simp
+    ring
+  have hSmallExp : 1 + ((P : ℝ) - 2 + 2) * (r : ℝ) = 5 := by
+    rw [sub_add_cancel]
+    change 1 + (P : ℝ) * (4 / (P : ℝ)) = 5
+    field_simp
+    ring
+  have hf : Differentiable ℂ (discriminant23ClassCombinationIntegrand b 80 w) := by
+    unfold discriminant23ClassCombinationIntegrand discriminant23ClassCombinationPolynomial
+    fun_prop
+  have h := rationalCompositeRule_twoRadius_error_le gauss24Node gauss24Weight
+    (F := discriminant23ClassCombinationIntegrand b 80 w) (a := 0) (h := 2 / (P : ℝ))
+    (R := R) (r := r)
+    (M := 24 * Real.exp 17) (mInner := 24 * Real.exp 5) (δ := 1 / 10 ^ 30) (W := 3) 48 P
+    (by positivity) (div_lt_div_of_pos_right (by norm_num) hPos) hrR (by norm_num)
+    gauss24_node_abs_le gauss24_weight_abs_sum_le
+    (fun _ hk ↦ gauss24_moment_error_tight hk) hf
+    (fun c hc z hz ↦ by
+      have hBound := norm_gaussIntegrand_le hb hlo hhi ht
+        (show c ∈ Icc (0 : ℝ) 4 from by simpa only [hSpan] using hc) R.2 hR hz
+      exact hBound.trans_eq (congrArg (fun v : ℝ ↦ 24 * Real.exp v) hLargeExp))
+    (fun c hc z hz ↦ by
+      have hBound := norm_gaussIntegrand_le hb hlo hhi ht
+        (show c ∈ Icc (0 : ℝ) 4 from by simpa only [hSpan] using hc) r.2
+        ((NNReal.coe_le_coe.mpr hrR).trans hR) hz
+      exact hBound.trans_eq (congrArg (fun v : ℝ ↦ 24 * Real.exp v) hSmallExp))
+  have hOuterRatio : (2 / (P : ℝ)) / (R : ℝ) = 1 / 8 := by
+    change (2 / (P : ℝ)) / (16 / (P : ℝ)) = 1 / 8
+    field_simp
+    ring
+  have hInnerRatio : (2 / (P : ℝ)) / (r : ℝ) = 1 / 2 := by
+    change (2 / (P : ℝ)) / (4 / (P : ℝ)) = 1 / 2
+    field_simp
+    ring
+  rw [hSpan, hOuterRatio, hInnerRatio] at h
+  have hScaled :
+      (P : ℝ) * ((2 / (P : ℝ)) * (2 + 3) * (24 * Real.exp 17 * (1 / 8) ^ 48 / (1 - 1 / 8)) +
+        (2 / (P : ℝ)) * (24 * Real.exp 5) * (1 / 10 ^ 30) / (1 - 1 / 2)) =
+        2 * ((2 + 3) * (24 * Real.exp 17 * (1 / 8) ^ 48 / (1 - 1 / 8)) +
+          (24 * Real.exp 5) * (1 / 10 ^ 30) / (1 - 1 / 2)) := by
+    calc
+      _ = ((P : ℝ) * (2 / (P : ℝ))) *
+        ((2 + 3) * (24 * Real.exp 17 * (1 / 8) ^ 48 / (1 - 1 / 8)) +
+          (24 * Real.exp 5) * (1 / 10 ^ 30) / (1 - 1 / 2)) := by ring
+      _ = _ := by rw [hPWidth]
+  rw [hScaled] at h
+  have hLarge := exp_nat_upper 17
+  have hSmall := exp_nat_upper 5
+  norm_num at h hLarge hSmall ⊢
+  linarith only [h, hLarge, hSmall]
+
+/-- Increasing the number of panels with height preserves the same error budget. -/
+theorem discriminant23_classCombination_quadrature_error_scaled {b : ℝ} (hb : |b| ≤ 2) {w : ℂ}
+    (hlo : -1 / 4 ≤ w.re) (hhi : w.re ≤ 5 / 4) {P : ℕ}
+    (hP : 32 ≤ P) (ht : |w.im| ≤ (P : ℝ) - 2) :
+    ‖discriminant23ClassCombinationReading b w - discriminant23ClassCombinationScaledQuadrature b w P‖ ≤
+      2 / 10 ^ 26 := by
+  let I := ∫ u in (0 : ℝ)..4, discriminant23ClassCombinationIntegrand b 80 w (u : ℂ)
+  let Q := rationalCompositeRule gauss24Node gauss24Weight
+    (fun u ↦ discriminant23ClassCombinationIntegrand b 80 w u) 0 (2 / (P : ℝ)) P
+  have hI : ‖2 * discriminant23ClassCombinationReading b w - I‖ ≤ 2 / 10 ^ 27 :=
+    (discriminant23_classCombination_integral_error hb
+      (N := 80) (order := 58) (by decide) (by decide)
+      (show (0 : ℝ) ≤ 4 by norm_num) (by linarith only [hlo])
+      (by linarith only [hhi])).trans truncation_at_four_le
+  have hQ : ‖I - Q‖ ≤ 2 / 10 ^ 26 := finite_gauss_error_scaled hb hlo hhi hP ht
+  have h := (norm_sub_le_norm_sub_add_norm_sub _ I Q).trans (add_le_add hI hQ)
+  change ‖discriminant23ClassCombinationReading b w - Q / 2‖ ≤ _
+  rw [show discriminant23ClassCombinationReading b w - Q / 2 =
+    (2 * discriminant23ClassCombinationReading b w - Q) / 2 by ring, norm_div, Complex.norm_ofNat]
+  linarith only [h]
+
+#check @discriminant23_classCombination_quadrature_error_scaled
+#print axioms discriminant23_classCombination_quadrature_error_scaled
 
 #check @discriminant23_classCombination_quadrature_error
 #print axioms principal_mass_le
