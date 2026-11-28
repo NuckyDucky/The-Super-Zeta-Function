@@ -7,7 +7,8 @@ param(
     [string[]] $RayHeckeImports = @(),
     [string[]] $Discriminant23Imports = @(),
     [switch] $Discriminant23TwentyCount,
-    [switch] $Discriminant23RightBandCount
+    [switch] $Discriminant23RightBandCount,
+    [switch] $TwelfthRootTarget
 )
 
 $ErrorActionPreference = 'Stop'
@@ -71,11 +72,25 @@ try {
             if ($LASTEXITCODE -ne 0) { throw 'Could not build the Mathlib derivative reflection lemma.' }
         }
     }
+    if ($TwelfthRootTarget) {
+        $conductorModules = @(
+            'DedekindZetaZeroFree.Arithmetic.RayClasses.PrimitiveConductors.SexticSupport'
+            'DedekindZetaZeroFree.Arithmetic.Kummer.TwelfthCyclotomicExtension'
+        )
+        $missing = @(foreach ($module in $conductorModules) {
+            $object = Join-Path $axiom ('.lake/build/lib/lean/' + $module.Replace('.', '/') + '.olean')
+            if (!(Test-Path -LiteralPath $object)) { '+' + $module + ':olean' }
+        })
+        if ($missing.Count -gt 0) {
+            & $lake -d $axiom build @missing
+            if ($LASTEXITCODE -ne 0) { throw 'Could not build the pinned conductor and cyclotomic inputs.' }
+        }
+    }
     $imports = & $lake -d $axiom env $pwsh -NoLogo -NoProfile -NonInteractive -Command '$env:LEAN_PATH'
     if ($LASTEXITCODE -ne 0 -or !$imports) { throw 'Could not read the Lake import path.' }
 
     # The release supplies a few shared base modules absent from the AxiomMath cache.
-    # Use its whole base namespace for all five source replays.
+    # Put the release's base modules first when compiling the sources.
     $env:LEAN_PATH = ($huLibraries + @($out) + $baseline + @($imports | Select-Object -Last 1)) -join $separator
     $modules = [ordered]@{
         RayHeckeStripCounts = 6
@@ -83,6 +98,10 @@ try {
         RayHeckeRightBand = 3
         HeckeSevenEighthsTransfer = 6
         DedekindSevenEighthsCoverage = 3
+    }
+    if ($TwelfthRootTarget) {
+        $modules.Add('RayHeckePrimitiveReduction', 3)
+        $modules.Add('DedekindTwelfthRootTarget', 7)
     }
     if ($characterImports.Count -gt 0) {
         $modules.Add('DedekindDiscriminant23SevenEighths', 2)
@@ -129,7 +148,8 @@ try {
         $object = Join-Path $out "$name.olean"
         $stack = @(if ($name -like 'Gauss23*' -or $name -in @(
             'DedekindDiscriminant23TwentyCount', 'DedekindDiscriminant23RightStripCount',
-            'DedekindDiscriminant23RightBandCount')) {
+            'DedekindDiscriminant23RightBandCount', 'RayHeckePrimitiveReduction',
+            'DedekindTwelfthRootTarget')) {
             '-s32768'
         })
         $report = & $lean '-j1' @stack '-M7500' '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' $object $source 2>&1
