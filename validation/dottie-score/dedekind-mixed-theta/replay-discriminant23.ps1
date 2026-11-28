@@ -10,6 +10,7 @@ param(
     [switch] $CharacterQuadrature,
     [switch] $CharacterCount,
     [switch] $HigherPolynomialBands,
+    [switch] $GaussPointCertificates,
     [switch] $RayHecke
 )
 
@@ -33,6 +34,9 @@ $version
 "Mathlib $mathlib"
 
 $repo = Join-Path $PSScriptRoot '../../..'
+if ($GaussPointCertificates) {
+    $HigherPolynomialBands = $true
+}
 if ($HigherPolynomialBands) {
     $CharacterCount = $true
 }
@@ -200,7 +204,14 @@ if ($HigherPolynomialBands) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussIntervals.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussPoint.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussEndpoint.lean')
+        (Join-Path $PSScriptRoot 'Gauss23ReducedPhase.lean')
         (Join-Path $PSScriptRoot 'ComplexStripBracketLowerCount.lean')
+    )
+}
+if ($GaussPointCertificates) {
+    $sources += @(
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussPilotArithmetic.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussPilot.lean')
     )
 }
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'
