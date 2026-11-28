@@ -1,0 +1,145 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+Super Zeta source Discriminant23ClassMellinGauss 0164918e60d69af8b9561952aa3cd36aaa7a6372
+@discriminant23_classCombination_quadrature_error : ∀ {b : ℝ},
+  |b| ≤ 2 →
+    ∀ {w : ℂ},
+      -1 / 4 ≤ w.re →
+        w.re ≤ 5 / 4 →
+          |w.im| ≤ 30 →
+            ‖discriminant23ClassCombinationReading b w - discriminant23ClassCombinationQuadrature b w‖ ≤ 2 / 10 ^ 26
+'_private.Discriminant23ClassMellinGauss.0.FieldTarget.principal_mass_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.Discriminant23ClassMellinGauss.0.FieldTarget.other_mass_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_classCombination_quadrature_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Discriminant23ClassMellinGauss exit=0
+Super Zeta source DedekindDiscriminant23Height29FactorEnclosures ba840895e88f7d2d4422cb5c93b86c09ab6393a6
+discriminant23_height29_sample_error_of_factor_enclosures : (∀ j < 128,
+    ‖discriminant23Height29BaseFactor (discriminant23Height29ReadingPoint j) - discriminant23Height29BaseApprox j‖ ≤
+      1 / 10 ^ 25) →
+  (∀ j < 128,
+      ‖discriminant23CharacterClassReading (discriminant23Height29ReadingPoint j) -
+            discriminant23Height29HeckeApprox j‖ ≤
+        1 / 10 ^ 25) →
+    ∀ j < 128,
+      ‖discriminant23Height29Samples j -
+            8 * discriminant23CompletedClassProduct (discriminant23Height29ReadingPoint j)‖ ≤
+        1 / 10 ^ 60
+'FieldTarget.discriminant23_height29_sample_error_of_factor_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29FactorEnclosures exit=0
+Super Zeta source DedekindDiscriminant23Height29QuadratureCertificate 5a72fe51190fc63d7fa123f65a5aa30833519789
+discriminant23_height29_ne_zero_of_quadrature_enclosures : (∀ j < 128,
+    ‖discriminant23Height29BaseQuadrature (discriminant23Height29ReadingPoint j) - discriminant23Height29BaseApprox j‖ ≤
+      8 / 10 ^ 26) →
+  (∀ j < 128,
+      ‖discriminant23ClassCombinationQuadrature (-1) (discriminant23Height29ReadingPoint j) -
+            discriminant23Height29HeckeApprox j‖ ≤
+        8 / 10 ^ 26) →
+    ∀ {w : ℂ},
+      w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) (dottieWeightOuterRadius 0) →
+        mixedThetaContinuation Discriminant23GaloisField w ≠ 0 ∧
+          mixedThetaContinuation (↥discriminant23QuadraticSubfield) w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0
+'FieldTarget.discriminant23_height29_sample_coordinate_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_base_quadrature_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_hecke_quadrature_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_ne_zero_of_quadrature_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29QuadratureCertificate exit=0
+Super Zeta source CenteredExponentialSum e67c63be1a61a9994cbbe5a85842511b10c91df9
+'FieldTarget.centeredExponentialSum_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+CenteredExponentialSum exit=0
+Super Zeta source Discriminant23ClassMellinCentered acd639a9f6a5b041482ea2aed138f9b612b3a39c
+'FieldTarget.discriminant23_classCombination_taylor_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+Discriminant23ClassMellinCentered exit=0
+Super Zeta source GaussianRationalPolynomial c8fd939d75cca6a711e8d394a3fb689628f08abf
+'FieldTarget.gaussianPolynomialEval_eq_scaledHorner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_gaussianScaled_le_of_l1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_polynomial_sub_le_on_unit_disk' depends on axioms: [propext, Classical.choice, Quot.sound]
+GaussianRationalPolynomial exit=0
+Super Zeta source DedekindDiscriminant23Height29TaylorData a787dcf8f7237cf0794daf9445964eede07c3442
+'FieldTarget.height29Taylor_derivative_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.height29_base_residual_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.height29_hecke_residual_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Height29TaylorData exit=0
+Super Zeta source DedekindDiscriminant23Height29TaylorTransfer a9014557bc9648b84368be8b05c36e13ff66c0cf
+'FieldTarget.discriminant23_height29_base_quadrature_of_taylor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_hecke_quadrature_of_taylor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29TaylorTransfer exit=0
+Super Zeta source Height29TaylorBatch.Block00 9d3af562579adffb076f0d100de6b4ae697ac4a4
+'FieldTarget.height29_taylor_comparisons_block_00' depends on axioms: [propext]
+Height29TaylorBatch.Block00 exit=0
+Super Zeta source Height29TaylorBatch.Block01 636b753807b2a2c476e0eb7f2ce33d4b32f23b1e
+'FieldTarget.height29_taylor_comparisons_block_01' depends on axioms: [propext]
+Height29TaylorBatch.Block01 exit=0
+Super Zeta source Height29TaylorBatch.Block02 837bedc2c92dea4856c4e934e1b191ee81ca3eb1
+'FieldTarget.height29_taylor_comparisons_block_02' depends on axioms: [propext]
+Height29TaylorBatch.Block02 exit=0
+Super Zeta source Height29TaylorBatch.Block03 e93466dbe825f06b097f91f9c8733eb05fa50932
+'FieldTarget.height29_taylor_comparisons_block_03' depends on axioms: [propext]
+Height29TaylorBatch.Block03 exit=0
+Super Zeta source Height29TaylorBatch.Block04 6e60b3e9f5475874dfd5b763c70c22b3caa2fddb
+'FieldTarget.height29_taylor_comparisons_block_04' depends on axioms: [propext]
+Height29TaylorBatch.Block04 exit=0
+Super Zeta source Height29TaylorBatch.Block05 6929a0ae0ee5fc641cbbeb2b645126d95331fe9e
+'FieldTarget.height29_taylor_comparisons_block_05' depends on axioms: [propext]
+Height29TaylorBatch.Block05 exit=0
+Super Zeta source Height29TaylorBatch.Block06 c0664acddb01021b8dd5cc00d2dda60d8b098777
+'FieldTarget.height29_taylor_comparisons_block_06' depends on axioms: [propext]
+Height29TaylorBatch.Block06 exit=0
+Super Zeta source Height29TaylorBatch.Block07 9f5c61fec36da5036f964544ca274bb4ff39db39
+'FieldTarget.height29_taylor_comparisons_block_07' depends on axioms: [propext]
+Height29TaylorBatch.Block07 exit=0
+Super Zeta source Height29TaylorBatch.Block08 b91ca32d445349a7440babea8415122326edeb7f
+'FieldTarget.height29_taylor_comparisons_block_08' depends on axioms: [propext]
+Height29TaylorBatch.Block08 exit=0
+Super Zeta source Height29TaylorBatch.Block09 a9be2c22310d9235bbecab872a7d0b86c922f242
+'FieldTarget.height29_taylor_comparisons_block_09' depends on axioms: [propext]
+Height29TaylorBatch.Block09 exit=0
+Super Zeta source Height29TaylorBatch.Block10 3ee5052531913ae0d9ba26e8f18bea368d347c03
+'FieldTarget.height29_taylor_comparisons_block_10' depends on axioms: [propext]
+Height29TaylorBatch.Block10 exit=0
+Super Zeta source Height29TaylorBatch.Block11 a004aa183f2e3639b91030e2c0b62197c5dd7ede
+'FieldTarget.height29_taylor_comparisons_block_11' depends on axioms: [propext]
+Height29TaylorBatch.Block11 exit=0
+Super Zeta source Height29TaylorBatch.Block12 1e6e7d7779cc19256626f078dc2025ddb24aa181
+'FieldTarget.height29_taylor_comparisons_block_12' depends on axioms: [propext]
+Height29TaylorBatch.Block12 exit=0
+Super Zeta source Height29TaylorBatch.Block13 a6eeff9bb9d05a510dc681578605292f568f2f99
+'FieldTarget.height29_taylor_comparisons_block_13' depends on axioms: [propext]
+Height29TaylorBatch.Block13 exit=0
+Super Zeta source Height29TaylorBatch.Block14 2d109d1f54d351982e65da6dc6da9fc7d79049d8
+'FieldTarget.height29_taylor_comparisons_block_14' depends on axioms: [propext]
+Height29TaylorBatch.Block14 exit=0
+Super Zeta source Height29TaylorBatch.Block15 b4a86c211bd3afc388e05bdcef8f804ef1d1e86e
+'FieldTarget.height29_taylor_comparisons_block_15' depends on axioms: [propext]
+Height29TaylorBatch.Block15 exit=0
+Super Zeta source DedekindDiscriminant23Height29TaylorArithmetic ed616e9912a777bb3b2739b486d08f5f2494bae3
+'FieldTarget.height29TaylorComparisons' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Height29TaylorArithmetic exit=0
+Super Zeta source DedekindDiscriminant23Height29TaylorCertificate 39883a196a9e08c2d8fcc44e8a6ebc31dc171cd3
+discriminant23_height29_ne_zero_of_taylor_coefficient_enclosures : (∀ k < 36,
+    ‖discriminant23ClassCombinationTaylorCoeff 2 c29 k - discriminant23Height29TaylorApprox true k‖ ≤ 1 / 10 ^ 27) →
+  (∀ k < 36,
+      ‖discriminant23ClassCombinationTaylorCoeff (-1) c29 k - discriminant23Height29TaylorApprox false k‖ ≤
+        1 / 10 ^ 27) →
+    ∀ {w : ℂ},
+      w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) (dottieWeightOuterRadius 0) →
+        mixedThetaContinuation Discriminant23GaloisField w ≠ 0 ∧
+          mixedThetaContinuation (↥discriminant23QuadraticSubfield) w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0
+'FieldTarget.discriminant23_height29_ne_zero_of_taylor_coefficient_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29TaylorCertificate exit=0

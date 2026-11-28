@@ -69,7 +69,7 @@ private theorem norm_exp_mul_heat_pow_le {z : ℂ} (hx : -1 / 2 ≤ z.re)
   exact (mul_le_mul hExp (pow_le_pow_left₀ (norm_nonneg _) hSmall _) (by positivity)
     zero_le_one).trans_eq (one_mul _)
 
-private theorem norm_density_le {b : ℝ} (hb : |b| ≤ 2) {z : ℂ}
+theorem discriminant23_classCombination_density_norm_le {b : ℝ} (hb : |b| ≤ 2) {z : ℂ}
     (hx : -1 / 2 ≤ z.re) (hy : |z.im| ≤ 1 / 2) :
     ‖Complex.exp z * discriminant23ClassCombinationPolynomial b 80
       (Complex.exp (-(discriminant23ThetaScale : ℂ) * Complex.exp z))‖ ≤ 12 := by
@@ -139,7 +139,8 @@ private theorem norm_gaussIntegrand_le {b : ℝ} (hb : |b| ≤ 2) {w z : ℂ}
     (by simp only [Complex.neg_re]; linarith only [hhi])
     (by simp only [Complex.neg_re]; linarith only [hlo])
     (by simpa only [Complex.neg_im, abs_neg] using ht)
-  have hDensity := norm_density_le hb (by linarith only [hLower, hr₁]) (hIm.trans hr₁)
+  have hDensity := discriminant23_classCombination_density_norm_le hb
+    (by linarith only [hLower, hr₁]) (hIm.trans hr₁)
   rw [discriminant23ClassCombinationIntegrand, norm_mul]
   exact (mul_le_mul ((norm_add_le _ _).trans (add_le_add h₁ h₂)) hDensity
     (norm_nonneg _) (by positivity)).trans_eq (by ring)
