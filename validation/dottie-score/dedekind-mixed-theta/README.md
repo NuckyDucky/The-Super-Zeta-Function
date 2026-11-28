@@ -348,6 +348,8 @@ Add `-WeightedDottie` to include the weighted sign and rational weight theorems 
 
 Run the pinned sample-model replay, then add `-WeightedDottieEnclosures` for the explicit weight budget or `-Discriminant23Height29Dottie` for the height-$29$ Lean declarations as well. [Sample-model replay instructions](alpoge-dottie-bridge.md) · [Height 29 interval replay instructions](discriminant23-height29-weighted.md)
 
+Run the exact-bounds replay after the height-$29$ replay to check the Gaussian-integer polynomial product and the direct bound on the closed radius-$63/256$ disk. If the uniform model error holds, Lean gives Dedekind nonvanishing on that entire disk. [Height 29 exact bounds and replay](discriminant23-height29-weighted.md#check-the-whole-disk-directly) · [Exact Lean output](height29-exact-bounds-replay-and-axioms.txt)
+
 ### Discriminant-23 above the certified count
 
 - If $7/8<\Re w<1$, then the character fold is nonzero. A zero of the fold would force a zero of the sextic Dedekind continuation at that same $w$. If I supply the modulo-23 Dirichlet critical-line theorem, then Dedekind RH for the sextic field is equivalent to character nonvanishing on $1/2<\Re w\le7/8$ and $\Im w>19/2$. The complete count through $|\Im w|\le19/2$ supplies the lower heights. [Exact field theorem](DedekindDiscriminant23SevenEighths.lean) · [Earlier count](DedekindDiscriminant23NineteenHalvesBand.lean)
