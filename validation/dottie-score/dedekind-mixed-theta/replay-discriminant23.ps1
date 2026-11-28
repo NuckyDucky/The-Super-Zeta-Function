@@ -11,6 +11,7 @@ param(
     [switch] $CharacterCount,
     [switch] $HigherPolynomialBands,
     [switch] $GaussPointCertificates,
+    [switch] $GaussTwentyEndpoints,
     [switch] $RayHecke
 )
 
@@ -34,6 +35,9 @@ $version
 "Mathlib $mathlib"
 
 $repo = Join-Path $PSScriptRoot '../../..'
+if ($GaussTwentyEndpoints) {
+    $GaussPointCertificates = $true
+}
 if ($GaussPointCertificates) {
     $HigherPolynomialBands = $true
 }
@@ -206,12 +210,27 @@ if ($HigherPolynomialBands) {
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussEndpoint.lean')
         (Join-Path $PSScriptRoot 'Gauss23ReducedPhase.lean')
         (Join-Path $PSScriptRoot 'ComplexStripBracketLowerCount.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23TwentyEndpointLogic.lean')
+        (Join-Path $PSScriptRoot 'CenteredExponentialSum.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussCentered.lean')
+        (Join-Path $PSScriptRoot 'Gauss23AmplitudeCache.lean')
+        (Join-Path $PSScriptRoot 'Gauss23CoefficientIntervals.lean')
+        (Join-Path $PSScriptRoot 'Gauss23CellSigns.lean')
     )
 }
 if ($GaussPointCertificates) {
     $sources += @(
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussPilotArithmetic.lean')
         (Join-Path $PSScriptRoot 'DedekindDiscriminant23GaussPilot.lean')
+    )
+}
+if ($GaussTwentyEndpoints) {
+    $sources += @(
+        (Join-Path $PSScriptRoot 'Gauss23PanelEndpoint.lean')
+        (Join-Path $PSScriptRoot 'Gauss23TwentyEndpointTransfer.lean')
+        (Join-Path $PSScriptRoot 'Gauss23TwentyEndpointsA.lean')
+        (Join-Path $PSScriptRoot 'Gauss23TwentyEndpointsB.lean')
+        (Join-Path $PSScriptRoot 'DedekindDiscriminant23TwentyEndpointCertificate.lean')
     )
 }
 $legacyPiModule = 'Mathlib.Data.Real.Pi.Bounds'
@@ -273,7 +292,10 @@ try {
         }
         $sourceRoot = Split-Path -Parent $source
         $object = Join-Path $out "$name.olean"
-        & $lean "-j$BuildThreads" '-M6500' '-DwarningAsError=true' "--root=$sourceRoot" '-o' $object $source
+        $stack = @(if ($name -in @('DedekindDiscriminant23GaussCentered', 'Gauss23CoefficientIntervals', 'Gauss23CellSigns')) {
+            '-s32768'
+        })
+        & $lean "-j$BuildThreads" @stack '-M6500' '-DwarningAsError=true' "--root=$sourceRoot" '-o' $object $source
         $status = $LASTEXITCODE
         "$name exit=$status"
         if ($status -ne 0) { throw "$name failed." }

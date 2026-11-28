@@ -1,0 +1,187 @@
+Discriminant -23 height-20 endpoint and rectangle source replay
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Targeted source builds against the pinned character and strip dependencies.
+Options: -j1 -DwarningAsError=true with per-module memory limits of 4500 to 6500 MB. The centered, coefficient and sign modules use -s32768.
+
+Source Gauss23PanelEndpoint fa965664ce9f8636037ef7cbc9a715184cf19814
+'FieldTarget.gauss23_clearsError_of_panel_ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23PanelEndpoint exit=0
+
+Source Gauss23TwentyEndpointsA e29b7ae69e36343c4b5f572b8537fde765ec753b
+'FieldTarget.gauss23_at_182_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_183_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_206_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_207_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_234_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_235_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_263_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_264_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23TwentyEndpointsA exit=0
+
+Source Gauss23TwentyEndpointsB feba0e17e93d14b4d02a4cf0e191483fb550e1cf
+'FieldTarget.gauss23_at_273_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_274_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_289_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_290_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_305_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_at_306_clearsError' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23TwentyEndpointsB exit=0
+
+Source DedekindDiscriminant23TwentyEndpointLogic d473046cce0204b3a3fbc94d7c8bf726be80ae51
+'FieldTarget.discriminant23_twentyEndpointSigns_of_marked' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_twenty_character_counts_ge_of_endpointSigns' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_twenty_field_counts_ge_of_endpointSigns' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23TwentyEndpointLogic exit=0
+
+Source Gauss23TwentyEndpointTransfer b1ae628d072e4139fffc34b1b445e5ce2850c5bf
+'FieldTarget.discriminant23_signed_endpoints_of_clearances' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23TwentyEndpointTransfer exit=0
+
+Source DedekindDiscriminant23TwentyEndpointCertificate 0f0a52903ab51581ec1ea69594ba244000701476
+'FieldTarget.discriminant23_twentyEndpointSigns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_twenty_character_counts_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_twenty_character_counts_eq_iff_total_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_twenty_field_counts_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23TwentyEndpointCertificate exit=0
+
+Source CenteredExponentialSum e67c63be1a61a9994cbbe5a85842511b10c91df9
+'FieldTarget.centeredExponentialSum_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+CenteredExponentialSum exit=0
+
+Source DedekindDiscriminant23GaussCentered 62e7132843e59650f07558bc7a67a34641983457
+'FieldTarget.discriminant23_gaussCenteredTaylor_error_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_gaussCenteredTaylor_error_lt_of_half_height' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23GaussCentered exit=0
+
+Source Gauss23AmplitudeCache 8ef7c55dbcd30a5adc240250a7a7e7c640dbdadd
+'FieldTarget.gauss23_cachedAmplitudeBox_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23AmplitudeCache exit=0
+
+Source Gauss23CoefficientIntervals 572176f911f9d49afd745e1b23b355303f9dcbd5
+'FieldTarget.gauss23_coefficientBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_cellBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss23_shiftedCellBox_contains' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23CoefficientIntervals exit=0
+
+Source Gauss23CellSigns 7f696838aa137944c187b9f556933b005d67acae
+'FieldTarget.gauss23_half_height_sign_of_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss23CellSigns exit=0
+
+Source DedekindDiscriminant23TwentyBand eef78338d492e71fef584ce22d7178219105e180
+FieldTarget.Discriminant23TwentyBandConditions : Prop
+discriminant23_character_counts_at_twenty_of_band_conditions : Discriminant23TwentyBandConditions →
+  (discriminant23CharacterCountingFunction.stripZeroCount 20 fun x => True) = 22 ∧
+    (discriminant23CharacterCountingFunction.stripZeroCount 20 fun w => w.re = 1 / 2) = 22
+discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  Discriminant23TwentyBandConditions →
+    (DedekindZetaRH Discriminant23GaloisField ↔
+      ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → 20 < w.im → discriminant23CharacterFold w ≠ 0)
+'FieldTarget.discriminant23_twentyBandConditions_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_character_counts_at_twenty_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_field_counts_at_twenty_add_forty_four_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23TwentyBand exit=0
+
+Lean declaration types
+FieldTarget.Discriminant23TwentyEndpointSigns : Prop
+discriminant23_twentyEndpointSigns : Discriminant23TwentyEndpointSigns
+discriminant23_twenty_character_counts_ge : (22 ≤
+    discriminant23CharacterCountingFunction.stripZeroCount 20 fun x => True) ∧
+  22 ≤ discriminant23CharacterCountingFunction.stripZeroCount 20 fun w => w.re = 1 / 2
+discriminant23_twenty_field_counts_ge : (((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount
+        20 fun x => True) +
+      44 ≤
+    (mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount 20 fun x => True) ∧
+  ((mixedThetaCountingFunction ↥discriminant23QuadraticSubfield).stripZeroCount 20 fun w => w.re = 1 / 2) + 44 ≤
+    (mixedThetaCountingFunction Discriminant23GaloisField).stripZeroCount 20 fun w => w.re = 1 / 2
+discriminant23_twenty_character_counts_eq_iff_total_le : (discriminant23CharacterCountingFunction.stripZeroCount 20
+        fun x => True) =
+      22 ∧
+    (discriminant23CharacterCountingFunction.stripZeroCount 20 fun w => w.re = 1 / 2) = 22 ↔
+  (discriminant23CharacterCountingFunction.stripZeroCount 20 fun x => True) ≤ 22
+discriminant23_gaussCenteredTaylor_error_lt_of_half_height : ∀ (slope : Bool) (t : ℝ) {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      |w.im| ≤ 20 →
+        |w.im - t| ≤ 1 / 2 →
+          ‖(if slope = true then deriv discriminant23CharacterFold w else discriminant23CharacterFold w) -
+                gauss23CenteredTaylor slope t 36 w‖ <
+            3 / 10 ^ 19
+gauss23_cachedAmplitudeBox_eq : ∀ (j : Fin 16) (i : Fin 24), gauss23CachedAmplitudeBox j i = gauss23AmplitudeBox j i
+gauss23_coefficientBox_contains : ∀ (slope : Bool) (m : ℤ) {d : ℤ},
+  0 < d →
+    |↑m / ↑d| ≤ 20 → ∀ (k : ℕ), (gauss23CoefficientBox slope m d k).Contains (gauss23CenteredCoeff slope (↑m / ↑d) k)
+gauss23_shiftedCellBox_contains : ∀ (slope : Bool) (m : ℤ) {d : ℤ},
+  0 < d →
+    |↑m / ↑d| ≤ 20 →
+      ∀ {center offset : DottieOriented.NativeSpectrum.MellinFixed.ComplexBox} {z w : ℂ},
+        center.Contains z →
+          offset.Contains (w - gauss23CriticalPoint (↑m / ↑d) - z) →
+            (gauss23ShiftedCellBox slope m d center offset).Contains (gauss23CenteredTaylor slope (↑m / ↑d) 36 w)
+gauss23_half_height_sign_of_enclosure : ∀ (slope imaginary positive : Bool) (t : ℝ) {w : ℂ},
+  0 ≤ w.re →
+    w.re ≤ 1 →
+      |w.im| ≤ 20 →
+        |w.im - t| ≤ 1 / 2 →
+          ∀ {box : DottieOriented.NativeSpectrum.MellinFixed.ComplexBox},
+            box.Contains (gauss23CenteredTaylor slope t 36 w) →
+              gauss23BoxClearsError imaginary positive box →
+                have f := if slope = true then deriv discriminant23CharacterFold w else discriminant23CharacterFold w;
+                if positive = true then 0 < gauss23Coordinate imaginary f else gauss23Coordinate imaginary f < 0
+FieldTarget.Discriminant23TwentyCellConditions : Prop
+discriminant23_twentyBandConditions_iff : Discriminant23TwentyBandConditions ↔
+  Discriminant23TwentyEndpointSigns ∧ Discriminant23TwentyCellConditions
+discriminant23_dedekindRH_iff_character_above_twenty_of_band_conditions : (∀ (χ : DirichletCharacter ℂ 23),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  Discriminant23TwentyBandConditions →
+    (ArtinPrimitiveRootsConjecture.DedekindZetaRH Discriminant23GaloisField ↔
+      ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → 20 < w.im → discriminant23CharacterFold w ≠ 0)
+
+Axiom reports: 35
+
+Independent endpoint replay
+Lean 4.35.0-rc3 with -j1 -M6500 -DwarningAsError=true
+Gauss23PanelEndpoint exit=0, 51.240 s, 1 matching axiom report
+Gauss23TwentyEndpointsA exit=0, 585.828 s, 8 matching axiom reports
+Gauss23TwentyEndpointsB exit=0, 453.891 s, 6 matching axiom reports
+
+Arb rectangle replay with python-flint 0.9.0
+
+python check_discriminant23_gauss_cells.py --recenter --digits 48
+crossing=1 open_height_bracket=(41/4,165/16) direction=-1 slope_lower=[9.9959725e-7 +/- 3.02e-16]
+crossing=2 open_height_bracket=(91/8,183/16) direction=1 slope_lower=[2.3985935e-7 +/- 2.05e-15]
+crossing=3 open_height_bracket=(103/8,207/16) direction=-1 slope_lower=[4.4326669e-8 +/- 4.88e-16]
+crossing=4 open_height_bracket=(117/8,235/16) direction=1 slope_lower=[3.3451369e-9 +/- 4.81e-17]
+crossing=5 open_height_bracket=(263/16,33/2) direction=-1 slope_lower=[4.8964581e-11 +/- 4.71e-19]
+crossing=6 open_height_bracket=(273/16,137/8) direction=1 slope_lower=[1.4063069e-11 +/- 2.30e-19]
+crossing=7 open_height_bracket=(289/16,145/8) direction=-1 slope_lower=[4.3688460e-12 +/- 1.13e-20]
+crossing=8 open_height_bracket=(305/16,153/8) direction=1 slope_lower=[1.5147422e-12 +/- 7.60e-21]
+band=[19/2,20] full_real_interval=[0,1] positive_simple_zeros=8 boxes=480 minimum_checked_margin=[3.7064693e-15 +/- 2.51e-23] elapsed_s=0.380
+
+python check_discriminant23_gauss_cells.py --recenter --digits 64
+crossing=1 open_height_bracket=(41/4,165/16) direction=-1 slope_lower=[9.9959725e-7 +/- 3.02e-16]
+crossing=2 open_height_bracket=(91/8,183/16) direction=1 slope_lower=[2.3985935e-7 +/- 2.05e-15]
+crossing=3 open_height_bracket=(103/8,207/16) direction=-1 slope_lower=[4.4326669e-8 +/- 4.88e-16]
+crossing=4 open_height_bracket=(117/8,235/16) direction=1 slope_lower=[3.3451369e-9 +/- 4.81e-17]
+crossing=5 open_height_bracket=(263/16,33/2) direction=-1 slope_lower=[4.8964581e-11 +/- 4.71e-19]
+crossing=6 open_height_bracket=(273/16,137/8) direction=1 slope_lower=[1.4063069e-11 +/- 2.30e-19]
+crossing=7 open_height_bracket=(289/16,145/8) direction=-1 slope_lower=[4.3688460e-12 +/- 1.13e-20]
+crossing=8 open_height_bracket=(305/16,153/8) direction=1 slope_lower=[1.5147422e-12 +/- 7.60e-21]
+band=[19/2,20] full_real_interval=[0,1] positive_simple_zeros=8 boxes=480 minimum_checked_margin=[3.7064693e-15 +/- 2.51e-23] elapsed_s=0.386
