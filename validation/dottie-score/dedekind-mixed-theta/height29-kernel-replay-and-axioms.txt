@@ -1,0 +1,165 @@
+Height-29 disk replay and transitive axioms
+
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+Lean flags: -j1 -s32768 -M5000 -DwarningAsError=true
+The output below combines the pinned source builds and parallel integer check batches.
+Checked 49 compiled module outputs and 53 axiom reports against their source blobs.
+The terminal theorem was replayed after the trace and coefficient assemblies built.
+
+Super Zeta source ComplexExponentialDyadic 1314413497cb52d92ed2829e3f9f992a45a58539
+'FieldTarget.norm_exp_sub_taylor_approximation_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_exp_sub_dyadic_approximation_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source GaussianFixedPointExponential 56a23c1c248871c2fc790e2fed0d82ab142bd87b
+'FieldTarget.norm_gaussianFloorDiv_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_gaussianTaylorTerm_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_exp_sub_gaussianTaylorSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source GaussianFixedPointSquaring be56ce03059eb99fa399a35a2589b95cbbf7c2cf
+'FieldTarget.norm_gaussianFixedPointSquares_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_exp_sub_fixedPointSquares_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_exp_sub_gaussianFixedPointExp' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source GaussianFixedPointProducts e62328da1ce8c177c46abcbdd8f1ecc248dddfc2
+'FieldTarget.norm_gaussianFixedPointProducts_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source GaussianFixedPointHorner d8caa3268dc16365c1ba853079920ad0295c80f4
+'FieldTarget.norm_polynomial_sub_gaussianFixedPointHorner_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source GaussianFixedPointFast d135d020b8852772ed627658169e473743343a35
+'FieldTarget.gaussianFixedPointExpFast_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianFixedPointExp_real_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianFixedPointHorner_real_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23ThetaScaleDyadic 2da20146da1343db6381856997909e9febb1d07c
+'FieldTarget.discriminant23_thetaScale_dyadic_128' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23GaussExponentials d6dc84318bb4c107bdcae574a7b68671adac5ef0
+'FieldTarget.gaussPanelNode_le_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_gaussPanelExp_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23GaussHeat 508417e249f759c1fd47752a90e719496d9ccb1b
+'FieldTarget.discriminant23_gaussPanelPositiveExp_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_gaussPanelHeat_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23GaussTheta 7a8eb08a69822391a65af4786a6f25849fdf2535
+'FieldTarget.gaussThetaPolynomial_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_gaussPanelTheta_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23GaussMoments db73c82553185ddbb9bd6c2ed70a07f396a8fbc5
+'FieldTarget.gaussPanelMoment_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_gaussPanelMoment_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23GaussCoefficientData 1873025b90f2cb698f602c022d8e1805e03bca58
+
+Super Zeta source Discriminant23GaussCoefficientError c1e7a6672e360f5a0161c567ad15ea6242bd0002
+'FieldTarget.discriminant23_gaussCoefficient_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23GaussArithmetic fdac7183d9d836cc9f27dfff71ecd14e0c9cbf22
+'FieldTarget.gaussTraceApproximations_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussTracedPanelCoefficientSum_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23GaussIntegerComparison 182a90bcfd7e8a49e42f8420a37786daaa328e0e
+'FieldTarget.height29TaylorCoeff_enclosure_of_integer_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Discriminant23Height29IntegerTransfer c896715f632625344214c7cdb205d16879c8b017
+'FieldTarget.discriminant23_height29_ne_zero_of_integer_comparisons' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+Super Zeta source Discriminant23ClassMellinCentered f8aa510a8ff40f358809bb82eec23e20b0aa196a
+'FieldTarget.discriminant23_classCombination_taylor_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source DedekindDiscriminant23Height29TaylorData 3396a50011ca20278082a50e192ba91880654f36
+'FieldTarget.height29Taylor_derivative_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.height29_base_residual_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.height29_hecke_residual_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Seeds 6bd2e73d5e433194cfc7f6c545534b36a9f15554
+
+Super Zeta source Height29IntegerTrace.Data00 adb376cba70692596cb46236ceb83842102a644e
+
+Super Zeta source Height29IntegerTrace.Data01 7fd62daa087140e7afd5c1c1a0a6fb792292efad
+
+Super Zeta source Height29IntegerTrace.Data02 8770f855c78beda7c51d223d9318e67b64688b5b
+
+Super Zeta source Height29IntegerTrace.Data03 3d56e847a6c3f9a53ccebfe1e8932600e5aeb718
+
+Super Zeta source Height29IntegerTrace.Data04 15e7554eead16a80b2868d76336d42493b391425
+
+Super Zeta source Height29IntegerTrace.Data05 a0b307f04bd2673d01b3d3ea858235ab8a8b3da5
+
+Super Zeta source Height29IntegerTrace.Data06 501498bea38c3e7a98a61ff2716c11460ec78315
+
+Super Zeta source Height29IntegerTrace.Data07 52944dbd09d9716a383a8b1b783b9fa3d5be5bfb
+
+Super Zeta source Height29IntegerTrace.Table 3ea6aaa55112324ed3f473ab658e39ab8528fde5
+
+Super Zeta source Height29IntegerTrace.SeedsChecked ff95c7e29aa3d11834aa7f292457f2b6f745d86d
+'FieldTarget.height29_phase_step_checked' depends on axioms: [propext]
+'FieldTarget.height29_initial_phases_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Check00 11147881f5e710e72a4bd279c3e1d083fcd49b1a
+'FieldTarget.height29_gauss_trace_block_00' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Check01 4e5a4557d74c967b6afdcc3aadfe4a0a14b4ca27
+'FieldTarget.height29_gauss_trace_block_01' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Check02 39508254ca6028c69edc673ae27d63401a0e5b87
+'FieldTarget.height29_gauss_trace_block_02' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Check03 24a379db6e283f7891514210101d2c9f8e92db4f
+'FieldTarget.height29_gauss_trace_block_03' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Check04 7c402fb84ffcf31390af4d656e47d2fdd52768fe
+'FieldTarget.height29_gauss_trace_block_04' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Check05 942350740d62f9b8a8d9e4e61842dc58c310d535
+'FieldTarget.height29_gauss_trace_block_05' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Check06 3b89980fec449c8b33f975c8ea98cc01cc03a186
+'FieldTarget.height29_gauss_trace_block_06' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Check07 4fd37e1e30085dcde638e4f4f1d9dfbb020c7a9b
+'FieldTarget.height29_gauss_trace_block_07' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.TraceChecked cc1db3c3597817bcf95881c800a517602bdd2a45
+'FieldTarget.height29_gauss_trace_approximations' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients00 425693ef2e69f04d7c6f1ce2835d4429528438dc
+'FieldTarget.height29_gauss_integer_coefficient_block_00' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients01 339a20bed8af6b17255745967b70076d427211e7
+'FieldTarget.height29_gauss_integer_coefficient_block_01' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients02 849a87bb1370c679fb80f576b87ef6e93a9564c8
+'FieldTarget.height29_gauss_integer_coefficient_block_02' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients03 44b46a5cbfaff32864a925947caf0004c44e2f15
+'FieldTarget.height29_gauss_integer_coefficient_block_03' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients04 93dc8b0321d5dc8b65ddec7429efc1de4d051944
+'FieldTarget.height29_gauss_integer_coefficient_block_04' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients05 7a52f05a168523d5e5a153f28131c2c3e60ff787
+'FieldTarget.height29_gauss_integer_coefficient_block_05' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients06 54ed30fa5fcf05bed708247956948e098040cf35
+'FieldTarget.height29_gauss_integer_coefficient_block_06' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients07 c61817eb80c679d0242d62373682d0f742872ff4
+'FieldTarget.height29_gauss_integer_coefficient_block_07' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.Coefficients08 5a2f1cbfd21d9216be080b5cc8226030c764a1ea
+'FieldTarget.height29_gauss_integer_coefficient_block_08' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source Height29IntegerTrace.CoefficientsChecked e1e9096ce0e9f771e36b00e3f5f4f7515a1ec39d
+'FieldTarget.height29_gauss_integer_coefficients_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Super Zeta source DedekindDiscriminant23Height29KernelCertificate bce15a941616fa7ce9378f6e72fe8cac89bbbbf4
+@discriminant23_height29_ne_zero_kernel : ∀ {w : ℂ},
+  w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) (dottieWeightOuterRadius 0) →
+    mixedThetaContinuation Discriminant23GaloisField w ≠ 0 ∧
+      mixedThetaContinuation (↥discriminant23QuadraticSubfield) w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0
+'FieldTarget.discriminant23_height29_ne_zero_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Height29KernelCertificate exit=0

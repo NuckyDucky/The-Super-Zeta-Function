@@ -6,7 +6,8 @@ param(
     [string[]] $Imports = @(),
     [switch] $CircleSamples,
     [switch] $FactorQuadrature,
-    [switch] $CenteredTaylor
+    [switch] $CenteredTaylor,
+    [switch] $IntegerCoefficients
 )
 
 $ErrorActionPreference = 'Stop'
@@ -28,7 +29,7 @@ if ($CircleSamples) {
     $modules.Add('DedekindDiscriminant23DottieReading', 16)
     $modules.Add('DedekindWideOuterDottie', 2)
 }
-if ((!$FactorQuadrature -and !$CenteredTaylor) -or $CircleSamples) {
+if ((!$FactorQuadrature -and !$CenteredTaylor -and !$IntegerCoefficients) -or $CircleSamples) {
     $base = [ordered]@{
         DedekindDiscriminant23Height29Polynomials = 2
         DottieGaussianPolynomial = 6
@@ -68,6 +69,41 @@ if ($CenteredTaylor) {
     foreach ($block in 0..15) { $modules.Add(('Height29TaylorBatch.Block{0:D2}' -f $block), 1) }
     $modules.Add('DedekindDiscriminant23Height29TaylorArithmetic', 1)
     $modules.Add('DedekindDiscriminant23Height29TaylorCertificate', 1)
+}
+
+if ($IntegerCoefficients) {
+    if (!$CenteredTaylor) {
+        $modules.Add('Discriminant23ClassMellinCentered', 1)
+        $modules.Add('DedekindDiscriminant23Height29TaylorData', 3)
+    }
+    $integer = [ordered]@{
+        ComplexExponentialDyadic = 2
+        GaussianFixedPointExponential = 3
+        GaussianFixedPointSquaring = 3
+        GaussianFixedPointProducts = 1
+        GaussianFixedPointHorner = 1
+        GaussianFixedPointFast = 3
+        Discriminant23ThetaScaleDyadic = 1
+        Discriminant23GaussExponentials = 2
+        Discriminant23GaussHeat = 2
+        Discriminant23GaussTheta = 2
+        Discriminant23GaussMoments = 2
+        Discriminant23GaussCoefficientData = 0
+        Discriminant23GaussCoefficientError = 1
+        Discriminant23GaussArithmetic = 2
+        Discriminant23GaussIntegerComparison = 1
+        Discriminant23Height29IntegerTransfer = 1
+    }
+    foreach ($module in $integer.Keys) { $modules.Add($module, $integer[$module]) }
+    foreach ($block in 0..7) { $modules.Add(('Height29IntegerTrace.Data{0:D2}' -f $block), 0) }
+    $modules.Add('Height29IntegerTrace.Seeds', 0)
+    $modules.Add('Height29IntegerTrace.Table', 0)
+    $modules.Add('Height29IntegerTrace.SeedsChecked', 2)
+    foreach ($block in 0..7) { $modules.Add(('Height29IntegerTrace.Check{0:D2}' -f $block), 1) }
+    $modules.Add('Height29IntegerTrace.TraceChecked', 1)
+    foreach ($block in 0..8) { $modules.Add(('Height29IntegerTrace.Coefficients{0:D2}' -f $block), 1) }
+    $modules.Add('Height29IntegerTrace.CoefficientsChecked', 1)
+    $modules.Add('DedekindDiscriminant23Height29KernelCertificate', 1)
 }
 
 try {

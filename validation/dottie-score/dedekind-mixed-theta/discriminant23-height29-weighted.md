@@ -121,3 +121,17 @@ The replay prints the two remaining coefficient bounds and their axiom audit. [L
 ## Keep the quadrature error while increasing height
 
 If I take an integer panel count $P\ge32$ with $|\Im w|\le P-2$, then I can use the same 24 Gauss nodes on each panel of width $4/P$. The two Cauchy radii are $16/P$ and $4/P$. The outer Taylor ratio stays at $1/8$ and the inner ratio at $1/2$, with exponential bounds $24e^{17}$ and $24e^5$. If $-1/4\le\Re w\le5/4$ and the class combination has $|b|\le2$, then the normalized quadrature differs from the complete reading by at most $2/10^{26}$. The replay checks this for every $P$ in that range. [Lean theorem](Discriminant23ClassMellinGauss.lean) · [Exact statement and axioms](height-scaled-gauss-lean-audit.txt)
+
+## Check the 72 coefficient enclosures in Lean
+
+For a gauss node $u=A/D$, I use the integer quotient $\lfloor 2^{256} A^k/(D^k k!)\rfloor$ to represent $u^k/k!$ on a dyadic grid. If I use this one division for each node and degree, then Lean gives an error at most $2/10^{45}$ per moment. I check the 24 initial phase triples and the common panel step, then check the phase, heat, theta and positive exponential values at all 768 nodes. [Moment proof](Discriminant23GaussMoments.lean) · [Checks on the node table](Height29IntegerTrace/TraceChecked.lean)
+
+If I sum the node products for either class combination, then Lean gives an error at most $2/10^{28}$ against the exact Taylor coefficient of the finite quadrature. If the resulting Gaussian integer numerator matches the saved coefficient to $1/10^{28}$ after scaling to the same denominator, then the combined error is at most $3/10^{28}$. All 72 checks for degrees 0 through 35 pass with `decide +kernel`. [Coefficient error](Discriminant23GaussCoefficientError.lean) · [Integer comparisons](Height29IntegerTrace/CoefficientsChecked.lean)
+
+If $|w-(3/4+29i)|\le63/256$, Lean gives nonvanishing at $w$ for both completed Dedekind readings and the class-character reading. The theorem takes disk membership as its only hypothesis. Its transitive axioms are `propext`, `Classical.choice` and `Quot.sound`. [Lean theorem](DedekindDiscriminant23Height29KernelCertificate.lean) · [Exact statement and replay audit](height29-kernel-replay-and-axioms.txt)
+
+Add `-IntegerCoefficients` to the replay. If the earlier replays already have compiled output directories, pass them in `-Imports`. The switches can also run together in a single output directory.
+
+~~~powershell
+& ./replay-height29-exact-bounds.ps1 -Lean '<pinned-lean-binary>' -OutputDirectory '<output>' -Imports $imports -CircleSamples -FactorQuadrature -CenteredTaylor -IntegerCoefficients
+~~~
