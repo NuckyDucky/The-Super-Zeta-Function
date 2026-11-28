@@ -317,11 +317,19 @@ Replay with `-RayHecke`. [Lean output and axioms](ray-hecke-replay-and-axioms.tx
 - If I adjoin a primitive twelfth root to $K$, Lean gives $\zeta_{K(\zeta_{12})}(w)=g(w)\zeta_K(w)$ off $w=1$, with $g$ entire. Every base-field zero is still present at the original input. If both counts agree through height $T$ for $K(\zeta_{12})$, they agree through $T$ for $K$. [Cyclotomic extension](https://github.com/AxiomMath/DedekindZetaZeroFree/blob/09afbb4ce6570c1615d58509dc197fc9f0956b7d/DedekindZetaZeroFree/Arithmetic/Kummer/TwelfthCyclotomicExtension.lean#L10) · [Factorization and count transfer](DedekindTwelfthRootTarget.lean)
 - If I take the rational normal closure after adjoining the root, Lean only needs the test on Galois fields over $\mathbb Q$ containing a primitive twelfth root. On those fields, nonvanishing for the primitive ray characters on $1/2<\Re w\le7/8$, $\Im w\ge0$ is equivalent to Dedekind RH for all number fields. If I supply the rational Dirichlet theorem, the Dottie sample premise is needed only for the nonabelian members of this field family. [Exact implications](DedekindTwelfthRootTarget.lean) · [Lean output and axioms](hecke-primitive-twelfth-root-replay.txt)
 
+### Rational weights on the Dottie contours
+
+- If $F$ is the completed field reading and $F_R$ is its Mellin truncation, take a weight $W$ and bound $\lVert(WF)'\rVert$ by $M$ on the closed disk of radius $r$. If the tail is at most $\tau$ and every rational contour sample $v$ satisfies
+  $$\operatorname{Im}(W(v)F_R(v))+M\frac{2r}{m}+\lVert W(v)\rVert\tau\le-\mathrm{margin}<0,$$
+  then Lean gives a negative sign on the whole circumference. The resulting disk excludes zeros of the field's Dedekind zeta at the same complex input. [Weighted sample and disk theorems](DedekindWeightedDottieSamples.lean)
+- If that closed disk is zero-free, then $-i/F$ is holomorphic on a slightly larger disk. I can approximate it by a polynomial in $w-c$ with rational real and imaginary coefficients, where $c$ is the disk center. Lean gives a strict sign for the weighted reading and witnesses for a finite Mellin cutoff and finite contour mesh. This gives the disk equivalence between zero-freeness and existence of weighted sample data. [Rational polynomial approximation](DottieRationalWeight.lean) · [Disk equivalence](DedekindWeightedDottieCompleteness.lean)
+- If each bounded height band has certified disks covering $1/2+\varepsilon\le\Re w\le7/8$ for every $\varepsilon>0$, Lean gives Dedekind RH for that field. The reverse implication gives such disks if Dedekind RH holds for the field. For the all-field conclusion via the twelfth-root reduction, I supply the rational Dirichlet theorem and this coverage premise for the nonabelian Galois fields in the reduced family. [Exact field and all-field premises](weighted-dottie-replay-and-axioms.txt)
+
 ### Replay the seven-eighths proof
 
 Use the pinned Lean, Mathlib, and AxiomMath checkout above. Build the existing inputs with `replay-discriminant23.ps1 -RayHecke`, `replay.ps1 -RelativeDottie`, and `replay-cyclic-euler.ps1 -GlobalDescent`, with `-AxiomCheckout` and `-LeanBin` on each command. Run the relative Dottie replay before the global descent replay.
 
-Use the compiled library from [Hu’s pinned release](https://github.com/Rogerhu12/hecke-seven-eighths/releases/tag/lake-cache-c77efa9). Its `lake-cache.tar.zst.part-000` has SHA-256 `0c54475d31a8ed2a4d9ee3a424a4422e2df73651650800830fe91ff58762214b`. Extract it into the cache root, keeping the three library paths in the archive. The replay takes the extracted root, places Hu’s libraries first for the shared imports, recompiles the ray-Hecke sources and the three new files, and prints their transitive axioms.
+Use the compiled library from Hu’s pinned release. Its `lake-cache.tar.zst.part-000` has SHA-256 `0c54475d31a8ed2a4d9ee3a424a4422e2df73651650800830fe91ff58762214b`. Extract it into the cache root, keeping the three library paths in the archive. The replay places Hu’s libraries first for the shared imports, recompiles the selected Lean sources, and prints their transitive axioms. [Pinned cache release](https://github.com/Rogerhu12/hecke-seven-eighths/releases/tag/lake-cache-c77efa9)
 
 ~~~powershell
 pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-hecke-seven-eighths.ps1 `
@@ -329,6 +337,8 @@ pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-hecke-seven-eighths.p
 ~~~
 
 Add `-TwelfthRootTarget` to replay the primitive count transfer and the twelfth-root field reduction with the same inputs. [Exact Lean output](hecke-primitive-twelfth-root-replay.txt)
+
+Add `-WeightedDottie` to include the weighted sign and rational weight theorems after the twelfth-root reduction. [Exact Lean output](weighted-dottie-replay-and-axioms.txt)
 
 ### Discriminant-23 above the certified count
 
