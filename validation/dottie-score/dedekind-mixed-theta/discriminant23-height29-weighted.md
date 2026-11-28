@@ -59,3 +59,17 @@ From this directory, run the interval checker with the pinned Flint version. The
 uv run --with python-flint==0.9.0 python check-discriminant23-height29-weighted.py
 uv run --with python-flint==0.9.0 python check-discriminant23-height29-weighted.py --precision 352
 ```
+
+## Check the Fourier coefficients
+
+I keep the 128 circle readings as Gaussian integers divided by $2^{288}$. The Fourier grid has radius $1/2$ around $c$. If I enclose $\omega^{-1}$ with successive half-angle bounds and check each dyadic multiplication in the phase table, Lean gives $10^{-24}$ as an error bound for every phase. The readings have norm at most $10^{-53}$, so each Fourier coefficient pays at most $10^{-77}$ for the phase error. [Phase proof](ContourRoot128.lean) · [Fourier error theorem](ContourGaussianDFT.lean)
+
+For the 113 retained coefficients, I check the integer dot products and then the rational differences from the saved model coefficients. The bound on the second part is $10^{-73}$. Each dot-product block runs in a separate Lean process and checks at most five coefficients. The exact arithmetic supplies `hRound`. [Sample and sum data](DedekindDiscriminant23Height29Samples.lean) · [Coefficient blocks](Height29DFTSum) · [Rounding theorem](DedekindDiscriminant23Height29DFT.lean)
+
+## Set the reading tolerance from the signed margin
+
+If each saved reading encloses the completed field reading to $10^{-60}$, then the Taylor tail, the reading errors, and the checked rounding errors give $\|F-P\|\le2/10^{60}$ throughout the disk. The weighted budget is $29/50+(3\cdot10^{58})(2/10^{60})=16/25$. If the field reading vanished, its weighted distance from $-i$ would be $1$. Lean gives nonvanishing of the splitting field's Dedekind zeta and both of its factors at the same input. The $10^{-60}$ reading enclosures are the remaining premise. [Outer disk and error transfer](DedekindDiscriminant23Height29CircleCertificate.lean) · [Final Lean theorem](DedekindDiscriminant23Height29DFT.lean)
+
+Add `-CircleSamples` to the exact-bounds replay to check the outer Cauchy bound, the dyadic phases, the coefficient blocks and the final implication. Add `--circle-data <file>` to the interval replay to export the readings. At 288 and 352 bits the rational sample checksum is `3052b155f647ad48d285dbc00cd6c5e641a0cb0fc221269c9c431328ad40c5b3`. Both runs enclose every recorded reading within $1.36\cdot10^{-87}$. [Lean replay and axioms](height29-circle-reading-replay-and-axioms.txt) · [Interval replay](check-discriminant23-height29-weighted.py)
+
+The audit records the 35 successful dependency builds and the successful replay of the final module against their compiled outputs. Each source hash identifies the exact file used for its Lean output.

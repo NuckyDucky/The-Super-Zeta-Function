@@ -80,17 +80,14 @@ private theorem character_fold_eq_dottie (w : ℂ) :
     ring
   · exact fold_translate thetaDifference w
 
-/-- The actual completed Dedekind reading is the explicit class product
-on the open critical strip, with the library's factor of eight. -/
-theorem discriminant23_completedReading_eq_classProduct (w : ℂ)
-    (hlo : 0 < w.re) (hhi : w.re < 1) :
-    mixedThetaCompletedReading L23 w = 8 * discriminant23CompletedClassProduct w := by
-  have h₀ : w ≠ 0 := by rintro rfl; norm_num at hlo
-  have h₁ : 1 - w ≠ 0 := by
-    intro h
-    have hw := sub_eq_zero.mp h
-    rw [← hw] at hhi
-    norm_num at hhi
+/-- The folded Dedekind reading is the explicit class product everywhere away
+from the two poles, with the library's factor of eight. -/
+theorem discriminant23_completedFold_eq_classProduct_off_poles (w : ℂ)
+    (h₀ : w ≠ 0) (h₁' : w ≠ 1) :
+    (DedekindZetaZeroFree.AbelianQuotient.Theta.mixedThetaPair L23).Λ₀ w -
+      (DedekindZetaZeroFree.AbelianQuotient.Theta.mixedThetaPair L23).f₀ / (w * (1 - w)) =
+        8 * discriminant23CompletedClassProduct w := by
+  have h₁ : 1 - w ≠ 0 := sub_ne_zero.mpr h₁'.symm
   have hPole : w * (1 - w) ≠ 0 := mul_ne_zero h₀ h₁
   let A := discriminant23TotalClassReading w
   let C := discriminant23CharacterClassReading w
@@ -99,13 +96,23 @@ theorem discriminant23_completedReading_eq_classProduct (w : ℂ)
   have h := discriminant23_continued_completed_class_product w
   rw [total_fold_eq_dottie, character_fold_eq_dottie] at h
   change _ = (w * (1 - w) * (2 * A) - 3) * (2 * C) ^ 2 at h
-  rw [mixedThetaCompletedReading_eq_mellin L23 w hlo hhi, hModel]
+  rw [hModel]
   apply (mul_left_cancel₀ hPole)
   calc
     _ = w * (1 - w) * (DedekindZetaZeroFree.AbelianQuotient.Theta.mixedThetaPair L23).Λ₀ w -
           (DedekindZetaZeroFree.AbelianQuotient.Theta.mixedThetaPair L23).f₀ := by
       field_simp [h₀, h₁]
     _ = _ := h.trans (by field_simp [h₀, h₁]; ring)
+
+/-- The actual completed Dedekind reading is the explicit class product
+on the open critical strip. -/
+theorem discriminant23_completedReading_eq_classProduct (w : ℂ)
+    (hlo : 0 < w.re) (hhi : w.re < 1) :
+    mixedThetaCompletedReading L23 w = 8 * discriminant23CompletedClassProduct w := by
+  have h₀ : w ≠ 0 := by rintro rfl; norm_num at hlo
+  have h₁ : w ≠ 1 := by rintro rfl; norm_num at hhi
+  rw [mixedThetaCompletedReading_eq_mellin L23 w hlo hhi]
+  exact discriminant23_completedFold_eq_classProduct_off_poles w h₀ h₁
 
 /-- The actual pole-cleared readings have one relative factor, the square
 of the class-character fold, at the same input throughout the strip. -/
@@ -304,6 +311,7 @@ theorem discriminant23_dedekind_ne_zero_to_seven_sixths {w : ℂ}
 #check @re_discriminant23_characterWeightedReading_le_on_wide_strip
 #check @norm_discriminant23_signedReading_ge_on_wide_strip
 #check @discriminant23_dedekind_ne_zero_to_seven_sixths
+#print axioms discriminant23_completedFold_eq_classProduct_off_poles
 #print axioms discriminant23_completedReading_eq_classProduct
 #print axioms discriminant23_signedReading_eq_base_mul_character_sq
 #print axioms discriminant23_dedekind_zero_iff_base_or_character

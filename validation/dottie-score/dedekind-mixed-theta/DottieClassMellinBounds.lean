@@ -144,6 +144,74 @@ private theorem exp_rate_first {r : ℝ} (hr : 0 < r) :
 def classMellinReading (F : ℝ → ℝ) (w : ℂ) : ℂ :=
   ∫ t : ℝ in Ioi 0, (F t : ℂ) * classMellinWeight w (Real.log (1 + t))
 
+/-- The exponential theta envelope gives a uniform class-reading bound
+on the real-part range used by the outer Cauchy disk. -/
+theorem classMellinReading_norm_le_twenty_thirds {H : ℝ → ℝ} (hm : Measurable H)
+    (hH : ∀ t > 0, |H t| ≤ Real.exp (-(13 / 10) * t))
+    {w : ℂ} (hlo : -2 ≤ w.re) (hhi : w.re ≤ 3) :
+    ‖classMellinReading H w‖ ≤ 20 / 3 := by
+  let W := fun t : ℝ ↦ classMellinWeight w (Real.log (1 + t))
+  let B := fun t : ℝ ↦ 2 * Real.exp (-(3 / 10) * t)
+  have hWmeas : Measurable W := by
+    have hv : Measurable (fun t : ℝ ↦ (Real.log (1 + t) : ℂ)) :=
+      Complex.continuous_ofReal.measurable.comp (Real.measurable_log.comp
+        (measurable_const.add measurable_id))
+    exact ((Complex.continuous_exp.measurable.comp (measurable_const.mul hv)).add
+        (Complex.continuous_exp.measurable.comp (measurable_const.mul hv))).div_const _
+  have hPoly (t : ℝ) (ht : 0 < t) : ‖W t‖ ≤ (1 + t)^2 := by
+    let v := Real.log (1 + t)
+    have hv : 0 ≤ v := Real.log_nonneg (by linarith only [ht])
+    have h₁ : ‖Complex.exp ((w - 1) * (v : ℂ))‖ ≤ Real.exp (2 * v) := by
+      rw [Complex.norm_exp]
+      apply Real.exp_le_exp.mpr
+      simp only [mul_re, sub_re, one_re, ofReal_re, ofReal_im, mul_zero, sub_zero]
+      exact mul_le_mul_of_nonneg_right (by linarith only [hhi]) hv
+    have h₂ : ‖Complex.exp (-w * (v : ℂ))‖ ≤ Real.exp (2 * v) := by
+      rw [Complex.norm_exp]
+      apply Real.exp_le_exp.mpr
+      simp only [mul_re, neg_re, ofReal_re, ofReal_im, mul_zero, sub_zero]
+      exact mul_le_mul_of_nonneg_right (by linarith only [hlo]) hv
+    change ‖(Complex.exp ((w - 1) * (v : ℂ)) + Complex.exp (-w * (v : ℂ))) / 2‖ ≤ _
+    rw [norm_div, Complex.norm_ofNat]
+    calc
+      _ ≤ (‖Complex.exp ((w - 1) * (v : ℂ))‖ + ‖Complex.exp (-w * (v : ℂ))‖) / 2 :=
+        div_le_div_of_nonneg_right (norm_add_le _ _) (by norm_num)
+      _ ≤ Real.exp (2 * v) := by linarith only [h₁, h₂]
+      _ = _ := by
+        rw [two_mul, Real.exp_add, show Real.exp v = 1 + t from Real.exp_log (by linarith only [ht])]
+        ring
+  have hMajor (t : ℝ) (ht : t ∈ Ioi (0 : ℝ)) : ‖(H t : ℂ) * W t‖ ≤ B t := by
+    have ht' : 0 < t := ht
+    have he := Real.sum_le_exp_of_nonneg ht'.le 3
+    norm_num [Finset.sum_range_succ, Nat.factorial] at he
+    have hPow : (1 + t)^2 ≤ 2 * Real.exp t := by nlinarith only [he]
+    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs]
+    calc
+      _ ≤ Real.exp (-(13 / 10) * t) * (1 + t)^2 :=
+        mul_le_mul (hH t ht') (hPoly t ht') (norm_nonneg _) (Real.exp_pos _).le
+      _ ≤ Real.exp (-(13 / 10) * t) * (2 * Real.exp t) :=
+        mul_le_mul_of_nonneg_left hPow (Real.exp_pos _).le
+      _ = B t := by
+        dsimp [B]
+        rw [← mul_assoc, mul_comm (Real.exp (-(13 / 10) * t)) 2, mul_assoc, ← Real.exp_add]
+        congr 2
+        ring
+  obtain ⟨hExp, hVal⟩ := exp_rate_zeroth (r := 3 / 10) (by norm_num)
+  have hB : IntegrableOn B (Ioi 0) := hExp.const_mul 2
+  have hInt : IntegrableOn (fun t ↦ (H t : ℂ) * W t) (Ioi 0) := by
+    refine Integrable.mono' hB
+      ((Complex.continuous_ofReal.measurable.comp hm).mul hWmeas).aestronglyMeasurable ?_
+    filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht using hMajor t ht
+  change ‖∫ t : ℝ in Ioi 0, (H t : ℂ) * W t‖ ≤ _
+  calc
+    _ ≤ ∫ t : ℝ in Ioi 0, ‖(H t : ℂ) * W t‖ := norm_integral_le_integral_norm _
+    _ ≤ ∫ t : ℝ in Ioi 0, B t :=
+      setIntegral_mono_on hInt.norm hB measurableSet_Ioi hMajor
+    _ = _ := by
+      dsimp [B]
+      rw [integral_const_mul, hVal]
+      norm_num
+
 /-- Retain the height in the real-part loss from the cosine term. -/
 theorem classMellin_integral_bounds_with_height {U D : ℝ → ℝ}
     (hU : Measurable U) (hD : Measurable D)
@@ -289,4 +357,6 @@ theorem classMellin_integral_bounds {U D : ℝ → ℝ} (hU : Measurable U) (hD 
 #print axioms classMellin_integral_bounds
 
 end
+#print axioms classMellinReading_norm_le_twenty_thirds
+
 end FieldTarget

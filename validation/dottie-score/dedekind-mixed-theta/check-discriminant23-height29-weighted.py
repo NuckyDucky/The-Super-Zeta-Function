@@ -65,7 +65,7 @@ def class_product(w, alpha, polynomials, allowance):
     return 8 * (summed - arb(3)/2 / (w*(1-w))) * differenced**2
 
 
-def enclose_model(center, alpha, forms, allowance):
+def enclose_model(center, alpha, forms, allowance, circle_data_path=None):
     # Re(w) is in [-5/4,11/4] on the Cauchy disk. The t^2 bound gives
     # <= 240 sum(exp(-n), n>=1) < 240 for either integral. The pole term
     # is < 1 as |Im(w)| >= 27, so |8*A*C^2| < 2^30 there.
@@ -80,6 +80,29 @@ def enclose_model(center, alpha, forms, allowance):
                          for j in range(FOURIER_SAMPLES)), acb(0))/FOURIER_SAMPLES
                     for k in range(MODEL_DEGREE + 1)]
     retained = [rational_midpoint(z, MODEL_DENOMINATOR) for z in coefficients]
+    if circle_data_path is not None:
+        samples = [rational_midpoint(z, MODEL_DENOMINATOR) for z in readings]
+        sample_error = max(abs(a-b).upper() for a, b in zip(readings, samples))
+        rounded_dft = [sum((samples[j] * roots[(-j*k) % FOURIER_SAMPLES]
+                            for j in range(FOURIER_SAMPLES)), acb(0))/FOURIER_SAMPLES
+                       for k in range(MODEL_DEGREE + 1)]
+        rounding_error = max(abs(a-b).upper() for a, b in zip(rounded_dft, retained))
+        limit = arb(1) / 10**72
+        if not (sample_error < limit and rounding_error < limit):
+            raise ArithmeticError("Sample or coefficient roundoff exceeds the Lean input")
+        dataset = {
+            "denominator": str(MODEL_DENOMINATOR),
+            "samples": [[str((component*MODEL_DENOMINATOR).unique_fmpz())
+                         for component in (z.real, z.imag)] for z in samples],
+            "sampleErrorUpper": sample_error.str(12),
+            "coefficientErrorUpper": rounding_error.str(12),
+        }
+        if any("None" in pair for pair in dataset["samples"]):
+            raise ArithmeticError("Nonexact rational circle sample")
+        sample_data = {"denominator": dataset["denominator"], "samples": dataset["samples"]}
+        encoded = json.dumps(sample_data, sort_keys=True, separators=(",", ":")).encode()
+        dataset["rationalSampleSha256"] = hashlib.sha256(encoded).hexdigest()
+        circle_data_path.write_text(json.dumps(dataset, indent=2) + "\n", encoding="utf-8")
     ratio = weight_disk/outer
     alias = (fourier/outer)**FOURIER_SAMPLES
     interpolation = 2**30/(1-ratio) * (ratio**(MODEL_DEGREE+1) + alias/(1-alias))
@@ -156,14 +179,14 @@ def check_rational_polynomial_bounds(witness):
         raise ArithmeticError("The exact weighted polynomial exceeds the residual bound")
 
 
-def check_disk(precision, witness_path):
+def check_disk(precision, witness_path, circle_data_path=None):
     ctx.prec = precision
     alpha = 2 * arb.pi() / arb(23).sqrt()
     if not alpha > 1:
         raise ArithmeticError("Theta scale below the integral-tail premise")
     allowance = theta_tail(alpha)
     center = acb(arb(3)/4, HEIGHT)
-    model, model_error, fourier = enclose_model(center, alpha, coeffs(TERMS), allowance)
+    model, model_error, fourier = enclose_model(center, alpha, coeffs(TERMS), allowance, circle_data_path)
     r = arb(31)/128
     rho = arb(63)/256
     field_bound = (polynomial_bound(model, rho/fourier) + model_error).upper()
@@ -200,5 +223,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--precision", type=int, default=288)
     parser.add_argument("--witness", type=Path, help="Write the exact rational polynomials to JSON")
+    parser.add_argument("--circle-data", type=Path, help="Write the rational circle samples and bounds")
     options = parser.parse_args()
-    print(json.dumps(check_disk(options.precision, options.witness), indent=2))
+    print(json.dumps(check_disk(options.precision, options.witness, options.circle_data), indent=2))

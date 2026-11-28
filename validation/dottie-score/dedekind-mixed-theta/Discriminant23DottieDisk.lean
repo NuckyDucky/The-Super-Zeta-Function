@@ -83,6 +83,48 @@ def discriminant23CompletedClassProduct (w : ℂ) : ℂ :=
   (discriminant23TotalClassReading w - (3 / 2 : ℂ) / (w * (1 - w))) *
     discriminant23CharacterClassReading w ^ 2
 
+/-- A uniform Cauchy bound for the completed field reading on the outer strip. -/
+theorem discriminant23_completedClassProduct_norm_le_on_upper_strip {w : ℂ}
+    (hlo : -2 ≤ w.re) (hhi : w.re ≤ 3) (him : 2 ≤ w.im) :
+    ‖8 * discriminant23CompletedClassProduct w‖ ≤ 2 ^ 12 := by
+  have hP := measurable_classTheta discriminant23PrincipalForm
+  have hO := measurable_classTheta discriminant23OtherForm
+  have hU : ‖discriminant23TotalClassReading w‖ ≤ 20 / 3 := by
+    apply classMellinReading_norm_le_twenty_thirds (hP.add (hO.const_mul 2)) _ hlo hhi
+    intro t ht
+    obtain ⟨ht₀, ht₁⟩ := (theta_bounds ht.le).1
+    change |summedTheta t| ≤ _
+    rw [abs_of_nonneg ht₀]
+    exact ht₁.trans (mul_le_of_le_one_left (Real.exp_pos _).le (by norm_num))
+  have hV : ‖discriminant23CharacterClassReading w‖ ≤ 20 / 3 := by
+    apply classMellinReading_norm_le_twenty_thirds (hP.sub hO) _ hlo hhi
+    intro t ht
+    obtain ⟨ht₀, ht₁⟩ := (theta_bounds ht.le).2
+    change |differencedTheta t| ≤ _
+    rw [abs_of_nonneg ((by positivity : 0 ≤ (5 / 16) * Real.exp (-(4 / 3) * t)).trans ht₀)]
+    exact ht₁.trans (mul_le_of_le_one_left (Real.exp_pos _).le (by norm_num))
+  have hw : 2 ≤ ‖w‖ := him.trans ((le_abs_self w.im).trans (abs_im_le_norm w))
+  have hOne : 2 ≤ ‖1 - w‖ := by
+    refine him.trans ?_
+    have h := abs_im_le_norm (1 - w)
+    simpa only [sub_im, one_im, zero_sub, abs_neg, abs_of_nonneg (by linarith : 0 ≤ w.im)] using h
+  have hDen : 4 ≤ ‖w * (1 - w)‖ := by
+    rw [norm_mul]
+    exact (show (4 : ℝ) = 2 * 2 by norm_num) ▸
+      mul_le_mul hw hOne (by norm_num) (norm_nonneg w)
+  have hPole : ‖(3 / 2 : ℂ) / (w * (1 - w))‖ ≤ 1 := by
+    rw [norm_div, div_le_iff₀ ((by norm_num : (0 : ℝ) < 4).trans_le hDen), one_mul]
+    exact (show ‖(3 / 2 : ℂ)‖ ≤ 4 by norm_num [norm_div]).trans hDen
+  have hUsub :
+      ‖discriminant23TotalClassReading w - (3 / 2 : ℂ) / (w * (1 - w))‖ ≤ 23 / 3 := by
+    refine (norm_sub_le _ _).trans ((add_le_add hU hPole).trans ?_)
+    norm_num
+  unfold discriminant23CompletedClassProduct
+  rw [norm_mul, norm_mul, norm_pow, show ‖(8 : ℂ)‖ = 8 by norm_num]
+  refine (mul_le_mul_of_nonneg_left (mul_le_mul hUsub
+    (pow_le_pow_left₀ (norm_nonneg _) hV 2) (by positivity) (by norm_num)) (by norm_num)).trans ?_
+  norm_num
+
 private theorem discriminant23_class_reading_bounds_right {w : ℂ}
     (hhalf : 1 / 2 ≤ w.re) (hone : w.re ≤ 1) :
     ‖discriminant23TotalClassReading w‖ ≤ 108 / 143 ∧
@@ -270,4 +312,6 @@ theorem re_weighted_discriminant23_classProduct_le_on_low_strip {w : ℂ}
 #print axioms re_weighted_discriminant23_classProduct_le_on_low_strip
 
 end
+#print axioms discriminant23_completedClassProduct_norm_le_on_upper_strip
+
 end FieldTarget
