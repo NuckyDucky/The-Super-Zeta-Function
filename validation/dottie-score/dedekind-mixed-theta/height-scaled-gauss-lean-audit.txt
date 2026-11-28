@@ -1,0 +1,32 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+Super Zeta source Discriminant23ClassMellinGauss e55300d1c4a3e9934582112d247617100adfb433
+@discriminant23_classCombination_quadrature_error_scaled : ∀ {b : ℝ},
+  |b| ≤ 2 →
+    ∀ {w : ℂ},
+      -1 / 4 ≤ w.re →
+        w.re ≤ 5 / 4 →
+          ∀ {P : ℕ},
+            32 ≤ P →
+              |w.im| ≤ ↑P - 2 →
+                ‖discriminant23ClassCombinationReading b w - discriminant23ClassCombinationScaledQuadrature b w P‖ ≤
+                  2 / 10 ^ 26
+'FieldTarget.discriminant23_classCombination_quadrature_error_scaled' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@discriminant23_classCombination_quadrature_error : ∀ {b : ℝ},
+  |b| ≤ 2 →
+    ∀ {w : ℂ},
+      -1 / 4 ≤ w.re →
+        w.re ≤ 5 / 4 →
+          |w.im| ≤ 30 →
+            ‖discriminant23ClassCombinationReading b w - discriminant23ClassCombinationQuadrature b w‖ ≤ 2 / 10 ^ 26
+'_private.Discriminant23ClassMellinGauss.0.FieldTarget.principal_mass_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.Discriminant23ClassMellinGauss.0.FieldTarget.other_mass_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_classCombination_quadrature_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Discriminant23ClassMellinGauss exit=0

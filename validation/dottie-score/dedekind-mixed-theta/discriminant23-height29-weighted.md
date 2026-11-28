@@ -117,3 +117,7 @@ uv run --with python-flint==0.9.0 python check-discriminant23-height29-quadratur
 ~~~
 
 The replay prints the two remaining coefficient bounds and their axiom audit. [Lean output and axioms](height29-centered-replay-and-axioms.txt)
+
+## Keep the quadrature error while increasing height
+
+If I take an integer panel count $P\ge32$ with $|\Im w|\le P-2$, then I can use the same 24 Gauss nodes on each panel of width $4/P$. The two Cauchy radii are $16/P$ and $4/P$. The outer Taylor ratio stays at $1/8$ and the inner ratio at $1/2$, with exponential bounds $24e^{17}$ and $24e^5$. If $-1/4\le\Re w\le5/4$ and the class combination has $|b|\le2$, then the normalized quadrature differs from the complete reading by at most $2/10^{26}$. The replay checks this for every $P$ in that range. [Lean theorem](Discriminant23ClassMellinGauss.lean) · [Exact statement and axioms](height-scaled-gauss-lean-audit.txt)
