@@ -1,6 +1,7 @@
 """Enclose the finite Gauss sums in the height-29 Lean theorem using Arb."""
 
 import argparse
+import json
 from math import isqrt
 from pathlib import Path
 import re
@@ -48,7 +49,48 @@ def evaluate_polynomial(coefficients, q):
     return value
 
 
-def check(gauss_file, factor_file, precision):
+def check_centered_coefficients(panels, scale, output, lean_source):
+    coefficients = [[acb(0) for _ in range(36)] for _ in range(2)]
+    for node, phase_a, phase_b, base, hecke in panels:
+        moment = arb(1)
+        for k in range(36):
+            folded = phase_a + (-1)**k * phase_b
+            coefficients[0][k] += base * folded * moment
+            coefficients[1][k] += hecke * folded * moment
+            moment = moment * node / (k + 1)
+
+    def round_component(value):
+        rounded = (value.mid() * scale + arb(1) / 2).floor().unique_fmpz()
+        if rounded is None:
+            raise ArithmeticError("Could not pick a dyadic coefficient")
+        return int(rounded)
+
+    tables = []
+    error_upper = arb(0)
+    for row in coefficients:
+        table = []
+        for value in row:
+            re_num = round_component(value.real)
+            im_num = round_component(value.imag)
+            error = abs(value - acb(re_num, im_num) / scale)
+            if not error < arb(1) / 10**27:
+                raise ArithmeticError("A centered coefficient exceeds the Lean budget")
+            error_upper = max(error_upper, error.upper())
+            table.append([re_num, im_num])
+        tables.append(table)
+    if lean_source is not None:
+        saved = lean_table(lean_source, "height29TaylorData", FACTOR_ROW, 36)
+        actual = [tuple(base + hecke) for base, hecke in zip(*tables, strict=True)]
+        if actual != saved:
+            raise ArithmeticError("Centered coefficient table does not match Lean")
+    if output is not None:
+        data = {"scale": scale, "base": tables[0], "hecke": tables[1]}
+        output.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    print(f"centered_coefficients=72 checked_lean_table={lean_source is not None} "
+          f"coefficient_error_upper={error_upper.str(12)}")
+
+
+def check(gauss_file, factor_file, precision, taylor_data=None, taylor_table=None):
     ctx.prec = precision
     gauss_rows = lean_table(gauss_file, "gauss24Table", GAUSS_ROW, 24)
     factors = lean_table(factor_file, "height29FactorData", FACTOR_ROW, 128)
@@ -93,6 +135,8 @@ def check(gauss_file, factor_file, precision):
     print(f"base_error_upper={upper_bounds[0].str(12)}")
     print(f"hecke_error_upper={upper_bounds[1].str(12)}")
     print("Both bounds are below 8e-26.")
+    if taylor_data is not None or taylor_table is not None:
+        check_centered_coefficients(panels, factor_scale, taylor_data, taylor_table)
 
 
 def main():
@@ -101,8 +145,10 @@ def main():
     parser.add_argument("--factor-table", type=Path,
                         default=HERE / "DedekindDiscriminant23Height29FactorEnclosures.lean")
     parser.add_argument("--precision", type=int, default=288)
+    parser.add_argument("--taylor-data", type=Path)
+    parser.add_argument("--taylor-table", type=Path)
     args = parser.parse_args()
-    check(args.gauss_table, args.factor_table, args.precision)
+    check(args.gauss_table, args.factor_table, args.precision, args.taylor_data, args.taylor_table)
 
 
 if __name__ == "__main__":

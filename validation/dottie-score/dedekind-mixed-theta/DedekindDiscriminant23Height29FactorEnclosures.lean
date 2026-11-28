@@ -16,7 +16,7 @@ def discriminant23Height29ReadingPoint (j : ℕ) : ℂ :=
 def discriminant23Height29BaseFactor (w : ℂ) : ℂ :=
   discriminant23TotalClassReading w - (3 / 2 : ℂ) / (w * (1 - w))
 
-private def height29FactorDenominator : ℕ := 2 ^ 128
+def height29FactorDenominator : ℕ := 2 ^ 128
 
 /-- The base and character readings rounded on the same dyadic grid. -/
 private def height29FactorData : Array (GaussianInt × GaussianInt) := #[
@@ -150,8 +150,8 @@ private def height29FactorData : Array (GaussianInt × GaussianInt) := #[
   (⟨-83270396704406057838, -233684531100806313958⟩, ⟨82845985577319879812, -31911790837515220172⟩)
 ]
 
-private def height29BaseNumerator (j : ℕ) : GaussianInt := (height29FactorData[j]!).1
-private def height29HeckeNumerator (j : ℕ) : GaussianInt := (height29FactorData[j]!).2
+def height29BaseNumerator (j : ℕ) : GaussianInt := (height29FactorData[j]!).1
+def height29HeckeNumerator (j : ℕ) : GaussianInt := (height29FactorData[j]!).2
 
 def discriminant23Height29BaseApprox (j : ℕ) : ℂ :=
   gaussianScaled (height29BaseNumerator j) height29FactorDenominator

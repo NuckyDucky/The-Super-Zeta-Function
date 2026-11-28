@@ -5,7 +5,8 @@ param(
     [Parameter(Mandatory)] [string] $OutputDirectory,
     [string[]] $Imports = @(),
     [switch] $CircleSamples,
-    [switch] $FactorQuadrature
+    [switch] $FactorQuadrature,
+    [switch] $CenteredTaylor
 )
 
 $ErrorActionPreference = 'Stop'
@@ -27,7 +28,7 @@ if ($CircleSamples) {
     $modules.Add('DedekindDiscriminant23DottieReading', 16)
     $modules.Add('DedekindWideOuterDottie', 2)
 }
-if (!$FactorQuadrature -or $CircleSamples) {
+if ((!$FactorQuadrature -and !$CenteredTaylor) -or $CircleSamples) {
     $base = [ordered]@{
         DedekindDiscriminant23Height29Polynomials = 2
         DottieGaussianPolynomial = 6
@@ -52,6 +53,21 @@ if ($FactorQuadrature) {
     $modules.Add('Discriminant23ClassMellinGauss', 3)
     $modules.Add('DedekindDiscriminant23Height29FactorEnclosures', 1)
     $modules.Add('DedekindDiscriminant23Height29QuadratureCertificate', 4)
+}
+if ($CenteredTaylor) {
+    if (!$FactorQuadrature) {
+        $modules.Add('Discriminant23ClassMellinGauss', 3)
+        $modules.Add('DedekindDiscriminant23Height29FactorEnclosures', 1)
+        $modules.Add('DedekindDiscriminant23Height29QuadratureCertificate', 4)
+    }
+    $modules.Add('CenteredExponentialSum', 1)
+    $modules.Add('Discriminant23ClassMellinCentered', 1)
+    $modules.Add('GaussianRationalPolynomial', 3)
+    $modules.Add('DedekindDiscriminant23Height29TaylorData', 3)
+    $modules.Add('DedekindDiscriminant23Height29TaylorTransfer', 2)
+    foreach ($block in 0..15) { $modules.Add(('Height29TaylorBatch.Block{0:D2}' -f $block), 1) }
+    $modules.Add('DedekindDiscriminant23Height29TaylorArithmetic', 1)
+    $modules.Add('DedekindDiscriminant23Height29TaylorCertificate', 1)
 }
 
 try {

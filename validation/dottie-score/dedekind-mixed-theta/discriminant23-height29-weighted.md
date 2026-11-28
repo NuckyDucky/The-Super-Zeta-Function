@@ -95,3 +95,25 @@ uv run --with python-flint==0.9.0 python check-discriminant23-height29-quadratur
 ~~~
 
 The replay prints the remaining premises and the transitive axioms. [Lean output and axioms](height29-quadrature-replay-and-axioms.txt)
+
+## Use one expansion per factor
+
+I write the finite quadrature at $w=c+d$ as a sum of $A_u e^{ud}+B_u e^{-ud}$ over the same nodes $u$. The coefficients use the weights, theta values and phases at the center $c$. If $0\le\Re c\le1$ and $|d|\le1/2$, the first 36 terms give the whole finite quadrature to $10^{-28}$. The proof sums the two exponential tails with an upper bound of 72 for the total amplitude. [Centered quadrature theorem](Discriminant23ClassMellinCentered.lean)
+
+For $c=3/4+29i$ I save the two sets of 36 coefficients with denominator $2^{128}$. I evaluate the rounded polynomials at the rounded circle phases using Gaussian-integer Horner evaluation. The base comparison clears $w(1-w)$ before checking the integer residue for the pole. Lean checks the corresponding error when the phase goes back to its exact value. [Integer evaluation](GaussianRationalPolynomial.lean) · [Coefficient tables](DedekindDiscriminant23Height29TaylorData.lean) · [Phase and pole transfer](DedekindDiscriminant23Height29TaylorTransfer.lean)
+
+If each of the 72 coefficient enclosures fits $10^{-27}$, the 16 integer check blocks supply both of the earlier quadrature premises at all 128 inputs. The same disk has the three nonvanishing conclusions. Both Arb runs match the saved coefficients and bound their absolute errors by $1.94\cdot10^{-39}$. [Final theorem](DedekindDiscriminant23Height29TaylorCertificate.lean) · [Interval replay](height29-centered-interval-replay.txt)
+
+Run `-CenteredTaylor` with both compiled outputs from `-CircleSamples` and `-FactorQuadrature` in `-Imports`. The same script accepts all three switches together.
+
+~~~powershell
+$imports = @('<height-29-factor-library>', '<height-29-circle-library>', '<other-pinned-import-directories>')
+& ./replay-height29-exact-bounds.ps1 -Lean '<pinned-lean-binary>' -OutputDirectory '<output>' -Imports $imports -CenteredTaylor
+~~~
+
+~~~text
+uv run --with python-flint==0.9.0 python check-discriminant23-height29-quadrature.py --taylor-table DedekindDiscriminant23Height29TaylorData.lean --precision 288
+uv run --with python-flint==0.9.0 python check-discriminant23-height29-quadrature.py --taylor-table DedekindDiscriminant23Height29TaylorData.lean --precision 352
+~~~
+
+The replay prints the two remaining coefficient bounds and their axiom audit. [Lean output and axioms](height29-centered-replay-and-axioms.txt)
