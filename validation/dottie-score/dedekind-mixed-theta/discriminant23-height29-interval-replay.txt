@@ -1,0 +1,46 @@
+{
+  "center": [
+    "3/4",
+    29
+  ],
+  "measuringRadius": "31/128",
+  "outerRadius": "63/256",
+  "precisionBits": 288,
+  "thetaErrorUpper": "[1.66547069825e-62 +/- 2.31e-74]",
+  "fourierSamples": 128,
+  "modelDegree": 112,
+  "modelErrorUpper": "[1.05741288928e-68 +/- 2.83e-80]",
+  "outerFieldNormUpper": "[3.85426081057e-56 +/- 4.47e-68]",
+  "weightDegree": 48,
+  "weightCoefficientBoundUpper": "[2.97130729790e+58 +/- 5.09e+45]",
+  "weightedModelResidualUpper": "[0.255024915314 +/- 2.12e-13]",
+  "weightedSampleErrorUpper": "[6.28379726964e-10 +/- 2.61e-23]",
+  "meshPerQuarter": 1048576,
+  "meshAllowanceUpper": "[0.135428616146 +/- 4.37e-13]",
+  "wholeCircleMarginLower": "[0.609546467912 +/- 2.68e-13]",
+  "rationalPolynomialBoundsPassed": true,
+  "rationalWitnessSha256": "03f0ca384048c2aca0e5463304c0cf649b1f5935c1498de4eb24652a36d584bd"
+}
+{
+  "center": [
+    "3/4",
+    29
+  ],
+  "measuringRadius": "31/128",
+  "outerRadius": "63/256",
+  "precisionBits": 352,
+  "thetaErrorUpper": "[1.66547069825e-62 +/- 2.31e-74]",
+  "fourierSamples": 128,
+  "modelDegree": 112,
+  "modelErrorUpper": "[1.05741288928e-68 +/- 2.83e-80]",
+  "outerFieldNormUpper": "[3.85426081057e-56 +/- 4.47e-68]",
+  "weightDegree": 48,
+  "weightCoefficientBoundUpper": "[2.97130729790e+58 +/- 5.09e+45]",
+  "weightedModelResidualUpper": "[0.255024915314 +/- 2.12e-13]",
+  "weightedSampleErrorUpper": "[6.28379726964e-10 +/- 2.61e-23]",
+  "meshPerQuarter": 1048576,
+  "meshAllowanceUpper": "[0.135428616146 +/- 4.37e-13]",
+  "wholeCircleMarginLower": "[0.609546467912 +/- 2.68e-13]",
+  "rationalPolynomialBoundsPassed": true,
+  "rationalWitnessSha256": "03f0ca384048c2aca0e5463304c0cf649b1f5935c1498de4eb24652a36d584bd"
+}
