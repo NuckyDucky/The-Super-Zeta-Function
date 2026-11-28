@@ -1,0 +1,102 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+Super Zeta source Discriminant23ThetaEnvelope 9b312d1cca0ffc09f32ce616f37296b49a1c21c9
+'FieldTarget.classThetaStar_sub_finiteUpTo_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classThetaStar_sub_finite_bounds_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_principal_envelope_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_other_envelope_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_thetaScale_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_thetaExp_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_classThetaStar_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classThetaStar_sub_finite_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+Discriminant23ThetaEnvelope exit=0
+Super Zeta source ComplexMellinFoldEstimates bf36a38b797bc17f72224e4d370870f70dd109b3
+@foldedMellinTruncation_hasDerivAt : ∀ {f : ℝ → ℂ} {R : ℝ},
+  1 ≤ R →
+    IntervalIntegrable f volume 1 R →
+      ∀ (w : ℂ), HasDerivAt (foldedMellinTruncation f R) (∫ (x : ℝ) in 1..R, foldedMellinWeightDeriv w x * f x) w
+@iteratedDeriv_error_le_of_strip : ∀ {f g : ℂ → ℂ},
+  Differentiable ℂ f →
+    Differentiable ℂ g →
+      ∀ (n : ℕ) {ρ E : ℝ},
+        0 < ρ →
+          (∀ (z : ℂ), -ρ ≤ z.re → z.re ≤ 1 + ρ → ‖f z - g z‖ ≤ E) →
+            ∀ {w : ℂ}, 0 ≤ w.re → w.re ≤ 1 → ‖iteratedDeriv n f w - iteratedDeriv n g w‖ ≤ ↑n.factorial * E / ρ ^ n
+'FieldTarget.foldedMellinWeight_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.foldedMellinTruncation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.foldedMellinTruncation_iteratedDeriv_eq_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.iteratedDeriv_error_le_of_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+ComplexMellinFoldEstimates exit=0
+Super Zeta source RationalPanelQuadrature 045ed12753ce2d5effb34de6095d226ab344dd5d
+'FieldTarget.rationalPanelRule_twoRadius_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rationalCompositeRule_twoRadius_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rationalPanelRule_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rationalCompositeRule_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+RationalPanelQuadrature exit=0
+Super Zeta source Gauss24PanelTable c22f9299b7feff02086b3bba4bede144fa4b4539
+'FieldTarget.gauss24_node_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss24_weight_abs_sum_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss24_moment_error_tight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gauss24_moment_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+Gauss24PanelTable exit=0
+Super Zeta source Discriminant23ClassMellinTruncation 4e03dfdb38c1a5e69f330ad4e849368a4d0770a2
+'FieldTarget.discriminant23_classCombinationReading_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_classCombinationReading_neg_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_classCombination_integral_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+Discriminant23ClassMellinTruncation exit=0
+Super Zeta source Discriminant23ClassMellinGauss 6cf356f24d52bfd34308dbc33c8636a39f7158aa
+@discriminant23_classCombination_quadrature_error : ∀ {b : ℝ},
+  |b| ≤ 2 →
+    ∀ {w : ℂ},
+      -1 / 4 ≤ w.re →
+        w.re ≤ 5 / 4 →
+          |w.im| ≤ 30 →
+            ‖discriminant23ClassCombinationReading b w - discriminant23ClassCombinationQuadrature b w‖ ≤ 2 / 10 ^ 26
+'_private.Discriminant23ClassMellinGauss.0.FieldTarget.principal_mass_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.Discriminant23ClassMellinGauss.0.FieldTarget.other_mass_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_classCombination_quadrature_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Discriminant23ClassMellinGauss exit=0
+Super Zeta source DedekindDiscriminant23Height29FactorEnclosures f399b267b848f528e28632f7828a4d178986825b
+discriminant23_height29_sample_error_of_factor_enclosures : (∀ j < 128,
+    ‖discriminant23Height29BaseFactor (discriminant23Height29ReadingPoint j) - discriminant23Height29BaseApprox j‖ ≤
+      1 / 10 ^ 25) →
+  (∀ j < 128,
+      ‖discriminant23CharacterClassReading (discriminant23Height29ReadingPoint j) -
+            discriminant23Height29HeckeApprox j‖ ≤
+        1 / 10 ^ 25) →
+    ∀ j < 128,
+      ‖discriminant23Height29Samples j -
+            8 * discriminant23CompletedClassProduct (discriminant23Height29ReadingPoint j)‖ ≤
+        1 / 10 ^ 60
+'FieldTarget.discriminant23_height29_sample_error_of_factor_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29FactorEnclosures exit=0
+Super Zeta source DedekindDiscriminant23Height29QuadratureCertificate 5a72fe51190fc63d7fa123f65a5aa30833519789
+discriminant23_height29_ne_zero_of_quadrature_enclosures : (∀ j < 128,
+    ‖discriminant23Height29BaseQuadrature (discriminant23Height29ReadingPoint j) - discriminant23Height29BaseApprox j‖ ≤
+      8 / 10 ^ 26) →
+  (∀ j < 128,
+      ‖discriminant23ClassCombinationQuadrature (-1) (discriminant23Height29ReadingPoint j) -
+            discriminant23Height29HeckeApprox j‖ ≤
+        8 / 10 ^ 26) →
+    ∀ {w : ℂ},
+      w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) (dottieWeightOuterRadius 0) →
+        mixedThetaContinuation Discriminant23GaloisField w ≠ 0 ∧
+          mixedThetaContinuation (↥discriminant23QuadraticSubfield) w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0
+'FieldTarget.discriminant23_height29_sample_coordinate_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_base_quadrature_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_hecke_quadrature_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_ne_zero_of_quadrature_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29QuadratureCertificate exit=0

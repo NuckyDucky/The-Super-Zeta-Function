@@ -73,3 +73,25 @@ If each saved reading encloses the completed field reading to $10^{-60}$, then t
 Add `-CircleSamples` to the exact-bounds replay to check the outer Cauchy bound, the dyadic phases, the coefficient blocks and the final implication. Add `--circle-data <file>` to the interval replay to export the readings. At 288 and 352 bits the rational sample checksum is `3052b155f647ad48d285dbc00cd6c5e641a0cb0fc221269c9c431328ad40c5b3`. Both runs enclose every recorded reading within $1.36\cdot10^{-87}$. [Lean replay and axioms](height29-circle-reading-replay-and-axioms.txt) · [Interval replay](check-discriminant23-height29-weighted.py)
 
 The audit records the 35 successful dependency builds and the successful replay of the final module against their compiled outputs. Each source hash identifies the exact file used for its Lean output.
+
+## Replace the sample integrals by finite sums
+
+At a sample $w=c+\omega^j/2$, write $A(w)=U(w)-3/(2w(1-w))$ and $B(w)=V(w)$. Then $F(w)=8A(w)B(w)^2$. If both factor enclosures fit $10^{-25}$, Lean gives the $10^{-60}$ enclosure of each field reading. The dyadic factor tables use denominator $2^{128}$. [Factor enclosure theorem](DedekindDiscriminant23Height29FactorEnclosures.lean)
+
+I keep the nonzero lattice terms of norm at most 80 and integrate in $u=\log t$ over $[0,4]$. The same 32 panels of 24 rational nodes evaluate $U$ and $V$. Lean checks the omitted lattice terms, the integral past 4 in the log coordinate, and the quadrature error using two Cauchy radii. If $-1/4\le\Re w\le5/4$ and $|\Im w|\le30$, the total error after dividing by two is at most $2\cdot10^{-26}$ for either reading. [Truncation theorem](Discriminant23ClassMellinTruncation.lean) · [Gauss error bound](Discriminant23ClassMellinGauss.lean)
+
+The base quadrature subtracts $3/(2w(1-w))$ at the same input. If each of the two finite sums agrees with its saved dyadic reading to $8\cdot10^{-26}$ at all 128 inputs, then Lean gives nonvanishing for the splitting field, its quadratic subfield, and the class character on the radius-$63/256$ disk. The theorem takes these finite-sum comparisons as its only enclosure premises. Both Arb runs check all 256 comparisons. [Lean theorem](DedekindDiscriminant23Height29QuadratureCertificate.lean) · [Interval output](height29-quadrature-interval-replay.txt)
+
+Run the same Lean replay with `-FactorQuadrature` and supply the compiled circle replay through `-Imports`. Add both switches to rebuild both parts together.
+
+~~~powershell
+$imports = @('<height-29-circle-library>', '<other-pinned-import-directories>')
+& ./replay-height29-exact-bounds.ps1 -Lean '<pinned-lean-binary>' -OutputDirectory '<output>' -Imports $imports -FactorQuadrature
+~~~
+
+~~~text
+uv run --with python-flint==0.9.0 python check-discriminant23-height29-quadrature.py --precision 288
+uv run --with python-flint==0.9.0 python check-discriminant23-height29-quadrature.py --precision 352
+~~~
+
+The replay prints the remaining premises and the transitive axioms. [Lean output and axioms](height29-quadrature-replay-and-axioms.txt)
