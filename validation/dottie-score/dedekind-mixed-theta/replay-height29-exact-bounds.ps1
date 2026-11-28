@@ -4,7 +4,8 @@ param(
     [Parameter(Mandatory)] [string] $Lean,
     [Parameter(Mandatory)] [string] $OutputDirectory,
     [string[]] $Imports = @(),
-    [switch] $CircleSamples
+    [switch] $CircleSamples,
+    [switch] $FactorQuadrature
 )
 
 $ErrorActionPreference = 'Stop'
@@ -19,18 +20,21 @@ $importPaths = foreach ($item in $Imports) { (Resolve-Path -LiteralPath $item).P
 $oldLeanPath = $env:LEAN_PATH
 $oldThreads = $env:LEAN_NUM_THREADS
 $modules = [ordered]@{}
+if ($FactorQuadrature) { $modules.Add('Discriminant23ThetaEnvelope', 8) }
 if ($CircleSamples) {
     $modules.Add('DottieClassMellinBounds', 6)
     $modules.Add('Discriminant23DottieDisk', 6)
     $modules.Add('DedekindDiscriminant23DottieReading', 16)
     $modules.Add('DedekindWideOuterDottie', 2)
 }
-$base = [ordered]@{
-    DedekindDiscriminant23Height29Polynomials = 2
-    DottieGaussianPolynomial = 6
-    DedekindDiscriminant23Height29ExactBounds = 7
+if (!$FactorQuadrature -or $CircleSamples) {
+    $base = [ordered]@{
+        DedekindDiscriminant23Height29Polynomials = 2
+        DottieGaussianPolynomial = 6
+        DedekindDiscriminant23Height29ExactBounds = 7
+    }
+    foreach ($module in $base.Keys) { $modules.Add($module, $base[$module]) }
 }
-foreach ($module in $base.Keys) { $modules.Add($module, $base[$module]) }
 if ($CircleSamples) {
     $modules.Add('DedekindDiscriminant23Height29FourierError', 3)
     $modules.Add('DedekindDiscriminant23Height29CircleCertificate', 7)
@@ -39,6 +43,15 @@ if ($CircleSamples) {
     $modules.Add('DedekindDiscriminant23Height29Samples', 1)
     foreach ($block in 0..22) { $modules.Add(('Height29DFTSum.Block{0:D2}' -f $block), 1) }
     $modules.Add('DedekindDiscriminant23Height29DFT', 2)
+}
+if ($FactorQuadrature) {
+    $modules.Add('ComplexMellinFoldEstimates', 4)
+    $modules.Add('RationalPanelQuadrature', 4)
+    $modules.Add('Gauss24PanelTable', 4)
+    $modules.Add('Discriminant23ClassMellinTruncation', 3)
+    $modules.Add('Discriminant23ClassMellinGauss', 3)
+    $modules.Add('DedekindDiscriminant23Height29FactorEnclosures', 1)
+    $modules.Add('DedekindDiscriminant23Height29QuadratureCertificate', 4)
 }
 
 try {
