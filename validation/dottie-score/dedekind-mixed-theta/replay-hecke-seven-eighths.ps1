@@ -9,10 +9,14 @@ param(
     [switch] $Discriminant23TwentyCount,
     [switch] $Discriminant23RightBandCount,
     [switch] $TwelfthRootTarget,
-    [switch] $WeightedDottie
+    [switch] $WeightedDottie,
+    [switch] $WeightedDottieEnclosures,
+    [switch] $Discriminant23Height29Dottie
 )
 
 $ErrorActionPreference = 'Stop'
+if ($Discriminant23Height29Dottie) { $WeightedDottieEnclosures = $true }
+if ($WeightedDottieEnclosures) { $WeightedDottie = $true }
 if ($WeightedDottie) { $TwelfthRootTarget = $true }
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 $axiom = (Resolve-Path -LiteralPath $AxiomCheckout).Path
@@ -43,6 +47,13 @@ if ($RayHeckeImports.Count -eq 0) {
         (Join-Path $axiom '.lake/super-zeta-cyclic-zeta-descent/lib')
         (Join-Path $axiom '.lake/super-zeta-relative-dottie/lib')
     )
+}
+if ($WeightedDottieEnclosures) {
+    $sampleModels = Join-Path $axiom '.lake/super-zeta-alpoge-dottie/lib'
+    if (!(Test-Path -LiteralPath (Join-Path $sampleModels 'DedekindMixedThetaSampleModel.olean'))) {
+        throw 'Run the pinned replay-alpoge-dottie.ps1 before replaying the weighted enclosures.'
+    }
+    $RayHeckeImports += $sampleModels
 }
 $baseline = foreach ($path in $RayHeckeImports) { (Resolve-Path -LiteralPath $path).Path }
 if ($Discriminant23RightBandCount) { $Discriminant23TwentyCount = $true }
@@ -110,6 +121,15 @@ try {
         $modules.Add('DedekindWeightedDottieSamples', 5)
         $modules.Add('DedekindWeightedDottieCompleteness', 3)
     }
+    if ($WeightedDottieEnclosures) {
+        $modules.Add('DottieRationalWeightBounds', 3)
+        $modules.Add('DedekindWeightedDottieEnclosures', 3)
+        $modules.Add('DedekindWeightedDottieFullReadings', 2)
+    }
+    if ($Discriminant23Height29Dottie) {
+        $modules.Add('DedekindDiscriminant23Height29Dottie', 2)
+        $modules.Add('DedekindDiscriminant23Height29Polynomials', 2)
+    }
     if ($characterImports.Count -gt 0) {
         $modules.Add('DedekindDiscriminant23SevenEighths', 2)
         $modules.Add('DedekindDiscriminant23TaylorRadiusCeiling', 1)
@@ -157,7 +177,9 @@ try {
             'DedekindDiscriminant23TwentyCount', 'DedekindDiscriminant23RightStripCount',
             'DedekindDiscriminant23RightBandCount', 'RayHeckePrimitiveReduction',
             'DedekindTwelfthRootTarget', 'DottieRationalWeight', 'DedekindWeightedDottieSamples',
-            'DedekindWeightedDottieCompleteness')) {
+            'DedekindWeightedDottieCompleteness', 'DottieRationalWeightBounds',
+            'DedekindWeightedDottieEnclosures', 'DedekindWeightedDottieFullReadings',
+            'DedekindDiscriminant23Height29Dottie', 'DedekindDiscriminant23Height29Polynomials')) {
             '-s32768'
         })
         $report = & $lean '-j1' @stack '-M7500' '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' $object $source 2>&1

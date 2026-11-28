@@ -325,6 +325,12 @@ Replay with `-RayHecke`. [Lean output and axioms](ray-hecke-replay-and-axioms.tx
 - If that closed disk is zero-free, then $-i/F$ is holomorphic on a slightly larger disk. I can approximate it by a polynomial in $w-c$ with rational real and imaginary coefficients, where $c$ is the disk center. Lean gives a strict sign for the weighted reading and witnesses for a finite Mellin cutoff and finite contour mesh. This gives the disk equivalence between zero-freeness and existence of weighted sample data. [Rational polynomial approximation](DottieRationalWeight.lean) · [Disk equivalence](DedekindWeightedDottieCompleteness.lean)
 - If each bounded height band has certified disks covering $1/2+\varepsilon\le\Re w\le7/8$ for every $\varepsilon>0$, Lean gives Dedekind RH for that field. The reverse implication gives such disks if Dedekind RH holds for the field. For the all-field conclusion via the twelfth-root reduction, I supply the rational Dirichlet theorem and this coverage premise for the nonabelian Galois fields in the reduced family. [Exact field and all-field premises](weighted-dottie-replay-and-axioms.txt)
 
+### Bound the weighted samples from their data
+
+If $B$ bounds the completed field reading on the outer disk of radius $\rho=(63/4096)\,\mathrm{scale}$, set $C=\sum_k(|\Re a_k|+|\Im a_k|)\rho^k$ for my weight coefficients. Lean gives the between-sample allowance $124CB/m$. The theta integral gives one $B$ per field and scale at every height. At a sample $v$ I add $(|\Re W(v)|+|\Im W(v)|)$ times the enclosure error and Mellin tail. If I enclose the full completed reading directly, Lean chooses the Mellin cutoff afterwards. [Coefficient and derivative bounds](DottieRationalWeightBounds.lean) · [Finite enclosures](DedekindWeightedDottieEnclosures.lean) · [Completed reading and uniform model](DedekindWeightedDottieFullReadings.lean)
+
+If I take the discriminant-$23$ splitting field and the closed disk $|w-(3/4+29i)|\le31/128$, the two rational polynomials give the height-$29$ test. Lean checks the weight coefficient bound with `decide +kernel` and the exact sign budget with margin $3/5$. The Arb replay supplies the three other enclosures at 288 and 352 bits with the same rational coefficients. [Height 29 derivation and replay](discriminant23-height29-weighted.md) · [Exact Lean output](weighted-dottie-height29-replay-and-axioms.txt)
+
 ### Replay the seven-eighths proof
 
 Use the pinned Lean, Mathlib, and AxiomMath checkout above. Build the existing inputs with `replay-discriminant23.ps1 -RayHecke`, `replay.ps1 -RelativeDottie`, and `replay-cyclic-euler.ps1 -GlobalDescent`, with `-AxiomCheckout` and `-LeanBin` on each command. Run the relative Dottie replay before the global descent replay.
@@ -339,6 +345,8 @@ pwsh ./validation/dottie-score/dedekind-mixed-theta/replay-hecke-seven-eighths.p
 Add `-TwelfthRootTarget` to replay the primitive count transfer and the twelfth-root field reduction with the same inputs. [Exact Lean output](hecke-primitive-twelfth-root-replay.txt)
 
 Add `-WeightedDottie` to include the weighted sign and rational weight theorems after the twelfth-root reduction. [Exact Lean output](weighted-dottie-replay-and-axioms.txt)
+
+Run the pinned sample-model replay, then add `-WeightedDottieEnclosures` for the explicit weight budget or `-Discriminant23Height29Dottie` for the height-$29$ Lean declarations as well. [Sample-model replay instructions](alpoge-dottie-bridge.md) · [Height 29 interval replay instructions](discriminant23-height29-weighted.md)
 
 ### Discriminant-23 above the certified count
 
