@@ -1,0 +1,332 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+Super Zeta source DottieClassMellinBounds f4240882b8cf1178a46b4bb3eb0ff9c8eb239909
+'FieldTarget.classMellinWeight_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellin_log_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellin_integral_bounds_with_height' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellin_integral_bounds_to_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellin_integral_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.classMellinReading_norm_le_twenty_thirds' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieClassMellinBounds exit=0
+Super Zeta source Discriminant23DottieDisk dcf9db06c39222a64e408855801a39aa3f6f7042
+@re_discriminant23_classProduct_le_on_first_dottie_disk : ∀ {w : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    (discriminant23CompletedClassProduct w).re ≤ -(1 / 400)
+@discriminant23_classProduct_ne_zero_on_first_dottie_disk : ∀ {w : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    discriminant23CompletedClassProduct w ≠ 0
+@re_weighted_discriminant23_classProduct_le_on_low_strip : ∀ {w : ℂ},
+  0 < w.re → w.re < 1 → |w.im| ≤ 1 / 2 → (w * (1 - w) * discriminant23CompletedClassProduct w).re ≤ -(3 / 512)
+'FieldTarget.re_discriminant23_classProduct_le_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_classProduct_ne_zero_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.norm_dottie_pole_weight_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_class_reading_bounds_on_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.re_weighted_discriminant23_classProduct_le_on_low_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_completedClassProduct_norm_le_on_upper_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Discriminant23DottieDisk exit=0
+Super Zeta source DedekindDiscriminant23DottieReading db8d0ad9322f9adbb970332fd7d86b24679a67c9
+discriminant23_completedReading_eq_classProduct : ∀ (w : ℂ),
+  0 < w.re → w.re < 1 → mixedThetaCompletedReading L23 w = 8 * discriminant23CompletedClassProduct w
+discriminant23_signedReading_eq_base_mul_character_sq : ∀ (w : ℂ),
+  0 < w.re →
+    w.re < 1 →
+      mixedThetaSignedReading L23 w =
+        mixedThetaSignedReading (↥discriminant23QuadraticSubfield) w * discriminant23CharacterFold w ^ 2
+discriminant23_dedekind_zero_iff_base_or_character : ∀ (w : ℂ),
+  0 < w.re →
+    w.re < 1 →
+      (mixedThetaContinuation L23 w = 0 ↔
+        mixedThetaContinuation (↥discriminant23QuadraticSubfield) w = 0 ∨ discriminant23CharacterFold w = 0)
+discriminant23_dedekindRH_iff_character : DedekindZetaRH ↥discriminant23QuadraticSubfield →
+  (DedekindZetaRH L23 ↔ StripZerosOnLine discriminant23CharacterFold)
+@re_discriminant23_completedReading_le_on_first_dottie_disk : ∀ {w : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) →
+    (mixedThetaCompletedReading L23 w).re ≤ -(1 / 50)
+@discriminant23_dedekind_ne_zero_on_first_dottie_disk : ∀ {w : ℂ},
+  w ∈ Metric.closedBall (dottieScaledRightCenter (1 / 512) 0) (dottieScaledRadius 0) → mixedThetaContinuation L23 w ≠ 0
+@re_weighted_discriminant23_completedReading_le_on_low_strip : ∀ {w : ℂ},
+  0 < w.re → w.re < 1 → |w.im| ≤ 1 / 2 → (w * (1 - w) * mixedThetaCompletedReading L23 w).re ≤ -(3 / 64)
+@discriminant23_dedekind_ne_zero_on_low_strip : ∀ {w : ℂ},
+  0 < w.re → w.re < 1 → |w.im| ≤ 1 / 2 → mixedThetaContinuation L23 w ≠ 0
+discriminant23CharacterWeight_analyticOnNhd : AnalyticOnNhd ℂ discriminant23CharacterWeight
+  {w | 0 < w.re ∧ w.re < 1 ∧ |w.im| ≤ 7 / 6}
+@re_discriminant23_characterWeightedReading_le_on_wide_strip : ∀ {w : ℂ},
+  0 < w.re →
+    w.re < 1 → |w.im| ≤ 7 / 6 → (discriminant23CharacterWeight w * mixedThetaCompletedReading L23 w).re ≤ -(3 / 13)
+@norm_discriminant23_signedReading_ge_on_wide_strip : ∀ {w : ℂ},
+  0 < w.re → w.re < 1 → |w.im| ≤ 7 / 6 → 1 / 39936 ≤ ‖mixedThetaSignedReading L23 w‖
+@discriminant23_dedekind_ne_zero_to_seven_sixths : ∀ {w : ℂ},
+  0 < w.re → w.re < 1 → |w.im| ≤ 7 / 6 → mixedThetaContinuation L23 w ≠ 0
+'FieldTarget.discriminant23_completedFold_eq_classProduct_off_poles' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_completedReading_eq_classProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_signedReading_eq_base_mul_character_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekind_zero_iff_base_or_character' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_base_and_character' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekindRH_iff_character' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.re_discriminant23_completedReading_le_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekind_ne_zero_on_first_dottie_disk' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.re_weighted_discriminant23_completedReading_le_on_low_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekind_ne_zero_on_low_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_fold_bounds_to_seven_sixths' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.re_discriminant23_signed_base_le_on_wide_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23CharacterWeight_analyticOnNhd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.re_discriminant23_characterWeightedReading_le_on_wide_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.norm_discriminant23_signedReading_ge_on_wide_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_dedekind_ne_zero_to_seven_sixths' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23DottieReading exit=0
+Super Zeta source DedekindWideOuterDottie a040eb6bd9e346a4443658ab738b3a99cde79699
+'FieldTarget.mixedThetaOuterReading_differentiableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_outerDisk_avoids_poles' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindWideOuterDottie exit=0
+Super Zeta source DedekindDiscriminant23Height29Polynomials 4f44b6b02008605a2f35ca3d86b56310a2b7bdea
+discriminant23_height29_dottie_ne_zero : (∀ z ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29,
+    ‖8 * discriminant23CompletedClassProduct z‖ ≤ 4 / 10 ^ 56) →
+  (∀ z ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29,
+      ‖8 * discriminant23CompletedClassProduct z -
+            dottieRationalWeight (dottieScaledRightCenter (29 + 1 / 512) 0) discriminant23Height29Model z‖ ≤
+        2 / 10 ^ 68) →
+    (∀ z ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) r29,
+        ‖dottieRationalWeight (dottieScaledRightCenter (29 + 1 / 512) 0) discriminant23Height29Weight z *
+                dottieRationalWeight (dottieScaledRightCenter (29 + 1 / 512) 0) discriminant23Height29Model z +
+              I‖ ≤
+          32 / 125) →
+      ∀ {w : ℂ}, w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) r29 → mixedThetaContinuation L23 w ≠ 0
+'FieldTarget.discriminant23_height29_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_dottie_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Height29Polynomials exit=0
+Super Zeta source DottieGaussianPolynomial 8f2fad35a03f9eb72146953a930d36cb05dc9ccb
+'FieldTarget.gaussianPolynomialEval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianPolynomialEval_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianPolynomialMul_getD' depends on axioms: [propext]
+'FieldTarget.dottieRationalWeight_eq_gaussianPolynomialEval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_gaussianPolynomialEval_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_weighted_reading_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieGaussianPolynomial exit=0
+Super Zeta source DedekindDiscriminant23Height29ExactBounds 06a26f35dda98179ea8b77add100e1476c016d5b
+discriminant23_height29_dottie_ne_zero_of_model_error : (∀
+    z ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29,
+    ‖8 * discriminant23CompletedClassProduct z -
+          dottieRationalWeight (dottieScaledRightCenter (29 + 1 / 512) 0) discriminant23Height29Model z‖ ≤
+      2 / 10 ^ 68) →
+  ∀ {w : ℂ}, w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29 → mixedThetaContinuation L23 w ≠ 0
+discriminant23_height29_factors_ne_zero_of_model_error : (∀
+    z ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29,
+    ‖8 * discriminant23CompletedClassProduct z -
+          dottieRationalWeight (dottieScaledRightCenter (29 + 1 / 512) 0) discriminant23Height29Model z‖ ≤
+      2 / 10 ^ 68) →
+  ∀ {w : ℂ},
+    w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29 →
+      mixedThetaContinuation (↥discriminant23QuadraticSubfield) w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0
+'FieldTarget.discriminant23_height29_model_norm_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_weighted_reading_norm_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_dottie_ne_zero_of_error_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_dottie_ne_zero_of_model_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_factors_ne_zero_of_error_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_factors_ne_zero_of_model_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29ExactBounds exit=0
+Super Zeta source DedekindDiscriminant23Height29FourierError 591140911136448d85703845f454db32bd472dcb
+discriminant23_height29_model_error_of_circle_data : ∀ (samples : ℕ → ℂ) {ω : ℂ},
+  IsPrimitiveRoot ω 128 →
+    ‖ω‖ = 1 →
+      DifferentiableOn ℂ (fun w => 8 * discriminant23CompletedClassProduct w)
+          (closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) 2) →
+        (∀ z ∈ sphere (dottieScaledRightCenter (29 + 1 / 512) 0) 2,
+            ‖(fun w => 8 * discriminant23CompletedClassProduct w) z‖ ≤ 2 ^ 27) →
+          (∀ j < 128,
+              ‖samples j -
+                    (fun w => 8 * discriminant23CompletedClassProduct w)
+                      (dottieScaledRightCenter (29 + 1 / 512) 0 + ↑(1 / 2) * ω ^ j)‖ ≤
+                1 / 10 ^ 72) →
+            (∀ k < 113, ‖contourSampleCoeff samples ω 128 k - discriminant23Height29ScaledModelCoeff k‖ ≤ 1 / 10 ^ 72) →
+              ∀ w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29,
+                ‖(fun w => 8 * discriminant23CompletedClassProduct w) w -
+                      dottieRationalWeight (dottieScaledRightCenter (29 + 1 / 512) 0) discriminant23Height29Model w‖ ≤
+                  2 / 10 ^ 68
+'FieldTarget.contourSamplePolynomial_rounding_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_model_error_le_circle_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_model_error_of_circle_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29FourierError exit=0
+Super Zeta source DedekindDiscriminant23Height29CircleCertificate 83cd4a5f82d8928674bab2ef332e6203750d3fb2
+discriminant23_height29_ne_zero_of_finite_enclosures : ∀ (samples : ℕ → ℂ),
+  (∀ j < 128,
+      ‖samples j -
+            (fun w => 8 * discriminant23CompletedClassProduct w)
+              (dottieScaledRightCenter (29 + 1 / 512) 0 + ↑(1 / 2) * discriminant23Height29Root ^ j)‖ ≤
+        1 / 10 ^ 72) →
+    (∀ k < 113,
+        ‖contourSampleCoeff samples discriminant23Height29Root 128 k - discriminant23Height29ScaledModelCoeff k‖ ≤
+          1 / 10 ^ 72) →
+      ∀ {w : ℂ},
+        w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29 →
+          mixedThetaContinuation L23 w ≠ 0 ∧
+            mixedThetaContinuation (↥discriminant23QuadraticSubfield) w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0
+discriminant23_height29_ne_zero_of_coarser_sample_enclosures : ∀ (samples : ℕ → ℂ),
+  (∀ j < 128,
+      ‖samples j -
+            (fun w => 8 * discriminant23CompletedClassProduct w)
+              (dottieScaledRightCenter (29 + 1 / 512) 0 + ↑(1 / 2) * discriminant23Height29Root ^ j)‖ ≤
+        1 / 10 ^ 60) →
+    (∀ k < 113,
+        ‖contourSampleCoeff samples discriminant23Height29Root 128 k - discriminant23Height29ScaledModelCoeff k‖ ≤
+          1 / 10 ^ 72) →
+      ∀ {w : ℂ},
+        w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29 →
+          mixedThetaContinuation L23 w ≠ 0 ∧
+            mixedThetaContinuation (↥discriminant23QuadraticSubfield) w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0
+'FieldTarget.discriminant23_height29_root_primitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_model_holomorphic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_cauchy_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_model_error_le_finite_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_model_error_of_finite_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_ne_zero_of_finite_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.discriminant23_height29_ne_zero_of_coarser_sample_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29CircleCertificate exit=0
+Super Zeta source ContourGaussianDFT 1a5c69196e21eb618c1122346fefc761bd4aa29e
+'FieldTarget.norm_gaussianScaled_le_of_nat_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_contourSampleCoeff_sub_gaussianDFT_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianDFTCoeff_sub_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.norm_unitPowers_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.gaussianScaled_mul_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+ContourGaussianDFT exit=0
+Super Zeta source ContourRoot128 b634a2c00cbf833079b289ee178137181b65eb59
+'FieldTarget.contourRoot128_isPrimitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.ContourRoot128.0.FieldTarget.contourRoot128_inverse_near_generator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.contourRoot128_phase_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+ContourRoot128 exit=0
+Super Zeta source DedekindDiscriminant23Height29Samples 0205cc3123e9af1ed4e9f9a6f050b0ac712e9c28
+'FieldTarget.height29_sample_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+DedekindDiscriminant23Height29Samples exit=0
+Super Zeta source Height29DFTSum.Block00 8b9039a381f21772f705cdbaf6634bd273564832
+'FieldTarget.height29_dft_sum_block_00' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block00 exit=0
+Super Zeta source Height29DFTSum.Block01 f58e36cae1f7167eb55a9634b87ad981a3639239
+'FieldTarget.height29_dft_sum_block_01' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block01 exit=0
+Super Zeta source Height29DFTSum.Block02 72e6f1e7ceac9b8994316857c1aafc256333e204
+'FieldTarget.height29_dft_sum_block_02' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block02 exit=0
+Super Zeta source Height29DFTSum.Block03 d1b35a959b0c006d547d40ea0a9b102f6c6c137c
+'FieldTarget.height29_dft_sum_block_03' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block03 exit=0
+Super Zeta source Height29DFTSum.Block04 ecd6800e21eac34c0cfdd2a7f4707b48492f189f
+'FieldTarget.height29_dft_sum_block_04' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block04 exit=0
+Super Zeta source Height29DFTSum.Block05 4feb50490e6c9e8b2737eab00521666d9f5d9e18
+'FieldTarget.height29_dft_sum_block_05' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block05 exit=0
+Super Zeta source Height29DFTSum.Block06 e606029fc1d8789769c41b5f9d1daac9256052d1
+'FieldTarget.height29_dft_sum_block_06' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block06 exit=0
+Super Zeta source Height29DFTSum.Block07 6ffd6f22f7233e42dc63c54c65bcef5afe1d4ce6
+'FieldTarget.height29_dft_sum_block_07' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block07 exit=0
+Super Zeta source Height29DFTSum.Block08 8ff0ca3b150d521406e6873081741ee6194d8317
+'FieldTarget.height29_dft_sum_block_08' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block08 exit=0
+Super Zeta source Height29DFTSum.Block09 71c10415b76eee92bd9807ccdbed0ba9d9aa82ef
+'FieldTarget.height29_dft_sum_block_09' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block09 exit=0
+Super Zeta source Height29DFTSum.Block10 82e1d3cb03738d91a76381f557caca51695fa3c4
+'FieldTarget.height29_dft_sum_block_10' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block10 exit=0
+Super Zeta source Height29DFTSum.Block11 fe91d5ab4faf77611420cbc97217ff49a62d8af1
+'FieldTarget.height29_dft_sum_block_11' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block11 exit=0
+Super Zeta source Height29DFTSum.Block12 59acf04f823e3715eb309f997520962a77b7538e
+'FieldTarget.height29_dft_sum_block_12' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block12 exit=0
+Super Zeta source Height29DFTSum.Block13 c08a7e1326d28b6a124e3dc2a524b5fd9976e792
+'FieldTarget.height29_dft_sum_block_13' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block13 exit=0
+Super Zeta source Height29DFTSum.Block14 eabf8a28392dda4930c668320ea5bc38c13e8289
+'FieldTarget.height29_dft_sum_block_14' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block14 exit=0
+Super Zeta source Height29DFTSum.Block15 9bbfe610d417a71dba435399eb80d1b4aad80457
+'FieldTarget.height29_dft_sum_block_15' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block15 exit=0
+Super Zeta source Height29DFTSum.Block16 25290674e17d5fb85e3b30df5c06fc9dd36a1f2b
+'FieldTarget.height29_dft_sum_block_16' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block16 exit=0
+Super Zeta source Height29DFTSum.Block17 e92a313c632cdfe9cb1d33014364aea5d52a0356
+'FieldTarget.height29_dft_sum_block_17' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block17 exit=0
+Super Zeta source Height29DFTSum.Block18 1df5973b2df005023609e80e8685f4609bf9b2be
+'FieldTarget.height29_dft_sum_block_18' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block18 exit=0
+Super Zeta source Height29DFTSum.Block19 8c33ef66b90ad84d4e2ffd024080e8f1b6898459
+'FieldTarget.height29_dft_sum_block_19' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block19 exit=0
+Super Zeta source Height29DFTSum.Block20 d9ea8afafd8dea6635fe94edc75299310fa93e26
+'FieldTarget.height29_dft_sum_block_20' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block20 exit=0
+Super Zeta source Height29DFTSum.Block21 fd52cb69f99ed3028aeda7b61055e9cd9bbbaa67
+'FieldTarget.height29_dft_sum_block_21' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block21 exit=0
+Super Zeta source Height29DFTSum.Block22 c45dbaad595ce227768bb92893544a24be51b878
+'FieldTarget.height29_dft_sum_block_22' depends on axioms: [propext, Classical.choice, Quot.sound]
+Height29DFTSum.Block22 exit=0
+Super Zeta source DedekindDiscriminant23Height29DFT 4223a829fcbbf24681bcd8b8834f7e03dcde0993
+discriminant23_height29_ne_zero_of_sample_enclosures : (∀ j < 128,
+    ‖discriminant23Height29Samples j -
+          (fun w => 8 * discriminant23CompletedClassProduct w)
+            (dottieScaledRightCenter (29 + 1 / 512) 0 + ↑(1 / 2) * discriminant23Height29Root ^ j)‖ ≤
+      1 / 10 ^ 60) →
+  ∀ {w : ℂ},
+    w ∈ closedBall (dottieScaledRightCenter (29 + 1 / 512) 0) ρ29 →
+      mixedThetaContinuation L23 w ≠ 0 ∧
+        mixedThetaContinuation (↥discriminant23QuadraticSubfield) w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0
+'FieldTarget.discriminant23_height29_samples_rounding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.discriminant23_height29_ne_zero_of_sample_enclosures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindDiscriminant23Height29DFT exit=0

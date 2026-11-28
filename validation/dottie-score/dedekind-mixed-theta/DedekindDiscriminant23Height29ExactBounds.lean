@@ -303,6 +303,18 @@ theorem discriminant23_height29_residual_bound {z : ℂ} (hz : z ∈ closedBall 
   rw [height29Residual_eval, norm_div, Complex.norm_natCast]
   exact (div_le_div_of_nonneg_right hNorm (Nat.cast_nonneg _)).trans h
 
+private theorem height29_weighted_reading_norm_le_with_error {E : ℝ}
+    (hE : ∀ z ∈ closedBall c29 ρ29,
+      ‖8 * discriminant23CompletedClassProduct z -
+        dottieRationalWeight c29 discriminant23Height29Model z‖ ≤ E)
+    {w : ℂ} (hw : w ∈ closedBall c29 ρ29) :
+    ‖dottieRationalWeight c29 discriminant23Height29Weight w *
+      (8 * discriminant23CompletedClassProduct w) + I‖ ≤ 29 / 50 + (3 * 10 ^ 58) * E := by
+  have hWeight := (norm_dottieRationalWeight_le discriminant23Height29Weight hw).trans
+    discriminant23_height29_weight_bound
+  exact dottie_weighted_reading_norm_le hWeight
+    (discriminant23_height29_residual_bound hw) (hE w hw)
+
 /-- The direct comparison holds on the entire disk of the model enclosure. -/
 theorem discriminant23_height29_weighted_reading_norm_le
     (hE : ∀ z ∈ closedBall c29 ρ29,
@@ -310,11 +322,8 @@ theorem discriminant23_height29_weighted_reading_norm_le
         dottieRationalWeight c29 discriminant23Height29Model z‖ ≤ 2 / 10 ^ 68)
     {w : ℂ} (hw : w ∈ closedBall c29 ρ29) :
     ‖dottieRationalWeight c29 discriminant23Height29Weight w *
-      (8 * discriminant23CompletedClassProduct w) + I‖ ≤ 3 / 5 := by
-  have hWeight := (norm_dottieRationalWeight_le discriminant23Height29Weight hw).trans
-    discriminant23_height29_weight_bound
-  exact (dottie_weighted_reading_norm_le hWeight
-    (discriminant23_height29_residual_bound hw) (hE w hw)).trans (by norm_num)
+      (8 * discriminant23CompletedClassProduct w) + I‖ ≤ 3 / 5 :=
+  (height29_weighted_reading_norm_le_with_error hE hw).trans (by norm_num)
 
 private theorem height29_outer_strip {w : ℂ} (hw : w ∈ closedBall c29 ρ29) :
     0 < w.re ∧ w.re < 1 := by
@@ -324,19 +333,41 @@ private theorem height29_outer_strip {w : ℂ} (hw : w ∈ closedBall c29 ρ29) 
   rw [sub_re] at hRe
   exact ⟨by linarith only [hlo, hRe.1], by linarith only [hhi, hRe.2]⟩
 
-/-- The height-29 exclusion with only the uniform analytic model error as input. -/
-theorem discriminant23_height29_dottie_ne_zero_of_model_error
+/-- Any uniform model error within the exact weighted budget suffices. -/
+theorem discriminant23_height29_dottie_ne_zero_of_error_budget {E : ℝ}
     (hE : ∀ z ∈ closedBall c29 ρ29,
       ‖8 * discriminant23CompletedClassProduct z -
-        dottieRationalWeight c29 discriminant23Height29Model z‖ ≤ 2 / 10 ^ 68)
+        dottieRationalWeight c29 discriminant23Height29Model z‖ ≤ E)
+    (hBudget : 29 / 50 + (3 * 10 ^ 58) * E < 1)
     {w : ℂ} (hw : w ∈ closedBall c29 ρ29) : mixedThetaContinuation L23 w ≠ 0 := by
   obtain ⟨h₀, h₁⟩ := height29_outer_strip hw
   intro hZero
   have hReading := (mixedThetaCompletedReading_zero_iff L23 w h₀ h₁).mpr hZero
   have hProduct := (discriminant23_completedReading_eq_classProduct w h₀ h₁).symm.trans hReading
-  have hGap := discriminant23_height29_weighted_reading_norm_le hE hw
+  have hGap := height29_weighted_reading_norm_le_with_error hE hw
   rw [hProduct, mul_zero, zero_add, norm_I] at hGap
-  norm_num at hGap
+  exact (not_le_of_gt hBudget) hGap
+
+/-- The height-29 exclusion with only the uniform analytic model error as input. -/
+theorem discriminant23_height29_dottie_ne_zero_of_model_error
+    (hE : ∀ z ∈ closedBall c29 ρ29,
+      ‖8 * discriminant23CompletedClassProduct z -
+        dottieRationalWeight c29 discriminant23Height29Model z‖ ≤ 2 / 10 ^ 68)
+    {w : ℂ} (hw : w ∈ closedBall c29 ρ29) : mixedThetaContinuation L23 w ≠ 0 :=
+  discriminant23_height29_dottie_ne_zero_of_error_budget hE (by norm_num) hw
+
+/-- The same error budget excludes zeros of both factors. -/
+theorem discriminant23_height29_factors_ne_zero_of_error_budget {E : ℝ}
+    (hE : ∀ z ∈ closedBall c29 ρ29,
+      ‖8 * discriminant23CompletedClassProduct z -
+        dottieRationalWeight c29 discriminant23Height29Model z‖ ≤ E)
+    (hBudget : 29 / 50 + (3 * 10 ^ 58) * E < 1)
+    {w : ℂ} (hw : w ∈ closedBall c29 ρ29) :
+    mixedThetaContinuation F23 w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0 := by
+  obtain ⟨h₀, h₁⟩ := height29_outer_strip hw
+  have hZero := (discriminant23_dedekind_zero_iff_base_or_character w h₀ h₁).mpr
+  have hNe := discriminant23_height29_dottie_ne_zero_of_error_budget hE hBudget hw
+  exact ⟨fun h ↦ hNe (hZero (Or.inl h)), fun h ↦ hNe (hZero (Or.inr h))⟩
 
 /-- The base Dedekind and completed Hecke factors are nonzero at the same input. -/
 theorem discriminant23_height29_factors_ne_zero_of_model_error
@@ -344,18 +375,17 @@ theorem discriminant23_height29_factors_ne_zero_of_model_error
       ‖8 * discriminant23CompletedClassProduct z -
         dottieRationalWeight c29 discriminant23Height29Model z‖ ≤ 2 / 10 ^ 68)
     {w : ℂ} (hw : w ∈ closedBall c29 ρ29) :
-    mixedThetaContinuation F23 w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0 := by
-  obtain ⟨h₀, h₁⟩ := height29_outer_strip hw
-  have hZero := (discriminant23_dedekind_zero_iff_base_or_character w h₀ h₁).mpr
-  have hNe := discriminant23_height29_dottie_ne_zero_of_model_error hE hw
-  exact ⟨fun h ↦ hNe (hZero (Or.inl h)), fun h ↦ hNe (hZero (Or.inr h))⟩
+    mixedThetaContinuation F23 w ≠ 0 ∧ discriminant23CharacterFold w ≠ 0 :=
+  discriminant23_height29_factors_ne_zero_of_error_budget hE (by norm_num) hw
 
 #check @discriminant23_height29_dottie_ne_zero_of_model_error
 #check @discriminant23_height29_factors_ne_zero_of_model_error
 #print axioms discriminant23_height29_model_norm_budget
 #print axioms discriminant23_height29_residual_bound
 #print axioms discriminant23_height29_weighted_reading_norm_le
+#print axioms discriminant23_height29_dottie_ne_zero_of_error_budget
 #print axioms discriminant23_height29_dottie_ne_zero_of_model_error
+#print axioms discriminant23_height29_factors_ne_zero_of_error_budget
 #print axioms discriminant23_height29_factors_ne_zero_of_model_error
 
 end FieldTarget
