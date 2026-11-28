@@ -1,0 +1,230 @@
+Lean (version 4.35.0-rc3, x86_64-w64-windows-gnu, commit 470d5ce1400764999581fd26d5d72b00d990b0f4, Release)
+AxiomMath 09afbb4ce6570c1615d58509dc197fc9f0956b7d
+Mathlib 0493595ecd5da8ef14742febab99728f98e948e8
+Hu solution object SHA-256 281C366E32DFE006A005F636CD25C5DAF52A06A9138202E4D6DCAE60D7125905
+Super Zeta source RayHeckeStripCounts 2b6de827cdfc91f1178c0649b66358b74520a0dd
+@rayHeckeRH_iff_cofinal_counts : ∀ {K : Type} [inst : Field K] [inst_1 : NumberField K] {m : Ideal (𝓞 K)} (hm : m ≠ ⊥)
+  (χ : RayClassCharacter K m),
+  StripZerosOnLine (rayHeckeContinuation hm χ) ↔
+    ∀ (H : ℝ),
+      ∃ T,
+        H ≤ T ∧
+          ((rayHeckeCountingFunction hm χ).stripZeroCount T fun x => True) =
+            (rayHeckeCountingFunction hm χ).stripZeroCount T fun w => w.re = 1 / 2
+dedekindZetaRH_iff_unit_rayHecke : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  DedekindZetaRH K ↔ StripZerosOnLine (rayHeckeContinuation ⋯ (LargeSieve.principalUnitRayCharacter K))
+'FieldTarget.rayHeckeCountingFunction_eq_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeContinuation_eq_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeCountingFunction_order_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeRH_iff_cofinal_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeContinuation_ne_zero_of_right_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_unit_rayHecke' depends on axioms: [propext, Classical.choice, Quot.sound]
+RayHeckeStripCounts exit=0
+Super Zeta source RayHeckeDedekindTransfer 26034f9735811daed7e61b753d4d851e33482999
+rayHecke_zero_lifts_to_dedekind : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K)) (hm : m ≠ ⊥)
+  (χ : RayClassCharacter K m),
+  ∃ R, ∀ (w : ℂ), 0 < w.re → w ≠ 1 → rayHeckeContinuation hm χ w = 0 → mixedThetaContinuation (↥↑R.extension) w = 0
+rayHecke_zero_reflects_into_family : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K))
+  (hm : m ≠ ⊥) (χ : RayClassCharacter K m) {w : ℂ},
+  0 < w.re →
+    w.re < 1 →
+      rayHeckeContinuation hm χ w = 0 →
+        ∃ m', ∃ (hm' : m' ≠ ⊥), ∃ χ', rayHeckeContinuation hm' χ' (1 - (starRingEnd ℂ) w) = 0
+allDedekindRH_iff_all_rayHeckeRH : (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K) ↔
+  ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m),
+    StripZerosOnLine (rayHeckeContinuation hm χ)
+rational_rayHeckeRH_of_dirichlet : (∀ (N : ℕ) [inst : NeZero N] (ψ : DirichletCharacter ℂ N),
+    StripZerosOnLine (DirichletCharacter.LFunction ψ)) →
+  ∀ (m : Ideal (𝓞 ℚ)) (hm : m ≠ ⊥) (χ : RayClassCharacter ℚ m), StripZerosOnLine (rayHeckeContinuation hm χ)
+rayHecke_familyRH_iff_right_band : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  (∀ (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m), StripZerosOnLine (rayHeckeContinuation hm χ)) ↔
+    ∀ (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m) (w : ℂ),
+      1 / 2 < w.re → w.re ≤ 31 / 32 → rayHeckeContinuation hm χ w ≠ 0
+allDedekindRH_iff_rayHecke_right_band : (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K) ↔
+  ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m)
+    (w : ℂ), 1 / 2 < w.re → w.re ≤ 31 / 32 → rayHeckeContinuation hm χ w ≠ 0
+'FieldTarget.dedekindContinuation_eq_rayHecke_product_of_local_factors' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.rayHecke_zero_lifts_to_dedekind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHecke_zero_reflects_into_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_all_rayHeckeRH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rational_rayHeckeRH_of_dirichlet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHecke_familyRH_iff_right_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_rayHecke_right_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+RayHeckeDedekindTransfer exit=0
+Super Zeta source RayHeckeRightBand 85e5b508219c9ea4951ec9d35f50dc118d319569
+eq_mixedThetaContinuation_of_right_match : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {f : ℂ → ℂ}
+  {P : Set ℂ},
+  P.Finite →
+    (∀ p ∈ P, p.re = 1) →
+      DifferentiableOn ℂ f Pᶜ →
+        (∀ (z : ℂ), 1 < z.re → f z = NumberField.dedekindZeta K z) →
+          ∀ {w : ℂ}, w.re < 1 → f w = mixedThetaContinuation K w
+@allDedekindRH_iff_rayHecke_right_band_of_dedekind_edge : ∀ {σ : ℝ},
+  σ < 1 →
+    (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (w : ℂ),
+        σ < w.re → w.re < 1 → mixedThetaContinuation K w ≠ 0) →
+      ((∀ (K : Type) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K) ↔
+        ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K)) (hm : m ≠ ⊥)
+          (χ : RayClassCharacter K m) (w : ℂ), 1 / 2 < w.re → w.re ≤ σ → rayHeckeContinuation hm χ w ≠ 0)
+'FieldTarget.eq_mixedThetaContinuation_of_right_match' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHeckeContinuation_ne_zero_of_dedekind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_rayHecke_right_band_of_dedekind_edge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+RayHeckeRightBand exit=0
+Super Zeta source HeckeSevenEighthsTransfer c16f22568fe3154df6dc9b13dfd1e8aac536236e
+mixedThetaContinuation_ne_zero_above_seven_eighths : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] {w : ℂ},
+  7 / 8 < w.re → w.re < 1 → mixedThetaContinuation K w ≠ 0
+rayHeckeContinuation_ne_zero_above_seven_eighths : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K]
+  (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m) {w : ℂ},
+  7 / 8 < w.re → w.re < 1 → rayHeckeContinuation hm χ w ≠ 0
+allDedekindRH_iff_rayHecke_seven_eighths_band : (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+    DedekindZetaRH K) ↔
+  ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m)
+    (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → rayHeckeContinuation hm χ w ≠ 0
+allDedekindRH_iff_mixedTheta_seven_eighths_band : (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+    DedekindZetaRH K) ↔
+  ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (w : ℂ),
+    1 / 2 < w.re → w.re ≤ 7 / 8 → mixedThetaContinuation K w ≠ 0
+'HeckeSevenEighths.heckeL_zeroFree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.hecke_trivial_coeff_eq_principal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaContinuation_ne_zero_above_seven_eighths' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.rayHeckeContinuation_ne_zero_above_seven_eighths' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.allDedekindRH_iff_rayHecke_seven_eighths_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_mixedTheta_seven_eighths_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+HeckeSevenEighthsTransfer exit=0
+Super Zeta source DedekindSevenEighthsCoverage 6c9afbde38576a5dd47f272685b0b929808435d9
+def FieldTarget.HasDottieCompletedSamplesToSevenEighths : (K : Type) → [inst : Field K] → [NumberField K] → Prop :=
+fun K [Field K] [NumberField K] =>
+  ∀ (t : ℝ),
+    0 ≤ t →
+      ∃ l u,
+        t ∈ Icc l u ∧
+          ∀ (ε : ℝ),
+            0 < ε →
+              ∀ (w : ℂ),
+                w.im ∈ Icc l u →
+                  1 / 2 + ε ≤ w.re →
+                    w.re ≤ 7 / 8 →
+                      ∃ a,
+                        w ∈ Metric.ball (dottieScaledRightCenter (↑a).1 (↑a).2) (dottieScaledRadius (↑a).2) ∧
+                          HasDottieCompletedSamples K (↑a).1 (↑a).2
+dedekindZetaRH_iff_seven_eighths_nonnegative_band : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  DedekindZetaRH K ↔ ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → 0 ≤ w.im → mixedThetaContinuation K w ≠ 0
+dedekindZetaRH_of_dirichlet_and_nonabelian_galois_samples_to_seven_eighths : (∀ (m : ℕ) [inst : NeZero m]
+    (χ : DirichletCharacter ℂ m), StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (∀ (L : Type) [inst : Field L] [inst_1 : NumberField L] [IsGalois ℚ L],
+      ¬IsAbelianGalois ℚ L → HasDottieCompletedSamplesToSevenEighths L) →
+    ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K
+'FieldTarget.dedekindZetaRH_iff_seven_eighths_nonnegative_band' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_completed_samples_to_seven_eighths' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_dirichlet_and_nonabelian_galois_samples_to_seven_eighths' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindSevenEighthsCoverage exit=0
+Super Zeta source RayHeckePrimitiveReduction ed11e1ddb810b6c3a791c951a71e7a92c2b8b655
+rayHecke_exists_primitive_same_orders : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  IsTotallyComplex K →
+    ∀ (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m),
+      ∃ n,
+        ∃ (hn : n ≠ ⊥),
+          ∃ ψ,
+            ψ.IsPrimitive ∧
+              ∀ (w : ℂ),
+                0 < w.re →
+                  w ≠ 1 →
+                    (rayHeckeContinuation hm χ w = 0 ↔ rayHeckeContinuation hn ψ w = 0) ∧
+                      analyticOrderNatAt (rayHeckeContinuation hm χ) w =
+                        analyticOrderNatAt (rayHeckeContinuation hn ψ) w
+rayHecke_exists_primitive_same_counts : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  IsTotallyComplex K →
+    ∀ (m : Ideal (𝓞 K)) (hm : m ≠ ⊥) (χ : RayClassCharacter K m),
+      ∃ n,
+        ∃ (hn : n ≠ ⊥),
+          ∃ ψ,
+            ψ.IsPrimitive ∧
+              ∀ (T : ℝ) (P : ℂ → Prop),
+                (rayHeckeCountingFunction hm χ).stripZeroCount T P = (rayHeckeCountingFunction hn ψ).stripZeroCount T P
+'FieldTarget.rayHeckeContinuation_eq_primitive_mul_euler' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHecke_exists_primitive_same_orders' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.rayHecke_exists_primitive_same_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+RayHeckePrimitiveReduction exit=0
+Super Zeta source DedekindTwelfthRootTarget 04045da218edafd1008ec78b5138189214451f90
+allDedekindRH_iff_galois_twelfthRoot_primitive_band : (∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+    DedekindZetaRH K) ↔
+  ∀ (L : Type) [inst : Field L] [inst_1 : NumberField L] [IsGalois ℚ L],
+    (∃ ζ, IsPrimitiveRoot ζ 12) →
+      ∀ (m : Ideal (𝓞 L)) (hm : m ≠ ⊥) (χ : RayClassCharacter L m),
+        χ.IsPrimitive → ∀ (w : ℂ), 1 / 2 < w.re → w.re ≤ 7 / 8 → 0 ≤ w.im → rayHeckeContinuation hm χ w ≠ 0
+dedekindZetaRH_of_dirichlet_and_twelfthRoot_galois_samples : (∀ (m : ℕ) [inst : NeZero m] (χ : DirichletCharacter ℂ m),
+    StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (∀ (L : Type) [inst : Field L] [inst_1 : NumberField L] [IsGalois ℚ L],
+      (∃ ζ, IsPrimitiveRoot ζ 12) → ¬IsAbelianGalois ℚ L → HasDottieCompletedSamplesToSevenEighths L) →
+    ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K
+mixedTheta_cyclotomic12_stripCounts_equal_descend : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (T : ℝ),
+  (((mixedThetaCountingFunction (CyclotomicField 12 K)).stripZeroCount T fun x => True) =
+      (mixedThetaCountingFunction (CyclotomicField 12 K)).stripZeroCount T fun w => w.re = 1 / 2) →
+    ((mixedThetaCountingFunction K).stripZeroCount T fun x => True) =
+      (mixedThetaCountingFunction K).stripZeroCount T fun w => w.re = 1 / 2
+'FieldTarget.mixedThetaContinuation_cyclotomic12_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedThetaContinuation_cyclotomic12_order_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_cyclotomic12_stripCounts_equal_descend' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_galois_twelfthRoot_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_galois_twelfthRoot_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.allDedekindRH_iff_galois_twelfthRoot_primitive_band' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_dirichlet_and_twelfthRoot_galois_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindTwelfthRootTarget exit=0
+Super Zeta source DottieRationalWeight 8e57dd15ef50e4994aa37e5badc11bbfbd34b87a
+'FieldTarget.dottieRationalWeight_differentiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.exists_dottieRationalWeight_approx' depends on axioms: [propext, Classical.choice, Quot.sound]
+DottieRationalWeight exit=0
+Super Zeta source DedekindWeightedDottieSamples 797314098826c0f0d9978084e6eeae40ec4463e7
+dedekindZetaRH_of_dirichlet_and_twelfthRoot_galois_weighted_samples : (∀ (m : ℕ) [inst : NeZero m]
+    (χ : DirichletCharacter ℂ m), StripZerosOnLine (DirichletCharacter.LFunction χ)) →
+  (∀ (L : Type) [inst : Field L] [inst_1 : NumberField L] [IsGalois ℚ L],
+      (∃ ζ, IsPrimitiveRoot ζ 12) → ¬IsAbelianGalois ℚ L → HasDottieCompletedWeightedSamplesToSevenEighths L) →
+    ∀ (K : Type u_1) [inst : Field K] [inst_1 : NumberField K], DedekindZetaRH K
+'FieldTarget.dottie_disk_nonzero_of_local_signed_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.mixedTheta_weighted_boundary_of_rational_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.mixedTheta_ne_zero_of_dottie_weighted_samples' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_of_completed_weighted_samples_to_seven_eighths' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FieldTarget.dedekindZetaRH_of_dirichlet_and_twelfthRoot_galois_weighted_samples' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindWeightedDottieSamples exit=0
+Super Zeta source DedekindWeightedDottieCompleteness c9e98085b5744e9e95ac0dac554bb902f9f23d03
+exists_dottieRationalWeightedSamples_of_nonzero : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (T : ℝ)
+  (n : ℕ),
+  (∀ z ∈ closedBall (dottieScaledRightCenter T n) (dottieScaledRadius n), mixedThetaContinuation K z ≠ 0) →
+    ∃ N a, IsDottieCompletedWeightedSampleCertificate K T n (dottieRationalWeight (dottieScaledRightCenter T n) a)
+dottie_completed_weighted_samples_iff_nonzero : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K] (T : ℝ) (n : ℕ),
+  HasDottieCompletedWeightedSamples K T n ↔
+    ∀ z ∈ closedBall (dottieScaledRightCenter T n) (dottieScaledRadius n), mixedThetaContinuation K z ≠ 0
+dedekindZetaRH_iff_completed_weighted_samples_to_seven_eighths : ∀ (K : Type) [inst : Field K] [inst_1 : NumberField K],
+  DedekindZetaRH K ↔ HasDottieCompletedWeightedSamplesToSevenEighths K
+'FieldTarget.exists_dottieRationalWeightedSamples_of_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dottie_completed_weighted_samples_iff_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FieldTarget.dedekindZetaRH_iff_completed_weighted_samples_to_seven_eighths' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DedekindWeightedDottieCompleteness exit=0

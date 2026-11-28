@@ -8,10 +8,12 @@ param(
     [string[]] $Discriminant23Imports = @(),
     [switch] $Discriminant23TwentyCount,
     [switch] $Discriminant23RightBandCount,
-    [switch] $TwelfthRootTarget
+    [switch] $TwelfthRootTarget,
+    [switch] $WeightedDottie
 )
 
 $ErrorActionPreference = 'Stop'
+if ($WeightedDottie) { $TwelfthRootTarget = $true }
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 $axiom = (Resolve-Path -LiteralPath $AxiomCheckout).Path
 $hu = (Resolve-Path -LiteralPath $HuCacheRoot).Path
@@ -103,6 +105,11 @@ try {
         $modules.Add('RayHeckePrimitiveReduction', 3)
         $modules.Add('DedekindTwelfthRootTarget', 7)
     }
+    if ($WeightedDottie) {
+        $modules.Add('DottieRationalWeight', 2)
+        $modules.Add('DedekindWeightedDottieSamples', 5)
+        $modules.Add('DedekindWeightedDottieCompleteness', 3)
+    }
     if ($characterImports.Count -gt 0) {
         $modules.Add('DedekindDiscriminant23SevenEighths', 2)
         $modules.Add('DedekindDiscriminant23TaylorRadiusCeiling', 1)
@@ -149,7 +156,8 @@ try {
         $stack = @(if ($name -like 'Gauss23*' -or $name -in @(
             'DedekindDiscriminant23TwentyCount', 'DedekindDiscriminant23RightStripCount',
             'DedekindDiscriminant23RightBandCount', 'RayHeckePrimitiveReduction',
-            'DedekindTwelfthRootTarget')) {
+            'DedekindTwelfthRootTarget', 'DottieRationalWeight', 'DedekindWeightedDottieSamples',
+            'DedekindWeightedDottieCompleteness')) {
             '-s32768'
         })
         $report = & $lean '-j1' @stack '-M7500' '-DwarningAsError=true' "--root=$PSScriptRoot" '-o' $object $source 2>&1
